@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DCA Backtest
 
-## Getting Started
+DCA Backtest is a premium finance calculator website that helps users backtest monthly investments against historical market data and project compound growth.
 
-First, run the development server:
+## Project Overview
+
+The project provides two core investing calculators:
+
+- A historical dollar-cost averaging backtest for supported ETFs and stocks
+- A compound interest calculator for forward-looking portfolio projections
+
+The website is designed for public use with internationalization, multi-currency display, responsive charts, SEO metadata, sitemap support, robots.txt, and Google Analytics integration.
+
+## Live Website
+
+[https://dcabacktest.com](https://dcabacktest.com)
+
+## Features
+
+- Historical DCA backtest
+- Compound interest calculator
+- Multi-language support
+- Multi-currency display
+- Responsive chart visualizations
+- Google Analytics support via `NEXT_PUBLIC_GA_ID`
+- SEO metadata for localized pages
+- Sitemap and robots.txt routes
+
+## Supported Languages
+
+- English (`en`)
+- Simplified Chinese (`zh-CN`)
+- Traditional Chinese (`zh-TW`)
+- Bahasa Melayu (`ms`)
+- Bahasa Indonesia (`id`)
+- Japanese (`ja`)
+- Korean (`ko`)
+- Russian (`ru`)
+- French (`fr`)
+- Italian (`it`)
+- Spanish (`es`)
+- Arabic (`ar`)
+- German (`de`)
+- Tamil (`ta`)
+
+## Supported Currencies
+
+- USD
+- MYR
+- SGD
+- IDR
+- JPY
+- KRW
+- CNY
+- TWD
+- HKD
+- EUR
+- GBP
+- CHF
+- AUD
+- CAD
+- RUB
+- AED
+- SAR
+- INR
+- THB
+
+## Tech Stack
+
+- Next.js
+- TypeScript
+- React
+- Recharts
+- Vercel
+
+## Local Development
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Run lint checks:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run lint
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create a production build:
 
-## Learn More
+```bash
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Disclaimer
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+DCA Backtest is for educational purposes only. The calculators do not provide financial advice, investment recommendations, brokerage services, or guarantees of future returns. Past performance does not guarantee future results.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Contact
 
-## Deploy on Vercel
+For support or product inquiries, contact:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[support@dcabacktest.com](mailto:support@dcabacktest.com)
