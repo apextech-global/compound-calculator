@@ -18,6 +18,101 @@ type YearlyResult = {
   profit: number;
 };
 
+type SymbolKey = "VOO" | "SPY" | "QQQ" | "AAPL" | "TSLA" | "NVDA";
+
+type DcaYearlyResult = {
+  year: number;
+  price: number;
+  sharesBought: number;
+  totalShares: number;
+  portfolioValue: number;
+  invested: number;
+};
+
+const historicalPriceData: Record<SymbolKey, Record<number, number>> = {
+  VOO: {
+    2015: 188,
+    2016: 205,
+    2017: 245,
+    2018: 230,
+    2019: 296,
+    2020: 343,
+    2021: 437,
+    2022: 352,
+    2023: 436,
+    2024: 538,
+    2025: 560,
+  },
+  SPY: {
+    2015: 203,
+    2016: 224,
+    2017: 267,
+    2018: 250,
+    2019: 322,
+    2020: 373,
+    2021: 477,
+    2022: 382,
+    2023: 475,
+    2024: 586,
+    2025: 610,
+  },
+  QQQ: {
+    2015: 112,
+    2016: 119,
+    2017: 156,
+    2018: 154,
+    2019: 213,
+    2020: 313,
+    2021: 398,
+    2022: 266,
+    2023: 409,
+    2024: 512,
+    2025: 535,
+  },
+  AAPL: {
+    2015: 26,
+    2016: 29,
+    2017: 42,
+    2018: 39,
+    2019: 73,
+    2020: 132,
+    2021: 178,
+    2022: 130,
+    2023: 192,
+    2024: 250,
+    2025: 215,
+  },
+  TSLA: {
+    2015: 16,
+    2016: 14,
+    2017: 21,
+    2018: 22,
+    2019: 28,
+    2020: 235,
+    2021: 352,
+    2022: 123,
+    2023: 248,
+    2024: 403,
+    2025: 320,
+  },
+  NVDA: {
+    2015: 8,
+    2016: 27,
+    2017: 48,
+    2018: 34,
+    2019: 59,
+    2020: 130,
+    2021: 294,
+    2022: 146,
+    2023: 495,
+    2024: 134,
+    2025: 155,
+  },
+};
+
+const symbolOptions = Object.keys(historicalPriceData) as SymbolKey[];
+const availableYears = Object.keys(historicalPriceData.VOO).map(Number);
+
 function formatMoney(value: number) {
   return new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -35,11 +130,28 @@ function formatCompactMoney(value: number) {
   }).format(value);
 }
 
+function formatShares(value: number) {
+  return new Intl.NumberFormat("en-US", {
+    maximumFractionDigits: 4,
+  }).format(value);
+}
+
+function formatPercent(value: number) {
+  return new Intl.NumberFormat("en-US", {
+    maximumFractionDigits: 1,
+    minimumFractionDigits: 1,
+  }).format(value);
+}
+
 export default function Home() {
   const [initialAmount, setInitialAmount] = useState("10000");
   const [monthlyContribution, setMonthlyContribution] = useState("500");
   const [annualReturn, setAnnualReturn] = useState("8");
   const [years, setYears] = useState("20");
+  const [backtestSymbol, setBacktestSymbol] = useState<SymbolKey>("VOO");
+  const [backtestMonthlyAmount, setBacktestMonthlyAmount] = useState("500");
+  const [backtestStartYear, setBacktestStartYear] = useState("2018");
+  const [backtestEndYear, setBacktestEndYear] = useState("2025");
 
   const result = useMemo(() => {
     const initial = Number(initialAmount) || 0;
@@ -96,6 +208,71 @@ export default function Home() {
 
   const growthMultiple =
     result.totalInvested > 0 ? result.finalValue / result.totalInvested : 0;
+
+  const backtest = useMemo(() => {
+    const monthlyAmount = Number(backtestMonthlyAmount) || 0;
+    const rawStartYear = Number(backtestStartYear) || availableYears[0];
+    const rawEndYear =
+      Number(backtestEndYear) || availableYears[availableYears.length - 1];
+    const startYear = Math.min(rawStartYear, rawEndYear);
+    const endYear = Math.max(rawStartYear, rawEndYear);
+    const priceHistory = historicalPriceData[backtestSymbol];
+    const yearlyResults: DcaYearlyResult[] = [];
+
+    let totalShares = 0;
+    let totalInvested = 0;
+
+    for (const year of availableYears) {
+      if (year < startYear || year > endYear) {
+        continue;
+      }
+
+      const price = priceHistory[year];
+      const investedThisYear = monthlyAmount * 12;
+      const sharesBought = price > 0 ? investedThisYear / price : 0;
+
+      totalInvested += investedThisYear;
+      totalShares += sharesBought;
+
+      yearlyResults.push({
+        year,
+        price,
+        sharesBought,
+        totalShares,
+        portfolioValue: totalShares * price,
+        invested: totalInvested,
+      });
+    }
+
+    const finalPrice = yearlyResults.at(-1)?.price ?? 0;
+    const finalValue = totalShares * finalPrice;
+    const totalProfit = finalValue - totalInvested;
+    const totalReturn = totalInvested > 0 ? (totalProfit / totalInvested) * 100 : 0;
+
+    return {
+      finalValue,
+      totalInvested,
+      totalProfit,
+      totalReturn,
+      totalShares,
+      yearlyResults,
+    };
+  }, [
+    backtestEndYear,
+    backtestMonthlyAmount,
+    backtestStartYear,
+    backtestSymbol,
+  ]);
+
+  const backtestChartData = useMemo(
+    () =>
+      backtest.yearlyResults.map((item) => ({
+        year: item.year,
+        portfolioValue: Math.round(item.portfolioValue),
+        invested: Math.round(item.invested),
+      })),
+    [backtest.yearlyResults]
+  );
 
   return (
     <main className="min-h-screen overflow-hidden bg-slate-950 text-white">
@@ -362,6 +539,295 @@ export default function Home() {
           This calculator is for educational purposes only and does not provide
           financial advice.
         </p>
+
+        <section className="mt-16 border-t border-white/10 pt-14">
+          <div className="mb-10 grid gap-8 lg:grid-cols-[1fr_360px] lg:items-end">
+            <div>
+              <p className="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-cyan-300">
+                Historical DCA Backtest
+              </p>
+
+              <h2 className="max-w-4xl text-3xl font-bold tracking-tight md:text-5xl">
+                Test a Monthly Investment Against Mock Market History
+              </h2>
+
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
+                Compare how a steady monthly contribution could have performed
+                across sample yearly prices for popular ETFs and stocks.
+              </p>
+            </div>
+
+            <div className="rounded-3xl border border-cyan-300/20 bg-cyan-400/10 p-6 shadow-2xl shadow-cyan-950/30">
+              <p className="text-sm font-medium text-cyan-100">
+                Backtested ending value
+              </p>
+              <p className="mt-3 text-4xl font-bold text-cyan-300">
+                {formatMoney(backtest.finalValue)}
+              </p>
+              <p className="mt-4 text-sm leading-6 text-slate-300">
+                {formatPercent(backtest.totalReturn)}% total return using mock
+                yearly prices for {backtestSymbol}.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid gap-6 lg:grid-cols-[420px_1fr]">
+            <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-6 shadow-2xl shadow-black/30 backdrop-blur">
+              <div className="mb-6 flex items-start justify-between gap-4">
+                <div>
+                  <p className="text-sm font-medium uppercase tracking-[0.2em] text-slate-400">
+                    Backtest Inputs
+                  </p>
+                  <h3 className="mt-2 text-2xl font-semibold">
+                    DCA Scenario
+                  </h3>
+                </div>
+                <div className="rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-sm font-medium text-cyan-300">
+                  Mock data
+                </div>
+              </div>
+
+              <div className="space-y-5">
+                <label className="block">
+                  <span className="mb-2 block text-sm text-slate-300">
+                    Symbol
+                  </span>
+                  <select
+                    value={backtestSymbol}
+                    onChange={(e) =>
+                      setBacktestSymbol(e.target.value as SymbolKey)
+                    }
+                    className="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-3 text-white outline-none transition focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/10"
+                  >
+                    {symbolOptions.map((symbol) => (
+                      <option key={symbol} value={symbol}>
+                        {symbol}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+
+                <label className="block">
+                  <span className="mb-2 block text-sm text-slate-300">
+                    Monthly Investment Amount
+                  </span>
+                  <input
+                    type="number"
+                    min="0"
+                    value={backtestMonthlyAmount}
+                    onChange={(e) => setBacktestMonthlyAmount(e.target.value)}
+                    className="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-3 text-white outline-none transition focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/10"
+                  />
+                </label>
+
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <label className="block">
+                    <span className="mb-2 block text-sm text-slate-300">
+                      Start Year
+                    </span>
+                    <select
+                      value={backtestStartYear}
+                      onChange={(e) => setBacktestStartYear(e.target.value)}
+                      className="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-3 text-white outline-none transition focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/10"
+                    >
+                      {availableYears.map((year) => (
+                        <option key={year} value={year}>
+                          {year}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+
+                  <label className="block">
+                    <span className="mb-2 block text-sm text-slate-300">
+                      End Year
+                    </span>
+                    <select
+                      value={backtestEndYear}
+                      onChange={(e) => setBacktestEndYear(e.target.value)}
+                      className="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-3 text-white outline-none transition focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/10"
+                    >
+                      {availableYears.map((year) => (
+                        <option key={year} value={year}>
+                          {year}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                </div>
+              </div>
+
+              <div className="mt-6 rounded-2xl border border-white/10 bg-slate-950/60 p-4">
+                <p className="text-sm text-slate-400">Shares accumulated</p>
+                <div className="mt-3 flex items-end justify-between gap-4">
+                  <p className="text-3xl font-bold text-emerald-300">
+                    {formatShares(backtest.totalShares)}
+                  </p>
+                  <p className="text-right text-sm text-slate-400">
+                    Fractional shares included
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <div className="grid gap-4 md:grid-cols-4">
+                <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-5 shadow-xl shadow-black/20">
+                  <p className="text-sm text-slate-400">Total Invested</p>
+                  <p className="mt-2 text-2xl font-bold">
+                    {formatMoney(backtest.totalInvested)}
+                  </p>
+                </div>
+
+                <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-5 shadow-xl shadow-black/20">
+                  <p className="text-sm text-slate-400">Final Value</p>
+                  <p className="mt-2 text-2xl font-bold text-cyan-300">
+                    {formatMoney(backtest.finalValue)}
+                  </p>
+                </div>
+
+                <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-5 shadow-xl shadow-black/20">
+                  <p className="text-sm text-slate-400">Total Profit</p>
+                  <p className="mt-2 text-2xl font-bold text-emerald-400">
+                    {formatMoney(backtest.totalProfit)}
+                  </p>
+                </div>
+
+                <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-5 shadow-xl shadow-black/20">
+                  <p className="text-sm text-slate-400">Total Return</p>
+                  <p className="mt-2 text-2xl font-bold text-cyan-400">
+                    {formatPercent(backtest.totalReturn)}%
+                  </p>
+                </div>
+              </div>
+
+              <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-6 shadow-2xl shadow-black/30">
+                <div className="mb-6 flex flex-col justify-between gap-4 sm:flex-row sm:items-start">
+                  <div>
+                    <p className="text-sm font-medium uppercase tracking-[0.2em] text-slate-400">
+                      Historical Projection
+                    </p>
+                    <h3 className="mt-2 text-2xl font-semibold">
+                      DCA Value Over Time
+                    </h3>
+                  </div>
+
+                  <div className="flex flex-wrap gap-3 text-sm">
+                    <div className="flex items-center gap-2 text-slate-300">
+                      <span className="h-2.5 w-2.5 rounded-full bg-cyan-400" />
+                      Portfolio value
+                    </div>
+                    <div className="flex items-center gap-2 text-slate-300">
+                      <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
+                      Total invested
+                    </div>
+                  </div>
+                </div>
+
+                <div className="h-[320px] w-full">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <LineChart
+                      data={backtestChartData}
+                      margin={{ top: 8, right: 12, bottom: 0, left: 0 }}
+                    >
+                      <CartesianGrid
+                        stroke="rgba(148, 163, 184, 0.16)"
+                        vertical={false}
+                      />
+                      <XAxis
+                        dataKey="year"
+                        tick={{ fill: "#94a3b8", fontSize: 12 }}
+                        tickLine={false}
+                        axisLine={{ stroke: "rgba(148, 163, 184, 0.2)" }}
+                        minTickGap={18}
+                      />
+                      <YAxis
+                        tickFormatter={formatCompactMoney}
+                        tick={{ fill: "#94a3b8", fontSize: 12 }}
+                        tickLine={false}
+                        axisLine={false}
+                        width={72}
+                      />
+                      <Tooltip
+                        formatter={(value) => formatMoney(Number(value ?? 0))}
+                        contentStyle={{
+                          background: "#020617",
+                          border: "1px solid rgba(255,255,255,0.12)",
+                          borderRadius: "18px",
+                          boxShadow: "0 20px 45px rgba(0,0,0,0.35)",
+                          color: "#fff",
+                        }}
+                        labelStyle={{ color: "#cbd5e1", marginBottom: 8 }}
+                      />
+                      <Line
+                        type="monotone"
+                        dataKey="portfolioValue"
+                        name="Portfolio value"
+                        stroke="#22d3ee"
+                        strokeWidth={3}
+                        dot={false}
+                        activeDot={{ r: 6, fill: "#22d3ee", strokeWidth: 0 }}
+                      />
+                      <Line
+                        type="monotone"
+                        dataKey="invested"
+                        name="Total invested"
+                        stroke="#34d399"
+                        strokeWidth={3}
+                        dot={false}
+                        activeDot={{ r: 6, fill: "#34d399", strokeWidth: 0 }}
+                      />
+                    </LineChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
+
+              <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-6 shadow-xl shadow-black/20">
+                <h3 className="mb-4 text-2xl font-semibold">
+                  Yearly Backtest Table
+                </h3>
+
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-sm">
+                    <thead className="text-slate-400">
+                      <tr>
+                        <th className="py-3 pr-6">Year</th>
+                        <th className="py-3 pr-6">Price</th>
+                        <th className="py-3 pr-6">Shares Bought</th>
+                        <th className="py-3 pr-6">Total Shares</th>
+                        <th className="py-3">Portfolio Value</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {backtest.yearlyResults.map((item) => (
+                        <tr
+                          key={item.year}
+                          className="border-t border-white/10"
+                        >
+                          <td className="py-3 pr-6 text-slate-300">
+                            {item.year}
+                          </td>
+                          <td className="py-3 pr-6">
+                            {formatMoney(item.price)}
+                          </td>
+                          <td className="py-3 pr-6 text-cyan-300">
+                            {formatShares(item.sharesBought)}
+                          </td>
+                          <td className="py-3 pr-6">
+                            {formatShares(item.totalShares)}
+                          </td>
+                          <td className="py-3 text-emerald-400">
+                            {formatMoney(item.portfolioValue)}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </section>
     </main>
   );
