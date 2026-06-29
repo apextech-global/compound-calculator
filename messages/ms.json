@@ -158,5 +158,50 @@
         "answer": "Ya. Anda boleh menukar mata wang paparan di navigasi atas. Pengiraan kekal berasaskan USD secara dalaman dan penukaran menggunakan kadar pertukaran contoh untuk demonstrasi."
       }
     }
+  },
+  "footer": {
+    "tagline": "Alat ujian balik DCA sejarah dan faedah kompaun untuk perancangan pendidikan.",
+    "about": "Tentang",
+    "privacy": "Dasar Privasi",
+    "terms": "Terma Penggunaan",
+    "contact": "Hubungi"
+  },
+  "legal": {
+    "about": {
+      "eyebrow": "Tentang",
+      "title": "Tentang CompoundLab",
+      "paragraphs": {
+        "p1": "CompoundLab membantu pelabur meneroka senario pelaburan jangka panjang dengan ujian balik DCA sejarah dan unjuran faedah kompaun.",
+        "p2": "Ujian Balik DCA menggunakan harga bulanan yang dijana daripada data tutup terlaras harian sejarah jika tersedia, supaya lebih mudah membandingkan pelaburan bulanan tetap merentas ETF dan saham yang disokong.",
+        "p3": "Laman ini direka untuk pendidikan dan perancangan. Ia tidak menyediakan cadangan peribadi, perkhidmatan broker atau nasihat pelaburan."
+      }
+    },
+    "privacy": {
+      "eyebrow": "Privasi",
+      "title": "Dasar Privasi",
+      "paragraphs": {
+        "p1": "CompoundLab direka untuk berfungsi tanpa akaun pengguna, pembayaran atau pangkalan data pelan pelaburan peribadi.",
+        "p2": "Laman ini mungkin menggunakan Google Analytics untuk memahami trafik laman web, halaman popular, maklumat pelayar dan corak penggunaan umum supaya kami boleh menambah baik perkhidmatan.",
+        "p3": "Kami tidak meminta anda menyerahkan maklumat kewangan sensitif. Jika anda menghubungi kami melalui e-mel, kami mungkin menggunakan alamat e-mel anda untuk membalas mesej anda."
+      }
+    },
+    "terms": {
+      "eyebrow": "Terma",
+      "title": "Terma Penggunaan",
+      "paragraphs": {
+        "p1": "Dengan menggunakan CompoundLab, anda bersetuju menggunakan kalkulator dan alat data pasaran untuk tujuan sah dan pendidikan sahaja.",
+        "p2": "Kalkulator ini hanya untuk tujuan pendidikan dan bukan nasihat kewangan. Prestasi lalu tidak menjamin keputusan masa depan.",
+        "p3": "Keputusan mungkin berbeza daripada pulangan broker sebenar kerana cukai, yuran, harga pelaksanaan, dividen, pertukaran mata wang dan perbezaan sumber data."
+      }
+    },
+    "contact": {
+      "eyebrow": "Hubungi",
+      "title": "Hubungi",
+      "paragraphs": {
+        "p1": "Soalan, maklum balas dan permintaan pembetulan dialu-alukan.",
+        "p2": "Untuk sokongan atau pertanyaan produk, hubungi kami melalui e-mel."
+      },
+      "emailLabel": "E-mel:"
+    }
   }
 }

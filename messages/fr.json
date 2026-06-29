@@ -158,5 +158,50 @@
         "answer": "Oui. Vous pouvez changer la devise d’affichage dans la navigation supérieure. Les calculs restent basés en USD en interne et la conversion utilise des taux d’exemple pour la démonstration."
       }
     }
+  },
+  "footer": {
+    "tagline": "Outils de backtest DCA historique et d’intérêts composés pour la planification éducative.",
+    "about": "À propos",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions d’utilisation",
+    "contact": "Contact"
+  },
+  "legal": {
+    "about": {
+      "eyebrow": "À propos",
+      "title": "À propos de CompoundLab",
+      "paragraphs": {
+        "p1": "CompoundLab aide les investisseurs à explorer des scénarios d’investissement long terme avec des backtests DCA historiques et des projections d’intérêts composés.",
+        "p2": "Le backtest DCA utilise des prix mensuels générés à partir des cours de clôture ajustés quotidiens historiques lorsqu’ils sont disponibles, afin de comparer l’investissement mensuel régulier sur les ETF et actions pris en charge.",
+        "p3": "Le site est conçu pour l’éducation et la planification. Il ne fournit pas de recommandations personnalisées, de services de courtage ou de conseils en investissement."
+      }
+    },
+    "privacy": {
+      "eyebrow": "Confidentialité",
+      "title": "Politique de confidentialité",
+      "paragraphs": {
+        "p1": "CompoundLab est conçu pour fonctionner sans comptes utilisateur, paiements ou base de données de plans d’investissement personnels.",
+        "p2": "Le site peut utiliser Google Analytics pour comprendre le trafic, les pages populaires, les informations de navigateur et les tendances générales d’utilisation afin d’améliorer le service.",
+        "p3": "Nous ne vous demandons pas de transmettre des informations financières sensibles. Si vous nous contactez par e-mail, nous pouvons utiliser votre adresse pour répondre."
+      }
+    },
+    "terms": {
+      "eyebrow": "Conditions",
+      "title": "Conditions d’utilisation",
+      "paragraphs": {
+        "p1": "En utilisant CompoundLab, vous acceptez d’utiliser les calculateurs et outils de données de marché uniquement à des fins légales et éducatives.",
+        "p2": "Les calculateurs sont fournis à des fins éducatives uniquement et ne constituent pas un conseil financier. Les performances passées ne garantissent pas les résultats futurs.",
+        "p3": "Les résultats peuvent différer des rendements réels chez un courtier en raison des taxes, frais, prix d’exécution, dividendes, conversion de devise et différences de sources de données."
+      }
+    },
+    "contact": {
+      "eyebrow": "Contact",
+      "title": "Contact",
+      "paragraphs": {
+        "p1": "Les questions, retours et demandes de correction sont les bienvenus.",
+        "p2": "Pour le support ou les questions produit, contactez-nous par e-mail."
+      },
+      "emailLabel": "E-mail :"
+    }
   }
 }

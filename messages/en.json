@@ -158,5 +158,50 @@
         "answer": "Yes. You can change the display currency in the top navigation. Calculations remain based in USD internally, and conversion uses sample exchange rates for demonstration."
       }
     }
+  },
+  "footer": {
+    "tagline": "Historical DCA backtesting and compound interest tools for educational planning.",
+    "about": "About",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use",
+    "contact": "Contact"
+  },
+  "legal": {
+    "about": {
+      "eyebrow": "About",
+      "title": "About CompoundLab",
+      "paragraphs": {
+        "p1": "CompoundLab helps investors explore long-term investing scenarios with historical DCA backtests and compound interest projections.",
+        "p2": "The DCA Backtest uses monthly prices generated from historical daily adjusted close data where available, making it easier to compare steady monthly investing across supported ETFs and stocks.",
+        "p3": "The site is designed for education and planning. It does not provide personalized recommendations, brokerage services, or investment advice."
+      }
+    },
+    "privacy": {
+      "eyebrow": "Privacy",
+      "title": "Privacy Policy",
+      "paragraphs": {
+        "p1": "CompoundLab is designed to work without user accounts, payments, or a database of personal investment plans.",
+        "p2": "The site may use Google Analytics to understand website traffic, popular pages, browser information, and general usage patterns so we can improve the service.",
+        "p3": "We do not ask you to submit sensitive financial information. If you contact us by email, we may use your email address to respond to your message."
+      }
+    },
+    "terms": {
+      "eyebrow": "Terms",
+      "title": "Terms of Use",
+      "paragraphs": {
+        "p1": "By using CompoundLab, you agree to use the calculators and market-data tools for lawful, educational purposes only.",
+        "p2": "The calculators are for educational purposes only and are not financial advice. Past performance does not guarantee future results.",
+        "p3": "Results may differ from real brokerage returns because of taxes, fees, execution prices, dividends, currency conversion, and data-source differences."
+      }
+    },
+    "contact": {
+      "eyebrow": "Contact",
+      "title": "Contact",
+      "paragraphs": {
+        "p1": "Questions, feedback, and correction requests are welcome.",
+        "p2": "For support or product inquiries, contact us by email."
+      },
+      "emailLabel": "Email:"
+    }
   }
 }

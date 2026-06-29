@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
+import Footer from "@/components/Footer";
 import { routing, type Locale } from "@/i18n/routing";
 import { getTextDirection } from "@/lib/locales";
 
@@ -52,7 +53,10 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider>
-      <div dir={getTextDirection(locale)}>{children}</div>
+      <div dir={getTextDirection(locale)}>
+        {children}
+        <Footer />
+      </div>
     </NextIntlClientProvider>
   );
 }

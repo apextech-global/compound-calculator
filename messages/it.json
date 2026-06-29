@@ -158,5 +158,50 @@
         "answer": "Sì. Puoi cambiare la valuta visualizzata nella navigazione superiore. I calcoli restano basati internamente su USD e la conversione usa tassi di esempio per dimostrazione."
       }
     }
+  },
+  "footer": {
+    "tagline": "Strumenti di backtest DCA storico e interesse composto per la pianificazione educativa.",
+    "about": "Chi siamo",
+    "privacy": "Informativa sulla privacy",
+    "terms": "Termini di utilizzo",
+    "contact": "Contatti"
+  },
+  "legal": {
+    "about": {
+      "eyebrow": "Chi siamo",
+      "title": "Informazioni su CompoundLab",
+      "paragraphs": {
+        "p1": "CompoundLab aiuta gli investitori a esplorare scenari di investimento di lungo periodo con backtest DCA storici e proiezioni di interesse composto.",
+        "p2": "Il backtest DCA usa prezzi mensili generati dai dati storici giornalieri di chiusura rettificata quando disponibili, per confrontare investimenti mensili costanti sugli ETF e titoli supportati.",
+        "p3": "Il sito è pensato per educazione e pianificazione. Non fornisce raccomandazioni personalizzate, servizi di brokeraggio o consulenza d’investimento."
+      }
+    },
+    "privacy": {
+      "eyebrow": "Privacy",
+      "title": "Informativa sulla privacy",
+      "paragraphs": {
+        "p1": "CompoundLab è progettato per funzionare senza account utente, pagamenti o database di piani di investimento personali.",
+        "p2": "Il sito può usare Google Analytics per comprendere traffico, pagine popolari, informazioni del browser e pattern generali di utilizzo, così da migliorare il servizio.",
+        "p3": "Non chiediamo di inviare informazioni finanziarie sensibili. Se ci contatti via email, potremmo usare il tuo indirizzo per rispondere."
+      }
+    },
+    "terms": {
+      "eyebrow": "Termini",
+      "title": "Termini di utilizzo",
+      "paragraphs": {
+        "p1": "Usando CompoundLab, accetti di usare i calcolatori e gli strumenti di dati di mercato solo per scopi leciti ed educativi.",
+        "p2": "I calcolatori sono solo a scopo educativo e non costituiscono consulenza finanziaria. Le performance passate non garantiscono risultati futuri.",
+        "p3": "I risultati possono differire dai rendimenti reali del broker per tasse, commissioni, prezzi di esecuzione, dividendi, conversione valutaria e differenze nelle fonti dati."
+      }
+    },
+    "contact": {
+      "eyebrow": "Contatti",
+      "title": "Contatti",
+      "paragraphs": {
+        "p1": "Domande, feedback e richieste di correzione sono benvenuti.",
+        "p2": "Per supporto o domande sul prodotto, contattaci via email."
+      },
+      "emailLabel": "Email:"
+    }
   }
 }
