@@ -1,65 +1,368 @@
-import Image from "next/image";
+"use client";
+
+import { useMemo, useState } from "react";
+import {
+  CartesianGrid,
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
+
+type YearlyResult = {
+  year: number;
+  balance: number;
+  invested: number;
+  profit: number;
+};
+
+function formatMoney(value: number) {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0,
+  }).format(value);
+}
+
+function formatCompactMoney(value: number) {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    notation: "compact",
+    maximumFractionDigits: 1,
+  }).format(value);
+}
 
 export default function Home() {
+  const [initialAmount, setInitialAmount] = useState("10000");
+  const [monthlyContribution, setMonthlyContribution] = useState("500");
+  const [annualReturn, setAnnualReturn] = useState("8");
+  const [years, setYears] = useState("20");
+
+  const result = useMemo(() => {
+    const initial = Number(initialAmount) || 0;
+    const monthly = Number(monthlyContribution) || 0;
+    const rate = (Number(annualReturn) || 0) / 100;
+    const totalYears = Math.max(0, Math.floor(Number(years) || 0));
+    const monthlyRate = rate / 12;
+
+    let balance = initial;
+    const yearlyResults: YearlyResult[] = [];
+
+    for (let year = 1; year <= totalYears; year++) {
+      for (let month = 1; month <= 12; month++) {
+        balance = balance * (1 + monthlyRate) + monthly;
+      }
+
+      const invested = initial + monthly * 12 * year;
+
+      yearlyResults.push({
+        year,
+        balance,
+        invested,
+        profit: balance - invested,
+      });
+    }
+
+    const totalInvested = initial + monthly * 12 * totalYears;
+    const finalValue = balance;
+    const totalProfit = finalValue - totalInvested;
+
+    return {
+      finalValue,
+      totalInvested,
+      totalProfit,
+      yearlyResults,
+    };
+  }, [initialAmount, monthlyContribution, annualReturn, years]);
+
+  const chartData = useMemo(
+    () => [
+      {
+        year: "Start",
+        balance: Number(initialAmount) || 0,
+        invested: Number(initialAmount) || 0,
+      },
+      ...result.yearlyResults.map((item) => ({
+        year: `Year ${item.year}`,
+        balance: Math.round(item.balance),
+        invested: Math.round(item.invested),
+      })),
+    ],
+    [initialAmount, result.yearlyResults]
+  );
+
+  const growthMultiple =
+    result.totalInvested > 0 ? result.finalValue / result.totalInvested : 0;
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="min-h-screen overflow-hidden bg-slate-950 text-white">
+      <section className="relative mx-auto max-w-7xl px-6 py-10 sm:py-14 lg:px-8">
+        <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-96 bg-[radial-gradient(circle_at_top,_rgba(16,185,129,0.2),_transparent_34%),radial-gradient(circle_at_80%_10%,_rgba(34,211,238,0.14),_transparent_28%)]" />
+
+        <div className="mb-10 grid gap-8 lg:grid-cols-[1fr_360px] lg:items-end">
+          <div>
+            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-emerald-400">
+              Compound Calculator
+            </p>
+
+            <h1 className="max-w-4xl text-4xl font-bold tracking-tight md:text-6xl">
+              Grow Your Money With Compound Interest
+            </h1>
+
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
+              Model long-term portfolio growth with recurring contributions,
+              compound returns, and a clear year-by-year investment projection.
+            </p>
+          </div>
+
+          <div className="rounded-3xl border border-emerald-300/20 bg-emerald-400/10 p-6 shadow-2xl shadow-emerald-950/40">
+            <p className="text-sm font-medium text-emerald-200">
+              Projected portfolio value
+            </p>
+            <p className="mt-3 text-4xl font-bold text-emerald-300">
+              {formatMoney(result.finalValue)}
+            </p>
+            <p className="mt-4 text-sm leading-6 text-slate-300">
+              That is {growthMultiple.toFixed(1)}x your estimated invested
+              capital over {Number(years) || 0} years.
+            </p>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="grid gap-6 lg:grid-cols-[420px_1fr]">
+          <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-6 shadow-2xl shadow-black/30 backdrop-blur">
+            <div className="mb-6 flex items-start justify-between gap-4">
+              <div>
+                <p className="text-sm font-medium uppercase tracking-[0.2em] text-slate-400">
+                  Inputs
+                </p>
+                <h2 className="mt-2 text-2xl font-semibold">
+                  Investment Details
+                </h2>
+              </div>
+              <div className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-sm font-medium text-emerald-300">
+                USD
+              </div>
+            </div>
+
+            <div className="space-y-5">
+              <label className="block">
+                <span className="mb-2 block text-sm text-slate-300">
+                  Initial Investment
+                </span>
+                <input
+                  type="number"
+                  min="0"
+                  value={initialAmount}
+                  onChange={(e) => setInitialAmount(e.target.value)}
+                  className="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-3 text-white outline-none transition focus:border-emerald-400 focus:ring-4 focus:ring-emerald-400/10"
+                />
+              </label>
+
+              <label className="block">
+                <span className="mb-2 block text-sm text-slate-300">
+                  Monthly Contribution
+                </span>
+                <input
+                  type="number"
+                  min="0"
+                  value={monthlyContribution}
+                  onChange={(e) => setMonthlyContribution(e.target.value)}
+                  className="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-3 text-white outline-none transition focus:border-emerald-400 focus:ring-4 focus:ring-emerald-400/10"
+                />
+              </label>
+
+              <label className="block">
+                <span className="mb-2 block text-sm text-slate-300">
+                  Annual Return Rate %
+                </span>
+                <input
+                  type="number"
+                  min="0"
+                  step="0.1"
+                  value={annualReturn}
+                  onChange={(e) => setAnnualReturn(e.target.value)}
+                  className="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-3 text-white outline-none transition focus:border-emerald-400 focus:ring-4 focus:ring-emerald-400/10"
+                />
+              </label>
+
+              <label className="block">
+                <span className="mb-2 block text-sm text-slate-300">
+                  Investment Years
+                </span>
+                <input
+                  type="number"
+                  min="0"
+                  value={years}
+                  onChange={(e) => setYears(e.target.value)}
+                  className="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-3 text-white outline-none transition focus:border-emerald-400 focus:ring-4 focus:ring-emerald-400/10"
+                />
+              </label>
+            </div>
+
+            <div className="mt-6 rounded-2xl border border-white/10 bg-slate-950/60 p-4">
+              <p className="text-sm text-slate-400">Estimated annual return</p>
+              <div className="mt-3 flex items-end justify-between gap-4">
+                <p className="text-3xl font-bold text-cyan-300">
+                  {Number(annualReturn) || 0}%
+                </p>
+                <p className="text-right text-sm text-slate-400">
+                  Compounded monthly
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            <div className="grid gap-4 md:grid-cols-3">
+              <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-6 shadow-xl shadow-black/20">
+                <p className="text-sm text-slate-400">Final Value</p>
+                <p className="mt-2 text-3xl font-bold text-emerald-400">
+                  {formatMoney(result.finalValue)}
+                </p>
+              </div>
+
+              <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-6 shadow-xl shadow-black/20">
+                <p className="text-sm text-slate-400">Total Invested</p>
+                <p className="mt-2 text-3xl font-bold">
+                  {formatMoney(result.totalInvested)}
+                </p>
+              </div>
+
+              <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-6 shadow-xl shadow-black/20">
+                <p className="text-sm text-slate-400">Total Profit</p>
+                <p className="mt-2 text-3xl font-bold text-cyan-400">
+                  {formatMoney(result.totalProfit)}
+                </p>
+              </div>
+            </div>
+
+            <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-6 shadow-2xl shadow-black/30">
+              <div className="mb-6 flex flex-col justify-between gap-4 sm:flex-row sm:items-start">
+                <div>
+                  <p className="text-sm font-medium uppercase tracking-[0.2em] text-slate-400">
+                    Projection
+                  </p>
+                  <h2 className="mt-2 text-2xl font-semibold">
+                    Portfolio Growth Over Time
+                  </h2>
+                </div>
+
+                <div className="flex flex-wrap gap-3 text-sm">
+                  <div className="flex items-center gap-2 text-slate-300">
+                    <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
+                    Portfolio balance
+                  </div>
+                  <div className="flex items-center gap-2 text-slate-300">
+                    <span className="h-2.5 w-2.5 rounded-full bg-cyan-400" />
+                    Total invested
+                  </div>
+                </div>
+              </div>
+
+              <div className="h-[320px] w-full">
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart
+                    data={chartData}
+                    margin={{ top: 8, right: 12, bottom: 0, left: 0 }}
+                  >
+                    <CartesianGrid
+                      stroke="rgba(148, 163, 184, 0.16)"
+                      vertical={false}
+                    />
+                    <XAxis
+                      dataKey="year"
+                      tick={{ fill: "#94a3b8", fontSize: 12 }}
+                      tickLine={false}
+                      axisLine={{ stroke: "rgba(148, 163, 184, 0.2)" }}
+                      minTickGap={22}
+                    />
+                    <YAxis
+                      tickFormatter={formatCompactMoney}
+                      tick={{ fill: "#94a3b8", fontSize: 12 }}
+                      tickLine={false}
+                      axisLine={false}
+                      width={72}
+                    />
+                    <Tooltip
+                      formatter={(value) => formatMoney(Number(value ?? 0))}
+                      contentStyle={{
+                        background: "#020617",
+                        border: "1px solid rgba(255,255,255,0.12)",
+                        borderRadius: "18px",
+                        boxShadow: "0 20px 45px rgba(0,0,0,0.35)",
+                        color: "#fff",
+                      }}
+                      labelStyle={{ color: "#cbd5e1", marginBottom: 8 }}
+                    />
+                    <Line
+                      type="monotone"
+                      dataKey="balance"
+                      name="Portfolio balance"
+                      stroke="#34d399"
+                      strokeWidth={3}
+                      dot={false}
+                      activeDot={{ r: 6, fill: "#34d399", strokeWidth: 0 }}
+                    />
+                    <Line
+                      type="monotone"
+                      dataKey="invested"
+                      name="Total invested"
+                      stroke="#22d3ee"
+                      strokeWidth={3}
+                      dot={false}
+                      activeDot={{ r: 6, fill: "#22d3ee", strokeWidth: 0 }}
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+
+            <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-6 shadow-xl shadow-black/20">
+              <h2 className="mb-4 text-2xl font-semibold">Yearly Table</h2>
+
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-sm">
+                  <thead className="text-slate-400">
+                    <tr>
+                      <th className="py-3 pr-6">Year</th>
+                      <th className="py-3 pr-6">Balance</th>
+                      <th className="py-3 pr-6">Invested</th>
+                      <th className="py-3">Profit</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {result.yearlyResults.map((item) => (
+                      <tr key={item.year} className="border-t border-white/10">
+                        <td className="py-3 pr-6 text-slate-300">
+                          {item.year}
+                        </td>
+                        <td className="py-3 pr-6">
+                          {formatMoney(item.balance)}
+                        </td>
+                        <td className="py-3 pr-6">
+                          {formatMoney(item.invested)}
+                        </td>
+                        <td className="py-3 text-emerald-400">
+                          {formatMoney(item.profit)}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
-    </div>
+
+        <p className="mx-auto mt-8 max-w-3xl text-center text-sm leading-6 text-slate-400">
+          This calculator is for educational purposes only and does not provide
+          financial advice.
+        </p>
+      </section>
+    </main>
   );
 }
