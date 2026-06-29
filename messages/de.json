@@ -5,8 +5,8 @@
     "currency": "Währung",
     "currencyNote": "Die Währungsumrechnung nutzt Beispielkurse nur zur Demonstration.",
     "usd": "USD",
-    "mockData": "Données fictives",
-    "mockHistory": "Historique fictif",
+    "mockData": "Beispieldaten",
+    "mockHistory": "Historische Daten",
     "forwardModel": "Modèle prévisionnel",
     "showYearlyTable": "Jahrestabelle anzeigen",
     "hideYearlyTable": "Jahrestabelle ausblenden"
@@ -24,7 +24,7 @@
     "dca": {
       "eyebrow": "Par défaut",
       "title": "Backtest DCA historique",
-      "description": "Testez des investissements mensuels avec des prix annuels fictifs pour ETF et actions de croissance.",
+      "description": "Testen Sie monatliche Investitionen mit historischen Marktdaten für ETFs und Wachstumsaktien.",
       "cta": "Ouvrir le backtest DCA"
     },
     "compound": {
@@ -47,8 +47,8 @@
   },
   "dca": {
     "eyebrow": "Backtest DCA historique",
-    "title": "Testez un investissement mensuel avec un historique de marché fictif",
-    "description": "Comparez la performance potentielle d’un apport mensuel régulier avec des prix annuels fictifs pour ETF et actions populaires.",
+    "title": "Testen Sie eine monatliche Investition mit historischen Marktdaten",
+    "description": "Vergleichen Sie, wie sich ein regelmäßiger monatlicher Beitrag anhand historischer Marktpreise beliebter ETFs und Aktien entwickelt hätte.",
     "endingValue": "Valeur finale du backtest",
     "returnSummary": "Gesamtrendite von {returnValue} % für {symbol}.",
     "inputsEyebrow": "Entrées du backtest",
@@ -65,8 +65,10 @@
     "totalInvested": "Total investi",
     "annualDetail": "Détail annuel",
     "tableTitle": "Tableau annuel du backtest",
-    "csvDataSource": "CSV-Verlaufsdaten werden verwendet",
-    "mockDataSource": "Beispielhafte Demodaten werden verwendet"
+    "csvDataSource": "CSV-Historiendaten",
+    "mockDataSource": "Beispieldaten",
+    "dataNote": "Backtests verwenden monatliche Preise, die aus historischen täglichen bereinigten Schlusskursen erzeugt werden, sofern verfügbar.",
+    "disclaimer": "Vergangene Wertentwicklungen garantieren keine zukünftigen Ergebnisse. Dieser Rechner dient nur Bildungszwecken und ist keine Finanzberatung."
   },
   "compound": {
     "eyebrow": "Calculateur composé",
@@ -88,7 +90,7 @@
     "totalInvested": "Total investi",
     "annualDetail": "Détail annuel",
     "tableTitle": "Tableau annuel",
-    "disclaimer": "Ce calculateur est fourni à des fins éducatives uniquement et ne constitue pas un conseil financier."
+    "disclaimer": "Vergangene Wertentwicklungen garantieren keine zukünftigen Ergebnisse. Dieser Rechner dient nur Bildungszwecken und ist keine Finanzberatung."
   },
   "table": {
     "start": "Début",

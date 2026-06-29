@@ -5,8 +5,8 @@
     "currency": "通貨",
     "currencyNote": "通貨換算にはデモ用のサンプル為替レートを使用しています。",
     "usd": "USD",
-    "mockData": "モックデータ",
-    "mockHistory": "モック履歴",
+    "mockData": "サンプルデータ",
+    "mockHistory": "履歴データ",
     "forwardModel": "将来モデル",
     "showYearlyTable": "年次表を表示",
     "hideYearlyTable": "年次表を非表示"
@@ -24,7 +24,7 @@
     "dca": {
       "eyebrow": "デフォルト",
       "title": "過去 DCA バックテスト",
-      "description": "ETF と高成長株のサンプル年次価格で、毎月投資をテストします。",
+      "description": "ETF と高成長株の過去市場データで、毎月投資をバックテストします。",
       "cta": "DCA バックテストを開く"
     },
     "compound": {
@@ -47,8 +47,8 @@
   },
   "dca": {
     "eyebrow": "過去 DCA バックテスト",
-    "title": "モック市場履歴で毎月投資をテスト",
-    "description": "人気 ETF と株式のサンプル年次価格で、一定の毎月積立がどう推移したか比較します。",
+    "title": "過去市場データで毎月投資をテスト",
+    "description": "人気 ETF と株式の過去市場価格を使い、一定の毎月積立がどう推移した可能性があるか比較します。",
     "endingValue": "バックテスト終了価値",
     "returnSummary": "{symbol} の合計リターンは {returnValue}% です。",
     "inputsEyebrow": "バックテスト入力",
@@ -65,8 +65,10 @@
     "totalInvested": "総投資額",
     "annualDetail": "年次詳細",
     "tableTitle": "年次バックテスト表",
-    "csvDataSource": "CSV 履歴データを使用中",
-    "mockDataSource": "サンプルのモックデータを使用中"
+    "csvDataSource": "CSV 履歴データ",
+    "mockDataSource": "サンプルデータ",
+    "dataNote": "バックテストでは、利用可能な場合、過去の日次調整後終値から生成した月次価格を使用します。",
+    "disclaimer": "過去の実績は将来の結果を保証するものではありません。この計算機は教育目的のみであり、金融アドバイスではありません。"
   },
   "compound": {
     "eyebrow": "複利計算機",
@@ -88,7 +90,7 @@
     "totalInvested": "総投資額",
     "annualDetail": "年次詳細",
     "tableTitle": "年次表",
-    "disclaimer": "この計算機は教育目的のみであり、金融アドバイスを提供するものではありません。"
+    "disclaimer": "過去の実績は将来の結果を保証するものではありません。この計算機は教育目的のみであり、金融アドバイスではありません。"
   },
   "table": {
     "start": "開始",

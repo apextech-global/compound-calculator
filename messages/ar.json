@@ -5,8 +5,8 @@
     "currency": "العملة",
     "currencyNote": "يستخدم تحويل العملات أسعار صرف تجريبية للعرض فقط.",
     "usd": "USD",
-    "mockData": "بيانات تجريبية",
-    "mockHistory": "سجل تجريبي",
+    "mockData": "بيانات عينة",
+    "mockHistory": "بيانات تاريخية",
     "forwardModel": "نموذج توقعي",
     "showYearlyTable": "إظهار الجدول السنوي",
     "hideYearlyTable": "إخفاء الجدول السنوي"
@@ -24,7 +24,7 @@
     "dca": {
       "eyebrow": "افتراضي",
       "title": "اختبار DCA تاريخي",
-      "description": "اختبر الاستثمارات الشهرية باستخدام أسعار سنوية تجريبية لصناديق ETF والأسهم.",
+      "description": "اختبر الاستثمارات الشهرية باستخدام بيانات سوق تاريخية لصناديق ETF وأسهم النمو.",
       "cta": "فتح اختبار DCA"
     },
     "compound": {
@@ -47,8 +47,8 @@
   },
   "dca": {
     "eyebrow": "Backtest DCA historique",
-    "title": "Testez un investissement mensuel avec un historique de marché fictif",
-    "description": "Comparez la performance potentielle d’un apport mensuel régulier avec des prix annuels fictifs pour ETF et actions populaires.",
+    "title": "اختبر استثمارا شهريا باستخدام بيانات سوق تاريخية",
+    "description": "قارن كيف كان يمكن لمساهمة شهرية ثابتة أن تؤدي باستخدام أسعار سوق تاريخية لصناديق ETF والأسهم الشائعة.",
     "endingValue": "Valeur finale du backtest",
     "returnSummary": "إجمالي العائد لـ {symbol} هو {returnValue}٪.",
     "inputsEyebrow": "Entrées du backtest",
@@ -65,8 +65,10 @@
     "totalInvested": "Total investi",
     "annualDetail": "Détail annuel",
     "tableTitle": "Tableau annuel du backtest",
-    "csvDataSource": "يتم استخدام بيانات CSV التاريخية",
-    "mockDataSource": "يتم استخدام بيانات عينة تجريبية"
+    "csvDataSource": "بيانات CSV تاريخية",
+    "mockDataSource": "بيانات عينة",
+    "dataNote": "تستخدم الاختبارات الخلفية أسعارا شهرية مولدة من بيانات الإغلاق المعدل اليومية التاريخية حيثما توفرت.",
+    "disclaimer": "الأداء السابق لا يضمن النتائج المستقبلية. هذه الحاسبة لأغراض تعليمية فقط وليست نصيحة مالية."
   },
   "compound": {
     "eyebrow": "Calculateur composé",
@@ -88,7 +90,7 @@
     "totalInvested": "Total investi",
     "annualDetail": "Détail annuel",
     "tableTitle": "Tableau annuel",
-    "disclaimer": "Ce calculateur est fourni à des fins éducatives uniquement et ne constitue pas un conseil financier."
+    "disclaimer": "الأداء السابق لا يضمن النتائج المستقبلية. هذه الحاسبة لأغراض تعليمية فقط وليست نصيحة مالية."
   },
   "table": {
     "start": "البداية",

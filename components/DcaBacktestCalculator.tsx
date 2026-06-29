@@ -211,6 +211,10 @@ export default function DcaBacktestCalculator({
               </p>
             </div>
           </div>
+
+          <p className="mt-4 text-sm leading-6 text-slate-400">
+            {t("dca.dataNote")}
+          </p>
         </div>
 
         <div className="space-y-6">
@@ -408,6 +412,10 @@ export default function DcaBacktestCalculator({
           </div>
         </div>
       </div>
+
+      <p className="mt-6 text-sm leading-6 text-slate-400">
+        {t("dca.disclaimer")}
+      </p>
     </section>
   );
 }

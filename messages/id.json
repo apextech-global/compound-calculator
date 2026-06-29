@@ -5,8 +5,8 @@
     "currency": "Mata uang",
     "currencyNote": "Konversi mata uang menggunakan kurs contoh hanya untuk demonstrasi.",
     "usd": "USD",
-    "mockData": "Data contoh",
-    "mockHistory": "Riwayat contoh",
+    "mockData": "Data sampel",
+    "mockHistory": "Data historis",
     "forwardModel": "Model proyeksi",
     "showYearlyTable": "Tampilkan tabel tahunan",
     "hideYearlyTable": "Sembunyikan tabel tahunan"
@@ -24,7 +24,7 @@
     "dca": {
       "eyebrow": "Default",
       "title": "Backtest DCA Historis",
-      "description": "Uji investasi bulanan terhadap harga tahunan contoh untuk ETF dan saham bertumbuh tinggi.",
+      "description": "Backtest investasi bulanan dengan data pasar historis untuk ETF dan saham bertumbuh tinggi.",
       "cta": "Buka Backtest DCA"
     },
     "compound": {
@@ -47,8 +47,8 @@
   },
   "dca": {
     "eyebrow": "Backtest DCA Historis",
-    "title": "Uji Investasi Bulanan Dengan Riwayat Pasar Contoh",
-    "description": "Bandingkan bagaimana kontribusi bulanan tetap dapat berkinerja pada harga tahunan contoh untuk ETF dan saham populer.",
+    "title": "Uji Investasi Bulanan Dengan Data Pasar Historis",
+    "description": "Bandingkan bagaimana kontribusi bulanan tetap dapat berkinerja menggunakan harga pasar historis untuk ETF dan saham populer.",
     "endingValue": "Nilai akhir backtest",
     "returnSummary": "Total imbal hasil {returnValue}% untuk {symbol}.",
     "inputsEyebrow": "Input Backtest",
@@ -65,8 +65,10 @@
     "totalInvested": "Total diinvestasikan",
     "annualDetail": "Rincian Tahunan",
     "tableTitle": "Tabel Backtest Tahunan",
-    "csvDataSource": "Menggunakan data historis CSV",
-    "mockDataSource": "Menggunakan data contoh simulasi"
+    "csvDataSource": "Data historis CSV",
+    "mockDataSource": "Data sampel",
+    "dataNote": "Backtest menggunakan harga bulanan yang dibuat dari data historis penutupan disesuaikan harian jika tersedia.",
+    "disclaimer": "Kinerja masa lalu tidak menjamin hasil di masa depan. Kalkulator ini hanya untuk tujuan edukasi dan bukan nasihat keuangan."
   },
   "compound": {
     "eyebrow": "Kalkulator Kompon",
@@ -88,7 +90,7 @@
     "totalInvested": "Total diinvestasikan",
     "annualDetail": "Rincian Tahunan",
     "tableTitle": "Tabel Tahunan",
-    "disclaimer": "Kalkulator ini hanya untuk tujuan edukasi dan tidak memberikan nasihat keuangan."
+    "disclaimer": "Kinerja masa lalu tidak menjamin hasil di masa depan. Kalkulator ini hanya untuk tujuan edukasi dan bukan nasihat keuangan."
   },
   "table": {
     "start": "Mulai",

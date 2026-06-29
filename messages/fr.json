@@ -5,8 +5,8 @@
     "currency": "Devise",
     "currencyNote": "La conversion de devise utilise des taux d’exemple à des fins de démonstration uniquement.",
     "usd": "USD",
-    "mockData": "Données fictives",
-    "mockHistory": "Historique fictif",
+    "mockData": "Données d’exemple",
+    "mockHistory": "Données historiques",
     "forwardModel": "Modèle prévisionnel",
     "showYearlyTable": "Afficher le tableau annuel",
     "hideYearlyTable": "Masquer le tableau annuel"
@@ -24,7 +24,7 @@
     "dca": {
       "eyebrow": "Par défaut",
       "title": "Backtest DCA historique",
-      "description": "Testez des investissements mensuels avec des prix annuels fictifs pour ETF et actions de croissance.",
+      "description": "Backtestez des investissements mensuels avec des données de marché historiques pour ETF et actions de croissance.",
       "cta": "Ouvrir le backtest DCA"
     },
     "compound": {
@@ -47,8 +47,8 @@
   },
   "dca": {
     "eyebrow": "Backtest DCA historique",
-    "title": "Testez un investissement mensuel avec un historique de marché fictif",
-    "description": "Comparez la performance potentielle d’un apport mensuel régulier avec des prix annuels fictifs pour ETF et actions populaires.",
+    "title": "Testez un investissement mensuel avec des données de marché historiques",
+    "description": "Comparez la performance potentielle d’un apport mensuel régulier avec les prix de marché historiques d’ETF et d’actions populaires.",
     "endingValue": "Valeur finale du backtest",
     "returnSummary": "Rendement total de {returnValue} % pour {symbol}.",
     "inputsEyebrow": "Entrées du backtest",
@@ -65,8 +65,10 @@
     "totalInvested": "Total investi",
     "annualDetail": "Détail annuel",
     "tableTitle": "Tableau annuel du backtest",
-    "csvDataSource": "Utilisation de données historiques CSV",
-    "mockDataSource": "Utilisation de données d’exemple"
+    "csvDataSource": "Données historiques CSV",
+    "mockDataSource": "Données d’exemple",
+    "dataNote": "Les backtests utilisent des prix mensuels générés à partir des cours de clôture ajustés quotidiens historiques lorsqu’ils sont disponibles.",
+    "disclaimer": "Les performances passées ne garantissent pas les résultats futurs. Ce calculateur est fourni à des fins éducatives uniquement et ne constitue pas un conseil financier."
   },
   "compound": {
     "eyebrow": "Calculateur composé",
@@ -88,7 +90,7 @@
     "totalInvested": "Total investi",
     "annualDetail": "Détail annuel",
     "tableTitle": "Tableau annuel",
-    "disclaimer": "Ce calculateur est fourni à des fins éducatives uniquement et ne constitue pas un conseil financier."
+    "disclaimer": "Les performances passées ne garantissent pas les résultats futurs. Ce calculateur est fourni à des fins éducatives uniquement et ne constitue pas un conseil financier."
   },
   "table": {
     "start": "Début",

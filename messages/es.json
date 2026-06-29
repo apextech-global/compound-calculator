@@ -5,8 +5,8 @@
     "currency": "Moneda",
     "currencyNote": "La conversión de moneda usa tipos de ejemplo solo para demostración.",
     "usd": "USD",
-    "mockData": "Données fictives",
-    "mockHistory": "Historique fictif",
+    "mockData": "Datos de ejemplo",
+    "mockHistory": "Datos históricos",
     "forwardModel": "Modèle prévisionnel",
     "showYearlyTable": "Mostrar tabla anual",
     "hideYearlyTable": "Ocultar tabla anual"
@@ -24,7 +24,7 @@
     "dca": {
       "eyebrow": "Par défaut",
       "title": "Backtest DCA historique",
-      "description": "Testez des investissements mensuels avec des prix annuels fictifs pour ETF et actions de croissance.",
+      "description": "Haz backtests de inversiones mensuales con datos históricos de mercado para ETF y acciones de crecimiento.",
       "cta": "Ouvrir le backtest DCA"
     },
     "compound": {
@@ -47,8 +47,8 @@
   },
   "dca": {
     "eyebrow": "Backtest DCA historique",
-    "title": "Testez un investissement mensuel avec un historique de marché fictif",
-    "description": "Comparez la performance potentielle d’un apport mensuel régulier avec des prix annuels fictifs pour ETF et actions populaires.",
+    "title": "Prueba una inversión mensual con datos históricos de mercado",
+    "description": "Compara cómo una aportación mensual constante podría haber evolucionado usando precios históricos de mercado de ETF y acciones populares.",
     "endingValue": "Valeur finale du backtest",
     "returnSummary": "Rentabilidad total de {returnValue}% para {symbol}.",
     "inputsEyebrow": "Entrées du backtest",
@@ -65,8 +65,10 @@
     "totalInvested": "Total investi",
     "annualDetail": "Détail annuel",
     "tableTitle": "Tableau annuel du backtest",
-    "csvDataSource": "Usando datos históricos CSV",
-    "mockDataSource": "Usando datos de muestra"
+    "csvDataSource": "Datos históricos CSV",
+    "mockDataSource": "Datos de ejemplo",
+    "dataNote": "Los backtests usan precios mensuales generados a partir de datos históricos diarios de cierre ajustado cuando están disponibles.",
+    "disclaimer": "El rendimiento pasado no garantiza resultados futuros. Esta calculadora es solo para fines educativos y no constituye asesoramiento financiero."
   },
   "compound": {
     "eyebrow": "Calculateur composé",
@@ -88,7 +90,7 @@
     "totalInvested": "Total investi",
     "annualDetail": "Détail annuel",
     "tableTitle": "Tableau annuel",
-    "disclaimer": "Ce calculateur est fourni à des fins éducatives uniquement et ne constitue pas un conseil financier."
+    "disclaimer": "El rendimiento pasado no garantiza resultados futuros. Esta calculadora es solo para fines educativos y no constituye asesoramiento financiero."
   },
   "table": {
     "start": "Début",

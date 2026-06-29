@@ -6,7 +6,7 @@
     "currencyNote": "நாணய மாற்றம் விளக்கத்திற்கான மாதிரி விகிதங்களை மட்டும் பயன்படுத்துகிறது.",
     "usd": "USD",
     "mockData": "மாதிரி தரவு",
-    "mockHistory": "மாதிரி வரலாறு",
+    "mockHistory": "வரலாற்றுத் தரவு",
     "forwardModel": "முன்னறிவு மாதிரி",
     "showYearlyTable": "ஆண்டு அட்டவணையை காட்டு",
     "hideYearlyTable": "ஆண்டு அட்டவணையை மறை"
@@ -24,7 +24,7 @@
     "dca": {
       "eyebrow": "இயல்புநிலை",
       "title": "வரலாற்று DCA பின்சோதனை",
-      "description": "ETF மற்றும் வளர்ச்சி பங்குகளுக்கான மாதிரி ஆண்டு விலைகளில் மாதாந்திர முதலீட்டைச் சோதிக்கவும்.",
+      "description": "ETF மற்றும் வளர்ச்சி பங்குகளுக்கான வரலாற்று சந்தை தரவுடன் மாதாந்திர முதலீடுகளை பின்சோதிக்கவும்.",
       "cta": "DCA பின்சோதனையை திற"
     },
     "compound": {
@@ -47,8 +47,8 @@
   },
   "dca": {
     "eyebrow": "Backtest DCA historique",
-    "title": "Testez un investissement mensuel avec un historique de marché fictif",
-    "description": "Comparez la performance potentielle d’un apport mensuel régulier avec des prix annuels fictifs pour ETF et actions populaires.",
+    "title": "வரலாற்று சந்தை தரவுடன் மாதாந்திர முதலீட்டைச் சோதிக்கவும்",
+    "description": "பிரபல ETF மற்றும் பங்குகளின் வரலாற்று சந்தை விலைகளைப் பயன்படுத்தி நிலையான மாதாந்திர பங்களிப்பு எவ்வாறு செயல்பட்டிருக்கலாம் என்பதை ஒப்பிடுங்கள்.",
     "endingValue": "Valeur finale du backtest",
     "returnSummary": "{symbol} க்கான மொத்த வருமானம் {returnValue}%.",
     "inputsEyebrow": "Entrées du backtest",
@@ -65,8 +65,10 @@
     "totalInvested": "Total investi",
     "annualDetail": "Détail annuel",
     "tableTitle": "Tableau annuel du backtest",
-    "csvDataSource": "CSV வரலாற்றுத் தரவு பயன்படுத்தப்படுகிறது",
-    "mockDataSource": "மாதிரி தரவு பயன்படுத்தப்படுகிறது"
+    "csvDataSource": "CSV வரலாற்றுத் தரவு",
+    "mockDataSource": "மாதிரி தரவு",
+    "dataNote": "கிடைக்கும் இடங்களில், வரலாற்று தினசரி சரிசெய்யப்பட்ட மூடல் தரவிலிருந்து உருவாக்கப்பட்ட மாதாந்திர விலைகளை பின்சோதனைகள் பயன்படுத்துகின்றன.",
+    "disclaimer": "கடந்த செயல்திறன் எதிர்கால முடிவுகளை உத்தரவாதம் அளிக்காது. இந்த கணிப்பான் கல்வி நோக்கங்களுக்காக மட்டுமே; இது நிதி ஆலோசனை அல்ல."
   },
   "compound": {
     "eyebrow": "Calculateur composé",
@@ -88,7 +90,7 @@
     "totalInvested": "Total investi",
     "annualDetail": "Détail annuel",
     "tableTitle": "Tableau annuel",
-    "disclaimer": "Ce calculateur est fourni à des fins éducatives uniquement et ne constitue pas un conseil financier."
+    "disclaimer": "கடந்த செயல்திறன் எதிர்கால முடிவுகளை உத்தரவாதம் அளிக்காது. இந்த கணிப்பான் கல்வி நோக்கங்களுக்காக மட்டுமே; இது நிதி ஆலோசனை அல்ல."
   },
   "table": {
     "start": "தொடக்கம்",

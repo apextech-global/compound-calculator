@@ -5,8 +5,8 @@
     "currency": "Mata wang",
     "currencyNote": "Penukaran mata wang menggunakan kadar contoh untuk demonstrasi sahaja.",
     "usd": "USD",
-    "mockData": "Data contoh",
-    "mockHistory": "Sejarah contoh",
+    "mockData": "Data sampel",
+    "mockHistory": "Data sejarah",
     "forwardModel": "Model unjuran",
     "showYearlyTable": "Tunjuk jadual tahunan",
     "hideYearlyTable": "Sembunyi jadual tahunan"
@@ -24,7 +24,7 @@
     "dca": {
       "eyebrow": "Lalai",
       "title": "Ujian Balik DCA Sejarah",
-      "description": "Uji pelaburan bulanan terhadap harga tahunan contoh untuk ETF dan saham pertumbuhan tinggi.",
+      "description": "Uji balik pelaburan bulanan menggunakan data pasaran sejarah untuk ETF dan saham pertumbuhan tinggi.",
       "cta": "Buka Ujian Balik DCA"
     },
     "compound": {
@@ -47,8 +47,8 @@
   },
   "dca": {
     "eyebrow": "Ujian Balik DCA Sejarah",
-    "title": "Uji Pelaburan Bulanan Dengan Sejarah Pasaran Contoh",
-    "description": "Bandingkan prestasi sumbangan bulanan tetap menggunakan harga tahunan contoh untuk ETF dan saham popular.",
+    "title": "Uji Pelaburan Bulanan Dengan Data Pasaran Sejarah",
+    "description": "Bandingkan prestasi sumbangan bulanan tetap menggunakan harga pasaran sejarah untuk ETF dan saham popular.",
     "endingValue": "Nilai akhir ujian balik",
     "returnSummary": "Jumlah pulangan {returnValue}% untuk {symbol}.",
     "inputsEyebrow": "Input Ujian Balik",
@@ -65,8 +65,10 @@
     "totalInvested": "Jumlah dilabur",
     "annualDetail": "Butiran Tahunan",
     "tableTitle": "Jadual Ujian Balik Tahunan",
-    "csvDataSource": "Menggunakan data sejarah CSV",
-    "mockDataSource": "Menggunakan data contoh simulasi"
+    "csvDataSource": "Data sejarah CSV",
+    "mockDataSource": "Data sampel",
+    "dataNote": "Ujian balik menggunakan harga bulanan yang dijana daripada data tutup terlaras harian sejarah jika tersedia.",
+    "disclaimer": "Prestasi lalu tidak menjamin keputusan masa depan. Kalkulator ini hanya untuk tujuan pendidikan dan bukan nasihat kewangan."
   },
   "compound": {
     "eyebrow": "Kalkulator Kompaun",
@@ -88,7 +90,7 @@
     "totalInvested": "Jumlah dilabur",
     "annualDetail": "Butiran Tahunan",
     "tableTitle": "Jadual Tahunan",
-    "disclaimer": "Kalkulator ini hanya untuk tujuan pendidikan dan tidak memberikan nasihat kewangan."
+    "disclaimer": "Prestasi lalu tidak menjamin keputusan masa depan. Kalkulator ini hanya untuk tujuan pendidikan dan bukan nasihat kewangan."
   },
   "table": {
     "start": "Mula",

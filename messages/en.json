@@ -5,8 +5,8 @@
     "currency": "Currency",
     "currencyNote": "Currency conversion uses sample exchange rates for demonstration only.",
     "usd": "USD",
-    "mockData": "Mock data",
-    "mockHistory": "Mock history",
+    "mockData": "Sample data",
+    "mockHistory": "Historical data",
     "forwardModel": "Forward model",
     "showYearlyTable": "Show yearly table",
     "hideYearlyTable": "Hide yearly table"
@@ -24,7 +24,7 @@
     "dca": {
       "eyebrow": "Default",
       "title": "Historical DCA Backtest",
-      "description": "Test monthly investments against sample yearly prices for ETFs and high-growth stocks.",
+      "description": "Backtest monthly investments with historical market data for ETFs and high-growth stocks.",
       "cta": "Open DCA Backtest"
     },
     "compound": {
@@ -47,8 +47,8 @@
   },
   "dca": {
     "eyebrow": "Historical DCA Backtest",
-    "title": "Test a Monthly Investment Against Mock Market History",
-    "description": "Compare how a steady monthly contribution could have performed across sample yearly prices for popular ETFs and stocks.",
+    "title": "Test a Monthly Investment Against Historical Market Data",
+    "description": "Compare how a steady monthly contribution could have performed using historical market prices for popular ETFs and stocks.",
     "endingValue": "Backtested ending value",
     "returnSummary": "{returnValue}% total return for {symbol}.",
     "inputsEyebrow": "Backtest Inputs",
@@ -65,8 +65,10 @@
     "totalInvested": "Total invested",
     "annualDetail": "Annual Detail",
     "tableTitle": "Yearly Backtest Table",
-    "csvDataSource": "Using CSV historical data",
-    "mockDataSource": "Using sample mock data"
+    "csvDataSource": "CSV historical data",
+    "mockDataSource": "Sample data",
+    "dataNote": "Backtests use monthly prices generated from historical daily adjusted close data where available.",
+    "disclaimer": "Past performance does not guarantee future results. This calculator is for educational purposes only and is not financial advice."
   },
   "compound": {
     "eyebrow": "Compound Calculator",
@@ -88,7 +90,7 @@
     "totalInvested": "Total invested",
     "annualDetail": "Annual Detail",
     "tableTitle": "Yearly Table",
-    "disclaimer": "This calculator is for educational purposes only and does not provide financial advice."
+    "disclaimer": "Past performance does not guarantee future results. This calculator is for educational purposes only and is not financial advice."
   },
   "table": {
     "start": "Start",

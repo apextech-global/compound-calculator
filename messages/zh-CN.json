@@ -5,8 +5,8 @@
     "currency": "货币",
     "currencyNote": "货币换算使用示例汇率，仅供演示。",
     "usd": "美元",
-    "mockData": "模拟数据",
-    "mockHistory": "模拟历史",
+    "mockData": "示例数据",
+    "mockHistory": "历史数据",
     "forwardModel": "前瞻模型",
     "showYearlyTable": "显示年度表",
     "hideYearlyTable": "隐藏年度表"
@@ -24,7 +24,7 @@
     "dca": {
       "eyebrow": "默认",
       "title": "历史 DCA 回测",
-      "description": "使用 ETF 和高成长股票的示例年度价格，测试每月定投表现。",
+      "description": "使用 ETF 和高成长股票的历史市场数据，回测每月定投表现。",
       "cta": "打开 DCA 回测"
     },
     "compound": {
@@ -47,8 +47,8 @@
   },
   "dca": {
     "eyebrow": "历史 DCA 回测",
-    "title": "用模拟市场历史测试每月投资",
-    "description": "比较固定每月投入在热门 ETF 和股票示例年度价格中的潜在表现。",
+    "title": "使用历史市场数据测试每月定投",
+    "description": "比较固定每月投入在热门 ETF 和股票历史市场价格中的潜在表现。",
     "endingValue": "回测期末价值",
     "returnSummary": "{symbol} 的总回报率为 {returnValue}%。",
     "inputsEyebrow": "回测输入",
@@ -65,8 +65,10 @@
     "totalInvested": "总投入",
     "annualDetail": "年度明细",
     "tableTitle": "年度回测表",
-    "csvDataSource": "正在使用 CSV 历史数据",
-    "mockDataSource": "正在使用示例模拟数据"
+    "csvDataSource": "CSV 历史数据",
+    "mockDataSource": "示例数据",
+    "dataNote": "回测会尽可能使用由历史每日复权收盘价生成的月度价格。",
+    "disclaimer": "过往表现不保证未来结果。本计算器仅供教育用途，不构成金融建议。"
   },
   "compound": {
     "eyebrow": "复利计算器",
@@ -88,7 +90,7 @@
     "totalInvested": "总投入",
     "annualDetail": "年度明细",
     "tableTitle": "年度表",
-    "disclaimer": "本计算器仅供教育用途，不构成金融建议。"
+    "disclaimer": "过往表现不保证未来结果。本计算器仅供教育用途，不构成金融建议。"
   },
   "table": {
     "start": "开始",
