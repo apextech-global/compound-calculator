@@ -121,9 +121,9 @@
   },
   "seo": {
     "title": "DCA Backtest | Test Monthly Investing Against Market History",
-    "description": "Backtest monthly investments, compare historical DCA performance, and project compound growth with multi-currency and multi-language support.",
+    "description": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages.",
     "openGraphTitle": "DCA Backtest | Test Monthly Investing Against Market History",
-    "openGraphDescription": "Backtest monthly investments, compare historical DCA performance, and project compound growth with multi-currency and multi-language support."
+    "openGraphDescription": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages."
   },
   "faq": {
     "eyebrow": "FAQ",

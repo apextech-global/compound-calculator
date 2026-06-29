@@ -120,10 +120,10 @@
     "ta": "தமிழ்"
   },
   "seo": {
-    "title": "DCA Backtest - DCA-бэктест и калькулятор сложного процента",
-    "description": "Тестируйте ежемесячные инвестиции в популярные ETF и акции, сравнивайте историческую DCA-доходность и прогнозируйте будущий рост со сложным процентом.",
-    "openGraphTitle": "DCA Backtest - DCA-бэктест и калькулятор сложного процента",
-    "openGraphDescription": "Тестируйте ежемесячные инвестиции в популярные ETF и акции, сравнивайте историческую DCA-доходность и прогнозируйте будущий рост со сложным процентом."
+    "title": "DCA Backtest | Test Monthly Investing Against Market History",
+    "description": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages.",
+    "openGraphTitle": "DCA Backtest | Test Monthly Investing Against Market History",
+    "openGraphDescription": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages."
   },
   "faq": {
     "eyebrow": "FAQ",

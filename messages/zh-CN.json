@@ -120,10 +120,10 @@
     "ta": "தமிழ்"
   },
   "seo": {
-    "title": "DCA Backtest - DCA 回测与复利计算器",
-    "description": "回测热门 ETF 和股票的每月投资，比较历史 DCA 表现，并预测未来复利增长。",
-    "openGraphTitle": "DCA Backtest - DCA 回测与复利计算器",
-    "openGraphDescription": "回测热门 ETF 和股票的每月投资，比较历史 DCA 表现，并预测未来复利增长。"
+    "title": "DCA Backtest | Test Monthly Investing Against Market History",
+    "description": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages.",
+    "openGraphTitle": "DCA Backtest | Test Monthly Investing Against Market History",
+    "openGraphDescription": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages."
   },
   "faq": {
     "eyebrow": "常见问题",

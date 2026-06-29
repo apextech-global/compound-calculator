@@ -120,10 +120,10 @@
     "ta": "தமிழ்"
   },
   "seo": {
-    "title": "DCA Backtest - DCA-Backtest und Zinseszinsrechner",
-    "description": "Testen Sie monatliche Investitionen in beliebte ETFs und Aktien, vergleichen Sie historische DCA-Performance und projizieren Sie zukünftiges Zinseszinswachstum.",
-    "openGraphTitle": "DCA Backtest - DCA-Backtest und Zinseszinsrechner",
-    "openGraphDescription": "Testen Sie monatliche Investitionen in beliebte ETFs und Aktien, vergleichen Sie historische DCA-Performance und projizieren Sie zukünftiges Zinseszinswachstum."
+    "title": "DCA Backtest | Test Monthly Investing Against Market History",
+    "description": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages.",
+    "openGraphTitle": "DCA Backtest | Test Monthly Investing Against Market History",
+    "openGraphDescription": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages."
   },
   "faq": {
     "eyebrow": "FAQ",

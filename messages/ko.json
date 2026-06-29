@@ -120,10 +120,10 @@
     "ta": "தமிழ்"
   },
   "seo": {
-    "title": "DCA Backtest - DCA 백테스트 및 복리 계산기",
-    "description": "인기 ETF와 주식의 월별 투자를 백테스트하고, 과거 DCA 성과를 비교하며, 미래 복리 성장을 예측하세요.",
-    "openGraphTitle": "DCA Backtest - DCA 백테스트 및 복리 계산기",
-    "openGraphDescription": "인기 ETF와 주식의 월별 투자를 백테스트하고, 과거 DCA 성과를 비교하며, 미래 복리 성장을 예측하세요."
+    "title": "DCA Backtest | Test Monthly Investing Against Market History",
+    "description": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages.",
+    "openGraphTitle": "DCA Backtest | Test Monthly Investing Against Market History",
+    "openGraphDescription": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages."
   },
   "faq": {
     "eyebrow": "FAQ",

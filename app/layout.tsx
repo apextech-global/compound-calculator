@@ -17,7 +17,9 @@ const siteUrl = new URL("https://dcabacktest.com");
 const siteTitle =
   "DCA Backtest | Test Monthly Investing Against Market History";
 const siteDescription =
-  "Backtest monthly investments, compare historical DCA performance, and project compound growth with multi-currency and multi-language support.";
+  "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages.";
+const socialImageAlt =
+  "DCA Backtest chart preview showing monthly investment growth over time";
 
 export const metadata: Metadata = {
   metadataBase: siteUrl,
@@ -50,7 +52,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "DCA Backtest market history preview",
+        alt: socialImageAlt,
       },
     ],
     type: "website",
@@ -59,7 +61,12 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteTitle,
     description: siteDescription,
-    images: ["/og-image.png"],
+    images: [
+      {
+        url: "/og-image.png",
+        alt: socialImageAlt,
+      },
+    ],
   },
 };
 

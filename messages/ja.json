@@ -120,10 +120,10 @@
     "ta": "தமிழ்"
   },
   "seo": {
-    "title": "DCA Backtest - DCA バックテストと複利計算機",
-    "description": "人気 ETF と株式への毎月投資をバックテストし、過去の DCA パフォーマンスを比較し、将来の複利成長を予測します。",
-    "openGraphTitle": "DCA Backtest - DCA バックテストと複利計算機",
-    "openGraphDescription": "人気 ETF と株式への毎月投資をバックテストし、過去の DCA パフォーマンスを比較し、将来の複利成長を予測します。"
+    "title": "DCA Backtest | Test Monthly Investing Against Market History",
+    "description": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages.",
+    "openGraphTitle": "DCA Backtest | Test Monthly Investing Against Market History",
+    "openGraphDescription": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages."
   },
   "faq": {
     "eyebrow": "FAQ",

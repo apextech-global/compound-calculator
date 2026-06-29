@@ -120,10 +120,10 @@
     "ta": "தமிழ்"
   },
   "seo": {
-    "title": "DCA Backtest - Backtest DCA e calcolatore di interesse composto",
-    "description": "Esegui backtest di investimenti mensili in ETF e azioni popolari, confronta la performance DCA storica e proietta la crescita futura con interesse composto.",
-    "openGraphTitle": "DCA Backtest - Backtest DCA e calcolatore di interesse composto",
-    "openGraphDescription": "Esegui backtest di investimenti mensili in ETF e azioni popolari, confronta la performance DCA storica e proietta la crescita futura con interesse composto."
+    "title": "DCA Backtest | Test Monthly Investing Against Market History",
+    "description": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages.",
+    "openGraphTitle": "DCA Backtest | Test Monthly Investing Against Market History",
+    "openGraphDescription": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages."
   },
   "faq": {
     "eyebrow": "FAQ",

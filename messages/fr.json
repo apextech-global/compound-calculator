@@ -120,10 +120,10 @@
     "ta": "தமிழ்"
   },
   "seo": {
-    "title": "DCA Backtest - Backtest DCA et calculateur d’intérêts composés",
-    "description": "Backtestez des investissements mensuels dans des ETF et actions populaires, comparez la performance DCA historique et projetez la croissance future avec intérêts composés.",
-    "openGraphTitle": "DCA Backtest - Backtest DCA et calculateur d’intérêts composés",
-    "openGraphDescription": "Backtestez des investissements mensuels dans des ETF et actions populaires, comparez la performance DCA historique et projetez la croissance future avec intérêts composés."
+    "title": "DCA Backtest | Test Monthly Investing Against Market History",
+    "description": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages.",
+    "openGraphTitle": "DCA Backtest | Test Monthly Investing Against Market History",
+    "openGraphDescription": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages."
   },
   "faq": {
     "eyebrow": "FAQ",

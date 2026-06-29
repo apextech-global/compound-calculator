@@ -120,10 +120,10 @@
     "ta": "தமிழ்"
   },
   "seo": {
-    "title": "DCA Backtest - اختبار DCA وحاسبة الفائدة المركبة",
-    "description": "اختبر الاستثمارات الشهرية في صناديق ETF والأسهم الشائعة، وقارن أداء DCA التاريخي، وتوقع نمو الفائدة المركبة المستقبلي.",
-    "openGraphTitle": "DCA Backtest - اختبار DCA وحاسبة الفائدة المركبة",
-    "openGraphDescription": "اختبر الاستثمارات الشهرية في صناديق ETF والأسهم الشائعة، وقارن أداء DCA التاريخي، وتوقع نمو الفائدة المركبة المستقبلي."
+    "title": "DCA Backtest | Test Monthly Investing Against Market History",
+    "description": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages.",
+    "openGraphTitle": "DCA Backtest | Test Monthly Investing Against Market History",
+    "openGraphDescription": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages."
   },
   "faq": {
     "eyebrow": "الأسئلة الشائعة",

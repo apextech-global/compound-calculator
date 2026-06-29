@@ -120,10 +120,10 @@
     "ta": "தமிழ்"
   },
   "seo": {
-    "title": "DCA Backtest - DCA பின்சோதனை மற்றும் கூட்டு வட்டி கணிப்பான்",
-    "description": "பிரபல ETF மற்றும் பங்குகளில் மாதாந்திர முதலீடுகளை பின்சோதித்து, வரலாற்று DCA செயல்திறனை ஒப்பிட்டு, எதிர்கால கூட்டு வட்டி வளர்ச்சியை கணிக்கவும்.",
-    "openGraphTitle": "DCA Backtest - DCA பின்சோதனை மற்றும் கூட்டு வட்டி கணிப்பான்",
-    "openGraphDescription": "பிரபல ETF மற்றும் பங்குகளில் மாதாந்திர முதலீடுகளை பின்சோதித்து, வரலாற்று DCA செயல்திறனை ஒப்பிட்டு, எதிர்கால கூட்டு வட்டி வளர்ச்சியை கணிக்கவும்."
+    "title": "DCA Backtest | Test Monthly Investing Against Market History",
+    "description": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages.",
+    "openGraphTitle": "DCA Backtest | Test Monthly Investing Against Market History",
+    "openGraphDescription": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages."
   },
   "faq": {
     "eyebrow": "FAQ",

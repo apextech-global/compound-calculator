@@ -120,10 +120,10 @@
     "ta": "தமிழ்"
   },
   "seo": {
-    "title": "DCA Backtest - Backtest DCA dan Kalkulator Bunga Majemuk",
-    "description": "Backtest investasi bulanan di ETF dan saham populer, bandingkan performa DCA historis, dan proyeksikan pertumbuhan bunga majemuk masa depan.",
-    "openGraphTitle": "DCA Backtest - Backtest DCA dan Kalkulator Bunga Majemuk",
-    "openGraphDescription": "Backtest investasi bulanan di ETF dan saham populer, bandingkan performa DCA historis, dan proyeksikan pertumbuhan bunga majemuk masa depan."
+    "title": "DCA Backtest | Test Monthly Investing Against Market History",
+    "description": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages.",
+    "openGraphTitle": "DCA Backtest | Test Monthly Investing Against Market History",
+    "openGraphDescription": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages."
   },
   "faq": {
     "eyebrow": "FAQ",

@@ -6,6 +6,8 @@ import { routing, type Locale } from "@/i18n/routing";
 import { getTextDirection } from "@/lib/locales";
 
 const baseUrl = "https://dcabacktest.com";
+const socialImageAlt =
+  "DCA Backtest chart preview showing monthly investment growth over time";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -44,7 +46,7 @@ export async function generateMetadata({
           url: "/og-image.png",
           width: 1200,
           height: 630,
-          alt: "DCA Backtest market history preview",
+          alt: socialImageAlt,
         },
       ],
       type: "website",
@@ -54,7 +56,12 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: openGraphTitle,
       description: openGraphDescription,
-      images: ["/og-image.png"],
+      images: [
+        {
+          url: "/og-image.png",
+          alt: socialImageAlt,
+        },
+      ],
     },
   };
 }
