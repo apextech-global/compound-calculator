@@ -1,0 +1,118 @@
+{
+  "common": {
+    "brand": "CompoundLab",
+    "language": "言語",
+    "currency": "通貨",
+    "currencyNote": "通貨換算にはデモ用のサンプル為替レートを使用しています。",
+    "usd": "USD",
+    "mockData": "モックデータ",
+    "mockHistory": "モック履歴",
+    "forwardModel": "将来モデル",
+    "showYearlyTable": "年次表を表示",
+    "hideYearlyTable": "年次表を非表示"
+  },
+  "nav": {
+    "dcaBacktest": "DCA バックテスト",
+    "compoundCalculator": "複利計算機"
+  },
+  "hero": {
+    "eyebrow": "プレミアム金融計算機",
+    "title": "投資計画をバックテスト、予測、比較",
+    "description": "まずは過去の DCA バックテストから始め、将来成長を見たいときは複利予測に切り替えられます。"
+  },
+  "cards": {
+    "dca": {
+      "eyebrow": "デフォルト",
+      "title": "過去 DCA バックテスト",
+      "description": "ETF と高成長株のサンプル年次価格で、毎月投資をテストします。",
+      "cta": "DCA バックテストを開く"
+    },
+    "compound": {
+      "eyebrow": "予測",
+      "title": "複利計算機",
+      "description": "定期積立と月次複利で、将来のポートフォリオ成長を推定します。",
+      "cta": "複利計算機を開く"
+    }
+  },
+  "metrics": {
+    "symbol": "シンボル",
+    "years": "年数",
+    "finalValue": "最終価値",
+    "finalValueTitle": "最終価値",
+    "return": "リターン",
+    "growth": "成長",
+    "totalInvested": "総投資額",
+    "totalProfit": "総利益",
+    "totalReturn": "総リターン"
+  },
+  "dca": {
+    "eyebrow": "過去 DCA バックテスト",
+    "title": "モック市場履歴で毎月投資をテスト",
+    "description": "人気 ETF と株式のサンプル年次価格で、一定の毎月積立がどう推移したか比較します。",
+    "endingValue": "バックテスト終了価値",
+    "returnSummary": "{symbol} のモック年次価格を使った総リターンは {returnValue}% です。",
+    "inputsEyebrow": "バックテスト入力",
+    "scenarioTitle": "DCA シナリオ",
+    "symbol": "シンボル",
+    "monthlyInvestment": "毎月投資額",
+    "startYear": "開始年",
+    "endYear": "終了年",
+    "sharesAccumulated": "累計株数",
+    "fractionalShares": "端株を含む",
+    "projectionEyebrow": "過去予測",
+    "chartTitle": "DCA 価値の推移",
+    "portfolioValue": "ポートフォリオ価値",
+    "totalInvested": "総投資額",
+    "annualDetail": "年次詳細",
+    "tableTitle": "年次バックテスト表"
+  },
+  "compound": {
+    "eyebrow": "複利計算機",
+    "title": "複利で資産を成長させる",
+    "description": "毎月の積立、複利リターン、年次予測で長期ポートフォリオ成長をモデル化します。",
+    "projectedValue": "予測ポートフォリオ価値",
+    "growthSummary": "{years} 年で推定投資元本の {multiple} 倍になります。",
+    "inputsEyebrow": "入力",
+    "detailsTitle": "投資詳細",
+    "initialInvestment": "初期投資",
+    "monthlyContribution": "毎月拠出額",
+    "annualReturnRate": "年間リターン率 %",
+    "investmentYears": "投資年数",
+    "estimatedAnnualReturn": "推定年間リターン",
+    "compoundedMonthly": "月次複利",
+    "projectionEyebrow": "予測",
+    "chartTitle": "ポートフォリオ成長の推移",
+    "portfolioBalance": "ポートフォリオ残高",
+    "totalInvested": "総投資額",
+    "annualDetail": "年次詳細",
+    "tableTitle": "年次表",
+    "disclaimer": "この計算機は教育目的のみであり、金融アドバイスを提供するものではありません。"
+  },
+  "table": {
+    "start": "開始",
+    "year": "年",
+    "price": "価格",
+    "sharesBought": "購入株数",
+    "totalShares": "総株数",
+    "portfolioValue": "ポートフォリオ価値",
+    "balance": "残高",
+    "invested": "投資額",
+    "profit": "利益"
+  },
+  "languages": {
+    "en": "English",
+    "zh-CN": "简体中文",
+    "zh-TW": "繁體中文",
+    "ms": "Bahasa Melayu",
+    "id": "Bahasa Indonesia",
+    "ja": "日本語",
+    "ko": "한국어",
+    "ru": "Русский",
+    "fr": "Français",
+    "it": "Italiano",
+    "es": "Español",
+    "ar": "العربية",
+    "de": "Deutsch",
+    "ta": "தமிழ்"
+  }
+}

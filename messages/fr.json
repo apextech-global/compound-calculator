@@ -1,0 +1,118 @@
+{
+  "common": {
+    "brand": "CompoundLab",
+    "language": "Langue",
+    "currency": "Devise",
+    "currencyNote": "La conversion de devise utilise des taux d’exemple à des fins de démonstration uniquement.",
+    "usd": "USD",
+    "mockData": "Données fictives",
+    "mockHistory": "Historique fictif",
+    "forwardModel": "Modèle prévisionnel",
+    "showYearlyTable": "Afficher le tableau annuel",
+    "hideYearlyTable": "Masquer le tableau annuel"
+  },
+  "nav": {
+    "dcaBacktest": "Backtest DCA",
+    "compoundCalculator": "Calculateur composé"
+  },
+  "hero": {
+    "eyebrow": "Calculateurs financiers premium",
+    "title": "Backtestez, projetez et comparez votre plan d’investissement",
+    "description": "Commencez par un backtest DCA historique ou passez à une projection d’intérêts composés pour modéliser la croissance future."
+  },
+  "cards": {
+    "dca": {
+      "eyebrow": "Par défaut",
+      "title": "Backtest DCA historique",
+      "description": "Testez des investissements mensuels avec des prix annuels fictifs pour ETF et actions de croissance.",
+      "cta": "Ouvrir le backtest DCA"
+    },
+    "compound": {
+      "eyebrow": "Projection",
+      "title": "Calculateur d’intérêts composés",
+      "description": "Estimez la croissance future avec des apports réguliers et une capitalisation mensuelle.",
+      "cta": "Ouvrir le calculateur"
+    }
+  },
+  "metrics": {
+    "symbol": "Symbole",
+    "years": "Années",
+    "finalValue": "Valeur finale",
+    "finalValueTitle": "Valeur finale",
+    "return": "Rendement",
+    "growth": "Croissance",
+    "totalInvested": "Total investi",
+    "totalProfit": "Profit total",
+    "totalReturn": "Rendement total"
+  },
+  "dca": {
+    "eyebrow": "Backtest DCA historique",
+    "title": "Testez un investissement mensuel avec un historique de marché fictif",
+    "description": "Comparez la performance potentielle d’un apport mensuel régulier avec des prix annuels fictifs pour ETF et actions populaires.",
+    "endingValue": "Valeur finale du backtest",
+    "returnSummary": "Rendement total de {returnValue}% avec les prix annuels fictifs de {symbol}.",
+    "inputsEyebrow": "Entrées du backtest",
+    "scenarioTitle": "Scénario DCA",
+    "symbol": "Symbole",
+    "monthlyInvestment": "Montant mensuel investi",
+    "startYear": "Année de début",
+    "endYear": "Année de fin",
+    "sharesAccumulated": "Actions accumulées",
+    "fractionalShares": "Fractions d’actions incluses",
+    "projectionEyebrow": "Projection historique",
+    "chartTitle": "Valeur DCA dans le temps",
+    "portfolioValue": "Valeur du portefeuille",
+    "totalInvested": "Total investi",
+    "annualDetail": "Détail annuel",
+    "tableTitle": "Tableau annuel du backtest"
+  },
+  "compound": {
+    "eyebrow": "Calculateur composé",
+    "title": "Faites croître votre argent avec les intérêts composés",
+    "description": "Modélisez la croissance long terme avec apports mensuels, rendements composés et projection annuelle.",
+    "projectedValue": "Valeur projetée du portefeuille",
+    "growthSummary": "Cela représente {multiple}x le capital investi estimé sur {years} ans.",
+    "inputsEyebrow": "Entrées",
+    "detailsTitle": "Détails de l’investissement",
+    "initialInvestment": "Investissement initial",
+    "monthlyContribution": "Contribution mensuelle",
+    "annualReturnRate": "Taux de rendement annuel %",
+    "investmentYears": "Années d’investissement",
+    "estimatedAnnualReturn": "Rendement annuel estimé",
+    "compoundedMonthly": "Capitalisé mensuellement",
+    "projectionEyebrow": "Projection",
+    "chartTitle": "Croissance du portefeuille dans le temps",
+    "portfolioBalance": "Solde du portefeuille",
+    "totalInvested": "Total investi",
+    "annualDetail": "Détail annuel",
+    "tableTitle": "Tableau annuel",
+    "disclaimer": "Ce calculateur est fourni à des fins éducatives uniquement et ne constitue pas un conseil financier."
+  },
+  "table": {
+    "start": "Début",
+    "year": "Année",
+    "price": "Prix",
+    "sharesBought": "Actions achetées",
+    "totalShares": "Total actions",
+    "portfolioValue": "Valeur du portefeuille",
+    "balance": "Solde",
+    "invested": "Investi",
+    "profit": "Profit"
+  },
+  "languages": {
+    "en": "English",
+    "zh-CN": "简体中文",
+    "zh-TW": "繁體中文",
+    "ms": "Bahasa Melayu",
+    "id": "Bahasa Indonesia",
+    "ja": "日本語",
+    "ko": "한국어",
+    "ru": "Русский",
+    "fr": "Français",
+    "it": "Italiano",
+    "es": "Español",
+    "ar": "العربية",
+    "de": "Deutsch",
+    "ta": "தமிழ்"
+  }
+}

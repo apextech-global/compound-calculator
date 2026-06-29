@@ -1,0 +1,118 @@
+{
+  "common": {
+    "brand": "CompoundLab",
+    "language": "語言",
+    "currency": "貨幣",
+    "currencyNote": "貨幣換算使用範例匯率，僅供示範。",
+    "usd": "美元",
+    "mockData": "模擬資料",
+    "mockHistory": "模擬歷史",
+    "forwardModel": "前瞻模型",
+    "showYearlyTable": "顯示年度表",
+    "hideYearlyTable": "隱藏年度表"
+  },
+  "nav": {
+    "dcaBacktest": "DCA 回測",
+    "compoundCalculator": "複利計算器"
+  },
+  "hero": {
+    "eyebrow": "高階金融計算器",
+    "title": "回測、預測並比較你的投資計畫",
+    "description": "先使用歷史 DCA 回測，也可以切換至前瞻複利預測來模擬未來成長。"
+  },
+  "cards": {
+    "dca": {
+      "eyebrow": "預設",
+      "title": "歷史 DCA 回測",
+      "description": "使用 ETF 與高成長股票的範例年度價格，測試每月定期投入表現。",
+      "cta": "開啟 DCA 回測"
+    },
+    "compound": {
+      "eyebrow": "預測",
+      "title": "複利計算器",
+      "description": "透過定期投入與按月複利，估算未來投資組合成長。",
+      "cta": "開啟複利計算器"
+    }
+  },
+  "metrics": {
+    "symbol": "代號",
+    "years": "年數",
+    "finalValue": "最終價值",
+    "finalValueTitle": "最終價值",
+    "return": "報酬",
+    "growth": "成長",
+    "totalInvested": "總投入",
+    "totalProfit": "總獲利",
+    "totalReturn": "總報酬"
+  },
+  "dca": {
+    "eyebrow": "歷史 DCA 回測",
+    "title": "用模擬市場歷史測試每月投資",
+    "description": "比較固定每月投入在熱門 ETF 與股票範例年度價格中的可能表現。",
+    "endingValue": "回測期末價值",
+    "returnSummary": "使用 {symbol} 的模擬年度價格，總報酬為 {returnValue}%。",
+    "inputsEyebrow": "回測輸入",
+    "scenarioTitle": "DCA 情境",
+    "symbol": "代號",
+    "monthlyInvestment": "每月投資金額",
+    "startYear": "開始年份",
+    "endYear": "結束年份",
+    "sharesAccumulated": "累計股數",
+    "fractionalShares": "包含零股",
+    "projectionEyebrow": "歷史預測",
+    "chartTitle": "DCA 價值變化",
+    "portfolioValue": "投資組合價值",
+    "totalInvested": "總投入",
+    "annualDetail": "年度明細",
+    "tableTitle": "年度回測表"
+  },
+  "compound": {
+    "eyebrow": "複利計算器",
+    "title": "用複利讓資金成長",
+    "description": "根據每月投入與複利報酬，模擬長期投資組合成長與逐年預測。",
+    "projectedValue": "預估投資組合價值",
+    "growthSummary": "這相當於在 {years} 年內達到預估投入本金的 {multiple} 倍。",
+    "inputsEyebrow": "輸入",
+    "detailsTitle": "投資詳情",
+    "initialInvestment": "初始投資",
+    "monthlyContribution": "每月投入",
+    "annualReturnRate": "年化報酬率 %",
+    "investmentYears": "投資年數",
+    "estimatedAnnualReturn": "預估年化報酬",
+    "compoundedMonthly": "按月複利",
+    "projectionEyebrow": "預測",
+    "chartTitle": "投資組合成長",
+    "portfolioBalance": "投資組合餘額",
+    "totalInvested": "總投入",
+    "annualDetail": "年度明細",
+    "tableTitle": "年度表",
+    "disclaimer": "本計算器僅供教育用途，不構成金融建議。"
+  },
+  "table": {
+    "start": "開始",
+    "year": "年份",
+    "price": "價格",
+    "sharesBought": "買入股數",
+    "totalShares": "總股數",
+    "portfolioValue": "投資組合價值",
+    "balance": "餘額",
+    "invested": "已投入",
+    "profit": "獲利"
+  },
+  "languages": {
+    "en": "English",
+    "zh-CN": "简体中文",
+    "zh-TW": "繁體中文",
+    "ms": "Bahasa Melayu",
+    "id": "Bahasa Indonesia",
+    "ja": "日本語",
+    "ko": "한국어",
+    "ru": "Русский",
+    "fr": "Français",
+    "it": "Italiano",
+    "es": "Español",
+    "ar": "العربية",
+    "de": "Deutsch",
+    "ta": "தமிழ்"
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "common": {
+    "brand": "CompoundLab",
+    "language": "언어",
+    "currency": "통화",
+    "currencyNote": "통화 변환은 데모용 샘플 환율을 사용합니다.",
+    "usd": "USD",
+    "mockData": "샘플 데이터",
+    "mockHistory": "샘플 기록",
+    "forwardModel": "전망 모델",
+    "showYearlyTable": "연간 표 보기",
+    "hideYearlyTable": "연간 표 숨기기"
+  },
+  "nav": {
+    "dcaBacktest": "DCA 백테스트",
+    "compoundCalculator": "복리 계산기"
+  },
+  "hero": {
+    "eyebrow": "프리미엄 금융 계산기",
+    "title": "투자 계획을 백테스트, 예측, 비교하세요",
+    "description": "먼저 과거 DCA 백테스트를 사용하거나, 미래 성장을 모델링할 때 복리 예측으로 전환하세요."
+  },
+  "cards": {
+    "dca": {
+      "eyebrow": "기본",
+      "title": "과거 DCA 백테스트",
+      "description": "ETF와 고성장 주식의 샘플 연간 가격으로 월별 투자 성과를 테스트합니다.",
+      "cta": "DCA 백테스트 열기"
+    },
+    "compound": {
+      "eyebrow": "예측",
+      "title": "복리 계산기",
+      "description": "정기 납입과 월 복리로 미래 포트폴리오 성장을 추정합니다.",
+      "cta": "복리 계산기 열기"
+    }
+  },
+  "metrics": {
+    "symbol": "심볼",
+    "years": "년수",
+    "finalValue": "최종 가치",
+    "finalValueTitle": "최종 가치",
+    "return": "수익률",
+    "growth": "성장",
+    "totalInvested": "총 투자액",
+    "totalProfit": "총 이익",
+    "totalReturn": "총 수익률"
+  },
+  "dca": {
+    "eyebrow": "과거 DCA 백테스트",
+    "title": "샘플 시장 기록으로 월별 투자를 테스트하세요",
+    "description": "인기 ETF와 주식의 샘플 연간 가격에서 꾸준한 월별 납입이 어떻게 작동했을지 비교합니다.",
+    "endingValue": "백테스트 종료 가치",
+    "returnSummary": "{symbol} 샘플 연간 가격 기준 총 수익률은 {returnValue}%입니다.",
+    "inputsEyebrow": "백테스트 입력",
+    "scenarioTitle": "DCA 시나리오",
+    "symbol": "심볼",
+    "monthlyInvestment": "월 투자 금액",
+    "startYear": "시작 연도",
+    "endYear": "종료 연도",
+    "sharesAccumulated": "누적 주식 수",
+    "fractionalShares": "소수점 주식 포함",
+    "projectionEyebrow": "과거 예측",
+    "chartTitle": "시간에 따른 DCA 가치",
+    "portfolioValue": "포트폴리오 가치",
+    "totalInvested": "총 투자액",
+    "annualDetail": "연간 상세",
+    "tableTitle": "연간 백테스트 표"
+  },
+  "compound": {
+    "eyebrow": "복리 계산기",
+    "title": "복리로 자산을 성장시키세요",
+    "description": "월별 납입, 복리 수익률, 연도별 예측으로 장기 포트폴리오 성장을 모델링합니다.",
+    "projectedValue": "예상 포트폴리오 가치",
+    "growthSummary": "이는 {years}년 동안 예상 투자 원금의 {multiple}배입니다.",
+    "inputsEyebrow": "입력",
+    "detailsTitle": "투자 세부정보",
+    "initialInvestment": "초기 투자금",
+    "monthlyContribution": "월 납입액",
+    "annualReturnRate": "연간 수익률 %",
+    "investmentYears": "투자 기간",
+    "estimatedAnnualReturn": "예상 연간 수익률",
+    "compoundedMonthly": "월 복리",
+    "projectionEyebrow": "예측",
+    "chartTitle": "시간에 따른 포트폴리오 성장",
+    "portfolioBalance": "포트폴리오 잔액",
+    "totalInvested": "총 투자액",
+    "annualDetail": "연간 상세",
+    "tableTitle": "연간 표",
+    "disclaimer": "이 계산기는 교육 목적으로만 제공되며 금융 조언을 제공하지 않습니다."
+  },
+  "table": {
+    "start": "시작",
+    "year": "연도",
+    "price": "가격",
+    "sharesBought": "매수 주식",
+    "totalShares": "총 주식",
+    "portfolioValue": "포트폴리오 가치",
+    "balance": "잔액",
+    "invested": "투자액",
+    "profit": "이익"
+  },
+  "languages": {
+    "en": "English",
+    "zh-CN": "简体中文",
+    "zh-TW": "繁體中文",
+    "ms": "Bahasa Melayu",
+    "id": "Bahasa Indonesia",
+    "ja": "日本語",
+    "ko": "한국어",
+    "ru": "Русский",
+    "fr": "Français",
+    "it": "Italiano",
+    "es": "Español",
+    "ar": "العربية",
+    "de": "Deutsch",
+    "ta": "தமிழ்"
+  }
+}
