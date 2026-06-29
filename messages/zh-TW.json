@@ -1,6 +1,6 @@
 {
   "common": {
-    "brand": "CompoundLab",
+    "brand": "DCA Backtest",
     "language": "語言",
     "currency": "貨幣",
     "currencyNote": "貨幣換算使用範例匯率，僅供示範。",
@@ -120,9 +120,9 @@
     "ta": "தமிழ்"
   },
   "seo": {
-    "title": "CompoundLab - DCA 回測與複利計算器",
+    "title": "DCA Backtest - DCA 回測與複利計算器",
     "description": "回測熱門 ETF 和股票的每月投資，比較歷史 DCA 表現，並預測未來複利成長。",
-    "openGraphTitle": "CompoundLab - DCA 回測與複利計算器",
+    "openGraphTitle": "DCA Backtest - DCA 回測與複利計算器",
     "openGraphDescription": "回測熱門 ETF 和股票的每月投資，比較歷史 DCA 表現，並預測未來複利成長。"
   },
   "faq": {
@@ -169,9 +169,9 @@
   "legal": {
     "about": {
       "eyebrow": "關於",
-      "title": "關於 CompoundLab",
+      "title": "關於 DCA Backtest",
       "paragraphs": {
-        "p1": "CompoundLab 幫助投資者透過歷史 DCA 回測和複利預測探索長期投資情境。",
+        "p1": "DCA Backtest 幫助投資者透過歷史 DCA 回測和複利預測探索長期投資情境。",
         "p2": "DCA 回測會盡可能使用由歷史每日調整後收盤價產生的月度價格，方便比較支援 ETF 和股票的每月定期投入表現。",
         "p3": "本站用於教育和規劃，不提供個人化建議、券商服務或投資建議。"
       }
@@ -180,7 +180,7 @@
       "eyebrow": "隱私",
       "title": "隱私權政策",
       "paragraphs": {
-        "p1": "CompoundLab 無需使用者帳戶、付款或保存個人投資計畫的資料庫即可使用。",
+        "p1": "DCA Backtest 無需使用者帳戶、付款或保存個人投資計畫的資料庫即可使用。",
         "p2": "本站可能使用 Google Analytics 了解網站流量、熱門頁面、瀏覽器資訊和一般使用模式，以改進服務。",
         "p3": "我們不會要求你提交敏感金融資訊。如果你透過電子郵件聯絡我們，我們可能會使用你的信箱回覆訊息。"
       }
@@ -189,7 +189,7 @@
       "eyebrow": "條款",
       "title": "使用條款",
       "paragraphs": {
-        "p1": "使用 CompoundLab 即表示你同意僅將計算器和市場資料工具用於合法的教育目的。",
+        "p1": "使用 DCA Backtest 即表示你同意僅將計算器和市場資料工具用於合法的教育目的。",
         "p2": "這些計算器僅供教育用途，並非金融建議。過往表現不保證未來結果。",
         "p3": "結果可能因稅費、手續費、成交價格、股息、貨幣兌換和資料來源差異而不同於真實券商報酬。"
       }

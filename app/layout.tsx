@@ -13,11 +13,54 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 const gaId = process.env.NEXT_PUBLIC_GA_ID;
+const siteUrl = new URL("https://dcabacktest.com");
+const siteTitle =
+  "DCA Backtest | Test Monthly Investing Against Market History";
+const siteDescription =
+  "Backtest monthly investments, compare historical DCA performance, and project compound growth with multi-currency and multi-language support.";
 
 export const metadata: Metadata = {
-  title: "CompoundLab - DCA Backtest and Compound Interest Calculator",
-  description:
-    "Backtest monthly investments in popular ETFs and stocks, compare historical DCA performance, and project future compound interest growth.",
+  metadataBase: siteUrl,
+  title: siteTitle,
+  description: siteDescription,
+  applicationName: "DCA Backtest",
+  icons: {
+    icon: [
+      {
+        url: "/icon.png",
+        sizes: "512x512",
+        type: "image/png",
+      },
+    ],
+    apple: [
+      {
+        url: "/apple-icon.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
+  },
+  openGraph: {
+    title: siteTitle,
+    description: siteDescription,
+    url: siteUrl,
+    siteName: "DCA Backtest",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "DCA Backtest market history preview",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: siteDescription,
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({

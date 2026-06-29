@@ -1,6 +1,6 @@
 {
   "common": {
-    "brand": "CompoundLab",
+    "brand": "DCA Backtest",
     "language": "Bahasa",
     "currency": "Mata uang",
     "currencyNote": "Konversi mata uang menggunakan kurs contoh hanya untuk demonstrasi.",
@@ -120,9 +120,9 @@
     "ta": "தமிழ்"
   },
   "seo": {
-    "title": "CompoundLab - Backtest DCA dan Kalkulator Bunga Majemuk",
+    "title": "DCA Backtest - Backtest DCA dan Kalkulator Bunga Majemuk",
     "description": "Backtest investasi bulanan di ETF dan saham populer, bandingkan performa DCA historis, dan proyeksikan pertumbuhan bunga majemuk masa depan.",
-    "openGraphTitle": "CompoundLab - Backtest DCA dan Kalkulator Bunga Majemuk",
+    "openGraphTitle": "DCA Backtest - Backtest DCA dan Kalkulator Bunga Majemuk",
     "openGraphDescription": "Backtest investasi bulanan di ETF dan saham populer, bandingkan performa DCA historis, dan proyeksikan pertumbuhan bunga majemuk masa depan."
   },
   "faq": {
@@ -169,9 +169,9 @@
   "legal": {
     "about": {
       "eyebrow": "Tentang",
-      "title": "Tentang CompoundLab",
+      "title": "Tentang DCA Backtest",
       "paragraphs": {
-        "p1": "CompoundLab membantu investor menjelajahi skenario investasi jangka panjang dengan backtest DCA historis dan proyeksi bunga majemuk.",
+        "p1": "DCA Backtest membantu investor menjelajahi skenario investasi jangka panjang dengan backtest DCA historis dan proyeksi bunga majemuk.",
         "p2": "Backtest DCA menggunakan harga bulanan yang dibuat dari data historis penutupan disesuaikan harian jika tersedia, sehingga lebih mudah membandingkan investasi bulanan tetap pada ETF dan saham yang didukung.",
         "p3": "Situs ini dirancang untuk edukasi dan perencanaan. Situs ini tidak memberikan rekomendasi pribadi, layanan broker, atau nasihat investasi."
       }
@@ -180,7 +180,7 @@
       "eyebrow": "Privasi",
       "title": "Kebijakan Privasi",
       "paragraphs": {
-        "p1": "CompoundLab dirancang untuk bekerja tanpa akun pengguna, pembayaran, atau basis data rencana investasi pribadi.",
+        "p1": "DCA Backtest dirancang untuk bekerja tanpa akun pengguna, pembayaran, atau basis data rencana investasi pribadi.",
         "p2": "Situs ini dapat menggunakan Google Analytics untuk memahami lalu lintas situs, halaman populer, informasi browser, dan pola penggunaan umum agar kami dapat meningkatkan layanan.",
         "p3": "Kami tidak meminta Anda mengirimkan informasi keuangan sensitif. Jika Anda menghubungi kami melalui email, kami dapat menggunakan alamat email Anda untuk membalas pesan Anda."
       }
@@ -189,7 +189,7 @@
       "eyebrow": "Ketentuan",
       "title": "Ketentuan Penggunaan",
       "paragraphs": {
-        "p1": "Dengan menggunakan CompoundLab, Anda setuju menggunakan kalkulator dan alat data pasar hanya untuk tujuan yang sah dan edukatif.",
+        "p1": "Dengan menggunakan DCA Backtest, Anda setuju menggunakan kalkulator dan alat data pasar hanya untuk tujuan yang sah dan edukatif.",
         "p2": "Kalkulator ini hanya untuk tujuan edukasi dan bukan nasihat keuangan. Kinerja masa lalu tidak menjamin hasil di masa depan.",
         "p3": "Hasil dapat berbeda dari return broker sungguhan karena pajak, biaya, harga eksekusi, dividen, konversi mata uang, dan perbedaan sumber data."
       }

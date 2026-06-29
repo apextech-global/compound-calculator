@@ -1,6 +1,6 @@
 {
   "common": {
-    "brand": "CompoundLab",
+    "brand": "DCA Backtest",
     "language": "Language",
     "currency": "Currency",
     "currencyNote": "Currency conversion uses sample exchange rates for demonstration only.",
@@ -120,10 +120,10 @@
     "ta": "தமிழ்"
   },
   "seo": {
-    "title": "CompoundLab - DCA Backtest and Compound Interest Calculator",
-    "description": "Backtest monthly investments in popular ETFs and stocks, compare historical DCA performance, and project future compound interest growth.",
-    "openGraphTitle": "CompoundLab - DCA Backtest and Compound Interest Calculator",
-    "openGraphDescription": "Backtest monthly investments in popular ETFs and stocks, compare historical DCA performance, and project future compound interest growth."
+    "title": "DCA Backtest | Test Monthly Investing Against Market History",
+    "description": "Backtest monthly investments, compare historical DCA performance, and project compound growth with multi-currency and multi-language support.",
+    "openGraphTitle": "DCA Backtest | Test Monthly Investing Against Market History",
+    "openGraphDescription": "Backtest monthly investments, compare historical DCA performance, and project compound growth with multi-currency and multi-language support."
   },
   "faq": {
     "eyebrow": "FAQ",
@@ -169,9 +169,9 @@
   "legal": {
     "about": {
       "eyebrow": "About",
-      "title": "About CompoundLab",
+      "title": "About DCA Backtest",
       "paragraphs": {
-        "p1": "CompoundLab helps investors explore long-term investing scenarios with historical DCA backtests and compound interest projections.",
+        "p1": "DCA Backtest helps investors explore long-term investing scenarios with historical DCA backtests and compound interest projections.",
         "p2": "The DCA Backtest uses monthly prices generated from historical daily adjusted close data where available, making it easier to compare steady monthly investing across supported ETFs and stocks.",
         "p3": "The site is designed for education and planning. It does not provide personalized recommendations, brokerage services, or investment advice."
       }
@@ -180,7 +180,7 @@
       "eyebrow": "Privacy",
       "title": "Privacy Policy",
       "paragraphs": {
-        "p1": "CompoundLab is designed to work without user accounts, payments, or a database of personal investment plans.",
+        "p1": "DCA Backtest is designed to work without user accounts, payments, or a database of personal investment plans.",
         "p2": "The site may use Google Analytics to understand website traffic, popular pages, browser information, and general usage patterns so we can improve the service.",
         "p3": "We do not ask you to submit sensitive financial information. If you contact us by email, we may use your email address to respond to your message."
       }
@@ -189,7 +189,7 @@
       "eyebrow": "Terms",
       "title": "Terms of Use",
       "paragraphs": {
-        "p1": "By using CompoundLab, you agree to use the calculators and market-data tools for lawful, educational purposes only.",
+        "p1": "By using DCA Backtest, you agree to use the calculators and market-data tools for lawful, educational purposes only.",
         "p2": "The calculators are for educational purposes only and are not financial advice. Past performance does not guarantee future results.",
         "p3": "Results may differ from real brokerage returns because of taxes, fees, execution prices, dividends, currency conversion, and data-source differences."
       }
