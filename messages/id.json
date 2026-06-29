@@ -118,5 +118,45 @@
     "ar": "العربية",
     "de": "Deutsch",
     "ta": "தமிழ்"
+  },
+  "seo": {
+    "title": "CompoundLab - Backtest DCA dan Kalkulator Bunga Majemuk",
+    "description": "Backtest investasi bulanan di ETF dan saham populer, bandingkan performa DCA historis, dan proyeksikan pertumbuhan bunga majemuk masa depan.",
+    "openGraphTitle": "CompoundLab - Backtest DCA dan Kalkulator Bunga Majemuk",
+    "openGraphDescription": "Backtest investasi bulanan di ETF dan saham populer, bandingkan performa DCA historis, dan proyeksikan pertumbuhan bunga majemuk masa depan."
+  },
+  "faq": {
+    "eyebrow": "FAQ",
+    "title": "Pertanyaan Umum",
+    "items": {
+      "dcaInvesting": {
+        "question": "Apa itu investasi DCA?",
+        "answer": "Dollar-cost averaging berarti menginvestasikan jumlah tetap secara berkala, terlepas dari harga pasar."
+      },
+      "backtestWork": {
+        "question": "Bagaimana cara kerja backtest DCA historis?",
+        "answer": "Backtest menerapkan investasi bulanan Anda pada simbol yang dipilih selama tahun yang dipilih. Backtest menggunakan harga bulanan yang dibuat dari data historis penutupan disesuaikan harian jika tersedia."
+      },
+      "dividends": {
+        "question": "Apakah kalkulator ini menyertakan dividen?",
+        "answer": "Kalkulator menggunakan data penutupan disesuaikan jika tersedia, yang dapat mencerminkan dividen dan aksi korporasi, tetapi tidak memodelkan pembayaran dividen tunai atau aturan reinvestasi secara terpisah."
+      },
+      "brokerageReturns": {
+        "question": "Mengapa hasil berbeda dari return broker sungguhan?",
+        "answer": "Return broker nyata dapat berbeda karena harga eksekusi, tanggal transaksi, pajak, biaya, spread bid-ask, perlakuan dividen, konversi mata uang, dan perbedaan sumber data."
+      },
+      "financialAdvice": {
+        "question": "Apakah ini nasihat keuangan?",
+        "answer": "Tidak. Kinerja masa lalu tidak menjamin hasil di masa depan. Kalkulator ini hanya untuk tujuan edukasi dan bukan nasihat keuangan."
+      },
+      "supportedSymbols": {
+        "question": "Saham dan ETF apa yang didukung?",
+        "answer": "Backtest DCA saat ini mendukung VOO, SPY, QQQ, AAPL, TSLA, dan NVDA."
+      },
+      "currency": {
+        "question": "Bisakah saya mengganti mata uang?",
+        "answer": "Ya. Anda dapat mengganti mata uang tampilan di navigasi atas. Perhitungan tetap berbasis USD secara internal dan konversi menggunakan kurs contoh untuk demonstrasi."
+      }
+    }
   }
 }

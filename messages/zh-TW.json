@@ -118,5 +118,45 @@
     "ar": "العربية",
     "de": "Deutsch",
     "ta": "தமிழ்"
+  },
+  "seo": {
+    "title": "CompoundLab - DCA 回測與複利計算器",
+    "description": "回測熱門 ETF 和股票的每月投資，比較歷史 DCA 表現，並預測未來複利成長。",
+    "openGraphTitle": "CompoundLab - DCA 回測與複利計算器",
+    "openGraphDescription": "回測熱門 ETF 和股票的每月投資，比較歷史 DCA 表現，並預測未來複利成長。"
+  },
+  "faq": {
+    "eyebrow": "常見問題",
+    "title": "常見問題",
+    "items": {
+      "dcaInvesting": {
+        "question": "什麼是 DCA 投資？",
+        "answer": "定期定額投資是指不論市場價格如何，都按固定週期投入固定金額。"
+      },
+      "backtestWork": {
+        "question": "歷史 DCA 回測如何運作？",
+        "answer": "回測會在你選擇的年份內，把每月投資金額套用到所選標的。它會盡可能使用由歷史每日調整後收盤價產生的月度價格。"
+      },
+      "dividends": {
+        "question": "這個計算器包含股息嗎？",
+        "answer": "計算器會盡可能使用調整後收盤價，這可能反映股息和公司行動，但不會單獨模擬現金股息或股息再投資規則。"
+      },
+      "brokerageReturns": {
+        "question": "為什麼結果會不同於真實券商報酬？",
+        "answer": "真實券商報酬可能因成交價格、交易日期、稅費、手續費、買賣價差、股息處理、貨幣兌換和資料來源不同而變化。"
+      },
+      "financialAdvice": {
+        "question": "這是金融建議嗎？",
+        "answer": "不是。過往表現不保證未來結果。本計算器僅供教育用途，並非金融建議。"
+      },
+      "supportedSymbols": {
+        "question": "支援哪些股票和 ETF？",
+        "answer": "DCA 回測目前支援 VOO、SPY、QQQ、AAPL、TSLA 和 NVDA。"
+      },
+      "currency": {
+        "question": "我可以更改貨幣嗎？",
+        "answer": "可以。你可以在頂部導覽更改顯示貨幣。計算內部仍以 USD 為基礎，匯率轉換使用範例匯率用於示範。"
+      }
+    }
   }
 }

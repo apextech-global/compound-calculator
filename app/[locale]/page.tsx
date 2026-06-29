@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import CalculatorSwitcher from "@/components/CalculatorSwitcher";
 import CompoundInterestCalculator from "@/components/CompoundInterestCalculator";
 import DcaBacktestCalculator from "@/components/DcaBacktestCalculator";
+import Faq from "@/components/Faq";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import {
@@ -199,6 +200,8 @@ export default function Home() {
             setShowCompoundTable={setShowCompoundTable}
           />
         )}
+
+        <Faq />
       </section>
     </main>
   );

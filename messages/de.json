@@ -118,5 +118,45 @@
     "ar": "العربية",
     "de": "Deutsch",
     "ta": "தமிழ்"
+  },
+  "seo": {
+    "title": "CompoundLab - DCA-Backtest und Zinseszinsrechner",
+    "description": "Testen Sie monatliche Investitionen in beliebte ETFs und Aktien, vergleichen Sie historische DCA-Performance und projizieren Sie zukünftiges Zinseszinswachstum.",
+    "openGraphTitle": "CompoundLab - DCA-Backtest und Zinseszinsrechner",
+    "openGraphDescription": "Testen Sie monatliche Investitionen in beliebte ETFs und Aktien, vergleichen Sie historische DCA-Performance und projizieren Sie zukünftiges Zinseszinswachstum."
+  },
+  "faq": {
+    "eyebrow": "FAQ",
+    "title": "Häufig gestellte Fragen",
+    "items": {
+      "dcaInvesting": {
+        "question": "Was ist DCA-Investieren?",
+        "answer": "Dollar-Cost-Averaging bedeutet, regelmäßig einen festen Betrag zu investieren, unabhängig vom Marktpreis."
+      },
+      "backtestWork": {
+        "question": "Wie funktioniert der historische DCA-Backtest?",
+        "answer": "Der Backtest wendet Ihre monatliche Investition über die gewählten Jahre auf das ausgewählte Symbol an. Er verwendet monatliche Preise, die aus historischen täglichen bereinigten Schlusskursen erzeugt werden, sofern verfügbar."
+      },
+      "dividends": {
+        "question": "Enthält dieser Rechner Dividenden?",
+        "answer": "Der Rechner verwendet bereinigte Schlusskurse, sofern verfügbar. Diese können Dividenden und Kapitalmaßnahmen widerspiegeln, modellieren aber keine separaten Dividendenzahlungen oder Wiederanlage-Regeln."
+      },
+      "brokerageReturns": {
+        "question": "Warum unterscheiden sich die Ergebnisse von echten Broker-Renditen?",
+        "answer": "Echte Broker-Renditen können wegen Ausführungspreisen, Handelstagen, Steuern, Gebühren, Spreads, Dividendenbehandlung, Währungsumrechnung und Datenquellen abweichen."
+      },
+      "financialAdvice": {
+        "question": "Ist das Finanzberatung?",
+        "answer": "Nein. Vergangene Wertentwicklungen garantieren keine zukünftigen Ergebnisse. Dieser Rechner dient nur Bildungszwecken und ist keine Finanzberatung."
+      },
+      "supportedSymbols": {
+        "question": "Welche Aktien und ETFs werden unterstützt?",
+        "answer": "Der DCA-Backtest unterstützt derzeit VOO, SPY, QQQ, AAPL, TSLA und NVDA."
+      },
+      "currency": {
+        "question": "Kann ich die Währung ändern?",
+        "answer": "Ja. Sie können die Anzeigewährung in der oberen Navigation ändern. Die Berechnungen bleiben intern USD-basiert und die Umrechnung nutzt Beispielkurse zur Demonstration."
+      }
+    }
   }
 }

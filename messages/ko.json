@@ -118,5 +118,45 @@
     "ar": "العربية",
     "de": "Deutsch",
     "ta": "தமிழ்"
+  },
+  "seo": {
+    "title": "CompoundLab - DCA 백테스트 및 복리 계산기",
+    "description": "인기 ETF와 주식의 월별 투자를 백테스트하고, 과거 DCA 성과를 비교하며, 미래 복리 성장을 예측하세요.",
+    "openGraphTitle": "CompoundLab - DCA 백테스트 및 복리 계산기",
+    "openGraphDescription": "인기 ETF와 주식의 월별 투자를 백테스트하고, 과거 DCA 성과를 비교하며, 미래 복리 성장을 예측하세요."
+  },
+  "faq": {
+    "eyebrow": "FAQ",
+    "title": "자주 묻는 질문",
+    "items": {
+      "dcaInvesting": {
+        "question": "DCA 투자란 무엇인가요?",
+        "answer": "달러 비용 평균법은 시장 가격과 관계없이 정해진 일정에 고정 금액을 투자하는 방식입니다."
+      },
+      "backtestWork": {
+        "question": "과거 DCA 백테스트는 어떻게 작동하나요?",
+        "answer": "백테스트는 선택한 기간 동안 월별 투자금을 선택한 종목에 적용합니다. 가능한 경우 과거 일별 수정 종가 데이터에서 생성한 월별 가격을 사용합니다."
+      },
+      "dividends": {
+        "question": "이 계산기에 배당금이 포함되나요?",
+        "answer": "계산기는 가능한 경우 수정 종가를 사용하므로 배당과 기업 활동이 반영될 수 있지만, 현금 배당 지급이나 재투자 규칙을 별도로 모델링하지는 않습니다."
+      },
+      "brokerageReturns": {
+        "question": "실제 증권사 수익률과 결과가 다른 이유는 무엇인가요?",
+        "answer": "실제 증권사 수익률은 체결 가격, 거래일, 세금, 수수료, 매수-매도 스프레드, 배당 처리, 환전, 데이터 출처 차이 때문에 달라질 수 있습니다."
+      },
+      "financialAdvice": {
+        "question": "이것은 금융 조언인가요?",
+        "answer": "아니요. 과거 성과가 미래 결과를 보장하지 않습니다. 이 계산기는 교육 목적으로만 제공되며 금융 조언이 아닙니다."
+      },
+      "supportedSymbols": {
+        "question": "어떤 주식과 ETF를 지원하나요?",
+        "answer": "DCA 백테스트는 현재 VOO, SPY, QQQ, AAPL, TSLA, NVDA를 지원합니다."
+      },
+      "currency": {
+        "question": "통화를 변경할 수 있나요?",
+        "answer": "예. 상단 내비게이션에서 표시 통화를 변경할 수 있습니다. 계산은 내부적으로 USD 기준이며, 환산은 데모용 샘플 환율을 사용합니다."
+      }
+    }
   }
 }

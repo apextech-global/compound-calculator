@@ -118,5 +118,45 @@
     "ar": "العربية",
     "de": "Deutsch",
     "ta": "தமிழ்"
+  },
+  "seo": {
+    "title": "CompoundLab - Ujian Balik DCA dan Kalkulator Faedah Kompaun",
+    "description": "Uji balik pelaburan bulanan dalam ETF dan saham popular, bandingkan prestasi DCA sejarah, dan unjur pertumbuhan faedah kompaun masa depan.",
+    "openGraphTitle": "CompoundLab - Ujian Balik DCA dan Kalkulator Faedah Kompaun",
+    "openGraphDescription": "Uji balik pelaburan bulanan dalam ETF dan saham popular, bandingkan prestasi DCA sejarah, dan unjur pertumbuhan faedah kompaun masa depan."
+  },
+  "faq": {
+    "eyebrow": "FAQ",
+    "title": "Soalan Lazim",
+    "items": {
+      "dcaInvesting": {
+        "question": "Apakah pelaburan DCA?",
+        "answer": "Dollar-cost averaging bermaksud melabur jumlah tetap mengikut jadual tetap, tanpa mengira harga pasaran."
+      },
+      "backtestWork": {
+        "question": "Bagaimanakah ujian balik DCA sejarah berfungsi?",
+        "answer": "Ujian balik menggunakan pelaburan bulanan anda pada simbol pilihan sepanjang tahun yang dipilih. Ia menggunakan harga bulanan yang dijana daripada data tutup terlaras harian sejarah jika tersedia."
+      },
+      "dividends": {
+        "question": "Adakah kalkulator ini termasuk dividen?",
+        "answer": "Kalkulator menggunakan data tutup terlaras jika tersedia, yang mungkin mencerminkan dividen dan tindakan korporat, tetapi ia tidak memodelkan bayaran dividen tunai atau peraturan pelaburan semula secara berasingan."
+      },
+      "brokerageReturns": {
+        "question": "Mengapa keputusan berbeza daripada pulangan broker sebenar?",
+        "answer": "Pulangan broker sebenar boleh berbeza kerana harga pelaksanaan, tarikh dagangan, cukai, yuran, spread bida-tanya, rawatan dividen, pertukaran mata wang dan perbezaan sumber data."
+      },
+      "financialAdvice": {
+        "question": "Adakah ini nasihat kewangan?",
+        "answer": "Tidak. Prestasi lalu tidak menjamin keputusan masa depan. Kalkulator ini hanya untuk tujuan pendidikan dan bukan nasihat kewangan."
+      },
+      "supportedSymbols": {
+        "question": "Saham dan ETF manakah yang disokong?",
+        "answer": "Ujian Balik DCA kini menyokong VOO, SPY, QQQ, AAPL, TSLA dan NVDA."
+      },
+      "currency": {
+        "question": "Bolehkah saya menukar mata wang?",
+        "answer": "Ya. Anda boleh menukar mata wang paparan di navigasi atas. Pengiraan kekal berasaskan USD secara dalaman dan penukaran menggunakan kadar pertukaran contoh untuk demonstrasi."
+      }
+    }
   }
 }

@@ -118,5 +118,45 @@
     "ar": "العربية",
     "de": "Deutsch",
     "ta": "தமிழ்"
+  },
+  "seo": {
+    "title": "CompoundLab - DCA Backtest and Compound Interest Calculator",
+    "description": "Backtest monthly investments in popular ETFs and stocks, compare historical DCA performance, and project future compound interest growth.",
+    "openGraphTitle": "CompoundLab - DCA Backtest and Compound Interest Calculator",
+    "openGraphDescription": "Backtest monthly investments in popular ETFs and stocks, compare historical DCA performance, and project future compound interest growth."
+  },
+  "faq": {
+    "eyebrow": "FAQ",
+    "title": "Frequently Asked Questions",
+    "items": {
+      "dcaInvesting": {
+        "question": "What is DCA investing?",
+        "answer": "Dollar-cost averaging means investing a fixed amount on a regular schedule, regardless of market price."
+      },
+      "backtestWork": {
+        "question": "How does the historical DCA backtest work?",
+        "answer": "The backtest applies your monthly investment to the selected symbol over your chosen years. It uses monthly prices generated from historical daily adjusted close data where available."
+      },
+      "dividends": {
+        "question": "Does this calculator include dividends?",
+        "answer": "The calculator uses adjusted close data where available, which may reflect dividends and corporate actions in the historical price series, but it does not separately model dividend cash payments or reinvestment rules."
+      },
+      "brokerageReturns": {
+        "question": "Why are results different from real brokerage returns?",
+        "answer": "Real brokerage returns can differ because of execution prices, trading dates, taxes, fees, bid-ask spreads, dividend treatment, currency conversion, and data-source differences."
+      },
+      "financialAdvice": {
+        "question": "Is this financial advice?",
+        "answer": "No. Past performance does not guarantee future results. This calculator is for educational purposes only and is not financial advice."
+      },
+      "supportedSymbols": {
+        "question": "Which stocks and ETFs are supported?",
+        "answer": "The DCA Backtest currently supports VOO, SPY, QQQ, AAPL, TSLA, and NVDA."
+      },
+      "currency": {
+        "question": "Can I change the currency?",
+        "answer": "Yes. You can change the display currency in the top navigation. Calculations remain based in USD internally, and conversion uses sample exchange rates for demonstration."
+      }
+    }
   }
 }

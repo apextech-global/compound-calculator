@@ -118,5 +118,45 @@
     "ar": "العربية",
     "de": "Deutsch",
     "ta": "தமிழ்"
+  },
+  "seo": {
+    "title": "CompoundLab - Backtest DCA et calculateur d’intérêts composés",
+    "description": "Backtestez des investissements mensuels dans des ETF et actions populaires, comparez la performance DCA historique et projetez la croissance future avec intérêts composés.",
+    "openGraphTitle": "CompoundLab - Backtest DCA et calculateur d’intérêts composés",
+    "openGraphDescription": "Backtestez des investissements mensuels dans des ETF et actions populaires, comparez la performance DCA historique et projetez la croissance future avec intérêts composés."
+  },
+  "faq": {
+    "eyebrow": "FAQ",
+    "title": "Questions fréquentes",
+    "items": {
+      "dcaInvesting": {
+        "question": "Qu’est-ce que l’investissement DCA ?",
+        "answer": "Le dollar-cost averaging consiste à investir un montant fixe selon un calendrier régulier, quel que soit le prix du marché."
+      },
+      "backtestWork": {
+        "question": "Comment fonctionne le backtest DCA historique ?",
+        "answer": "Le backtest applique votre investissement mensuel au symbole choisi sur les années sélectionnées. Il utilise des prix mensuels générés à partir des cours de clôture ajustés quotidiens historiques lorsqu’ils sont disponibles."
+      },
+      "dividends": {
+        "question": "Ce calculateur inclut-il les dividendes ?",
+        "answer": "Le calculateur utilise les cours de clôture ajustés lorsqu’ils sont disponibles, ce qui peut refléter les dividendes et opérations sur titres, mais il ne modélise pas séparément les paiements de dividendes ou règles de réinvestissement."
+      },
+      "brokerageReturns": {
+        "question": "Pourquoi les résultats diffèrent-ils des rendements réels chez un courtier ?",
+        "answer": "Les rendements réels peuvent différer à cause des prix d’exécution, dates de transaction, impôts, frais, spreads, traitement des dividendes, conversion de devise et différences de sources de données."
+      },
+      "financialAdvice": {
+        "question": "Est-ce un conseil financier ?",
+        "answer": "Non. Les performances passées ne garantissent pas les résultats futurs. Ce calculateur est fourni à des fins éducatives uniquement et ne constitue pas un conseil financier."
+      },
+      "supportedSymbols": {
+        "question": "Quelles actions et ETF sont pris en charge ?",
+        "answer": "Le backtest DCA prend actuellement en charge VOO, SPY, QQQ, AAPL, TSLA et NVDA."
+      },
+      "currency": {
+        "question": "Puis-je changer la devise ?",
+        "answer": "Oui. Vous pouvez changer la devise d’affichage dans la navigation supérieure. Les calculs restent basés en USD en interne et la conversion utilise des taux d’exemple pour la démonstration."
+      }
+    }
   }
 }

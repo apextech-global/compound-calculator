@@ -118,5 +118,45 @@
     "ar": "العربية",
     "de": "Deutsch",
     "ta": "தமிழ்"
+  },
+  "seo": {
+    "title": "CompoundLab - DCA 回测与复利计算器",
+    "description": "回测热门 ETF 和股票的每月投资，比较历史 DCA 表现，并预测未来复利增长。",
+    "openGraphTitle": "CompoundLab - DCA 回测与复利计算器",
+    "openGraphDescription": "回测热门 ETF 和股票的每月投资，比较历史 DCA 表现，并预测未来复利增长。"
+  },
+  "faq": {
+    "eyebrow": "常见问题",
+    "title": "常见问题",
+    "items": {
+      "dcaInvesting": {
+        "question": "什么是 DCA 投资？",
+        "answer": "定期定额投资是指无论市场价格如何，都按固定周期投入固定金额。"
+      },
+      "backtestWork": {
+        "question": "历史 DCA 回测如何运作？",
+        "answer": "回测会在你选择的年份内，把每月投资金额应用到所选标的。它会尽可能使用由历史每日复权收盘价生成的月度价格。"
+      },
+      "dividends": {
+        "question": "这个计算器包含股息吗？",
+        "answer": "计算器会尽可能使用调整后收盘价，这可能反映股息和公司行动，但不会单独模拟现金股息或股息再投资规则。"
+      },
+      "brokerageReturns": {
+        "question": "为什么结果会不同于真实券商回报？",
+        "answer": "真实券商回报可能因成交价格、交易日期、税费、手续费、买卖价差、股息处理、货币兑换和数据来源不同而变化。"
+      },
+      "financialAdvice": {
+        "question": "这是金融建议吗？",
+        "answer": "不是。过往表现不保证未来结果。本计算器仅供教育用途，不构成金融建议。"
+      },
+      "supportedSymbols": {
+        "question": "支持哪些股票和 ETF？",
+        "answer": "DCA 回测目前支持 VOO、SPY、QQQ、AAPL、TSLA 和 NVDA。"
+      },
+      "currency": {
+        "question": "我可以更改货币吗？",
+        "answer": "可以。你可以在顶部导航更改显示货币。计算内部仍以 USD 为基础，汇率转换使用示例汇率用于演示。"
+      }
+    }
   }
 }

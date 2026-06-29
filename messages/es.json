@@ -118,5 +118,45 @@
     "ar": "العربية",
     "de": "Deutsch",
     "ta": "தமிழ்"
+  },
+  "seo": {
+    "title": "CompoundLab - Backtest DCA y calculadora de interés compuesto",
+    "description": "Haz backtests de inversiones mensuales en ETF y acciones populares, compara el rendimiento histórico DCA y proyecta el crecimiento futuro con interés compuesto.",
+    "openGraphTitle": "CompoundLab - Backtest DCA y calculadora de interés compuesto",
+    "openGraphDescription": "Haz backtests de inversiones mensuales en ETF y acciones populares, compara el rendimiento histórico DCA y proyecta el crecimiento futuro con interés compuesto."
+  },
+  "faq": {
+    "eyebrow": "FAQ",
+    "title": "Preguntas frecuentes",
+    "items": {
+      "dcaInvesting": {
+        "question": "¿Qué es la inversión DCA?",
+        "answer": "El dollar-cost averaging consiste en invertir una cantidad fija de forma periódica, sin importar el precio de mercado."
+      },
+      "backtestWork": {
+        "question": "¿Cómo funciona el backtest DCA histórico?",
+        "answer": "El backtest aplica tu inversión mensual al símbolo seleccionado durante los años elegidos. Usa precios mensuales generados a partir de datos históricos diarios de cierre ajustado cuando están disponibles."
+      },
+      "dividends": {
+        "question": "¿Esta calculadora incluye dividendos?",
+        "answer": "La calculadora usa precios de cierre ajustados cuando están disponibles, lo que puede reflejar dividendos y acciones corporativas, pero no modela por separado pagos de dividendos ni reglas de reinversión."
+      },
+      "brokerageReturns": {
+        "question": "¿Por qué los resultados difieren de los rendimientos reales de un bróker?",
+        "answer": "Los rendimientos reales de un bróker pueden diferir por precios de ejecución, fechas de operación, impuestos, comisiones, spreads, tratamiento de dividendos, conversión de divisas y diferencias de fuentes de datos."
+      },
+      "financialAdvice": {
+        "question": "¿Es asesoramiento financiero?",
+        "answer": "No. El rendimiento pasado no garantiza resultados futuros. Esta calculadora es solo para fines educativos y no constituye asesoramiento financiero."
+      },
+      "supportedSymbols": {
+        "question": "¿Qué acciones y ETF son compatibles?",
+        "answer": "El backtest DCA actualmente admite VOO, SPY, QQQ, AAPL, TSLA y NVDA."
+      },
+      "currency": {
+        "question": "¿Puedo cambiar la moneda?",
+        "answer": "Sí. Puedes cambiar la moneda de visualización en la navegación superior. Los cálculos siguen basados internamente en USD y la conversión usa tipos de cambio de muestra para demostración."
+      }
+    }
   }
 }
