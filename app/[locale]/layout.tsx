@@ -1,6 +1,7 @@
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import { getTextDirection } from "@/lib/locales";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -21,7 +22,7 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider>
-      <div dir={locale === "ar" ? "rtl" : "ltr"}>{children}</div>
+      <div dir={getTextDirection(locale)}>{children}</div>
     </NextIntlClientProvider>
   );
 }
