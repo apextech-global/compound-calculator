@@ -21,7 +21,6 @@ import {
   formatShares,
 } from "@/lib/formatting";
 import {
-  availableYears,
   symbolOptions,
   type SymbolKey,
 } from "@/lib/mockMarketData";
@@ -38,6 +37,7 @@ type DcaBacktestCalculatorProps = {
   backtestMonthlyAmount: string;
   backtestStartYear: string;
   backtestEndYear: string;
+  availableYears: number[];
   showBacktestTable: boolean;
   setBacktestSymbol: (value: SymbolKey) => void;
   setBacktestMonthlyAmount: (value: string) => void;
@@ -54,6 +54,7 @@ export default function DcaBacktestCalculator({
   backtestMonthlyAmount,
   backtestStartYear,
   backtestEndYear,
+  availableYears,
   showBacktestTable,
   setBacktestSymbol,
   setBacktestMonthlyAmount,

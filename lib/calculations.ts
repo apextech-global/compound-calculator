@@ -1,5 +1,5 @@
 import {
-  availableYears,
+  getMockYearsForSymbol,
   historicalPriceData,
   type SymbolKey,
 } from "./mockMarketData";
@@ -99,8 +99,9 @@ export function calculateDcaBacktest({
   monthlyPrices?: MarketCsvRow[] | null;
 }): DcaBacktestResult {
   const monthly = Number(monthlyAmount) || 0;
-  const rawStartYear = Number(startYear) || availableYears[0];
-  const rawEndYear = Number(endYear) || availableYears[availableYears.length - 1];
+  const fallbackYears = getMockYearsForSymbol(symbol);
+  const rawStartYear = Number(startYear) || fallbackYears[0];
+  const rawEndYear = Number(endYear) || fallbackYears[fallbackYears.length - 1];
   const firstYear = Math.min(rawStartYear, rawEndYear);
   const lastYear = Math.max(rawStartYear, rawEndYear);
 
@@ -119,7 +120,7 @@ export function calculateDcaBacktest({
   let totalShares = 0;
   let totalInvested = 0;
 
-  for (const year of availableYears) {
+  for (const year of fallbackYears) {
     if (year < firstYear || year > lastYear) {
       continue;
     }

@@ -12,8 +12,12 @@ import {
   calculateDcaBacktest,
 } from "@/lib/calculations";
 import { getDefaultCurrency, type CurrencyCode } from "@/lib/currencies";
-import { loadMarketCsv, type MarketCsvRow } from "@/lib/marketCsv";
-import type { SymbolKey } from "@/lib/mockMarketData";
+import {
+  getMarketCsvYears,
+  loadMarketCsv,
+  type MarketCsvRow,
+} from "@/lib/marketCsv";
+import { getMockYearsForSymbol, type SymbolKey } from "@/lib/mockMarketData";
 
 type ActiveCalculator = "dca" | "compound";
 
@@ -57,6 +61,25 @@ export default function Home() {
   const activeMarketCsvRows =
     marketCsvData?.symbol === backtestSymbol ? marketCsvData.rows : null;
 
+  const availableBacktestYears = useMemo(() => {
+    const csvYears = getMarketCsvYears(activeMarketCsvRows);
+
+    return csvYears.length > 0
+      ? csvYears
+      : getMockYearsForSymbol(backtestSymbol);
+  }, [activeMarketCsvRows, backtestSymbol]);
+
+  const normalizedBacktestStartYear = availableBacktestYears.includes(
+    Number(backtestStartYear)
+  )
+    ? backtestStartYear
+    : String(availableBacktestYears[0]);
+  const normalizedBacktestEndYear = availableBacktestYears.includes(
+    Number(backtestEndYear)
+  )
+    ? backtestEndYear
+    : String(availableBacktestYears[availableBacktestYears.length - 1]);
+
   const result = useMemo(
     () =>
       calculateCompoundInterest({
@@ -92,16 +115,16 @@ export default function Home() {
       calculateDcaBacktest({
         symbol: backtestSymbol,
         monthlyAmount: backtestMonthlyAmount,
-        startYear: backtestStartYear,
-        endYear: backtestEndYear,
+        startYear: normalizedBacktestStartYear,
+        endYear: normalizedBacktestEndYear,
         monthlyPrices: activeMarketCsvRows,
       }),
     [
       activeMarketCsvRows,
-      backtestEndYear,
       backtestMonthlyAmount,
-      backtestStartYear,
       backtestSymbol,
+      normalizedBacktestEndYear,
+      normalizedBacktestStartYear,
     ]
   );
 
@@ -148,8 +171,9 @@ export default function Home() {
             backtestChartData={backtestChartData}
             backtestSymbol={backtestSymbol}
             backtestMonthlyAmount={backtestMonthlyAmount}
-            backtestStartYear={backtestStartYear}
-            backtestEndYear={backtestEndYear}
+            backtestStartYear={normalizedBacktestStartYear}
+            backtestEndYear={normalizedBacktestEndYear}
+            availableYears={availableBacktestYears}
             showBacktestTable={showBacktestTable}
             setBacktestSymbol={setBacktestSymbol}
             setBacktestMonthlyAmount={setBacktestMonthlyAmount}

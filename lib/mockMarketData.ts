@@ -83,3 +83,9 @@ export const historicalPriceData: Record<SymbolKey, Record<number, number>> = {
 
 export const symbolOptions = Object.keys(historicalPriceData) as SymbolKey[];
 export const availableYears = Object.keys(historicalPriceData.VOO).map(Number);
+
+export function getMockYearsForSymbol(symbol: SymbolKey) {
+  return Object.keys(historicalPriceData[symbol])
+    .map(Number)
+    .sort((a, b) => a - b);
+}

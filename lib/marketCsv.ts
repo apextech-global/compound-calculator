@@ -53,6 +53,20 @@ export function parseMarketCsv(csv: string): MarketCsvRow[] {
     .sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
 }
 
+export function getMarketCsvYears(rows: MarketCsvRow[] | null | undefined) {
+  if (!rows?.length) {
+    return [];
+  }
+
+  return [
+    ...new Set(
+      rows
+        .map((row) => new Date(row.date).getFullYear())
+        .filter((year) => Number.isFinite(year))
+    ),
+  ].sort((a, b) => a - b);
+}
+
 export async function loadMarketCsv(
   symbol: SymbolKey
 ): Promise<MarketCsvRow[] | null> {
