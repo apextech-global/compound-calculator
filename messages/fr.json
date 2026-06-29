@@ -50,7 +50,7 @@
     "title": "Testez un investissement mensuel avec un historique de marché fictif",
     "description": "Comparez la performance potentielle d’un apport mensuel régulier avec des prix annuels fictifs pour ETF et actions populaires.",
     "endingValue": "Valeur finale du backtest",
-    "returnSummary": "Rendement total de {returnValue}% avec les prix annuels fictifs de {symbol}.",
+    "returnSummary": "Rendement total de {returnValue} % pour {symbol}.",
     "inputsEyebrow": "Entrées du backtest",
     "scenarioTitle": "Scénario DCA",
     "symbol": "Symbole",
@@ -64,7 +64,9 @@
     "portfolioValue": "Valeur du portefeuille",
     "totalInvested": "Total investi",
     "annualDetail": "Détail annuel",
-    "tableTitle": "Tableau annuel du backtest"
+    "tableTitle": "Tableau annuel du backtest",
+    "csvDataSource": "Utilisation de données historiques CSV",
+    "mockDataSource": "Utilisation de données d’exemple"
   },
   "compound": {
     "eyebrow": "Calculateur composé",

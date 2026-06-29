@@ -50,7 +50,7 @@
     "title": "用模擬市場歷史測試每月投資",
     "description": "比較固定每月投入在熱門 ETF 與股票範例年度價格中的可能表現。",
     "endingValue": "回測期末價值",
-    "returnSummary": "使用 {symbol} 的模擬年度價格，總報酬為 {returnValue}%。",
+    "returnSummary": "{symbol} 的總報酬率為 {returnValue}%。",
     "inputsEyebrow": "回測輸入",
     "scenarioTitle": "DCA 情境",
     "symbol": "代號",
@@ -64,7 +64,9 @@
     "portfolioValue": "投資組合價值",
     "totalInvested": "總投入",
     "annualDetail": "年度明細",
-    "tableTitle": "年度回測表"
+    "tableTitle": "年度回測表",
+    "csvDataSource": "正在使用 CSV 歷史資料",
+    "mockDataSource": "正在使用範例模擬資料"
   },
   "compound": {
     "eyebrow": "複利計算器",

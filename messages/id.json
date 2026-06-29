@@ -50,7 +50,7 @@
     "title": "Uji Investasi Bulanan Dengan Riwayat Pasar Contoh",
     "description": "Bandingkan bagaimana kontribusi bulanan tetap dapat berkinerja pada harga tahunan contoh untuk ETF dan saham populer.",
     "endingValue": "Nilai akhir backtest",
-    "returnSummary": "{returnValue}% total imbal hasil menggunakan harga tahunan contoh untuk {symbol}.",
+    "returnSummary": "Total imbal hasil {returnValue}% untuk {symbol}.",
     "inputsEyebrow": "Input Backtest",
     "scenarioTitle": "Skenario DCA",
     "symbol": "Simbol",
@@ -64,7 +64,9 @@
     "portfolioValue": "Nilai portofolio",
     "totalInvested": "Total diinvestasikan",
     "annualDetail": "Rincian Tahunan",
-    "tableTitle": "Tabel Backtest Tahunan"
+    "tableTitle": "Tabel Backtest Tahunan",
+    "csvDataSource": "Menggunakan data historis CSV",
+    "mockDataSource": "Menggunakan data contoh simulasi"
   },
   "compound": {
     "eyebrow": "Kalkulator Kompon",

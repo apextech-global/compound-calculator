@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import CalculatorSwitcher from "@/components/CalculatorSwitcher";
 import CompoundInterestCalculator from "@/components/CompoundInterestCalculator";
 import DcaBacktestCalculator from "@/components/DcaBacktestCalculator";
@@ -12,6 +12,7 @@ import {
   calculateDcaBacktest,
 } from "@/lib/calculations";
 import { getDefaultCurrency, type CurrencyCode } from "@/lib/currencies";
+import { loadMarketCsv, type MarketCsvRow } from "@/lib/marketCsv";
 import type { SymbolKey } from "@/lib/mockMarketData";
 
 type ActiveCalculator = "dca" | "compound";
@@ -34,6 +35,27 @@ export default function Home() {
   const [backtestMonthlyAmount, setBacktestMonthlyAmount] = useState("500");
   const [backtestStartYear, setBacktestStartYear] = useState("2018");
   const [backtestEndYear, setBacktestEndYear] = useState("2025");
+  const [marketCsvData, setMarketCsvData] = useState<{
+    symbol: SymbolKey;
+    rows: MarketCsvRow[] | null;
+  } | null>(null);
+
+  useEffect(() => {
+    let isActive = true;
+
+    loadMarketCsv(backtestSymbol).then((rows) => {
+      if (isActive) {
+        setMarketCsvData({ symbol: backtestSymbol, rows });
+      }
+    });
+
+    return () => {
+      isActive = false;
+    };
+  }, [backtestSymbol]);
+
+  const activeMarketCsvRows =
+    marketCsvData?.symbol === backtestSymbol ? marketCsvData.rows : null;
 
   const result = useMemo(
     () =>
@@ -72,8 +94,10 @@ export default function Home() {
         monthlyAmount: backtestMonthlyAmount,
         startYear: backtestStartYear,
         endYear: backtestEndYear,
+        monthlyPrices: activeMarketCsvRows,
       }),
     [
+      activeMarketCsvRows,
       backtestEndYear,
       backtestMonthlyAmount,
       backtestStartYear,

@@ -50,7 +50,7 @@
     "title": "Test a Monthly Investment Against Mock Market History",
     "description": "Compare how a steady monthly contribution could have performed across sample yearly prices for popular ETFs and stocks.",
     "endingValue": "Backtested ending value",
-    "returnSummary": "{returnValue}% total return using mock yearly prices for {symbol}.",
+    "returnSummary": "{returnValue}% total return for {symbol}.",
     "inputsEyebrow": "Backtest Inputs",
     "scenarioTitle": "DCA Scenario",
     "symbol": "Symbol",
@@ -64,7 +64,9 @@
     "portfolioValue": "Portfolio value",
     "totalInvested": "Total invested",
     "annualDetail": "Annual Detail",
-    "tableTitle": "Yearly Backtest Table"
+    "tableTitle": "Yearly Backtest Table",
+    "csvDataSource": "Using CSV historical data",
+    "mockDataSource": "Using sample mock data"
   },
   "compound": {
     "eyebrow": "Compound Calculator",

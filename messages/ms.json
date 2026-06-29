@@ -50,7 +50,7 @@
     "title": "Uji Pelaburan Bulanan Dengan Sejarah Pasaran Contoh",
     "description": "Bandingkan prestasi sumbangan bulanan tetap menggunakan harga tahunan contoh untuk ETF dan saham popular.",
     "endingValue": "Nilai akhir ujian balik",
-    "returnSummary": "{returnValue}% jumlah pulangan menggunakan harga tahunan contoh untuk {symbol}.",
+    "returnSummary": "Jumlah pulangan {returnValue}% untuk {symbol}.",
     "inputsEyebrow": "Input Ujian Balik",
     "scenarioTitle": "Senario DCA",
     "symbol": "Simbol",
@@ -64,7 +64,9 @@
     "portfolioValue": "Nilai portfolio",
     "totalInvested": "Jumlah dilabur",
     "annualDetail": "Butiran Tahunan",
-    "tableTitle": "Jadual Ujian Balik Tahunan"
+    "tableTitle": "Jadual Ujian Balik Tahunan",
+    "csvDataSource": "Menggunakan data sejarah CSV",
+    "mockDataSource": "Menggunakan data contoh simulasi"
   },
   "compound": {
     "eyebrow": "Kalkulator Kompaun",

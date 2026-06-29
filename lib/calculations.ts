@@ -3,6 +3,7 @@ import {
   historicalPriceData,
   type SymbolKey,
 } from "./mockMarketData";
+import type { MarketCsvRow } from "./marketCsv";
 
 export type YearlyResult = {
   year: number;
@@ -33,6 +34,7 @@ export type DcaBacktestResult = {
   totalProfit: number;
   totalReturn: number;
   totalShares: number;
+  dataSource: "csv" | "mock";
   yearlyResults: DcaYearlyResult[];
 };
 
@@ -88,17 +90,29 @@ export function calculateDcaBacktest({
   monthlyAmount,
   startYear,
   endYear,
+  monthlyPrices,
 }: {
   symbol: SymbolKey;
   monthlyAmount: string;
   startYear: string;
   endYear: string;
+  monthlyPrices?: MarketCsvRow[] | null;
 }): DcaBacktestResult {
   const monthly = Number(monthlyAmount) || 0;
   const rawStartYear = Number(startYear) || availableYears[0];
   const rawEndYear = Number(endYear) || availableYears[availableYears.length - 1];
   const firstYear = Math.min(rawStartYear, rawEndYear);
   const lastYear = Math.max(rawStartYear, rawEndYear);
+
+  if (monthlyPrices?.length) {
+    return calculateDcaBacktestFromCsv({
+      monthly,
+      firstYear,
+      lastYear,
+      monthlyPrices,
+    });
+  }
+
   const priceHistory = historicalPriceData[symbol];
   const yearlyResults: DcaYearlyResult[] = [];
 
@@ -138,6 +152,69 @@ export function calculateDcaBacktest({
     totalProfit,
     totalReturn,
     totalShares,
+    dataSource: "mock",
+    yearlyResults,
+  };
+}
+
+function calculateDcaBacktestFromCsv({
+  monthly,
+  firstYear,
+  lastYear,
+  monthlyPrices,
+}: {
+  monthly: number;
+  firstYear: number;
+  lastYear: number;
+  monthlyPrices: MarketCsvRow[];
+}): DcaBacktestResult {
+  const yearlyResults: DcaYearlyResult[] = [];
+  let totalShares = 0;
+  let totalInvested = 0;
+  let currentYear: DcaYearlyResult | null = null;
+
+  for (const row of monthlyPrices) {
+    const year = new Date(row.date).getFullYear();
+
+    if (year < firstYear || year > lastYear || row.close <= 0) {
+      continue;
+    }
+
+    if (!currentYear || currentYear.year !== year) {
+      currentYear = {
+        year,
+        price: row.close,
+        sharesBought: 0,
+        totalShares,
+        portfolioValue: totalShares * row.close,
+        invested: totalInvested,
+      };
+      yearlyResults.push(currentYear);
+    }
+
+    const sharesBought = monthly / row.close;
+    totalInvested += monthly;
+    totalShares += sharesBought;
+
+    currentYear.price = row.close;
+    currentYear.sharesBought += sharesBought;
+    currentYear.totalShares = totalShares;
+    currentYear.portfolioValue = totalShares * row.close;
+    currentYear.invested = totalInvested;
+  }
+
+  const finalPrice = yearlyResults.at(-1)?.price ?? 0;
+  const finalValue = totalShares * finalPrice;
+  const totalProfit = finalValue - totalInvested;
+  const totalReturn = totalInvested > 0 ? (totalProfit / totalInvested) * 100 : 0;
+
+  return {
+    finalValue,
+    totalInvested,
+    totalProfit,
+    totalReturn,
+    totalShares,
+    dataSource: "csv",
     yearlyResults,
   };
 }

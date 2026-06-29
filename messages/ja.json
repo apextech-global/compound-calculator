@@ -50,7 +50,7 @@
     "title": "モック市場履歴で毎月投資をテスト",
     "description": "人気 ETF と株式のサンプル年次価格で、一定の毎月積立がどう推移したか比較します。",
     "endingValue": "バックテスト終了価値",
-    "returnSummary": "{symbol} のモック年次価格を使った総リターンは {returnValue}% です。",
+    "returnSummary": "{symbol} の合計リターンは {returnValue}% です。",
     "inputsEyebrow": "バックテスト入力",
     "scenarioTitle": "DCA シナリオ",
     "symbol": "シンボル",
@@ -64,7 +64,9 @@
     "portfolioValue": "ポートフォリオ価値",
     "totalInvested": "総投資額",
     "annualDetail": "年次詳細",
-    "tableTitle": "年次バックテスト表"
+    "tableTitle": "年次バックテスト表",
+    "csvDataSource": "CSV 履歴データを使用中",
+    "mockDataSource": "サンプルのモックデータを使用中"
   },
   "compound": {
     "eyebrow": "複利計算機",

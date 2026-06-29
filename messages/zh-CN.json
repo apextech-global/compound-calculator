@@ -50,7 +50,7 @@
     "title": "用模拟市场历史测试每月投资",
     "description": "比较固定每月投入在热门 ETF 和股票示例年度价格中的潜在表现。",
     "endingValue": "回测期末价值",
-    "returnSummary": "使用 {symbol} 的模拟年度价格，总回报为 {returnValue}%。",
+    "returnSummary": "{symbol} 的总回报率为 {returnValue}%。",
     "inputsEyebrow": "回测输入",
     "scenarioTitle": "DCA 场景",
     "symbol": "代码",
@@ -64,7 +64,9 @@
     "portfolioValue": "投资组合价值",
     "totalInvested": "总投入",
     "annualDetail": "年度明细",
-    "tableTitle": "年度回测表"
+    "tableTitle": "年度回测表",
+    "csvDataSource": "正在使用 CSV 历史数据",
+    "mockDataSource": "正在使用示例模拟数据"
   },
   "compound": {
     "eyebrow": "复利计算器",

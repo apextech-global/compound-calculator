@@ -50,7 +50,7 @@
     "title": "샘플 시장 기록으로 월별 투자를 테스트하세요",
     "description": "인기 ETF와 주식의 샘플 연간 가격에서 꾸준한 월별 납입이 어떻게 작동했을지 비교합니다.",
     "endingValue": "백테스트 종료 가치",
-    "returnSummary": "{symbol} 샘플 연간 가격 기준 총 수익률은 {returnValue}%입니다.",
+    "returnSummary": "{symbol}의 총수익률은 {returnValue}%입니다.",
     "inputsEyebrow": "백테스트 입력",
     "scenarioTitle": "DCA 시나리오",
     "symbol": "심볼",
@@ -64,7 +64,9 @@
     "portfolioValue": "포트폴리오 가치",
     "totalInvested": "총 투자액",
     "annualDetail": "연간 상세",
-    "tableTitle": "연간 백테스트 표"
+    "tableTitle": "연간 백테스트 표",
+    "csvDataSource": "CSV 과거 데이터를 사용 중",
+    "mockDataSource": "샘플 모의 데이터를 사용 중"
   },
   "compound": {
     "eyebrow": "복리 계산기",
