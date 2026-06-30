@@ -95,10 +95,10 @@ export default function DcaBacktestCalculator({
         </div>
 
         <div className="min-w-0 overflow-hidden rounded-3xl border border-cyan-300/20 bg-cyan-400/10 p-6 shadow-2xl shadow-cyan-950/30">
-          <p className="text-sm font-medium text-cyan-100">
+          <p className="min-w-0 truncate whitespace-nowrap text-sm font-medium text-cyan-100">
             {t("dca.endingValue")}
           </p>
-          <p className="mt-3 min-w-0 break-words text-[clamp(2rem,4vw,2.5rem)] font-bold leading-tight text-cyan-300">
+          <p className="mt-3 min-w-0 whitespace-normal break-words text-[clamp(2rem,4vw,2.5rem)] font-bold leading-tight text-cyan-300 [overflow-wrap:anywhere]">
             {formatMoney(backtest.finalValue, selectedCurrency, locale)}
           </p>
           <p className="mt-4 text-sm leading-6 text-slate-300">
@@ -315,10 +315,10 @@ export default function DcaBacktestCalculator({
         <div className="space-y-6">
           <div className="grid min-w-0 gap-4 md:grid-cols-4">
             <div className="min-w-0 overflow-hidden rounded-3xl border border-white/10 bg-white/[0.06] p-5 shadow-xl shadow-black/20">
-              <p className="text-sm text-slate-400">
+              <p className="min-w-0 truncate whitespace-nowrap text-sm text-slate-400">
                 {t("metrics.totalInvested")}
               </p>
-              <p className="mt-2 min-w-0 break-words text-[clamp(1.5rem,2.4vw,1.875rem)] font-bold leading-tight">
+              <p className="mt-2 min-w-0 whitespace-normal break-words text-[clamp(1.5rem,2.4vw,1.875rem)] font-bold leading-tight [overflow-wrap:anywhere]">
                 {formatMoney(
                   backtest.totalInvested,
                   selectedCurrency,
@@ -327,26 +327,26 @@ export default function DcaBacktestCalculator({
               </p>
             </div>
             <div className="min-w-0 overflow-hidden rounded-3xl border border-white/10 bg-white/[0.06] p-5 shadow-xl shadow-black/20">
-              <p className="text-sm text-slate-400">
+              <p className="min-w-0 truncate whitespace-nowrap text-sm text-slate-400">
                 {t("metrics.finalValueTitle")}
               </p>
-              <p className="mt-2 min-w-0 break-words text-[clamp(1.5rem,2.4vw,1.875rem)] font-bold leading-tight text-cyan-300">
+              <p className="mt-2 min-w-0 whitespace-normal break-words text-[clamp(1.5rem,2.4vw,1.875rem)] font-bold leading-tight text-cyan-300 [overflow-wrap:anywhere]">
                 {formatMoney(backtest.finalValue, selectedCurrency, locale)}
               </p>
             </div>
             <div className="min-w-0 overflow-hidden rounded-3xl border border-white/10 bg-white/[0.06] p-5 shadow-xl shadow-black/20">
-              <p className="text-sm text-slate-400">
+              <p className="min-w-0 truncate whitespace-nowrap text-sm text-slate-400">
                 {t("metrics.totalProfit")}
               </p>
-              <p className="mt-2 min-w-0 break-words text-[clamp(1.5rem,2.4vw,1.875rem)] font-bold leading-tight text-emerald-400">
+              <p className="mt-2 min-w-0 whitespace-normal break-words text-[clamp(1.5rem,2.4vw,1.875rem)] font-bold leading-tight text-emerald-400 [overflow-wrap:anywhere]">
                 {formatMoney(backtest.totalProfit, selectedCurrency, locale)}
               </p>
             </div>
             <div className="min-w-0 overflow-hidden rounded-3xl border border-white/10 bg-white/[0.06] p-5 shadow-xl shadow-black/20">
-              <p className="text-sm text-slate-400">
+              <p className="min-w-0 truncate whitespace-nowrap text-sm text-slate-400">
                 {t("metrics.totalReturn")}
               </p>
-              <p className="mt-2 min-w-0 break-words text-[clamp(1.5rem,2.4vw,1.875rem)] font-bold leading-tight text-cyan-400">
+              <p className="mt-2 min-w-0 whitespace-normal break-words text-[clamp(1.5rem,2.4vw,1.875rem)] font-bold leading-tight text-cyan-400 [overflow-wrap:anywhere]">
                 {formatPercent(backtest.totalReturn, locale)}%
               </p>
             </div>
