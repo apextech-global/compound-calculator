@@ -65,10 +65,16 @@
     "totalInvested": "Total invested",
     "annualDetail": "Annual Detail",
     "tableTitle": "Yearly Backtest Table",
-    "csvDataSource": "CSV historical data",
-    "mockDataSource": "Sample data",
+    "csvDataSource": "Using historical data",
+    "mockDataSource": "Using sample data",
     "dataNote": "Backtests use monthly prices generated from historical daily adjusted close data where available.",
-    "disclaimer": "Past performance does not guarantee future results. This calculator is for educational purposes only and is not financial advice."
+    "disclaimer": "Past performance does not guarantee future results. This calculator is for educational purposes only and is not financial advice.",
+    "countryMarket": "Country / Market",
+    "assetType": "Asset Type",
+    "etf": "ETF",
+    "stock": "Stock",
+    "asset": "Asset",
+    "exchange": "Exchange"
   },
   "compound": {
     "eyebrow": "Compound Calculator",

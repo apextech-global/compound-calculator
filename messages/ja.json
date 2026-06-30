@@ -65,10 +65,16 @@
     "totalInvested": "総投資額",
     "annualDetail": "年次詳細",
     "tableTitle": "年次バックテスト表",
-    "csvDataSource": "CSV 履歴データ",
-    "mockDataSource": "サンプルデータ",
+    "csvDataSource": "履歴データを使用",
+    "mockDataSource": "サンプルデータを使用",
     "dataNote": "バックテストでは、利用可能な場合、過去の日次調整後終値から生成した月次価格を使用します。",
-    "disclaimer": "過去の実績は将来の結果を保証するものではありません。この計算機は教育目的のみであり、金融アドバイスではありません。"
+    "disclaimer": "過去の実績は将来の結果を保証するものではありません。この計算機は教育目的のみであり、金融アドバイスではありません。",
+    "countryMarket": "国 / 市場",
+    "assetType": "資産タイプ",
+    "etf": "ETF",
+    "stock": "株式",
+    "asset": "資産",
+    "exchange": "取引所"
   },
   "compound": {
     "eyebrow": "複利計算機",

@@ -65,10 +65,16 @@
     "totalInvested": "Total diinvestasikan",
     "annualDetail": "Rincian Tahunan",
     "tableTitle": "Tabel Backtest Tahunan",
-    "csvDataSource": "Data historis CSV",
-    "mockDataSource": "Data sampel",
+    "csvDataSource": "Menggunakan data historis",
+    "mockDataSource": "Menggunakan data sampel",
     "dataNote": "Backtest menggunakan harga bulanan yang dibuat dari data historis penutupan disesuaikan harian jika tersedia.",
-    "disclaimer": "Kinerja masa lalu tidak menjamin hasil di masa depan. Kalkulator ini hanya untuk tujuan edukasi dan bukan nasihat keuangan."
+    "disclaimer": "Kinerja masa lalu tidak menjamin hasil di masa depan. Kalkulator ini hanya untuk tujuan edukasi dan bukan nasihat keuangan.",
+    "countryMarket": "Negara / Pasar",
+    "assetType": "Jenis Aset",
+    "etf": "ETF",
+    "stock": "Saham",
+    "asset": "Aset",
+    "exchange": "Bursa"
   },
   "compound": {
     "eyebrow": "Kalkulator Kompon",

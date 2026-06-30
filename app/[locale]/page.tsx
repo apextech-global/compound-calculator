@@ -18,6 +18,14 @@ import {
   loadMarketCsv,
   type MarketCsvRow,
 } from "@/lib/marketCsv";
+import {
+  assetTypeOptions,
+  countryOptions,
+  getAssetTypesForMarket,
+  getInstrumentById,
+  getInstrumentsByMarketAndType,
+  type AssetType,
+} from "@/lib/instruments";
 import { getMockYearsForSymbol, type SymbolKey } from "@/lib/mockMarketData";
 
 type ActiveCalculator = "dca" | "compound";
@@ -36,7 +44,9 @@ export default function Home() {
   const [monthlyContribution, setMonthlyContribution] = useState("500");
   const [annualReturn, setAnnualReturn] = useState("8");
   const [years, setYears] = useState("20");
-  const [backtestSymbol, setBacktestSymbol] = useState<SymbolKey>("VOO");
+  const [backtestCountry, setBacktestCountry] = useState("United States");
+  const [backtestAssetType, setBacktestAssetType] = useState<AssetType>("ETF");
+  const [backtestSymbol, setBacktestSymbol] = useState<SymbolKey>("voo");
   const [backtestMonthlyAmount, setBacktestMonthlyAmount] = useState("500");
   const [backtestStartYear, setBacktestStartYear] = useState("2018");
   const [backtestEndYear, setBacktestEndYear] = useState("2025");
@@ -45,30 +55,87 @@ export default function Home() {
     rows: MarketCsvRow[] | null;
   } | null>(null);
 
+  const availableAssetTypes = useMemo(
+    () => getAssetTypesForMarket(backtestCountry),
+    [backtestCountry]
+  );
+
+  const effectiveAssetType = availableAssetTypes.includes(backtestAssetType)
+    ? backtestAssetType
+    : availableAssetTypes[0] ?? backtestAssetType;
+
+  const filteredInstruments = useMemo(
+    () =>
+      getInstrumentsByMarketAndType(backtestCountry, effectiveAssetType),
+    [effectiveAssetType, backtestCountry]
+  );
+
+  const selectedInstrument =
+    filteredInstruments.find((instrument) => instrument.id === backtestSymbol) ??
+    filteredInstruments[0] ??
+    getInstrumentById(backtestSymbol);
+
+  const effectiveBacktestSymbol = selectedInstrument?.id ?? backtestSymbol;
+
+  const handleBacktestCountryChange = (country: string) => {
+    const nextAssetTypes = getAssetTypesForMarket(country);
+    const nextAssetType = nextAssetTypes.includes(backtestAssetType)
+      ? backtestAssetType
+      : nextAssetTypes[0] ?? backtestAssetType;
+    const nextInstruments = getInstrumentsByMarketAndType(
+      country,
+      nextAssetType
+    );
+
+    setBacktestCountry(country);
+    setBacktestAssetType(nextAssetType);
+    setBacktestSymbol(nextInstruments[0]?.id ?? backtestSymbol);
+  };
+
+  const handleBacktestAssetTypeChange = (assetType: AssetType) => {
+    const nextInstruments = getInstrumentsByMarketAndType(
+      backtestCountry,
+      assetType
+    );
+
+    if (nextInstruments.length === 0) {
+      return;
+    }
+
+    setBacktestAssetType(assetType);
+    setBacktestSymbol(nextInstruments[0].id);
+  };
+
   useEffect(() => {
     let isActive = true;
 
-    loadMarketCsv(backtestSymbol).then((rows) => {
+    if (!selectedInstrument) {
+      return;
+    }
+
+    loadMarketCsv(selectedInstrument.dataFileSymbol).then((rows) => {
       if (isActive) {
-        setMarketCsvData({ symbol: backtestSymbol, rows });
+        setMarketCsvData({ symbol: effectiveBacktestSymbol, rows });
       }
     });
 
     return () => {
       isActive = false;
     };
-  }, [backtestSymbol]);
+  }, [effectiveBacktestSymbol, selectedInstrument]);
 
   const activeMarketCsvRows =
-    marketCsvData?.symbol === backtestSymbol ? marketCsvData.rows : null;
+    marketCsvData?.symbol === effectiveBacktestSymbol
+      ? marketCsvData.rows
+      : null;
 
   const availableBacktestYears = useMemo(() => {
     const csvYears = getMarketCsvYears(activeMarketCsvRows);
 
     return csvYears.length > 0
       ? csvYears
-      : getMockYearsForSymbol(backtestSymbol);
-  }, [activeMarketCsvRows, backtestSymbol]);
+      : getMockYearsForSymbol(effectiveBacktestSymbol);
+  }, [activeMarketCsvRows, effectiveBacktestSymbol]);
 
   const normalizedBacktestStartYear = availableBacktestYears.includes(
     Number(backtestStartYear)
@@ -114,7 +181,7 @@ export default function Home() {
   const backtest = useMemo(
     () =>
       calculateDcaBacktest({
-        symbol: backtestSymbol,
+        symbol: effectiveBacktestSymbol,
         monthlyAmount: backtestMonthlyAmount,
         startYear: normalizedBacktestStartYear,
         endYear: normalizedBacktestEndYear,
@@ -123,7 +190,7 @@ export default function Home() {
     [
       activeMarketCsvRows,
       backtestMonthlyAmount,
-      backtestSymbol,
+      effectiveBacktestSymbol,
       normalizedBacktestEndYear,
       normalizedBacktestStartYear,
     ]
@@ -156,7 +223,7 @@ export default function Home() {
         <CalculatorSwitcher
           activeCalculator={activeCalculator}
           selectedCurrency={selectedCurrency}
-          backtestSymbol={backtestSymbol}
+          backtestSymbol={selectedInstrument?.displaySymbol ?? backtestSymbol}
           backtestFinalValue={backtest.finalValue}
           backtestTotalReturn={backtest.totalReturn}
           compoundYears={years}
@@ -170,12 +237,20 @@ export default function Home() {
             selectedCurrency={selectedCurrency}
             backtest={backtest}
             backtestChartData={backtestChartData}
-            backtestSymbol={backtestSymbol}
+            countryOptions={countryOptions}
+            assetTypeOptions={assetTypeOptions}
+            filteredInstruments={filteredInstruments}
+            selectedInstrument={selectedInstrument}
+            backtestCountry={backtestCountry}
+            backtestAssetType={effectiveAssetType}
+            backtestSymbol={effectiveBacktestSymbol}
             backtestMonthlyAmount={backtestMonthlyAmount}
             backtestStartYear={normalizedBacktestStartYear}
             backtestEndYear={normalizedBacktestEndYear}
             availableYears={availableBacktestYears}
             showBacktestTable={showBacktestTable}
+            setBacktestCountry={handleBacktestCountryChange}
+            setBacktestAssetType={handleBacktestAssetTypeChange}
             setBacktestSymbol={setBacktestSymbol}
             setBacktestMonthlyAmount={setBacktestMonthlyAmount}
             setBacktestStartYear={setBacktestStartYear}

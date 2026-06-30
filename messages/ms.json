@@ -65,10 +65,16 @@
     "totalInvested": "Jumlah dilabur",
     "annualDetail": "Butiran Tahunan",
     "tableTitle": "Jadual Ujian Balik Tahunan",
-    "csvDataSource": "Data sejarah CSV",
-    "mockDataSource": "Data sampel",
+    "csvDataSource": "Menggunakan data sejarah",
+    "mockDataSource": "Menggunakan data sampel",
     "dataNote": "Ujian balik menggunakan harga bulanan yang dijana daripada data tutup terlaras harian sejarah jika tersedia.",
-    "disclaimer": "Prestasi lalu tidak menjamin keputusan masa depan. Kalkulator ini hanya untuk tujuan pendidikan dan bukan nasihat kewangan."
+    "disclaimer": "Prestasi lalu tidak menjamin keputusan masa depan. Kalkulator ini hanya untuk tujuan pendidikan dan bukan nasihat kewangan.",
+    "countryMarket": "Negara / Pasaran",
+    "assetType": "Jenis Aset",
+    "etf": "ETF",
+    "stock": "Saham",
+    "asset": "Aset",
+    "exchange": "Bursa"
   },
   "compound": {
     "eyebrow": "Kalkulator Kompaun",

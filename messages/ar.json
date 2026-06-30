@@ -65,10 +65,16 @@
     "totalInvested": "Total investi",
     "annualDetail": "Détail annuel",
     "tableTitle": "Tableau annuel du backtest",
-    "csvDataSource": "بيانات CSV تاريخية",
-    "mockDataSource": "بيانات عينة",
+    "csvDataSource": "استخدام بيانات تاريخية",
+    "mockDataSource": "استخدام بيانات عينة",
     "dataNote": "تستخدم الاختبارات الخلفية أسعارا شهرية مولدة من بيانات الإغلاق المعدل اليومية التاريخية حيثما توفرت.",
-    "disclaimer": "الأداء السابق لا يضمن النتائج المستقبلية. هذه الحاسبة لأغراض تعليمية فقط وليست نصيحة مالية."
+    "disclaimer": "الأداء السابق لا يضمن النتائج المستقبلية. هذه الحاسبة لأغراض تعليمية فقط وليست نصيحة مالية.",
+    "countryMarket": "البلد / السوق",
+    "assetType": "نوع الأصل",
+    "etf": "صندوق ETF",
+    "stock": "سهم",
+    "asset": "الأصل",
+    "exchange": "البورصة"
   },
   "compound": {
     "eyebrow": "Calculateur composé",

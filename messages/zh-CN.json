@@ -65,10 +65,16 @@
     "totalInvested": "总投入",
     "annualDetail": "年度明细",
     "tableTitle": "年度回测表",
-    "csvDataSource": "CSV 历史数据",
-    "mockDataSource": "示例数据",
+    "csvDataSource": "使用历史数据",
+    "mockDataSource": "使用示例数据",
     "dataNote": "回测会尽可能使用由历史每日复权收盘价生成的月度价格。",
-    "disclaimer": "过往表现不保证未来结果。本计算器仅供教育用途，不构成金融建议。"
+    "disclaimer": "过往表现不保证未来结果。本计算器仅供教育用途，不构成金融建议。",
+    "countryMarket": "国家 / 市场",
+    "assetType": "资产类型",
+    "etf": "ETF",
+    "stock": "股票",
+    "asset": "资产",
+    "exchange": "交易所"
   },
   "compound": {
     "eyebrow": "复利计算器",

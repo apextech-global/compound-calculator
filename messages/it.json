@@ -65,10 +65,16 @@
     "totalInvested": "Total investi",
     "annualDetail": "Détail annuel",
     "tableTitle": "Tableau annuel du backtest",
-    "csvDataSource": "Dati storici CSV",
-    "mockDataSource": "Dati di esempio",
+    "csvDataSource": "Dati storici in uso",
+    "mockDataSource": "Dati di esempio in uso",
     "dataNote": "I backtest usano prezzi mensili generati dai dati storici giornalieri di chiusura rettificata quando disponibili.",
-    "disclaimer": "Le performance passate non garantiscono risultati futuri. Questo calcolatore è solo a scopo educativo e non costituisce consulenza finanziaria."
+    "disclaimer": "Le performance passate non garantiscono risultati futuri. Questo calcolatore è solo a scopo educativo e non costituisce consulenza finanziaria.",
+    "countryMarket": "Paese / Mercato",
+    "assetType": "Tipo di asset",
+    "etf": "ETF",
+    "stock": "Azione",
+    "asset": "Asset",
+    "exchange": "Borsa"
   },
   "compound": {
     "eyebrow": "Calculateur composé",

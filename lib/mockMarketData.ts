@@ -1,7 +1,7 @@
-export type SymbolKey = "VOO" | "SPY" | "QQQ" | "AAPL" | "TSLA" | "NVDA";
+export type SymbolKey = string;
 
 export const historicalPriceData: Record<SymbolKey, Record<number, number>> = {
-  VOO: {
+  voo: {
     2015: 188,
     2016: 205,
     2017: 245,
@@ -14,7 +14,7 @@ export const historicalPriceData: Record<SymbolKey, Record<number, number>> = {
     2024: 538,
     2025: 560,
   },
-  SPY: {
+  spy: {
     2015: 203,
     2016: 224,
     2017: 267,
@@ -27,7 +27,7 @@ export const historicalPriceData: Record<SymbolKey, Record<number, number>> = {
     2024: 586,
     2025: 610,
   },
-  QQQ: {
+  qqq: {
     2015: 112,
     2016: 119,
     2017: 156,
@@ -40,7 +40,7 @@ export const historicalPriceData: Record<SymbolKey, Record<number, number>> = {
     2024: 512,
     2025: 535,
   },
-  AAPL: {
+  aapl: {
     2015: 26,
     2016: 29,
     2017: 42,
@@ -53,7 +53,7 @@ export const historicalPriceData: Record<SymbolKey, Record<number, number>> = {
     2024: 250,
     2025: 215,
   },
-  TSLA: {
+  tsla: {
     2015: 16,
     2016: 14,
     2017: 21,
@@ -66,7 +66,7 @@ export const historicalPriceData: Record<SymbolKey, Record<number, number>> = {
     2024: 403,
     2025: 320,
   },
-  NVDA: {
+  nvda: {
     2015: 8,
     2016: 27,
     2017: 48,
@@ -81,11 +81,14 @@ export const historicalPriceData: Record<SymbolKey, Record<number, number>> = {
   },
 };
 
-export const symbolOptions = Object.keys(historicalPriceData) as SymbolKey[];
-export const availableYears = Object.keys(historicalPriceData.VOO).map(Number);
+const samplePriceHistory = historicalPriceData.voo;
 
 export function getMockYearsForSymbol(symbol: SymbolKey) {
-  return Object.keys(historicalPriceData[symbol])
+  return Object.keys(historicalPriceData[symbol] ?? samplePriceHistory)
     .map(Number)
     .sort((a, b) => a - b);
+}
+
+export function getMockPriceHistoryForSymbol(symbol: SymbolKey) {
+  return historicalPriceData[symbol] ?? samplePriceHistory;
 }

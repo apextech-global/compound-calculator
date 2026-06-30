@@ -1,6 +1,6 @@
 import {
   getMockYearsForSymbol,
-  historicalPriceData,
+  getMockPriceHistoryForSymbol,
   type SymbolKey,
 } from "./mockMarketData";
 import type { MarketCsvRow } from "./marketCsv";
@@ -114,7 +114,7 @@ export function calculateDcaBacktest({
     });
   }
 
-  const priceHistory = historicalPriceData[symbol];
+  const priceHistory = getMockPriceHistoryForSymbol(symbol);
   const yearlyResults: DcaYearlyResult[] = [];
 
   let totalShares = 0;

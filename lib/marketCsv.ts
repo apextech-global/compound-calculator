@@ -1,17 +1,6 @@
-import type { SymbolKey } from "./mockMarketData";
-
 export type MarketCsvRow = {
   date: string;
   close: number;
-};
-
-const marketCsvPaths: Record<SymbolKey, string> = {
-  VOO: "/market-data/voo.csv",
-  SPY: "/market-data/spy.csv",
-  QQQ: "/market-data/qqq.csv",
-  AAPL: "/market-data/aapl.csv",
-  TSLA: "/market-data/tsla.csv",
-  NVDA: "/market-data/nvda.csv",
 };
 
 function isValidDate(value: string) {
@@ -68,10 +57,10 @@ export function getMarketCsvYears(rows: MarketCsvRow[] | null | undefined) {
 }
 
 export async function loadMarketCsv(
-  symbol: SymbolKey
+  dataFileSymbol: string
 ): Promise<MarketCsvRow[] | null> {
   try {
-    const response = await fetch(marketCsvPaths[symbol], {
+    const response = await fetch(`/market-data/${dataFileSymbol}.csv`, {
       cache: "no-store",
     });
 

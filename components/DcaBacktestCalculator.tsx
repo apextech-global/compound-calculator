@@ -20,10 +20,8 @@ import {
   formatPercent,
   formatShares,
 } from "@/lib/formatting";
-import {
-  symbolOptions,
-  type SymbolKey,
-} from "@/lib/mockMarketData";
+import type { AssetType, Instrument } from "@/lib/instruments";
+import type { SymbolKey } from "@/lib/mockMarketData";
 
 type DcaBacktestCalculatorProps = {
   selectedCurrency: CurrencyCode;
@@ -33,12 +31,20 @@ type DcaBacktestCalculatorProps = {
     portfolioValue: number;
     invested: number;
   }>;
+  countryOptions: string[];
+  assetTypeOptions: AssetType[];
+  filteredInstruments: Instrument[];
+  selectedInstrument: Instrument | undefined;
+  backtestCountry: string;
+  backtestAssetType: AssetType;
   backtestSymbol: SymbolKey;
   backtestMonthlyAmount: string;
   backtestStartYear: string;
   backtestEndYear: string;
   availableYears: number[];
   showBacktestTable: boolean;
+  setBacktestCountry: (value: string) => void;
+  setBacktestAssetType: (value: AssetType) => void;
   setBacktestSymbol: (value: SymbolKey) => void;
   setBacktestMonthlyAmount: (value: string) => void;
   setBacktestStartYear: (value: string) => void;
@@ -50,12 +56,20 @@ export default function DcaBacktestCalculator({
   selectedCurrency,
   backtest,
   backtestChartData,
+  countryOptions,
+  assetTypeOptions,
+  filteredInstruments,
+  selectedInstrument,
+  backtestCountry,
+  backtestAssetType,
   backtestSymbol,
   backtestMonthlyAmount,
   backtestStartYear,
   backtestEndYear,
   availableYears,
   showBacktestTable,
+  setBacktestCountry,
+  setBacktestAssetType,
   setBacktestSymbol,
   setBacktestMonthlyAmount,
   setBacktestStartYear,
@@ -90,7 +104,7 @@ export default function DcaBacktestCalculator({
           <p className="mt-4 text-sm leading-6 text-slate-300">
             {t("dca.returnSummary", {
               returnValue: formatPercent(backtest.totalReturn, locale),
-              symbol: backtestSymbol,
+              symbol: selectedInstrument?.displaySymbol ?? backtestSymbol,
             })}
           </p>
         </div>
@@ -117,20 +131,67 @@ export default function DcaBacktestCalculator({
           <div className="space-y-5">
             <label className="block">
               <span className="mb-2 block text-sm text-slate-300">
-                {t("dca.symbol")}
+                {t("dca.countryMarket")}
               </span>
               <select
-                value={backtestSymbol}
-                onChange={(e) => setBacktestSymbol(e.target.value as SymbolKey)}
+                value={backtestCountry}
+                onChange={(e) => setBacktestCountry(e.target.value)}
                 className="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-3 text-white outline-none transition focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/10"
               >
-                {symbolOptions.map((symbol) => (
-                  <option key={symbol} value={symbol}>
-                    {symbol}
+                {countryOptions.map((country) => (
+                  <option key={country} value={country}>
+                    {country}
                   </option>
                 ))}
               </select>
             </label>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              <label className="block">
+                <span className="mb-2 block text-sm text-slate-300">
+                  {t("dca.assetType")}
+                </span>
+                <select
+                  value={backtestAssetType}
+                  onChange={(e) =>
+                    setBacktestAssetType(e.target.value as AssetType)
+                  }
+                  className="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-3 text-white outline-none transition focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/10"
+                >
+                  {assetTypeOptions.map((assetType) => (
+                    <option key={assetType} value={assetType}>
+                      {assetType === "ETF" ? t("dca.etf") : t("dca.stock")}
+                    </option>
+                  ))}
+                </select>
+              </label>
+
+              <label className="block">
+                <span className="mb-2 block text-sm text-slate-300">
+                  {t("dca.asset")}
+                </span>
+                <select
+                  value={backtestSymbol}
+                  onChange={(e) =>
+                    setBacktestSymbol(e.target.value as SymbolKey)
+                  }
+                  className="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-3 text-white outline-none transition focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/10"
+                >
+                  {filteredInstruments.map((instrument) => (
+                    <option key={instrument.id} value={instrument.id}>
+                      {instrument.displaySymbol} - {instrument.name}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+
+            {selectedInstrument ? (
+              <div className="rounded-2xl border border-white/10 bg-slate-950/50 px-4 py-3 text-sm text-slate-300">
+                <span className="text-slate-500">{t("dca.exchange")}:</span>{" "}
+                {selectedInstrument.exchange}
+              </div>
+            ) : null}
 
             <label className="block">
               <span className="mb-2 block text-sm text-slate-300">
