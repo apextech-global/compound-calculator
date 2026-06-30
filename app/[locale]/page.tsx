@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import CalculatorSwitcher from "@/components/CalculatorSwitcher";
 import CompoundInterestCalculator from "@/components/CompoundInterestCalculator";
 import DcaBacktestCalculator from "@/components/DcaBacktestCalculator";
-import Faq from "@/components/Faq";
+import Faq, { faqItems } from "@/components/Faq";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import {
@@ -206,8 +206,55 @@ export default function Home() {
     [backtest.yearlyResults]
   );
 
+  const structuredData = useMemo(() => {
+    const pageUrl = `https://dcabacktest.com/${locale}`;
+    const faqStructuredData = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqItems.map((item) => ({
+        "@type": "Question",
+        name: t(`faq.items.${item}.question`),
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: t(`faq.items.${item}.answer`),
+        },
+      })),
+    };
+    const webApplicationStructuredData = {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      name: "DCA Backtest",
+      url: pageUrl,
+      applicationCategory: "FinanceApplication",
+      operatingSystem: "Web",
+      inLanguage: locale,
+      description: t("seo.description"),
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+      },
+      featureList: [
+        t("cards.dca.title"),
+        t("cards.compound.title"),
+        t("common.currency"),
+        t("common.language"),
+      ],
+    };
+
+    return JSON.stringify([
+      faqStructuredData,
+      webApplicationStructuredData,
+    ]).replace(/</g, "\\u003c");
+  }, [locale, t]);
+
   return (
     <main className="min-h-screen overflow-hidden bg-slate-950 text-white">
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{ __html: structuredData }}
+      />
       <Navbar
         activeCalculator={activeCalculator}
         selectedCurrency={selectedCurrency}

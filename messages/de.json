@@ -16,9 +16,9 @@
     "compoundCalculator": "Zinseszinsrechner"
   },
   "hero": {
-    "eyebrow": "Premium-Finanzrechner",
-    "title": "Anlageplan testen, projizieren und vergleichen",
-    "description": "Starten Sie mit einem historischen DCA-Backtest oder wechseln Sie zur Zinseszinsprojektion."
+    "eyebrow": "ETF-DCA- und Zinseszins-Tools",
+    "title": "DCA-Backtest und Zinseszinsrechner",
+    "description": "Backtesten Sie monatliche Investments in VOO, CSPX, ETFs und Aktien und vergleichen Sie historische DCA-Ergebnisse mit langfristigen Zinseszinsprojektionen."
   },
   "cards": {
     "dca": {
@@ -127,42 +127,34 @@
     "ta": "தமிழ்"
   },
   "seo": {
-    "title": "DCA Backtest | Test Monthly Investing Against Market History",
-    "description": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages.",
-    "openGraphTitle": "DCA Backtest | Test Monthly Investing Against Market History",
-    "openGraphDescription": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages."
+    "title": "DCA-Backtest und Zinseszinsrechner | ETF Investment Rechner",
+    "description": "Backtesten Sie monatliche Investments mit historischen ETF-Daten, vergleichen Sie DCA und projizieren Sie langfristiges Wachstum für VOO, CSPX, ETFs und Aktien.",
+    "openGraphTitle": "DCA-Backtest und Zinseszinsrechner | ETF Investment Rechner",
+    "openGraphDescription": "Backtesten Sie monatliche Investments mit historischen ETF-Daten, vergleichen Sie DCA und projizieren Sie langfristiges Wachstum für VOO, CSPX, ETFs und Aktien."
   },
   "faq": {
     "eyebrow": "FAQ",
-    "title": "Häufig gestellte Fragen",
+    "title": "FAQ zu DCA und Zinseszins",
     "items": {
-      "dcaInvesting": {
-        "question": "Was ist DCA-Investieren?",
-        "answer": "Dollar-Cost-Averaging bedeutet, regelmäßig einen festen Betrag zu investieren, unabhängig vom Marktpreis."
+      "dcaBacktest": {
+        "question": "Was ist ein DCA-Backtest?",
+        "answer": "Ein DCA-Backtest simuliert, dass jeden Monat ein fester Betrag in einen ETF oder eine Aktie investiert wird, und schätzt angesammelte Anteile, Endwert, Gewinn und Gesamtrendite."
       },
-      "backtestWork": {
-        "question": "Wie funktioniert der historische DCA-Backtest?",
-        "answer": "Der Backtest wendet Ihre monatliche Investition über die gewählten Jahre auf das ausgewählte Symbol an. Er verwendet monatliche Preise, die aus historischen täglichen bereinigten Schlusskursen erzeugt werden, sofern verfügbar."
+      "compoundInterest": {
+        "question": "Was ist Zinseszins?",
+        "answer": "Zinseszins ist Wachstum sowohl auf die ursprüngliche Anlage als auch auf frühere Gewinne. Über lange Zeiträume können reinvestierte Renditen einen großen Teil des Portfoliowachstums ausmachen."
       },
-      "dividends": {
-        "question": "Enthält dieser Rechner Dividenden?",
-        "answer": "Der Rechner verwendet bereinigte Schlusskurse, sofern verfügbar. Diese können Dividenden und Kapitalmaßnahmen widerspiegeln, modellieren aber keine separaten Dividendenzahlungen oder Wiederanlage-Regeln."
+      "monthlyGrowth": {
+        "question": "Wie wächst monatliches Investieren im Laufe der Zeit?",
+        "answer": "Monatliches Investieren kann durch regelmäßige Beiträge und Marktrenditen wachsen. Der DCA-Backtest nutzt verfügbare historische Monatspreise, während der Zinseszinsrechner Wachstum anhand Ihrer Annahmen projiziert."
       },
-      "brokerageReturns": {
-        "question": "Warum unterscheiden sich die Ergebnisse von echten Broker-Renditen?",
-        "answer": "Echte Broker-Renditen können wegen Ausführungspreisen, Handelstagen, Steuern, Gebühren, Spreads, Dividendenbehandlung, Währungsumrechnung und Datenquellen abweichen."
+      "vooCspx": {
+        "question": "Kann ich VOO oder CSPX backtesten?",
+        "answer": "Ja. Sie können unterstützte Märkte und Anlagen wie VOO und CSPX auswählen. Wenn historische CSV-Daten verfügbar sind, werden sie verwendet; andernfalls zeigt der Rechner klar Beispieldaten an."
       },
       "financialAdvice": {
-        "question": "Ist das Finanzberatung?",
-        "answer": "Nein. Vergangene Wertentwicklungen garantieren keine zukünftigen Ergebnisse. Dieser Rechner dient nur Bildungszwecken und ist keine Finanzberatung."
-      },
-      "supportedSymbols": {
-        "question": "Welche Aktien und ETFs werden unterstützt?",
-        "answer": "Der DCA-Backtest unterstützt derzeit VOO, SPY, QQQ, AAPL, TSLA und NVDA."
-      },
-      "currency": {
-        "question": "Kann ich die Währung ändern?",
-        "answer": "Ja. Sie können die Anzeigewährung in der oberen Navigation ändern. Die Berechnungen bleiben intern USD-basiert und die Umrechnung nutzt Beispielkurse zur Demonstration."
+        "question": "Ist dieser Rechner Anlageberatung?",
+        "answer": "Nein. Vergangene Wertentwicklung garantiert keine zukünftigen Ergebnisse. DCA Backtest dient nur Bildungszwecken und ist keine Finanzberatung."
       }
     }
   },

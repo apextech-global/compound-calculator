@@ -16,9 +16,9 @@
     "compoundCalculator": "Calculadora compuesta"
   },
   "hero": {
-    "eyebrow": "Calculadoras financieras premium",
-    "title": "Prueba, proyecta y compara tu plan de inversión",
-    "description": "Empieza con un backtest DCA histórico o cambia a una proyección de interés compuesto."
+    "eyebrow": "Herramientas ETF DCA y crecimiento compuesto",
+    "title": "Backtest DCA y calculadora de interés compuesto",
+    "description": "Haz backtests de inversiones mensuales en VOO, CSPX, ETF y acciones, y compara el rendimiento DCA histórico con proyecciones compuestas a largo plazo."
   },
   "cards": {
     "dca": {
@@ -127,42 +127,34 @@
     "ta": "தமிழ்"
   },
   "seo": {
-    "title": "DCA Backtest | Test Monthly Investing Against Market History",
-    "description": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages.",
-    "openGraphTitle": "DCA Backtest | Test Monthly Investing Against Market History",
-    "openGraphDescription": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages."
+    "title": "Backtest DCA y calculadora de interés compuesto | Calculadora ETF",
+    "description": "Haz backtests de inversiones mensuales con datos históricos de ETF, compara el DCA y proyecta crecimiento compuesto para VOO, CSPX, ETF y acciones.",
+    "openGraphTitle": "Backtest DCA y calculadora de interés compuesto | Calculadora ETF",
+    "openGraphDescription": "Haz backtests de inversiones mensuales con datos históricos de ETF, compara el DCA y proyecta crecimiento compuesto para VOO, CSPX, ETF y acciones."
   },
   "faq": {
     "eyebrow": "FAQ",
-    "title": "Preguntas frecuentes",
+    "title": "Preguntas sobre DCA e interés compuesto",
     "items": {
-      "dcaInvesting": {
-        "question": "¿Qué es la inversión DCA?",
-        "answer": "El dollar-cost averaging consiste en invertir una cantidad fija de forma periódica, sin importar el precio de mercado."
+      "dcaBacktest": {
+        "question": "¿Qué es un backtest DCA?",
+        "answer": "Un backtest DCA simula invertir una cantidad fija cada mes en un ETF o acción durante un periodo histórico, y estima acciones acumuladas, valor final, beneficio y retorno total."
       },
-      "backtestWork": {
-        "question": "¿Cómo funciona el backtest DCA histórico?",
-        "answer": "El backtest aplica tu inversión mensual al símbolo seleccionado durante los años elegidos. Usa precios mensuales generados a partir de datos históricos diarios de cierre ajustado cuando están disponibles."
+      "compoundInterest": {
+        "question": "¿Qué es el interés compuesto?",
+        "answer": "El interés compuesto es el crecimiento sobre tu inversión inicial y sobre ganancias anteriores. A largo plazo, los rendimientos reinvertidos pueden ser una parte importante del crecimiento de la cartera."
       },
-      "dividends": {
-        "question": "¿Esta calculadora incluye dividendos?",
-        "answer": "La calculadora usa precios de cierre ajustados cuando están disponibles, lo que puede reflejar dividendos y acciones corporativas, pero no modela por separado pagos de dividendos ni reglas de reinversión."
+      "monthlyGrowth": {
+        "question": "¿Cómo crece la inversión mensual con el tiempo?",
+        "answer": "La inversión mensual puede crecer mediante aportaciones constantes y retornos del mercado. El backtest DCA usa precios mensuales históricos cuando están disponibles, mientras que la calculadora compuesta proyecta crecimiento según tus supuestos."
       },
-      "brokerageReturns": {
-        "question": "¿Por qué los resultados difieren de los rendimientos reales de un bróker?",
-        "answer": "Los rendimientos reales de un bróker pueden diferir por precios de ejecución, fechas de operación, impuestos, comisiones, spreads, tratamiento de dividendos, conversión de divisas y diferencias de fuentes de datos."
+      "vooCspx": {
+        "question": "¿Puedo hacer backtest de VOO o CSPX?",
+        "answer": "Sí. Puedes elegir mercados y activos compatibles como VOO y CSPX. Si hay datos CSV históricos disponibles, se usan; si no, la calculadora muestra claramente datos de muestra."
       },
       "financialAdvice": {
-        "question": "¿Es asesoramiento financiero?",
-        "answer": "No. El rendimiento pasado no garantiza resultados futuros. Esta calculadora es solo para fines educativos y no constituye asesoramiento financiero."
-      },
-      "supportedSymbols": {
-        "question": "¿Qué acciones y ETF son compatibles?",
-        "answer": "El backtest DCA actualmente admite VOO, SPY, QQQ, AAPL, TSLA y NVDA."
-      },
-      "currency": {
-        "question": "¿Puedo cambiar la moneda?",
-        "answer": "Sí. Puedes cambiar la moneda de visualización en la navegación superior. Los cálculos siguen basados internamente en USD y la conversión usa tipos de cambio de muestra para demostración."
+        "question": "¿Esta calculadora es asesoramiento de inversión?",
+        "answer": "No. El rendimiento pasado no garantiza resultados futuros. DCA Backtest es solo para fines educativos y no es asesoramiento financiero."
       }
     }
   },

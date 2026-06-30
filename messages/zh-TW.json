@@ -16,9 +16,9 @@
     "compoundCalculator": "複利計算器"
   },
   "hero": {
-    "eyebrow": "高階金融計算器",
-    "title": "回測、預測並比較你的投資計畫",
-    "description": "先使用歷史 DCA 回測，也可以切換至前瞻複利預測來模擬未來成長。"
+    "eyebrow": "ETF定投與複利成長工具",
+    "title": "複利計算器與定投回測工具",
+    "description": "回測每月定投 VOO、CSPX、ETF 與股票的歷史表現，並用複利計算器預測長期投資成長。"
   },
   "cards": {
     "dca": {
@@ -127,42 +127,34 @@
     "ta": "தமிழ்"
   },
   "seo": {
-    "title": "DCA Backtest | Test Monthly Investing Against Market History",
-    "description": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages.",
-    "openGraphTitle": "DCA Backtest | Test Monthly Investing Against Market History",
-    "openGraphDescription": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages."
+    "title": "複利計算器與定投回測工具 | ETF投資回報計算器",
+    "description": "使用複利計算器與定投回測工具，估算每月定投 ETF、股票、VOO、CSPX 的長期投資回報。",
+    "openGraphTitle": "複利計算器與定投回測工具 | ETF投資回報計算器",
+    "openGraphDescription": "使用複利計算器與定投回測工具，估算每月定投 ETF、股票、VOO、CSPX 的長期投資回報。"
   },
   "faq": {
     "eyebrow": "常見問題",
-    "title": "常見問題",
+    "title": "定投與複利常見問題",
     "items": {
-      "dcaInvesting": {
-        "question": "什麼是 DCA 投資？",
-        "answer": "定期定額投資是指不論市場價格如何，都按固定週期投入固定金額。"
+      "dcaBacktest": {
+        "question": "什麼是定投回測？",
+        "answer": "定投回測會模擬在一段歷史期間內每月投入固定金額買入 ETF 或股票，並估算累積股數、期末價值、獲利與總回報。"
       },
-      "backtestWork": {
-        "question": "歷史 DCA 回測如何運作？",
-        "answer": "回測會在你選擇的年份內，把每月投資金額套用到所選標的。它會盡可能使用由歷史每日調整後收盤價產生的月度價格。"
+      "compoundInterest": {
+        "question": "什麼是複利？",
+        "answer": "複利是本金與先前收益一起繼續產生收益。時間越長，再投資收益通常越能影響投資組合成長。"
       },
-      "dividends": {
-        "question": "這個計算器包含股息嗎？",
-        "answer": "計算器會盡可能使用調整後收盤價，這可能反映股息和公司行動，但不會單獨模擬現金股息或股息再投資規則。"
+      "monthlyGrowth": {
+        "question": "每月定投如何隨時間成長？",
+        "answer": "每月定投透過持續投入與市場回報成長。定投回測會盡可能使用歷史月度價格，複利計算器則依照你的假設預測未來成長。"
       },
-      "brokerageReturns": {
-        "question": "為什麼結果會不同於真實券商報酬？",
-        "answer": "真實券商報酬可能因成交價格、交易日期、稅費、手續費、買賣價差、股息處理、貨幣兌換和資料來源不同而變化。"
+      "vooCspx": {
+        "question": "可以回測 VOO 或 CSPX 嗎？",
+        "answer": "可以。你可以選擇支援的市場與資產，例如 VOO 和 CSPX。有歷史 CSV 資料時會使用該資料，否則會明確切換為示例資料。"
       },
       "financialAdvice": {
-        "question": "這是金融建議嗎？",
-        "answer": "不是。過往表現不保證未來結果。本計算器僅供教育用途，並非金融建議。"
-      },
-      "supportedSymbols": {
-        "question": "支援哪些股票和 ETF？",
-        "answer": "DCA 回測目前支援 VOO、SPY、QQQ、AAPL、TSLA 和 NVDA。"
-      },
-      "currency": {
-        "question": "我可以更改貨幣嗎？",
-        "answer": "可以。你可以在頂部導覽更改顯示貨幣。計算內部仍以 USD 為基礎，匯率轉換使用範例匯率用於示範。"
+        "question": "這個計算器是投資建議嗎？",
+        "answer": "不是。過往表現不保證未來結果。DCA Backtest 僅供教育用途，不構成金融建議。"
       }
     }
   },

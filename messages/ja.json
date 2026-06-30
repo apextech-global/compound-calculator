@@ -16,9 +16,9 @@
     "compoundCalculator": "複利計算機"
   },
   "hero": {
-    "eyebrow": "プレミアム金融計算機",
-    "title": "投資計画をバックテスト、予測、比較",
-    "description": "まずは過去の DCA バックテストから始め、将来成長を見たいときは複利予測に切り替えられます。"
+    "eyebrow": "ETF DCAと複利成長ツール",
+    "title": "DCAバックテストと複利計算機",
+    "description": "VOO、CSPX、ETF、株式への毎月投資をバックテストし、過去のDCA成績と長期の複利成長予測を比較できます。"
   },
   "cards": {
     "dca": {
@@ -127,42 +127,34 @@
     "ta": "தமிழ்"
   },
   "seo": {
-    "title": "DCA Backtest | Test Monthly Investing Against Market History",
-    "description": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages.",
-    "openGraphTitle": "DCA Backtest | Test Monthly Investing Against Market History",
-    "openGraphDescription": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages."
+    "title": "DCAバックテストと複利計算機 | ETF投資計算ツール",
+    "description": "過去のETFデータで毎月投資をバックテストし、DCA成績を比較し、VOO、CSPX、ETF、株式の長期複利成長を予測します。",
+    "openGraphTitle": "DCAバックテストと複利計算機 | ETF投資計算ツール",
+    "openGraphDescription": "過去のETFデータで毎月投資をバックテストし、DCA成績を比較し、VOO、CSPX、ETF、株式の長期複利成長を予測します。"
   },
   "faq": {
     "eyebrow": "FAQ",
-    "title": "よくある質問",
+    "title": "DCAと複利のよくある質問",
     "items": {
-      "dcaInvesting": {
-        "question": "DCA 投資とは何ですか？",
-        "answer": "ドルコスト平均法とは、市場価格に関係なく、一定額を定期的に投資する方法です。"
+      "dcaBacktest": {
+        "question": "DCAバックテストとは何ですか？",
+        "answer": "DCAバックテストは、過去の期間にETFや株式へ毎月一定額を投資した場合をシミュレーションし、累積株数、終了価値、利益、総リターンを推定します。"
       },
-      "backtestWork": {
-        "question": "過去 DCA バックテストはどのように動きますか？",
-        "answer": "バックテストは、選択した期間に毎月の投資額を選択銘柄へ適用します。利用可能な場合、過去の日次調整後終値から生成した月次価格を使用します。"
+      "compoundInterest": {
+        "question": "複利とは何ですか？",
+        "answer": "複利は元本と過去の利益の両方に対して成長が積み重なる仕組みです。長期では再投資されたリターンが資産成長の大きな部分になることがあります。"
       },
-      "dividends": {
-        "question": "この計算機は配当を含みますか？",
-        "answer": "計算機は利用可能な場合に調整後終値を使用し、配当や企業行動が反映されることがありますが、現金配当や再投資ルールを個別にはモデル化しません。"
+      "monthlyGrowth": {
+        "question": "毎月投資は時間とともにどう成長しますか？",
+        "answer": "毎月投資は継続的な入金と市場リターンによって成長します。DCAバックテストは利用可能な過去月次価格を使い、複利計算機は入力した前提から将来成長を予測します。"
       },
-      "brokerageReturns": {
-        "question": "実際の証券口座リターンと結果が違うのはなぜですか？",
-        "answer": "実際の証券口座リターンは、約定価格、取引日、税金、手数料、スプレッド、配当処理、為替換算、データソースの違いにより異なる場合があります。"
+      "vooCspx": {
+        "question": "VOOやCSPXをバックテストできますか？",
+        "answer": "はい。VOOやCSPXなど対応する市場と資産を選択できます。過去CSVデータがある場合はそれを使用し、ない場合はサンプルデータであることを明示します。"
       },
       "financialAdvice": {
-        "question": "これは金融アドバイスですか？",
-        "answer": "いいえ。過去の実績は将来の結果を保証するものではありません。この計算機は教育目的のみであり、金融アドバイスではありません。"
-      },
-      "supportedSymbols": {
-        "question": "対応している株式と ETF は何ですか？",
-        "answer": "DCA バックテストは現在 VOO、SPY、QQQ、AAPL、TSLA、NVDA に対応しています。"
-      },
-      "currency": {
-        "question": "通貨を変更できますか？",
-        "answer": "はい。上部ナビゲーションで表示通貨を変更できます。計算は内部的に USD ベースのままで、換算はデモ用のサンプル為替レートを使用します。"
+        "question": "この計算機は投資助言ですか？",
+        "answer": "いいえ。過去の実績は将来の結果を保証しません。DCA Backtestは教育目的のみであり、金融助言ではありません。"
       }
     }
   },

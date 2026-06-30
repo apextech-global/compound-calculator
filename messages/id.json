@@ -16,9 +16,9 @@
     "compoundCalculator": "Kalkulator Kompon"
   },
   "hero": {
-    "eyebrow": "Kalkulator Keuangan Premium",
-    "title": "Backtest, Proyeksikan, dan Bandingkan Rencana Investasi Anda",
-    "description": "Mulai dengan backtest DCA historis, atau beralih ke proyeksi bunga kompon untuk memodelkan pertumbuhan masa depan."
+    "eyebrow": "Alat ETF DCA dan Pertumbuhan Majemuk",
+    "title": "Kalkulator DCA dan Bunga Majemuk",
+    "description": "Backtest investasi bulanan di VOO, CSPX, ETF, dan saham, lalu bandingkan kinerja DCA historis dengan proyeksi bunga majemuk jangka panjang."
   },
   "cards": {
     "dca": {
@@ -127,42 +127,34 @@
     "ta": "தமிழ்"
   },
   "seo": {
-    "title": "DCA Backtest | Test Monthly Investing Against Market History",
-    "description": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages.",
-    "openGraphTitle": "DCA Backtest | Test Monthly Investing Against Market History",
-    "openGraphDescription": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages."
+    "title": "Kalkulator Bunga Majemuk & DCA | Kalkulator Investasi ETF",
+    "description": "Backtest investasi bulanan dengan data ETF historis, bandingkan kinerja DCA, dan proyeksikan pertumbuhan majemuk jangka panjang untuk VOO, CSPX, ETF, dan saham.",
+    "openGraphTitle": "Kalkulator Bunga Majemuk & DCA | Kalkulator Investasi ETF",
+    "openGraphDescription": "Backtest investasi bulanan dengan data ETF historis, bandingkan kinerja DCA, dan proyeksikan pertumbuhan majemuk jangka panjang untuk VOO, CSPX, ETF, dan saham."
   },
   "faq": {
     "eyebrow": "FAQ",
-    "title": "Pertanyaan Umum",
+    "title": "FAQ DCA dan Bunga Majemuk",
     "items": {
-      "dcaInvesting": {
-        "question": "Apa itu investasi DCA?",
-        "answer": "Dollar-cost averaging berarti menginvestasikan jumlah tetap secara berkala, terlepas dari harga pasar."
+      "dcaBacktest": {
+        "question": "Apa itu backtest DCA?",
+        "answer": "Backtest DCA mensimulasikan investasi jumlah tetap setiap bulan ke ETF atau saham selama periode historis, lalu memperkirakan saham terkumpul, nilai akhir, profit, dan total return."
       },
-      "backtestWork": {
-        "question": "Bagaimana cara kerja backtest DCA historis?",
-        "answer": "Backtest menerapkan investasi bulanan Anda pada simbol yang dipilih selama tahun yang dipilih. Backtest menggunakan harga bulanan yang dibuat dari data historis penutupan disesuaikan harian jika tersedia."
+      "compoundInterest": {
+        "question": "Apa itu bunga majemuk?",
+        "answer": "Bunga majemuk adalah pertumbuhan atas investasi awal dan keuntungan sebelumnya. Dalam jangka panjang, hasil yang diinvestasikan kembali dapat menjadi bagian besar dari pertumbuhan portofolio."
       },
-      "dividends": {
-        "question": "Apakah kalkulator ini menyertakan dividen?",
-        "answer": "Kalkulator menggunakan data penutupan disesuaikan jika tersedia, yang dapat mencerminkan dividen dan aksi korporasi, tetapi tidak memodelkan pembayaran dividen tunai atau aturan reinvestasi secara terpisah."
+      "monthlyGrowth": {
+        "question": "Bagaimana investasi bulanan tumbuh dari waktu ke waktu?",
+        "answer": "Investasi bulanan dapat tumbuh melalui kontribusi konsisten dan return pasar. Backtest DCA menggunakan harga bulanan historis jika tersedia, sedangkan kalkulator majemuk memproyeksikan pertumbuhan dari asumsi Anda."
       },
-      "brokerageReturns": {
-        "question": "Mengapa hasil berbeda dari return broker sungguhan?",
-        "answer": "Return broker nyata dapat berbeda karena harga eksekusi, tanggal transaksi, pajak, biaya, spread bid-ask, perlakuan dividen, konversi mata uang, dan perbedaan sumber data."
+      "vooCspx": {
+        "question": "Bisakah saya backtest VOO atau CSPX?",
+        "answer": "Ya. Anda dapat memilih pasar dan aset yang didukung seperti VOO dan CSPX. Jika data CSV historis tersedia, backtest akan menggunakannya; jika tidak, kalkulator menampilkan data sampel dengan jelas."
       },
       "financialAdvice": {
-        "question": "Apakah ini nasihat keuangan?",
-        "answer": "Tidak. Kinerja masa lalu tidak menjamin hasil di masa depan. Kalkulator ini hanya untuk tujuan edukasi dan bukan nasihat keuangan."
-      },
-      "supportedSymbols": {
-        "question": "Saham dan ETF apa yang didukung?",
-        "answer": "Backtest DCA saat ini mendukung VOO, SPY, QQQ, AAPL, TSLA, dan NVDA."
-      },
-      "currency": {
-        "question": "Bisakah saya mengganti mata uang?",
-        "answer": "Ya. Anda dapat mengganti mata uang tampilan di navigasi atas. Perhitungan tetap berbasis USD secara internal dan konversi menggunakan kurs contoh untuk demonstrasi."
+        "question": "Apakah kalkulator ini nasihat investasi?",
+        "answer": "Tidak. Kinerja masa lalu tidak menjamin hasil masa depan. DCA Backtest hanya untuk tujuan edukasi dan bukan nasihat keuangan."
       }
     }
   },

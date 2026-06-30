@@ -16,9 +16,9 @@
     "compoundCalculator": "复利计算器"
   },
   "hero": {
-    "eyebrow": "高级金融计算器",
-    "title": "回测、预测并比较你的投资计划",
-    "description": "先使用历史 DCA 回测，也可以切换到面向未来的复利预测来模拟长期增长。"
+    "eyebrow": "ETF定投与复利增长工具",
+    "title": "复利计算器与定投回测工具",
+    "description": "回测每月定投 VOO、CSPX、ETF 和股票的历史表现，并用复利计算器预测长期投资增长。"
   },
   "cards": {
     "dca": {
@@ -127,42 +127,34 @@
     "ta": "தமிழ்"
   },
   "seo": {
-    "title": "DCA Backtest | Test Monthly Investing Against Market History",
-    "description": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages.",
-    "openGraphTitle": "DCA Backtest | Test Monthly Investing Against Market History",
-    "openGraphDescription": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages."
+    "title": "复利计算器与定投回测工具 | ETF投资回报计算器",
+    "description": "使用复利计算器和定投回测工具，计算每月定投ETF、股票、VOO、CSPX的长期投资回报。",
+    "openGraphTitle": "复利计算器与定投回测工具 | ETF投资回报计算器",
+    "openGraphDescription": "使用复利计算器和定投回测工具，计算每月定投ETF、股票、VOO、CSPX的长期投资回报。"
   },
   "faq": {
     "eyebrow": "常见问题",
-    "title": "常见问题",
+    "title": "定投与复利常见问题",
     "items": {
-      "dcaInvesting": {
-        "question": "什么是 DCA 投资？",
-        "answer": "定期定额投资是指无论市场价格如何，都按固定周期投入固定金额。"
+      "dcaBacktest": {
+        "question": "什么是定投回测？",
+        "answer": "定投回测会模拟在一段历史时期内每月投入固定金额购买 ETF 或股票，并估算累计份额、期末价值、利润和总回报。"
       },
-      "backtestWork": {
-        "question": "历史 DCA 回测如何运作？",
-        "answer": "回测会在你选择的年份内，把每月投资金额应用到所选标的。它会尽可能使用由历史每日复权收盘价生成的月度价格。"
+      "compoundInterest": {
+        "question": "什么是复利？",
+        "answer": "复利是指本金和此前收益一起继续产生收益。时间越长，再投资收益对投资组合增长的影响通常越明显。"
       },
-      "dividends": {
-        "question": "这个计算器包含股息吗？",
-        "answer": "计算器会尽可能使用调整后收盘价，这可能反映股息和公司行动，但不会单独模拟现金股息或股息再投资规则。"
+      "monthlyGrowth": {
+        "question": "每月定投如何随时间增长？",
+        "answer": "每月定投通过持续投入和市场回报实现增长。定投回测会尽可能使用历史月度价格，复利计算器则根据你的假设预测未来增长。"
       },
-      "brokerageReturns": {
-        "question": "为什么结果会不同于真实券商回报？",
-        "answer": "真实券商回报可能因成交价格、交易日期、税费、手续费、买卖价差、股息处理、货币兑换和数据来源不同而变化。"
+      "vooCspx": {
+        "question": "可以回测 VOO 或 CSPX 吗？",
+        "answer": "可以。你可以选择支持的市场和资产，例如 VOO 和 CSPX。有历史 CSV 数据时会使用真实历史数据，否则会明确切换为示例数据。"
       },
       "financialAdvice": {
-        "question": "这是金融建议吗？",
-        "answer": "不是。过往表现不保证未来结果。本计算器仅供教育用途，不构成金融建议。"
-      },
-      "supportedSymbols": {
-        "question": "支持哪些股票和 ETF？",
-        "answer": "DCA 回测目前支持 VOO、SPY、QQQ、AAPL、TSLA 和 NVDA。"
-      },
-      "currency": {
-        "question": "我可以更改货币吗？",
-        "answer": "可以。你可以在顶部导航更改显示货币。计算内部仍以 USD 为基础，汇率转换使用示例汇率用于演示。"
+        "question": "这个计算器是投资建议吗？",
+        "answer": "不是。过往表现不保证未来结果。DCA Backtest 仅供教育用途，不构成金融建议。"
       }
     }
   },

@@ -8,6 +8,9 @@ import { getTextDirection } from "@/lib/locales";
 const baseUrl = "https://dcabacktest.com";
 const socialImageAlt =
   "DCA Backtest chart preview showing monthly investment growth over time";
+const localeAlternates = Object.fromEntries(
+  routing.locales.map((locale) => [locale, `/${locale}`])
+);
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -31,10 +34,15 @@ export async function generateMetadata({
   const openGraphDescription = messages.seo.openGraphDescription;
 
   return {
+    metadataBase: new URL(baseUrl),
     title,
     description,
     alternates: {
       canonical: `/${locale}`,
+      languages: {
+        ...localeAlternates,
+        "x-default": "/en",
+      },
     },
     openGraph: {
       title: openGraphTitle,

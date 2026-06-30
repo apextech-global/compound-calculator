@@ -2,14 +2,12 @@
 
 import { useTranslations } from "next-intl";
 
-const faqItems = [
-  "dcaInvesting",
-  "backtestWork",
-  "dividends",
-  "brokerageReturns",
+export const faqItems = [
+  "dcaBacktest",
+  "compoundInterest",
+  "monthlyGrowth",
+  "vooCspx",
   "financialAdvice",
-  "supportedSymbols",
-  "currency",
 ] as const;
 
 export default function Faq() {

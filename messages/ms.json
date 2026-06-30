@@ -16,9 +16,9 @@
     "compoundCalculator": "Kalkulator Kompaun"
   },
   "hero": {
-    "eyebrow": "Kalkulator Kewangan Premium",
-    "title": "Uji Balik, Unjur dan Bandingkan Pelan Pelaburan Anda",
-    "description": "Mulakan dengan ujian balik DCA sejarah, atau tukar kepada unjuran faedah kompaun untuk memodelkan pertumbuhan masa depan."
+    "eyebrow": "Alat ETF DCA dan Pertumbuhan Kompaun",
+    "title": "Kalkulator DCA dan Faedah Kompaun",
+    "description": "Uji balik pelaburan bulanan dalam VOO, CSPX, ETF dan saham, kemudian bandingkan prestasi DCA sejarah dengan unjuran faedah kompaun jangka panjang."
   },
   "cards": {
     "dca": {
@@ -127,42 +127,34 @@
     "ta": "தமிழ்"
   },
   "seo": {
-    "title": "DCA Backtest | Test Monthly Investing Against Market History",
-    "description": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages.",
-    "openGraphTitle": "DCA Backtest | Test Monthly Investing Against Market History",
-    "openGraphDescription": "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages."
+    "title": "Kalkulator Faedah Kompaun & DCA | Kalkulator Pelaburan ETF",
+    "description": "Uji balik pelaburan bulanan dengan data ETF sejarah, bandingkan prestasi DCA dan unjur pertumbuhan kompaun jangka panjang untuk VOO, CSPX, ETF dan saham.",
+    "openGraphTitle": "Kalkulator Faedah Kompaun & DCA | Kalkulator Pelaburan ETF",
+    "openGraphDescription": "Uji balik pelaburan bulanan dengan data ETF sejarah, bandingkan prestasi DCA dan unjur pertumbuhan kompaun jangka panjang untuk VOO, CSPX, ETF dan saham."
   },
   "faq": {
     "eyebrow": "FAQ",
-    "title": "Soalan Lazim",
+    "title": "Soalan Lazim DCA dan Faedah Kompaun",
     "items": {
-      "dcaInvesting": {
-        "question": "Apakah pelaburan DCA?",
-        "answer": "Dollar-cost averaging bermaksud melabur jumlah tetap mengikut jadual tetap, tanpa mengira harga pasaran."
+      "dcaBacktest": {
+        "question": "Apakah ujian balik DCA?",
+        "answer": "Ujian balik DCA mensimulasikan pelaburan jumlah tetap setiap bulan ke dalam ETF atau saham sepanjang tempoh sejarah, kemudian menganggarkan unit terkumpul, nilai akhir, keuntungan dan jumlah pulangan."
       },
-      "backtestWork": {
-        "question": "Bagaimanakah ujian balik DCA sejarah berfungsi?",
-        "answer": "Ujian balik menggunakan pelaburan bulanan anda pada simbol pilihan sepanjang tahun yang dipilih. Ia menggunakan harga bulanan yang dijana daripada data tutup terlaras harian sejarah jika tersedia."
+      "compoundInterest": {
+        "question": "Apakah faedah kompaun?",
+        "answer": "Faedah kompaun ialah pertumbuhan ke atas pelaburan asal dan keuntungan terdahulu. Dalam tempoh panjang, pulangan yang dilabur semula boleh menjadi bahagian besar pertumbuhan portfolio."
       },
-      "dividends": {
-        "question": "Adakah kalkulator ini termasuk dividen?",
-        "answer": "Kalkulator menggunakan data tutup terlaras jika tersedia, yang mungkin mencerminkan dividen dan tindakan korporat, tetapi ia tidak memodelkan bayaran dividen tunai atau peraturan pelaburan semula secara berasingan."
+      "monthlyGrowth": {
+        "question": "Bagaimana pelaburan bulanan berkembang dari masa ke masa?",
+        "answer": "Pelaburan bulanan boleh berkembang melalui sumbangan konsisten dan pulangan pasaran. Ujian balik DCA menggunakan harga bulanan sejarah jika tersedia, manakala kalkulator kompaun mengunjurkan pertumbuhan berdasarkan andaian anda."
       },
-      "brokerageReturns": {
-        "question": "Mengapa keputusan berbeza daripada pulangan broker sebenar?",
-        "answer": "Pulangan broker sebenar boleh berbeza kerana harga pelaksanaan, tarikh dagangan, cukai, yuran, spread bida-tanya, rawatan dividen, pertukaran mata wang dan perbezaan sumber data."
+      "vooCspx": {
+        "question": "Bolehkah saya menguji balik VOO atau CSPX?",
+        "answer": "Ya. Anda boleh memilih pasaran dan aset yang disokong seperti VOO dan CSPX. Jika data CSV sejarah tersedia, ujian balik menggunakannya; jika tidak, kalkulator memaparkan data sampel dengan jelas."
       },
       "financialAdvice": {
-        "question": "Adakah ini nasihat kewangan?",
-        "answer": "Tidak. Prestasi lalu tidak menjamin keputusan masa depan. Kalkulator ini hanya untuk tujuan pendidikan dan bukan nasihat kewangan."
-      },
-      "supportedSymbols": {
-        "question": "Saham dan ETF manakah yang disokong?",
-        "answer": "Ujian Balik DCA kini menyokong VOO, SPY, QQQ, AAPL, TSLA dan NVDA."
-      },
-      "currency": {
-        "question": "Bolehkah saya menukar mata wang?",
-        "answer": "Ya. Anda boleh menukar mata wang paparan di navigasi atas. Pengiraan kekal berasaskan USD secara dalaman dan penukaran menggunakan kadar pertukaran contoh untuk demonstrasi."
+        "question": "Adakah kalkulator ini nasihat pelaburan?",
+        "answer": "Tidak. Prestasi lalu tidak menjamin hasil masa depan. DCA Backtest adalah untuk tujuan pendidikan sahaja dan bukan nasihat kewangan."
       }
     }
   },

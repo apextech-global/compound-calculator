@@ -16,9 +16,9 @@ const gaId = process.env.NEXT_PUBLIC_GA_ID;
 const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
 const siteUrl = new URL("https://dcabacktest.com");
 const siteTitle =
-  "DCA Backtest | Test Monthly Investing Against Market History";
+  "DCA Backtest & Compound Interest Calculator | ETF Investment Calculator";
 const siteDescription =
-  "Backtest monthly investments, compare DCA performance, and project compound growth across currencies and languages.";
+  "Backtest monthly investing with historical ETF data, compare DCA performance, and project long-term compound growth for VOO, CSPX, ETFs, and stocks.";
 const socialImageAlt =
   "DCA Backtest chart preview showing monthly investment growth over time";
 
