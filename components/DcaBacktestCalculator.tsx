@@ -57,6 +57,7 @@ type DcaBacktestCalculatorProps = {
   onCopyShareLink: () => void;
   onCopySocialCaption: () => void;
   onDownloadResultImage: () => void;
+  displayedDataSource: "csv" | "mock";
 };
 
 export default function DcaBacktestCalculator({
@@ -89,6 +90,7 @@ export default function DcaBacktestCalculator({
   onCopyShareLink,
   onCopySocialCaption,
   onDownloadResultImage,
+  displayedDataSource,
 }: DcaBacktestCalculatorProps) {
   const t = useTranslations();
   const locale = useLocale();
@@ -119,12 +121,12 @@ export default function DcaBacktestCalculator({
               </h3>
             </div>
             <div className="rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-sm font-medium text-cyan-300">
-              {backtest.dataSource === "csv"
+              {displayedDataSource === "csv"
                 ? t("dca.csvDataSource")
                 : t("dca.mockDataSource")}
             </div>
           </div>
-          {backtest.dataSource === "mock" ? (
+          {displayedDataSource === "mock" ? (
             <p className="-mt-3 mb-6 text-sm leading-6 text-amber-200/90">
               {t("dca.dataUnavailableNote")}
             </p>

@@ -26,6 +26,7 @@ import {
   loadMarketCsv,
   type MarketCsvRow,
 } from "@/lib/marketCsv";
+import { hasImportedMarketData } from "@/lib/marketDataAvailability";
 import {
   assetTypeOptions,
   countryOptions,
@@ -353,6 +354,9 @@ export default function Home() {
     getInstrumentById(backtestSymbol);
 
   const effectiveBacktestSymbol = selectedInstrument?.id ?? backtestSymbol;
+  const hasSelectedInstrumentImportedMarketData = hasImportedMarketData(
+    selectedInstrument?.dataKey
+  );
 
   const trackAssetSelected = (
     instrument: ReturnType<typeof getInstrumentById> | undefined,
@@ -561,6 +565,11 @@ export default function Home() {
       normalizedBacktestStartYear,
     ]
   );
+
+  const displayedBacktestDataSource =
+    backtest.dataSource === "csv" || hasSelectedInstrumentImportedMarketData
+      ? "csv"
+      : "mock";
 
   const backtestChartData = useMemo(
     () =>
@@ -796,7 +805,7 @@ export default function Home() {
       selectedInstrument?.displaySymbol ?? effectiveBacktestSymbol;
     const instrumentName = selectedInstrument?.name ?? instrumentSymbol;
     const dataSourceLabel =
-      backtest.dataSource === "csv"
+      displayedBacktestDataSource === "csv"
         ? t("dca.csvDataSource")
         : t("dca.mockDataSource");
     const metricCards = [
@@ -1121,6 +1130,7 @@ export default function Home() {
             onCopyShareLink={copyShareUrl}
             onCopySocialCaption={handleCopySocialCaption}
             onDownloadResultImage={handleDownloadResultImage}
+            displayedDataSource={displayedBacktestDataSource}
           />
         ) : (
           <CompoundInterestCalculator
