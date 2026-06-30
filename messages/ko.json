@@ -220,39 +220,39 @@
     }
   },
   "seoContent": {
-    "eyebrow": "Investment Education",
-    "title": "Learn how DCA backtesting and compound growth work",
-    "intro": "Use this compound interest calculator, DCA calculator, DCA backtest calculator, ETF investment calculator, and monthly investment calculator to explore VOO, CSPX, ETFs, and stocks.",
+    "eyebrow": "투자 교육",
+    "title": "DCA 백테스트와 복리 성장의 작동 방식 알아보기",
+    "intro": "이 복리 계산기, DCA 계산기, DCA 백테스트 계산기, ETF 투자 계산기, 월별 투자 계산기로 VOO, CSPX, ETF, 주식을 살펴보세요.",
     "sections": {
       "dca": {
-        "title": "What is dollar-cost averaging?",
-        "body": "Dollar-cost averaging means investing a fixed amount on a regular schedule. It can help investors study disciplined monthly investing across changing market prices."
+        "title": "달러 코스트 애버리징이란 무엇인가요?",
+        "body": "달러 코스트 애버리징은 정해진 일정에 따라 고정 금액을 투자하는 방식입니다. 변동하는 시장 가격 속에서 disciplined 월별 투자를 분석하는 데 도움이 됩니다."
       },
       "compound": {
-        "title": "What is compound interest?",
-        "body": "Compound interest is growth on both original capital and prior gains. Over time, regular contributions and reinvested returns can meaningfully affect long-term outcomes."
+        "title": "복리란 무엇인가요?",
+        "body": "복리는 원금과 이전 수익 모두에서 성장이 발생하는 방식입니다. 시간이 지나면 정기 납입과 재투자 수익이 장기 결과에 큰 영향을 줄 수 있습니다."
       },
       "dcaVsLumpSum": {
-        "title": "DCA vs lump sum investing",
-        "body": "DCA spreads purchases over time, while lump sum investing commits capital at once. This calculator focuses on monthly investing and historical backtesting."
+        "title": "DCA와 일시 투자 비교",
+        "body": "DCA는 매수를 시간에 나누어 진행하고, 일시 투자는 자본을 한 번에 투입합니다. 이 계산기는 월별 투자와 과거 백테스트에 초점을 맞춥니다."
       },
       "howToUse": {
-        "title": "How to use this DCA backtest calculator",
-        "body": "Choose a market, asset type, asset, monthly amount, start year, and end year to estimate total invested, ending value, accumulated shares, profit, and return."
+        "title": "이 DCA 백테스트 계산기 사용 방법",
+        "body": "시장, 자산 유형, 자산, 월별 금액, 시작 연도, 종료 연도를 선택해 총 투자금, 최종 가치, 누적 주식 수, 수익, 수익률을 추정하세요."
       },
       "etfExample": {
-        "title": "ETF monthly investing example",
-        "body": "A VOO DCA calculator or CSPX DCA calculator can show how recurring ETF purchases may have grown using historical monthly prices where available."
+        "title": "ETF 월별 투자 예시",
+        "body": "VOO DCA 계산기 또는 CSPX DCA 계산기는 데이터가 있는 경우 과거 월별 가격을 사용해 반복 ETF 매수가 어떻게 성장했을지 보여줄 수 있습니다."
       },
       "supportedAssets": {
-        "title": "Supported assets and markets",
-        "body": "Supported markets include the United States, Ireland UCITS, Taiwan, Malaysia, Singapore, Japan, and Hong Kong. Assets without imported market data clearly use sample data."
+        "title": "지원 자산 및 시장",
+        "body": "지원 시장에는 미국, 아일랜드 UCITS, 대만, 말레이시아, 싱가포르, 일본, 홍콩이 포함됩니다. 가져온 시장 데이터가 없는 자산은 샘플 데이터로 명확히 표시됩니다."
       }
     },
     "disclaimer": {
-      "title": "Important disclaimer",
-      "body": "This tool is for education only and is not financial advice. Past performance does not guarantee future results."
+      "title": "중요 고지",
+      "body": "이 도구는 교육 목적이며 금융 조언이 아닙니다."
     },
-    "linksLabel": "Helpful site links"
+    "linksLabel": "유용한 사이트 링크"
   }
 }

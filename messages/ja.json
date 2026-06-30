@@ -220,39 +220,39 @@
     }
   },
   "seoContent": {
-    "eyebrow": "Investment Education",
-    "title": "Learn how DCA backtesting and compound growth work",
-    "intro": "Use this compound interest calculator, DCA calculator, DCA backtest calculator, ETF investment calculator, and monthly investment calculator to explore VOO, CSPX, ETFs, and stocks.",
+    "eyebrow": "投資教育",
+    "title": "DCAバックテストと複利成長の仕組みを学ぶ",
+    "intro": "この複利計算機、DCA計算機、DCAバックテスト計算機、ETF投資計算機、毎月投資計算機を使って、VOO、CSPX、ETF、株式を検討できます。",
     "sections": {
       "dca": {
-        "title": "What is dollar-cost averaging?",
-        "body": "Dollar-cost averaging means investing a fixed amount on a regular schedule. It can help investors study disciplined monthly investing across changing market prices."
+        "title": "ドルコスト平均法とは？",
+        "body": "ドルコスト平均法は、定期的に一定額を投資する方法です。市場価格が変動する中で、毎月投資を継続した場合を学ぶのに役立ちます。"
       },
       "compound": {
-        "title": "What is compound interest?",
-        "body": "Compound interest is growth on both original capital and prior gains. Over time, regular contributions and reinvested returns can meaningfully affect long-term outcomes."
+        "title": "複利とは？",
+        "body": "複利は元本と過去の利益の両方が成長する仕組みです。時間の経過とともに、定期的な入金と再投資されたリターンが長期結果に大きく影響することがあります。"
       },
       "dcaVsLumpSum": {
-        "title": "DCA vs lump sum investing",
-        "body": "DCA spreads purchases over time, while lump sum investing commits capital at once. This calculator focuses on monthly investing and historical backtesting."
+        "title": "DCAと一括投資の違い",
+        "body": "DCAは購入を時間に分散し、一括投資は資金を一度に投入します。この計算機は毎月投資と過去データによるバックテストに焦点を当てています。"
       },
       "howToUse": {
-        "title": "How to use this DCA backtest calculator",
-        "body": "Choose a market, asset type, asset, monthly amount, start year, and end year to estimate total invested, ending value, accumulated shares, profit, and return."
+        "title": "このDCAバックテスト計算機の使い方",
+        "body": "市場、資産タイプ、資産、毎月金額、開始年、終了年を選ぶと、総投資額、終了価値、累積株数、利益、リターンを推定できます。"
       },
       "etfExample": {
-        "title": "ETF monthly investing example",
-        "body": "A VOO DCA calculator or CSPX DCA calculator can show how recurring ETF purchases may have grown using historical monthly prices where available."
+        "title": "ETF毎月投資の例",
+        "body": "VOO DCA計算機やCSPX DCA計算機は、データがある場合に過去月次価格を使ってETFの定期購入がどう成長した可能性があるかを示します。"
       },
       "supportedAssets": {
-        "title": "Supported assets and markets",
-        "body": "Supported markets include the United States, Ireland UCITS, Taiwan, Malaysia, Singapore, Japan, and Hong Kong. Assets without imported market data clearly use sample data."
+        "title": "対応資産と市場",
+        "body": "対応市場には米国、アイルランドUCITS、台湾、マレーシア、シンガポール、日本、香港が含まれます。インポート済み市場データがない資産はサンプルデータとして明確に表示されます。"
       }
     },
     "disclaimer": {
-      "title": "Important disclaimer",
-      "body": "This tool is for education only and is not financial advice. Past performance does not guarantee future results."
+      "title": "重要な免責事項",
+      "body": "このツールは教育目的のみであり、金融助言ではありません。"
     },
-    "linksLabel": "Helpful site links"
+    "linksLabel": "便利なサイトリンク"
   }
 }

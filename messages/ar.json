@@ -220,39 +220,39 @@
     }
   },
   "seoContent": {
-    "eyebrow": "Investment Education",
-    "title": "Learn how DCA backtesting and compound growth work",
-    "intro": "Use this compound interest calculator, DCA calculator, DCA backtest calculator, ETF investment calculator, and monthly investment calculator to explore VOO, CSPX, ETFs, and stocks.",
+    "eyebrow": "تعليم الاستثمار",
+    "title": "تعرّف على كيفية عمل اختبار DCA والنمو المركب",
+    "intro": "استخدم حاسبة الفائدة المركبة وحاسبة DCA وحاسبة اختبار DCA وحاسبة استثمار ETF وحاسبة الاستثمار الشهري لاستكشاف VOO وCSPX وصناديق ETF والأسهم.",
     "sections": {
       "dca": {
-        "title": "What is dollar-cost averaging?",
-        "body": "Dollar-cost averaging means investing a fixed amount on a regular schedule. It can help investors study disciplined monthly investing across changing market prices."
+        "title": "ما هو متوسط تكلفة الدولار؟",
+        "body": "متوسط تكلفة الدولار يعني استثمار مبلغ ثابت وفق جدول منتظم. يساعد المستثمرين على دراسة الاستثمار الشهري المنضبط مع تغير أسعار السوق."
       },
       "compound": {
-        "title": "What is compound interest?",
-        "body": "Compound interest is growth on both original capital and prior gains. Over time, regular contributions and reinvested returns can meaningfully affect long-term outcomes."
+        "title": "ما هي الفائدة المركبة؟",
+        "body": "الفائدة المركبة هي النمو على رأس المال الأصلي والأرباح السابقة. مع الوقت، يمكن أن تؤثر المساهمات المنتظمة والعوائد المعاد استثمارها بشكل كبير في النتائج طويلة الأجل."
       },
       "dcaVsLumpSum": {
-        "title": "DCA vs lump sum investing",
-        "body": "DCA spreads purchases over time, while lump sum investing commits capital at once. This calculator focuses on monthly investing and historical backtesting."
+        "title": "DCA مقابل الاستثمار دفعة واحدة",
+        "body": "يوزع DCA عمليات الشراء بمرور الوقت، بينما يلتزم الاستثمار دفعة واحدة برأس المال في وقت واحد. تركز هذه الحاسبة على الاستثمار الشهري والاختبار التاريخي."
       },
       "howToUse": {
-        "title": "How to use this DCA backtest calculator",
-        "body": "Choose a market, asset type, asset, monthly amount, start year, and end year to estimate total invested, ending value, accumulated shares, profit, and return."
+        "title": "كيفية استخدام حاسبة اختبار DCA",
+        "body": "اختر السوق ونوع الأصل والأصل والمبلغ الشهري وسنة البداية وسنة النهاية لتقدير إجمالي الاستثمار والقيمة النهائية والأسهم المتراكمة والربح والعائد."
       },
       "etfExample": {
-        "title": "ETF monthly investing example",
-        "body": "A VOO DCA calculator or CSPX DCA calculator can show how recurring ETF purchases may have grown using historical monthly prices where available."
+        "title": "مثال على الاستثمار الشهري في ETF",
+        "body": "يمكن لحاسبة VOO DCA أو حاسبة CSPX DCA أن توضح كيف كان يمكن لمشتريات ETF المتكررة أن تنمو باستخدام الأسعار الشهرية التاريخية عند توفر البيانات."
       },
       "supportedAssets": {
-        "title": "Supported assets and markets",
-        "body": "Supported markets include the United States, Ireland UCITS, Taiwan, Malaysia, Singapore, Japan, and Hong Kong. Assets without imported market data clearly use sample data."
+        "title": "الأصول والأسواق المدعومة",
+        "body": "تشمل الأسواق المدعومة الولايات المتحدة وIreland UCITS وتايوان وماليزيا وسنغافورة واليابان وهونغ كونغ. الأصول التي لا تحتوي على بيانات سوق مستوردة تستخدم بيانات عينة بوضوح."
       }
     },
     "disclaimer": {
-      "title": "Important disclaimer",
-      "body": "This tool is for education only and is not financial advice. Past performance does not guarantee future results."
+      "title": "إخلاء مسؤولية مهم",
+      "body": "هذه الأداة لأغراض تعليمية فقط وليست نصيحة مالية."
     },
-    "linksLabel": "Helpful site links"
+    "linksLabel": "روابط مفيدة في الموقع"
   }
 }

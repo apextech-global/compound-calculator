@@ -220,39 +220,39 @@
     }
   },
   "seoContent": {
-    "eyebrow": "Investment Education",
-    "title": "Learn how DCA backtesting and compound growth work",
-    "intro": "Use this compound interest calculator, DCA calculator, DCA backtest calculator, ETF investment calculator, and monthly investment calculator to explore VOO, CSPX, ETFs, and stocks.",
+    "eyebrow": "Éducation à l’investissement",
+    "title": "Comprendre le backtest DCA et la croissance composée",
+    "intro": "Utilisez ce calculateur d’intérêts composés, calculateur DCA, calculateur de backtest DCA, calculateur d’investissement ETF et calculateur d’investissement mensuel pour explorer VOO, CSPX, ETF et actions.",
     "sections": {
       "dca": {
-        "title": "What is dollar-cost averaging?",
-        "body": "Dollar-cost averaging means investing a fixed amount on a regular schedule. It can help investors study disciplined monthly investing across changing market prices."
+        "title": "Qu’est-ce que le dollar-cost averaging ?",
+        "body": "Le dollar-cost averaging consiste à investir un montant fixe selon un calendrier régulier. Il aide à étudier l’investissement mensuel discipliné lorsque les prix de marché changent."
       },
       "compound": {
-        "title": "What is compound interest?",
-        "body": "Compound interest is growth on both original capital and prior gains. Over time, regular contributions and reinvested returns can meaningfully affect long-term outcomes."
+        "title": "Que sont les intérêts composés ?",
+        "body": "Les intérêts composés correspondent à la croissance du capital initial et des gains précédents. Avec le temps, les apports réguliers et les rendements réinvestis peuvent fortement influencer les résultats long terme."
       },
       "dcaVsLumpSum": {
-        "title": "DCA vs lump sum investing",
-        "body": "DCA spreads purchases over time, while lump sum investing commits capital at once. This calculator focuses on monthly investing and historical backtesting."
+        "title": "DCA ou investissement en une seule fois",
+        "body": "Le DCA répartit les achats dans le temps, tandis que l’investissement en une seule fois engage le capital immédiatement. Ce calculateur se concentre sur l’investissement mensuel et le backtesting historique."
       },
       "howToUse": {
-        "title": "How to use this DCA backtest calculator",
-        "body": "Choose a market, asset type, asset, monthly amount, start year, and end year to estimate total invested, ending value, accumulated shares, profit, and return."
+        "title": "Comment utiliser ce calculateur de backtest DCA",
+        "body": "Choisissez un marché, un type d’actif, un actif, un montant mensuel, une année de début et une année de fin pour estimer le total investi, la valeur finale, les parts accumulées, le profit et le rendement."
       },
       "etfExample": {
-        "title": "ETF monthly investing example",
-        "body": "A VOO DCA calculator or CSPX DCA calculator can show how recurring ETF purchases may have grown using historical monthly prices where available."
+        "title": "Exemple d’investissement mensuel en ETF",
+        "body": "Un calculateur DCA VOO ou un calculateur DCA CSPX peut montrer comment des achats réguliers d’ETF auraient pu croître avec les prix mensuels historiques disponibles."
       },
       "supportedAssets": {
-        "title": "Supported assets and markets",
-        "body": "Supported markets include the United States, Ireland UCITS, Taiwan, Malaysia, Singapore, Japan, and Hong Kong. Assets without imported market data clearly use sample data."
+        "title": "Actifs et marchés pris en charge",
+        "body": "Les marchés pris en charge incluent les États-Unis, Ireland UCITS, Taïwan, la Malaisie, Singapour, le Japon et Hong Kong. Les actifs sans données de marché importées utilisent clairement des données d’exemple."
       }
     },
     "disclaimer": {
-      "title": "Important disclaimer",
-      "body": "This tool is for education only and is not financial advice. Past performance does not guarantee future results."
+      "title": "Avertissement important",
+      "body": "Cet outil est fourni uniquement à des fins éducatives et ne constitue pas un conseil financier."
     },
-    "linksLabel": "Helpful site links"
+    "linksLabel": "Liens utiles du site"
   }
 }

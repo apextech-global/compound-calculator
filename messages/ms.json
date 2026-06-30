@@ -220,39 +220,39 @@
     }
   },
   "seoContent": {
-    "eyebrow": "Investment Education",
-    "title": "Learn how DCA backtesting and compound growth work",
-    "intro": "Use this compound interest calculator, DCA calculator, DCA backtest calculator, ETF investment calculator, and monthly investment calculator to explore VOO, CSPX, ETFs, and stocks.",
+    "eyebrow": "Pendidikan Pelaburan",
+    "title": "Ketahui cara ujian balik DCA dan pertumbuhan faedah kompaun berfungsi",
+    "intro": "Gunakan kalkulator faedah kompaun, kalkulator DCA, kalkulator ujian balik DCA, kalkulator pelaburan ETF dan kalkulator pelaburan bulanan ini untuk meneroka VOO, CSPX, ETF dan saham.",
     "sections": {
       "dca": {
-        "title": "What is dollar-cost averaging?",
-        "body": "Dollar-cost averaging means investing a fixed amount on a regular schedule. It can help investors study disciplined monthly investing across changing market prices."
+        "title": "Apakah dollar-cost averaging?",
+        "body": "Dollar-cost averaging bermaksud melabur jumlah tetap mengikut jadual berkala. Ia membantu pelabur mengkaji pelaburan bulanan yang berdisiplin dalam keadaan harga pasaran yang berubah."
       },
       "compound": {
-        "title": "What is compound interest?",
-        "body": "Compound interest is growth on both original capital and prior gains. Over time, regular contributions and reinvested returns can meaningfully affect long-term outcomes."
+        "title": "Apakah faedah kompaun?",
+        "body": "Faedah kompaun ialah pertumbuhan atas modal asal dan keuntungan terdahulu. Dalam jangka panjang, sumbangan berkala dan pulangan yang dilabur semula boleh memberi kesan besar kepada hasil pelaburan."
       },
       "dcaVsLumpSum": {
-        "title": "DCA vs lump sum investing",
-        "body": "DCA spreads purchases over time, while lump sum investing commits capital at once. This calculator focuses on monthly investing and historical backtesting."
+        "title": "DCA berbanding pelaburan sekali gus",
+        "body": "DCA membahagikan pembelian secara berperingkat, manakala pelaburan sekali gus melaburkan modal pada satu masa. Kalkulator ini memberi tumpuan kepada pelaburan bulanan dan ujian balik sejarah."
       },
       "howToUse": {
-        "title": "How to use this DCA backtest calculator",
-        "body": "Choose a market, asset type, asset, monthly amount, start year, and end year to estimate total invested, ending value, accumulated shares, profit, and return."
+        "title": "Cara menggunakan kalkulator ujian balik DCA ini",
+        "body": "Pilih pasaran, jenis aset, aset, jumlah bulanan, tahun mula dan tahun akhir untuk menganggarkan jumlah dilaburkan, nilai akhir, unit terkumpul, keuntungan dan pulangan."
       },
       "etfExample": {
-        "title": "ETF monthly investing example",
-        "body": "A VOO DCA calculator or CSPX DCA calculator can show how recurring ETF purchases may have grown using historical monthly prices where available."
+        "title": "Contoh pelaburan bulanan ETF",
+        "body": "Kalkulator DCA VOO atau kalkulator DCA CSPX boleh menunjukkan bagaimana pembelian ETF secara berkala mungkin berkembang menggunakan harga bulanan sejarah jika data tersedia."
       },
       "supportedAssets": {
-        "title": "Supported assets and markets",
-        "body": "Supported markets include the United States, Ireland UCITS, Taiwan, Malaysia, Singapore, Japan, and Hong Kong. Assets without imported market data clearly use sample data."
+        "title": "Aset dan pasaran yang disokong",
+        "body": "Pasaran yang disokong termasuk Amerika Syarikat, Ireland UCITS, Taiwan, Malaysia, Singapura, Jepun dan Hong Kong. Aset tanpa data pasaran yang diimport akan ditandakan dengan jelas sebagai data sampel."
       }
     },
     "disclaimer": {
-      "title": "Important disclaimer",
-      "body": "This tool is for education only and is not financial advice. Past performance does not guarantee future results."
+      "title": "Penafian penting",
+      "body": "Alat ini adalah untuk tujuan pendidikan sahaja dan bukan nasihat kewangan."
     },
-    "linksLabel": "Helpful site links"
+    "linksLabel": "Pautan laman yang berguna"
   }
 }

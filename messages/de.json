@@ -220,39 +220,39 @@
     }
   },
   "seoContent": {
-    "eyebrow": "Investment Education",
-    "title": "Learn how DCA backtesting and compound growth work",
-    "intro": "Use this compound interest calculator, DCA calculator, DCA backtest calculator, ETF investment calculator, and monthly investment calculator to explore VOO, CSPX, ETFs, and stocks.",
+    "eyebrow": "Investmentbildung",
+    "title": "So funktionieren DCA-Backtesting und Zinseszinseffekt",
+    "intro": "Nutzen Sie diesen Zinseszinsrechner, DCA-Rechner, DCA-Backtest-Rechner, ETF-Investment-Rechner und monatlichen Investment-Rechner, um VOO, CSPX, ETFs und Aktien zu analysieren.",
     "sections": {
       "dca": {
-        "title": "What is dollar-cost averaging?",
-        "body": "Dollar-cost averaging means investing a fixed amount on a regular schedule. It can help investors study disciplined monthly investing across changing market prices."
+        "title": "Was ist Dollar-Cost-Averaging?",
+        "body": "Dollar-Cost-Averaging bedeutet, regelmäßig einen festen Betrag zu investieren. Es hilft, diszipliniertes monatliches Investieren bei wechselnden Marktpreisen zu untersuchen."
       },
       "compound": {
-        "title": "What is compound interest?",
-        "body": "Compound interest is growth on both original capital and prior gains. Over time, regular contributions and reinvested returns can meaningfully affect long-term outcomes."
+        "title": "Was ist Zinseszins?",
+        "body": "Zinseszins ist Wachstum auf das ursprüngliche Kapital und frühere Gewinne. Mit der Zeit können regelmäßige Beiträge und reinvestierte Renditen langfristige Ergebnisse deutlich beeinflussen."
       },
       "dcaVsLumpSum": {
-        "title": "DCA vs lump sum investing",
-        "body": "DCA spreads purchases over time, while lump sum investing commits capital at once. This calculator focuses on monthly investing and historical backtesting."
+        "title": "DCA gegenüber Einmalanlage",
+        "body": "DCA verteilt Käufe über die Zeit, während eine Einmalanlage Kapital sofort investiert. Dieser Rechner konzentriert sich auf monatliches Investieren und historisches Backtesting."
       },
       "howToUse": {
-        "title": "How to use this DCA backtest calculator",
-        "body": "Choose a market, asset type, asset, monthly amount, start year, and end year to estimate total invested, ending value, accumulated shares, profit, and return."
+        "title": "So verwenden Sie diesen DCA-Backtest-Rechner",
+        "body": "Wählen Sie Markt, Asset-Typ, Asset, Monatsbetrag, Startjahr und Endjahr, um investierten Gesamtbetrag, Endwert, angesammelte Anteile, Gewinn und Rendite zu schätzen."
       },
       "etfExample": {
-        "title": "ETF monthly investing example",
-        "body": "A VOO DCA calculator or CSPX DCA calculator can show how recurring ETF purchases may have grown using historical monthly prices where available."
+        "title": "Beispiel für monatliches ETF-Investieren",
+        "body": "Ein VOO-DCA-Rechner oder CSPX-DCA-Rechner kann zeigen, wie regelmäßige ETF-Käufe mit verfügbaren historischen Monatspreisen gewachsen sein könnten."
       },
       "supportedAssets": {
-        "title": "Supported assets and markets",
-        "body": "Supported markets include the United States, Ireland UCITS, Taiwan, Malaysia, Singapore, Japan, and Hong Kong. Assets without imported market data clearly use sample data."
+        "title": "Unterstützte Assets und Märkte",
+        "body": "Unterstützte Märkte sind die USA, Ireland UCITS, Taiwan, Malaysia, Singapur, Japan und Hongkong. Assets ohne importierte Marktdaten verwenden klar gekennzeichnete Beispieldaten."
       }
     },
     "disclaimer": {
-      "title": "Important disclaimer",
-      "body": "This tool is for education only and is not financial advice. Past performance does not guarantee future results."
+      "title": "Wichtiger Hinweis",
+      "body": "Dieses Tool dient nur Bildungszwecken und ist keine Finanzberatung."
     },
-    "linksLabel": "Helpful site links"
+    "linksLabel": "Hilfreiche Seitenlinks"
   }
 }
