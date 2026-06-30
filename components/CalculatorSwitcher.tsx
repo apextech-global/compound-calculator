@@ -171,31 +171,6 @@ export default function CalculatorSwitcher({
           </button>
         </div>
       </div>
-
-      <div className="mb-4 grid rounded-2xl border border-white/10 bg-white/[0.06] p-1 text-sm font-semibold sm:inline-grid sm:grid-cols-2">
-        <button
-          type="button"
-          onClick={() => onCalculatorChange("dca")}
-          className={`rounded-xl px-4 py-2.5 transition ${
-            activeCalculator === "dca"
-              ? "bg-cyan-400 text-slate-950"
-              : "text-slate-300 hover:bg-white/10 hover:text-white"
-          }`}
-        >
-          {t("nav.dcaBacktest")}
-        </button>
-        <button
-          type="button"
-          onClick={() => onCalculatorChange("compound")}
-          className={`rounded-xl px-4 py-2.5 transition ${
-            activeCalculator === "compound"
-              ? "bg-emerald-400 text-slate-950"
-              : "text-slate-300 hover:bg-white/10 hover:text-white"
-          }`}
-        >
-          {t("cards.compound.title")}
-        </button>
-      </div>
     </>
   );
 }
