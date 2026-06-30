@@ -817,8 +817,20 @@ export default function Home() {
     drawText(ctx, dataSourceLabel, 902, 89, 194, 22, 1);
 
     ctx.fillStyle = "#f8fafc";
-    ctx.font = "800 46px Inter, Arial, sans-serif";
-    drawText(ctx, t("resultImage.title"), 84, 160, 700, 54, 2);
+    ctx.font = "800 42px Inter, Arial, sans-serif";
+    drawText(
+      ctx,
+      t("resultImage.headline", { symbol: instrumentSymbol }),
+      84,
+      152,
+      760,
+      50,
+      2
+    );
+
+    ctx.fillStyle = "#67e8f9";
+    ctx.font = "700 18px Inter, Arial, sans-serif";
+    drawText(ctx, t("resultImage.title"), 84, 245, 700, 24, 1);
 
     ctx.fillStyle = "#cbd5e1";
     ctx.font = "500 22px Inter, Arial, sans-serif";
@@ -826,7 +838,7 @@ export default function Home() {
       ctx,
       `${instrumentSymbol} - ${instrumentName}`,
       84,
-      250,
+      280,
       690,
       28,
       2
@@ -840,7 +852,7 @@ export default function Home() {
         "common.currency"
       )}: ${selectedCurrency}`,
       84,
-      316,
+      336,
       700,
       24,
       1
@@ -855,7 +867,7 @@ export default function Home() {
         "dca.endYear"
       )}: ${backtestEndYear}`,
       84,
-      346,
+      366,
       760,
       24,
       1

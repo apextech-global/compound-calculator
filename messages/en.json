@@ -266,6 +266,7 @@
   },
   "resultImage": {
     "title": "DCA Backtest Result",
-    "disclaimer": "Educational only. Not financial advice. Past performance does not guarantee future results."
+    "disclaimer": "Educational only. Not financial advice. Past performance does not guarantee future results.",
+    "headline": "What if I invested monthly in {symbol}?"
   }
 }

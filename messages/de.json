@@ -266,6 +266,7 @@
   },
   "resultImage": {
     "title": "DCA-Backtest-Ergebnis",
-    "disclaimer": "Nur zu Bildungszwecken. Keine Finanzberatung. Vergangene Wertentwicklung garantiert keine zukünftigen Ergebnisse."
+    "disclaimer": "Nur zu Bildungszwecken. Keine Finanzberatung. Vergangene Wertentwicklung garantiert keine zukünftigen Ergebnisse.",
+    "headline": "Was wäre, wenn ich monatlich in {symbol} investiert hätte?"
   }
 }

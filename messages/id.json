@@ -266,6 +266,7 @@
   },
   "resultImage": {
     "title": "Hasil DCA Backtest",
-    "disclaimer": "Hanya untuk edukasi. Bukan nasihat keuangan. Kinerja masa lalu tidak menjamin hasil masa depan."
+    "disclaimer": "Hanya untuk edukasi. Bukan nasihat keuangan. Kinerja masa lalu tidak menjamin hasil masa depan.",
+    "headline": "Bagaimana jika saya investasi bulanan di {symbol}?"
   }
 }
