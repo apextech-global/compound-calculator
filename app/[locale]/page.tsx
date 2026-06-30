@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import CalculatorSwitcher from "@/components/CalculatorSwitcher";
 import CompoundInterestCalculator from "@/components/CompoundInterestCalculator";
 import DcaBacktestCalculator from "@/components/DcaBacktestCalculator";
@@ -9,6 +9,7 @@ import Faq, { faqItems } from "@/components/Faq";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import SeoContent from "@/components/SeoContent";
+import { trackGaEvent } from "@/lib/analytics";
 import {
   calculateCompoundInterest,
   calculateDcaBacktest,
@@ -134,31 +135,6 @@ function getAmountFromQuery(value: string | null) {
   return Number.isFinite(amount) && amount >= 0 ? String(amount) : null;
 }
 
-function trackShareEvent(
-  eventName: "share_result_clicked" | "copy_result_link_clicked",
-  selectedInstrument: ReturnType<typeof getInstrumentById> | undefined,
-  market: string,
-  assetType: AssetType
-) {
-  if (typeof window === "undefined") {
-    return;
-  }
-
-  const gtag = (window as typeof window & {
-    gtag?: (
-      event: "event",
-      eventName: string,
-      params: Record<string, string>
-    ) => void;
-  }).gtag;
-
-  gtag?.("event", eventName, {
-    shared_asset_symbol: selectedInstrument?.displaySymbol ?? "",
-    shared_market: market,
-    shared_asset_type: assetType,
-  });
-}
-
 export default function Home() {
   const t = useTranslations();
   const locale = useLocale();
@@ -185,6 +161,10 @@ export default function Home() {
   } | null>(null);
   const [copiedShareLink, setCopiedShareLink] = useState(false);
   const [shareUrl, setShareUrl] = useState("");
+  const hasTrackedInitialDcaCalculation = useRef(false);
+  const hasTrackedInitialCompoundCalculation = useRef(false);
+  const hasUserChangedDcaCalculation = useRef(false);
+  const hasUserChangedCompoundCalculation = useRef(false);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -263,6 +243,38 @@ export default function Home() {
 
   const effectiveBacktestSymbol = selectedInstrument?.id ?? backtestSymbol;
 
+  const trackAssetSelected = (
+    instrument: ReturnType<typeof getInstrumentById> | undefined,
+    market: string,
+    assetType: AssetType
+  ) => {
+    if (!instrument) {
+      return;
+    }
+
+    trackGaEvent("asset_selected", {
+      symbol: instrument.displaySymbol,
+      asset_name: instrument.name,
+      market,
+      asset_type: assetType,
+      currency: instrument.currency,
+      locale,
+    });
+  };
+
+  const handleCalculatorChange = (calculator: ActiveCalculator) => {
+    if (calculator === activeCalculator) {
+      return;
+    }
+
+    setActiveCalculator(calculator);
+    trackGaEvent("calculator_mode_changed", {
+      mode:
+        calculator === "dca" ? "dca_backtest" : "compound_calculator",
+      locale,
+    });
+  };
+
   const handleBacktestCountryChange = (country: string) => {
     const nextAssetTypes = getAssetTypesForMarket(country);
     const nextAssetType = nextAssetTypes.includes(backtestAssetType)
@@ -276,6 +288,12 @@ export default function Home() {
     setBacktestCountry(country);
     setBacktestAssetType(nextAssetType);
     setBacktestSymbol(nextInstruments[0]?.id ?? backtestSymbol);
+    hasUserChangedDcaCalculation.current = true;
+    trackGaEvent("market_selected", {
+      market: country,
+      locale,
+    });
+    trackAssetSelected(nextInstruments[0], country, nextAssetType);
   };
 
   const handleBacktestAssetTypeChange = (assetType: AssetType) => {
@@ -290,6 +308,57 @@ export default function Home() {
 
     setBacktestAssetType(assetType);
     setBacktestSymbol(nextInstruments[0].id);
+    hasUserChangedDcaCalculation.current = true;
+    trackGaEvent("asset_type_selected", {
+      asset_type: assetType,
+      locale,
+    });
+    trackAssetSelected(nextInstruments[0], backtestCountry, assetType);
+  };
+
+  const handleBacktestSymbolChange = (symbol: SymbolKey) => {
+    const nextInstrument =
+      filteredInstruments.find((instrument) => instrument.id === symbol) ??
+      getInstrumentById(symbol);
+
+    setBacktestSymbol(symbol);
+    hasUserChangedDcaCalculation.current = true;
+    trackAssetSelected(nextInstrument, backtestCountry, effectiveAssetType);
+  };
+
+  const handleBacktestMonthlyAmountChange = (value: string) => {
+    hasUserChangedDcaCalculation.current = true;
+    setBacktestMonthlyAmount(value);
+  };
+
+  const handleBacktestStartYearChange = (value: string) => {
+    hasUserChangedDcaCalculation.current = true;
+    setBacktestStartYear(value);
+  };
+
+  const handleBacktestEndYearChange = (value: string) => {
+    hasUserChangedDcaCalculation.current = true;
+    setBacktestEndYear(value);
+  };
+
+  const handleInitialAmountChange = (value: string) => {
+    hasUserChangedCompoundCalculation.current = true;
+    setInitialAmount(value);
+  };
+
+  const handleMonthlyContributionChange = (value: string) => {
+    hasUserChangedCompoundCalculation.current = true;
+    setMonthlyContribution(value);
+  };
+
+  const handleAnnualReturnChange = (value: string) => {
+    hasUserChangedCompoundCalculation.current = true;
+    setAnnualReturn(value);
+  };
+
+  const handleYearsChange = (value: string) => {
+    hasUserChangedCompoundCalculation.current = true;
+    setYears(value);
   };
 
   useEffect(() => {
@@ -393,6 +462,94 @@ export default function Home() {
   );
 
   useEffect(() => {
+    if (!hasTrackedInitialDcaCalculation.current) {
+      hasTrackedInitialDcaCalculation.current = true;
+      return;
+    }
+
+    if (!hasUserChangedDcaCalculation.current) {
+      return;
+    }
+
+    const monthlyAmount = Number(backtestMonthlyAmount);
+
+    if (!Number.isFinite(monthlyAmount) || monthlyAmount < 0) {
+      return;
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      trackGaEvent("dca_calculation_updated", {
+        symbol: selectedInstrument?.displaySymbol ?? effectiveBacktestSymbol,
+        market: backtestCountry,
+        asset_type: effectiveAssetType,
+        monthly_amount: monthlyAmount,
+        start_year: normalizedBacktestStartYear,
+        end_year: normalizedBacktestEndYear,
+        currency: selectedCurrency,
+        data_source: backtest.dataSource,
+        locale,
+      });
+    }, 900);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [
+    backtest.dataSource,
+    backtestCountry,
+    backtestMonthlyAmount,
+    effectiveAssetType,
+    effectiveBacktestSymbol,
+    locale,
+    normalizedBacktestEndYear,
+    normalizedBacktestStartYear,
+    selectedCurrency,
+    selectedInstrument,
+  ]);
+
+  useEffect(() => {
+    if (!hasTrackedInitialCompoundCalculation.current) {
+      hasTrackedInitialCompoundCalculation.current = true;
+      return;
+    }
+
+    if (!hasUserChangedCompoundCalculation.current) {
+      return;
+    }
+
+    const monthlyAmount = Number(monthlyContribution);
+    const investmentYears = Number(years);
+    const annualReturnRate = Number(annualReturn);
+
+    if (
+      !Number.isFinite(monthlyAmount) ||
+      !Number.isFinite(investmentYears) ||
+      !Number.isFinite(annualReturnRate) ||
+      monthlyAmount < 0 ||
+      investmentYears < 0
+    ) {
+      return;
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      trackGaEvent("compound_calculation_updated", {
+        monthly_amount: monthlyAmount,
+        years: investmentYears,
+        annual_return: annualReturnRate,
+        currency: selectedCurrency,
+        locale,
+      });
+    }, 900);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [
+    annualReturn,
+    initialAmount,
+    locale,
+    monthlyContribution,
+    selectedCurrency,
+    years,
+  ]);
+
+  useEffect(() => {
     const url = new URL(`/${locale}`, window.location.origin);
 
     url.searchParams.set("locale", locale);
@@ -423,7 +580,7 @@ export default function Home() {
     selectedInstrument,
   ]);
 
-  const copyShareUrl = async () => {
+  const copyShareUrl = async (shouldTrackEvent = true) => {
     if (!shareUrl) {
       return;
     }
@@ -442,22 +599,26 @@ export default function Home() {
       document.body.removeChild(textArea);
     }
     setCopiedShareLink(true);
-    trackShareEvent(
-      "copy_result_link_clicked",
-      selectedInstrument,
-      backtestCountry,
-      effectiveAssetType
-    );
+    if (shouldTrackEvent) {
+      trackGaEvent("copy_result_link_clicked", {
+        symbol: selectedInstrument?.displaySymbol ?? effectiveBacktestSymbol,
+        market: backtestCountry,
+        asset_type: effectiveAssetType,
+        currency: selectedCurrency,
+        locale,
+      });
+    }
     window.setTimeout(() => setCopiedShareLink(false), 2200);
   };
 
   const handleShareResult = async () => {
-    trackShareEvent(
-      "share_result_clicked",
-      selectedInstrument,
-      backtestCountry,
-      effectiveAssetType
-    );
+    trackGaEvent("share_result_clicked", {
+      symbol: selectedInstrument?.displaySymbol ?? effectiveBacktestSymbol,
+      market: backtestCountry,
+      asset_type: effectiveAssetType,
+      currency: selectedCurrency,
+      locale,
+    });
 
     if (navigator.share && shareUrl) {
       try {
@@ -472,7 +633,7 @@ export default function Home() {
       }
     }
 
-    await copyShareUrl();
+    await copyShareUrl(false);
   };
 
   const structuredData = useMemo(() => {
@@ -527,7 +688,7 @@ export default function Home() {
       <Navbar
         activeCalculator={activeCalculator}
         selectedCurrency={selectedCurrency}
-        onCalculatorChange={setActiveCalculator}
+        onCalculatorChange={handleCalculatorChange}
         onCurrencyChange={setSelectedCurrency}
       />
 
@@ -545,7 +706,7 @@ export default function Home() {
           compoundYears={years}
           compoundFinalValue={result.finalValue}
           growthMultiple={growthMultiple}
-          onCalculatorChange={setActiveCalculator}
+          onCalculatorChange={handleCalculatorChange}
         />
 
         {activeCalculator === "dca" ? (
@@ -567,10 +728,10 @@ export default function Home() {
             showBacktestTable={showBacktestTable}
             setBacktestCountry={handleBacktestCountryChange}
             setBacktestAssetType={handleBacktestAssetTypeChange}
-            setBacktestSymbol={setBacktestSymbol}
-            setBacktestMonthlyAmount={setBacktestMonthlyAmount}
-            setBacktestStartYear={setBacktestStartYear}
-            setBacktestEndYear={setBacktestEndYear}
+            setBacktestSymbol={handleBacktestSymbolChange}
+            setBacktestMonthlyAmount={handleBacktestMonthlyAmountChange}
+            setBacktestStartYear={handleBacktestStartYearChange}
+            setBacktestEndYear={handleBacktestEndYearChange}
             setShowBacktestTable={setShowBacktestTable}
             shareUrl={shareUrl}
             copiedShareLink={copiedShareLink}
@@ -588,10 +749,10 @@ export default function Home() {
             annualReturn={annualReturn}
             years={years}
             showCompoundTable={showCompoundTable}
-            setInitialAmount={setInitialAmount}
-            setMonthlyContribution={setMonthlyContribution}
-            setAnnualReturn={setAnnualReturn}
-            setYears={setYears}
+            setInitialAmount={handleInitialAmountChange}
+            setMonthlyContribution={handleMonthlyContributionChange}
+            setAnnualReturn={handleAnnualReturnChange}
+            setYears={handleYearsChange}
             setShowCompoundTable={setShowCompoundTable}
           />
         )}
