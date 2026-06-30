@@ -20,7 +20,7 @@ import {
   getDefaultCurrency,
   type CurrencyCode,
 } from "@/lib/currencies";
-import { formatInputAmount } from "@/lib/formatting";
+import { formatInputAmount, formatMoney, formatPercent } from "@/lib/formatting";
 import {
   getMarketCsvYears,
   loadMarketCsv,
@@ -133,6 +133,99 @@ function getAmountFromQuery(value: string | null) {
   const amount = Number(value);
 
   return Number.isFinite(amount) && amount >= 0 ? String(amount) : null;
+}
+
+function roundRect(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+  radius: number
+) {
+  ctx.beginPath();
+  ctx.moveTo(x + radius, y);
+  ctx.lineTo(x + width - radius, y);
+  ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+  ctx.lineTo(x + width, y + height - radius);
+  ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+  ctx.lineTo(x + radius, y + height);
+  ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+  ctx.lineTo(x, y + radius);
+  ctx.quadraticCurveTo(x, y, x + radius, y);
+  ctx.closePath();
+}
+
+function drawText(
+  ctx: CanvasRenderingContext2D,
+  text: string,
+  x: number,
+  y: number,
+  maxWidth: number,
+  lineHeight: number,
+  maxLines = 1
+) {
+  const segments = text.split(" ");
+  const lines: string[] = [];
+  let currentLine = "";
+
+  for (const segment of segments) {
+    const nextLine = currentLine ? `${currentLine} ${segment}` : segment;
+
+    if (ctx.measureText(nextLine).width <= maxWidth || !currentLine) {
+      currentLine = nextLine;
+    } else {
+      lines.push(currentLine);
+      currentLine = segment;
+    }
+  }
+
+  if (currentLine) {
+    lines.push(currentLine);
+  }
+
+  const visibleLines = lines.slice(0, maxLines);
+  const lastLineIndex = visibleLines.length - 1;
+
+  if (lines.length > maxLines && lastLineIndex >= 0) {
+    let truncated = visibleLines[lastLineIndex];
+
+    while (
+      truncated.length > 1 &&
+      ctx.measureText(`${truncated}...`).width > maxWidth
+    ) {
+      truncated = truncated.slice(0, -1);
+    }
+
+    visibleLines[lastLineIndex] = `${truncated}...`;
+  }
+
+  visibleLines.forEach((line, index) => {
+    ctx.fillText(line, x, y + index * lineHeight);
+  });
+}
+
+function fitFontSize(
+  ctx: CanvasRenderingContext2D,
+  text: string,
+  maxWidth: number,
+  startSize: number,
+  minSize: number,
+  fontWeight = "700"
+) {
+  let size = startSize;
+
+  while (size > minSize) {
+    ctx.font = `${fontWeight} ${size}px Inter, Arial, sans-serif`;
+
+    if (ctx.measureText(text).width <= maxWidth) {
+      return size;
+    }
+
+    size -= 2;
+  }
+
+  return minSize;
 }
 
 export default function Home() {
@@ -636,6 +729,224 @@ export default function Home() {
     await copyShareUrl(false);
   };
 
+  const handleDownloadResultImage = async () => {
+    const canvas = document.createElement("canvas");
+    const width = 1200;
+    const height = 630;
+    const scale = window.devicePixelRatio || 1;
+    const instrumentSymbol =
+      selectedInstrument?.displaySymbol ?? effectiveBacktestSymbol;
+    const instrumentName = selectedInstrument?.name ?? instrumentSymbol;
+    const dataSourceLabel =
+      backtest.dataSource === "csv"
+        ? t("dca.csvDataSource")
+        : t("dca.mockDataSource");
+    const metricCards = [
+      {
+        label: t("metrics.totalInvested"),
+        value: formatMoney(backtest.totalInvested, selectedCurrency, locale),
+        color: "#f8fafc",
+      },
+      {
+        label: t("metrics.finalValueTitle"),
+        value: formatMoney(backtest.finalValue, selectedCurrency, locale),
+        color: "#67e8f9",
+      },
+      {
+        label: t("metrics.totalProfit"),
+        value: formatMoney(backtest.totalProfit, selectedCurrency, locale),
+        color: "#6ee7b7",
+      },
+      {
+        label: t("metrics.totalReturn"),
+        value: `${formatPercent(backtest.totalReturn, locale)}%`,
+        color: "#22d3ee",
+      },
+    ];
+
+    canvas.width = width * scale;
+    canvas.height = height * scale;
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
+
+    const ctx = canvas.getContext("2d");
+
+    if (!ctx) {
+      return;
+    }
+
+    ctx.scale(scale, scale);
+
+    const background = ctx.createLinearGradient(0, 0, width, height);
+    background.addColorStop(0, "#020617");
+    background.addColorStop(0.5, "#07111f");
+    background.addColorStop(1, "#031315");
+    ctx.fillStyle = background;
+    ctx.fillRect(0, 0, width, height);
+
+    const cyanGlow = ctx.createRadialGradient(980, 70, 0, 980, 70, 380);
+    cyanGlow.addColorStop(0, "rgba(34, 211, 238, 0.28)");
+    cyanGlow.addColorStop(1, "rgba(34, 211, 238, 0)");
+    ctx.fillStyle = cyanGlow;
+    ctx.fillRect(0, 0, width, height);
+
+    const greenGlow = ctx.createRadialGradient(220, 520, 0, 220, 520, 380);
+    greenGlow.addColorStop(0, "rgba(52, 211, 153, 0.18)");
+    greenGlow.addColorStop(1, "rgba(52, 211, 153, 0)");
+    ctx.fillStyle = greenGlow;
+    ctx.fillRect(0, 0, width, height);
+
+    ctx.strokeStyle = "rgba(255, 255, 255, 0.12)";
+    ctx.lineWidth = 1;
+    roundRect(ctx, 44, 36, width - 88, height - 72, 34);
+    ctx.stroke();
+
+    ctx.fillStyle = "rgba(255, 255, 255, 0.06)";
+    roundRect(ctx, 44, 36, width - 88, height - 72, 34);
+    ctx.fill();
+
+    ctx.fillStyle = "#67e8f9";
+    ctx.font = "700 28px Inter, Arial, sans-serif";
+    ctx.fillText("DCA Backtest", 84, 92);
+
+    ctx.fillStyle = "rgba(34, 211, 238, 0.12)";
+    roundRect(ctx, 880, 62, 236, 42, 21);
+    ctx.fill();
+    ctx.fillStyle = "#a5f3fc";
+    ctx.font = "700 18px Inter, Arial, sans-serif";
+    drawText(ctx, dataSourceLabel, 902, 89, 194, 22, 1);
+
+    ctx.fillStyle = "#f8fafc";
+    ctx.font = "800 46px Inter, Arial, sans-serif";
+    drawText(ctx, t("resultImage.title"), 84, 160, 700, 54, 2);
+
+    ctx.fillStyle = "#cbd5e1";
+    ctx.font = "500 22px Inter, Arial, sans-serif";
+    drawText(
+      ctx,
+      `${instrumentSymbol} - ${instrumentName}`,
+      84,
+      250,
+      690,
+      28,
+      2
+    );
+
+    ctx.fillStyle = "#94a3b8";
+    ctx.font = "500 18px Inter, Arial, sans-serif";
+    drawText(
+      ctx,
+      `${t("dca.countryMarket")}: ${backtestCountry}   ${t(
+        "common.currency"
+      )}: ${selectedCurrency}`,
+      84,
+      316,
+      700,
+      24,
+      1
+    );
+    drawText(
+      ctx,
+      `${t("dca.monthlyInvestment")}: ${formatMoney(
+        Number(backtestMonthlyAmount) || 0,
+        selectedCurrency,
+        locale
+      )}   ${t("dca.startYear")}: ${backtestStartYear}   ${t(
+        "dca.endYear"
+      )}: ${backtestEndYear}`,
+      84,
+      346,
+      760,
+      24,
+      1
+    );
+
+    const cardWidth = 248;
+    const cardHeight = 104;
+    const cardGap = 20;
+    const startX = 84;
+    const startY = 402;
+
+    metricCards.forEach((metric, index) => {
+      const x = startX + index * (cardWidth + cardGap);
+
+      ctx.fillStyle = "rgba(2, 6, 23, 0.72)";
+      roundRect(ctx, x, startY, cardWidth, cardHeight, 22);
+      ctx.fill();
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.10)";
+      ctx.stroke();
+
+      ctx.fillStyle = "#94a3b8";
+      ctx.font = "600 15px Inter, Arial, sans-serif";
+      drawText(ctx, metric.label, x + 20, startY + 34, cardWidth - 40, 20, 1);
+
+      const fontSize = fitFontSize(
+        ctx,
+        metric.value,
+        cardWidth - 40,
+        28,
+        18,
+        "800"
+      );
+      ctx.font = `800 ${fontSize}px Inter, Arial, sans-serif`;
+      ctx.fillStyle = metric.color;
+      drawText(ctx, metric.value, x + 20, startY + 74, cardWidth - 40, 28, 1);
+    });
+
+    ctx.fillStyle = "#94a3b8";
+    ctx.font = "500 15px Inter, Arial, sans-serif";
+    drawText(ctx, t("resultImage.disclaimer"), 84, 560, 760, 22, 2);
+
+    ctx.fillStyle = "#67e8f9";
+    ctx.font = "700 18px Inter, Arial, sans-serif";
+    ctx.fillText("dcabacktest.com", 966, 574);
+
+    const blob = await new Promise<Blob | null>((resolve) => {
+      canvas.toBlob(resolve, "image/png", 0.95);
+    });
+
+    if (!blob) {
+      return;
+    }
+
+    const file = new File([blob], "dca-backtest-result.png", {
+      type: "image/png",
+    });
+    const shareData = {
+      title: t("share.title"),
+      text: t("share.description"),
+      files: [file],
+    };
+    const eventParams = {
+      symbol: instrumentSymbol,
+      market: backtestCountry,
+      asset_type: effectiveAssetType,
+      currency: selectedCurrency,
+      locale,
+      data_source: backtest.dataSource,
+    };
+
+    if (navigator.share && navigator.canShare?.(shareData)) {
+      try {
+        await navigator.share(shareData);
+        trackGaEvent("result_image_share_clicked", eventParams);
+        return;
+      } catch {
+        // Fall back to downloading if native image sharing is dismissed or fails.
+      }
+    }
+
+    const imageUrl = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = imageUrl;
+    link.download = "dca-backtest-result.png";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(imageUrl);
+    trackGaEvent("result_image_download_clicked", eventParams);
+  };
+
   const structuredData = useMemo(() => {
     const pageUrl = `https://dcabacktest.com/${locale}`;
     const faqStructuredData = {
@@ -737,6 +1048,7 @@ export default function Home() {
             copiedShareLink={copiedShareLink}
             onShareResult={handleShareResult}
             onCopyShareLink={copyShareUrl}
+            onDownloadResultImage={handleDownloadResultImage}
           />
         ) : (
           <CompoundInterestCalculator

@@ -261,6 +261,11 @@
     "linkCopied": "Link kopiert",
     "title": "Dieses DCA-Ergebnis teilen",
     "description": "Öffnen Sie dieses DCA Backtest-Ergebnis mit denselben Rechnereinstellungen.",
-    "copyDescription": "Link zu diesem Rechnerergebnis kopieren"
+    "copyDescription": "Link zu diesem Rechnerergebnis kopieren",
+    "downloadResultImage": "Ergebnisbild herunterladen"
+  },
+  "resultImage": {
+    "title": "DCA-Backtest-Ergebnis",
+    "disclaimer": "Nur zu Bildungszwecken. Keine Finanzberatung. Vergangene Wertentwicklung garantiert keine zukünftigen Ergebnisse."
   }
 }

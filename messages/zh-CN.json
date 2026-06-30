@@ -261,6 +261,11 @@
     "linkCopied": "链接已复制",
     "title": "分享这个 DCA 结果",
     "description": "使用相同计算器设置打开这个 DCA 回测结果。",
-    "copyDescription": "复制这个计算器结果链接"
+    "copyDescription": "复制这个计算器结果链接",
+    "downloadResultImage": "下载结果图"
+  },
+  "resultImage": {
+    "title": "定投回测结果",
+    "disclaimer": "仅供教育用途，不构成财务建议。过往表现不保证未来结果。"
   }
 }

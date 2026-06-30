@@ -261,6 +261,11 @@
     "linkCopied": "Link copied",
     "title": "Share this DCA result",
     "description": "Open this DCA Backtest result with the same calculator settings.",
-    "copyDescription": "Copy this calculator result link"
+    "copyDescription": "Copy this calculator result link",
+    "downloadResultImage": "Download result image"
+  },
+  "resultImage": {
+    "title": "DCA Backtest Result",
+    "disclaimer": "Educational only. Not financial advice. Past performance does not guarantee future results."
   }
 }

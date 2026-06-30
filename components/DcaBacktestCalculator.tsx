@@ -54,6 +54,7 @@ type DcaBacktestCalculatorProps = {
   copiedShareLink: boolean;
   onShareResult: () => void;
   onCopyShareLink: () => void;
+  onDownloadResultImage: () => void;
 };
 
 export default function DcaBacktestCalculator({
@@ -83,6 +84,7 @@ export default function DcaBacktestCalculator({
   copiedShareLink,
   onShareResult,
   onCopyShareLink,
+  onDownloadResultImage,
 }: DcaBacktestCalculatorProps) {
   const t = useTranslations();
   const locale = useLocale();
@@ -361,6 +363,14 @@ export default function DcaBacktestCalculator({
                   aria-label={t("share.copyDescription")}
                 >
                   {t("share.copyLink")}
+                </button>
+                <button
+                  type="button"
+                  onClick={onDownloadResultImage}
+                  className="rounded-2xl border border-emerald-400/30 bg-emerald-400/10 px-4 py-2.5 text-sm font-semibold text-emerald-200 transition hover:bg-emerald-400/20"
+                  aria-label={t("share.downloadResultImage")}
+                >
+                  {t("share.downloadResultImage")}
                 </button>
               </div>
             </div>

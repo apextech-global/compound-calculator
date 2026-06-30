@@ -261,6 +261,11 @@
     "linkCopied": "링크가 복사되었습니다",
     "title": "이 DCA 결과 공유",
     "description": "같은 계산기 설정으로 이 DCA Backtest 결과를 엽니다.",
-    "copyDescription": "이 계산기 결과 링크 복사"
+    "copyDescription": "이 계산기 결과 링크 복사",
+    "downloadResultImage": "결과 이미지 다운로드"
+  },
+  "resultImage": {
+    "title": "DCA 백테스트 결과",
+    "disclaimer": "교육 목적 전용입니다. 금융 조언이 아닙니다. 과거 성과가 미래 결과를 보장하지 않습니다."
   }
 }

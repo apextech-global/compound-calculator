@@ -261,6 +261,11 @@
     "linkCopied": "リンクをコピーしました",
     "title": "この DCA 結果を共有",
     "description": "同じ計算機設定でこの DCA Backtest 結果を開きます。",
-    "copyDescription": "この計算結果リンクをコピー"
+    "copyDescription": "この計算結果リンクをコピー",
+    "downloadResultImage": "結果画像をダウンロード"
+  },
+  "resultImage": {
+    "title": "DCAバックテスト結果",
+    "disclaimer": "教育目的のみ。金融助言ではありません。過去の実績は将来の結果を保証しません。"
   }
 }

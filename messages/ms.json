@@ -261,6 +261,11 @@
     "linkCopied": "Pautan disalin",
     "title": "Kongsi hasil DCA ini",
     "description": "Buka hasil DCA Backtest ini dengan tetapan kalkulator yang sama.",
-    "copyDescription": "Salin pautan hasil kalkulator ini"
+    "copyDescription": "Salin pautan hasil kalkulator ini",
+    "downloadResultImage": "Muat turun imej hasil"
+  },
+  "resultImage": {
+    "title": "Keputusan DCA Backtest",
+    "disclaimer": "Untuk pendidikan sahaja. Bukan nasihat kewangan. Prestasi lalu tidak menjamin hasil masa depan."
   }
 }
