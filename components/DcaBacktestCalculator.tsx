@@ -52,8 +52,10 @@ type DcaBacktestCalculatorProps = {
   setShowBacktestTable: (updater: (value: boolean) => boolean) => void;
   shareUrl: string;
   copiedShareLink: boolean;
+  copiedSocialCaption: boolean;
   onShareResult: () => void;
   onCopyShareLink: () => void;
+  onCopySocialCaption: () => void;
   onDownloadResultImage: () => void;
 };
 
@@ -82,8 +84,10 @@ export default function DcaBacktestCalculator({
   setShowBacktestTable,
   shareUrl,
   copiedShareLink,
+  copiedSocialCaption,
   onShareResult,
   onCopyShareLink,
+  onCopySocialCaption,
   onDownloadResultImage,
 }: DcaBacktestCalculatorProps) {
   const t = useTranslations();
@@ -347,7 +351,7 @@ export default function DcaBacktestCalculator({
                   {t("share.copyDescription")}
                 </p>
               </div>
-              <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
+              <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap lg:justify-end">
                 <button
                   type="button"
                   onClick={onShareResult}
@@ -372,12 +376,25 @@ export default function DcaBacktestCalculator({
                 >
                   {t("share.downloadResultImage")}
                 </button>
+                <button
+                  type="button"
+                  onClick={onCopySocialCaption}
+                  className="rounded-2xl border border-white/10 bg-white/[0.08] px-4 py-2.5 text-sm font-semibold text-slate-100 transition hover:border-emerald-300/40 hover:text-emerald-200"
+                  aria-label={t("caption.copyCaption")}
+                >
+                  {t("caption.copyCaption")}
+                </button>
               </div>
             </div>
             <div className="mt-2 min-w-0">
               {copiedShareLink ? (
                 <p className="text-sm font-semibold text-emerald-300">
                   {t("share.linkCopied")}
+                </p>
+              ) : null}
+              {copiedSocialCaption ? (
+                <p className="text-sm font-semibold text-emerald-300">
+                  {t("caption.captionCopied")}
                 </p>
               ) : null}
               {shareUrl ? (

@@ -268,5 +268,17 @@
     "title": "Resultado del backtest DCA",
     "disclaimer": "Solo con fines educativos. No es asesoramiento financiero. El rendimiento pasado no garantiza resultados futuros.",
     "headline": "¿Y si invirtiera cada mes en {symbol}?"
+  },
+  "caption": {
+    "copyCaption": "Copiar texto",
+    "captionCopied": "Texto copiado",
+    "headline": "¿Y si invirtiera cada mes en {symbol} de {startYear} a {endYear}?",
+    "monthlyAmount": "Monto mensual",
+    "totalInvested": "Total invertido",
+    "finalValue": "Valor final",
+    "totalProfit": "Ganancia total",
+    "totalReturn": "Rentabilidad total",
+    "disclaimer": "Solo con fines educativos. No es asesoramiento financiero.",
+    "cta": "Prueba tu propio backtest"
   }
 }

@@ -268,5 +268,17 @@
     "title": "定投回測結果",
     "disclaimer": "僅供教育用途，並非財務建議。過往表現不保證未來結果。",
     "headline": "如果我每月定投 {symbol}，結果會怎樣？"
+  },
+  "caption": {
+    "copyCaption": "複製分享文案",
+    "captionCopied": "分享文案已複製",
+    "headline": "如果我從 {startYear} 到 {endYear} 每月定投 {symbol}，會怎樣？",
+    "monthlyAmount": "每月投入",
+    "totalInvested": "總投入",
+    "finalValue": "最終價值",
+    "totalProfit": "總利潤",
+    "totalReturn": "總回報",
+    "disclaimer": "僅供教育用途，並非投資建議。",
+    "cta": "試算你的定投結果"
   }
 }

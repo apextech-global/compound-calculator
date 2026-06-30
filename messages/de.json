@@ -268,5 +268,17 @@
     "title": "DCA-Backtest-Ergebnis",
     "disclaimer": "Nur zu Bildungszwecken. Keine Finanzberatung. Vergangene Wertentwicklung garantiert keine zukünftigen Ergebnisse.",
     "headline": "Was wäre, wenn ich monatlich in {symbol} investiert hätte?"
+  },
+  "caption": {
+    "copyCaption": "Bildunterschrift kopieren",
+    "captionCopied": "Bildunterschrift kopiert",
+    "headline": "Was wäre, wenn ich von {startYear} bis {endYear} monatlich in {symbol} investiert hätte?",
+    "monthlyAmount": "Monatlicher Betrag",
+    "totalInvested": "Insgesamt investiert",
+    "finalValue": "Endwert",
+    "totalProfit": "Gesamtgewinn",
+    "totalReturn": "Gesamtrendite",
+    "disclaimer": "Nur zu Bildungszwecken. Keine Finanzberatung.",
+    "cta": "Eigenen Backtest ausprobieren"
   }
 }

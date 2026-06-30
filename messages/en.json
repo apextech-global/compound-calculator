@@ -268,5 +268,17 @@
     "title": "DCA Backtest Result",
     "disclaimer": "Educational only. Not financial advice. Past performance does not guarantee future results.",
     "headline": "What if I invested monthly in {symbol}?"
+  },
+  "caption": {
+    "copyCaption": "Copy caption",
+    "captionCopied": "Caption copied",
+    "headline": "What if I invested monthly in {symbol} from {startYear} to {endYear}?",
+    "monthlyAmount": "Monthly amount",
+    "totalInvested": "Total invested",
+    "finalValue": "Final value",
+    "totalProfit": "Total profit",
+    "totalReturn": "Total return",
+    "disclaimer": "Educational only. Not financial advice.",
+    "cta": "Try your own backtest"
   }
 }

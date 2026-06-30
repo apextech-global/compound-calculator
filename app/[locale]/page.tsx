@@ -135,6 +135,23 @@ function getAmountFromQuery(value: string | null) {
   return Number.isFinite(amount) && amount >= 0 ? String(amount) : null;
 }
 
+async function copyTextToClipboard(text: string) {
+  if (navigator.clipboard?.writeText) {
+    await navigator.clipboard.writeText(text);
+    return;
+  }
+
+  const textArea = document.createElement("textarea");
+  textArea.value = text;
+  textArea.setAttribute("readonly", "true");
+  textArea.style.position = "fixed";
+  textArea.style.opacity = "0";
+  document.body.appendChild(textArea);
+  textArea.select();
+  document.execCommand("copy");
+  document.body.removeChild(textArea);
+}
+
 function roundRect(
   ctx: CanvasRenderingContext2D,
   x: number,
@@ -253,6 +270,7 @@ export default function Home() {
     rows: MarketCsvRow[] | null;
   } | null>(null);
   const [copiedShareLink, setCopiedShareLink] = useState(false);
+  const [copiedSocialCaption, setCopiedSocialCaption] = useState(false);
   const [shareUrl, setShareUrl] = useState("");
   const hasTrackedInitialDcaCalculation = useRef(false);
   const hasTrackedInitialCompoundCalculation = useRef(false);
@@ -678,19 +696,7 @@ export default function Home() {
       return;
     }
 
-    if (navigator.clipboard?.writeText) {
-      await navigator.clipboard.writeText(shareUrl);
-    } else {
-      const textArea = document.createElement("textarea");
-      textArea.value = shareUrl;
-      textArea.setAttribute("readonly", "true");
-      textArea.style.position = "fixed";
-      textArea.style.opacity = "0";
-      document.body.appendChild(textArea);
-      textArea.select();
-      document.execCommand("copy");
-      document.body.removeChild(textArea);
-    }
+    await copyTextToClipboard(shareUrl);
     setCopiedShareLink(true);
     if (shouldTrackEvent) {
       trackGaEvent("copy_result_link_clicked", {
@@ -702,6 +708,58 @@ export default function Home() {
       });
     }
     window.setTimeout(() => setCopiedShareLink(false), 2200);
+  };
+
+  const handleCopySocialCaption = async () => {
+    const instrumentSymbol =
+      selectedInstrument?.displaySymbol ?? effectiveBacktestSymbol;
+    const caption = [
+      t("caption.headline", {
+        symbol: instrumentSymbol,
+        startYear: normalizedBacktestStartYear,
+        endYear: normalizedBacktestEndYear,
+      }),
+      "",
+      `${t("caption.monthlyAmount")}: ${formatMoney(
+        Number(backtestMonthlyAmount) || 0,
+        selectedCurrency,
+        locale
+      )}`,
+      `${t("caption.totalInvested")}: ${formatMoney(
+        backtest.totalInvested,
+        selectedCurrency,
+        locale
+      )}`,
+      `${t("caption.finalValue")}: ${formatMoney(
+        backtest.finalValue,
+        selectedCurrency,
+        locale
+      )}`,
+      `${t("caption.totalProfit")}: ${formatMoney(
+        backtest.totalProfit,
+        selectedCurrency,
+        locale
+      )}`,
+      `${t("caption.totalReturn")}: ${formatPercent(
+        backtest.totalReturn,
+        locale
+      )}%`,
+      "",
+      t("caption.disclaimer"),
+      `${t("caption.cta")}: https://dcabacktest.com`,
+    ].join("\n");
+
+    await copyTextToClipboard(caption);
+    setCopiedSocialCaption(true);
+    trackGaEvent("copy_social_caption_clicked", {
+      symbol: instrumentSymbol,
+      market: backtestCountry,
+      asset_type: effectiveAssetType,
+      currency: selectedCurrency,
+      locale,
+      data_source: backtest.dataSource,
+    });
+    window.setTimeout(() => setCopiedSocialCaption(false), 2200);
   };
 
   const handleShareResult = async () => {
@@ -1058,8 +1116,10 @@ export default function Home() {
             setShowBacktestTable={setShowBacktestTable}
             shareUrl={shareUrl}
             copiedShareLink={copiedShareLink}
+            copiedSocialCaption={copiedSocialCaption}
             onShareResult={handleShareResult}
             onCopyShareLink={copyShareUrl}
+            onCopySocialCaption={handleCopySocialCaption}
             onDownloadResultImage={handleDownloadResultImage}
           />
         ) : (

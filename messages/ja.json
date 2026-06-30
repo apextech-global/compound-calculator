@@ -268,5 +268,17 @@
     "title": "DCAバックテスト結果",
     "disclaimer": "教育目的のみ。金融助言ではありません。過去の実績は将来の結果を保証しません。",
     "headline": "{symbol}に毎月投資していたら？"
+  },
+  "caption": {
+    "copyCaption": "キャプションをコピー",
+    "captionCopied": "キャプションをコピーしました",
+    "headline": "{startYear}年から{endYear}年まで{symbol}に毎月投資していたら？",
+    "monthlyAmount": "毎月の投資額",
+    "totalInvested": "累計投資額",
+    "finalValue": "最終価値",
+    "totalProfit": "利益合計",
+    "totalReturn": "トータルリターン",
+    "disclaimer": "教育目的のみ。金融助言ではありません。",
+    "cta": "自分のバックテストを試す"
   }
 }

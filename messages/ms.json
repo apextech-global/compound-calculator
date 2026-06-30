@@ -268,5 +268,17 @@
     "title": "Keputusan DCA Backtest",
     "disclaimer": "Untuk pendidikan sahaja. Bukan nasihat kewangan. Prestasi lalu tidak menjamin hasil masa depan.",
     "headline": "Bagaimana jika saya melabur bulanan dalam {symbol}?"
+  },
+  "caption": {
+    "copyCaption": "Salin kapsyen",
+    "captionCopied": "Kapsyen telah disalin",
+    "headline": "Bagaimana jika saya melabur bulanan dalam {symbol} dari {startYear} hingga {endYear}?",
+    "monthlyAmount": "Jumlah bulanan",
+    "totalInvested": "Jumlah dilaburkan",
+    "finalValue": "Nilai akhir",
+    "totalProfit": "Jumlah keuntungan",
+    "totalReturn": "Jumlah pulangan",
+    "disclaimer": "Untuk pendidikan sahaja. Bukan nasihat kewangan.",
+    "cta": "Cuba backtest anda sendiri"
   }
 }

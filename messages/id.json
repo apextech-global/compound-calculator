@@ -268,5 +268,17 @@
     "title": "Hasil DCA Backtest",
     "disclaimer": "Hanya untuk edukasi. Bukan nasihat keuangan. Kinerja masa lalu tidak menjamin hasil masa depan.",
     "headline": "Bagaimana jika saya investasi bulanan di {symbol}?"
+  },
+  "caption": {
+    "copyCaption": "Salin caption",
+    "captionCopied": "Caption berhasil disalin",
+    "headline": "Bagaimana jika saya investasi bulanan di {symbol} dari {startYear} hingga {endYear}?",
+    "monthlyAmount": "Jumlah bulanan",
+    "totalInvested": "Total investasi",
+    "finalValue": "Nilai akhir",
+    "totalProfit": "Total profit",
+    "totalReturn": "Total return",
+    "disclaimer": "Hanya untuk edukasi. Bukan nasihat keuangan.",
+    "cta": "Coba backtest kamu sendiri"
   }
 }

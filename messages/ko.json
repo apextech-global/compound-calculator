@@ -268,5 +268,17 @@
     "title": "DCA 백테스트 결과",
     "disclaimer": "교육 목적 전용입니다. 금융 조언이 아닙니다. 과거 성과가 미래 결과를 보장하지 않습니다.",
     "headline": "{symbol}에 매달 투자했다면?"
+  },
+  "caption": {
+    "copyCaption": "캡션 복사",
+    "captionCopied": "캡션이 복사되었습니다",
+    "headline": "{startYear}년부터 {endYear}년까지 {symbol}에 매달 투자했다면?",
+    "monthlyAmount": "월 투자금",
+    "totalInvested": "총 투자금",
+    "finalValue": "최종 가치",
+    "totalProfit": "총 수익",
+    "totalReturn": "총 수익률",
+    "disclaimer": "교육 목적 전용입니다. 금융 조언이 아닙니다.",
+    "cta": "직접 백테스트해 보기"
   }
 }
