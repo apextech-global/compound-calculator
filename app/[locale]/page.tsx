@@ -8,6 +8,7 @@ import DcaBacktestCalculator from "@/components/DcaBacktestCalculator";
 import Faq, { faqItems } from "@/components/Faq";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
+import SeoContent from "@/components/SeoContent";
 import {
   calculateCompoundInterest,
   calculateDcaBacktest,
@@ -323,6 +324,7 @@ export default function Home() {
           />
         )}
 
+        <SeoContent />
         <Faq />
       </section>
     </main>

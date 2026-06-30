@@ -155,6 +155,22 @@
       "financialAdvice": {
         "question": "這個計算器是投資建議嗎？",
         "answer": "不是。過往表現不保證未來結果。DCA Backtest 僅供教育用途，不構成金融建議。"
+      },
+      "free": {
+        "question": "這個計算器免費嗎？",
+        "answer": "是的。DCA 定投回測計算器與複利計算器目前可以免費使用。"
+      },
+      "etfs": {
+        "question": "可以用於 ETF 嗎？",
+        "answer": "可以。本工具適合 ETF 每月定投示例，例如 VOO、SPY、QQQ、CSPX，以及其他有資料的支援 ETF。"
+      },
+      "sampleData": {
+        "question": "為什麼有些資產使用示例資料？",
+        "answer": "部分全球資產尚未匯入歷史 CSV 檔案。發生這種情況時，計算器會明確標示為示例資料，而不會假裝是真實歷史資料。"
+      },
+      "marketDataUpdates": {
+        "question": "市場資料多久更新一次？",
+        "answer": "目前市場資料透過匯入新的 CSV 檔案手動更新。網站暫時不使用即時市場資料 API。"
       }
     }
   },
@@ -202,5 +218,41 @@
       },
       "emailLabel": "電子郵件："
     }
+  },
+  "seoContent": {
+    "eyebrow": "投資教育",
+    "title": "了解定投回測與複利成長如何運作",
+    "intro": "使用 DCA calculator、compound interest calculator、ETF investment calculator、monthly investment calculator，以及複利計算器、定投計算器、ETF定投計算器，探索 VOO、CSPX、ETF 與股票的長期投資情境。",
+    "sections": {
+      "dca": {
+        "title": "什麼是定期定額投資？",
+        "body": "定期定額投資是依固定週期投入固定金額。定投回測工具可幫助你比較這種投資習慣在不同市場年份中的表現。"
+      },
+      "compound": {
+        "title": "什麼是複利？",
+        "body": "複利是本金與先前收益一起繼續產生收益。複利計算器可以展示小額每月投入在長期內可能如何成長。"
+      },
+      "dcaVsLumpSum": {
+        "title": "定投與一次性投入",
+        "body": "定投會把買入分散於不同時間，一次性投入則一次投入資金。本工具專注於每月投資，協助你用歷史市場價格比較持續投入策略。"
+      },
+      "howToUse": {
+        "title": "如何使用這個定投回測計算器",
+        "body": "選擇市場、資產類型、ETF 或股票、每月投資金額、開始年份與結束年份。計算器會估算總投入、累積股數、期末價值、獲利與報酬率。"
+      },
+      "etfExample": {
+        "title": "ETF 每月定投示例",
+        "body": "例如，VOO DCA calculator 或 CSPX DCA calculator 可在有資料時使用歷史月度價格，模擬定期投資 ETF 的成長。"
+      },
+      "supportedAssets": {
+        "title": "支援的資產與市場",
+        "body": "計算器支援美國、愛爾蘭 UCITS、台灣、馬來西亞、新加坡、日本和香港的部分 ETF 與股票。未匯入市場資料的資產會明確使用示例資料。"
+      }
+    },
+    "disclaimer": {
+      "title": "重要免責聲明",
+      "body": "本工具僅供教育用途，不構成金融建議。過往表現不保證未來結果，真實回報可能因費用、稅務、股息、成交價格與匯率轉換而不同。"
+    },
+    "linksLabel": "相關站內連結"
   }
 }

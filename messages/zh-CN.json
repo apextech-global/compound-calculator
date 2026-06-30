@@ -155,6 +155,22 @@
       "financialAdvice": {
         "question": "这个计算器是投资建议吗？",
         "answer": "不是。过往表现不保证未来结果。DCA Backtest 仅供教育用途，不构成金融建议。"
+      },
+      "free": {
+        "question": "这个计算器免费吗？",
+        "answer": "是的。DCA 定投回测计算器和复利计算器目前可以免费使用。"
+      },
+      "etfs": {
+        "question": "可以用于 ETF 吗？",
+        "answer": "可以。本工具适合 ETF 每月定投示例，例如 VOO、SPY、QQQ、CSPX 以及其他有数据的受支持 ETF。"
+      },
+      "sampleData": {
+        "question": "为什么有些资产使用示例数据？",
+        "answer": "部分全球资产尚未导入历史 CSV 文件。发生这种情况时，计算器会明确标记为示例数据，而不会假装是真实历史数据。"
+      },
+      "marketDataUpdates": {
+        "question": "市场数据多久更新一次？",
+        "answer": "目前市场数据通过导入新的 CSV 文件手动更新。网站暂时不使用实时市场数据 API。"
       }
     }
   },
@@ -202,5 +218,41 @@
       },
       "emailLabel": "邮箱："
     }
+  },
+  "seoContent": {
+    "eyebrow": "投资教育",
+    "title": "了解定投回测与复利增长如何运作",
+    "intro": "使用 DCA calculator、compound interest calculator、ETF investment calculator、monthly investment calculator，以及复利计算器、定投计算器、ETF定投计算器，探索 VOO、CSPX、ETF 和股票的长期投资情景。",
+    "sections": {
+      "dca": {
+        "title": "什么是定期定额投资？",
+        "body": "定期定额投资是按固定周期投入固定金额。定投回测工具可以帮助你比较这种投资习惯在不同市场年份中的表现。"
+      },
+      "compound": {
+        "title": "什么是复利？",
+        "body": "复利是本金和此前收益一起继续产生收益。复利计算器可以展示小额每月投入在长期内可能如何增长。"
+      },
+      "dcaVsLumpSum": {
+        "title": "定投与一次性投资",
+        "body": "定投会把买入分散在不同时间，一次性投资则一次投入资金。本工具专注于每月投资，帮助你用历史市场价格比较持续投入策略。"
+      },
+      "howToUse": {
+        "title": "如何使用这个定投回测计算器",
+        "body": "选择市场、资产类型、ETF 或股票、每月投资金额、开始年份和结束年份。计算器会估算总投入、累计份额、期末价值、利润和回报率。"
+      },
+      "etfExample": {
+        "title": "ETF 每月定投示例",
+        "body": "例如，VOO DCA calculator 或 CSPX DCA calculator 可以在有数据时使用历史月度价格，模拟定期投资 ETF 的增长。"
+      },
+      "supportedAssets": {
+        "title": "支持的资产和市场",
+        "body": "计算器支持美国、爱尔兰 UCITS、台湾、马来西亚、新加坡、日本和香港的部分 ETF 与股票。没有导入市场数据的资产会明确使用示例数据。"
+      }
+    },
+    "disclaimer": {
+      "title": "重要免责声明",
+      "body": "本工具仅供教育用途，不构成金融建议。过往表现不保证未来结果，真实回报可能因费用、税务、股息、成交价格和汇率转换而不同。"
+    },
+    "linksLabel": "相关站内链接"
   }
 }

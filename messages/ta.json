@@ -155,6 +155,22 @@
       "financialAdvice": {
         "question": "இந்த கணிப்பான் முதலீட்டு ஆலோசனையா?",
         "answer": "இல்லை. கடந்த செயல்திறன் எதிர்கால முடிவுகளை உறுதி செய்யாது. DCA Backtest கல்வி நோக்கத்திற்காக மட்டுமே; இது நிதி ஆலோசனை அல்ல."
+      },
+      "free": {
+        "question": "Is this calculator free?",
+        "answer": "Yes. The DCA backtest calculator and compound interest calculator are currently free to use."
+      },
+      "etfs": {
+        "question": "Can I use this for ETFs?",
+        "answer": "Yes. The tool supports selected ETFs, including examples such as VOO, SPY, QQQ, CSPX, and other supported instruments where data is available."
+      },
+      "sampleData": {
+        "question": "Why do some assets use sample data?",
+        "answer": "Some instruments do not have imported historical CSV files yet. Those assets are clearly marked as sample data."
+      },
+      "marketDataUpdates": {
+        "question": "How often is market data updated?",
+        "answer": "Market data is updated manually for now when CSV files are imported. The site does not use a real-time market data API yet."
       }
     }
   },
@@ -202,5 +218,41 @@
       },
       "emailLabel": "மின்னஞ்சல்:"
     }
+  },
+  "seoContent": {
+    "eyebrow": "Investment Education",
+    "title": "Learn how DCA backtesting and compound growth work",
+    "intro": "Use this compound interest calculator, DCA calculator, DCA backtest calculator, ETF investment calculator, and monthly investment calculator to explore VOO, CSPX, ETFs, and stocks.",
+    "sections": {
+      "dca": {
+        "title": "What is dollar-cost averaging?",
+        "body": "Dollar-cost averaging means investing a fixed amount on a regular schedule. It can help investors study disciplined monthly investing across changing market prices."
+      },
+      "compound": {
+        "title": "What is compound interest?",
+        "body": "Compound interest is growth on both original capital and prior gains. Over time, regular contributions and reinvested returns can meaningfully affect long-term outcomes."
+      },
+      "dcaVsLumpSum": {
+        "title": "DCA vs lump sum investing",
+        "body": "DCA spreads purchases over time, while lump sum investing commits capital at once. This calculator focuses on monthly investing and historical backtesting."
+      },
+      "howToUse": {
+        "title": "How to use this DCA backtest calculator",
+        "body": "Choose a market, asset type, asset, monthly amount, start year, and end year to estimate total invested, ending value, accumulated shares, profit, and return."
+      },
+      "etfExample": {
+        "title": "ETF monthly investing example",
+        "body": "A VOO DCA calculator or CSPX DCA calculator can show how recurring ETF purchases may have grown using historical monthly prices where available."
+      },
+      "supportedAssets": {
+        "title": "Supported assets and markets",
+        "body": "Supported markets include the United States, Ireland UCITS, Taiwan, Malaysia, Singapore, Japan, and Hong Kong. Assets without imported market data clearly use sample data."
+      }
+    },
+    "disclaimer": {
+      "title": "Important disclaimer",
+      "body": "This tool is for education only and is not financial advice. Past performance does not guarantee future results."
+    },
+    "linksLabel": "Helpful site links"
   }
 }

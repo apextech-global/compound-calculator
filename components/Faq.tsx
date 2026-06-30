@@ -7,7 +7,11 @@ export const faqItems = [
   "compoundInterest",
   "monthlyGrowth",
   "vooCspx",
+  "free",
   "financialAdvice",
+  "etfs",
+  "sampleData",
+  "marketDataUpdates",
 ] as const;
 
 export default function Faq() {
