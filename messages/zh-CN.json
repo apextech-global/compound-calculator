@@ -254,5 +254,13 @@
       "body": "本工具仅供教育用途，不构成金融建议。过往表现不保证未来结果，真实回报可能因费用、税务、股息、成交价格和汇率转换而不同。"
     },
     "linksLabel": "相关站内链接"
+  },
+  "share": {
+    "shareResult": "分享结果",
+    "copyLink": "复制链接",
+    "linkCopied": "链接已复制",
+    "title": "分享这个 DCA 结果",
+    "description": "使用相同计算器设置打开这个 DCA 回测结果。",
+    "copyDescription": "复制这个计算器结果链接"
   }
 }

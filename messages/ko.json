@@ -254,5 +254,13 @@
       "body": "이 도구는 교육 목적이며 금융 조언이 아닙니다."
     },
     "linksLabel": "유용한 사이트 링크"
+  },
+  "share": {
+    "shareResult": "결과 공유",
+    "copyLink": "링크 복사",
+    "linkCopied": "링크가 복사되었습니다",
+    "title": "이 DCA 결과 공유",
+    "description": "같은 계산기 설정으로 이 DCA Backtest 결과를 엽니다.",
+    "copyDescription": "이 계산기 결과 링크 복사"
   }
 }

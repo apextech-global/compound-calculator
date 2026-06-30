@@ -254,5 +254,13 @@
       "body": "This tool is for education only and is not financial advice. Past performance does not guarantee future results, and real returns can differ because of fees, taxes, dividends, execution prices, and currency conversion."
     },
     "linksLabel": "Helpful site links"
+  },
+  "share": {
+    "shareResult": "Share result",
+    "copyLink": "Copy link",
+    "linkCopied": "Link copied",
+    "title": "Share this DCA result",
+    "description": "Open this DCA Backtest result with the same calculator settings.",
+    "copyDescription": "Copy this calculator result link"
   }
 }

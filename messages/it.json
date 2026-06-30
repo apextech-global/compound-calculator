@@ -254,5 +254,13 @@
       "body": "Questo strumento è solo a scopo educativo e non costituisce consulenza finanziaria."
     },
     "linksLabel": "Link utili del sito"
+  },
+  "share": {
+    "shareResult": "Condividi risultato",
+    "copyLink": "Copia link",
+    "linkCopied": "Link copiato",
+    "title": "Condividi questo risultato DCA",
+    "description": "Apri questo risultato DCA Backtest con le stesse impostazioni del calcolatore.",
+    "copyDescription": "Copia il link di questo risultato del calcolatore"
   }
 }

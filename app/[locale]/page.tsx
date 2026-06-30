@@ -13,7 +13,13 @@ import {
   calculateCompoundInterest,
   calculateDcaBacktest,
 } from "@/lib/calculations";
-import { getDefaultCurrency, type CurrencyCode } from "@/lib/currencies";
+import {
+  convertCurrencyToUsd,
+  currencyCodes,
+  getDefaultCurrency,
+  type CurrencyCode,
+} from "@/lib/currencies";
+import { formatInputAmount } from "@/lib/formatting";
 import {
   getMarketCsvYears,
   loadMarketCsv,
@@ -25,11 +31,133 @@ import {
   getAssetTypesForMarket,
   getInstrumentById,
   getInstrumentsByMarketAndType,
+  instruments,
   type AssetType,
 } from "@/lib/instruments";
 import { getMockYearsForSymbol, type SymbolKey } from "@/lib/mockMarketData";
 
 type ActiveCalculator = "dca" | "compound";
+
+const marketQueryAliases: Record<string, string> = {
+  us: "United States",
+  unitedstates: "United States",
+  united_states: "United States",
+  ireland: "Ireland / UCITS ETFs",
+  ucits: "Ireland / UCITS ETFs",
+  irelanducits: "Ireland / UCITS ETFs",
+  taiwan: "Taiwan",
+  malaysia: "Malaysia",
+  singapore: "Singapore",
+  japan: "Japan",
+  hongkong: "Hong Kong",
+  hong_kong: "Hong Kong",
+};
+
+function normalizeQueryToken(value: string) {
+  return value.trim().toLowerCase().replace(/[\s/-]+/g, "");
+}
+
+function getMarketQueryCode(country: string) {
+  const aliases: Record<string, string> = {
+    "United States": "us",
+    "Ireland / UCITS ETFs": "ucits",
+    Taiwan: "taiwan",
+    Malaysia: "malaysia",
+    Singapore: "singapore",
+    Japan: "japan",
+    "Hong Kong": "hongkong",
+  };
+
+  return aliases[country] ?? country;
+}
+
+function getCountryFromQuery(value: string | null) {
+  if (!value) {
+    return null;
+  }
+
+  const decodedValue = value.trim();
+  const alias = marketQueryAliases[normalizeQueryToken(decodedValue)];
+
+  if (alias && countryOptions.includes(alias)) {
+    return alias;
+  }
+
+  return countryOptions.find(
+    (country) =>
+      country.toLowerCase() === decodedValue.toLowerCase() ||
+      normalizeQueryToken(country) === normalizeQueryToken(decodedValue)
+  );
+}
+
+function getAssetTypeFromQuery(value: string | null): AssetType | null {
+  const normalizedValue = value?.toLowerCase();
+
+  if (normalizedValue === "etf") {
+    return "ETF";
+  }
+
+  if (normalizedValue === "stock") {
+    return "Stock";
+  }
+
+  return null;
+}
+
+function getCurrencyFromQuery(value: string | null): CurrencyCode | null {
+  const normalizedCurrency = value?.toUpperCase() as CurrencyCode | undefined;
+
+  return normalizedCurrency && currencyCodes.includes(normalizedCurrency)
+    ? normalizedCurrency
+    : null;
+}
+
+function getInstrumentFromQuery(value: string | null) {
+  if (!value) {
+    return null;
+  }
+
+  const normalizedAsset = value.trim().toLowerCase();
+
+  return instruments.find(
+    (instrument) =>
+      instrument.id.toLowerCase() === normalizedAsset ||
+      instrument.symbol.toLowerCase() === normalizedAsset ||
+      instrument.displaySymbol.toLowerCase() === normalizedAsset ||
+      instrument.dataKey.toLowerCase() === normalizedAsset
+  );
+}
+
+function getAmountFromQuery(value: string | null) {
+  const amount = Number(value);
+
+  return Number.isFinite(amount) && amount >= 0 ? String(amount) : null;
+}
+
+function trackShareEvent(
+  eventName: "share_result_clicked" | "copy_result_link_clicked",
+  selectedInstrument: ReturnType<typeof getInstrumentById> | undefined,
+  market: string,
+  assetType: AssetType
+) {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  const gtag = (window as typeof window & {
+    gtag?: (
+      event: "event",
+      eventName: string,
+      params: Record<string, string>
+    ) => void;
+  }).gtag;
+
+  gtag?.("event", eventName, {
+    shared_asset_symbol: selectedInstrument?.displaySymbol ?? "",
+    shared_market: market,
+    shared_asset_type: assetType,
+  });
+}
 
 export default function Home() {
   const t = useTranslations();
@@ -55,6 +183,63 @@ export default function Home() {
     symbol: SymbolKey;
     rows: MarketCsvRow[] | null;
   } | null>(null);
+  const [copiedShareLink, setCopiedShareLink] = useState(false);
+  const [shareUrl, setShareUrl] = useState("");
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const queryInstrument = getInstrumentFromQuery(params.get("asset"));
+    const queryCountry =
+      getCountryFromQuery(params.get("market")) ?? queryInstrument?.country;
+    const queryAssetType =
+      getAssetTypeFromQuery(params.get("type")) ?? queryInstrument?.assetType;
+    const queryCurrency = getCurrencyFromQuery(params.get("currency"));
+    const effectiveQueryCurrency = queryCurrency ?? getDefaultCurrency(locale);
+    const queryAmount = getAmountFromQuery(params.get("amount"));
+
+    if (queryCurrency) {
+      setSelectedCurrency(queryCurrency);
+    }
+
+    if (queryAmount !== null) {
+      setBacktestMonthlyAmount(
+        String(convertCurrencyToUsd(Number(queryAmount), effectiveQueryCurrency))
+      );
+    }
+
+    if (params.get("start")) {
+      setBacktestStartYear(params.get("start") ?? "2018");
+    }
+
+    if (params.get("end")) {
+      setBacktestEndYear(params.get("end") ?? "2025");
+    }
+
+    if (!queryCountry || !countryOptions.includes(queryCountry)) {
+      return;
+    }
+
+    const nextAssetTypes = getAssetTypesForMarket(queryCountry);
+    const nextAssetType =
+      queryAssetType && nextAssetTypes.includes(queryAssetType)
+        ? queryAssetType
+        : nextAssetTypes[0] ?? "ETF";
+    const nextInstruments = getInstrumentsByMarketAndType(
+      queryCountry,
+      nextAssetType
+    );
+    const nextInstrument =
+      queryInstrument &&
+      queryInstrument.country === queryCountry &&
+      queryInstrument.assetType === nextAssetType
+        ? queryInstrument
+        : nextInstruments[0];
+
+    setBacktestCountry(queryCountry);
+    setBacktestAssetType(nextAssetType);
+    setBacktestSymbol((nextInstrument?.id ?? "voo") as SymbolKey);
+    setActiveCalculator("dca");
+  }, []);
 
   const availableAssetTypes = useMemo(
     () => getAssetTypesForMarket(backtestCountry),
@@ -207,6 +392,89 @@ export default function Home() {
     [backtest.yearlyResults]
   );
 
+  useEffect(() => {
+    const url = new URL(`/${locale}`, window.location.origin);
+
+    url.searchParams.set("locale", locale);
+    url.searchParams.set("market", getMarketQueryCode(backtestCountry));
+    url.searchParams.set("type", effectiveAssetType);
+    url.searchParams.set(
+      "asset",
+      selectedInstrument?.displaySymbol ?? effectiveBacktestSymbol
+    );
+    url.searchParams.set(
+      "amount",
+      formatInputAmount(backtestMonthlyAmount || "0", selectedCurrency)
+    );
+    url.searchParams.set("start", normalizedBacktestStartYear);
+    url.searchParams.set("end", normalizedBacktestEndYear);
+    url.searchParams.set("currency", selectedCurrency);
+
+    setShareUrl(url.toString());
+  }, [
+    backtestCountry,
+    backtestMonthlyAmount,
+    effectiveAssetType,
+    effectiveBacktestSymbol,
+    locale,
+    normalizedBacktestEndYear,
+    normalizedBacktestStartYear,
+    selectedCurrency,
+    selectedInstrument,
+  ]);
+
+  const copyShareUrl = async () => {
+    if (!shareUrl) {
+      return;
+    }
+
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(shareUrl);
+    } else {
+      const textArea = document.createElement("textarea");
+      textArea.value = shareUrl;
+      textArea.setAttribute("readonly", "true");
+      textArea.style.position = "fixed";
+      textArea.style.opacity = "0";
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textArea);
+    }
+    setCopiedShareLink(true);
+    trackShareEvent(
+      "copy_result_link_clicked",
+      selectedInstrument,
+      backtestCountry,
+      effectiveAssetType
+    );
+    window.setTimeout(() => setCopiedShareLink(false), 2200);
+  };
+
+  const handleShareResult = async () => {
+    trackShareEvent(
+      "share_result_clicked",
+      selectedInstrument,
+      backtestCountry,
+      effectiveAssetType
+    );
+
+    if (navigator.share && shareUrl) {
+      try {
+        await navigator.share({
+          title: t("share.title"),
+          text: t("share.description"),
+          url: shareUrl,
+        });
+        return;
+      } catch {
+        // Fall back to copying when native share is dismissed or unavailable.
+      }
+    }
+
+    await copyShareUrl();
+  };
+
   const structuredData = useMemo(() => {
     const pageUrl = `https://dcabacktest.com/${locale}`;
     const faqStructuredData = {
@@ -304,6 +572,10 @@ export default function Home() {
             setBacktestStartYear={setBacktestStartYear}
             setBacktestEndYear={setBacktestEndYear}
             setShowBacktestTable={setShowBacktestTable}
+            shareUrl={shareUrl}
+            copiedShareLink={copiedShareLink}
+            onShareResult={handleShareResult}
+            onCopyShareLink={copyShareUrl}
           />
         ) : (
           <CompoundInterestCalculator

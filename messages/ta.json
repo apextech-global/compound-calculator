@@ -254,5 +254,13 @@
       "body": "This tool is for education only and is not financial advice. Past performance does not guarantee future results."
     },
     "linksLabel": "Helpful site links"
+  },
+  "share": {
+    "shareResult": "முடிவைப் பகிர்",
+    "copyLink": "இணைப்பை நகலெடு",
+    "linkCopied": "இணைப்பு நகலெடுக்கப்பட்டது",
+    "title": "இந்த DCA முடிவைப் பகிர்",
+    "description": "அதே கணிப்பான் அமைப்புகளுடன் இந்த DCA Backtest முடிவைத் திறக்கவும்.",
+    "copyDescription": "இந்த கணிப்பான் முடிவு இணைப்பை நகலெடு"
   }
 }

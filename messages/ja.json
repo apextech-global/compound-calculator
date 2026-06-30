@@ -254,5 +254,13 @@
       "body": "このツールは教育目的のみであり、金融助言ではありません。"
     },
     "linksLabel": "便利なサイトリンク"
+  },
+  "share": {
+    "shareResult": "結果を共有",
+    "copyLink": "リンクをコピー",
+    "linkCopied": "リンクをコピーしました",
+    "title": "この DCA 結果を共有",
+    "description": "同じ計算機設定でこの DCA Backtest 結果を開きます。",
+    "copyDescription": "この計算結果リンクをコピー"
   }
 }

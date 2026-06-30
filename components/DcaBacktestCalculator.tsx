@@ -50,6 +50,10 @@ type DcaBacktestCalculatorProps = {
   setBacktestStartYear: (value: string) => void;
   setBacktestEndYear: (value: string) => void;
   setShowBacktestTable: (updater: (value: boolean) => boolean) => void;
+  shareUrl: string;
+  copiedShareLink: boolean;
+  onShareResult: () => void;
+  onCopyShareLink: () => void;
 };
 
 export default function DcaBacktestCalculator({
@@ -75,6 +79,10 @@ export default function DcaBacktestCalculator({
   setBacktestStartYear,
   setBacktestEndYear,
   setShowBacktestTable,
+  shareUrl,
+  copiedShareLink,
+  onShareResult,
+  onCopyShareLink,
 }: DcaBacktestCalculatorProps) {
   const t = useTranslations();
   const locale = useLocale();
@@ -118,6 +126,39 @@ export default function DcaBacktestCalculator({
               </p>
             </div>
           ) : null}
+          <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+            <button
+              type="button"
+              onClick={onShareResult}
+              className="rounded-2xl bg-cyan-400 px-4 py-3 text-sm font-bold text-slate-950 transition hover:bg-cyan-300"
+              aria-label={t("share.title")}
+            >
+              {t("share.shareResult")}
+            </button>
+            <button
+              type="button"
+              onClick={onCopyShareLink}
+              className="rounded-2xl border border-white/10 bg-white/[0.08] px-4 py-3 text-sm font-semibold text-slate-100 transition hover:border-cyan-300/40 hover:text-cyan-200"
+              aria-label={t("share.copyDescription")}
+            >
+              {t("share.copyLink")}
+            </button>
+          </div>
+          <div className="mt-3 min-w-0">
+            <p className="text-xs leading-5 text-slate-400">
+              {t("share.copyDescription")}
+            </p>
+            {copiedShareLink ? (
+              <p className="mt-2 text-sm font-semibold text-emerald-300">
+                {t("share.linkCopied")}
+              </p>
+            ) : null}
+            {shareUrl ? (
+              <p className="mt-2 truncate rounded-xl border border-white/10 bg-slate-950/50 px-3 py-2 text-xs text-slate-500">
+                {shareUrl}
+              </p>
+            ) : null}
+          </div>
         </div>
       </div>
 

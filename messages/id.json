@@ -254,5 +254,13 @@
       "body": "Alat ini hanya untuk tujuan edukasi dan bukan nasihat keuangan."
     },
     "linksLabel": "Tautan situs yang berguna"
+  },
+  "share": {
+    "shareResult": "Bagikan hasil",
+    "copyLink": "Salin tautan",
+    "linkCopied": "Tautan disalin",
+    "title": "Bagikan hasil DCA ini",
+    "description": "Buka hasil DCA Backtest ini dengan pengaturan kalkulator yang sama.",
+    "copyDescription": "Salin tautan hasil kalkulator ini"
   }
 }

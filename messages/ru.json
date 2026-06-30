@@ -254,5 +254,13 @@
       "body": "This tool is for education only and is not financial advice. Past performance does not guarantee future results."
     },
     "linksLabel": "Helpful site links"
+  },
+  "share": {
+    "shareResult": "Поделиться результатом",
+    "copyLink": "Скопировать ссылку",
+    "linkCopied": "Ссылка скопирована",
+    "title": "Поделиться этим результатом DCA",
+    "description": "Откройте этот результат DCA Backtest с теми же настройками калькулятора.",
+    "copyDescription": "Скопировать ссылку на результат калькулятора"
   }
 }

@@ -254,5 +254,13 @@
       "body": "Dieses Tool dient nur Bildungszwecken und ist keine Finanzberatung."
     },
     "linksLabel": "Hilfreiche Seitenlinks"
+  },
+  "share": {
+    "shareResult": "Ergebnis teilen",
+    "copyLink": "Link kopieren",
+    "linkCopied": "Link kopiert",
+    "title": "Dieses DCA-Ergebnis teilen",
+    "description": "Öffnen Sie dieses DCA Backtest-Ergebnis mit denselben Rechnereinstellungen.",
+    "copyDescription": "Link zu diesem Rechnerergebnis kopieren"
   }
 }
