@@ -107,6 +107,11 @@ export default function DcaBacktestCalculator({
               symbol: selectedInstrument?.displaySymbol ?? backtestSymbol,
             })}
           </p>
+          {selectedInstrument ? (
+            <p className="mt-2 text-sm leading-6 text-slate-400">
+              {selectedInstrument.displaySymbol} - {selectedInstrument.name}
+            </p>
+          ) : null}
         </div>
       </div>
 

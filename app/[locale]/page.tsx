@@ -113,7 +113,7 @@ export default function Home() {
       return;
     }
 
-    loadMarketCsv(selectedInstrument.dataFileSymbol).then((rows) => {
+    loadMarketCsv(selectedInstrument.dataKey).then((rows) => {
       if (isActive) {
         setMarketCsvData({ symbol: effectiveBacktestSymbol, rows });
       }

@@ -57,10 +57,10 @@ export function getMarketCsvYears(rows: MarketCsvRow[] | null | undefined) {
 }
 
 export async function loadMarketCsv(
-  dataFileSymbol: string
+  dataKey: string
 ): Promise<MarketCsvRow[] | null> {
   try {
-    const response = await fetch(`/market-data/${dataFileSymbol}.csv`, {
+    const response = await fetch(`/market-data/${dataKey}.csv`, {
       cache: "no-store",
     });
 
