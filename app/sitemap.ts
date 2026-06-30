@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { routing } from "@/i18n/routing";
+import { seoPageSlugs } from "@/lib/seoLandingPages";
 
 const baseUrl = "https://dcabacktest.com";
 const staticPages = ["about", "privacy", "terms", "contact"] as const;
@@ -26,6 +27,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: today,
         changeFrequency: "monthly" as const,
         priority: 0.7,
+      }))
+    ),
+    ...routing.locales.flatMap((locale) =>
+      seoPageSlugs.map((page) => ({
+        url: `${baseUrl}/${locale}/${page}`,
+        lastModified: today,
+        changeFrequency: "monthly" as const,
+        priority: 0.82,
       }))
     ),
   ];

@@ -2,6 +2,11 @@
 
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
+import type { Locale } from "@/i18n/routing";
+import {
+  getSeoLandingContent,
+  seoPageSlugs,
+} from "@/lib/seoLandingPages";
 
 const sectionKeys = [
   "dca",
@@ -17,6 +22,7 @@ const legalLinks = ["about", "privacy", "terms", "contact"] as const;
 export default function SeoContent() {
   const t = useTranslations();
   const locale = useLocale();
+  const guides = getSeoLandingContent(locale as Locale);
 
   return (
     <section className="mt-14 border-t border-white/10 pt-10">
@@ -61,6 +67,15 @@ export default function SeoContent() {
         aria-label={t("seoContent.linksLabel")}
         className="mt-6 flex flex-wrap gap-3 text-sm"
       >
+        {seoPageSlugs.map((slug) => (
+          <Link
+            key={slug}
+            href={`/${locale}/${slug}`}
+            className="rounded-full border border-cyan-300/20 bg-cyan-400/10 px-4 py-2 text-cyan-100 transition hover:border-cyan-300/50 hover:text-white"
+          >
+            {guides.pages[slug].h1}
+          </Link>
+        ))}
         {legalLinks.map((link) => (
           <Link
             key={link}
