@@ -187,8 +187,8 @@
       "title": "Datenschutzerklärung",
       "paragraphs": {
         "p1": "DCA Backtest funktioniert ohne Nutzerkonten, Zahlungen oder eine Datenbank persönlicher Investitionspläne.",
-        "p2": "Die Website kann Google Analytics verwenden, um Website-Traffic, beliebte Seiten, Browserinformationen und allgemeine Nutzungsmuster zu verstehen und den Service zu verbessern.",
-        "p3": "Wir bitten Sie nicht, sensible Finanzinformationen zu übermitteln. Wenn Sie uns per E-Mail kontaktieren, können wir Ihre Adresse verwenden, um zu antworten."
+        "p2": "Die Website kann Google Analytics und Google AdSense verwenden, um Website-Traffic, beliebte Seiten, Browserinformationen, Anzeigenleistung und allgemeine Nutzungsmuster zu verstehen und den Dienst zu verbessern.",
+        "p3": "Google AdSense und andere Drittanbieter für Werbung können Cookies und ähnliche Technologien verwenden, um Anzeigen auszuliefern, zu messen und zu personalisieren. Die Personalisierung von Anzeigen kann, sofern zutreffend, von deinen Einstellungen und deiner Einwilligung abhängen."
       }
     },
     "terms": {

@@ -187,8 +187,8 @@
       "title": "Politique de confidentialité",
       "paragraphs": {
         "p1": "DCA Backtest est conçu pour fonctionner sans comptes utilisateur, paiements ou base de données de plans d’investissement personnels.",
-        "p2": "Le site peut utiliser Google Analytics pour comprendre le trafic, les pages populaires, les informations de navigateur et les tendances générales d’utilisation afin d’améliorer le service.",
-        "p3": "Nous ne vous demandons pas de transmettre des informations financières sensibles. Si vous nous contactez par e-mail, nous pouvons utiliser votre adresse pour répondre."
+        "p2": "Le site peut utiliser Google Analytics et Google AdSense afin de comprendre le trafic, les pages populaires, les informations de navigateur, les performances publicitaires et les tendances générales d’utilisation pour améliorer le service.",
+        "p3": "Google AdSense et d’autres fournisseurs publicitaires tiers peuvent utiliser des cookies et des technologies similaires pour diffuser, mesurer et personnaliser les annonces. La personnalisation des annonces peut dépendre de vos paramètres et de votre consentement lorsque cela s’applique."
       }
     },
     "terms": {

@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 const gaId = process.env.NEXT_PUBLIC_GA_ID;
+const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
 const siteUrl = new URL("https://dcabacktest.com");
 const siteTitle =
   "DCA Backtest | Test Monthly Investing Against Market History";
@@ -96,6 +97,14 @@ export default function RootLayout({
               `}
             </Script>
           </>
+        ) : null}
+        {adsenseClient ? (
+          <Script
+            id="google-adsense"
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
+            strategy="afterInteractive"
+            crossOrigin="anonymous"
+          />
         ) : null}
         {children}
       </body>

@@ -187,8 +187,8 @@
       "title": "Informativa sulla privacy",
       "paragraphs": {
         "p1": "DCA Backtest è progettato per funzionare senza account utente, pagamenti o database di piani di investimento personali.",
-        "p2": "Il sito può usare Google Analytics per comprendere traffico, pagine popolari, informazioni del browser e pattern generali di utilizzo, così da migliorare il servizio.",
-        "p3": "Non chiediamo di inviare informazioni finanziarie sensibili. Se ci contatti via email, potremmo usare il tuo indirizzo per rispondere."
+        "p2": "Il sito può utilizzare Google Analytics e Google AdSense per comprendere il traffico del sito, le pagine più visitate, le informazioni del browser, le prestazioni degli annunci e i modelli generali di utilizzo, così da migliorare il servizio.",
+        "p3": "Google AdSense e altri fornitori pubblicitari di terze parti possono utilizzare cookie e tecnologie simili per pubblicare, misurare e personalizzare gli annunci. La personalizzazione degli annunci può dipendere dalle tue impostazioni e dal consenso, ove applicabile."
       }
     },
     "terms": {
