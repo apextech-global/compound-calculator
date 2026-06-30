@@ -108,9 +108,15 @@ export default function DcaBacktestCalculator({
             })}
           </p>
           {selectedInstrument ? (
-            <p className="mt-2 text-sm leading-6 text-slate-400">
-              {selectedInstrument.displaySymbol} - {selectedInstrument.name}
-            </p>
+            <div className="mt-2 space-y-1 text-sm leading-6 text-slate-400">
+              <p>
+                {selectedInstrument.displaySymbol} - {selectedInstrument.name}
+              </p>
+              <p>
+                {selectedInstrument.country} / {selectedInstrument.exchange} /{" "}
+                {selectedInstrument.currency}
+              </p>
+            </div>
           ) : null}
         </div>
       </div>
@@ -132,6 +138,11 @@ export default function DcaBacktestCalculator({
                 : t("dca.mockDataSource")}
             </div>
           </div>
+          {backtest.dataSource === "mock" ? (
+            <p className="-mt-3 mb-6 text-sm leading-6 text-amber-200/90">
+              {t("dca.dataUnavailableNote")}
+            </p>
+          ) : null}
 
           <div className="space-y-5">
             <label className="block">
@@ -192,9 +203,27 @@ export default function DcaBacktestCalculator({
             </div>
 
             {selectedInstrument ? (
-              <div className="rounded-2xl border border-white/10 bg-slate-950/50 px-4 py-3 text-sm text-slate-300">
-                <span className="text-slate-500">{t("dca.exchange")}:</span>{" "}
-                {selectedInstrument.exchange}
+              <div className="space-y-2 rounded-2xl border border-white/10 bg-slate-950/50 px-4 py-3 text-sm text-slate-300">
+                <p>
+                  <span className="text-slate-500">{t("dca.asset")}:</span>{" "}
+                  {selectedInstrument.displaySymbol} - {selectedInstrument.name}
+                </p>
+                <p>
+                  <span className="text-slate-500">
+                    {t("dca.countryMarket")}:
+                  </span>{" "}
+                  {selectedInstrument.country}
+                </p>
+                <p>
+                  <span className="text-slate-500">{t("dca.exchange")}:</span>{" "}
+                  {selectedInstrument.exchange}
+                </p>
+                <p>
+                  <span className="text-slate-500">
+                    {t("common.currency")}:
+                  </span>{" "}
+                  {selectedInstrument.currency}
+                </p>
               </div>
             ) : null}
 

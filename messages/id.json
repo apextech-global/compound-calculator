@@ -74,7 +74,8 @@
     "etf": "ETF",
     "stock": "Saham",
     "asset": "Aset",
-    "exchange": "Bursa"
+    "exchange": "Bursa",
+    "dataUnavailableNote": "Data historis untuk aset ini belum diimpor."
   },
   "compound": {
     "eyebrow": "Kalkulator Kompon",

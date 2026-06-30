@@ -74,7 +74,8 @@
     "etf": "ETF",
     "stock": "股票",
     "asset": "资产",
-    "exchange": "交易所"
+    "exchange": "交易所",
+    "dataUnavailableNote": "此资产的历史数据尚未导入。"
   },
   "compound": {
     "eyebrow": "复利计算器",

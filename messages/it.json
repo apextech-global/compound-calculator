@@ -74,7 +74,8 @@
     "etf": "ETF",
     "stock": "Azione",
     "asset": "Asset",
-    "exchange": "Borsa"
+    "exchange": "Borsa",
+    "dataUnavailableNote": "I dati storici per questo asset non sono ancora stati importati."
   },
   "compound": {
     "eyebrow": "Calculateur composé",

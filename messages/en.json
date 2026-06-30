@@ -74,7 +74,8 @@
     "etf": "ETF",
     "stock": "Stock",
     "asset": "Asset",
-    "exchange": "Exchange"
+    "exchange": "Exchange",
+    "dataUnavailableNote": "Historical data for this asset has not been imported yet."
   },
   "compound": {
     "eyebrow": "Compound Calculator",

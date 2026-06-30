@@ -74,7 +74,8 @@
     "etf": "ETF",
     "stock": "பங்கு",
     "asset": "சொத்து",
-    "exchange": "பரிவர்த்தனை"
+    "exchange": "பரிவர்த்தனை",
+    "dataUnavailableNote": "இந்த சொத்திற்கான வரலாற்றுத் தரவு இன்னும் இறக்குமதி செய்யப்படவில்லை."
   },
   "compound": {
     "eyebrow": "Calculateur composé",

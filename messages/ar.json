@@ -74,7 +74,8 @@
     "etf": "صندوق ETF",
     "stock": "سهم",
     "asset": "الأصل",
-    "exchange": "البورصة"
+    "exchange": "البورصة",
+    "dataUnavailableNote": "لم يتم استيراد البيانات التاريخية لهذا الأصل بعد."
   },
   "compound": {
     "eyebrow": "Calculateur composé",

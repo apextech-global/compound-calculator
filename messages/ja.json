@@ -74,7 +74,8 @@
     "etf": "ETF",
     "stock": "株式",
     "asset": "資産",
-    "exchange": "取引所"
+    "exchange": "取引所",
+    "dataUnavailableNote": "この資産の履歴データはまだインポートされていません。"
   },
   "compound": {
     "eyebrow": "複利計算機",

@@ -74,7 +74,8 @@
     "etf": "ETF",
     "stock": "주식",
     "asset": "자산",
-    "exchange": "거래소"
+    "exchange": "거래소",
+    "dataUnavailableNote": "이 자산의 과거 데이터는 아직 가져오지 않았습니다."
   },
   "compound": {
     "eyebrow": "복리 계산기",
