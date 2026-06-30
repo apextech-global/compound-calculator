@@ -89,27 +89,27 @@ export default function DcaBacktestCalculator({
 
   return (
     <section>
-      <div className="mb-8 grid gap-8 lg:grid-cols-[1fr_360px] lg:items-end">
+      <div className="mb-5 grid gap-5 lg:grid-cols-[1fr_340px] lg:items-end">
         <div>
-          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-cyan-300">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.24em] text-cyan-300 sm:text-sm">
             {t("dca.eyebrow")}
           </p>
-          <h2 className="max-w-4xl text-3xl font-bold tracking-tight md:text-5xl">
+          <h2 className="max-w-4xl text-2xl font-bold tracking-tight md:text-4xl">
             {t("dca.title")}
           </h2>
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
+          <p className="mt-3 max-w-2xl text-base leading-7 text-slate-300">
             {t("dca.description")}
           </p>
         </div>
 
-        <div className="min-w-0 overflow-hidden rounded-3xl border border-cyan-300/20 bg-cyan-400/10 p-6 shadow-2xl shadow-cyan-950/30">
+        <div className="min-w-0 overflow-hidden rounded-3xl border border-cyan-300/20 bg-cyan-400/10 p-5 shadow-2xl shadow-cyan-950/30">
           <p className="min-w-0 truncate whitespace-nowrap text-sm font-medium text-cyan-100">
             {t("dca.endingValue")}
           </p>
-          <p className="mt-3 min-w-0 whitespace-normal break-words text-[clamp(2rem,4vw,2.5rem)] font-bold leading-tight text-cyan-300 [overflow-wrap:anywhere]">
+          <p className="mt-2 min-w-0 whitespace-normal break-words text-[clamp(1.8rem,3.4vw,2.25rem)] font-bold leading-tight text-cyan-300 [overflow-wrap:anywhere]">
             {formatMoney(backtest.finalValue, selectedCurrency, locale)}
           </p>
-          <p className="mt-4 text-sm leading-6 text-slate-300">
+          <p className="mt-3 text-sm leading-6 text-slate-300">
             {t("dca.returnSummary", {
               returnValue: formatPercent(backtest.totalReturn, locale),
               symbol: selectedInstrument?.displaySymbol ?? backtestSymbol,
@@ -126,7 +126,7 @@ export default function DcaBacktestCalculator({
               </p>
             </div>
           ) : null}
-          <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-4 flex flex-col gap-3 sm:flex-row">
             <button
               type="button"
               onClick={onShareResult}
@@ -162,7 +162,7 @@ export default function DcaBacktestCalculator({
         </div>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-[420px_1fr]">
+      <div className="grid gap-5 lg:grid-cols-[400px_1fr]">
         <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-6 shadow-2xl shadow-black/30 backdrop-blur">
           <div className="mb-6 flex items-start justify-between gap-4">
             <div>

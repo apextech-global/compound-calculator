@@ -62,27 +62,27 @@ export default function CompoundInterestCalculator({
 
   return (
     <section>
-      <div className="mb-8 grid gap-8 lg:grid-cols-[1fr_360px] lg:items-end">
+      <div className="mb-5 grid gap-5 lg:grid-cols-[1fr_340px] lg:items-end">
         <div>
-          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-emerald-400">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.24em] text-emerald-400 sm:text-sm">
             {t("compound.eyebrow")}
           </p>
-          <h2 className="max-w-4xl text-3xl font-bold tracking-tight md:text-5xl">
+          <h2 className="max-w-4xl text-2xl font-bold tracking-tight md:text-4xl">
             {t("compound.title")}
           </h2>
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
+          <p className="mt-3 max-w-2xl text-base leading-7 text-slate-300">
             {t("compound.description")}
           </p>
         </div>
 
-        <div className="rounded-3xl border border-emerald-300/20 bg-emerald-400/10 p-6 shadow-2xl shadow-emerald-950/40">
+        <div className="min-w-0 overflow-hidden rounded-3xl border border-emerald-300/20 bg-emerald-400/10 p-5 shadow-2xl shadow-emerald-950/40">
           <p className="text-sm font-medium text-emerald-200">
             {t("compound.projectedValue")}
           </p>
-          <p className="mt-3 text-4xl font-bold text-emerald-300">
+          <p className="mt-2 min-w-0 whitespace-normal break-words text-[clamp(1.8rem,3.4vw,2.25rem)] font-bold leading-tight text-emerald-300 [overflow-wrap:anywhere]">
             {formatMoney(result.finalValue, selectedCurrency, locale)}
           </p>
-          <p className="mt-4 text-sm leading-6 text-slate-300">
+          <p className="mt-3 text-sm leading-6 text-slate-300">
             {t("compound.growthSummary", {
               multiple: growthMultiple.toFixed(1),
               years: Number(years) || 0,
@@ -91,7 +91,7 @@ export default function CompoundInterestCalculator({
         </div>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-[420px_1fr]">
+      <div className="grid gap-5 lg:grid-cols-[400px_1fr]">
         <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-6 shadow-2xl shadow-black/30 backdrop-blur">
           <div className="mb-6 flex items-start justify-between gap-4">
             <div>

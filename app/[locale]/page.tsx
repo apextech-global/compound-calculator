@@ -531,7 +531,7 @@ export default function Home() {
         onCurrencyChange={setSelectedCurrency}
       />
 
-      <section className="relative mx-auto max-w-7xl px-6 py-8 sm:py-10 lg:px-8">
+      <section className="relative mx-auto max-w-7xl px-6 py-5 sm:py-7 lg:px-8">
         <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-96 bg-[radial-gradient(circle_at_top,_rgba(16,185,129,0.2),_transparent_34%),radial-gradient(circle_at_80%_10%,_rgba(34,211,238,0.14),_transparent_28%)]" />
 
         <Hero />
