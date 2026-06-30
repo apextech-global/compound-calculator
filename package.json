@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "update-market-data": "node scripts/update-market-data.mjs",
     "update:market-data": "node scripts/update-market-data.mjs",
     "import:market-data": "node scripts/import-yahoo-market-data.mjs",
     "update:yahoo-data": "node scripts/update-yahoo-chart-data.mjs"
