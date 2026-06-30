@@ -89,77 +89,16 @@ export default function DcaBacktestCalculator({
 
   return (
     <section>
-      <div className="mb-5 grid gap-5 lg:grid-cols-[1fr_340px] lg:items-end">
-        <div>
-          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.24em] text-cyan-300 sm:text-sm">
-            {t("dca.eyebrow")}
-          </p>
-          <h2 className="max-w-4xl text-2xl font-bold tracking-tight md:text-4xl">
-            {t("dca.title")}
-          </h2>
-          <p className="mt-3 max-w-2xl text-base leading-7 text-slate-300">
-            {t("dca.description")}
-          </p>
-        </div>
-
-        <div className="min-w-0 overflow-hidden rounded-3xl border border-cyan-300/20 bg-cyan-400/10 p-5 shadow-2xl shadow-cyan-950/30">
-          <p className="min-w-0 truncate whitespace-nowrap text-sm font-medium text-cyan-100">
-            {t("dca.endingValue")}
-          </p>
-          <p className="mt-2 min-w-0 whitespace-normal break-words text-[clamp(1.8rem,3.4vw,2.25rem)] font-bold leading-tight text-cyan-300 [overflow-wrap:anywhere]">
-            {formatMoney(backtest.finalValue, selectedCurrency, locale)}
-          </p>
-          <p className="mt-3 text-sm leading-6 text-slate-300">
-            {t("dca.returnSummary", {
-              returnValue: formatPercent(backtest.totalReturn, locale),
-              symbol: selectedInstrument?.displaySymbol ?? backtestSymbol,
-            })}
-          </p>
-          {selectedInstrument ? (
-            <div className="mt-2 space-y-1 text-sm leading-6 text-slate-400">
-              <p>
-                {selectedInstrument.displaySymbol} - {selectedInstrument.name}
-              </p>
-              <p>
-                {selectedInstrument.country} / {selectedInstrument.exchange} /{" "}
-                {selectedInstrument.currency}
-              </p>
-            </div>
-          ) : null}
-          <div className="mt-4 flex flex-col gap-3 sm:flex-row">
-            <button
-              type="button"
-              onClick={onShareResult}
-              className="rounded-2xl bg-cyan-400 px-4 py-3 text-sm font-bold text-slate-950 transition hover:bg-cyan-300"
-              aria-label={t("share.title")}
-            >
-              {t("share.shareResult")}
-            </button>
-            <button
-              type="button"
-              onClick={onCopyShareLink}
-              className="rounded-2xl border border-white/10 bg-white/[0.08] px-4 py-3 text-sm font-semibold text-slate-100 transition hover:border-cyan-300/40 hover:text-cyan-200"
-              aria-label={t("share.copyDescription")}
-            >
-              {t("share.copyLink")}
-            </button>
-          </div>
-          <div className="mt-3 min-w-0">
-            <p className="text-xs leading-5 text-slate-400">
-              {t("share.copyDescription")}
-            </p>
-            {copiedShareLink ? (
-              <p className="mt-2 text-sm font-semibold text-emerald-300">
-                {t("share.linkCopied")}
-              </p>
-            ) : null}
-            {shareUrl ? (
-              <p className="mt-2 truncate rounded-xl border border-white/10 bg-slate-950/50 px-3 py-2 text-xs text-slate-500">
-                {shareUrl}
-              </p>
-            ) : null}
-          </div>
-        </div>
+      <div className="mb-4 max-w-4xl">
+        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.24em] text-cyan-300 sm:text-sm">
+          {t("dca.eyebrow")}
+        </p>
+        <h2 className="max-w-4xl text-2xl font-bold tracking-tight md:text-4xl">
+          {t("dca.title")}
+        </h2>
+        <p className="mt-3 max-w-2xl text-base leading-7 text-slate-300">
+          {t("dca.description")}
+        </p>
       </div>
 
       <div className="grid gap-5 lg:grid-cols-[400px_1fr]">
@@ -390,6 +329,52 @@ export default function DcaBacktestCalculator({
               <p className="mt-2 min-w-0 whitespace-normal break-words text-[clamp(1.5rem,2.4vw,1.875rem)] font-bold leading-tight text-cyan-400 [overflow-wrap:anywhere]">
                 {formatPercent(backtest.totalReturn, locale)}%
               </p>
+            </div>
+          </div>
+
+          <div className="min-w-0 rounded-3xl border border-cyan-300/20 bg-cyan-400/10 p-4 shadow-xl shadow-cyan-950/20">
+            <div className="flex min-w-0 flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+              <div className="min-w-0">
+                <p className="text-sm leading-6 text-slate-300">
+                  {t("dca.returnSummary", {
+                    returnValue: formatPercent(backtest.totalReturn, locale),
+                    symbol: selectedInstrument?.displaySymbol ?? backtestSymbol,
+                  })}
+                </p>
+                <p className="mt-1 text-xs leading-5 text-slate-400">
+                  {t("share.copyDescription")}
+                </p>
+              </div>
+              <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
+                <button
+                  type="button"
+                  onClick={onShareResult}
+                  className="rounded-2xl bg-cyan-400 px-4 py-2.5 text-sm font-bold text-slate-950 transition hover:bg-cyan-300"
+                  aria-label={t("share.title")}
+                >
+                  {t("share.shareResult")}
+                </button>
+                <button
+                  type="button"
+                  onClick={onCopyShareLink}
+                  className="rounded-2xl border border-white/10 bg-white/[0.08] px-4 py-2.5 text-sm font-semibold text-slate-100 transition hover:border-cyan-300/40 hover:text-cyan-200"
+                  aria-label={t("share.copyDescription")}
+                >
+                  {t("share.copyLink")}
+                </button>
+              </div>
+            </div>
+            <div className="mt-2 min-w-0">
+              {copiedShareLink ? (
+                <p className="text-sm font-semibold text-emerald-300">
+                  {t("share.linkCopied")}
+                </p>
+              ) : null}
+              {shareUrl ? (
+                <p className="mt-2 truncate rounded-xl border border-white/10 bg-slate-950/50 px-3 py-2 text-xs text-slate-500">
+                  {shareUrl}
+                </p>
+              ) : null}
             </div>
           </div>
 
