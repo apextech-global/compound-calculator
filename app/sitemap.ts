@@ -3,7 +3,7 @@ import { routing } from "@/i18n/routing";
 import { seoPageSlugs } from "@/lib/seoLandingPages";
 
 const baseUrl = "https://dcabacktest.com";
-const staticPages = ["about", "privacy", "terms", "contact"] as const;
+const staticPages = ["about", "privacy", "terms", "disclaimer", "contact"] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const today = new Date();

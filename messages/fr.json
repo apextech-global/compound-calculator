@@ -179,35 +179,104 @@
     "about": "À propos",
     "privacy": "Politique de confidentialité",
     "terms": "Conditions d’utilisation",
-    "contact": "Contact"
+    "contact": "Contact",
+    "disclaimer": "Avertissement"
   },
   "legal": {
     "about": {
-      "eyebrow": "À propos",
+      "eyebrow": "À propos de DCA Backtest",
       "title": "À propos de DCA Backtest",
       "paragraphs": {
         "p1": "DCA Backtest aide les investisseurs à explorer des scénarios d’investissement long terme avec des backtests DCA historiques et des projections d’intérêts composés.",
         "p2": "Le backtest DCA utilise des prix mensuels générés à partir des cours de clôture ajustés quotidiens historiques lorsqu’ils sont disponibles, afin de comparer l’investissement mensuel régulier sur les ETF et actions pris en charge.",
         "p3": "Le site est conçu pour l’éducation et la planification. Il ne fournit pas de recommandations personnalisées, de services de courtage ou de conseils en investissement."
-      }
+      },
+      "sections": [
+        {
+          "title": "Rôle du site",
+          "body": "DCA Backtest aide à explorer des scénarios d’investissement mensuel, des backtests DCA historiques et des projections de croissance composée pour les ETF et actions pris en charge."
+        },
+        {
+          "title": "Fonctionnement des calculateurs",
+          "body": "Les outils utilisent les saisies dans le navigateur, des taux de change d’exemple pour l’affichage et des prix mensuels générés à partir de cours de clôture ajustés quotidiens historiques lorsque disponibles."
+        },
+        {
+          "title": "Objectif éducatif",
+          "body": "Le site est conçu pour l’éducation et la planification. Il ne fournit pas de services de courtage, de recommandations personnalisées ni de conseils financiers."
+        }
+      ]
     },
     "privacy": {
-      "eyebrow": "Confidentialité",
+      "eyebrow": "Politique de confidentialité",
       "title": "Politique de confidentialité",
       "paragraphs": {
         "p1": "DCA Backtest est conçu pour fonctionner sans comptes utilisateur, paiements ou base de données de plans d’investissement personnels.",
         "p2": "Le site peut utiliser Google Analytics et Google AdSense afin de comprendre le trafic, les pages populaires, les informations de navigateur, les performances publicitaires et les tendances générales d’utilisation pour améliorer le service.",
         "p3": "Google AdSense et d’autres fournisseurs publicitaires tiers peuvent utiliser des cookies et des technologies similaires pour diffuser, mesurer et personnaliser les annonces. La personnalisation des annonces peut dépendre de vos paramètres et de votre consentement lorsque cela s’applique."
-      }
+      },
+      "lastUpdated": "1 juillet 2026",
+      "sections": [
+        {
+          "title": "Aucun compte requis",
+          "body": "DCA Backtest ne demande pas de compte, de connexion ou de profil d’investissement personnel pour utiliser les calculateurs."
+        },
+        {
+          "title": "Saisies du calculateur",
+          "body": "Les saisies sont utilisées dans votre navigateur pour générer résultats, graphiques, liens de partage, légendes et images. Nous ne vendons pas de données personnelles et ne conservons pas de base de plans d’investissement personnels."
+        },
+        {
+          "title": "Analyse",
+          "body": "Google Analytics peut collecter des données anonymes comme les pages vues, événements, informations du navigateur, localisation approximative et type d’appareil afin d’améliorer le site."
+        },
+        {
+          "title": "Publicité et cookies",
+          "body": "Après approbation, Google AdSense peut utiliser des cookies ou technologies similaires pour afficher et mesurer les annonces. Des fournisseurs publicitaires tiers peuvent personnaliser les annonces selon vos paramètres et consentements applicables."
+        },
+        {
+          "title": "Vos contrôles",
+          "body": "Vous pouvez contrôler ou bloquer les cookies dans les paramètres du navigateur. Certaines fonctions ou annonces peuvent changer si les cookies sont désactivés."
+        },
+        {
+          "title": "Contact",
+          "body": "Les questions de confidentialité peuvent être envoyées à support@dcabacktest.com."
+        }
+      ]
     },
     "terms": {
-      "eyebrow": "Conditions",
+      "eyebrow": "Conditions d’utilisation",
       "title": "Conditions d’utilisation",
       "paragraphs": {
         "p1": "En utilisant DCA Backtest, vous acceptez d’utiliser les calculateurs et outils de données de marché uniquement à des fins légales et éducatives.",
         "p2": "Les calculateurs sont fournis à des fins éducatives uniquement et ne constituent pas un conseil financier. Les performances passées ne garantissent pas les résultats futurs.",
         "p3": "Les résultats peuvent différer des rendements réels chez un courtier en raison des taxes, frais, prix d’exécution, dividendes, conversion de devise et différences de sources de données."
-      }
+      },
+      "lastUpdated": "1 juillet 2026",
+      "sections": [
+        {
+          "title": "Usage éducatif uniquement",
+          "body": "DCA Backtest est fourni uniquement à des fins éducatives et informatives. Les calculateurs ne sont pas des conseils financiers, d’investissement ou fiscaux, ni une recommandation d’achat ou de vente."
+        },
+        {
+          "title": "Responsabilité de l’utilisateur",
+          "body": "Les utilisateurs sont responsables de leurs décisions d’investissement. Consultez un conseiller financier agréé avant toute décision financière si nécessaire."
+        },
+        {
+          "title": "Aucune garantie",
+          "body": "Les performances passées ne garantissent pas les résultats futurs. Les résultats sont des estimations et peuvent différer des rendements réels chez un courtier."
+        },
+        {
+          "title": "Limites des résultats",
+          "body": "Les résultats peuvent être affectés par dividendes, impôts, frais, taux de change, tracking error, timing de marché, prix d’exécution, disponibilité des données et différences de sources."
+        },
+        {
+          "title": "Données historiques et exemples",
+          "body": "Certains actifs utilisent des données historiques importées, d’autres des données d’exemple. Le site indique la source lorsque possible."
+        },
+        {
+          "title": "Mises à jour",
+          "body": "Nous pouvons mettre à jour le site, les actifs pris en charge, les fichiers de données, les fonctionnalités et ces conditions. L’utilisation continue vaut acceptation des conditions mises à jour."
+        }
+      ]
     },
     "contact": {
       "eyebrow": "Contact",
@@ -216,7 +285,48 @@
         "p1": "Les questions, retours et demandes de correction sont les bienvenus.",
         "p2": "Pour le support ou les questions produit, contactez-nous par e-mail."
       },
-      "emailLabel": "E-mail :"
+      "emailLabel": "Email :",
+      "sections": [
+        {
+          "title": "Support",
+          "body": "Les questions, retours, demandes de correction et partenariats sont les bienvenus."
+        },
+        {
+          "title": "Email",
+          "body": "Pour le support ou les questions produit, contactez support@dcabacktest.com."
+        }
+      ]
+    },
+    "common": {
+      "lastUpdated": "Dernière mise à jour",
+      "linksTitle": "Liens juridiques",
+      "disclaimer": "Avertissement"
+    },
+    "disclaimer": {
+      "eyebrow": "Avertissement",
+      "title": "Avertissement important",
+      "sections": [
+        {
+          "title": "Éducatif uniquement",
+          "body": "DCA Backtest est un site de calculateurs éducatifs destiné à aider à comprendre des scénarios, hypothèses et concepts d’investissement à long terme."
+        },
+        {
+          "title": "Pas un conseil financier",
+          "body": "Aucun contenu du site n’est un conseil financier, d’investissement, fiscal, juridique ou une recommandation personnalisée."
+        },
+        {
+          "title": "Pas une recommandation",
+          "body": "Les actifs, ETF, actions, symboles ou marchés mentionnés sont des exemples de fonctionnement du calculateur, pas des recommandations d’achat, vente ou conservation."
+        },
+        {
+          "title": "Aucune garantie",
+          "body": "Nous ne garantissons pas l’exactitude, l’exhaustivité, les rendements futurs ou la disponibilité des données de marché."
+        },
+        {
+          "title": "Conseil professionnel",
+          "body": "Consultez un conseiller financier agréé, fiscaliste ou professionnel qualifié si vous avez besoin d’un avis adapté."
+        }
+      ]
     }
   },
   "seoContent": {

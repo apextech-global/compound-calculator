@@ -179,7 +179,8 @@
     "about": "Tentang",
     "privacy": "Kebijakan Privasi",
     "terms": "Ketentuan Penggunaan",
-    "contact": "Kontak"
+    "contact": "Kontak",
+    "disclaimer": "Disclaimer"
   },
   "legal": {
     "about": {
@@ -189,25 +190,93 @@
         "p1": "DCA Backtest membantu investor menjelajahi skenario investasi jangka panjang dengan backtest DCA historis dan proyeksi bunga majemuk.",
         "p2": "Backtest DCA menggunakan harga bulanan yang dibuat dari data historis penutupan disesuaikan harian jika tersedia, sehingga lebih mudah membandingkan investasi bulanan tetap pada ETF dan saham yang didukung.",
         "p3": "Situs ini dirancang untuk edukasi dan perencanaan. Situs ini tidak memberikan rekomendasi pribadi, layanan broker, atau nasihat investasi."
-      }
+      },
+      "sections": [
+        {
+          "title": "Fungsi situs ini",
+          "body": "DCA Backtest membantu pengguna mengeksplorasi skenario investasi bulanan, backtest DCA historis, dan proyeksi pertumbuhan majemuk untuk ETF dan saham yang didukung."
+        },
+        {
+          "title": "Cara kalkulator bekerja",
+          "body": "Alat ini menggunakan input di browser, kurs sampel untuk tampilan mata uang, dan harga bulanan dari data adjusted close harian historis jika tersedia."
+        },
+        {
+          "title": "Tujuan edukasi",
+          "body": "Situs ini dibuat untuk edukasi dan perencanaan. Situs ini tidak menyediakan layanan broker, rekomendasi personal, atau nasihat keuangan."
+        }
+      ]
     },
     "privacy": {
-      "eyebrow": "Privasi",
+      "eyebrow": "Kebijakan",
       "title": "Kebijakan Privasi",
       "paragraphs": {
         "p1": "DCA Backtest dirancang untuk bekerja tanpa akun pengguna, pembayaran, atau basis data rencana investasi pribadi.",
         "p2": "Situs ini dapat menggunakan Google Analytics dan Google AdSense untuk memahami lalu lintas situs, halaman populer, informasi browser, performa iklan, dan pola penggunaan umum agar kami dapat meningkatkan layanan.",
         "p3": "Google AdSense dan vendor periklanan pihak ketiga lainnya dapat menggunakan cookie dan teknologi serupa untuk menayangkan, mengukur, dan mempersonalisasi iklan. Personalisasi iklan dapat bergantung pada pengaturan dan persetujuan Anda jika berlaku."
-      }
+      },
+      "lastUpdated": "1 Juli 2026",
+      "sections": [
+        {
+          "title": "Tidak perlu akun pengguna",
+          "body": "DCA Backtest tidak mengharuskan pengguna membuat akun, login, atau mengirim profil investasi pribadi untuk memakai kalkulator."
+        },
+        {
+          "title": "Input kalkulator",
+          "body": "Input kalkulator digunakan di browser Anda untuk menghasilkan hasil, grafik, tautan berbagi, caption, dan gambar hasil. Kami tidak menjual data pribadi atau menyimpan basis data rencana investasi pribadi."
+        },
+        {
+          "title": "Analitik",
+          "body": "Google Analytics dapat mengumpulkan data penggunaan anonim seperti tampilan halaman, event, informasi browser, lokasi perkiraan, dan jenis perangkat agar kami dapat memahami trafik dan meningkatkan situs."
+        },
+        {
+          "title": "Iklan dan cookie",
+          "body": "Setelah disetujui, Google AdSense dapat menggunakan cookie atau teknologi serupa untuk menampilkan dan mengukur iklan. Vendor iklan pihak ketiga dapat mempersonalisasi iklan sesuai pengaturan dan persetujuan Anda jika berlaku."
+        },
+        {
+          "title": "Kontrol Anda",
+          "body": "Anda dapat mengontrol atau memblokir cookie melalui pengaturan browser. Beberapa fitur situs atau perilaku iklan dapat berubah jika cookie dinonaktifkan."
+        },
+        {
+          "title": "Kontak",
+          "body": "Pertanyaan privasi dapat dikirim ke support@dcabacktest.com."
+        }
+      ]
     },
     "terms": {
-      "eyebrow": "Ketentuan",
-      "title": "Ketentuan Penggunaan",
+      "eyebrow": "Syarat",
+      "title": "Syarat Penggunaan",
       "paragraphs": {
         "p1": "Dengan menggunakan DCA Backtest, Anda setuju menggunakan kalkulator dan alat data pasar hanya untuk tujuan yang sah dan edukatif.",
         "p2": "Kalkulator ini hanya untuk tujuan edukasi dan bukan nasihat keuangan. Kinerja masa lalu tidak menjamin hasil di masa depan.",
         "p3": "Hasil dapat berbeda dari return broker sungguhan karena pajak, biaya, harga eksekusi, dividen, konversi mata uang, dan perbedaan sumber data."
-      }
+      },
+      "lastUpdated": "1 Juli 2026",
+      "sections": [
+        {
+          "title": "Hanya untuk edukasi",
+          "body": "DCA Backtest disediakan hanya untuk tujuan edukasi dan informasi. Kalkulator bukan nasihat keuangan, nasihat investasi, nasihat pajak, atau rekomendasi membeli atau menjual aset."
+        },
+        {
+          "title": "Tanggung jawab investasi",
+          "body": "Pengguna bertanggung jawab atas keputusan investasinya sendiri. Pertimbangkan berkonsultasi dengan penasihat keuangan berlisensi sebelum mengambil keputusan keuangan."
+        },
+        {
+          "title": "Tidak ada jaminan hasil",
+          "body": "Kinerja masa lalu tidak menjamin hasil masa depan. Output kalkulator adalah estimasi dan dapat berbeda dari return broker nyata."
+        },
+        {
+          "title": "Batasan hasil",
+          "body": "Hasil dapat dipengaruhi dividen, pajak, biaya, kurs, tracking error, waktu pasar, harga eksekusi, ketersediaan data, dan perbedaan sumber data."
+        },
+        {
+          "title": "Data historis dan sampel",
+          "body": "Sebagian aset dapat memakai data historis yang diimpor sementara aset lain memakai data sampel. Situs akan menandai sumber data sejelas mungkin."
+        },
+        {
+          "title": "Perubahan dari waktu ke waktu",
+          "body": "Kami dapat memperbarui situs, aset yang didukung, file data, fitur, dan syarat ini dari waktu ke waktu. Penggunaan berkelanjutan berarti Anda menerima syarat terbaru."
+        }
+      ]
     },
     "contact": {
       "eyebrow": "Kontak",
@@ -216,7 +285,48 @@
         "p1": "Pertanyaan, masukan, dan permintaan koreksi dipersilakan.",
         "p2": "Untuk dukungan atau pertanyaan produk, hubungi kami melalui email."
       },
-      "emailLabel": "Email:"
+      "emailLabel": "Email:",
+      "sections": [
+        {
+          "title": "Dukungan",
+          "body": "Pertanyaan, masukan, permintaan koreksi, dan pertanyaan kerja sama diterima."
+        },
+        {
+          "title": "Email",
+          "body": "Untuk dukungan atau pertanyaan produk, hubungi kami di support@dcabacktest.com."
+        }
+      ]
+    },
+    "common": {
+      "lastUpdated": "Terakhir diperbarui",
+      "linksTitle": "Tautan hukum",
+      "disclaimer": "Disclaimer"
+    },
+    "disclaimer": {
+      "eyebrow": "Disclaimer",
+      "title": "Disclaimer Penting",
+      "sections": [
+        {
+          "title": "Hanya edukasi",
+          "body": "DCA Backtest adalah situs kalkulator edukasi untuk membantu pengguna memahami skenario, asumsi, dan konsep investasi jangka panjang."
+        },
+        {
+          "title": "Bukan nasihat keuangan",
+          "body": "Tidak ada konten di situs ini yang merupakan nasihat keuangan, investasi, pajak, hukum, atau rekomendasi personal."
+        },
+        {
+          "title": "Bukan rekomendasi investasi",
+          "body": "Aset, ETF, saham, simbol, atau pasar yang disebut adalah contoh fungsi kalkulator dan bukan rekomendasi beli, jual, atau tahan."
+        },
+        {
+          "title": "Tidak ada jaminan",
+          "body": "Kami tidak menjamin akurasi, kelengkapan, return masa depan, atau ketersediaan data pasar. Kinerja masa lalu tidak menjamin hasil masa depan."
+        },
+        {
+          "title": "Nasihat profesional",
+          "body": "Konsultasikan dengan penasihat keuangan berlisensi, profesional pajak, atau profesional berkualifikasi jika membutuhkan nasihat untuk situasi pribadi."
+        }
+      ]
     }
   },
   "seoContent": {

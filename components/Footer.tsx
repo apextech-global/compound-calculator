@@ -12,6 +12,7 @@ const footerLinks = [
   { href: "about", label: "about" },
   { href: "privacy", label: "privacy" },
   { href: "terms", label: "terms" },
+  { href: "disclaimer", label: "disclaimer" },
   { href: "contact", label: "contact" },
 ] as const;
 

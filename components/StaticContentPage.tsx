@@ -1,12 +1,19 @@
-import { getTranslations } from "next-intl/server";
+import Link from "next/link";
+import { getLocale, getTranslations } from "next-intl/server";
 
-type StaticPageKey = "about" | "privacy" | "terms" | "contact";
+type StaticPageKey = "about" | "privacy" | "terms" | "contact" | "disclaimer";
 
-const paragraphKeys: Record<StaticPageKey, string[]> = {
-  about: ["p1", "p2", "p3"],
-  privacy: ["p1", "p2", "p3"],
-  terms: ["p1", "p2", "p3"],
-  contact: ["p1", "p2"],
+const legalLinks: StaticPageKey[] = [
+  "about",
+  "privacy",
+  "terms",
+  "disclaimer",
+  "contact",
+];
+
+type LegalSection = {
+  title: string;
+  body: string;
 };
 
 export default async function StaticContentPage({
@@ -14,7 +21,12 @@ export default async function StaticContentPage({
 }: {
   pageKey: StaticPageKey;
 }) {
+  const locale = await getLocale();
   const t = await getTranslations(`legal.${pageKey}`);
+  const common = await getTranslations("legal.common");
+  const footer = await getTranslations("footer");
+  const sections = t.raw("sections") as LegalSection[];
+  const showLastUpdated = pageKey === "privacy" || pageKey === "terms";
 
   return (
     <main className="min-h-screen overflow-hidden bg-slate-950 text-white">
@@ -27,11 +39,21 @@ export default async function StaticContentPage({
         <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
           {t("title")}
         </h1>
+        {showLastUpdated ? (
+          <p className="mt-4 text-sm font-medium text-slate-400">
+            {common("lastUpdated")}: {t("lastUpdated")}
+          </p>
+        ) : null}
 
         <div className="mt-8 rounded-3xl border border-white/10 bg-white/[0.06] p-6 shadow-2xl shadow-black/30 md:p-8">
           <div className="space-y-5 text-base leading-8 text-slate-300">
-            {paragraphKeys[pageKey].map((key) => (
-              <p key={key}>{t(`paragraphs.${key}`)}</p>
+            {sections.map((section) => (
+              <section key={section.title}>
+                <h2 className="text-xl font-semibold text-white">
+                  {section.title}
+                </h2>
+                <p className="mt-2">{section.body}</p>
+              </section>
             ))}
 
             {pageKey === "contact" ? (
@@ -49,6 +71,21 @@ export default async function StaticContentPage({
             ) : null}
           </div>
         </div>
+
+        <nav className="mt-6 flex flex-wrap gap-3 text-sm font-semibold text-slate-300">
+          <span className="text-slate-500">{common("linksTitle")}</span>
+          {legalLinks.map((link) => (
+            <Link
+              key={link}
+              href={`/${locale}/${link}`}
+              className={`transition hover:text-cyan-300 ${
+                link === pageKey ? "text-cyan-300" : ""
+              }`}
+            >
+              {link === "disclaimer" ? common("disclaimer") : footer(link)}
+            </Link>
+          ))}
+        </nav>
       </section>
     </main>
   );

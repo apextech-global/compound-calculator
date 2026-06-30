@@ -179,26 +179,68 @@
     "about": "Tentang",
     "privacy": "Dasar Privasi",
     "terms": "Terma Penggunaan",
-    "contact": "Hubungi"
+    "contact": "Hubungi",
+    "disclaimer": "Penafian"
   },
   "legal": {
     "about": {
-      "eyebrow": "Tentang",
-      "title": "Tentang DCA Backtest",
+      "eyebrow": "Mengenai",
+      "title": "Mengenai DCA Backtest",
       "paragraphs": {
         "p1": "DCA Backtest membantu pelabur meneroka senario pelaburan jangka panjang dengan ujian balik DCA sejarah dan unjuran faedah kompaun.",
         "p2": "Ujian Balik DCA menggunakan harga bulanan yang dijana daripada data tutup terlaras harian sejarah jika tersedia, supaya lebih mudah membandingkan pelaburan bulanan tetap merentas ETF dan saham yang disokong.",
         "p3": "Laman ini direka untuk pendidikan dan perancangan. Ia tidak menyediakan cadangan peribadi, perkhidmatan broker atau nasihat pelaburan."
-      }
+      },
+      "sections": [
+        {
+          "title": "Apa yang laman ini lakukan",
+          "body": "DCA Backtest membantu pengguna meneroka senario pelaburan bulanan, backtest DCA sejarah, dan unjuran pertumbuhan kompaun untuk ETF dan saham yang disokong."
+        },
+        {
+          "title": "Cara kalkulator berfungsi",
+          "body": "Alat ini menggunakan input dalam pelayar, kadar pertukaran sampel untuk paparan mata wang, dan harga bulanan daripada data penutupan larasan harian sejarah jika tersedia."
+        },
+        {
+          "title": "Tujuan pendidikan",
+          "body": "Laman ini untuk pendidikan dan perancangan. Ia tidak menyediakan perkhidmatan broker, cadangan peribadi, atau nasihat kewangan."
+        }
+      ]
     },
     "privacy": {
-      "eyebrow": "Privasi",
+      "eyebrow": "Dasar",
       "title": "Dasar Privasi",
       "paragraphs": {
         "p1": "DCA Backtest direka untuk berfungsi tanpa akaun pengguna, pembayaran atau pangkalan data pelan pelaburan peribadi.",
         "p2": "Laman ini mungkin menggunakan Google Analytics dan Google AdSense untuk memahami trafik laman web, halaman popular, maklumat pelayar, prestasi iklan, dan corak penggunaan umum supaya kami boleh menambah baik perkhidmatan.",
         "p3": "Google AdSense dan vendor pengiklanan pihak ketiga lain mungkin menggunakan kuki dan teknologi serupa untuk menyiar, mengukur, dan memperibadikan iklan. Pemperibadian iklan mungkin bergantung pada tetapan dan persetujuan anda jika berkenaan."
-      }
+      },
+      "lastUpdated": "1 Julai 2026",
+      "sections": [
+        {
+          "title": "Tiada akaun pengguna diperlukan",
+          "body": "DCA Backtest tidak memerlukan akaun pengguna, log masuk, atau profil pelaburan peribadi untuk menggunakan kalkulator."
+        },
+        {
+          "title": "Input kalkulator",
+          "body": "Input kalkulator digunakan dalam pelayar anda untuk menjana keputusan, carta, pautan perkongsian, kapsyen, dan imej hasil. Kami tidak menjual data peribadi atau menyimpan pangkalan data pelan pelaburan peribadi."
+        },
+        {
+          "title": "Analitik",
+          "body": "Google Analytics mungkin mengumpul data penggunaan tanpa nama seperti paparan halaman, acara, maklumat pelayar, lokasi anggaran, dan jenis peranti untuk membantu kami memahami trafik dan menambah baik laman."
+        },
+        {
+          "title": "Pengiklanan dan kuki",
+          "body": "Selepas kelulusan, Google AdSense mungkin menggunakan kuki atau teknologi serupa untuk memaparkan dan mengukur iklan. Vendor pengiklanan pihak ketiga boleh memperibadikan iklan bergantung pada tetapan dan persetujuan anda jika berkenaan."
+        },
+        {
+          "title": "Kawalan anda",
+          "body": "Anda boleh mengawal atau menyekat kuki melalui tetapan pelayar. Sesetengah ciri laman atau tingkah laku iklan mungkin berubah jika kuki dilumpuhkan."
+        },
+        {
+          "title": "Hubungi",
+          "body": "Soalan privasi boleh dihantar ke support@dcabacktest.com."
+        }
+      ]
     },
     "terms": {
       "eyebrow": "Terma",
@@ -207,16 +249,84 @@
         "p1": "Dengan menggunakan DCA Backtest, anda bersetuju menggunakan kalkulator dan alat data pasaran untuk tujuan sah dan pendidikan sahaja.",
         "p2": "Kalkulator ini hanya untuk tujuan pendidikan dan bukan nasihat kewangan. Prestasi lalu tidak menjamin keputusan masa depan.",
         "p3": "Keputusan mungkin berbeza daripada pulangan broker sebenar kerana cukai, yuran, harga pelaksanaan, dividen, pertukaran mata wang dan perbezaan sumber data."
-      }
+      },
+      "lastUpdated": "1 Julai 2026",
+      "sections": [
+        {
+          "title": "Penggunaan pendidikan sahaja",
+          "body": "DCA Backtest disediakan untuk tujuan pendidikan dan maklumat sahaja. Kalkulator bukan nasihat kewangan, nasihat pelaburan, nasihat cukai, atau cadangan membeli atau menjual aset."
+        },
+        {
+          "title": "Tanggungjawab pelaburan",
+          "body": "Pengguna bertanggungjawab atas keputusan pelaburan sendiri. Pertimbangkan untuk berunding dengan penasihat kewangan berlesen sebelum membuat keputusan kewangan."
+        },
+        {
+          "title": "Tiada jaminan hasil",
+          "body": "Prestasi lalu tidak menjamin hasil masa depan. Output kalkulator ialah anggaran dan mungkin berbeza daripada pulangan broker sebenar."
+        },
+        {
+          "title": "Had keputusan",
+          "body": "Keputusan boleh dipengaruhi oleh dividen, cukai, fi, kadar pertukaran, ralat penjejakan, masa pasaran, harga pelaksanaan, ketersediaan data, dan perbezaan sumber data."
+        },
+        {
+          "title": "Data sejarah dan sampel",
+          "body": "Sesetengah aset mungkin menggunakan data sejarah yang diimport manakala aset lain menggunakan data sampel. Laman ini melabel sumber data dengan jelas jika boleh."
+        },
+        {
+          "title": "Perubahan dari semasa ke semasa",
+          "body": "Kami mungkin mengemas kini laman, aset disokong, fail data, ciri, dan terma ini dari semasa ke semasa. Penggunaan berterusan bermaksud anda menerima terma yang dikemas kini."
+        }
+      ]
     },
     "contact": {
-      "eyebrow": "Hubungi",
-      "title": "Hubungi",
+      "eyebrow": "Hubungi Kami",
+      "title": "Hubungi Kami",
       "paragraphs": {
         "p1": "Soalan, maklum balas dan permintaan pembetulan dialu-alukan.",
         "p2": "Untuk sokongan atau pertanyaan produk, hubungi kami melalui e-mel."
       },
-      "emailLabel": "E-mel:"
+      "emailLabel": "E-mel:",
+      "sections": [
+        {
+          "title": "Sokongan",
+          "body": "Soalan, maklum balas, permintaan pembetulan, dan pertanyaan kerjasama dialu-alukan."
+        },
+        {
+          "title": "E-mel",
+          "body": "Untuk sokongan atau pertanyaan produk, hubungi kami di support@dcabacktest.com."
+        }
+      ]
+    },
+    "common": {
+      "lastUpdated": "Terakhir dikemas kini",
+      "linksTitle": "Pautan undang-undang",
+      "disclaimer": "Penafian"
+    },
+    "disclaimer": {
+      "eyebrow": "Penafian",
+      "title": "Penafian Penting",
+      "sections": [
+        {
+          "title": "Pendidikan sahaja",
+          "body": "DCA Backtest ialah laman kalkulator pendidikan untuk membantu pengguna memahami senario, andaian, dan konsep pelaburan jangka panjang."
+        },
+        {
+          "title": "Bukan nasihat kewangan",
+          "body": "Tiada kandungan di laman ini merupakan nasihat kewangan, pelaburan, cukai, undang-undang, atau cadangan peribadi."
+        },
+        {
+          "title": "Bukan cadangan pelaburan",
+          "body": "Aset, ETF, saham, simbol, atau pasaran yang disebut hanyalah contoh fungsi kalkulator dan bukan cadangan membeli, menjual, atau memegang."
+        },
+        {
+          "title": "Tiada jaminan",
+          "body": "Kami tidak menjamin ketepatan, kelengkapan, pulangan masa depan, atau ketersediaan data pasaran. Prestasi lalu tidak menjamin hasil masa depan."
+        },
+        {
+          "title": "Nasihat profesional",
+          "body": "Rujuk penasihat kewangan berlesen, profesional cukai, atau profesional berkelayakan jika anda memerlukan nasihat untuk situasi peribadi."
+        }
+      ]
     }
   },
   "seoContent": {
