@@ -10,6 +10,8 @@ export type Instrument = {
   currency: string;
   assetType: AssetType;
   dataKey: string;
+  twelveDataSymbol?: string;
+  twelveDataExchange?: string;
 };
 
 export const instruments = [
@@ -23,6 +25,8 @@ export const instruments = [
     currency: "USD",
     assetType: "ETF",
     dataKey: "voo",
+    twelveDataSymbol: "VOO",
+    twelveDataExchange: "NYSE",
   },
   {
     id: "spy",
@@ -166,6 +170,8 @@ export const instruments = [
     currency: "USD",
     assetType: "ETF",
     dataKey: "cspx-l",
+    twelveDataSymbol: "CSPXL",
+    twelveDataExchange: "CBOE",
   },
   {
     id: "vwra-l",
@@ -177,6 +183,8 @@ export const instruments = [
     currency: "USD",
     assetType: "ETF",
     dataKey: "vwra-l",
+    twelveDataSymbol: "VWRA",
+    twelveDataExchange: "LSE",
   },
   {
     id: "iwda-l",
@@ -188,6 +196,8 @@ export const instruments = [
     currency: "USD",
     assetType: "ETF",
     dataKey: "iwda-l",
+    twelveDataSymbol: "IWDA",
+    twelveDataExchange: "LSE",
   },
   {
     id: "eimi-l",
@@ -210,6 +220,8 @@ export const instruments = [
     currency: "TWD",
     assetType: "ETF",
     dataKey: "0050-tw",
+    twelveDataSymbol: "0050",
+    twelveDataExchange: "TWSE",
   },
   {
     id: "0056-tw",
@@ -221,6 +233,8 @@ export const instruments = [
     currency: "TWD",
     assetType: "ETF",
     dataKey: "0056-tw",
+    twelveDataSymbol: "0056",
+    twelveDataExchange: "TWSE",
   },
   {
     id: "2330-tw",
@@ -342,6 +356,8 @@ export const instruments = [
     currency: "MYR",
     assetType: "Stock",
     dataKey: "1155-kl",
+    twelveDataSymbol: "1155",
+    twelveDataExchange: "MYX",
   },
   {
     id: "1023-kl",
@@ -353,6 +369,8 @@ export const instruments = [
     currency: "MYR",
     assetType: "Stock",
     dataKey: "1023-kl",
+    twelveDataSymbol: "1023",
+    twelveDataExchange: "MYX",
   },
   {
     id: "1295-kl",
@@ -364,6 +382,8 @@ export const instruments = [
     currency: "MYR",
     assetType: "Stock",
     dataKey: "1295-kl",
+    twelveDataSymbol: "1295",
+    twelveDataExchange: "MYX",
   },
   {
     id: "5347-kl",
@@ -452,6 +472,8 @@ export const instruments = [
     currency: "SGD",
     assetType: "ETF",
     dataKey: "es3-si",
+    twelveDataSymbol: "ES3",
+    twelveDataExchange: "SGX",
   },
   {
     id: "g3b-si",
@@ -562,6 +584,8 @@ export const instruments = [
     currency: "HKD",
     assetType: "ETF",
     dataKey: "2800-hk",
+    twelveDataSymbol: "2800",
+    twelveDataExchange: "HKEX",
   },
   {
     id: "0700-hk",

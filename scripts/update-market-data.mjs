@@ -1,5 +1,6 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { createHash } from "node:crypto";
+import { loadEnvFile } from "node:process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -7,20 +8,17 @@ const rootDir = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const instrumentsPath = path.join(rootDir, "lib", "instruments.ts");
 const outputDir = path.join(rootDir, "public", "market-data");
 
+try {
+  loadEnvFile(path.join(rootDir, ".env.local"));
+} catch {
+  // Environment variables can still be provided by the shell or deployment.
+}
+
 const prioritySymbols = [
   "VOO",
-  "SPY",
-  "QQQ",
   "CSPX.L",
-  "VWRA.L",
-  "IWDA.L",
   "0050.TW",
-  "0056.TW",
   "1155.KL",
-  "1023.KL",
-  "1295.KL",
-  "ES3.SI",
-  "2800.HK",
 ];
 
 const requestHeaders = {
@@ -30,11 +28,99 @@ const requestHeaders = {
   "accept-language": "en-US,en;q=0.9",
 };
 const stooqCookies = new Map();
-let yahooRateLimited = false;
 let stooqFailureCount = 0;
 let stooqUnavailable = false;
+let twelveDataMissingKeyWarningShown = false;
+const twelveDataPlanRestrictedSymbols = new Set();
+const twelveDataPlanRestrictedLogs = new Set();
 const requestTimeoutMs = 5_000;
 const maxStooqFailures = 3;
+const defaultDelayMs = 3_000;
+const maxRetries = 3;
+const twelveDataApiKey = process.env.TWELVE_DATA_API_KEY;
+
+function parseNumberOption(value, fallback) {
+  const parsed = Number(value);
+
+  return Number.isFinite(parsed) && parsed >= 0 ? parsed : fallback;
+}
+
+function parseOptions() {
+  const options = {
+    symbols: null,
+    limit: null,
+    delayMs: defaultDelayMs,
+    search: null,
+  };
+
+  for (const arg of process.argv.slice(2)) {
+    if (arg.startsWith("--symbols=")) {
+      options.symbols = arg
+        .slice("--symbols=".length)
+        .split(",")
+        .map((symbol) => symbol.trim().toUpperCase())
+        .filter(Boolean);
+      continue;
+    }
+
+    if (arg.startsWith("--limit=")) {
+      options.limit = parseNumberOption(arg.slice("--limit=".length), null);
+      continue;
+    }
+
+    if (arg.startsWith("--delay=")) {
+      options.delayMs = parseNumberOption(
+        arg.slice("--delay=".length),
+        defaultDelayMs
+      );
+      continue;
+    }
+
+    if (arg.startsWith("--search=")) {
+      options.search = arg.slice("--search=".length).trim();
+    }
+  }
+
+  return options;
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
+
+function isRateLimitError(error) {
+  const message = error instanceof Error ? error.message : String(error);
+
+  return message.includes("429") || message.toLowerCase().includes("rate");
+}
+
+function getTwelveDataMessage(payload) {
+  return String(
+    payload?.message ??
+      payload?.meta?.message ??
+      payload?.status ??
+      "Twelve Data returned an error."
+  );
+}
+
+function isTwelveDataPlanRestrictedMessage(message) {
+  return message
+    .toLowerCase()
+    .includes("available starting with the pro or venture plan");
+}
+
+function logTwelveDataPlanRestriction(instrument) {
+  if (twelveDataPlanRestrictedLogs.has(instrument.symbol)) {
+    return;
+  }
+
+  console.warn(
+    `[warn] ${instrument.symbol}: Twelve Data free plan does not support this symbol.`
+  );
+  twelveDataPlanRestrictedLogs.add(instrument.symbol);
+}
 
 function getStringProperty(block, propertyName) {
   const match = block.match(
@@ -54,12 +140,21 @@ async function loadInstruments() {
       const dataKey = getStringProperty(block, "dataKey");
       const currency = getStringProperty(block, "currency");
       const exchange = getStringProperty(block, "exchange");
+      const twelveDataSymbol = getStringProperty(block, "twelveDataSymbol");
+      const twelveDataExchange = getStringProperty(block, "twelveDataExchange");
 
       if (!symbol || !dataKey || !currency || !exchange) {
         return null;
       }
 
-      return { symbol, dataKey, currency, exchange };
+      return {
+        symbol,
+        dataKey,
+        currency,
+        exchange,
+        twelveDataSymbol,
+        twelveDataExchange,
+      };
     })
     .filter(Boolean)
     .sort((a, b) => {
@@ -139,6 +234,73 @@ function parseYahooChartData(payload) {
     .sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
 }
 
+function getTwelveDataIdentity(instrument) {
+  return {
+    symbol: instrument.twelveDataSymbol || instrument.symbol,
+    exchange: instrument.twelveDataExchange,
+  };
+}
+
+function getTwelveDataUrl(instrument) {
+  const { symbol, exchange } = getTwelveDataIdentity(instrument);
+  const params = new URLSearchParams({
+    symbol,
+    interval: "1day",
+    outputsize: "5000",
+    order: "ASC",
+    apikey: twelveDataApiKey ?? "",
+  });
+
+  if (exchange) {
+    params.set("exchange", exchange);
+  }
+
+  return `https://api.twelvedata.com/time_series?${params}`;
+}
+
+function getTwelveDataSearchUrl(query) {
+  const params = new URLSearchParams({
+    symbol: query,
+    apikey: twelveDataApiKey ?? "",
+  });
+
+  return `https://api.twelvedata.com/symbol_search?${params}`;
+}
+
+function parseTwelveData(payload) {
+  if (payload?.status === "error" || payload?.code >= 400) {
+    const message = getTwelveDataMessage(payload);
+
+    if (isTwelveDataPlanRestrictedMessage(message)) {
+      throw new Error("Twelve Data free plan does not support this symbol.");
+    }
+
+    throw new Error(message);
+  }
+
+  const values = Array.isArray(payload?.values) ? payload.values : [];
+
+  if (values.length === 0) {
+    throw new Error("Twelve Data response is missing values.");
+  }
+
+  return values
+    .map((row) => {
+      const date = String(row.datetime ?? row.date ?? "");
+      const close =
+        parsePrice(Number(row.adjusted_close)) ??
+        parsePrice(Number(row.close));
+
+      if (!isValidDate(date) || close === null) {
+        return null;
+      }
+
+      return { date, close };
+    })
+    .filter(Boolean)
+    .sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
+}
+
 function toMonthlyCloses(dailyRows) {
   const monthlyRows = new Map();
 
@@ -192,11 +354,101 @@ function parseDailyCsv(csv) {
     .sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
 }
 
-async function fetchYahooDailyRows(instrument) {
-  if (yahooRateLimited) {
-    throw new Error("Yahoo Finance is rate limited for this run.");
+async function fetchTwelveDataDailyRows(instrument) {
+  if (!twelveDataApiKey) {
+    if (!twelveDataMissingKeyWarningShown) {
+      console.warn(
+        "[warn] TWELVE_DATA_API_KEY is missing. Skipping Twelve Data and trying fallback providers."
+      );
+      twelveDataMissingKeyWarningShown = true;
+    }
+
+    throw new Error("TWELVE_DATA_API_KEY is missing.");
   }
 
+  if (twelveDataPlanRestrictedSymbols.has(instrument.symbol)) {
+    logTwelveDataPlanRestriction(instrument);
+    throw new Error("Twelve Data free plan does not support this symbol.");
+  }
+
+  const { symbol: tdSymbol, exchange: tdExchange } =
+    getTwelveDataIdentity(instrument);
+
+  console.log(
+    `[TwelveData] displaySymbol=${instrument.symbol} symbol=${tdSymbol} exchange=${
+      tdExchange ?? ""
+    }`
+  );
+
+  const response = await fetch(getTwelveDataUrl(instrument), {
+    signal: AbortSignal.timeout(requestTimeoutMs),
+    headers: requestHeaders,
+  });
+
+  const payload = await response.json();
+  const twelveDataMessage = getTwelveDataMessage(payload);
+
+  if (isTwelveDataPlanRestrictedMessage(twelveDataMessage)) {
+    twelveDataPlanRestrictedSymbols.add(instrument.symbol);
+    logTwelveDataPlanRestriction(instrument);
+    throw new Error("Twelve Data free plan does not support this symbol.");
+  }
+
+  if (!response.ok) {
+    throw new Error(
+      `HTTP ${response.status} from Twelve Data: ${JSON.stringify(payload)}`
+    );
+  }
+
+  return parseTwelveData(payload);
+}
+
+async function searchTwelveDataSymbols(query) {
+  if (!twelveDataApiKey) {
+    console.warn(
+      "[warn] TWELVE_DATA_API_KEY is missing. Cannot search Twelve Data symbols."
+    );
+    return;
+  }
+
+  const response = await fetch(getTwelveDataSearchUrl(query), {
+    signal: AbortSignal.timeout(requestTimeoutMs),
+    headers: requestHeaders,
+  });
+
+  if (!response.ok) {
+    throw new Error(`HTTP ${response.status} from Twelve Data symbol_search.`);
+  }
+
+  const payload = await response.json();
+
+  if (payload?.status === "error" || payload?.code >= 400) {
+    throw new Error(
+      payload?.message ??
+        payload?.meta?.message ??
+        "Twelve Data symbol_search returned an error."
+    );
+  }
+
+  const results = Array.isArray(payload?.data) ? payload.data : [];
+
+  console.log(`Twelve Data symbol search for "${query}" returned ${results.length} result(s).`);
+
+  for (const item of results) {
+    console.log(
+      [
+        `symbol=${item.symbol ?? ""}`,
+        `instrument_name=${item.instrument_name ?? ""}`,
+        `exchange=${item.exchange ?? ""}`,
+        `country=${item.country ?? ""}`,
+        `currency=${item.currency ?? ""}`,
+        `type=${item.type ?? ""}`,
+      ].join(" | ")
+    );
+  }
+}
+
+async function fetchYahooDailyRows(instrument) {
   let lastStatus = "no response";
 
   for (const host of ["query1.finance.yahoo.com", "query2.finance.yahoo.com"]) {
@@ -209,10 +461,6 @@ async function fetchYahooDailyRows(instrument) {
     });
 
     lastStatus = `HTTP ${response.status} from ${host}`;
-
-    if (response.status === 429) {
-      yahooRateLimited = true;
-    }
 
     if (response.ok) {
       return parseYahooChartData(await response.json());
@@ -384,29 +632,50 @@ async function fetchStooqDailyRows(instrument) {
 }
 
 async function fetchDailyRows(instrument) {
+  const providerErrors = [];
+
+  try {
+    const rows = await fetchTwelveDataDailyRows(instrument);
+    return { rows, source: "Twelve Data" };
+  } catch (twelveDataError) {
+    providerErrors.push(
+      `Twelve Data: ${
+        twelveDataError instanceof Error
+          ? twelveDataError.message
+          : String(twelveDataError)
+      }`
+    );
+  }
+
   try {
     const rows = await fetchYahooDailyRows(instrument);
     return { rows, source: "Yahoo Finance" };
   } catch (yahooError) {
-    try {
-      const rows = await fetchStooqDailyRows(instrument);
-      return { rows, source: "Stooq" };
-    } catch (stooqError) {
-      stooqFailureCount += 1;
-
-      if (stooqFailureCount >= maxStooqFailures) {
-        stooqUnavailable = true;
-      }
-
-      throw new Error(
-        `Yahoo: ${
-          yahooError instanceof Error ? yahooError.message : String(yahooError)
-        }; Stooq: ${
-          stooqError instanceof Error ? stooqError.message : String(stooqError)
-        }`
-      );
-    }
+    providerErrors.push(
+      `Yahoo: ${
+        yahooError instanceof Error ? yahooError.message : String(yahooError)
+      }`
+    );
   }
+
+  try {
+    const rows = await fetchStooqDailyRows(instrument);
+    return { rows, source: "Stooq" };
+  } catch (stooqError) {
+    stooqFailureCount += 1;
+
+    if (stooqFailureCount >= maxStooqFailures) {
+      stooqUnavailable = true;
+    }
+
+    providerErrors.push(
+      `Stooq: ${
+        stooqError instanceof Error ? stooqError.message : String(stooqError)
+      }`
+    );
+  }
+
+  throw new Error(providerErrors.join("; "));
 }
 
 async function updateInstrument(instrument) {
@@ -435,23 +704,98 @@ async function updateInstrument(instrument) {
   return true;
 }
 
+async function updateInstrumentWithRetries(instrument, delayMs) {
+  let lastError = null;
+
+  for (let attempt = 1; attempt <= maxRetries; attempt += 1) {
+    try {
+      return await updateInstrument(instrument);
+    } catch (error) {
+      lastError = error;
+
+      if (attempt === maxRetries) {
+        break;
+      }
+
+      const backoff = delayMs * 2 ** (attempt - 1);
+      const waitMs = isRateLimitError(error) ? backoff * 2 : backoff;
+
+      console.warn(
+        `[retry] ${instrument.symbol}: attempt ${attempt}/${maxRetries} failed (${
+          error instanceof Error ? error.message : String(error)
+        }). Waiting ${waitMs}ms before retry.`
+      );
+
+      await sleep(waitMs);
+    }
+  }
+
+  throw lastError;
+}
+
+function selectInstruments(instruments, options) {
+  const requestedSymbols = options.symbols ?? prioritySymbols;
+  const requestedSet = new Set(requestedSymbols);
+  const selected = instruments.filter((instrument) =>
+    requestedSet.has(instrument.symbol.toUpperCase())
+  );
+  const ordered = selected.sort(
+    (a, b) =>
+      requestedSymbols.indexOf(a.symbol.toUpperCase()) -
+      requestedSymbols.indexOf(b.symbol.toUpperCase())
+  );
+
+  if (typeof options.limit === "number") {
+    return ordered.slice(0, options.limit);
+  }
+
+  return ordered;
+}
+
 async function main() {
+  const options = parseOptions();
+
+  if (options.search) {
+    await searchTwelveDataSymbols(options.search);
+    return;
+  }
+
   await mkdir(outputDir, { recursive: true });
 
-  const instruments = await loadInstruments();
+  const allInstruments = await loadInstruments();
+  const instruments = selectInstruments(allInstruments, options);
+
+  if (allInstruments.length === 0) {
+    throw new Error("No instruments found in lib/instruments.ts.");
+  }
 
   if (instruments.length === 0) {
-    throw new Error("No instruments found in lib/instruments.ts.");
+    throw new Error("No matching instruments selected.");
   }
 
   let successCount = 0;
 
-  console.log(`Updating market data for ${instruments.length} instruments...`);
-  console.log(`Priority instruments first: ${prioritySymbols.join(", ")}`);
+  console.log(
+    `Updating market data for ${instruments.length}/${allInstruments.length} instruments...`
+  );
+  console.log(
+    `Selected symbols: ${instruments.map((item) => item.symbol).join(", ")}`
+  );
+  console.log(`Delay between symbols: ${options.delayMs}ms`);
 
-  for (const instrument of instruments) {
+  for (const [index, instrument] of instruments.entries()) {
+    if (index > 0 && options.delayMs > 0) {
+      await sleep(options.delayMs);
+    }
+
     try {
-      const updated = await updateInstrument(instrument);
+      console.log(
+        `[fetch] ${instrument.symbol} (${instrument.exchange}, ${instrument.currency})`
+      );
+      const updated = await updateInstrumentWithRetries(
+        instrument,
+        options.delayMs || defaultDelayMs
+      );
 
       if (updated) {
         successCount += 1;
