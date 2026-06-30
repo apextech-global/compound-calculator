@@ -157,20 +157,20 @@
         "answer": "Tidak. Kinerja masa lalu tidak menjamin hasil masa depan. DCA Backtest hanya untuk tujuan edukasi dan bukan nasihat keuangan."
       },
       "free": {
-        "question": "Is this calculator free?",
-        "answer": "Yes. The DCA backtest calculator and compound interest calculator are currently free to use."
+        "question": "Apakah kalkulator ini gratis?",
+        "answer": "Ya. Kalkulator backtest DCA dan kalkulator bunga majemuk saat ini gratis untuk digunakan."
       },
       "etfs": {
-        "question": "Can I use this for ETFs?",
-        "answer": "Yes. The tool supports selected ETFs, including examples such as VOO, SPY, QQQ, CSPX, and other supported instruments where data is available."
+        "question": "Bisakah saya menggunakannya untuk ETF?",
+        "answer": "Ya. Alat ini mendukung ETF tertentu, termasuk contoh seperti VOO, SPY, QQQ, CSPX, dan instrumen lain yang didukung jika datanya tersedia."
       },
       "sampleData": {
-        "question": "Why do some assets use sample data?",
-        "answer": "Some instruments do not have imported historical CSV files yet. Those assets are clearly marked as sample data."
+        "question": "Mengapa beberapa aset menggunakan data sampel?",
+        "answer": "Beberapa instrumen belum memiliki file CSV historis yang diimpor. Aset tersebut ditandai dengan jelas sebagai data sampel."
       },
       "marketDataUpdates": {
-        "question": "How often is market data updated?",
-        "answer": "Market data is updated manually for now when CSV files are imported. The site does not use a real-time market data API yet."
+        "question": "Seberapa sering data pasar diperbarui?",
+        "answer": "Untuk saat ini, data pasar diperbarui secara manual saat file CSV diimpor. Situs ini belum menggunakan API data pasar real-time."
       }
     }
   },

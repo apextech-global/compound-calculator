@@ -157,20 +157,20 @@
         "answer": "Non. Les performances passées ne garantissent pas les résultats futurs. DCA Backtest est fourni à des fins éducatives uniquement et ne constitue pas un conseil financier."
       },
       "free": {
-        "question": "Is this calculator free?",
-        "answer": "Yes. The DCA backtest calculator and compound interest calculator are currently free to use."
+        "question": "Ce calculateur est-il gratuit ?",
+        "answer": "Oui. Le calculateur de backtest DCA et le calculateur d’intérêts composés sont actuellement gratuits."
       },
       "etfs": {
-        "question": "Can I use this for ETFs?",
-        "answer": "Yes. The tool supports selected ETFs, including examples such as VOO, SPY, QQQ, CSPX, and other supported instruments where data is available."
+        "question": "Puis-je l’utiliser pour des ETF ?",
+        "answer": "Oui. L’outil prend en charge certains ETF, notamment VOO, SPY, QQQ, CSPX et d’autres instruments pris en charge lorsque les données sont disponibles."
       },
       "sampleData": {
-        "question": "Why do some assets use sample data?",
-        "answer": "Some instruments do not have imported historical CSV files yet. Those assets are clearly marked as sample data."
+        "question": "Pourquoi certains actifs utilisent-ils des données d’exemple ?",
+        "answer": "Certains instruments n’ont pas encore de fichiers CSV historiques importés. Ces actifs sont clairement indiqués comme utilisant des données d’exemple."
       },
       "marketDataUpdates": {
-        "question": "How often is market data updated?",
-        "answer": "Market data is updated manually for now when CSV files are imported. The site does not use a real-time market data API yet."
+        "question": "À quelle fréquence les données de marché sont-elles mises à jour ?",
+        "answer": "Pour l’instant, les données de marché sont mises à jour manuellement lorsque des fichiers CSV sont importés. Le site n’utilise pas encore d’API de données de marché en temps réel."
       }
     }
   },
