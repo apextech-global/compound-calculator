@@ -157,20 +157,20 @@
         "answer": "いいえ。過去の実績は将来の結果を保証しません。DCA Backtestは教育目的のみであり、金融助言ではありません。"
       },
       "free": {
-        "question": "Is this calculator free?",
-        "answer": "Yes. The DCA backtest calculator and compound interest calculator are currently free to use."
+        "question": "この計算機は無料ですか？",
+        "answer": "はい。DCAバックテスト計算機と複利計算機は現在無料で利用できます。"
       },
       "etfs": {
-        "question": "Can I use this for ETFs?",
-        "answer": "Yes. The tool supports selected ETFs, including examples such as VOO, SPY, QQQ, CSPX, and other supported instruments where data is available."
+        "question": "ETFに使えますか？",
+        "answer": "はい。VOO、SPY、QQQ、CSPXなど、データが利用可能な一部のETFや対応銘柄に対応しています。"
       },
       "sampleData": {
-        "question": "Why do some assets use sample data?",
-        "answer": "Some instruments do not have imported historical CSV files yet. Those assets are clearly marked as sample data."
+        "question": "一部の資産がサンプルデータを使うのはなぜですか？",
+        "answer": "一部の銘柄はまだ過去CSVファイルがインポートされていません。その場合はサンプルデータとして明確に表示されます。"
       },
       "marketDataUpdates": {
-        "question": "How often is market data updated?",
-        "answer": "Market data is updated manually for now when CSV files are imported. The site does not use a real-time market data API yet."
+        "question": "市場データはどのくらいの頻度で更新されますか？",
+        "answer": "現在、市場データはCSVファイルをインポートしたときに手動で更新されます。リアルタイム市場データAPIはまだ使用していません。"
       }
     }
   },

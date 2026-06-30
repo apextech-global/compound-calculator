@@ -222,7 +222,7 @@
   "seoContent": {
     "eyebrow": "投資教育",
     "title": "了解定投回測與複利成長如何運作",
-    "intro": "使用 DCA calculator、compound interest calculator、ETF investment calculator、monthly investment calculator，以及複利計算器、定投計算器、ETF定投計算器，探索 VOO、CSPX、ETF 與股票的長期投資情境。",
+    "intro": "使用複利計算器、DCA 計算器、DCA 回測計算器、ETF 投資計算器和每月投資計算器，探索 VOO、CSPX、ETF 與股票的長期投資情境。",
     "sections": {
       "dca": {
         "title": "什麼是定期定額投資？",
@@ -242,7 +242,7 @@
       },
       "etfExample": {
         "title": "ETF 每月定投示例",
-        "body": "例如，VOO DCA calculator 或 CSPX DCA calculator 可在有資料時使用歷史月度價格，模擬定期投資 ETF 的成長。"
+        "body": "例如，VOO DCA 計算器或 CSPX DCA 計算器可在有資料時使用歷史月度價格，模擬定期投資 ETF 的成長。"
       },
       "supportedAssets": {
         "title": "支援的資產與市場",
