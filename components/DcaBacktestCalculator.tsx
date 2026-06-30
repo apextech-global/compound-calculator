@@ -94,11 +94,11 @@ export default function DcaBacktestCalculator({
           </p>
         </div>
 
-        <div className="rounded-3xl border border-cyan-300/20 bg-cyan-400/10 p-6 shadow-2xl shadow-cyan-950/30">
+        <div className="min-w-0 overflow-hidden rounded-3xl border border-cyan-300/20 bg-cyan-400/10 p-6 shadow-2xl shadow-cyan-950/30">
           <p className="text-sm font-medium text-cyan-100">
             {t("dca.endingValue")}
           </p>
-          <p className="mt-3 text-4xl font-bold text-cyan-300">
+          <p className="mt-3 min-w-0 break-words text-[clamp(2rem,4vw,2.5rem)] font-bold leading-tight text-cyan-300">
             {formatMoney(backtest.finalValue, selectedCurrency, locale)}
           </p>
           <p className="mt-4 text-sm leading-6 text-slate-300">
@@ -313,12 +313,12 @@ export default function DcaBacktestCalculator({
         </div>
 
         <div className="space-y-6">
-          <div className="grid gap-4 md:grid-cols-4">
-            <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-5 shadow-xl shadow-black/20">
+          <div className="grid min-w-0 gap-4 md:grid-cols-4">
+            <div className="min-w-0 overflow-hidden rounded-3xl border border-white/10 bg-white/[0.06] p-5 shadow-xl shadow-black/20">
               <p className="text-sm text-slate-400">
                 {t("metrics.totalInvested")}
               </p>
-              <p className="mt-2 text-2xl font-bold">
+              <p className="mt-2 min-w-0 break-words text-[clamp(1.5rem,2.4vw,1.875rem)] font-bold leading-tight">
                 {formatMoney(
                   backtest.totalInvested,
                   selectedCurrency,
@@ -326,27 +326,27 @@ export default function DcaBacktestCalculator({
                 )}
               </p>
             </div>
-            <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-5 shadow-xl shadow-black/20">
+            <div className="min-w-0 overflow-hidden rounded-3xl border border-white/10 bg-white/[0.06] p-5 shadow-xl shadow-black/20">
               <p className="text-sm text-slate-400">
                 {t("metrics.finalValueTitle")}
               </p>
-              <p className="mt-2 text-2xl font-bold text-cyan-300">
+              <p className="mt-2 min-w-0 break-words text-[clamp(1.5rem,2.4vw,1.875rem)] font-bold leading-tight text-cyan-300">
                 {formatMoney(backtest.finalValue, selectedCurrency, locale)}
               </p>
             </div>
-            <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-5 shadow-xl shadow-black/20">
+            <div className="min-w-0 overflow-hidden rounded-3xl border border-white/10 bg-white/[0.06] p-5 shadow-xl shadow-black/20">
               <p className="text-sm text-slate-400">
                 {t("metrics.totalProfit")}
               </p>
-              <p className="mt-2 text-2xl font-bold text-emerald-400">
+              <p className="mt-2 min-w-0 break-words text-[clamp(1.5rem,2.4vw,1.875rem)] font-bold leading-tight text-emerald-400">
                 {formatMoney(backtest.totalProfit, selectedCurrency, locale)}
               </p>
             </div>
-            <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-5 shadow-xl shadow-black/20">
+            <div className="min-w-0 overflow-hidden rounded-3xl border border-white/10 bg-white/[0.06] p-5 shadow-xl shadow-black/20">
               <p className="text-sm text-slate-400">
                 {t("metrics.totalReturn")}
               </p>
-              <p className="mt-2 text-2xl font-bold text-cyan-400">
+              <p className="mt-2 min-w-0 break-words text-[clamp(1.5rem,2.4vw,1.875rem)] font-bold leading-tight text-cyan-400">
                 {formatPercent(backtest.totalReturn, locale)}%
               </p>
             </div>
