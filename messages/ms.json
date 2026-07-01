@@ -75,7 +75,14 @@
     "stock": "Saham",
     "asset": "Aset",
     "exchange": "Bursa",
-    "dataUnavailableNote": "Data sejarah untuk aset ini belum diimport lagi."
+    "dataUnavailableNote": "Data sejarah untuk aset ini belum diimport lagi.",
+    "dataSource": {
+      "yahoo": "Sumber: Harga sejarah Yahoo Finance",
+      "sample": "Sumber: Data sampel",
+      "detailsTitle": "Butiran sumber data",
+      "historicalNote": "Harga sejarah diperoleh daripada Yahoo Finance dan ditukar kepada harga penutupan bulanan untuk backtesting. Data mungkin tertunda, diselaraskan, atau berbeza daripada NAV rasmi dana.",
+      "sampleNote": "Data sampel digunakan hanya untuk demonstrasi apabila data sejarah yang diimport tidak tersedia. Keputusan tidak patut dianggap sebagai prestasi sejarah sebenar."
+    }
   },
   "compound": {
     "eyebrow": "Kalkulator Kompaun",
@@ -325,6 +332,10 @@
         {
           "title": "Nasihat profesional",
           "body": "Rujuk penasihat kewangan berlesen, profesional cukai, atau profesional berkelayakan jika anda memerlukan nasihat untuk situasi peribadi."
+        },
+        {
+          "title": "Penafian Sumber Data",
+          "body": "Harga pasaran sejarah mungkin datang daripada penyedia pihak ketiga seperti Yahoo Finance. Data mungkin tertunda, diselaraskan, tidak lengkap, atau berbeza daripada data rasmi bursa, broker, atau penyedia dana. Harga ETF mungkin berbeza daripada NAV rasmi. Penukaran mata wang, cukai, fi, spread, dividen, dan harga pelaksanaan boleh menjejaskan hasil pelaburan sebenar. Pengguna perlu mengesahkan data penting sebelum membuat keputusan pelaburan."
         }
       ]
     }
@@ -389,6 +400,7 @@
     "totalProfit": "Jumlah keuntungan",
     "totalReturn": "Jumlah pulangan",
     "disclaimer": "Untuk pendidikan sahaja. Bukan nasihat kewangan.",
-    "cta": "Cuba backtest anda sendiri"
+    "cta": "Cuba backtest anda sendiri",
+    "dataSource": "Sumber data"
   }
 }

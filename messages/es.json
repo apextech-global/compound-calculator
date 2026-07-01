@@ -75,7 +75,14 @@
     "stock": "Acción",
     "asset": "Activo",
     "exchange": "Bolsa",
-    "dataUnavailableNote": "Los datos históricos de este activo aún no se han importado."
+    "dataUnavailableNote": "Los datos históricos de este activo aún no se han importado.",
+    "dataSource": {
+      "yahoo": "Fuente: precios históricos de Yahoo Finance",
+      "sample": "Fuente: datos de muestra",
+      "detailsTitle": "Detalles de fuente de datos",
+      "historicalNote": "Los precios históricos provienen de Yahoo Finance y se convierten en precios de cierre mensuales para el backtesting. Los datos pueden estar retrasados, ajustados o diferir del NAV oficial del fondo.",
+      "sampleNote": "Los datos de muestra se usan solo para demostración cuando no hay datos históricos importados. Los resultados no deben tratarse como rendimiento histórico real."
+    }
   },
   "compound": {
     "eyebrow": "Calculateur composé",
@@ -325,6 +332,10 @@
         {
           "title": "Consejo profesional",
           "body": "Consulta a un asesor financiero autorizado u otro profesional cualificado si necesitas asesoramiento personal."
+        },
+        {
+          "title": "Aviso sobre fuente de datos",
+          "body": "Los precios históricos de mercado pueden provenir de proveedores externos como Yahoo Finance. Los datos pueden estar retrasados, ajustados, incompletos o diferir de datos oficiales de bolsas, brokers o proveedores de fondos. Los precios de ETF pueden diferir del NAV oficial. Conversión de divisas, impuestos, comisiones, spreads, dividendos y precio de ejecución pueden afectar resultados reales. Los usuarios deben verificar datos importantes antes de tomar decisiones de inversión."
         }
       ]
     }
@@ -389,6 +400,7 @@
     "totalProfit": "Ganancia total",
     "totalReturn": "Rentabilidad total",
     "disclaimer": "Solo con fines educativos. No es asesoramiento financiero.",
-    "cta": "Prueba tu propio backtest"
+    "cta": "Prueba tu propio backtest",
+    "dataSource": "Fuente de datos"
   }
 }

@@ -120,17 +120,29 @@ export default function DcaBacktestCalculator({
                 {t("dca.scenarioTitle")}
               </h3>
             </div>
-            <div className="rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-sm font-medium text-cyan-300">
-              {displayedDataSource === "csv"
-                ? t("dca.csvDataSource")
-                : t("dca.mockDataSource")}
+            <div className="max-w-[220px] rounded-2xl border border-cyan-400/30 bg-cyan-400/10 px-3 py-2 text-right text-sm font-medium text-cyan-300">
+              <p>
+                {displayedDataSource === "csv"
+                  ? t("dca.csvDataSource")
+                  : t("dca.mockDataSource")}
+              </p>
+              <p className="mt-0.5 text-xs leading-4 text-cyan-100/80">
+                {displayedDataSource === "csv"
+                  ? t("dca.dataSource.yahoo")
+                  : t("dca.dataUnavailableNote")}
+              </p>
             </div>
           </div>
-          {displayedDataSource === "mock" ? (
-            <p className="-mt-3 mb-6 text-sm leading-6 text-amber-200/90">
-              {t("dca.dataUnavailableNote")}
+          <details className="-mt-3 mb-6 rounded-2xl border border-white/10 bg-slate-950/40 px-4 py-3 text-sm text-slate-300">
+            <summary className="cursor-pointer font-semibold text-cyan-200">
+              {t("dca.dataSource.detailsTitle")}
+            </summary>
+            <p className="mt-2 leading-6 text-slate-400">
+              {displayedDataSource === "csv"
+                ? t("dca.dataSource.historicalNote")
+                : t("dca.dataSource.sampleNote")}
             </p>
-          ) : null}
+          </details>
 
           <div className="space-y-5">
             <label className="block">

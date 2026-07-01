@@ -75,7 +75,14 @@
     "stock": "Aktie",
     "asset": "Anlage",
     "exchange": "Börse",
-    "dataUnavailableNote": "Historische Daten für diese Anlage wurden noch nicht importiert."
+    "dataUnavailableNote": "Historische Daten für diese Anlage wurden noch nicht importiert.",
+    "dataSource": {
+      "yahoo": "Quelle: historische Preise von Yahoo Finance",
+      "sample": "Quelle: Beispieldaten",
+      "detailsTitle": "Details zur Datenquelle",
+      "historicalNote": "Historische Preise stammen von Yahoo Finance und werden für Backtests in monatliche Schlusskurse umgewandelt. Daten können verzögert, angepasst oder vom offiziellen Fonds-NAV abweichend sein.",
+      "sampleNote": "Beispieldaten werden nur zur Demonstration verwendet, wenn importierte historische Daten nicht verfügbar sind. Ergebnisse sollten nicht als echte historische Performance behandelt werden."
+    }
   },
   "compound": {
     "eyebrow": "Calculateur composé",
@@ -325,6 +332,10 @@
         {
           "title": "Professionelle Beratung",
           "body": "Wenden Sie sich an einen zugelassenen Finanzberater, Steuerexperten oder qualifizierten Fachmann, wenn Sie persönlichen Rat benötigen."
+        },
+        {
+          "title": "Haftungsausschluss zur Datenquelle",
+          "body": "Historische Marktpreise können von Drittanbietern wie Yahoo Finance stammen. Daten können verzögert, angepasst, unvollständig oder von offiziellen Börsen-, Broker- oder Fondsdaten abweichend sein. ETF-Preise können vom offiziellen NAV abweichen. Währungsumrechnung, Steuern, Gebühren, Spreads, Dividenden und Ausführungspreise können echte Anlageergebnisse beeinflussen. Nutzer sollten wichtige Daten vor Anlageentscheidungen überprüfen."
         }
       ]
     }
@@ -389,6 +400,7 @@
     "totalProfit": "Gesamtgewinn",
     "totalReturn": "Gesamtrendite",
     "disclaimer": "Nur zu Bildungszwecken. Keine Finanzberatung.",
-    "cta": "Eigenen Backtest ausprobieren"
+    "cta": "Eigenen Backtest ausprobieren",
+    "dataSource": "Datenquelle"
   }
 }

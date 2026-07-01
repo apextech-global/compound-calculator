@@ -570,6 +570,10 @@ export default function Home() {
     backtest.dataSource === "csv" || hasSelectedInstrumentImportedMarketData
       ? "csv"
       : "mock";
+  const displayedBacktestDataSourceLabel =
+    displayedBacktestDataSource === "csv"
+      ? t("dca.dataSource.yahoo")
+      : t("dca.dataSource.sample");
 
   const backtestChartData = useMemo(
     () =>
@@ -753,6 +757,7 @@ export default function Home() {
         backtest.totalReturn,
         locale
       )}%`,
+      `${t("caption.dataSource")}: ${displayedBacktestDataSourceLabel}`,
       "",
       t("caption.disclaimer"),
       `${t("caption.cta")}: https://dcabacktest.com`,
@@ -882,6 +887,9 @@ export default function Home() {
     ctx.fillStyle = "#a5f3fc";
     ctx.font = "700 18px Inter, Arial, sans-serif";
     drawText(ctx, dataSourceLabel, 902, 89, 194, 22, 1);
+    ctx.fillStyle = "#94a3b8";
+    ctx.font = "600 15px Inter, Arial, sans-serif";
+    drawText(ctx, displayedBacktestDataSourceLabel, 878, 122, 240, 20, 1);
 
     ctx.fillStyle = "#f8fafc";
     ctx.font = "800 42px Inter, Arial, sans-serif";

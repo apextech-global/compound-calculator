@@ -75,7 +75,14 @@
     "stock": "股票",
     "asset": "資產",
     "exchange": "交易所",
-    "dataUnavailableNote": "此資產的歷史資料尚未匯入。"
+    "dataUnavailableNote": "此資產的歷史資料尚未匯入。",
+    "dataSource": {
+      "yahoo": "來源：Yahoo Finance 歷史價格",
+      "sample": "來源：範例資料",
+      "detailsTitle": "資料來源說明",
+      "historicalNote": "歷史價格來自 Yahoo Finance，並轉換為每月收盤價用於回測。資料可能延遲、經過調整，或與基金官方 NAV 有差異。",
+      "sampleNote": "當歷史資料尚未匯入時，系統會使用範例資料作示範。結果不應視為真實歷史表現。"
+    }
   },
   "compound": {
     "eyebrow": "複利計算器",
@@ -325,6 +332,10 @@
         {
           "title": "專業建議",
           "body": "如需針對個人情況的建議，請諮詢持牌金融顧問、稅務專業人士或其他合格專業人士。"
+        },
+        {
+          "title": "資料來源免責聲明",
+          "body": "歷史市場價格可能來自 Yahoo Finance 等第三方資料提供方。資料可能延遲、經過調整、不完整，或與交易所、券商、基金提供方的官方資料不同。ETF 價格可能不同於官方 NAV。貨幣轉換、稅務、費用、價差、股息和成交價格都可能影響真實投資結果。使用者在做出投資決定前應核實重要資料。"
         }
       ]
     }
@@ -389,6 +400,7 @@
     "totalProfit": "總利潤",
     "totalReturn": "總回報",
     "disclaimer": "僅供教育用途，並非投資建議。",
-    "cta": "試算你的定投結果"
+    "cta": "試算你的定投結果",
+    "dataSource": "資料來源"
   }
 }

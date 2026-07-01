@@ -75,7 +75,14 @@
     "stock": "股票",
     "asset": "资产",
     "exchange": "交易所",
-    "dataUnavailableNote": "此资产的历史数据尚未导入。"
+    "dataUnavailableNote": "此资产的历史数据尚未导入。",
+    "dataSource": {
+      "yahoo": "来源：Yahoo Finance 历史价格",
+      "sample": "来源：示例数据",
+      "detailsTitle": "数据来源说明",
+      "historicalNote": "历史价格来自 Yahoo Finance，并转换为每月收盘价用于回测。数据可能延迟、经过调整，或与基金官方 NAV 有差异。",
+      "sampleNote": "当历史数据尚未导入时，系统会使用示例数据作演示。结果不应视为真实历史表现。"
+    }
   },
   "compound": {
     "eyebrow": "复利计算器",
@@ -325,6 +332,10 @@
         {
           "title": "专业建议",
           "body": "如需针对个人情况的建议，请咨询持牌金融顾问、税务专业人士或其他合格专业人士。"
+        },
+        {
+          "title": "数据来源免责声明",
+          "body": "历史市场价格可能来自 Yahoo Finance 等第三方数据提供方。数据可能延迟、经过调整、不完整，或与交易所、券商、基金提供方的官方数据不同。ETF 价格可能不同于官方 NAV。货币转换、税费、费用、价差、股息和成交价格都可能影响真实投资结果。用户在做出投资决定前应核实重要数据。"
         }
       ]
     }
@@ -389,6 +400,7 @@
     "totalProfit": "总利润",
     "totalReturn": "总回报",
     "disclaimer": "仅供教育用途，不构成投资建议。",
-    "cta": "试算你的定投结果"
+    "cta": "试算你的定投结果",
+    "dataSource": "数据来源"
   }
 }

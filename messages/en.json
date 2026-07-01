@@ -75,7 +75,14 @@
     "stock": "Stock",
     "asset": "Asset",
     "exchange": "Exchange",
-    "dataUnavailableNote": "Historical data for this asset has not been imported yet."
+    "dataUnavailableNote": "Historical data for this asset has not been imported yet.",
+    "dataSource": {
+      "yahoo": "Source: Yahoo Finance historical prices",
+      "sample": "Source: Sample data",
+      "detailsTitle": "Data source details",
+      "historicalNote": "Historical prices are sourced from Yahoo Finance and converted into monthly closing prices for backtesting. Data may be delayed, adjusted, or different from official fund NAV.",
+      "sampleNote": "Sample data is used only for demonstration when imported historical data is unavailable. Results should not be treated as real historical performance."
+    }
   },
   "compound": {
     "eyebrow": "Compound Calculator",
@@ -325,6 +332,10 @@
         {
           "title": "Professional advice",
           "body": "Consult a licensed financial adviser, tax professional, or other qualified professional if you need advice for your personal situation."
+        },
+        {
+          "title": "Data Source Disclaimer",
+          "body": "Historical market prices may come from third-party providers such as Yahoo Finance. Data may be delayed, adjusted, incomplete, or different from official exchange, broker, or fund provider data. ETF prices may differ from official NAV. Currency conversion, taxes, fees, spreads, dividends, and execution price may affect real investment results. Users should verify important data before making investment decisions."
         }
       ]
     }
@@ -389,6 +400,7 @@
     "totalProfit": "Total profit",
     "totalReturn": "Total return",
     "disclaimer": "Educational only. Not financial advice.",
-    "cta": "Try your own backtest"
+    "cta": "Try your own backtest",
+    "dataSource": "Data source"
   }
 }

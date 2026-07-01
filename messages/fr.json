@@ -75,7 +75,14 @@
     "stock": "Action",
     "asset": "Actif",
     "exchange": "Bourse",
-    "dataUnavailableNote": "Les données historiques de cet actif n’ont pas encore été importées."
+    "dataUnavailableNote": "Les données historiques de cet actif n’ont pas encore été importées.",
+    "dataSource": {
+      "yahoo": "Source : prix historiques Yahoo Finance",
+      "sample": "Source : données d’exemple",
+      "detailsTitle": "Détails de la source des données",
+      "historicalNote": "Les prix historiques proviennent de Yahoo Finance et sont convertis en prix de clôture mensuels pour le backtesting. Les données peuvent être retardées, ajustées ou différentes de la NAV officielle du fonds.",
+      "sampleNote": "Les données d’exemple sont utilisées uniquement à des fins de démonstration lorsque les données historiques importées ne sont pas disponibles. Les résultats ne doivent pas être considérés comme une performance historique réelle."
+    }
   },
   "compound": {
     "eyebrow": "Calculateur composé",
@@ -325,6 +332,10 @@
         {
           "title": "Conseil professionnel",
           "body": "Consultez un conseiller financier agréé, fiscaliste ou professionnel qualifié si vous avez besoin d’un avis adapté."
+        },
+        {
+          "title": "Avertissement sur les sources de données",
+          "body": "Les prix de marché historiques peuvent provenir de fournisseurs tiers comme Yahoo Finance. Les données peuvent être retardées, ajustées, incomplètes ou différentes des données officielles d’une bourse, d’un courtier ou d’un fournisseur de fonds. Les prix des ETF peuvent différer de la NAV officielle. La conversion de devise, les taxes, frais, spreads, dividendes et prix d’exécution peuvent affecter les résultats réels. Les utilisateurs doivent vérifier les données importantes avant toute décision d’investissement."
         }
       ]
     }
@@ -389,6 +400,7 @@
     "totalProfit": "Profit total",
     "totalReturn": "Rendement total",
     "disclaimer": "À des fins éducatives uniquement. Ce n’est pas un conseil financier.",
-    "cta": "Essayez votre propre backtest"
+    "cta": "Essayez votre propre backtest",
+    "dataSource": "Source des données"
   }
 }

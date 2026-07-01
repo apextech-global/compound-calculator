@@ -75,7 +75,14 @@
     "stock": "Saham",
     "asset": "Aset",
     "exchange": "Bursa",
-    "dataUnavailableNote": "Data historis untuk aset ini belum diimpor."
+    "dataUnavailableNote": "Data historis untuk aset ini belum diimpor.",
+    "dataSource": {
+      "yahoo": "Sumber: Harga historis Yahoo Finance",
+      "sample": "Sumber: Data sampel",
+      "detailsTitle": "Detail sumber data",
+      "historicalNote": "Harga historis bersumber dari Yahoo Finance dan dikonversi menjadi harga penutupan bulanan untuk backtesting. Data dapat tertunda, disesuaikan, atau berbeda dari NAV resmi fund.",
+      "sampleNote": "Data sampel hanya digunakan untuk demonstrasi ketika data historis yang diimpor belum tersedia. Hasil tidak boleh dianggap sebagai kinerja historis nyata."
+    }
   },
   "compound": {
     "eyebrow": "Kalkulator Kompon",
@@ -325,6 +332,10 @@
         {
           "title": "Nasihat profesional",
           "body": "Konsultasikan dengan penasihat keuangan berlisensi, profesional pajak, atau profesional berkualifikasi jika membutuhkan nasihat untuk situasi pribadi."
+        },
+        {
+          "title": "Disclaimer Sumber Data",
+          "body": "Harga pasar historis dapat berasal dari penyedia pihak ketiga seperti Yahoo Finance. Data dapat tertunda, disesuaikan, tidak lengkap, atau berbeda dari data resmi bursa, broker, atau penyedia fund. Harga ETF dapat berbeda dari NAV resmi. Konversi mata uang, pajak, biaya, spread, dividen, dan harga eksekusi dapat memengaruhi hasil investasi nyata. Pengguna harus memverifikasi data penting sebelum membuat keputusan investasi."
         }
       ]
     }
@@ -389,6 +400,7 @@
     "totalProfit": "Total profit",
     "totalReturn": "Total return",
     "disclaimer": "Hanya untuk edukasi. Bukan nasihat keuangan.",
-    "cta": "Coba backtest kamu sendiri"
+    "cta": "Coba backtest kamu sendiri",
+    "dataSource": "Sumber data"
   }
 }
