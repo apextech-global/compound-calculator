@@ -16,9 +16,19 @@
     "compoundCalculator": "Kalkulator Kompon"
   },
   "hero": {
-    "eyebrow": "Alat ETF DCA dan Pertumbuhan Majemuk",
-    "title": "Kalkulator DCA dan Bunga Majemuk",
-    "description": "Backtest investasi bulanan di VOO, CSPX, ETF, dan saham, lalu bandingkan kinerja DCA historis dengan proyeksi bunga majemuk jangka panjang."
+    "eyebrow": "Alat ETF DCA, backtest, dan pertumbuhan majemuk",
+    "title": "Kalkulator DCA dan Alat Backtest ETF",
+    "description": "Backtest investasi bulanan di VOO, CSPX, QQQ, VWRA, IWDA, ETF, dan saham, lalu bandingkan performa DCA dengan proyeksi bunga majemuk.",
+    "seoIntro": "Gunakan kalkulator DCA, backtest DCA, kalkulator ETF, alat investasi bulanan, dan kalkulator bunga majemuk ini untuk mempelajari skenario jangka panjang hanya untuk edukasi.",
+    "linksLabel": "Halaman kalkulator populer",
+    "links": {
+      "dca-calculator": "Kalkulator DCA",
+      "compound-interest-calculator": "Kalkulator bunga majemuk",
+      "etf-calculator": "Kalkulator ETF",
+      "etf-comparison-calculator": "Kalkulator perbandingan ETF",
+      "voo-vs-cspx": "VOO vs CSPX",
+      "voo-vs-qqq": "VOO vs QQQ"
+    }
   },
   "cards": {
     "dca": {
@@ -134,10 +144,10 @@
     "ta": "தமிழ்"
   },
   "seo": {
-    "title": "Kalkulator Bunga Majemuk & DCA | Kalkulator Investasi ETF",
-    "description": "Backtest investasi bulanan dengan data ETF historis, bandingkan kinerja DCA, dan proyeksikan pertumbuhan majemuk jangka panjang untuk VOO, CSPX, ETF, dan saham.",
-    "openGraphTitle": "Kalkulator Bunga Majemuk & DCA | Kalkulator Investasi ETF",
-    "openGraphDescription": "Backtest investasi bulanan dengan data ETF historis, bandingkan kinerja DCA, dan proyeksikan pertumbuhan majemuk jangka panjang untuk VOO, CSPX, ETF, dan saham."
+    "title": "Kalkulator DCA & Alat Backtest | ETF dan Bunga Majemuk",
+    "description": "Backtest investasi bulanan di VOO, CSPX, QQQ, VWRA, dan IWDA, bandingkan performa DCA ETF dan saham, serta gunakan kalkulator bunga majemuk hanya untuk edukasi.",
+    "openGraphTitle": "Kalkulator DCA & Alat Backtest | ETF dan Bunga Majemuk",
+    "openGraphDescription": "Backtest investasi bulanan di VOO, CSPX, QQQ, VWRA, dan IWDA, bandingkan performa DCA ETF dan saham, serta gunakan kalkulator bunga majemuk hanya untuk edukasi."
   },
   "faq": {
     "eyebrow": "FAQ",

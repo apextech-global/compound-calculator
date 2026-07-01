@@ -1071,10 +1071,23 @@ export default function Home() {
         t("common.language"),
       ],
     };
+    const breadcrumbStructuredData = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "DCA Backtest",
+          item: pageUrl,
+        },
+      ],
+    };
 
     return JSON.stringify([
       faqStructuredData,
       webApplicationStructuredData,
+      breadcrumbStructuredData,
     ]).replace(/</g, "\\u003c");
   }, [locale, t]);
 

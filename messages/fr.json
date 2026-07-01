@@ -16,9 +16,19 @@
     "compoundCalculator": "Calculateur composé"
   },
   "hero": {
-    "eyebrow": "Outils ETF DCA et croissance composée",
-    "title": "Backtest DCA et calculateur d’intérêts composés",
-    "description": "Backtestez des investissements mensuels dans VOO, CSPX, des ETF et des actions, puis comparez la performance DCA historique avec des projections composées long terme."
+    "eyebrow": "Outils ETF DCA, backtest et croissance composée",
+    "title": "Calculateur DCA et outil de backtest ETF",
+    "description": "Backtestez des investissements mensuels dans VOO, CSPX, QQQ, VWRA, IWDA, ETF et actions, puis comparez le DCA avec des projections composées.",
+    "seoIntro": "Utilisez ce calculateur DCA, backtest DCA, calculateur ETF, outil d’investissement mensuel et calculateur d’intérêts composés pour étudier des scénarios long terme à des fins éducatives.",
+    "linksLabel": "Pages de calcul populaires",
+    "links": {
+      "dca-calculator": "Calculateur DCA",
+      "compound-interest-calculator": "Calculateur d’intérêts composés",
+      "etf-calculator": "Calculateur ETF",
+      "etf-comparison-calculator": "Calculateur de comparaison ETF",
+      "voo-vs-cspx": "VOO vs CSPX",
+      "voo-vs-qqq": "VOO vs QQQ"
+    }
   },
   "cards": {
     "dca": {
@@ -134,10 +144,10 @@
     "ta": "தமிழ்"
   },
   "seo": {
-    "title": "Backtest DCA et calculateur d’intérêts composés | Calculateur ETF",
-    "description": "Backtestez des investissements mensuels avec des données ETF historiques, comparez le DCA et projetez la croissance composée de VOO, CSPX, ETF et actions.",
-    "openGraphTitle": "Backtest DCA et calculateur d’intérêts composés | Calculateur ETF",
-    "openGraphDescription": "Backtestez des investissements mensuels avec des données ETF historiques, comparez le DCA et projetez la croissance composée de VOO, CSPX, ETF et actions."
+    "title": "Calculateur DCA et outil de backtest | ETF et intérêts composés",
+    "description": "Backtestez des investissements mensuels dans VOO, CSPX, QQQ, VWRA et IWDA, comparez le DCA des ETF et actions, et utilisez le calculateur d’intérêts composés à des fins éducatives.",
+    "openGraphTitle": "Calculateur DCA et outil de backtest | ETF et intérêts composés",
+    "openGraphDescription": "Backtestez des investissements mensuels dans VOO, CSPX, QQQ, VWRA et IWDA, comparez le DCA des ETF et actions, et utilisez le calculateur d’intérêts composés à des fins éducatives."
   },
   "faq": {
     "eyebrow": "FAQ",

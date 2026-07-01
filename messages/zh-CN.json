@@ -16,9 +16,19 @@
     "compoundCalculator": "复利计算器"
   },
   "hero": {
-    "eyebrow": "ETF定投与复利增长工具",
-    "title": "复利计算器与定投回测工具",
-    "description": "回测每月定投 VOO、CSPX、ETF 和股票的历史表现，并用复利计算器预测长期投资增长。"
+    "eyebrow": "ETF 定投、回测与复利增长工具",
+    "title": "DCA 定投计算器与 ETF 回测工具",
+    "description": "回测每月定投 VOO、CSPX、QQQ、VWRA、IWDA、ETF 和股票的表现，并结合复利计算器进行长期情景分析。",
+    "seoIntro": "使用这个 DCA 定投计算器、DCA 回测工具、ETF 计算器、每月投资工具和复利计算器，学习长期投资情景，仅供教育用途。",
+    "linksLabel": "热门计算器页面",
+    "links": {
+      "dca-calculator": "DCA 定投计算器",
+      "compound-interest-calculator": "复利计算器",
+      "etf-calculator": "ETF 计算器",
+      "etf-comparison-calculator": "ETF 对比计算器",
+      "voo-vs-cspx": "VOO 对比 CSPX",
+      "voo-vs-qqq": "VOO 对比 QQQ"
+    }
   },
   "cards": {
     "dca": {
@@ -134,10 +144,10 @@
     "ta": "தமிழ்"
   },
   "seo": {
-    "title": "复利计算器与定投回测工具 | ETF投资回报计算器",
-    "description": "使用复利计算器和定投回测工具，计算每月定投ETF、股票、VOO、CSPX的长期投资回报。",
-    "openGraphTitle": "复利计算器与定投回测工具 | ETF投资回报计算器",
-    "openGraphDescription": "使用复利计算器和定投回测工具，计算每月定投ETF、股票、VOO、CSPX的长期投资回报。"
+    "title": "DCA 定投计算器与回测工具 | ETF与复利计算器",
+    "description": "回测每月定投 VOO、CSPX、QQQ、VWRA、IWDA，比较 ETF 和股票 DCA 表现，并使用复利计算器进行教育性规划。",
+    "openGraphTitle": "DCA 定投计算器与回测工具 | ETF与复利计算器",
+    "openGraphDescription": "回测每月定投 VOO、CSPX、QQQ、VWRA、IWDA，比较 ETF 和股票 DCA 表现，并使用复利计算器进行教育性规划。"
   },
   "faq": {
     "eyebrow": "常见问题",

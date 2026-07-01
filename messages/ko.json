@@ -16,9 +16,19 @@
     "compoundCalculator": "복리 계산기"
   },
   "hero": {
-    "eyebrow": "ETF DCA 및 복리 성장 도구",
-    "title": "DCA 백테스트 및 복리 계산기",
-    "description": "VOO, CSPX, ETF, 주식의 월별 투자를 백테스트하고 과거 DCA 성과를 장기 복리 성장 예측과 비교하세요."
+    "eyebrow": "ETF DCA, 백테스트, 복리 성장 도구",
+    "title": "DCA 계산기와 ETF 백테스트 도구",
+    "description": "VOO, CSPX, QQQ, VWRA, IWDA, ETF, 주식의 월별 투자를 백테스트하고 DCA 성과를 복리 전망과 비교하세요.",
+    "seoIntro": "이 DCA 계산기, DCA 백테스트, ETF 계산기, 월별 투자 도구, 복리 계산기로 교육 목적의 장기 시나리오를 살펴보세요.",
+    "linksLabel": "인기 계산기 페이지",
+    "links": {
+      "dca-calculator": "DCA 계산기",
+      "compound-interest-calculator": "복리 계산기",
+      "etf-calculator": "ETF 계산기",
+      "etf-comparison-calculator": "ETF 비교 계산기",
+      "voo-vs-cspx": "VOO vs CSPX",
+      "voo-vs-qqq": "VOO vs QQQ"
+    }
   },
   "cards": {
     "dca": {
@@ -134,10 +144,10 @@
     "ta": "தமிழ்"
   },
   "seo": {
-    "title": "DCA 백테스트 및 복리 계산기 | ETF 투자 계산기",
-    "description": "과거 ETF 데이터로 월별 투자를 백테스트하고 DCA 성과를 비교하며 VOO, CSPX, ETF, 주식의 장기 복리 성장을 예측하세요.",
-    "openGraphTitle": "DCA 백테스트 및 복리 계산기 | ETF 투자 계산기",
-    "openGraphDescription": "과거 ETF 데이터로 월별 투자를 백테스트하고 DCA 성과를 비교하며 VOO, CSPX, ETF, 주식의 장기 복리 성장을 예측하세요."
+    "title": "DCA 계산기 및 백테스트 도구 | ETF와 복리 계산기",
+    "description": "VOO, CSPX, QQQ, VWRA, IWDA 월별 투자를 백테스트하고 ETF와 주식 DCA 성과를 비교하며 복리 계산기를 교육용으로 활용하세요.",
+    "openGraphTitle": "DCA 계산기 및 백테스트 도구 | ETF와 복리 계산기",
+    "openGraphDescription": "VOO, CSPX, QQQ, VWRA, IWDA 월별 투자를 백테스트하고 ETF와 주식 DCA 성과를 비교하며 복리 계산기를 교육용으로 활용하세요."
   },
   "faq": {
     "eyebrow": "FAQ",

@@ -16,9 +16,19 @@
     "compoundCalculator": "複利計算機"
   },
   "hero": {
-    "eyebrow": "ETF DCAと複利成長ツール",
-    "title": "DCAバックテストと複利計算機",
-    "description": "VOO、CSPX、ETF、株式への毎月投資をバックテストし、過去のDCA成績と長期の複利成長予測を比較できます。"
+    "eyebrow": "ETF DCA、バックテスト、複利成長ツール",
+    "title": "DCA計算機とETFバックテストツール",
+    "description": "VOO、CSPX、QQQ、VWRA、IWDA、ETF、株式への毎月投資をバックテストし、DCA成績と複利予測を比較できます。",
+    "seoIntro": "このDCA計算機、DCAバックテスト、ETF計算機、毎月投資ツール、複利計算機で、教育目的の長期シナリオを学べます。",
+    "linksLabel": "人気の計算機ページ",
+    "links": {
+      "dca-calculator": "DCA計算機",
+      "compound-interest-calculator": "複利計算機",
+      "etf-calculator": "ETF計算機",
+      "etf-comparison-calculator": "ETF比較計算機",
+      "voo-vs-cspx": "VOO vs CSPX",
+      "voo-vs-qqq": "VOO vs QQQ"
+    }
   },
   "cards": {
     "dca": {
@@ -134,10 +144,10 @@
     "ta": "தமிழ்"
   },
   "seo": {
-    "title": "DCAバックテストと複利計算機 | ETF投資計算ツール",
-    "description": "過去のETFデータで毎月投資をバックテストし、DCA成績を比較し、VOO、CSPX、ETF、株式の長期複利成長を予測します。",
-    "openGraphTitle": "DCAバックテストと複利計算機 | ETF投資計算ツール",
-    "openGraphDescription": "過去のETFデータで毎月投資をバックテストし、DCA成績を比較し、VOO、CSPX、ETF、株式の長期複利成長を予測します。"
+    "title": "DCA計算機とバックテストツール | ETF・複利計算機",
+    "description": "VOO、CSPX、QQQ、VWRA、IWDAへの毎月投資をバックテストし、ETFと株式のDCA成績を比較し、複利計算機を教育目的で利用できます。",
+    "openGraphTitle": "DCA計算機とバックテストツール | ETF・複利計算機",
+    "openGraphDescription": "VOO、CSPX、QQQ、VWRA、IWDAへの毎月投資をバックテストし、ETFと株式のDCA成績を比較し、複利計算機を教育目的で利用できます。"
   },
   "faq": {
     "eyebrow": "FAQ",
