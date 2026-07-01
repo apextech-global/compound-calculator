@@ -12,7 +12,14 @@ import {
 } from "@/lib/seoLandingPages";
 
 const baseUrl = "https://dcabacktest.com";
-const legalLinks = ["about", "privacy", "terms", "contact"] as const;
+const relatedSeoLinks: SeoPageSlug[] = [
+  "voo-dca-calculator",
+  "cspx-dca-calculator",
+  "etf-calculator",
+  "dca-calculator",
+  "etf-comparison-calculator",
+];
+const legalLinks = ["privacy", "terms", "disclaimer"] as const;
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -209,13 +216,24 @@ export default async function SeoLandingPage({
           aria-label={content.internalLinksLabel}
           className="mt-6 flex w-full flex-wrap gap-2.5 text-sm sm:mt-8 sm:gap-3"
         >
+          {relatedSeoLinks.map((link) => (
+            <Link
+              key={link}
+              href={`/${typedLocale}/${link}`}
+              className="rounded-full border border-cyan-300/20 bg-cyan-400/10 px-4 py-2 text-cyan-100 transition hover:border-cyan-300/50 hover:text-white"
+            >
+              {content.pages[link].h1}
+            </Link>
+          ))}
           {legalLinks.map((link) => (
             <Link
               key={link}
               href={`/${typedLocale}/${link}`}
               className="rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-slate-200 transition hover:border-cyan-300/40 hover:text-cyan-200"
             >
-              {messages.footer[link]}
+              {link === "disclaimer"
+                ? messages.footer.disclaimer
+                : messages.footer[link]}
             </Link>
           ))}
         </nav>
