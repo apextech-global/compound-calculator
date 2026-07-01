@@ -779,9 +779,9 @@ function getComparisonPhrases(locale: Locale): ComparisonPhrasePack {
 }
 
 const localizedComparisonText: Record<Locale, ComparisonLocaleText> = {
-  en: comparisonText.en,
-  "zh-CN": comparisonText["zh-CN"],
-  "zh-TW": comparisonText["zh-TW"],
+  en: comparisonText.en!,
+  "zh-CN": comparisonText["zh-CN"]!,
+  "zh-TW": comparisonText["zh-TW"]!,
   ms: comparisonLocale("Bandingkan", "Kalkulator Perbandingan ETF", "Perbandingan ETF", "Halaman ini untuk pendidikan sahaja dan bukan nasihat kewangan.", "ms"),
   id: comparisonLocale("Bandingkan", "Kalkulator Perbandingan ETF", "Perbandingan ETF", "Halaman ini hanya untuk edukasi dan bukan nasihat keuangan.", "id"),
   ja: comparisonLocale("比較", "ETF比較計算機", "ETF比較", "このページは教育目的のみであり、金融助言ではありません。", "ja"),
@@ -868,7 +868,7 @@ function comparisonLocale(
 }
 
 function buildComparisonPages(locale: Locale): Record<ComparisonSeoPageSlug, SeoPageContent> {
-  const text = comparisonText[locale] ?? comparisonText.en;
+  const text = localizedComparisonText[locale] ?? localizedComparisonText.en;
 
   return Object.fromEntries(
     comparisonSeoPageSlugs.map((slug) => {
