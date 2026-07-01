@@ -12,6 +12,38 @@ Examples:
 - `es3-si.csv`
 - `2800-hk.csv`
 
+## Fetch from Yahoo Finance
+
+You can automatically fetch raw daily CSV files for the default Yahoo symbol
+set:
+
+```sh
+npm run fetch-yahoo-market-data
+```
+
+Fetch selected Yahoo symbols:
+
+```sh
+npm run fetch-yahoo-market-data -- --symbols=CSPX.L,VWRA.L,0050.TW
+```
+
+Fetch selected app `dataKey` values:
+
+```sh
+npm run fetch-yahoo-market-data -- --keys=cspx-l,vwra-l,0050-tw
+```
+
+Use a longer delay between Yahoo requests:
+
+```sh
+npm run fetch-yahoo-market-data -- --delay=5000
+```
+
+The fetch script saves raw files into this folder, then you can run the import
+step below.
+
+## Manual CSV Files
+
 Supported input CSV formats include:
 
 ```csv
