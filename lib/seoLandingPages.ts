@@ -778,6 +778,23 @@ function getComparisonPhrases(locale: Locale): ComparisonPhrasePack {
   return comparisonPhrases[locale] ?? comparisonPhrases.en;
 }
 
+const localizedComparisonText: Record<Locale, ComparisonLocaleText> = {
+  en: comparisonText.en,
+  "zh-CN": comparisonText["zh-CN"],
+  "zh-TW": comparisonText["zh-TW"],
+  ms: comparisonLocale("Bandingkan", "Kalkulator Perbandingan ETF", "Perbandingan ETF", "Halaman ini untuk pendidikan sahaja dan bukan nasihat kewangan.", "ms"),
+  id: comparisonLocale("Bandingkan", "Kalkulator Perbandingan ETF", "Perbandingan ETF", "Halaman ini hanya untuk edukasi dan bukan nasihat keuangan.", "id"),
+  ja: comparisonLocale("比較", "ETF比較計算機", "ETF比較", "このページは教育目的のみであり、金融助言ではありません。", "ja"),
+  ko: comparisonLocale("비교", "ETF 비교 계산기", "ETF 비교", "이 페이지는 교육 목적이며 금융 조언이 아닙니다.", "ko"),
+  ru: comparisonLocale("Сравнение", "ETF-калькулятор сравнения", "Сравнение ETF", "Эта страница предназначена только для образовательных целей и не является финансовой рекомендацией.", "ru"),
+  fr: comparisonLocale("Comparer", "Calculateur de comparaison ETF", "Comparaison ETF", "Cette page est fournie à des fins éducatives uniquement et ne constitue pas un conseil financier.", "fr"),
+  it: comparisonLocale("Confronto", "Calcolatore confronto ETF", "Confronto ETF", "Questa pagina è solo a scopo educativo e non costituisce consulenza finanziaria.", "it"),
+  es: comparisonLocale("Comparar", "Calculadora de comparación ETF", "Comparación ETF", "Esta página es solo educativa y no es asesoramiento financiero.", "es"),
+  ar: comparisonLocale("مقارنة", "حاسبة مقارنة ETF", "مقارنة ETF", "هذه الصفحة تعليمية فقط وليست نصيحة مالية.", "ar"),
+  de: comparisonLocale("Vergleich", "ETF-Vergleichsrechner", "ETF-Vergleich", "Diese Seite dient nur Bildungszwecken und ist keine Finanzberatung.", "de"),
+  ta: comparisonLocale("ஒப்பீடு", "ETF ஒப்பீட்டு கணிப்பான்", "ETF ஒப்பீடு", "இந்த பக்கம் கல்வி நோக்கத்திற்காக மட்டுமே; இது நிதி ஆலோசனை அல்ல.", "ta"),
+};
+
 function phrasePack(
   educationalBacktest: string,
   calculatorDescription: string,
