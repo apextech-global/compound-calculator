@@ -61,16 +61,16 @@ export default function CompoundInterestCalculator({
   const locale = useLocale();
 
   return (
-    <section>
-      <div className="mb-4 grid gap-4 sm:mb-5 lg:grid-cols-[1fr_340px] lg:items-end lg:gap-5">
-        <div>
+    <section className="w-full min-w-0">
+      <div className="mb-4 grid w-full min-w-0 grid-cols-1 gap-4 sm:mb-5 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-end lg:gap-5">
+        <div className="min-w-0">
           <p className="mb-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400 sm:mb-2 sm:text-sm sm:tracking-[0.24em]">
             {t("compound.eyebrow")}
           </p>
-          <h2 className="max-w-4xl text-xl font-bold tracking-tight sm:text-2xl md:text-4xl">
+          <h2 className="max-w-4xl break-words text-xl font-bold tracking-tight sm:text-2xl md:text-4xl">
             {t("compound.title")}
           </h2>
-          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-300 sm:mt-3 sm:text-base sm:leading-7">
+          <p className="mt-2 max-w-2xl break-words text-sm leading-6 text-slate-300 sm:mt-3 sm:text-base sm:leading-7">
             {t("compound.description")}
           </p>
         </div>
@@ -91,8 +91,8 @@ export default function CompoundInterestCalculator({
         </div>
       </div>
 
-      <div className="grid gap-4 lg:grid-cols-[400px_1fr] lg:gap-5">
-        <div className="rounded-2xl border border-white/10 bg-white/[0.06] p-4 shadow-2xl shadow-black/30 backdrop-blur sm:rounded-3xl sm:p-6">
+      <div className="grid w-full min-w-0 grid-cols-1 gap-4 lg:grid-cols-[400px_minmax(0,1fr)] lg:gap-5">
+        <div className="w-full min-w-0 rounded-2xl border border-white/10 bg-white/[0.06] p-4 shadow-2xl shadow-black/30 backdrop-blur sm:rounded-3xl sm:p-6">
           <div className="mb-4 flex items-start justify-between gap-4 sm:mb-6">
             <div>
               <p className="text-xs font-medium uppercase tracking-[0.18em] text-slate-400 sm:text-sm sm:tracking-[0.2em]">
@@ -203,7 +203,7 @@ export default function CompoundInterestCalculator({
           </div>
         </div>
 
-        <div className="space-y-4 sm:space-y-6">
+        <div className="min-w-0 space-y-4 sm:space-y-6">
           <div className="grid gap-3 sm:gap-4 md:grid-cols-3">
             <SummaryCard
               label={t("metrics.finalValueTitle")}
@@ -221,7 +221,7 @@ export default function CompoundInterestCalculator({
             />
           </div>
 
-          <div className="rounded-2xl border border-white/10 bg-white/[0.06] p-4 shadow-2xl shadow-black/30 sm:rounded-3xl sm:p-6">
+          <div className="min-w-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] p-4 shadow-2xl shadow-black/30 sm:rounded-3xl sm:p-6">
             <div className="mb-4 flex flex-col justify-between gap-3 sm:mb-6 sm:flex-row sm:items-start sm:gap-4">
               <div>
                 <p className="text-xs font-medium uppercase tracking-[0.18em] text-slate-400 sm:text-sm sm:tracking-[0.2em]">
@@ -244,7 +244,7 @@ export default function CompoundInterestCalculator({
               </div>
             </div>
 
-            <div className="h-[240px] w-full sm:h-[300px] lg:h-[320px]">
+            <div className="h-[240px] w-full min-w-0 sm:h-[300px] lg:h-[320px]">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart
                   data={chartData}
@@ -310,7 +310,7 @@ export default function CompoundInterestCalculator({
             </div>
           </div>
 
-          <div className="rounded-2xl border border-white/10 bg-white/[0.06] p-4 shadow-xl shadow-black/20 sm:rounded-3xl sm:p-6">
+          <div className="min-w-0 rounded-2xl border border-white/10 bg-white/[0.06] p-4 shadow-xl shadow-black/20 sm:rounded-3xl sm:p-6">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <p className="text-xs font-medium uppercase tracking-[0.18em] text-slate-400 sm:text-sm sm:tracking-[0.2em]">
@@ -332,8 +332,8 @@ export default function CompoundInterestCalculator({
             </div>
 
             {showCompoundTable ? (
-              <div className="mt-6 overflow-x-auto">
-                <table className="w-full text-left text-sm">
+              <div className="mt-6 w-full overflow-x-auto">
+                <table className="min-w-max text-left text-sm">
                   <thead className="text-slate-400">
                     <tr>
                       <th className="py-3 pr-6">{t("table.year")}</th>

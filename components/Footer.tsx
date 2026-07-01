@@ -22,16 +22,16 @@ export default function Footer() {
   const guides = getSeoLandingContent(locale as Locale);
 
   return (
-    <footer className="border-t border-white/10 bg-slate-950 text-white">
-      <div className="mx-auto grid max-w-7xl gap-8 px-6 py-8 md:grid-cols-[1fr_auto_auto] lg:px-8">
-        <div>
+    <footer className="w-full border-t border-white/10 bg-slate-950 text-white">
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-6 px-4 py-8 sm:px-6 md:grid-cols-[1fr_auto_auto] md:gap-8 lg:px-8">
+        <div className="min-w-0">
           <p className="text-lg font-bold tracking-tight">{t("common.brand")}</p>
           <p className="mt-2 max-w-xl text-sm leading-6 text-slate-400">
             {t("footer.tagline")}
           </p>
         </div>
 
-        <nav className="flex max-w-sm flex-wrap gap-3 text-sm font-medium text-slate-300">
+        <nav className="flex w-full min-w-0 flex-wrap gap-3 text-sm font-medium text-slate-300 md:max-w-sm">
           {seoPageSlugs.map((slug) => (
             <Link
               key={slug}
@@ -43,7 +43,7 @@ export default function Footer() {
           ))}
         </nav>
 
-        <nav className="flex flex-wrap gap-4 text-sm font-medium text-slate-300 md:justify-end">
+        <nav className="flex w-full min-w-0 flex-wrap gap-4 text-sm font-medium text-slate-300 md:justify-end">
           {footerLinks.map((link) => (
             <Link
               key={link.href}

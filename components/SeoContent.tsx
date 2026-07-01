@@ -25,24 +25,24 @@ export default function SeoContent() {
   const guides = getSeoLandingContent(locale as Locale);
 
   return (
-    <section className="mt-10 border-t border-white/10 pt-8 sm:mt-14 sm:pt-10">
-      <div className="mb-5 max-w-3xl sm:mb-8">
+    <section className="mt-10 w-full min-w-0 border-t border-white/10 pt-8 sm:mt-14 sm:pt-10">
+      <div className="mb-5 w-full max-w-3xl sm:mb-8">
         <p className="mb-2 text-xs font-semibold uppercase tracking-[0.24em] text-cyan-300 sm:mb-3 sm:text-sm sm:tracking-[0.3em]">
           {t("seoContent.eyebrow")}
         </p>
-        <h2 className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
+        <h2 className="break-words text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
           {t("seoContent.title")}
         </h2>
-        <p className="mt-3 text-sm leading-6 text-slate-300 sm:mt-4 sm:text-base sm:leading-7">
+        <p className="mt-3 break-words text-sm leading-6 text-slate-300 sm:mt-4 sm:text-base sm:leading-7">
           {t("seoContent.intro")}
         </p>
       </div>
 
-      <div className="grid gap-3 sm:gap-4 lg:grid-cols-2">
+      <div className="grid w-full grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-2">
         {sectionKeys.map((section) => (
           <details
             key={section}
-            className="group rounded-2xl border border-white/10 bg-white/[0.055] p-4 shadow-xl shadow-black/20 sm:rounded-3xl sm:p-6"
+            className="group w-full min-w-0 rounded-2xl border border-white/10 bg-white/[0.055] p-4 shadow-xl shadow-black/20 sm:rounded-3xl sm:p-6"
           >
             <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-lg font-semibold text-white sm:text-xl [&::-webkit-details-marker]:hidden">
               {t(`seoContent.sections.${section}.title`)}
@@ -57,8 +57,8 @@ export default function SeoContent() {
         ))}
       </div>
 
-      <div className="mt-3 rounded-2xl border border-amber-300/20 bg-amber-300/[0.07] p-4 sm:mt-4 sm:rounded-3xl sm:p-6">
-        <h3 className="text-lg font-semibold text-amber-100 sm:text-xl">
+      <div className="mt-3 w-full min-w-0 rounded-2xl border border-amber-300/20 bg-amber-300/[0.07] p-4 sm:mt-4 sm:rounded-3xl sm:p-6">
+        <h3 className="break-words text-lg font-semibold text-amber-100 sm:text-xl">
           {t("seoContent.disclaimer.title")}
         </h3>
         <p className="mt-3 text-sm leading-6 text-amber-50/80">

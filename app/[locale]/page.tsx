@@ -1079,7 +1079,7 @@ export default function Home() {
   }, [locale, t]);
 
   return (
-    <main className="min-h-screen overflow-hidden bg-slate-950 text-white">
+    <main className="min-h-screen w-full overflow-x-hidden bg-slate-950 text-white">
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -1092,7 +1092,7 @@ export default function Home() {
         onCurrencyChange={setSelectedCurrency}
       />
 
-      <section className="relative mx-auto max-w-7xl px-4 py-4 sm:px-6 sm:py-7 lg:px-8">
+      <section className="relative mx-auto w-full max-w-7xl px-4 py-4 sm:px-6 sm:py-7 lg:px-8">
         <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-96 bg-[radial-gradient(circle_at_top,_rgba(16,185,129,0.2),_transparent_34%),radial-gradient(circle_at_80%_10%,_rgba(34,211,238,0.14),_transparent_28%)]" />
 
         <Hero />
@@ -1109,7 +1109,7 @@ export default function Home() {
           onCalculatorChange={handleCalculatorChange}
         />
 
-        <div id="calculator" className="scroll-mt-24">
+        <div id="calculator" className="w-full min-w-0 scroll-mt-24">
           {activeCalculator === "dca" ? (
             <>
               <DcaBacktestCalculator

@@ -383,21 +383,21 @@ export default function DcaAssetComparison({
   };
 
   return (
-    <section className="mt-8 rounded-2xl border border-white/10 bg-white/[0.045] p-4 shadow-2xl shadow-black/25 sm:mt-10 sm:rounded-3xl sm:p-6">
-      <div className="mb-5 max-w-3xl">
+    <section className="mt-8 w-full min-w-0 rounded-2xl border border-white/10 bg-white/[0.045] p-4 shadow-2xl shadow-black/25 sm:mt-10 sm:rounded-3xl sm:p-6">
+      <div className="mb-5 w-full max-w-3xl">
         <p className="mb-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300 sm:mb-2 sm:text-sm">
           {t("comparison.eyebrow")}
         </p>
-        <h2 className="text-xl font-bold tracking-tight sm:text-2xl md:text-3xl">
+        <h2 className="break-words text-xl font-bold tracking-tight sm:text-2xl md:text-3xl">
           {t("comparison.title")}
         </h2>
-        <p className="mt-2 text-sm leading-6 text-slate-300">
+        <p className="mt-2 break-words text-sm leading-6 text-slate-300">
           {t("comparison.description")}
         </p>
       </div>
 
-      <div className="grid gap-4 lg:grid-cols-[360px_1fr]">
-        <div className="rounded-2xl border border-white/10 bg-slate-950/40 p-4 sm:p-5">
+      <div className="grid w-full min-w-0 grid-cols-1 gap-4 lg:grid-cols-[360px_minmax(0,1fr)]">
+        <div className="w-full min-w-0 rounded-2xl border border-white/10 bg-slate-950/40 p-4 sm:p-5">
           <div className="space-y-4">
             <label className="block">
               <span className="mb-2 block text-sm text-slate-300">
@@ -525,8 +525,8 @@ export default function DcaAssetComparison({
           </div>
         </div>
 
-        <div className="space-y-4">
-          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+        <div className="min-w-0 space-y-4">
+          <div className="grid w-full min-w-0 grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-4">
             <ComparisonCard
               label={`${assetA.displaySymbol} ${t("comparison.finalValue")}`}
               value={formatMoney(resultA.finalValue, selectedCurrency, locale)}
@@ -573,7 +573,7 @@ export default function DcaAssetComparison({
             />
           </div>
 
-          <div className="rounded-2xl border border-white/10 bg-white/[0.055] p-4 shadow-xl shadow-black/20 sm:rounded-3xl sm:p-6">
+          <div className="min-w-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.055] p-4 shadow-xl shadow-black/20 sm:rounded-3xl sm:p-6">
             <div className="mb-4 flex flex-col justify-between gap-3 sm:flex-row sm:items-start">
               <div>
                 <p className="text-xs font-medium uppercase tracking-[0.18em] text-slate-400 sm:text-sm">
@@ -595,7 +595,7 @@ export default function DcaAssetComparison({
               </div>
             </div>
 
-            <div className="h-[240px] w-full sm:h-[300px] lg:h-[320px]">
+            <div className="h-[240px] w-full min-w-0 sm:h-[300px] lg:h-[320px]">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart
                   data={chartData}
@@ -664,7 +664,7 @@ export default function DcaAssetComparison({
             </div>
           </div>
 
-          <div className="rounded-2xl border border-cyan-300/20 bg-cyan-400/10 p-4">
+          <div className="min-w-0 rounded-2xl border border-cyan-300/20 bg-cyan-400/10 p-4">
             <p className="text-sm leading-6 text-slate-300">
               {t("comparison.explanation")}
             </p>
@@ -741,7 +741,7 @@ function ComparisonCard({
   valueClassName?: string;
 }) {
   return (
-    <div className="min-w-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] p-4 shadow-xl shadow-black/20">
+    <div className="w-full min-w-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] p-4 shadow-xl shadow-black/20">
       <p className="min-w-0 truncate whitespace-nowrap text-sm text-slate-400">
         {label}
       </p>

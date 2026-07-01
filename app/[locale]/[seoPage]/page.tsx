@@ -115,7 +115,7 @@ export default async function SeoLandingPage({
   };
 
   return (
-    <main className="min-h-screen bg-slate-950 text-white">
+    <main className="min-h-screen w-full overflow-x-hidden bg-slate-950 text-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -125,10 +125,10 @@ export default async function SeoLandingPage({
           ),
         }}
       />
-      <section className="relative mx-auto max-w-5xl px-6 py-12 sm:py-16 lg:px-8">
+      <section className="relative mx-auto w-full max-w-5xl px-4 py-10 sm:px-6 sm:py-16 lg:px-8">
         <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-96 bg-[radial-gradient(circle_at_top,_rgba(16,185,129,0.18),_transparent_34%),radial-gradient(circle_at_80%_10%,_rgba(34,211,238,0.12),_transparent_28%)]" />
 
-        <nav className="mb-8 text-sm text-slate-400">
+        <nav className="mb-6 min-w-0 break-words text-sm text-slate-400 sm:mb-8">
           <Link href={`/${typedLocale}`} className="hover:text-cyan-300">
             DCA Backtest
           </Link>
@@ -136,59 +136,59 @@ export default async function SeoLandingPage({
           <span>{content.pageLabel}</span>
         </nav>
 
-        <div className="max-w-3xl">
+        <div className="w-full max-w-3xl">
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-cyan-300">
             {content.eyebrow}
           </p>
-          <h1 className="text-4xl font-bold tracking-tight md:text-6xl">
+          <h1 className="min-w-0 break-words text-3xl font-bold tracking-tight sm:text-4xl md:text-6xl">
             {page.h1}
           </h1>
-          <p className="mt-5 text-lg leading-8 text-slate-300">
+          <p className="mt-4 text-base leading-7 text-slate-300 sm:mt-5 sm:text-lg sm:leading-8">
             {page.intro}
           </p>
         </div>
 
-        <div className="mt-10 grid gap-4 md:grid-cols-2">
+        <div className="mt-8 grid w-full grid-cols-1 gap-3 sm:gap-4 md:mt-10 md:grid-cols-2">
           {page.sections.map((section) => (
             <article
               key={section.title}
-              className="rounded-3xl border border-white/10 bg-white/[0.06] p-6 shadow-xl shadow-black/20"
+              className="min-w-0 rounded-2xl border border-white/10 bg-white/[0.06] p-4 shadow-xl shadow-black/20 sm:rounded-3xl sm:p-6"
             >
-              <h2 className="text-xl font-semibold text-white">
+              <h2 className="break-words text-lg font-semibold text-white sm:text-xl">
                 {section.title}
               </h2>
-              <p className="mt-3 text-sm leading-6 text-slate-300">
+              <p className="mt-3 break-words text-sm leading-6 text-slate-300">
                 {section.body}
               </p>
             </article>
           ))}
         </div>
 
-        <section className="mt-6 rounded-3xl border border-cyan-300/20 bg-cyan-400/10 p-6 shadow-2xl shadow-cyan-950/20">
-          <h2 className="text-2xl font-bold">{content.ctaLabel}</h2>
+        <section className="mt-5 w-full min-w-0 rounded-2xl border border-cyan-300/20 bg-cyan-400/10 p-4 shadow-2xl shadow-cyan-950/20 sm:mt-6 sm:rounded-3xl sm:p-6">
+          <h2 className="break-words text-xl font-bold sm:text-2xl">{content.ctaLabel}</h2>
           <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-300">
             {content.ctaText}
           </p>
           <Link
             href={`/${typedLocale}`}
-            className="mt-5 inline-flex rounded-2xl bg-cyan-400 px-5 py-3 text-sm font-bold text-slate-950 transition hover:bg-cyan-300"
+            className="mt-5 inline-flex w-full justify-center rounded-2xl bg-cyan-400 px-5 py-3 text-center text-sm font-bold text-slate-950 transition hover:bg-cyan-300 sm:w-auto"
           >
             {content.ctaLabel}
           </Link>
         </section>
 
-        <section className="mt-10">
-          <h2 className="text-3xl font-bold tracking-tight">
+        <section className="mt-8 w-full sm:mt-10">
+          <h2 className="break-words text-2xl font-bold tracking-tight sm:text-3xl">
             {messages.faq.title}
           </h2>
-          <div className="mt-5 grid gap-4 md:grid-cols-2">
+          <div className="mt-4 grid w-full grid-cols-1 gap-3 sm:mt-5 sm:gap-4 md:grid-cols-2">
             {page.faqs.map((faq) => (
               <article
                 key={faq.question}
-                className="rounded-3xl border border-white/10 bg-white/[0.055] p-6"
+                className="min-w-0 rounded-2xl border border-white/10 bg-white/[0.055] p-4 sm:rounded-3xl sm:p-6"
               >
-                <h3 className="text-lg font-semibold">{faq.question}</h3>
-                <p className="mt-3 text-sm leading-6 text-slate-300">
+                <h3 className="break-words text-base font-semibold sm:text-lg">{faq.question}</h3>
+                <p className="mt-3 break-words text-sm leading-6 text-slate-300">
                   {faq.answer}
                 </p>
               </article>
@@ -196,18 +196,18 @@ export default async function SeoLandingPage({
           </div>
         </section>
 
-        <section className="mt-8 rounded-3xl border border-amber-300/20 bg-amber-300/[0.07] p-6">
-          <h2 className="text-xl font-semibold text-amber-100">
+        <section className="mt-6 w-full min-w-0 rounded-2xl border border-amber-300/20 bg-amber-300/[0.07] p-4 sm:mt-8 sm:rounded-3xl sm:p-6">
+          <h2 className="break-words text-lg font-semibold text-amber-100 sm:text-xl">
             {content.disclaimerTitle}
           </h2>
-          <p className="mt-3 text-sm leading-6 text-amber-50/80">
+          <p className="mt-3 break-words text-sm leading-6 text-amber-50/80">
             {content.disclaimer}
           </p>
         </section>
 
         <nav
           aria-label={content.internalLinksLabel}
-          className="mt-8 flex flex-wrap gap-3 text-sm"
+          className="mt-6 flex w-full flex-wrap gap-2.5 text-sm sm:mt-8 sm:gap-3"
         >
           {legalLinks.map((link) => (
             <Link
