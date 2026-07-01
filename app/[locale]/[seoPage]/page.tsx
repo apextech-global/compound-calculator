@@ -13,11 +13,20 @@ import {
 
 const baseUrl = "https://dcabacktest.com";
 const relatedSeoLinks: SeoPageSlug[] = [
+  "dca-calculator",
+  "etf-calculator",
+  "etf-comparison-calculator",
   "voo-dca-calculator",
   "cspx-dca-calculator",
-  "etf-calculator",
-  "dca-calculator",
-  "etf-comparison-calculator",
+  "qqq-dca-calculator",
+  "vwra-dca-calculator",
+  "iwda-dca-calculator",
+  "0050-dca-calculator",
+  "1155-dca-calculator",
+  "es3-dca-calculator",
+  "2800-dca-calculator",
+  "voo-vs-cspx",
+  "voo-vs-qqq",
 ];
 const legalLinks = ["privacy", "terms", "disclaimer"] as const;
 
@@ -177,7 +186,7 @@ export default async function SeoLandingPage({
             {content.ctaText}
           </p>
           <Link
-            href={`/${typedLocale}`}
+            href={`/${typedLocale}${page.ctaQuery ?? ""}`}
             className="mt-5 inline-flex w-full justify-center rounded-2xl bg-cyan-400 px-5 py-3 text-center text-sm font-bold text-slate-950 transition hover:bg-cyan-300 sm:w-auto"
           >
             {content.ctaLabel}

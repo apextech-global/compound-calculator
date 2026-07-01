@@ -16,20 +16,33 @@ const comparisonSeoPageSlugs = [
   "etf-comparison-calculator",
 ] as const;
 
+const assetSeoPageSlugs = [
+  "qqq-dca-calculator",
+  "vwra-dca-calculator",
+  "iwda-dca-calculator",
+  "0050-dca-calculator",
+  "1155-dca-calculator",
+  "es3-dca-calculator",
+  "2800-dca-calculator",
+] as const;
+
 export const seoPageSlugs = [
   ...baseSeoPageSlugs,
   ...comparisonSeoPageSlugs,
+  ...assetSeoPageSlugs,
 ] as const;
 
 export type SeoPageSlug = (typeof seoPageSlugs)[number];
 type BaseSeoPageSlug = (typeof baseSeoPageSlugs)[number];
 type ComparisonSeoPageSlug = (typeof comparisonSeoPageSlugs)[number];
+type AssetSeoPageSlug = (typeof assetSeoPageSlugs)[number];
 
 type SeoPageContent = {
   title: string;
   description: string;
   h1: string;
   intro: string;
+  ctaQuery?: string;
   sections: Array<{
     title: string;
     body: string;
@@ -1156,6 +1169,324 @@ function buildComparisonPages(locale: Locale): Record<ComparisonSeoPageSlug, Seo
   ) as Record<ComparisonSeoPageSlug, SeoPageContent>;
 }
 
+type AssetDefinition = {
+  symbol: string;
+  name: string;
+  market: string;
+  currency: string;
+  assetKind: string;
+  assetType: "ETF" | "Stock";
+  countryQuery: string;
+};
+
+const assetDefinitions: Record<AssetSeoPageSlug, AssetDefinition> = {
+  "qqq-dca-calculator": {
+    symbol: "QQQ",
+    name: "Invesco QQQ Trust",
+    market: "United States / Nasdaq",
+    currency: "USD",
+    assetKind: "Nasdaq 100 ETF",
+    assetType: "ETF",
+    countryQuery: "us",
+  },
+  "vwra-dca-calculator": {
+    symbol: "VWRA.L",
+    name: "Vanguard FTSE All-World UCITS ETF",
+    market: "Ireland UCITS / London Stock Exchange",
+    currency: "USD",
+    assetKind: "global all-world UCITS ETF",
+    assetType: "ETF",
+    countryQuery: "ucits",
+  },
+  "iwda-dca-calculator": {
+    symbol: "IWDA.L",
+    name: "iShares Core MSCI World UCITS ETF",
+    market: "Ireland UCITS / London Stock Exchange",
+    currency: "USD",
+    assetKind: "developed markets UCITS ETF",
+    assetType: "ETF",
+    countryQuery: "ucits",
+  },
+  "0050-dca-calculator": {
+    symbol: "0050.TW",
+    name: "Yuanta Taiwan Top 50 ETF",
+    market: "Taiwan / TWSE",
+    currency: "TWD",
+    assetKind: "Taiwan large-cap ETF",
+    assetType: "ETF",
+    countryQuery: "taiwan",
+  },
+  "1155-dca-calculator": {
+    symbol: "1155.KL",
+    name: "Maybank",
+    market: "Malaysia / Bursa Malaysia",
+    currency: "MYR",
+    assetKind: "Malaysian bank stock",
+    assetType: "Stock",
+    countryQuery: "malaysia",
+  },
+  "es3-dca-calculator": {
+    symbol: "ES3.SI",
+    name: "SPDR Straits Times Index ETF",
+    market: "Singapore / SGX",
+    currency: "SGD",
+    assetKind: "Singapore STI ETF",
+    assetType: "ETF",
+    countryQuery: "singapore",
+  },
+  "2800-dca-calculator": {
+    symbol: "2800.HK",
+    name: "Tracker Fund of Hong Kong",
+    market: "Hong Kong / HKEX",
+    currency: "HKD",
+    assetKind: "Hong Kong equity ETF",
+    assetType: "ETF",
+    countryQuery: "hongkong",
+  },
+};
+
+type AssetLocaleText = {
+  title: (asset: AssetDefinition) => string;
+  description: (asset: AssetDefinition) => string;
+  h1: (asset: AssetDefinition) => string;
+  intro: (asset: AssetDefinition) => string;
+  whatTitle: (asset: AssetDefinition) => string;
+  whatBody: (asset: AssetDefinition) => string;
+  dcaTitle: (asset: AssetDefinition) => string;
+  dcaBody: (asset: AssetDefinition) => string;
+  dataTitle: string;
+  dataBody: string;
+  riskTitle: string;
+  riskBody: string;
+  faqOne: (asset: AssetDefinition) => string;
+  faqOneAnswer: (asset: AssetDefinition) => string;
+  faqTwo: (asset: AssetDefinition) => string;
+  faqTwoAnswer: (asset: AssetDefinition) => string;
+  faqThree: string;
+  faqThreeAnswer: string;
+};
+
+function assetText(
+  titleWord: string,
+  backtestWord: string,
+  monthlyInvesting: string,
+  dataBody: string,
+  riskBody: string,
+  locale: Locale
+): AssetLocaleText {
+  const isZhCn = locale === "zh-CN";
+  const isZhTw = locale === "zh-TW";
+  const isMs = locale === "ms";
+  const isId = locale === "id";
+  const isJa = locale === "ja";
+  const isKo = locale === "ko";
+  const isAr = locale === "ar";
+  const isEs = locale === "es";
+  const isFr = locale === "fr";
+  const isDe = locale === "de";
+  const isIt = locale === "it";
+  const isRu = locale === "ru";
+  const isTa = locale === "ta";
+
+  return {
+    title: (asset) =>
+      isZhCn
+        ? `${asset.symbol} DCA定投计算器 | ${asset.name} 回测工具`
+        : isZhTw
+          ? `${asset.symbol} DCA定投計算器 | ${asset.name} 回測工具`
+          : `${asset.symbol} DCA Calculator | ${asset.name} ${titleWord}`,
+    description: (asset) =>
+      isZhCn
+        ? `使用 ${asset.symbol} 定投计算器回测每月投资 ${asset.name}。了解数据来源、风险限制和教育性结果。`
+        : isZhTw
+          ? `使用 ${asset.symbol} 定投計算器回測每月投資 ${asset.name}。了解資料來源、風險限制和教育性結果。`
+          : `${asset.symbol} DCA calculator for educational monthly investing backtests in ${asset.name}, with data source notes, risk limits, and no financial advice.`,
+    h1: (asset) =>
+      isZhCn
+        ? `${asset.symbol} DCA定投计算器`
+        : isZhTw
+          ? `${asset.symbol} DCA定投計算器`
+        : `${asset.symbol} DCA Calculator`,
+    intro: (asset) =>
+      isZhCn
+        ? `这个页面用于了解如何用 DCA 回测工具分析 ${asset.symbol}（${asset.name}）的每月投资情景。`
+        : isZhTw
+          ? `這個頁面用於了解如何用 DCA 回測工具分析 ${asset.symbol}（${asset.name}）的每月投資情境。`
+          : isMs
+            ? `Halaman ini menerangkan cara menggunakan ujian balik DCA untuk mengkaji pelaburan bulanan dalam ${asset.symbol} (${asset.name}).`
+            : isId
+              ? `Halaman ini menjelaskan cara memakai backtest DCA untuk mempelajari investasi bulanan di ${asset.symbol} (${asset.name}).`
+              : isJa
+                ? `このページでは、${asset.symbol}（${asset.name}）への毎月投資をDCAバックテストで学ぶ方法を説明します。`
+                : isKo
+                  ? `이 페이지는 ${asset.symbol}(${asset.name}) 월별 투자를 DCA 백테스트로 살펴보는 방법을 설명합니다.`
+                  : isAr
+                    ? `تشرح هذه الصفحة كيفية دراسة الاستثمار الشهري في ${asset.symbol} (${asset.name}) باستخدام اختبار DCA التاريخي.`
+                    : isEs
+                      ? `Esta página explica cómo estudiar inversiones mensuales en ${asset.symbol} (${asset.name}) con un backtest DCA.`
+                      : isFr
+                        ? `Cette page explique comment étudier l’investissement mensuel dans ${asset.symbol} (${asset.name}) avec un backtest DCA.`
+                        : isDe
+                          ? `Diese Seite erklärt, wie monatliche Investments in ${asset.symbol} (${asset.name}) mit einem DCA-Backtest analysiert werden können.`
+                          : isIt
+                            ? `Questa pagina spiega come studiare investimenti mensili in ${asset.symbol} (${asset.name}) con un backtest DCA.`
+                            : isRu
+                              ? `Эта страница объясняет, как изучать ежемесячные инвестиции в ${asset.symbol} (${asset.name}) с помощью DCA-бэктеста.`
+                              : isTa
+                                ? `இந்த பக்கம் ${asset.symbol} (${asset.name}) மாதாந்திர முதலீட்டை DCA பின்சோதனையால் ஆய்வு செய்வதை விளக்குகிறது.`
+                                : `Use this page to understand ${monthlyInvesting} in ${asset.symbol} (${asset.name}) with a DCA backtest calculator.`,
+    whatTitle: (asset) =>
+      isZhCn ? `${asset.symbol} 是什么？` : isZhTw ? `${asset.symbol} 是什麼？` : `What is ${asset.symbol}?`,
+    whatBody: (asset) =>
+      `${asset.symbol} (${asset.name}) - ${asset.assetKind}. ${asset.market}. ${asset.currency}.`,
+    dcaTitle: (asset) =>
+      isZhCn
+        ? `${asset.symbol} 定投回测如何运作`
+        : isZhTw
+          ? `${asset.symbol} 定投回測如何運作`
+          : `${asset.symbol} ${backtestWord}`,
+    dcaBody: (asset) =>
+      isZhCn
+        ? `选择 ${asset.symbol}、每月投入金额、开始年份和结束年份后，计算器会估算总投入、份额、最终价值、利润和回报。`
+        : isZhTw
+          ? `選擇 ${asset.symbol}、每月投入金額、開始年份和結束年份後，計算器會估算總投入、份額、最終價值、利潤和報酬。`
+          : `Select ${asset.symbol}, a monthly amount, start year, and end year to estimate total invested, accumulated shares, final value, profit, and return.`,
+    dataTitle: isZhCn ? "数据来源说明" : isZhTw ? "資料來源說明" : dataTitleByLocale(locale),
+    dataBody,
+    riskTitle: isZhCn ? "风险与限制" : isZhTw ? "風險與限制" : riskTitleByLocale(locale),
+    riskBody,
+    faqOne: (asset) =>
+      isZhCn
+        ? `可以回测 ${asset.symbol} 每月定投吗？`
+        : isZhTw
+          ? `可以回測 ${asset.symbol} 每月定投嗎？`
+          : `Can I backtest monthly investing in ${asset.symbol}?`,
+    faqOneAnswer: (asset) =>
+      isZhCn
+        ? `可以。打开主 DCA 计算器并选择 ${asset.symbol}，即可设置每月金额和时间区间。`
+        : isZhTw
+          ? `可以。開啟主 DCA 計算器並選擇 ${asset.symbol}，即可設定每月金額和時間區間。`
+          : `Yes. Open the main DCA calculator with ${asset.symbol} selected, then set the monthly amount and time period.`,
+    faqTwo: (asset) =>
+      isZhCn
+        ? `${asset.symbol} 回测使用真实历史数据吗？`
+        : isZhTw
+          ? `${asset.symbol} 回測使用真實歷史資料嗎？`
+          : `Does the ${asset.symbol} backtest use real historical data?`,
+    faqTwoAnswer: () => dataBody,
+    faqThree:
+      isZhCn ? "这是投资建议吗？" : isZhTw ? "這是投資建議嗎？" : adviceQuestionByLocale(locale),
+    faqThreeAnswer: riskBody,
+  };
+}
+
+function dataTitleByLocale(locale: Locale) {
+  const labels: Partial<Record<Locale, string>> = {
+    ms: "Sumber data",
+    id: "Sumber data",
+    ja: "データソース",
+    ko: "데이터 출처",
+    ru: "Источник данных",
+    fr: "Source des données",
+    it: "Fonte dati",
+    es: "Fuente de datos",
+    ar: "مصدر البيانات",
+    de: "Datenquelle",
+    ta: "தரவு மூலம்",
+  };
+  return labels[locale] ?? "Data source explanation";
+}
+
+function riskTitleByLocale(locale: Locale) {
+  const labels: Partial<Record<Locale, string>> = {
+    ms: "Risiko dan batasan",
+    id: "Risiko dan batasan",
+    ja: "リスクと制限",
+    ko: "위험 및 한계",
+    ru: "Риски и ограничения",
+    fr: "Risques et limites",
+    it: "Rischi e limiti",
+    es: "Riesgos y limitaciones",
+    ar: "المخاطر والقيود",
+    de: "Risiken und Grenzen",
+    ta: "அபாயங்கள் மற்றும் வரம்புகள்",
+  };
+  return labels[locale] ?? "Risk and limitations";
+}
+
+function adviceQuestionByLocale(locale: Locale) {
+  const labels: Partial<Record<Locale, string>> = {
+    ms: "Adakah ini nasihat pelaburan?",
+    id: "Apakah ini nasihat investasi?",
+    ja: "これは投資助言ですか？",
+    ko: "투자 조언인가요?",
+    ru: "Это инвестиционная рекомендация?",
+    fr: "Est-ce un conseil en investissement ?",
+    it: "È consulenza finanziaria?",
+    es: "¿Es asesoramiento de inversión?",
+    ar: "هل هذه نصيحة استثمارية؟",
+    de: "Ist das Anlageberatung?",
+    ta: "இது முதலீட்டு ஆலோசனையா?",
+  };
+  return labels[locale] ?? "Is this investment advice?";
+}
+
+const assetLocaleText: Record<Locale, AssetLocaleText> = {
+  en: assetText(
+    "Backtest Tool",
+    "DCA backtest",
+    "monthly investing",
+    "Historical data may come from Yahoo Finance historical prices and is converted into monthly closing prices where available. If imported data is unavailable, the calculator clearly labels sample data.",
+    "This page is educational only and is not financial advice. Past performance does not guarantee future results. Real returns may differ because of fees, taxes, dividends, exchange rates, spreads, execution prices, and official data differences.",
+    "en"
+  ),
+  "zh-CN": assetText("回测工具", "定投回测", "每月投资", "历史数据可能来自 Yahoo Finance 历史价格，并在可用时转换为月度收盘价。若未导入数据，计算器会明确标记示例数据。", "本页面仅供教育用途，不构成金融建议。过往表现不保证未来结果。真实回报可能因费用、税务、分红、汇率、价差、成交价和官方数据差异而不同。", "zh-CN"),
+  "zh-TW": assetText("回測工具", "定投回測", "每月投資", "歷史資料可能來自 Yahoo Finance 歷史價格，並在可用時轉換為月度收盤價。若未匯入資料，計算器會明確標記範例資料。", "本頁面僅供教育用途，不構成金融建議。過往表現不保證未來結果。真實報酬可能因費用、稅務、配息、匯率、價差、成交價和官方資料差異而不同。", "zh-TW"),
+  ms: assetText("Alat Ujian Balik", "ujian balik DCA", "pelaburan bulanan", "Data sejarah mungkin datang daripada harga sejarah Yahoo Finance dan ditukar kepada harga penutup bulanan apabila tersedia. Jika data belum diimport, kalkulator menandakan data sampel dengan jelas.", "Halaman ini untuk pendidikan sahaja dan bukan nasihat kewangan. Prestasi lalu tidak menjamin hasil masa depan. Pulangan sebenar boleh berbeza kerana yuran, cukai, dividen, kadar tukaran, spread, harga pelaksanaan dan perbezaan data rasmi.", "ms"),
+  id: assetText("Alat Backtest", "backtest DCA", "investasi bulanan", "Data historis dapat berasal dari harga historis Yahoo Finance dan dikonversi menjadi harga penutupan bulanan jika tersedia. Jika data belum diimpor, kalkulator menandai data sampel dengan jelas.", "Halaman ini hanya untuk edukasi dan bukan nasihat keuangan. Kinerja masa lalu tidak menjamin hasil masa depan. Return nyata dapat berbeda karena biaya, pajak, dividen, kurs, spread, harga eksekusi, dan perbedaan data resmi.", "id"),
+  ja: assetText("バックテストツール", "DCAバックテスト", "毎月投資", "過去データはYahoo Financeの過去価格から取得され、利用可能な場合は月次終値に変換されます。未インポートの場合、計算機はサンプルデータを明確に表示します。", "このページは教育目的のみであり、金融助言ではありません。過去の実績は将来の結果を保証しません。実際のリターンは手数料、税金、配当、為替、スプレッド、約定価格、公式データとの差異で変わる可能性があります。", "ja"),
+  ko: assetText("백테스트 도구", "DCA 백테스트", "월별 투자", "과거 데이터는 Yahoo Finance 과거 가격에서 올 수 있으며 가능한 경우 월별 종가로 변환됩니다. 가져온 데이터가 없으면 계산기는 샘플 데이터를 명확히 표시합니다.", "이 페이지는 교육 목적이며 금융 조언이 아닙니다. 과거 성과는 미래 결과를 보장하지 않습니다. 실제 수익은 수수료, 세금, 배당, 환율, 스프레드, 체결가, 공식 데이터 차이로 달라질 수 있습니다.", "ko"),
+  ru: assetText("инструмент бэктеста", "DCA-бэктест", "ежемесячные инвестиции", "Исторические данные могут поступать из цен Yahoo Finance и при наличии преобразуются в месячные цены закрытия. Если данные не импортированы, калькулятор ясно показывает выборочные данные.", "Эта страница предназначена только для образования и не является финансовой рекомендацией. Прошлая доходность не гарантирует будущих результатов. Реальная доходность может отличаться из-за комиссий, налогов, дивидендов, валютных курсов, спредов, цены исполнения и различий с официальными данными.", "ru"),
+  fr: assetText("outil de backtest", "backtest DCA", "investissement mensuel", "Les données historiques peuvent provenir des prix Yahoo Finance et sont converties en cours de clôture mensuels lorsque disponibles. Si les données ne sont pas importées, le calculateur indique clairement les données d’exemple.", "Cette page est uniquement éducative et ne constitue pas un conseil financier. Les performances passées ne garantissent pas les résultats futurs. Les rendements réels peuvent varier avec frais, taxes, dividendes, change, spreads, prix d’exécution et différences avec les données officielles.", "fr"),
+  it: assetText("strumento di backtest", "backtest DCA", "investimento mensile", "I dati storici possono provenire dai prezzi storici Yahoo Finance e sono convertiti in prezzi di chiusura mensili quando disponibili. Se i dati non sono importati, il calcolatore indica chiaramente i dati campione.", "Questa pagina è solo educativa e non costituisce consulenza finanziaria. Le performance passate non garantiscono risultati futuri. I rendimenti reali possono variare per commissioni, tasse, dividendi, cambi, spread, prezzi di esecuzione e differenze dai dati ufficiali.", "it"),
+  es: assetText("herramienta de backtest", "backtest DCA", "inversión mensual", "Los datos históricos pueden venir de precios históricos de Yahoo Finance y se convierten en precios de cierre mensuales cuando están disponibles. Si los datos no se han importado, la calculadora marca claramente datos de muestra.", "Esta página es solo educativa y no es asesoramiento financiero. El rendimiento pasado no garantiza resultados futuros. Los retornos reales pueden variar por comisiones, impuestos, dividendos, divisas, spreads, precio de ejecución y diferencias con datos oficiales.", "es"),
+  ar: assetText("أداة اختبار تاريخي", "اختبار DCA التاريخي", "الاستثمار الشهري", "قد تأتي البيانات التاريخية من أسعار Yahoo Finance التاريخية وتحوّل إلى أسعار إغلاق شهرية عند توفرها. إذا لم تكن البيانات مستوردة، تعرض الحاسبة بيانات عينة بوضوح.", "هذه الصفحة تعليمية فقط وليست نصيحة مالية. الأداء السابق لا يضمن النتائج المستقبلية. قد تختلف العوائد الفعلية بسبب الرسوم والضرائب والتوزيعات وأسعار الصرف والفروقات وسعر التنفيذ واختلاف البيانات الرسمية.", "ar"),
+  de: assetText("Backtest-Tool", "DCA-Backtest", "monatliches Investieren", "Historische Daten können aus Yahoo Finance Kursen stammen und werden bei Verfügbarkeit in monatliche Schlusskurse umgewandelt. Wenn keine Daten importiert sind, kennzeichnet der Rechner Beispieldaten klar.", "Diese Seite dient nur Bildungszwecken und ist keine Finanzberatung. Vergangene Wertentwicklung garantiert keine zukünftigen Ergebnisse. Reale Renditen können wegen Gebühren, Steuern, Dividenden, Wechselkursen, Spreads, Ausführungspreisen und offiziellen Datenabweichungen abweichen.", "de"),
+  ta: assetText("பின்சோதனை கருவி", "DCA பின்சோதனை", "மாதாந்திர முதலீடு", "வரலாற்று தரவு Yahoo Finance வரலாற்று விலைகளிலிருந்து வரலாம்; கிடைக்கும் போது மாதாந்திர மூடல் விலைகளாக மாற்றப்படும். தரவு இறக்குமதி செய்யப்படவில்லை என்றால், கணிப்பான் மாதிரி தரவை தெளிவாகக் காட்டும்.", "இந்த பக்கம் கல்விக்காக மட்டுமே; இது நிதி ஆலோசனை அல்ல. கடந்த செயல்திறன் எதிர்கால முடிவுகளை உறுதி செய்யாது. கட்டணங்கள், வரிகள், டிவிடெண்ட்கள், நாணய மாற்று, spreads, செயலாக்க விலை மற்றும் அதிகாரப்பூர்வ தரவு வேறுபாடுகள் காரணமாக உண்மையான வருமானம் மாறலாம்.", "ta"),
+};
+
+function buildAssetPages(locale: Locale): Record<AssetSeoPageSlug, SeoPageContent> {
+  const text = assetLocaleText[locale];
+
+  return Object.fromEntries(
+    assetSeoPageSlugs.map((slug) => {
+      const asset = assetDefinitions[slug];
+
+      return [
+        slug,
+        {
+          title: text.title(asset),
+          description: text.description(asset),
+          h1: text.h1(asset),
+          intro: text.intro(asset),
+          ctaQuery: `?market=${asset.countryQuery}&type=${asset.assetType}&asset=${encodeURIComponent(asset.symbol)}`,
+          sections: [
+            { title: text.whatTitle(asset), body: text.whatBody(asset) },
+            { title: text.dcaTitle(asset), body: text.dcaBody(asset) },
+            { title: text.dataTitle, body: text.dataBody },
+            { title: text.riskTitle, body: text.riskBody },
+          ],
+          faqs: [
+            { question: text.faqOne(asset), answer: text.faqOneAnswer(asset) },
+            { question: text.faqTwo(asset), answer: text.faqTwoAnswer(asset) },
+            { question: text.faqThree, answer: text.faqThreeAnswer },
+          ],
+        },
+      ];
+    })
+  ) as Record<AssetSeoPageSlug, SeoPageContent>;
+}
+
 function adaptEnglishPages(locale: Locale): Record<BaseSeoPageSlug, SeoPageContent> {
   const text = simpleLocaleText[locale];
 
@@ -1202,6 +1533,7 @@ export function getSeoLandingContent(locale: Locale): LocaleSeoContent {
       ...adaptEnglishPages(locale),
       ...(localizedPages[locale] ?? {}),
       ...buildComparisonPages(locale),
+      ...buildAssetPages(locale),
     },
   };
 }
