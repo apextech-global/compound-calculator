@@ -29,11 +29,10 @@ export default function Faq() {
       </div>
 
       <div className="grid gap-3 sm:gap-4 md:grid-cols-2">
-        {faqItems.map((item, index) => (
+        {faqItems.map((item) => (
           <details
             key={item}
             className="group rounded-2xl border border-white/10 bg-white/[0.06] p-4 shadow-xl shadow-black/20 sm:rounded-3xl sm:p-6"
-            open={index === 0}
           >
             <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-base font-semibold text-white sm:text-lg [&::-webkit-details-marker]:hidden">
               {t(`faq.items.${item}.question`)}

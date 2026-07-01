@@ -405,5 +405,32 @@
   },
   "mobile": {
     "backToCalculator": "返回計算器"
+  },
+  "comparison": {
+    "eyebrow": "對比資產",
+    "title": "對比兩個定投回測",
+    "description": "使用相同的每月投資金額和相同時間區間，對比兩個資產的定投結果。",
+    "assetA": "資產 A",
+    "assetB": "資產 B",
+    "monthlyAmount": "每月投資金額",
+    "startYear": "開始年份",
+    "endYear": "結束年份",
+    "finalValue": "最終價值",
+    "totalProfit": "總利潤",
+    "totalReturn": "總回報",
+    "difference": "最終價值差額",
+    "betterPerformer": "表現較好的資產",
+    "tie": "持平",
+    "chartEyebrow": "對比圖表",
+    "chartTitle": "資產價值變化",
+    "explanation": "此對比使用相同的每月投資金額和相同時間區間計算兩個資產。",
+    "sampleWarning": "一個或兩個資產正在使用範例資料，因為歷史資料尚未匯入。",
+    "copyLink": "複製對比連結",
+    "copyCaption": "複製對比文案",
+    "linkCopied": "對比連結已複製",
+    "captionCopied": "對比文案已複製",
+    "historicalData": "使用歷史資料",
+    "sampleData": "使用範例資料",
+    "captionHeadline": "如果我從 {startYear} 到 {endYear} 每月定投 {assetA} 和 {assetB}，結果會怎樣？"
   }
 }

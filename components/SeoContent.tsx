@@ -39,11 +39,10 @@ export default function SeoContent() {
       </div>
 
       <div className="grid gap-3 sm:gap-4 lg:grid-cols-2">
-        {sectionKeys.map((section, index) => (
+        {sectionKeys.map((section) => (
           <details
             key={section}
             className="group rounded-2xl border border-white/10 bg-white/[0.055] p-4 shadow-xl shadow-black/20 sm:rounded-3xl sm:p-6"
-            open={index === 0}
           >
             <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-lg font-semibold text-white sm:text-xl [&::-webkit-details-marker]:hidden">
               {t(`seoContent.sections.${section}.title`)}

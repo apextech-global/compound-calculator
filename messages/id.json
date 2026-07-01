@@ -405,5 +405,32 @@
   },
   "mobile": {
     "backToCalculator": "Kembali ke kalkulator"
+  },
+  "comparison": {
+    "eyebrow": "Bandingkan aset",
+    "title": "Bandingkan Dua Backtest DCA",
+    "description": "Bandingkan dua aset dengan jumlah investasi bulanan dan periode waktu yang sama.",
+    "assetA": "Aset A",
+    "assetB": "Aset B",
+    "monthlyAmount": "Jumlah investasi bulanan",
+    "startYear": "Tahun mulai",
+    "endYear": "Tahun akhir",
+    "finalValue": "Nilai akhir",
+    "totalProfit": "Total profit",
+    "totalReturn": "Total return",
+    "difference": "Selisih nilai akhir",
+    "betterPerformer": "Performa lebih baik",
+    "tie": "Seri",
+    "chartEyebrow": "Grafik perbandingan",
+    "chartTitle": "Nilai Aset dari Waktu ke Waktu",
+    "explanation": "Perbandingan ini menggunakan jumlah investasi bulanan dan periode waktu yang sama untuk kedua aset.",
+    "sampleWarning": "Satu atau kedua aset menggunakan data sampel karena data historis belum diimpor.",
+    "copyLink": "Salin tautan perbandingan",
+    "copyCaption": "Salin caption perbandingan",
+    "linkCopied": "Tautan perbandingan disalin",
+    "captionCopied": "Caption perbandingan disalin",
+    "historicalData": "Menggunakan data historis",
+    "sampleData": "Menggunakan data sampel",
+    "captionHeadline": "Bagaimana jika saya investasi bulanan di {assetA} dibanding {assetB} dari {startYear} sampai {endYear}?"
   }
 }

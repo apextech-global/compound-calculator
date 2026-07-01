@@ -405,5 +405,32 @@
   },
   "mobile": {
     "backToCalculator": "Zurück zum Rechner"
+  },
+  "comparison": {
+    "eyebrow": "Assets vergleichen",
+    "title": "Zwei DCA-Backtests vergleichen",
+    "description": "Vergleiche zwei Assets mit demselben monatlichen Anlagebetrag und demselben Zeitraum.",
+    "assetA": "Asset A",
+    "assetB": "Asset B",
+    "monthlyAmount": "Monatlicher Anlagebetrag",
+    "startYear": "Startjahr",
+    "endYear": "Endjahr",
+    "finalValue": "Endwert",
+    "totalProfit": "Gesamtgewinn",
+    "totalReturn": "Gesamtrendite",
+    "difference": "Differenz im Endwert",
+    "betterPerformer": "Bessere Performance",
+    "tie": "Gleichstand",
+    "chartEyebrow": "Vergleichsdiagramm",
+    "chartTitle": "Asset-Wert im Zeitverlauf",
+    "explanation": "Dieser Vergleich verwendet für beide Assets denselben monatlichen Betrag und denselben Zeitraum.",
+    "sampleWarning": "Ein oder beide Assets verwenden Beispieldaten, weil historische Daten noch nicht importiert wurden.",
+    "copyLink": "Vergleichslink kopieren",
+    "copyCaption": "Vergleichstext kopieren",
+    "linkCopied": "Vergleichslink kopiert",
+    "captionCopied": "Vergleichstext kopiert",
+    "historicalData": "Historische Daten werden verwendet",
+    "sampleData": "Beispieldaten werden verwendet",
+    "captionHeadline": "Was wäre, wenn ich von {startYear} bis {endYear} monatlich in {assetA} statt {assetB} investiert hätte?"
   }
 }

@@ -405,5 +405,32 @@
   },
   "mobile": {
     "backToCalculator": "Back to calculator"
+  },
+  "comparison": {
+    "eyebrow": "Compare assets",
+    "title": "Compare Two DCA Backtests",
+    "description": "Compare two assets using the same monthly investment amount and the same time period.",
+    "assetA": "Asset A",
+    "assetB": "Asset B",
+    "monthlyAmount": "Monthly investment amount",
+    "startYear": "Start year",
+    "endYear": "End year",
+    "finalValue": "Final value",
+    "totalProfit": "Total profit",
+    "totalReturn": "Total return",
+    "difference": "Difference in final value",
+    "betterPerformer": "Better performer",
+    "tie": "Tie",
+    "chartEyebrow": "Comparison chart",
+    "chartTitle": "Asset Value Over Time",
+    "explanation": "This comparison uses the same monthly investment amount and time period for both assets.",
+    "sampleWarning": "One or both assets are using sample data because historical data has not been imported yet.",
+    "copyLink": "Copy comparison link",
+    "copyCaption": "Copy comparison caption",
+    "linkCopied": "Comparison link copied",
+    "captionCopied": "Comparison caption copied",
+    "historicalData": "Using historical data",
+    "sampleData": "Using sample data",
+    "captionHeadline": "What if I invested monthly in {assetA} vs {assetB} from {startYear} to {endYear}?"
   }
 }

@@ -439,5 +439,32 @@
   },
   "mobile": {
     "backToCalculator": "計算機に戻る"
+  },
+  "comparison": {
+    "eyebrow": "資産を比較",
+    "title": "2つのDCAバックテストを比較",
+    "description": "同じ毎月投資額と同じ期間で、2つの資産のDCA結果を比較します。",
+    "assetA": "資産A",
+    "assetB": "資産B",
+    "monthlyAmount": "毎月の投資額",
+    "startYear": "開始年",
+    "endYear": "終了年",
+    "finalValue": "最終価値",
+    "totalProfit": "総利益",
+    "totalReturn": "総リターン",
+    "difference": "最終価値の差",
+    "betterPerformer": "より良い成績",
+    "tie": "同率",
+    "chartEyebrow": "比較チャート",
+    "chartTitle": "資産価値の推移",
+    "explanation": "この比較では、両方の資産に同じ毎月投資額と同じ期間を使用します。",
+    "sampleWarning": "一方または両方の資産は、履歴データが未インポートのためサンプルデータを使用しています。",
+    "copyLink": "比較リンクをコピー",
+    "copyCaption": "比較キャプションをコピー",
+    "linkCopied": "比較リンクをコピーしました",
+    "captionCopied": "比較キャプションをコピーしました",
+    "historicalData": "履歴データを使用",
+    "sampleData": "サンプルデータを使用",
+    "captionHeadline": "{startYear}年から{endYear}年まで毎月 {assetA} と {assetB} に投資したら？"
   }
 }

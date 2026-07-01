@@ -439,5 +439,32 @@
   },
   "mobile": {
     "backToCalculator": "계산기로 돌아가기"
+  },
+  "comparison": {
+    "eyebrow": "자산 비교",
+    "title": "두 DCA 백테스트 비교",
+    "description": "같은 월 투자금과 같은 기간으로 두 자산의 DCA 결과를 비교합니다.",
+    "assetA": "자산 A",
+    "assetB": "자산 B",
+    "monthlyAmount": "월 투자 금액",
+    "startYear": "시작 연도",
+    "endYear": "종료 연도",
+    "finalValue": "최종 가치",
+    "totalProfit": "총 수익",
+    "totalReturn": "총 수익률",
+    "difference": "최종 가치 차이",
+    "betterPerformer": "더 나은 성과",
+    "tie": "동률",
+    "chartEyebrow": "비교 차트",
+    "chartTitle": "시간에 따른 자산 가치",
+    "explanation": "이 비교는 두 자산에 동일한 월 투자금과 동일한 기간을 사용합니다.",
+    "sampleWarning": "하나 또는 두 자산 모두 과거 데이터가 아직 가져와지지 않아 샘플 데이터를 사용합니다.",
+    "copyLink": "비교 링크 복사",
+    "copyCaption": "비교 캡션 복사",
+    "linkCopied": "비교 링크가 복사되었습니다",
+    "captionCopied": "비교 캡션이 복사되었습니다",
+    "historicalData": "과거 데이터 사용",
+    "sampleData": "샘플 데이터 사용",
+    "captionHeadline": "{startYear}년부터 {endYear}년까지 매월 {assetA}와 {assetB}에 투자했다면?"
   }
 }

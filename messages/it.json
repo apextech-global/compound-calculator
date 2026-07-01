@@ -405,5 +405,32 @@
   },
   "mobile": {
     "backToCalculator": "Torna al calcolatore"
+  },
+  "comparison": {
+    "eyebrow": "Confronta asset",
+    "title": "Confronta due backtest DCA",
+    "description": "Confronta due asset con lo stesso investimento mensile e lo stesso periodo.",
+    "assetA": "Asset A",
+    "assetB": "Asset B",
+    "monthlyAmount": "Importo mensile investito",
+    "startYear": "Anno iniziale",
+    "endYear": "Anno finale",
+    "finalValue": "Valore finale",
+    "totalProfit": "Profitto totale",
+    "totalReturn": "Rendimento totale",
+    "difference": "Differenza nel valore finale",
+    "betterPerformer": "Migliore performance",
+    "tie": "Parità",
+    "chartEyebrow": "Grafico di confronto",
+    "chartTitle": "Valore degli asset nel tempo",
+    "explanation": "Questo confronto usa lo stesso investimento mensile e lo stesso periodo per entrambi gli asset.",
+    "sampleWarning": "Uno o entrambi gli asset usano dati di esempio perché i dati storici non sono ancora stati importati.",
+    "copyLink": "Copia link confronto",
+    "copyCaption": "Copia testo confronto",
+    "linkCopied": "Link confronto copiato",
+    "captionCopied": "Testo confronto copiato",
+    "historicalData": "Uso dati storici",
+    "sampleData": "Uso dati di esempio",
+    "captionHeadline": "E se avessi investito ogni mese in {assetA} rispetto a {assetB} dal {startYear} al {endYear}?"
   }
 }

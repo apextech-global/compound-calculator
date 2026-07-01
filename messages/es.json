@@ -405,5 +405,32 @@
   },
   "mobile": {
     "backToCalculator": "Volver a la calculadora"
+  },
+  "comparison": {
+    "eyebrow": "Comparar activos",
+    "title": "Comparar dos backtests DCA",
+    "description": "Compara dos activos con la misma inversión mensual y el mismo periodo.",
+    "assetA": "Activo A",
+    "assetB": "Activo B",
+    "monthlyAmount": "Importe mensual de inversión",
+    "startYear": "Año inicial",
+    "endYear": "Año final",
+    "finalValue": "Valor final",
+    "totalProfit": "Beneficio total",
+    "totalReturn": "Rentabilidad total",
+    "difference": "Diferencia en valor final",
+    "betterPerformer": "Mejor rendimiento",
+    "tie": "Empate",
+    "chartEyebrow": "Gráfico comparativo",
+    "chartTitle": "Valor de los activos con el tiempo",
+    "explanation": "Esta comparación usa el mismo importe mensual y el mismo periodo para ambos activos.",
+    "sampleWarning": "Uno o ambos activos usan datos de muestra porque los datos históricos aún no se han importado.",
+    "copyLink": "Copiar enlace de comparación",
+    "copyCaption": "Copiar texto de comparación",
+    "linkCopied": "Enlace de comparación copiado",
+    "captionCopied": "Texto de comparación copiado",
+    "historicalData": "Usando datos históricos",
+    "sampleData": "Usando datos de muestra",
+    "captionHeadline": "¿Qué pasaría si invirtiera cada mes en {assetA} frente a {assetB} de {startYear} a {endYear}?"
   }
 }

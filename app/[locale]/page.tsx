@@ -4,6 +4,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef, useState } from "react";
 import CalculatorSwitcher from "@/components/CalculatorSwitcher";
 import CompoundInterestCalculator from "@/components/CompoundInterestCalculator";
+import DcaAssetComparison from "@/components/DcaAssetComparison";
 import DcaBacktestCalculator from "@/components/DcaBacktestCalculator";
 import Faq, { faqItems } from "@/components/Faq";
 import Hero from "@/components/Hero";
@@ -1110,38 +1111,44 @@ export default function Home() {
 
         <div id="calculator" className="scroll-mt-24">
           {activeCalculator === "dca" ? (
-            <DcaBacktestCalculator
-              selectedCurrency={selectedCurrency}
-              backtest={backtest}
-              backtestChartData={backtestChartData}
-              countryOptions={countryOptions}
-              assetTypeOptions={assetTypeOptions}
-              filteredInstruments={filteredInstruments}
-              selectedInstrument={selectedInstrument}
-              backtestCountry={backtestCountry}
-              backtestAssetType={effectiveAssetType}
-              backtestSymbol={effectiveBacktestSymbol}
-              backtestMonthlyAmount={backtestMonthlyAmount}
-              backtestStartYear={normalizedBacktestStartYear}
-              backtestEndYear={normalizedBacktestEndYear}
-              availableYears={availableBacktestYears}
-              showBacktestTable={showBacktestTable}
-              setBacktestCountry={handleBacktestCountryChange}
-              setBacktestAssetType={handleBacktestAssetTypeChange}
-              setBacktestSymbol={handleBacktestSymbolChange}
-              setBacktestMonthlyAmount={handleBacktestMonthlyAmountChange}
-              setBacktestStartYear={handleBacktestStartYearChange}
-              setBacktestEndYear={handleBacktestEndYearChange}
-              setShowBacktestTable={setShowBacktestTable}
-              shareUrl={shareUrl}
-              copiedShareLink={copiedShareLink}
-              copiedSocialCaption={copiedSocialCaption}
-              onShareResult={handleShareResult}
-              onCopyShareLink={copyShareUrl}
-              onCopySocialCaption={handleCopySocialCaption}
-              onDownloadResultImage={handleDownloadResultImage}
-              displayedDataSource={displayedBacktestDataSource}
-            />
+            <>
+              <DcaBacktestCalculator
+                selectedCurrency={selectedCurrency}
+                backtest={backtest}
+                backtestChartData={backtestChartData}
+                countryOptions={countryOptions}
+                assetTypeOptions={assetTypeOptions}
+                filteredInstruments={filteredInstruments}
+                selectedInstrument={selectedInstrument}
+                backtestCountry={backtestCountry}
+                backtestAssetType={effectiveAssetType}
+                backtestSymbol={effectiveBacktestSymbol}
+                backtestMonthlyAmount={backtestMonthlyAmount}
+                backtestStartYear={normalizedBacktestStartYear}
+                backtestEndYear={normalizedBacktestEndYear}
+                availableYears={availableBacktestYears}
+                showBacktestTable={showBacktestTable}
+                setBacktestCountry={handleBacktestCountryChange}
+                setBacktestAssetType={handleBacktestAssetTypeChange}
+                setBacktestSymbol={handleBacktestSymbolChange}
+                setBacktestMonthlyAmount={handleBacktestMonthlyAmountChange}
+                setBacktestStartYear={handleBacktestStartYearChange}
+                setBacktestEndYear={handleBacktestEndYearChange}
+                setShowBacktestTable={setShowBacktestTable}
+                shareUrl={shareUrl}
+                copiedShareLink={copiedShareLink}
+                copiedSocialCaption={copiedSocialCaption}
+                onShareResult={handleShareResult}
+                onCopyShareLink={copyShareUrl}
+                onCopySocialCaption={handleCopySocialCaption}
+                onDownloadResultImage={handleDownloadResultImage}
+                displayedDataSource={displayedBacktestDataSource}
+              />
+              <DcaAssetComparison
+                selectedCurrency={selectedCurrency}
+                onCurrencyChange={setSelectedCurrency}
+              />
+            </>
           ) : (
             <CompoundInterestCalculator
               selectedCurrency={selectedCurrency}
