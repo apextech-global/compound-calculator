@@ -32,7 +32,7 @@ export default function CalculatorSwitcher({
 
   return (
     <>
-      <div className="mb-4 grid gap-3 lg:grid-cols-2">
+      <div className="mb-3 grid gap-2.5 sm:mb-4 sm:gap-3 lg:grid-cols-2">
         <div
           role="button"
           tabIndex={0}
@@ -42,18 +42,18 @@ export default function CalculatorSwitcher({
               onCalculatorChange("dca");
             }
           }}
-          className={`group rounded-3xl border p-4 text-left shadow-2xl transition sm:p-5 ${
+          className={`group rounded-2xl border p-3.5 text-left shadow-2xl transition sm:rounded-3xl sm:p-5 ${
             activeCalculator === "dca"
               ? "border-cyan-300/40 bg-cyan-400/10 shadow-cyan-950/30"
               : "border-white/10 bg-white/[0.06] shadow-black/20 hover:border-cyan-300/30"
           }`}
         >
-          <div className="mb-4 flex items-start justify-between gap-3">
+          <div className="mb-3 flex items-start justify-between gap-3 sm:mb-4">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-cyan-300">
+              <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-cyan-300 sm:text-xs sm:tracking-[0.22em]">
                 {t("cards.dca.eyebrow")}
               </p>
-              <h2 className="mt-2 text-2xl font-bold md:text-[1.65rem]">
+              <h2 className="mt-1.5 text-xl font-bold sm:mt-2 sm:text-2xl md:text-[1.65rem]">
                 {t("cards.dca.title")}
               </h2>
             </div>
@@ -61,10 +61,10 @@ export default function CalculatorSwitcher({
               {t("common.mockHistory")}
             </span>
           </div>
-          <p className="max-w-xl text-sm leading-5 text-slate-300">
+          <p className="max-w-xl text-xs leading-5 text-slate-300 sm:text-sm">
             {t("cards.dca.description")}
           </p>
-          <div className="mt-4 grid gap-2 sm:grid-cols-3">
+          <div className="mt-3 grid gap-2 sm:mt-4 sm:grid-cols-3">
             <div>
               <p className="text-xs uppercase tracking-[0.16em] text-slate-500">
                 {t("metrics.symbol")}
@@ -96,7 +96,7 @@ export default function CalculatorSwitcher({
               event.stopPropagation();
               onCalculatorChange("dca");
             }}
-            className="mt-4 rounded-2xl bg-cyan-400 px-4 py-2.5 text-sm font-bold text-slate-950 transition hover:bg-cyan-300"
+            className="mt-3 w-full rounded-2xl bg-cyan-400 px-4 py-2.5 text-sm font-bold text-slate-950 transition hover:bg-cyan-300 sm:mt-4 sm:w-auto"
           >
             {t("cards.dca.cta")}
           </button>
@@ -111,18 +111,18 @@ export default function CalculatorSwitcher({
               onCalculatorChange("compound");
             }
           }}
-          className={`group rounded-3xl border p-4 text-left shadow-2xl transition sm:p-5 ${
+          className={`group rounded-2xl border p-3.5 text-left shadow-2xl transition sm:rounded-3xl sm:p-5 ${
             activeCalculator === "compound"
               ? "border-emerald-300/40 bg-emerald-400/10 shadow-emerald-950/30"
               : "border-white/10 bg-white/[0.06] shadow-black/20 hover:border-emerald-300/30"
           }`}
         >
-          <div className="mb-4 flex items-start justify-between gap-3">
+          <div className="mb-3 flex items-start justify-between gap-3 sm:mb-4">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
+              <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-emerald-300 sm:text-xs sm:tracking-[0.22em]">
                 {t("cards.compound.eyebrow")}
               </p>
-              <h2 className="mt-2 text-2xl font-bold md:text-[1.65rem]">
+              <h2 className="mt-1.5 text-xl font-bold sm:mt-2 sm:text-2xl md:text-[1.65rem]">
                 {t("cards.compound.title")}
               </h2>
             </div>
@@ -130,10 +130,10 @@ export default function CalculatorSwitcher({
               {t("common.forwardModel")}
             </span>
           </div>
-          <p className="max-w-xl text-sm leading-5 text-slate-300">
+          <p className="max-w-xl text-xs leading-5 text-slate-300 sm:text-sm">
             {t("cards.compound.description")}
           </p>
-          <div className="mt-4 grid gap-2 sm:grid-cols-3">
+          <div className="mt-3 grid gap-2 sm:mt-4 sm:grid-cols-3">
             <div>
               <p className="text-xs uppercase tracking-[0.16em] text-slate-500">
                 {t("metrics.years")}
@@ -165,7 +165,7 @@ export default function CalculatorSwitcher({
               event.stopPropagation();
               onCalculatorChange("compound");
             }}
-            className="mt-4 rounded-2xl bg-emerald-400 px-4 py-2.5 text-sm font-bold text-slate-950 transition hover:bg-emerald-300"
+            className="mt-3 w-full rounded-2xl bg-emerald-400 px-4 py-2.5 text-sm font-bold text-slate-950 transition hover:bg-emerald-300 sm:mt-4 sm:w-auto"
           >
             {t("cards.compound.cta")}
           </button>

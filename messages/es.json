@@ -402,5 +402,8 @@
     "disclaimer": "Solo con fines educativos. No es asesoramiento financiero.",
     "cta": "Prueba tu propio backtest",
     "dataSource": "Fuente de datos"
+  },
+  "mobile": {
+    "backToCalculator": "Volver a la calculadora"
   }
 }

@@ -402,5 +402,8 @@
     "disclaimer": "Educational only. Not financial advice.",
     "cta": "Try your own backtest",
     "dataSource": "Data source"
+  },
+  "mobile": {
+    "backToCalculator": "Back to calculator"
   }
 }

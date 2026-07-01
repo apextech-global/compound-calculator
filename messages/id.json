@@ -402,5 +402,8 @@
     "disclaimer": "Hanya untuk edukasi. Bukan nasihat keuangan.",
     "cta": "Coba backtest kamu sendiri",
     "dataSource": "Sumber data"
+  },
+  "mobile": {
+    "backToCalculator": "Kembali ke kalkulator"
   }
 }

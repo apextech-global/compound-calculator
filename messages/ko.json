@@ -436,5 +436,8 @@
     "disclaimer": "교육 목적 전용입니다. 금융 조언이 아닙니다.",
     "cta": "직접 백테스트해 보기",
     "dataSource": "데이터 출처"
+  },
+  "mobile": {
+    "backToCalculator": "계산기로 돌아가기"
   }
 }

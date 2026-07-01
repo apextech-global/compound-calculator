@@ -402,5 +402,8 @@
     "disclaimer": "Untuk pendidikan sahaja. Bukan nasihat kewangan.",
     "cta": "Cuba backtest anda sendiri",
     "dataSource": "Sumber data"
+  },
+  "mobile": {
+    "backToCalculator": "Kembali ke kalkulator"
   }
 }

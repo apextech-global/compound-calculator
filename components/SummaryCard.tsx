@@ -10,7 +10,7 @@ export default function SummaryCard({
   valueClassName = "",
 }: SummaryCardProps) {
   return (
-    <div className="min-w-0 overflow-hidden rounded-3xl border border-white/10 bg-white/[0.06] p-6 shadow-xl shadow-black/20">
+    <div className="min-w-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] p-4 shadow-xl shadow-black/20 sm:rounded-3xl sm:p-6">
       <p className="min-w-0 truncate whitespace-nowrap text-sm text-slate-400">
         {label}
       </p>

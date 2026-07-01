@@ -402,5 +402,8 @@
     "disclaimer": "仅供教育用途，不构成投资建议。",
     "cta": "试算你的定投结果",
     "dataSource": "数据来源"
+  },
+  "mobile": {
+    "backToCalculator": "返回计算器"
   }
 }

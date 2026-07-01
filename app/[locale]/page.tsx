@@ -7,6 +7,7 @@ import CompoundInterestCalculator from "@/components/CompoundInterestCalculator"
 import DcaBacktestCalculator from "@/components/DcaBacktestCalculator";
 import Faq, { faqItems } from "@/components/Faq";
 import Hero from "@/components/Hero";
+import MobileBackToCalculator from "@/components/MobileBackToCalculator";
 import Navbar from "@/components/Navbar";
 import SeoContent from "@/components/SeoContent";
 import { trackGaEvent } from "@/lib/analytics";
@@ -1090,7 +1091,7 @@ export default function Home() {
         onCurrencyChange={setSelectedCurrency}
       />
 
-      <section className="relative mx-auto max-w-7xl px-6 py-5 sm:py-7 lg:px-8">
+      <section className="relative mx-auto max-w-7xl px-4 py-4 sm:px-6 sm:py-7 lg:px-8">
         <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-96 bg-[radial-gradient(circle_at_top,_rgba(16,185,129,0.2),_transparent_34%),radial-gradient(circle_at_80%_10%,_rgba(34,211,238,0.14),_transparent_28%)]" />
 
         <Hero />
@@ -1107,61 +1108,64 @@ export default function Home() {
           onCalculatorChange={handleCalculatorChange}
         />
 
-        {activeCalculator === "dca" ? (
-          <DcaBacktestCalculator
-            selectedCurrency={selectedCurrency}
-            backtest={backtest}
-            backtestChartData={backtestChartData}
-            countryOptions={countryOptions}
-            assetTypeOptions={assetTypeOptions}
-            filteredInstruments={filteredInstruments}
-            selectedInstrument={selectedInstrument}
-            backtestCountry={backtestCountry}
-            backtestAssetType={effectiveAssetType}
-            backtestSymbol={effectiveBacktestSymbol}
-            backtestMonthlyAmount={backtestMonthlyAmount}
-            backtestStartYear={normalizedBacktestStartYear}
-            backtestEndYear={normalizedBacktestEndYear}
-            availableYears={availableBacktestYears}
-            showBacktestTable={showBacktestTable}
-            setBacktestCountry={handleBacktestCountryChange}
-            setBacktestAssetType={handleBacktestAssetTypeChange}
-            setBacktestSymbol={handleBacktestSymbolChange}
-            setBacktestMonthlyAmount={handleBacktestMonthlyAmountChange}
-            setBacktestStartYear={handleBacktestStartYearChange}
-            setBacktestEndYear={handleBacktestEndYearChange}
-            setShowBacktestTable={setShowBacktestTable}
-            shareUrl={shareUrl}
-            copiedShareLink={copiedShareLink}
-            copiedSocialCaption={copiedSocialCaption}
-            onShareResult={handleShareResult}
-            onCopyShareLink={copyShareUrl}
-            onCopySocialCaption={handleCopySocialCaption}
-            onDownloadResultImage={handleDownloadResultImage}
-            displayedDataSource={displayedBacktestDataSource}
-          />
-        ) : (
-          <CompoundInterestCalculator
-            selectedCurrency={selectedCurrency}
-            result={result}
-            chartData={chartData}
-            growthMultiple={growthMultiple}
-            initialAmount={initialAmount}
-            monthlyContribution={monthlyContribution}
-            annualReturn={annualReturn}
-            years={years}
-            showCompoundTable={showCompoundTable}
-            setInitialAmount={handleInitialAmountChange}
-            setMonthlyContribution={handleMonthlyContributionChange}
-            setAnnualReturn={handleAnnualReturnChange}
-            setYears={handleYearsChange}
-            setShowCompoundTable={setShowCompoundTable}
-          />
-        )}
+        <div id="calculator" className="scroll-mt-24">
+          {activeCalculator === "dca" ? (
+            <DcaBacktestCalculator
+              selectedCurrency={selectedCurrency}
+              backtest={backtest}
+              backtestChartData={backtestChartData}
+              countryOptions={countryOptions}
+              assetTypeOptions={assetTypeOptions}
+              filteredInstruments={filteredInstruments}
+              selectedInstrument={selectedInstrument}
+              backtestCountry={backtestCountry}
+              backtestAssetType={effectiveAssetType}
+              backtestSymbol={effectiveBacktestSymbol}
+              backtestMonthlyAmount={backtestMonthlyAmount}
+              backtestStartYear={normalizedBacktestStartYear}
+              backtestEndYear={normalizedBacktestEndYear}
+              availableYears={availableBacktestYears}
+              showBacktestTable={showBacktestTable}
+              setBacktestCountry={handleBacktestCountryChange}
+              setBacktestAssetType={handleBacktestAssetTypeChange}
+              setBacktestSymbol={handleBacktestSymbolChange}
+              setBacktestMonthlyAmount={handleBacktestMonthlyAmountChange}
+              setBacktestStartYear={handleBacktestStartYearChange}
+              setBacktestEndYear={handleBacktestEndYearChange}
+              setShowBacktestTable={setShowBacktestTable}
+              shareUrl={shareUrl}
+              copiedShareLink={copiedShareLink}
+              copiedSocialCaption={copiedSocialCaption}
+              onShareResult={handleShareResult}
+              onCopyShareLink={copyShareUrl}
+              onCopySocialCaption={handleCopySocialCaption}
+              onDownloadResultImage={handleDownloadResultImage}
+              displayedDataSource={displayedBacktestDataSource}
+            />
+          ) : (
+            <CompoundInterestCalculator
+              selectedCurrency={selectedCurrency}
+              result={result}
+              chartData={chartData}
+              growthMultiple={growthMultiple}
+              initialAmount={initialAmount}
+              monthlyContribution={monthlyContribution}
+              annualReturn={annualReturn}
+              years={years}
+              showCompoundTable={showCompoundTable}
+              setInitialAmount={handleInitialAmountChange}
+              setMonthlyContribution={handleMonthlyContributionChange}
+              setAnnualReturn={handleAnnualReturnChange}
+              setYears={handleYearsChange}
+              setShowCompoundTable={setShowCompoundTable}
+            />
+          )}
+        </div>
 
         <SeoContent />
         <Faq />
       </section>
+      <MobileBackToCalculator targetId="calculator" />
     </main>
   );
 }

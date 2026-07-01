@@ -62,20 +62,20 @@ export default function CompoundInterestCalculator({
 
   return (
     <section>
-      <div className="mb-5 grid gap-5 lg:grid-cols-[1fr_340px] lg:items-end">
+      <div className="mb-4 grid gap-4 sm:mb-5 lg:grid-cols-[1fr_340px] lg:items-end lg:gap-5">
         <div>
-          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.24em] text-emerald-400 sm:text-sm">
+          <p className="mb-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400 sm:mb-2 sm:text-sm sm:tracking-[0.24em]">
             {t("compound.eyebrow")}
           </p>
-          <h2 className="max-w-4xl text-2xl font-bold tracking-tight md:text-4xl">
+          <h2 className="max-w-4xl text-xl font-bold tracking-tight sm:text-2xl md:text-4xl">
             {t("compound.title")}
           </h2>
-          <p className="mt-3 max-w-2xl text-base leading-7 text-slate-300">
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-300 sm:mt-3 sm:text-base sm:leading-7">
             {t("compound.description")}
           </p>
         </div>
 
-        <div className="min-w-0 overflow-hidden rounded-3xl border border-emerald-300/20 bg-emerald-400/10 p-5 shadow-2xl shadow-emerald-950/40">
+        <div className="min-w-0 overflow-hidden rounded-2xl border border-emerald-300/20 bg-emerald-400/10 p-4 shadow-2xl shadow-emerald-950/40 sm:rounded-3xl sm:p-5">
           <p className="text-sm font-medium text-emerald-200">
             {t("compound.projectedValue")}
           </p>
@@ -91,14 +91,14 @@ export default function CompoundInterestCalculator({
         </div>
       </div>
 
-      <div className="grid gap-5 lg:grid-cols-[400px_1fr]">
-        <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-6 shadow-2xl shadow-black/30 backdrop-blur">
-          <div className="mb-6 flex items-start justify-between gap-4">
+      <div className="grid gap-4 lg:grid-cols-[400px_1fr] lg:gap-5">
+        <div className="rounded-2xl border border-white/10 bg-white/[0.06] p-4 shadow-2xl shadow-black/30 backdrop-blur sm:rounded-3xl sm:p-6">
+          <div className="mb-4 flex items-start justify-between gap-4 sm:mb-6">
             <div>
-              <p className="text-sm font-medium uppercase tracking-[0.2em] text-slate-400">
+              <p className="text-xs font-medium uppercase tracking-[0.18em] text-slate-400 sm:text-sm sm:tracking-[0.2em]">
                 {t("compound.inputsEyebrow")}
               </p>
-              <h3 className="mt-2 text-2xl font-semibold">
+              <h3 className="mt-1.5 text-xl font-semibold sm:mt-2 sm:text-2xl">
                 {t("compound.detailsTitle")}
               </h3>
             </div>
@@ -107,7 +107,7 @@ export default function CompoundInterestCalculator({
             </div>
           </div>
 
-          <div className="space-y-5">
+          <div className="space-y-4 sm:space-y-5">
             <label className="block">
               <span className="mb-2 block text-sm text-slate-300">
                 {t("compound.initialInvestment")}
@@ -188,12 +188,12 @@ export default function CompoundInterestCalculator({
             </label>
           </div>
 
-          <div className="mt-6 rounded-2xl border border-white/10 bg-slate-950/60 p-4">
+          <div className="mt-4 rounded-2xl border border-white/10 bg-slate-950/60 p-4 sm:mt-6">
             <p className="text-sm text-slate-400">
               {t("compound.estimatedAnnualReturn")}
             </p>
             <div className="mt-3 flex items-end justify-between gap-4">
-              <p className="text-3xl font-bold text-cyan-300">
+              <p className="text-2xl font-bold text-cyan-300 sm:text-3xl">
                 {Number(annualReturn) || 0}%
               </p>
               <p className="text-right text-sm text-slate-400">
@@ -203,8 +203,8 @@ export default function CompoundInterestCalculator({
           </div>
         </div>
 
-        <div className="space-y-6">
-          <div className="grid gap-4 md:grid-cols-3">
+        <div className="space-y-4 sm:space-y-6">
+          <div className="grid gap-3 sm:gap-4 md:grid-cols-3">
             <SummaryCard
               label={t("metrics.finalValueTitle")}
               value={formatMoney(result.finalValue, selectedCurrency, locale)}
@@ -221,13 +221,13 @@ export default function CompoundInterestCalculator({
             />
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-6 shadow-2xl shadow-black/30">
-            <div className="mb-6 flex flex-col justify-between gap-4 sm:flex-row sm:items-start">
+          <div className="rounded-2xl border border-white/10 bg-white/[0.06] p-4 shadow-2xl shadow-black/30 sm:rounded-3xl sm:p-6">
+            <div className="mb-4 flex flex-col justify-between gap-3 sm:mb-6 sm:flex-row sm:items-start sm:gap-4">
               <div>
-                <p className="text-sm font-medium uppercase tracking-[0.2em] text-slate-400">
+                <p className="text-xs font-medium uppercase tracking-[0.18em] text-slate-400 sm:text-sm sm:tracking-[0.2em]">
                   {t("compound.projectionEyebrow")}
                 </p>
-                <h3 className="mt-2 text-2xl font-semibold">
+                <h3 className="mt-1.5 text-xl font-semibold sm:mt-2 sm:text-2xl">
                   {t("compound.chartTitle")}
                 </h3>
               </div>
@@ -244,7 +244,7 @@ export default function CompoundInterestCalculator({
               </div>
             </div>
 
-            <div className="h-[320px] w-full">
+            <div className="h-[240px] w-full sm:h-[300px] lg:h-[320px]">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart
                   data={chartData}
@@ -272,7 +272,7 @@ export default function CompoundInterestCalculator({
                     tick={{ fill: "#94a3b8", fontSize: 12 }}
                     tickLine={false}
                     axisLine={false}
-                    width={72}
+                    width={62}
                   />
                   <Tooltip
                     formatter={(value) =>
@@ -310,13 +310,13 @@ export default function CompoundInterestCalculator({
             </div>
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-6 shadow-xl shadow-black/20">
+          <div className="rounded-2xl border border-white/10 bg-white/[0.06] p-4 shadow-xl shadow-black/20 sm:rounded-3xl sm:p-6">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <p className="text-sm font-medium uppercase tracking-[0.2em] text-slate-400">
+                <p className="text-xs font-medium uppercase tracking-[0.18em] text-slate-400 sm:text-sm sm:tracking-[0.2em]">
                   {t("compound.annualDetail")}
                 </p>
-                <h3 className="mt-2 text-2xl font-semibold">
+                <h3 className="mt-1.5 text-xl font-semibold sm:mt-2 sm:text-2xl">
                   {t("compound.tableTitle")}
                 </h3>
               </div>
