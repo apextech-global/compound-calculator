@@ -1,29 +1,52 @@
-# Raw Market Data
+# Raw Market Data Import
 
-Download historical CSV files from Yahoo Finance and place them in this folder.
+Put manually downloaded historical CSV files in this folder.
 
-Use these Yahoo Finance download settings:
+The file name must match the instrument `dataKey` used by the app.
 
-- Time Period: Max
-- Frequency: Daily
+Examples:
 
-Save the files with these exact names:
+- `cspx-l.csv`
+- `0050-tw.csv`
+- `1155-kl.csv`
+- `es3-si.csv`
+- `2800-hk.csv`
 
-- `voo.csv`
-- `spy.csv`
-- `qqq.csv`
-- `aapl.csv`
-- `tsla.csv`
-- `nvda.csv`
-
-The expected Yahoo Finance CSV format is:
+Supported input CSV formats include:
 
 ```csv
 Date,Open,High,Low,Close,Adj Close,Volume
 ```
 
-After adding the files, run:
+```csv
+date,close
+```
+
+```csv
+Date,Close
+Date,Price
+Date,Last
+```
+
+The importer prefers `Adj Close` when available. If `Adj Close` is not
+available, it uses `Close`, then `Price`, then `Last`.
+
+After adding raw CSV files, run:
 
 ```sh
-npm run import:market-data
+npm run import-market-data
+```
+
+Generated monthly CSV files will appear in:
+
+```text
+public/market-data/
+```
+
+Output files use this format:
+
+```csv
+date,close
+2020-01-31,123.45
+2020-02-28,125.67
 ```

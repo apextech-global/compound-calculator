@@ -11,6 +11,7 @@
     "update-market-data:priority": "node scripts/update-market-data.mjs --limit=5 --delay=5000",
     "update:market-data": "node scripts/update-market-data.mjs",
     "import:market-data": "node scripts/import-yahoo-market-data.mjs",
+    "import-market-data": "node scripts/import-market-data.mjs",
     "update:yahoo-data": "node scripts/update-yahoo-chart-data.mjs"
   },
   "dependencies": {
