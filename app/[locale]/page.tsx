@@ -1086,9 +1086,7 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: structuredData }}
       />
       <Navbar
-        activeCalculator={activeCalculator}
         selectedCurrency={selectedCurrency}
-        onCalculatorChange={handleCalculatorChange}
         onCurrencyChange={setSelectedCurrency}
       />
 
