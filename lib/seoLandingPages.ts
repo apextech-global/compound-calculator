@@ -867,7 +867,234 @@ function comparisonLocale(
   };
 }
 
+function getEnglishComparisonPage(slug: ComparisonSeoPageSlug): SeoPageContent {
+  const pages: Record<ComparisonSeoPageSlug, SeoPageContent> = {
+    "voo-vs-cspx": {
+      title: "VOO vs CSPX | S&P 500 ETF DCA Comparison",
+      description:
+        "Compare VOO and CSPX for educational S&P 500 ETF DCA backtesting, including domicile, currency, dividends, taxes, and fees.",
+      h1: "VOO vs CSPX",
+      intro:
+        "VOO and CSPX both provide S&P 500 exposure, but their fund structure, listing market, dividend treatment, and tax considerations can differ.",
+      sections: [
+        {
+          title: "What VOO and CSPX are",
+          body: "VOO is a U.S.-listed Vanguard ETF that tracks the S&P 500. CSPX is an Ireland-domiciled UCITS ETF listed in London that also targets S&P 500 exposure.",
+        },
+        {
+          title: "Key differences",
+          body: "VOO trades in the United States and distributes dividends. CSPX is commonly used as an accumulating UCITS share class by non-U.S. investors. Domicile, withholding tax, estate tax exposure, fees, spreads, broker access, and currency handling can all matter.",
+        },
+        {
+          title: "DCA backtest explanation",
+          body: "A fair VOO vs CSPX DCA backtest should use the same monthly investment amount and the same start and end years. The result shows one historical period, not a universal winner.",
+        },
+        {
+          title: "Risk and limitations",
+          body: "Neither ETF is always better. Results depend on time period, fund fees, taxes, exchange rates, dividends, tracking difference, data availability, and market performance. This is educational only and not financial advice.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Do VOO and CSPX track the same market?",
+          answer:
+            "Both target S&P 500 exposure, but the fund domicile, exchange listing, dividend treatment, and investor tax experience can differ.",
+        },
+        {
+          question: "Why do some non-U.S. investors compare CSPX with VOO?",
+          answer:
+            "Some investors compare them because UCITS structure, Ireland domicile, broker access, withholding tax, and estate tax considerations may affect real outcomes.",
+        },
+        {
+          question: "Does the calculator include every tax and dividend detail?",
+          answer:
+            "No. Real results can differ because of dividend timing, withholding tax, local taxes, fees, spreads, execution price, and currency conversion.",
+        },
+      ],
+    },
+    "voo-vs-qqq": {
+      title: "VOO vs QQQ | S&P 500 vs Nasdaq 100 DCA Comparison",
+      description:
+        "Compare VOO and QQQ for educational DCA backtesting, including index exposure, concentration, volatility, dividends, fees, and risk.",
+      h1: "VOO vs QQQ",
+      intro:
+        "VOO and QQQ are popular U.S.-listed ETFs, but they follow different indexes. VOO is broader large-cap U.S. exposure, while QQQ is more concentrated in Nasdaq 100 companies.",
+      sections: [
+        {
+          title: "What VOO and QQQ are",
+          body: "VOO tracks the S&P 500, which represents large U.S. companies across sectors. QQQ tracks the Nasdaq 100, which often has heavier technology and growth-company exposure.",
+        },
+        {
+          title: "Key differences",
+          body: "VOO is usually more diversified by sector. QQQ can have higher concentration, higher volatility, different dividend yield, and stronger sensitivity to technology valuation cycles.",
+        },
+        {
+          title: "DCA backtest explanation",
+          body: "Use the same monthly amount and period to compare how VOO and QQQ accumulated value over time. Different start years can produce very different conclusions.",
+        },
+        {
+          title: "Risk and limitations",
+          body: "Past Nasdaq 100 strength does not guarantee future outperformance. Fees, taxes, dividends, valuation cycles, drawdowns, and market leadership changes can affect results.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Is QQQ more concentrated than VOO?",
+          answer:
+            "Generally yes. QQQ tracks the Nasdaq 100 and often has heavier technology exposure, while VOO tracks the broader S&P 500.",
+        },
+        {
+          question: "Can VOO and QQQ perform very differently?",
+          answer:
+            "Yes. Sector weights, valuation cycles, volatility, and index rules can create large differences across selected periods.",
+        },
+        {
+          question: "Should I choose based only on the backtest?",
+          answer:
+            "No. A backtest is educational. Diversification, fees, taxes, risk tolerance, and investment goals also matter.",
+        },
+      ],
+    },
+    "cspx-vs-vwra": {
+      title: "CSPX vs VWRA | UCITS ETF DCA Comparison",
+      description:
+        "Compare CSPX and VWRA for educational UCITS ETF DCA backtesting, including S&P 500 exposure, global diversification, domicile, dividends, and risk.",
+      h1: "CSPX vs VWRA",
+      intro:
+        "CSPX and VWRA are both Ireland-domiciled UCITS ETFs, but CSPX focuses on the S&P 500 while VWRA targets global all-world equity exposure.",
+      sections: [
+        {
+          title: "What CSPX and VWRA are",
+          body: "CSPX is an accumulating UCITS ETF focused on S&P 500 exposure. VWRA is an accumulating UCITS ETF designed to track a global all-world index across developed and emerging markets.",
+        },
+        {
+          title: "Key differences",
+          body: "CSPX is concentrated in large U.S. companies. VWRA is globally diversified. Country weights, currency exposure, sector mix, fees, spreads, and index methodology can differ.",
+        },
+        {
+          title: "DCA backtest explanation",
+          body: "A DCA comparison can show whether U.S.-only exposure or global diversification performed better in a selected period. It does not prove which ETF is better for every investor.",
+        },
+        {
+          title: "Risk and limitations",
+          body: "Results can change with U.S. market cycles, global market returns, currency movements, fees, taxes, dividends, tracking difference, and data availability.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Is CSPX more U.S.-focused than VWRA?",
+          answer:
+            "Yes. CSPX targets S&P 500 exposure, while VWRA includes a broader global equity universe.",
+        },
+        {
+          question: "Does VWRA provide more diversification?",
+          answer:
+            "VWRA is generally more globally diversified, but diversification does not guarantee higher returns or prevent losses.",
+        },
+        {
+          question: "Are CSPX and VWRA accumulating UCITS ETFs?",
+          answer:
+            "Commonly referenced CSPX and VWRA share classes are accumulating UCITS ETFs, but investors should verify the exact ticker, exchange, and share class.",
+        },
+      ],
+    },
+    "iwda-vs-vwra": {
+      title: "IWDA vs VWRA | Developed World vs All-World ETF Comparison",
+      description:
+        "Compare IWDA and VWRA for educational DCA backtesting, including developed markets, emerging markets, UCITS structure, fees, and risk.",
+      h1: "IWDA vs VWRA",
+      intro:
+        "IWDA and VWRA are popular UCITS ETFs for global investing, but IWDA focuses on developed markets while VWRA includes developed and emerging markets.",
+      sections: [
+        {
+          title: "What IWDA and VWRA are",
+          body: "IWDA is an accumulating UCITS ETF focused on developed market equities. VWRA is an accumulating UCITS ETF that includes developed and emerging market exposure through an all-world index.",
+        },
+        {
+          title: "Key differences",
+          body: "IWDA excludes emerging markets, while VWRA includes them. This affects country weights, currency exposure, sector mix, volatility, and long-term return drivers.",
+        },
+        {
+          title: "DCA backtest explanation",
+          body: "Using the same monthly amount and period shows how developed-market-only exposure compared with all-world exposure for that historical window.",
+        },
+        {
+          title: "Risk and limitations",
+          body: "Emerging and developed markets rotate through different cycles. Real results can differ because of taxes, dividend handling, currency conversion, fees, spreads, and execution prices.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Does IWDA include emerging markets?",
+          answer:
+            "IWDA generally focuses on developed markets and does not provide the same emerging market exposure that VWRA includes.",
+        },
+        {
+          question: "Why compare IWDA and VWRA?",
+          answer:
+            "The comparison helps study developed-market-only exposure versus broader all-world exposure using the same monthly DCA assumptions.",
+        },
+        {
+          question: "Can the better performer change by time period?",
+          answer:
+            "Yes. Developed and emerging markets can lead or lag in different cycles, so start and end years matter.",
+        },
+      ],
+    },
+    "etf-comparison-calculator": {
+      title: "ETF Comparison Calculator | Compare ETF DCA Backtests",
+      description:
+        "Use the ETF comparison calculator to compare two ETF or asset DCA backtests with the same monthly amount, period, and display currency.",
+      h1: "ETF Comparison Calculator",
+      intro:
+        "The ETF comparison calculator helps compare two assets using the same monthly investment assumptions, making the result easier to interpret.",
+      sections: [
+        {
+          title: "What the calculator compares",
+          body: "The tool compares Asset A and Asset B using the same monthly amount, start year, end year, and display currency. It shows final value, total profit, total return, final value difference, and better performer for the selected period.",
+        },
+        {
+          title: "Useful ETF comparisons",
+          body: "Examples include VOO vs CSPX, VOO vs QQQ, CSPX vs VWRA, IWDA vs VWRA, and other supported ETFs or stocks. The tool is for education and scenario analysis, not recommendations.",
+        },
+        {
+          title: "Historical and sample data",
+          body: "If historical CSV data is available, the calculator uses monthly prices generated from historical daily adjusted close data. If not, it clearly labels sample data.",
+        },
+        {
+          title: "Risk and limitations",
+          body: "Backtest results depend on period selection, fees, taxes, dividends, exchange rates, spreads, execution price, data quality, and market performance. Past performance does not guarantee future results.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Can I compare two ETFs with the same DCA settings?",
+          answer:
+            "Yes. The comparison section uses the same monthly amount and time period for both selected assets.",
+        },
+        {
+          question: "What if one ETF has no historical data?",
+          answer:
+            "The calculator falls back to sample data and displays a sample data warning so the result is not presented as real historical performance.",
+        },
+        {
+          question: "Does the calculator include all real-world costs?",
+          answer:
+            "No. Real brokerage results can differ because of fees, taxes, spreads, dividends, exchange rates, execution prices, and data differences.",
+        },
+      ],
+    },
+  };
+
+  return pages[slug];
+}
 function buildComparisonPages(locale: Locale): Record<ComparisonSeoPageSlug, SeoPageContent> {
+  if (locale === "en") {
+    return Object.fromEntries(
+      comparisonSeoPageSlugs.map((slug) => [slug, getEnglishComparisonPage(slug)])
+    ) as Record<ComparisonSeoPageSlug, SeoPageContent>;
+  }
+
   const text = localizedComparisonText[locale] ?? localizedComparisonText.en;
 
   return Object.fromEntries(
@@ -875,6 +1102,23 @@ function buildComparisonPages(locale: Locale): Record<ComparisonSeoPageSlug, Seo
       const definition = comparisonDefinitions[slug];
       const isCalculator = definition.theme === "calculator";
       const { assetA, assetB } = definition;
+      const faqs = isCalculator
+        ? [
+            { question: text.faqDca, answer: text.faqDcaAnswer },
+            {
+              question: text.faqBetter("VOO", "CSPX"),
+              answer: text.faqBetterAnswer("VOO", "CSPX"),
+            },
+            { question: text.faqAdvice, answer: text.faqAdviceAnswer },
+          ]
+        : [
+            {
+              question: text.faqBetter(assetA, assetB),
+              answer: text.faqBetterAnswer(assetA, assetB),
+            },
+            { question: text.faqDca, answer: text.faqDcaAnswer },
+            { question: text.faqAdvice, answer: text.faqAdviceAnswer },
+          ];
 
       return [
         slug,
@@ -905,18 +1149,7 @@ function buildComparisonPages(locale: Locale): Record<ComparisonSeoPageSlug, Seo
             { title: text.dataTitle, body: text.dataBody },
             { title: text.riskTitle, body: text.riskBody },
           ],
-          faqs: [
-            {
-              question: isCalculator
-                ? text.faqDca
-                : text.faqBetter(assetA, assetB),
-              answer: isCalculator
-                ? text.faqDcaAnswer
-                : text.faqBetterAnswer(assetA, assetB),
-            },
-            { question: text.faqDca, answer: text.faqDcaAnswer },
-            { question: text.faqAdvice, answer: text.faqAdviceAnswer },
-          ],
+          faqs,
         },
       ];
     })
