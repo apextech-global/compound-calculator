@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
+import { routing, type Locale } from "@/i18n/routing";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -71,14 +72,21 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params?: Promise<{ locale?: string }>;
 }>) {
+  const resolvedParams = await params?.catch(() => undefined);
+  const locale = routing.locales.includes(resolvedParams?.locale as Locale)
+    ? resolvedParams?.locale
+    : "en";
+
   return (
     <html
-      lang="en"
+      lang={locale}
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">

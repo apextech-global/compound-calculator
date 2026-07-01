@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import Footer from "@/components/Footer";
+import HtmlLocaleSync from "@/components/HtmlLocaleSync";
 import { routing, type Locale } from "@/i18n/routing";
 import { getTextDirection } from "@/lib/locales";
-
-const baseUrl = "https://dcabacktest.com";
-const socialImageAlt =
-  "DCA Backtest chart preview showing monthly investment growth over time";
-const localeAlternates = Object.fromEntries(
-  routing.locales.map((locale) => [locale, `/${locale}`])
-);
+import {
+  absoluteUrl,
+  alternateLanguages,
+  productionBaseUrl,
+  socialImageAlt,
+} from "@/lib/seoMetadata";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -34,20 +34,17 @@ export async function generateMetadata({
   const openGraphDescription = messages.seo.openGraphDescription;
 
   return {
-    metadataBase: new URL(baseUrl),
+    metadataBase: new URL(productionBaseUrl),
     title,
     description,
     alternates: {
-      canonical: `/${locale}`,
-      languages: {
-        ...localeAlternates,
-        "x-default": "/en",
-      },
+      canonical: absoluteUrl(`/${locale}`),
+      languages: alternateLanguages(),
     },
     openGraph: {
       title: openGraphTitle,
       description: openGraphDescription,
-      url: `${baseUrl}/${locale}`,
+      url: absoluteUrl(`/${locale}`),
       siteName: "DCA Backtest",
       images: [
         {
@@ -90,6 +87,7 @@ export default async function LocaleLayout({
   return (
     <NextIntlClientProvider>
       <div dir={getTextDirection(locale)}>
+        <HtmlLocaleSync locale={locale} />
         {children}
         <Footer />
       </div>

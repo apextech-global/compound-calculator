@@ -10,8 +10,8 @@ import {
   seoPageSlugs,
   type SeoPageSlug,
 } from "@/lib/seoLandingPages";
+import { absoluteUrl, productionBaseUrl, xDefaultUrl } from "@/lib/seoMetadata";
 
-const baseUrl = "https://dcabacktest.com";
 const relatedSeoLinks: SeoPageSlug[] = [
   "dca-calculator",
   "etf-calculator",
@@ -55,17 +55,18 @@ export async function generateMetadata({
   return {
     title: page.title,
     description: page.description,
+    metadataBase: new URL(productionBaseUrl),
     alternates: {
-      canonical: `/${locale}/${seoPage}`,
+      canonical: absoluteUrl(`/${locale}/${seoPage}`),
       languages: {
         ...getSeoPageAlternates(seoPage),
-        "x-default": `/en/${seoPage}`,
+        "x-default": xDefaultUrl,
       },
     },
     openGraph: {
       title: page.title,
       description: page.description,
-      url: `${baseUrl}/${locale}/${seoPage}`,
+      url: absoluteUrl(`/${locale}/${seoPage}`),
       siteName: "DCA Backtest",
       type: "article",
       locale,
@@ -98,7 +99,7 @@ export default async function SeoLandingPage({
     .default;
   const content = getSeoLandingContent(typedLocale);
   const page = content.pages[typedPage];
-  const pageUrl = `${baseUrl}/${typedLocale}/${typedPage}`;
+  const pageUrl = absoluteUrl(`/${typedLocale}/${typedPage}`);
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -107,7 +108,7 @@ export default async function SeoLandingPage({
         "@type": "ListItem",
         position: 1,
         name: "DCA Backtest",
-        item: `${baseUrl}/${typedLocale}`,
+        item: absoluteUrl(`/${typedLocale}`),
       },
       {
         "@type": "ListItem",

@@ -1,4 +1,5 @@
 import { routing, type Locale } from "@/i18n/routing";
+import { absoluteUrl } from "@/lib/seoMetadata";
 
 const baseSeoPageSlugs = [
   "compound-interest-calculator",
@@ -1548,6 +1549,6 @@ export function isSeoPageSlug(value: string): value is SeoPageSlug {
 
 export function getSeoPageAlternates(slug: SeoPageSlug) {
   return Object.fromEntries(
-    routing.locales.map((locale) => [locale, `/${locale}/${slug}`])
+    routing.locales.map((locale) => [locale, absoluteUrl(`/${locale}/${slug}`)])
   );
 }
