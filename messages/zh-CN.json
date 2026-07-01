@@ -408,7 +408,7 @@
   },
   "comparison": {
     "eyebrow": "对比资产",
-    "title": "对比两个定投回测",
+    "title": "对比两个资产",
     "description": "使用相同的每月投资金额和相同时间区间，对比两个资产的定投结果。",
     "assetA": "资产 A",
     "assetB": "资产 B",
@@ -423,7 +423,7 @@
     "tie": "持平",
     "chartEyebrow": "对比图表",
     "chartTitle": "资产价值变化",
-    "explanation": "此对比使用相同的每月投资金额和相同时间区间计算两个资产。",
+    "explanation": "此对比使用相同的每月投入金额和投资期间。",
     "sampleWarning": "一个或两个资产正在使用示例数据，因为历史数据尚未导入。",
     "copyLink": "复制对比链接",
     "copyCaption": "复制对比文案",

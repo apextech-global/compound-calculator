@@ -408,7 +408,7 @@
   },
   "comparison": {
     "eyebrow": "Bandingkan aset",
-    "title": "Bandingkan Dua Backtest DCA",
+    "title": "Bandingkan dua aset",
     "description": "Bandingkan dua aset dengan jumlah investasi bulanan dan periode waktu yang sama.",
     "assetA": "Aset A",
     "assetB": "Aset B",

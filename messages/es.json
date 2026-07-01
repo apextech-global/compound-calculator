@@ -408,7 +408,7 @@
   },
   "comparison": {
     "eyebrow": "Comparar activos",
-    "title": "Comparar dos backtests DCA",
+    "title": "Comparar dos activos",
     "description": "Compara dos activos con la misma inversión mensual y el mismo periodo.",
     "assetA": "Activo A",
     "assetB": "Activo B",

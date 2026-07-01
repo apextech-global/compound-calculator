@@ -442,7 +442,7 @@
   },
   "comparison": {
     "eyebrow": "자산 비교",
-    "title": "두 DCA 백테스트 비교",
+    "title": "두 자산 비교",
     "description": "같은 월 투자금과 같은 기간으로 두 자산의 DCA 결과를 비교합니다.",
     "assetA": "자산 A",
     "assetB": "자산 B",

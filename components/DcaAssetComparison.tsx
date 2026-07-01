@@ -314,20 +314,10 @@ export default function DcaAssetComparison({
 
   const handleAssetAChange = (value: SymbolKey) => {
     setAssetAId(value);
-    const nextAsset = getInstrument(value);
-    trackGaEvent("comparison_asset_selected", {
-      ...eventParams,
-      asset_a_symbol: nextAsset.displaySymbol,
-    });
   };
 
   const handleAssetBChange = (value: SymbolKey) => {
     setAssetBId(value);
-    const nextAsset = getInstrument(value);
-    trackGaEvent("comparison_asset_selected", {
-      ...eventParams,
-      asset_b_symbol: nextAsset.displaySymbol,
-    });
   };
 
   const copyComparisonLink = async () => {

@@ -442,7 +442,7 @@
   },
   "comparison": {
     "eyebrow": "資産を比較",
-    "title": "2つのDCAバックテストを比較",
+    "title": "2つの資産を比較",
     "description": "同じ毎月投資額と同じ期間で、2つの資産のDCA結果を比較します。",
     "assetA": "資産A",
     "assetB": "資産B",
