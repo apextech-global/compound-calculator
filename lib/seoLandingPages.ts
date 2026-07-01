@@ -1,6 +1,6 @@
 import { routing, type Locale } from "@/i18n/routing";
 
-export const seoPageSlugs = [
+const baseSeoPageSlugs = [
   "compound-interest-calculator",
   "dca-calculator",
   "etf-calculator",
@@ -8,7 +8,22 @@ export const seoPageSlugs = [
   "cspx-dca-calculator",
 ] as const;
 
+const comparisonSeoPageSlugs = [
+  "voo-vs-cspx",
+  "voo-vs-qqq",
+  "cspx-vs-vwra",
+  "iwda-vs-vwra",
+  "etf-comparison-calculator",
+] as const;
+
+export const seoPageSlugs = [
+  ...baseSeoPageSlugs,
+  ...comparisonSeoPageSlugs,
+] as const;
+
 export type SeoPageSlug = (typeof seoPageSlugs)[number];
+type BaseSeoPageSlug = (typeof baseSeoPageSlugs)[number];
+type ComparisonSeoPageSlug = (typeof comparisonSeoPageSlugs)[number];
 
 type SeoPageContent = {
   title: string;
@@ -36,7 +51,7 @@ type LocaleSeoContent = {
   pages: Record<SeoPageSlug, SeoPageContent>;
 };
 
-const enPages: Record<SeoPageSlug, SeoPageContent> = {
+const enPages: Record<BaseSeoPageSlug, SeoPageContent> = {
   "compound-interest-calculator": {
     title:
       "Compound Interest Calculator | Monthly Investment Growth Calculator",
@@ -333,14 +348,14 @@ const idPages = translatePages({
 });
 
 function translatePages(
-  source: Record<SeoPageSlug, [string, string, string, string, ...Array<[string, string]>]>
+  source: Record<BaseSeoPageSlug, [string, string, string, string, ...Array<[string, string]>]>
 ) {
   return Object.fromEntries(
     Object.entries(source).map(([slug, [title, description, h1, intro, ...sections]]) => [
       slug,
       buildPage(title, description, h1, intro, sections),
     ])
-  ) as Record<SeoPageSlug, SeoPageContent>;
+  ) as Record<BaseSeoPageSlug, SeoPageContent>;
 }
 
 function buildPage(
@@ -405,7 +420,7 @@ const genericLocaleLabels: Record<string, Omit<LocaleSeoContent, "pages">> = {
   },
 };
 
-const localizedPages: Partial<Record<Locale, Record<SeoPageSlug, SeoPageContent>>> = {
+const localizedPages: Partial<Record<Locale, Record<BaseSeoPageSlug, SeoPageContent>>> = {
   en: enPages,
   "zh-CN": zhCnPages,
   "zh-TW": zhTwPages,
@@ -496,14 +511,409 @@ const simpleLocaleText: Partial<Record<Locale, {
   ta: { compound: "கூட்டு வட்டி கணிப்பான்", dca: "DCA கணிப்பான்", etf: "ETF முதலீட்டு கணிப்பான்", voo: "VOO DCA கணிப்பான்", cspx: "CSPX DCA கணிப்பான்", titleSuffix: "முதலீட்டு வழிகாட்டி", estimate: "கல்வி நோக்கத்திற்காக மாதாந்திர முதலீடு மற்றும் நீண்டகால வளர்ச்சியை மதிப்பிடுங்கள்.", learn: "இந்த பக்கம் மாதாந்திர முதலீடு, DCA, ETF மற்றும் கூட்டு வளர்ச்சியை எளிதாக விளக்குகிறது.", sectionOne: "அடிப்படை கருத்து", sectionTwo: "மாதாந்திர முதலீட்டில் பயன்பாடு", sectionThree: "நீண்டகால வளர்ச்சியைப் புரிதல்", sectionFour: "முக்கிய வரம்புகள்", faqOne: "இந்த பக்கம் இலவசமா?", faqTwo: "இது முதலீட்டு ஆலோசனையா?", answerOne: "ஆம். கல்வி நோக்கத்திற்காக இலவசமாகப் பார்க்கலாம்.", answerTwo: "இல்லை. இது நிதி ஆலோசனை அல்ல." },
 };
 
-function adaptEnglishPages(locale: Locale): Record<SeoPageSlug, SeoPageContent> {
+const comparisonDefinitions: Record<
+  ComparisonSeoPageSlug,
+  { assetA: string; assetB: string; theme: "comparison" | "calculator" }
+> = {
+  "voo-vs-cspx": { assetA: "VOO", assetB: "CSPX", theme: "comparison" },
+  "voo-vs-qqq": { assetA: "VOO", assetB: "QQQ", theme: "comparison" },
+  "cspx-vs-vwra": { assetA: "CSPX", assetB: "VWRA", theme: "comparison" },
+  "iwda-vs-vwra": { assetA: "IWDA", assetB: "VWRA", theme: "comparison" },
+  "etf-comparison-calculator": {
+    assetA: "ETF",
+    assetB: "ETF",
+    theme: "calculator",
+  },
+};
+
+type ComparisonLocaleText = {
+  title: (assetA: string, assetB: string) => string;
+  calculatorTitle: string;
+  description: (assetA: string, assetB: string) => string;
+  calculatorDescription: string;
+  h1: (assetA: string, assetB: string) => string;
+  calculatorH1: string;
+  intro: (assetA: string, assetB: string) => string;
+  calculatorIntro: string;
+  keyTitle: string;
+  keyBody: (assetA: string, assetB: string) => string;
+  calculatorKeyBody: string;
+  dcaTitle: string;
+  dcaBody: (assetA: string, assetB: string) => string;
+  calculatorDcaBody: string;
+  riskTitle: string;
+  riskBody: string;
+  dataTitle: string;
+  dataBody: string;
+  faqBetter: (assetA: string, assetB: string) => string;
+  faqBetterAnswer: (assetA: string, assetB: string) => string;
+  faqDca: string;
+  faqDcaAnswer: string;
+  faqAdvice: string;
+  faqAdviceAnswer: string;
+};
+
+const comparisonText: Partial<Record<Locale, ComparisonLocaleText>> = {
+  en: {
+    title: (a, b) => `${a} vs ${b} | ETF DCA Comparison Calculator`,
+    calculatorTitle: "ETF Comparison Calculator | Compare ETF DCA Backtests",
+    description: (a, b) =>
+      `Compare ${a} and ${b} for educational ETF DCA backtesting. Learn key differences and test monthly investing scenarios.`,
+    calculatorDescription:
+      "Compare ETF DCA backtests using the same monthly investment amount, time period, and display currency.",
+    h1: (a, b) => `${a} vs ${b}`,
+    calculatorH1: "ETF Comparison Calculator",
+    intro: (a, b) =>
+      `Use this educational guide to compare ${a} and ${b} before testing both assets with the DCA comparison calculator.`,
+    calculatorIntro:
+      "Compare two ETFs or assets with the same monthly investment amount and time period using the DCA Backtest comparison tool.",
+    keyTitle: "Key differences",
+    keyBody: (a, b) =>
+      `${a} and ${b} may differ by index exposure, fund domicile, currency, fees, dividend treatment, trading venue, and tax considerations. Neither fund is always better; the right comparison depends on the investor and assumptions.`,
+    calculatorKeyBody:
+      "An ETF comparison calculator helps compare assets side by side, but it should be used as an educational tool rather than a recommendation engine.",
+    dcaTitle: "How to compare DCA backtests",
+    dcaBody: (a, b) =>
+      `Use the same monthly amount, start year, end year, and display currency for ${a} and ${b}. This keeps the comparison focused on asset performance instead of different contribution assumptions.`,
+    calculatorDcaBody:
+      "Select two assets, enter a monthly amount, choose a start and end year, and review final value, profit, return, difference, and the better performer for that period.",
+    riskTitle: "Risk and result limitations",
+    riskBody:
+      "Results can change with time period, fund fees, taxes, exchange rates, dividends, spreads, execution prices, tracking error, data availability, and market performance. This content is educational only and not financial advice.",
+    dataTitle: "Historical data and sample data",
+    dataBody:
+      "When historical CSV data is available, the calculator uses monthly prices generated from historical daily adjusted close data. When unavailable, it clearly labels sample data.",
+    faqBetter: (a, b) => `Is ${a} better than ${b}?`,
+    faqBetterAnswer: (a, b) =>
+      `Not always. ${a} and ${b} can perform differently depending on the period, fees, taxes, currency, dividends, and market conditions.`,
+    faqDca: "Can I backtest both assets with the same monthly amount?",
+    faqDcaAnswer:
+      "Yes. The comparison tool uses the same monthly investment amount and time period for both selected assets.",
+    faqAdvice: "Is this page investment advice?",
+    faqAdviceAnswer:
+      "No. This page and calculator are for educational purposes only and are not financial advice.",
+  },
+  "zh-CN": {
+    title: (a, b) => `${a} vs ${b} | ETF定投对比计算器`,
+    calculatorTitle: "ETF对比计算器 | 对比ETF定投回测",
+    description: (a, b) => `对比 ${a} 和 ${b} 的 ETF 定投回测，了解关键差异并测试每月定投情景。`,
+    calculatorDescription: "使用相同每月投入金额、投资期间和显示货币，对比 ETF 定投回测结果。",
+    h1: (a, b) => `${a} vs ${b}`,
+    calculatorH1: "ETF对比计算器",
+    intro: (a, b) => `在使用 DCA 对比工具前，先了解 ${a} 和 ${b} 的教育性对比重点。`,
+    calculatorIntro: "用 DCA Backtest 对比工具，在相同每月投入和相同期间下比较两个 ETF 或资产。",
+    keyTitle: "关键差异",
+    keyBody: (a, b) => `${a} 和 ${b} 可能在指数敞口、基金注册地、货币、费用、分红处理、交易市场和税务因素上不同。没有一个基金永远更好，结果取决于投资者和假设。`,
+    calculatorKeyBody: "ETF 对比计算器可以并排比较资产，但它是教育工具，不是投资推荐系统。",
+    dcaTitle: "如何对比定投回测",
+    dcaBody: (a, b) => `对 ${a} 和 ${b} 使用相同每月金额、开始年份、结束年份和显示货币，这样对比更集中在资产表现而不是投入假设。`,
+    calculatorDcaBody: "选择两个资产，输入每月金额和起止年份，查看最终价值、利润、回报、差额以及该期间表现较好的资产。",
+    riskTitle: "风险与结果限制",
+    riskBody: "结果会受到时间区间、基金费用、税务、汇率、分红、价差、成交价、跟踪误差、数据可用性和市场表现影响。本内容仅供教育用途，不构成金融建议。",
+    dataTitle: "历史数据与示例数据",
+    dataBody: "有历史 CSV 数据时，计算器使用由历史每日调整收盘价生成的月度价格。没有数据时，会明确标记示例数据。",
+    faqBetter: (a, b) => `${a} 一定比 ${b} 更好吗？`,
+    faqBetterAnswer: (a, b) => `不一定。${a} 和 ${b} 的表现会因期间、费用、税务、货币、分红和市场环境而不同。`,
+    faqDca: "可以用相同每月金额回测两个资产吗？",
+    faqDcaAnswer: "可以。对比工具会对两个资产使用相同每月投入金额和相同投资期间。",
+    faqAdvice: "这个页面是投资建议吗？",
+    faqAdviceAnswer: "不是。本页面和计算器仅供教育用途，不构成金融建议。",
+  },
+  "zh-TW": {
+    title: (a, b) => `${a} vs ${b} | ETF定投對比計算器`,
+    calculatorTitle: "ETF對比計算器 | 對比ETF定投回測",
+    description: (a, b) => `對比 ${a} 和 ${b} 的 ETF 定投回測，了解關鍵差異並測試每月定投情境。`,
+    calculatorDescription: "使用相同每月投入金額、投資期間和顯示貨幣，對比 ETF 定投回測結果。",
+    h1: (a, b) => `${a} vs ${b}`,
+    calculatorH1: "ETF對比計算器",
+    intro: (a, b) => `在使用 DCA 對比工具前，先了解 ${a} 和 ${b} 的教育性對比重點。`,
+    calculatorIntro: "用 DCA Backtest 對比工具，在相同每月投入和相同期間下比較兩個 ETF 或資產。",
+    keyTitle: "關鍵差異",
+    keyBody: (a, b) => `${a} 和 ${b} 可能在指數曝險、基金註冊地、貨幣、費用、配息處理、交易市場和稅務因素上不同。沒有一個基金永遠更好，結果取決於投資者和假設。`,
+    calculatorKeyBody: "ETF 對比計算器可以並排比較資產，但它是教育工具，不是投資推薦系統。",
+    dcaTitle: "如何對比定投回測",
+    dcaBody: (a, b) => `對 ${a} 和 ${b} 使用相同每月金額、開始年份、結束年份和顯示貨幣，讓對比更集中在資產表現而不是投入假設。`,
+    calculatorDcaBody: "選擇兩個資產，輸入每月金額和起止年份，查看最終價值、利潤、回報、差額以及該期間表現較好的資產。",
+    riskTitle: "風險與結果限制",
+    riskBody: "結果會受到時間區間、基金費用、稅務、匯率、配息、價差、成交價、追蹤誤差、資料可用性和市場表現影響。本內容僅供教育用途，不構成金融建議。",
+    dataTitle: "歷史資料與範例資料",
+    dataBody: "有歷史 CSV 資料時，計算器使用由歷史每日調整收盤價生成的月度價格。沒有資料時，會明確標記範例資料。",
+    faqBetter: (a, b) => `${a} 一定比 ${b} 更好嗎？`,
+    faqBetterAnswer: (a, b) => `不一定。${a} 和 ${b} 的表現會因期間、費用、稅務、貨幣、配息和市場環境而不同。`,
+    faqDca: "可以用相同每月金額回測兩個資產嗎？",
+    faqDcaAnswer: "可以。對比工具會對兩個資產使用相同每月投入金額和相同投資期間。",
+    faqAdvice: "這個頁面是投資建議嗎？",
+    faqAdviceAnswer: "不是。本頁面和計算器僅供教育用途，不構成金融建議。",
+  },
+};
+
+type ComparisonPhrasePack = {
+  description: (assetA: string, assetB: string, label: string) => string;
+  calculatorDescription: (title: string) => string;
+  intro: (compareWord: string, assetA: string, assetB: string) => string;
+  calculatorIntro: (title: string) => string;
+  keyBody: (assetA: string, assetB: string) => string;
+  calculatorKeyBody: string;
+  dcaTitle: string;
+  dcaBody: (assetA: string, assetB: string) => string;
+  calculatorDcaBody: string;
+  riskTitle: string;
+  riskBody: (disclaimer: string) => string;
+  dataTitle: string;
+  dataBody: string;
+  faqBetterAnswer: (assetA: string, assetB: string) => string;
+  faqDca: string;
+  faqDcaAnswer: string;
+  faqAdvice: string;
+};
+
+const comparisonPhrases: Record<Locale, ComparisonPhrasePack> = {
+  en: {
+    description: (a, b, label) => `${a} and ${b}: ${label} for educational DCA backtesting.`,
+    calculatorDescription: (title) => `${title}: compare assets with the same monthly amount and time period.`,
+    intro: (word, a, b) => `${word} ${a} and ${b} with an educational DCA backtest guide.`,
+    calculatorIntro: (title) => `${title} for comparing two ETFs or assets with matching DCA assumptions.`,
+    keyBody: (a, b) => `${a} and ${b} can differ by index exposure, domicile, currency, fees, dividends, taxes, and trading venue. No ETF is always better.`,
+    calculatorKeyBody: "The calculator compares two assets side by side for education and does not make recommendations.",
+    dcaTitle: "DCA backtest",
+    dcaBody: (a, b) => `Use the same monthly amount and time period for ${a} and ${b} to make the comparison clearer.`,
+    calculatorDcaBody: "Choose two assets, monthly amount, start year, end year, and currency to compare DCA results.",
+    riskTitle: "Risk and disclaimer",
+    riskBody: (disclaimer) => `${disclaimer} Results depend on time period, fees, taxes, currency, dividends, data availability, and market performance.`,
+    dataTitle: "Data source",
+    dataBody: "Historical data is used where available. If unavailable, the calculator clearly shows sample data.",
+    faqBetterAnswer: (a, b) => `${a} and ${b} can perform differently depending on the selected period and assumptions.`,
+    faqDca: "Can I compare with DCA?",
+    faqDcaAnswer: "Yes. Use the same monthly amount and time period for both assets.",
+    faqAdvice: "Is this advice?",
+  },
+  "zh-CN": {
+    description: (a, b, label) => `${a} 和 ${b} 的${label}，用于教育性 DCA 回测。`,
+    calculatorDescription: (title) => `${title}：使用相同每月投入金额和投资期间对比资产。`,
+    intro: (_word, a, b) => `对比 ${a} 和 ${b}，并了解如何用 DCA 回测工具测试相同投入假设。`,
+    calculatorIntro: (title) => `${title}，用于在相同 DCA 假设下对比两个 ETF 或资产。`,
+    keyBody: (a, b) => `${a} 和 ${b} 可能在指数敞口、注册地、货币、费用、分红、税务和交易市场方面不同。没有一个 ETF 永远更好。`,
+    calculatorKeyBody: "此工具用于教育性地并排比较两个资产，不提供投资推荐。",
+    dcaTitle: "DCA 回测",
+    dcaBody: (a, b) => `对 ${a} 和 ${b} 使用相同每月金额和相同期间，可以让对比更清晰。`,
+    calculatorDcaBody: "选择两个资产、每月金额、开始年份、结束年份和货币，即可对比 DCA 结果。",
+    riskTitle: "风险与免责声明",
+    riskBody: (d) => `${d} 结果取决于时间区间、费用、税务、货币、分红、数据可用性和市场表现。`,
+    dataTitle: "数据来源",
+    dataBody: "有历史数据时会使用历史数据；没有数据时，计算器会明确显示示例数据。",
+    faqBetterAnswer: (a, b) => `${a} 和 ${b} 的表现会因所选期间和假设而不同。`,
+    faqDca: "可以用 DCA 对比吗？",
+    faqDcaAnswer: "可以。请对两个资产使用相同每月金额和相同期间。",
+    faqAdvice: "这是投资建议吗？",
+  },
+  "zh-TW": {
+    description: (a, b, label) => `${a} 和 ${b} 的${label}，用於教育性 DCA 回測。`,
+    calculatorDescription: (title) => `${title}：使用相同每月投入金額和投資期間對比資產。`,
+    intro: (_word, a, b) => `對比 ${a} 和 ${b}，並了解如何用 DCA 回測工具測試相同投入假設。`,
+    calculatorIntro: (title) => `${title}，用於在相同 DCA 假設下對比兩個 ETF 或資產。`,
+    keyBody: (a, b) => `${a} 和 ${b} 可能在指數曝險、註冊地、貨幣、費用、配息、稅務和交易市場方面不同。沒有一個 ETF 永遠更好。`,
+    calculatorKeyBody: "此工具用於教育性地並排比較兩個資產，不提供投資推薦。",
+    dcaTitle: "DCA 回測",
+    dcaBody: (a, b) => `對 ${a} 和 ${b} 使用相同每月金額和相同期間，可以讓對比更清晰。`,
+    calculatorDcaBody: "選擇兩個資產、每月金額、開始年份、結束年份和貨幣，即可對比 DCA 結果。",
+    riskTitle: "風險與免責聲明",
+    riskBody: (d) => `${d} 結果取決於時間區間、費用、稅務、貨幣、配息、資料可用性和市場表現。`,
+    dataTitle: "資料來源",
+    dataBody: "有歷史資料時會使用歷史資料；沒有資料時，計算器會明確顯示範例資料。",
+    faqBetterAnswer: (a, b) => `${a} 和 ${b} 的表現會因所選期間和假設而不同。`,
+    faqDca: "可以用 DCA 對比嗎？",
+    faqDcaAnswer: "可以。請對兩個資產使用相同每月金額和相同期間。",
+    faqAdvice: "這是投資建議嗎？",
+  },
+  ms: {
+    description: (a, b, label) => `${label} ${a} dan ${b} untuk ujian balik DCA pendidikan.`,
+    calculatorDescription: (title) => `${title}: bandingkan aset dengan jumlah bulanan dan tempoh masa yang sama.`,
+    intro: (word, a, b) => `${word} ${a} dan ${b} dengan panduan ujian balik DCA pendidikan.`,
+    calculatorIntro: (title) => `${title} untuk membandingkan dua ETF atau aset dengan andaian DCA yang sama.`,
+    keyBody: (a, b) => `${a} dan ${b} boleh berbeza dari segi pendedahan indeks, domisil, mata wang, yuran, dividen, cukai dan tempat dagangan. Tiada ETF yang sentiasa lebih baik.`,
+    calculatorKeyBody: "Kalkulator ini membandingkan dua aset secara sebelah menyebelah untuk pendidikan dan tidak memberi cadangan.",
+    dcaTitle: "Ujian balik DCA",
+    dcaBody: (a, b) => `Gunakan jumlah bulanan dan tempoh masa yang sama untuk ${a} dan ${b} supaya perbandingan lebih jelas.`,
+    calculatorDcaBody: "Pilih dua aset, jumlah bulanan, tahun mula, tahun akhir dan mata wang untuk membandingkan keputusan DCA.",
+    riskTitle: "Risiko dan penafian",
+    riskBody: (d) => `${d} Keputusan bergantung pada tempoh masa, yuran, cukai, mata wang, dividen, ketersediaan data dan prestasi pasaran.`,
+    dataTitle: "Sumber data",
+    dataBody: "Data sejarah digunakan apabila tersedia. Jika tidak tersedia, kalkulator memaparkan data sampel dengan jelas.",
+    faqBetterAnswer: (a, b) => `${a} dan ${b} boleh menunjukkan prestasi berbeza bergantung pada tempoh dan andaian yang dipilih.`,
+    faqDca: "Bolehkah saya bandingkan dengan DCA?",
+    faqDcaAnswer: "Ya. Gunakan jumlah bulanan dan tempoh masa yang sama untuk kedua-dua aset.",
+    faqAdvice: "Adakah ini nasihat?",
+  },
+  id: {
+    description: (a, b, label) => `${label} ${a} dan ${b} untuk backtest DCA edukatif.`,
+    calculatorDescription: (title) => `${title}: bandingkan aset dengan jumlah bulanan dan periode yang sama.`,
+    intro: (word, a, b) => `${word} ${a} dan ${b} dengan panduan backtest DCA edukatif.`,
+    calculatorIntro: (title) => `${title} untuk membandingkan dua ETF atau aset dengan asumsi DCA yang sama.`,
+    keyBody: (a, b) => `${a} dan ${b} dapat berbeda dari sisi eksposur indeks, domisili, mata uang, biaya, dividen, pajak, dan tempat perdagangan. Tidak ada ETF yang selalu lebih baik.`,
+    calculatorKeyBody: "Kalkulator ini membandingkan dua aset berdampingan untuk edukasi dan tidak memberi rekomendasi.",
+    dcaTitle: "Backtest DCA",
+    dcaBody: (a, b) => `Gunakan jumlah bulanan dan periode yang sama untuk ${a} dan ${b} agar perbandingan lebih jelas.`,
+    calculatorDcaBody: "Pilih dua aset, jumlah bulanan, tahun mulai, tahun akhir, dan mata uang untuk membandingkan hasil DCA.",
+    riskTitle: "Risiko dan penafian",
+    riskBody: (d) => `${d} Hasil bergantung pada periode, biaya, pajak, mata uang, dividen, ketersediaan data, dan kinerja pasar.`,
+    dataTitle: "Sumber data",
+    dataBody: "Data historis digunakan jika tersedia. Jika tidak tersedia, kalkulator menampilkan data sampel dengan jelas.",
+    faqBetterAnswer: (a, b) => `${a} dan ${b} dapat berkinerja berbeda tergantung periode dan asumsi yang dipilih.`,
+    faqDca: "Bisakah saya membandingkan dengan DCA?",
+    faqDcaAnswer: "Ya. Gunakan jumlah bulanan dan periode yang sama untuk kedua aset.",
+    faqAdvice: "Apakah ini nasihat?",
+  },
+  ja: phrasePack("教育用DCAバックテスト", "同じ毎月投資額と期間で資産を比較します。", "比較", "DCAバックテスト", "リスクと免責事項", "データソース", "これは助言ですか？"),
+  ko: phrasePack("교육용 DCA 백테스트", "같은 월 투자금과 기간으로 자산을 비교합니다.", "비교", "DCA 백테스트", "위험 및 고지", "데이터 출처", "조언인가요?"),
+  ru: phrasePack("образовательного DCA-бэктеста", "Сравнивайте активы с одинаковой ежемесячной суммой и периодом.", "Сравнение", "DCA-бэктест", "Риски и отказ от ответственности", "Источник данных", "Это рекомендация?"),
+  fr: phrasePack("backtest DCA éducatif", "Comparez les actifs avec le même montant mensuel et la même période.", "Comparer", "Backtest DCA", "Risques et avertissement", "Source des données", "Est-ce un conseil ?"),
+  it: phrasePack("backtest DCA educativo", "Confronta asset con lo stesso importo mensile e lo stesso periodo.", "Confronto", "Backtest DCA", "Rischi e avvertenza", "Fonte dati", "È consulenza?"),
+  es: phrasePack("backtest DCA educativo", "Compara activos con el mismo importe mensual y el mismo periodo.", "Comparar", "Backtest DCA", "Riesgos y aviso", "Fuente de datos", "¿Es asesoramiento?"),
+  ar: phrasePack("اختبار DCA تعليمي", "قارن الأصول بالمبلغ الشهري نفسه والفترة نفسها.", "مقارنة", "اختبار DCA", "المخاطر وإخلاء المسؤولية", "مصدر البيانات", "هل هذه نصيحة؟"),
+  de: phrasePack("pädagogischen DCA-Backtest", "Vergleichen Sie Assets mit demselben Monatsbetrag und Zeitraum.", "Vergleich", "DCA-Backtest", "Risiken und Hinweis", "Datenquelle", "Ist das Beratung?"),
+  ta: phrasePack("கல்வி DCA பின்சோதனை", "அதே மாதாந்திர தொகை மற்றும் காலத்துடன் சொத்துகளை ஒப்பிடுங்கள்.", "ஒப்பீடு", "DCA பின்சோதனை", "அபாயம் மற்றும் மறுப்பு", "தரவு மூலம்", "இது ஆலோசனையா?"),
+};
+
+function getComparisonPhrases(locale: Locale): ComparisonPhrasePack {
+  return comparisonPhrases[locale] ?? comparisonPhrases.en;
+}
+
+function phrasePack(
+  educationalBacktest: string,
+  calculatorDescription: string,
+  compareWord: string,
+  dcaTitle: string,
+  riskTitle: string,
+  dataTitle: string,
+  faqAdvice: string
+): ComparisonPhrasePack {
+  return {
+    description: (a, b, label) => `${a} vs ${b}: ${label} ${educationalBacktest}.`,
+    calculatorDescription: (title) => `${title}: ${calculatorDescription}`,
+    intro: (_word, a, b) => `${compareWord} ${a} vs ${b}. ${calculatorDescription}`,
+    calculatorIntro: (title) => `${title}. ${calculatorDescription}`,
+    keyBody: (a, b) => `${a} vs ${b}: ${calculatorDescription}`,
+    calculatorKeyBody: calculatorDescription,
+    dcaTitle,
+    dcaBody: (a, b) => `${a} vs ${b}: ${calculatorDescription}`,
+    calculatorDcaBody: calculatorDescription,
+    riskTitle,
+    riskBody: (disclaimer) => disclaimer,
+    dataTitle,
+    dataBody: calculatorDescription,
+    faqBetterAnswer: (a, b) => `${a} vs ${b}: ${calculatorDescription}`,
+    faqDca: dcaTitle,
+    faqDcaAnswer: calculatorDescription,
+    faqAdvice,
+  };
+}
+
+function comparisonLocale(
+  compareWord: string,
+  calculatorTitle: string,
+  comparisonLabel: string,
+  disclaimer: string,
+  locale: Locale
+): ComparisonLocaleText {
+  const phrases = getComparisonPhrases(locale);
+
+  return {
+    title: (assetA, assetB) => `${assetA} vs ${assetB} | ${comparisonLabel}`,
+    calculatorTitle,
+    description: (assetA, assetB) =>
+      phrases.description(assetA, assetB, comparisonLabel),
+    calculatorDescription: phrases.calculatorDescription(calculatorTitle),
+    h1: (assetA, assetB) => `${assetA} vs ${assetB}`,
+    calculatorH1: calculatorTitle,
+    intro: (assetA, assetB) =>
+      phrases.intro(compareWord, assetA, assetB),
+    calculatorIntro: phrases.calculatorIntro(calculatorTitle),
+    keyTitle: comparisonLabel,
+    keyBody: (assetA, assetB) =>
+      phrases.keyBody(assetA, assetB),
+    calculatorKeyBody: phrases.calculatorKeyBody,
+    dcaTitle: phrases.dcaTitle,
+    dcaBody: (assetA, assetB) =>
+      phrases.dcaBody(assetA, assetB),
+    calculatorDcaBody: phrases.calculatorDcaBody,
+    riskTitle: phrases.riskTitle,
+    riskBody: phrases.riskBody(disclaimer),
+    dataTitle: phrases.dataTitle,
+    dataBody: phrases.dataBody,
+    faqBetter: (assetA, assetB) => `${assetA} vs ${assetB}?`,
+    faqBetterAnswer: (assetA, assetB) =>
+      phrases.faqBetterAnswer(assetA, assetB),
+    faqDca: phrases.faqDca,
+    faqDcaAnswer: phrases.faqDcaAnswer,
+    faqAdvice: phrases.faqAdvice,
+    faqAdviceAnswer: disclaimer,
+  };
+}
+
+function buildComparisonPages(locale: Locale): Record<ComparisonSeoPageSlug, SeoPageContent> {
+  const text = comparisonText[locale] ?? comparisonText.en;
+
+  return Object.fromEntries(
+    comparisonSeoPageSlugs.map((slug) => {
+      const definition = comparisonDefinitions[slug];
+      const isCalculator = definition.theme === "calculator";
+      const { assetA, assetB } = definition;
+
+      return [
+        slug,
+        {
+          title: isCalculator
+            ? text.calculatorTitle
+            : text.title(assetA, assetB),
+          description: isCalculator
+            ? text.calculatorDescription
+            : text.description(assetA, assetB),
+          h1: isCalculator ? text.calculatorH1 : text.h1(assetA, assetB),
+          intro: isCalculator
+            ? text.calculatorIntro
+            : text.intro(assetA, assetB),
+          sections: [
+            {
+              title: text.keyTitle,
+              body: isCalculator
+                ? text.calculatorKeyBody
+                : text.keyBody(assetA, assetB),
+            },
+            {
+              title: text.dcaTitle,
+              body: isCalculator
+                ? text.calculatorDcaBody
+                : text.dcaBody(assetA, assetB),
+            },
+            { title: text.dataTitle, body: text.dataBody },
+            { title: text.riskTitle, body: text.riskBody },
+          ],
+          faqs: [
+            {
+              question: isCalculator
+                ? text.faqDca
+                : text.faqBetter(assetA, assetB),
+              answer: isCalculator
+                ? text.faqDcaAnswer
+                : text.faqBetterAnswer(assetA, assetB),
+            },
+            { question: text.faqDca, answer: text.faqDcaAnswer },
+            { question: text.faqAdvice, answer: text.faqAdviceAnswer },
+          ],
+        },
+      ];
+    })
+  ) as Record<ComparisonSeoPageSlug, SeoPageContent>;
+}
+
+function adaptEnglishPages(locale: Locale): Record<BaseSeoPageSlug, SeoPageContent> {
   const text = simpleLocaleText[locale];
 
   if (!text) {
     return enPages;
   }
 
-  const names: Record<SeoPageSlug, string> = {
+  const names: Record<BaseSeoPageSlug, string> = {
     "compound-interest-calculator": text.compound,
     "dca-calculator": text.dca,
     "etf-calculator": text.etf,
@@ -512,7 +922,7 @@ function adaptEnglishPages(locale: Locale): Record<SeoPageSlug, SeoPageContent> 
   };
 
   return Object.fromEntries(
-    seoPageSlugs.map((slug) => [
+    baseSeoPageSlugs.map((slug) => [
       slug,
       {
         title: `${names[slug]} | ${text.titleSuffix}`,
@@ -532,13 +942,17 @@ function adaptEnglishPages(locale: Locale): Record<SeoPageSlug, SeoPageContent> 
         ],
       },
     ])
-  ) as Record<SeoPageSlug, SeoPageContent>;
+  ) as Record<BaseSeoPageSlug, SeoPageContent>;
 }
 
 export function getSeoLandingContent(locale: Locale): LocaleSeoContent {
   return {
     ...(localeLabels[locale] ?? genericLocaleLabels.en),
-    pages: localizedPages[locale] ?? adaptEnglishPages(locale),
+    pages: {
+      ...adaptEnglishPages(locale),
+      ...(localizedPages[locale] ?? {}),
+      ...buildComparisonPages(locale),
+    },
   };
 }
 
