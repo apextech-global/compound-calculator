@@ -12,7 +12,10 @@ import {
 } from "recharts";
 import type { CurrencyCode } from "@/lib/currencies";
 import { convertCurrencyToUsd } from "@/lib/currencies";
-import type { DcaBacktestResult } from "@/lib/calculations";
+import type {
+  DcaBacktestResult,
+  PurchasePriceMethod,
+} from "@/lib/calculations";
 import {
   formatCompactMoney,
   formatInputAmount,
@@ -39,6 +42,9 @@ type DcaBacktestCalculatorProps = {
   backtestAssetType: AssetType;
   backtestSymbol: SymbolKey;
   backtestMonthlyAmount: string;
+  backtestFixedFee: string;
+  backtestPercentageFee: string;
+  backtestPurchasePriceMethod: PurchasePriceMethod;
   backtestStartYear: string;
   backtestEndYear: string;
   availableYears: number[];
@@ -47,6 +53,9 @@ type DcaBacktestCalculatorProps = {
   setBacktestAssetType: (value: AssetType) => void;
   setBacktestSymbol: (value: SymbolKey) => void;
   setBacktestMonthlyAmount: (value: string) => void;
+  setBacktestFixedFee: (value: string) => void;
+  setBacktestPercentageFee: (value: string) => void;
+  setBacktestPurchasePriceMethod: (value: PurchasePriceMethod) => void;
   setBacktestStartYear: (value: string) => void;
   setBacktestEndYear: (value: string) => void;
   setShowBacktestTable: (updater: (value: boolean) => boolean) => void;
@@ -74,6 +83,9 @@ export default function DcaBacktestCalculator({
   backtestAssetType,
   backtestSymbol,
   backtestMonthlyAmount,
+  backtestFixedFee,
+  backtestPercentageFee,
+  backtestPurchasePriceMethod,
   backtestStartYear,
   backtestEndYear,
   availableYears,
@@ -82,6 +94,9 @@ export default function DcaBacktestCalculator({
   setBacktestAssetType,
   setBacktestSymbol,
   setBacktestMonthlyAmount,
+  setBacktestFixedFee,
+  setBacktestPercentageFee,
+  setBacktestPurchasePriceMethod,
   setBacktestStartYear,
   setBacktestEndYear,
   setShowBacktestTable,
@@ -98,6 +113,13 @@ export default function DcaBacktestCalculator({
 }: DcaBacktestCalculatorProps) {
   const t = useTranslations();
   const locale = useLocale();
+  const monthlyAmount = Number(backtestMonthlyAmount) || 0;
+  const fixedFee = Math.max(0, Number(backtestFixedFee) || 0);
+  const percentageFee = Math.max(0, Number(backtestPercentageFee) || 0);
+  const estimatedFeePerPurchase =
+    fixedFee + monthlyAmount * (percentageFee / 100);
+  const feesExceedMonthlyAmount =
+    monthlyAmount > 0 && estimatedFeePerPurchase > monthlyAmount;
 
   return (
     <section className="w-full min-w-0">
@@ -307,6 +329,89 @@ export default function DcaBacktestCalculator({
                 </select>
               </label>
             </div>
+
+            <details className="rounded-2xl border border-white/10 bg-slate-950/45 p-4">
+              <summary className="cursor-pointer text-sm font-semibold text-cyan-200">
+                {t("advancedSettings.title")}
+              </summary>
+              <div className="mt-4 space-y-4">
+                <p className="text-sm leading-6 text-slate-400">
+                  {t("advancedSettings.feesHelper")}
+                </p>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <label className="block">
+                    <span className="mb-2 block text-sm text-slate-300">
+                      {t("advancedSettings.fixedFee")}
+                    </span>
+                    <input
+                      type="number"
+                      min="0"
+                      value={formatInputAmount(backtestFixedFee, selectedCurrency)}
+                      onChange={(e) => {
+                        const value = e.target.value;
+
+                        setBacktestFixedFee(
+                          value === ""
+                            ? ""
+                            : String(
+                                convertCurrencyToUsd(
+                                  Number(value) || 0,
+                                  selectedCurrency
+                                )
+                              )
+                        );
+                      }}
+                      className="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-3 text-white outline-none transition focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/10"
+                    />
+                  </label>
+                  <label className="block">
+                    <span className="mb-2 block text-sm text-slate-300">
+                      {t("advancedSettings.percentageFee")}
+                    </span>
+                    <input
+                      type="number"
+                      min="0"
+                      step="0.01"
+                      value={backtestPercentageFee}
+                      onChange={(e) => setBacktestPercentageFee(e.target.value)}
+                      className="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-3 text-white outline-none transition focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/10"
+                    />
+                  </label>
+                </div>
+                {feesExceedMonthlyAmount ? (
+                  <p className="rounded-2xl border border-amber-300/30 bg-amber-300/10 px-4 py-3 text-sm leading-6 text-amber-100">
+                    {t("advancedSettings.feeWarning")}
+                  </p>
+                ) : null}
+                <label className="block">
+                  <span className="mb-2 block text-sm text-slate-300">
+                    {t("advancedSettings.purchasePriceMethod")}
+                  </span>
+                  <select
+                    value={backtestPurchasePriceMethod}
+                    onChange={(e) =>
+                      setBacktestPurchasePriceMethod(
+                        e.target.value as PurchasePriceMethod
+                      )
+                    }
+                    className="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-3 text-white outline-none transition focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/10"
+                  >
+                    <option value="close">
+                      {t("advancedSettings.purchaseMethod.close")}
+                    </option>
+                    <option value="average">
+                      {t("advancedSettings.purchaseMethod.average")}
+                    </option>
+                    <option value="first">
+                      {t("advancedSettings.purchaseMethod.first")}
+                    </option>
+                  </select>
+                </label>
+                <p className="text-xs leading-5 text-slate-500">
+                  {t("advancedSettings.purchaseMethodNote")}
+                </p>
+              </div>
+            </details>
           </div>
 
           <div className="mt-4 rounded-2xl border border-white/10 bg-slate-950/60 p-4 sm:mt-6">
@@ -329,7 +434,7 @@ export default function DcaBacktestCalculator({
         </div>
 
         <div className="min-w-0 space-y-4 sm:space-y-6">
-          <div className="grid min-w-0 gap-3 sm:gap-4 md:grid-cols-4">
+          <div className="grid min-w-0 gap-3 sm:gap-4 md:grid-cols-2 xl:grid-cols-5">
             <div className="min-w-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] p-4 shadow-xl shadow-black/20 sm:rounded-3xl sm:p-5">
               <p className="min-w-0 truncate whitespace-nowrap text-sm text-slate-400">
                 {t("metrics.totalInvested")}
@@ -366,6 +471,14 @@ export default function DcaBacktestCalculator({
                 {formatPercent(backtest.totalReturn, locale)}%
               </p>
             </div>
+            <div className="min-w-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] p-4 shadow-xl shadow-black/20 sm:rounded-3xl sm:p-5">
+              <p className="min-w-0 truncate whitespace-nowrap text-sm text-slate-400">
+                {t("metrics.totalFeesPaid")}
+              </p>
+              <p className="mt-2 min-w-0 whitespace-normal break-words text-[clamp(1.5rem,2.4vw,1.875rem)] font-bold leading-tight text-amber-200 [overflow-wrap:anywhere]">
+                {formatMoney(backtest.totalFeesPaid, selectedCurrency, locale)}
+              </p>
+            </div>
           </div>
 
           <div className="min-w-0 rounded-2xl border border-white/10 bg-white/[0.045] p-4 shadow-xl shadow-black/20 sm:rounded-3xl sm:p-5">
@@ -395,6 +508,16 @@ export default function DcaBacktestCalculator({
                   value: `-${formatPercent(backtest.maxDrawdown, locale)}%`,
                   helper: t("advancedMetrics.maxDrawdownHelper"),
                   tone: "text-amber-200",
+                },
+                {
+                  label: t("advancedMetrics.netAmountInvested"),
+                  value: formatMoney(
+                    backtest.netAmountInvested,
+                    selectedCurrency,
+                    locale
+                  ),
+                  helper: t("advancedMetrics.netAmountInvestedHelper"),
+                  tone: "text-emerald-300",
                 },
                 {
                   label: t("advancedMetrics.bestPortfolioValue"),

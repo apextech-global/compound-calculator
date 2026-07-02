@@ -53,7 +53,8 @@
     "growth": "Croissance",
     "totalInvested": "Total investi",
     "totalProfit": "Profit total",
-    "totalReturn": "Rendement total"
+    "totalReturn": "Rendement total",
+    "totalFeesPaid": "Gezahlte Gebühren gesamt"
   },
   "dca": {
     "eyebrow": "Backtest DCA historique",
@@ -414,7 +415,9 @@
     "totalReturn": "Gesamtrendite",
     "disclaimer": "Nur zu Bildungszwecken. Keine Finanzberatung.",
     "cta": "Eigenen Backtest ausprobieren",
-    "dataSource": "Datenquelle"
+    "dataSource": "Datenquelle",
+    "totalFeesPaid": "Gezahlte Gebühren gesamt",
+    "netAmountInvested": "Netto investierter Betrag"
   },
   "mobile": {
     "backToCalculator": "Zurück zum Rechner"
@@ -494,6 +497,22 @@
     "totalMonthsInvestedHelper": "Anzahl der monatlichen Käufe in diesem Backtest.",
     "averagePurchasePrice": "Durchschnittlicher Kaufpreis",
     "averagePurchasePriceHelper": "Gesamtinvestition geteilt durch die angesammelten Anteile.",
-    "disclaimer": "Vergangene Wertentwicklung garantiert keine zukünftigen Ergebnisse."
+    "disclaimer": "Vergangene Wertentwicklung garantiert keine zukünftigen Ergebnisse.",
+    "netAmountInvested": "Netto investierter Betrag",
+    "netAmountInvestedHelper": "Betrag, der nach Gebühren tatsächlich zum Kauf des Assets verwendet wurde."
+  },
+  "advancedSettings": {
+    "title": "Erweiterte Einstellungen",
+    "fixedFee": "Brokergebühr pro Kauf",
+    "percentageFee": "Prozentuale Gebühr pro Kauf",
+    "purchasePriceMethod": "Kaufpreismethode",
+    "feesHelper": "Gebühren verringern den Betrag, der jeden Monat zum Kauf des Assets verwendet wird.",
+    "feeWarning": "Die Gebühren sind höher als der monatliche Anlagebetrag, daher wird der Nettokaufbetrag als null behandelt.",
+    "purchaseMethodNote": "Importierte Marktdaten simulieren Käufe derzeit zum monatlichen Schlusskurs. Durchschnitts- und erste verfügbare Preise sind für zukünftige Datenunterstützung vorgesehen.",
+    "purchaseMethod": {
+      "close": "Monatlicher Schlusskurs",
+      "average": "Monatlicher Durchschnittspreis",
+      "first": "Erster verfügbarer Monatspreis"
+    }
   }
 }

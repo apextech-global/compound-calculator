@@ -53,7 +53,8 @@
     "growth": "Pertumbuhan",
     "totalInvested": "Jumlah Dilabur",
     "totalProfit": "Jumlah Untung",
-    "totalReturn": "Jumlah Pulangan"
+    "totalReturn": "Jumlah Pulangan",
+    "totalFeesPaid": "Jumlah yuran dibayar"
   },
   "dca": {
     "eyebrow": "Ujian Balik DCA Sejarah",
@@ -414,7 +415,9 @@
     "totalReturn": "Jumlah pulangan",
     "disclaimer": "Untuk pendidikan sahaja. Bukan nasihat kewangan.",
     "cta": "Cuba backtest anda sendiri",
-    "dataSource": "Sumber data"
+    "dataSource": "Sumber data",
+    "totalFeesPaid": "Jumlah yuran dibayar",
+    "netAmountInvested": "Jumlah bersih dilaburkan"
   },
   "mobile": {
     "backToCalculator": "Kembali ke kalkulator"
@@ -494,6 +497,22 @@
     "totalMonthsInvestedHelper": "Bilangan pembelian bulanan yang termasuk dalam backtest ini.",
     "averagePurchasePrice": "Harga belian purata",
     "averagePurchasePriceHelper": "Jumlah dilaburkan dibahagi dengan jumlah saham terkumpul.",
-    "disclaimer": "Prestasi lalu tidak menjamin keputusan masa depan."
+    "disclaimer": "Prestasi lalu tidak menjamin keputusan masa depan.",
+    "netAmountInvested": "Jumlah bersih dilaburkan",
+    "netAmountInvestedHelper": "Jumlah yang benar-benar digunakan untuk membeli aset selepas yuran."
+  },
+  "advancedSettings": {
+    "title": "Tetapan lanjutan",
+    "fixedFee": "Yuran broker setiap pembelian",
+    "percentageFee": "Yuran peratus setiap pembelian",
+    "purchasePriceMethod": "Kaedah harga pembelian",
+    "feesHelper": "Yuran mengurangkan jumlah yang digunakan untuk membeli aset setiap bulan.",
+    "feeWarning": "Yuran lebih tinggi daripada jumlah pelaburan bulanan, jadi jumlah pembelian bersih akan dianggap sifar.",
+    "purchaseMethodNote": "Data pasaran yang diimport kini mensimulasikan pembelian menggunakan harga tutup bulanan. Pilihan harga purata dan harga pertama tersedia disediakan untuk sokongan data masa depan.",
+    "purchaseMethod": {
+      "close": "Harga tutup bulanan",
+      "average": "Harga purata bulanan",
+      "first": "Harga tersedia pertama bulanan"
+    }
   }
 }

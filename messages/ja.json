@@ -53,7 +53,8 @@
     "growth": "成長",
     "totalInvested": "総投資額",
     "totalProfit": "総利益",
-    "totalReturn": "総リターン"
+    "totalReturn": "総リターン",
+    "totalFeesPaid": "支払手数料合計"
   },
   "dca": {
     "eyebrow": "過去 DCA バックテスト",
@@ -448,7 +449,9 @@
     "totalReturn": "トータルリターン",
     "disclaimer": "教育目的のみ。金融助言ではありません。",
     "cta": "自分のバックテストを試す",
-    "dataSource": "データソース"
+    "dataSource": "データソース",
+    "totalFeesPaid": "支払手数料合計",
+    "netAmountInvested": "純投資額"
   },
   "mobile": {
     "backToCalculator": "計算機に戻る"
@@ -528,6 +531,22 @@
     "totalMonthsInvestedHelper": "このバックテストに含まれる毎月購入の回数です。",
     "averagePurchasePrice": "平均購入価格",
     "averagePurchasePriceHelper": "総投資額を累積株数で割った値です。",
-    "disclaimer": "過去の実績は将来の結果を保証しません。"
+    "disclaimer": "過去の実績は将来の結果を保証しません。",
+    "netAmountInvested": "純投資額",
+    "netAmountInvestedHelper": "手数料控除後、実際に資産購入に使われた金額です。"
+  },
+  "advancedSettings": {
+    "title": "詳細設定",
+    "fixedFee": "購入ごとの固定手数料",
+    "percentageFee": "購入ごとの割合手数料",
+    "purchasePriceMethod": "購入価格の方法",
+    "feesHelper": "手数料は毎月資産購入に使う金額を減らします。",
+    "feeWarning": "手数料が毎月投資額を上回るため、純購入額はゼロとして扱われます。",
+    "purchaseMethodNote": "現在のインポート済み市場データでは、購入は月次終値に解決されます。平均価格と最初の利用可能価格は将来のデータ対応用です。",
+    "purchaseMethod": {
+      "close": "月次終値",
+      "average": "月次平均価格",
+      "first": "月内最初の利用可能価格"
+    }
   }
 }

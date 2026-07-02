@@ -53,7 +53,8 @@
     "growth": "성장",
     "totalInvested": "총 투자액",
     "totalProfit": "총 이익",
-    "totalReturn": "총 수익률"
+    "totalReturn": "총 수익률",
+    "totalFeesPaid": "총 수수료"
   },
   "dca": {
     "eyebrow": "과거 DCA 백테스트",
@@ -448,7 +449,9 @@
     "totalReturn": "총 수익률",
     "disclaimer": "교육 목적 전용입니다. 금융 조언이 아닙니다.",
     "cta": "직접 백테스트해 보기",
-    "dataSource": "데이터 출처"
+    "dataSource": "데이터 출처",
+    "totalFeesPaid": "총 수수료",
+    "netAmountInvested": "순투자 금액"
   },
   "mobile": {
     "backToCalculator": "계산기로 돌아가기"
@@ -528,6 +531,22 @@
     "totalMonthsInvestedHelper": "이 백테스트에 포함된 월별 매수 횟수입니다.",
     "averagePurchasePrice": "평균 매수가",
     "averagePurchasePriceHelper": "총 투자 금액을 누적 주식 수로 나눈 값입니다.",
-    "disclaimer": "과거 성과가 미래 결과를 보장하지 않습니다."
+    "disclaimer": "과거 성과가 미래 결과를 보장하지 않습니다.",
+    "netAmountInvested": "순투자 금액",
+    "netAmountInvestedHelper": "수수료를 제외하고 실제 자산 매수에 사용된 금액입니다."
+  },
+  "advancedSettings": {
+    "title": "고급 설정",
+    "fixedFee": "매수당 고정 브로커 수수료",
+    "percentageFee": "매수당 비율 수수료",
+    "purchasePriceMethod": "매수 가격 방식",
+    "feesHelper": "수수료는 매월 자산 매수에 사용되는 금액을 줄입니다.",
+    "feeWarning": "수수료가 월 투자 금액보다 높아 순매수 금액은 0으로 처리됩니다.",
+    "purchaseMethodNote": "현재 가져온 시장 데이터는 월 종가로 매수를 시뮬레이션합니다. 평균가와 첫 이용 가능 가격 옵션은 향후 데이터 지원을 위한 것입니다.",
+    "purchaseMethod": {
+      "close": "월 종가",
+      "average": "월 평균 가격",
+      "first": "월 첫 이용 가능 가격"
+    }
   }
 }

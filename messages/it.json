@@ -53,7 +53,8 @@
     "growth": "Croissance",
     "totalInvested": "Total investi",
     "totalProfit": "Profit total",
-    "totalReturn": "Rendement total"
+    "totalReturn": "Rendement total",
+    "totalFeesPaid": "Commissioni totali pagate"
   },
   "dca": {
     "eyebrow": "Backtest DCA historique",
@@ -414,7 +415,9 @@
     "totalReturn": "Rendimento totale",
     "disclaimer": "Solo a scopo educativo. Non è consulenza finanziaria.",
     "cta": "Prova il tuo backtest",
-    "dataSource": "Fonte dati"
+    "dataSource": "Fonte dati",
+    "totalFeesPaid": "Commissioni totali pagate",
+    "netAmountInvested": "Importo netto investito"
   },
   "mobile": {
     "backToCalculator": "Torna al calcolatore"
@@ -494,6 +497,22 @@
     "totalMonthsInvestedHelper": "Numero di acquisti mensili inclusi in questo backtest.",
     "averagePurchasePrice": "Prezzo medio di acquisto",
     "averagePurchasePriceHelper": "Totale investito diviso per il totale delle quote accumulate.",
-    "disclaimer": "Le performance passate non garantiscono risultati futuri."
+    "disclaimer": "Le performance passate non garantiscono risultati futuri.",
+    "netAmountInvested": "Importo netto investito",
+    "netAmountInvestedHelper": "Importo effettivamente usato per acquistare l’asset dopo le commissioni."
+  },
+  "advancedSettings": {
+    "title": "Impostazioni avanzate",
+    "fixedFee": "Commissione broker per acquisto",
+    "percentageFee": "Commissione percentuale per acquisto",
+    "purchasePriceMethod": "Metodo del prezzo di acquisto",
+    "feesHelper": "Le commissioni riducono l’importo usato per acquistare l’asset ogni mese.",
+    "feeWarning": "Le commissioni superano l’importo mensile investito, quindi l’importo netto di acquisto sarà trattato come zero.",
+    "purchaseMethodNote": "I dati di mercato importati simulano attualmente gli acquisti al prezzo di chiusura mensile. Le opzioni prezzo medio e primo prezzo disponibile sono per supporto dati futuro.",
+    "purchaseMethod": {
+      "close": "Prezzo di chiusura mensile",
+      "average": "Prezzo medio mensile",
+      "first": "Primo prezzo mensile disponibile"
+    }
   }
 }

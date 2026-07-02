@@ -53,7 +53,8 @@
     "growth": "Pertumbuhan",
     "totalInvested": "Total Diinvestasikan",
     "totalProfit": "Total Laba",
-    "totalReturn": "Total Imbal Hasil"
+    "totalReturn": "Total Imbal Hasil",
+    "totalFeesPaid": "Total biaya dibayar"
   },
   "dca": {
     "eyebrow": "Backtest DCA Historis",
@@ -414,7 +415,9 @@
     "totalReturn": "Total return",
     "disclaimer": "Hanya untuk edukasi. Bukan nasihat keuangan.",
     "cta": "Coba backtest kamu sendiri",
-    "dataSource": "Sumber data"
+    "dataSource": "Sumber data",
+    "totalFeesPaid": "Total biaya dibayar",
+    "netAmountInvested": "Jumlah bersih diinvestasikan"
   },
   "mobile": {
     "backToCalculator": "Kembali ke kalkulator"
@@ -494,6 +497,22 @@
     "totalMonthsInvestedHelper": "Jumlah pembelian bulanan yang termasuk dalam backtest ini.",
     "averagePurchasePrice": "Harga beli rata-rata",
     "averagePurchasePriceHelper": "Total investasi dibagi total saham yang terkumpul.",
-    "disclaimer": "Kinerja masa lalu tidak menjamin hasil di masa depan."
+    "disclaimer": "Kinerja masa lalu tidak menjamin hasil di masa depan.",
+    "netAmountInvested": "Jumlah bersih diinvestasikan",
+    "netAmountInvestedHelper": "Jumlah yang benar-benar digunakan untuk membeli aset setelah biaya."
+  },
+  "advancedSettings": {
+    "title": "Pengaturan lanjutan",
+    "fixedFee": "Biaya broker per pembelian",
+    "percentageFee": "Biaya persentase per pembelian",
+    "purchasePriceMethod": "Metode harga pembelian",
+    "feesHelper": "Biaya mengurangi jumlah yang digunakan untuk membeli aset setiap bulan.",
+    "feeWarning": "Biaya lebih tinggi dari jumlah investasi bulanan, sehingga jumlah pembelian bersih akan dianggap nol.",
+    "purchaseMethodNote": "Data pasar yang diimpor saat ini mensimulasikan pembelian memakai harga penutupan bulanan. Opsi harga rata-rata dan harga pertama tersedia disiapkan untuk dukungan data mendatang.",
+    "purchaseMethod": {
+      "close": "Harga penutupan bulanan",
+      "average": "Harga rata-rata bulanan",
+      "first": "Harga pertama tersedia bulanan"
+    }
   }
 }

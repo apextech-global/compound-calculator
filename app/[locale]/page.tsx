@@ -15,6 +15,7 @@ import { trackGaEvent } from "@/lib/analytics";
 import {
   calculateCompoundInterest,
   calculateDcaBacktest,
+  type PurchasePriceMethod,
 } from "@/lib/calculations";
 import {
   convertCurrencyToUsd,
@@ -140,6 +141,16 @@ function getAmountFromQuery(value: string | null) {
   const amount = Number(value);
 
   return Number.isFinite(amount) && amount >= 0 ? String(amount) : null;
+}
+
+function getPurchasePriceMethodFromQuery(
+  value: string | null
+): PurchasePriceMethod | null {
+  if (value === "close" || value === "average" || value === "first") {
+    return value;
+  }
+
+  return null;
 }
 
 async function copyTextToClipboard(text: string) {
@@ -270,6 +281,10 @@ export default function Home() {
   const [backtestAssetType, setBacktestAssetType] = useState<AssetType>("ETF");
   const [backtestSymbol, setBacktestSymbol] = useState<SymbolKey>("voo");
   const [backtestMonthlyAmount, setBacktestMonthlyAmount] = useState("500");
+  const [backtestFixedFee, setBacktestFixedFee] = useState("0");
+  const [backtestPercentageFee, setBacktestPercentageFee] = useState("0");
+  const [backtestPurchasePriceMethod, setBacktestPurchasePriceMethod] =
+    useState<PurchasePriceMethod>("close");
   const [backtestStartYear, setBacktestStartYear] = useState("2018");
   const [backtestEndYear, setBacktestEndYear] = useState("2025");
   const [marketCsvData, setMarketCsvData] = useState<{
@@ -294,6 +309,11 @@ export default function Home() {
     const queryCurrency = getCurrencyFromQuery(params.get("currency"));
     const effectiveQueryCurrency = queryCurrency ?? getDefaultCurrency(locale);
     const queryAmount = getAmountFromQuery(params.get("amount"));
+    const queryFixedFee = getAmountFromQuery(params.get("fixedFee"));
+    const queryPercentageFee = getAmountFromQuery(params.get("percentageFee"));
+    const queryPurchasePriceMethod = getPurchasePriceMethodFromQuery(
+      params.get("priceMethod")
+    );
 
     if (queryCurrency) {
       setSelectedCurrency(queryCurrency);
@@ -303,6 +323,20 @@ export default function Home() {
       setBacktestMonthlyAmount(
         String(convertCurrencyToUsd(Number(queryAmount), effectiveQueryCurrency))
       );
+    }
+
+    if (queryFixedFee !== null) {
+      setBacktestFixedFee(
+        String(convertCurrencyToUsd(Number(queryFixedFee), effectiveQueryCurrency))
+      );
+    }
+
+    if (queryPercentageFee !== null) {
+      setBacktestPercentageFee(queryPercentageFee);
+    }
+
+    if (queryPurchasePriceMethod) {
+      setBacktestPurchasePriceMethod(queryPurchasePriceMethod);
     }
 
     if (params.get("start")) {
@@ -452,6 +486,23 @@ export default function Home() {
     setBacktestMonthlyAmount(value);
   };
 
+  const handleBacktestFixedFeeChange = (value: string) => {
+    hasUserChangedDcaCalculation.current = true;
+    setBacktestFixedFee(value);
+  };
+
+  const handleBacktestPercentageFeeChange = (value: string) => {
+    hasUserChangedDcaCalculation.current = true;
+    setBacktestPercentageFee(value);
+  };
+
+  const handleBacktestPurchasePriceMethodChange = (
+    value: PurchasePriceMethod
+  ) => {
+    hasUserChangedDcaCalculation.current = true;
+    setBacktestPurchasePriceMethod(value);
+  };
+
   const handleBacktestStartYearChange = (value: string) => {
     hasUserChangedDcaCalculation.current = true;
     setBacktestStartYear(value);
@@ -562,10 +613,16 @@ export default function Home() {
         startYear: normalizedBacktestStartYear,
         endYear: normalizedBacktestEndYear,
         monthlyPrices: activeMarketCsvRows,
+        fixedFee: backtestFixedFee,
+        percentageFee: backtestPercentageFee,
+        purchasePriceMethod: backtestPurchasePriceMethod,
       }),
     [
       activeMarketCsvRows,
+      backtestFixedFee,
       backtestMonthlyAmount,
+      backtestPercentageFee,
+      backtestPurchasePriceMethod,
       effectiveBacktestSymbol,
       normalizedBacktestEndYear,
       normalizedBacktestStartYear,
@@ -608,6 +665,8 @@ export default function Home() {
     }
 
     const monthlyAmount = Number(backtestMonthlyAmount);
+    const fixedFee = Number(backtestFixedFee) || 0;
+    const percentageFee = Number(backtestPercentageFee) || 0;
 
     if (!Number.isFinite(monthlyAmount) || monthlyAmount < 0) {
       return;
@@ -625,6 +684,10 @@ export default function Home() {
         data_source: backtest.dataSource,
         cagr: Number(backtest.annualizedReturn.toFixed(2)),
         max_drawdown: Number(backtest.maxDrawdown.toFixed(2)),
+        fixed_fee: fixedFee,
+        percentage_fee: percentageFee,
+        purchase_price_method: backtestPurchasePriceMethod,
+        total_fees_paid: Number(backtest.totalFeesPaid.toFixed(2)),
         locale,
       });
     }, 900);
@@ -632,8 +695,12 @@ export default function Home() {
     return () => window.clearTimeout(timeoutId);
   }, [
     backtest.dataSource,
+    backtest.totalFeesPaid,
     backtestCountry,
+    backtestFixedFee,
     backtestMonthlyAmount,
+    backtestPercentageFee,
+    backtestPurchasePriceMethod,
     effectiveAssetType,
     effectiveBacktestSymbol,
     locale,
@@ -706,11 +773,20 @@ export default function Home() {
     url.searchParams.set("start", normalizedBacktestStartYear);
     url.searchParams.set("end", normalizedBacktestEndYear);
     url.searchParams.set("currency", selectedCurrency);
+    url.searchParams.set(
+      "fixedFee",
+      formatInputAmount(backtestFixedFee || "0", selectedCurrency)
+    );
+    url.searchParams.set("percentageFee", backtestPercentageFee || "0");
+    url.searchParams.set("priceMethod", backtestPurchasePriceMethod);
 
     setShareUrl(url.toString());
   }, [
     backtestCountry,
+    backtestFixedFee,
     backtestMonthlyAmount,
+    backtestPercentageFee,
+    backtestPurchasePriceMethod,
     effectiveAssetType,
     effectiveBacktestSymbol,
     locale,
@@ -759,6 +835,16 @@ export default function Home() {
         selectedCurrency,
         locale
       )}`,
+      `${t("caption.totalFeesPaid")}: ${formatMoney(
+        backtest.totalFeesPaid,
+        selectedCurrency,
+        locale
+      )}`,
+      `${t("caption.netAmountInvested")}: ${formatMoney(
+        backtest.netAmountInvested,
+        selectedCurrency,
+        locale
+      )}`,
       `${t("caption.finalValue")}: ${formatMoney(
         backtest.finalValue,
         selectedCurrency,
@@ -781,6 +867,17 @@ export default function Home() {
         backtest.maxDrawdown,
         locale
       )}%`,
+      `${t("advancedSettings.fixedFee")}: ${formatMoney(
+        Number(backtestFixedFee) || 0,
+        selectedCurrency,
+        locale
+      )}`,
+      `${t("advancedSettings.percentageFee")}: ${
+        Number(backtestPercentageFee) || 0
+      }%`,
+      `${t("advancedSettings.purchasePriceMethod")}: ${t(
+        `advancedSettings.purchaseMethod.${backtestPurchasePriceMethod}`
+      )}`,
       `${t("caption.dataSource")}: ${displayedBacktestDataSourceLabel}`,
       "",
       t("caption.disclaimer"),
@@ -842,6 +939,11 @@ export default function Home() {
         label: t("metrics.totalInvested"),
         value: formatMoney(backtest.totalInvested, selectedCurrency, locale),
         color: "#f8fafc",
+      },
+      {
+        label: t("metrics.totalFeesPaid"),
+        value: formatMoney(backtest.totalFeesPaid, selectedCurrency, locale),
+        color: "#fde68a",
       },
       {
         label: t("metrics.finalValueTitle"),
@@ -982,7 +1084,11 @@ export default function Home() {
       )}%   ${t("advancedMetrics.maxDrawdown")}: -${formatPercent(
         backtest.maxDrawdown,
         locale
-      )}%`,
+      )}%   ${t("metrics.totalFeesPaid")}: ${formatMoney(
+        backtest.totalFeesPaid,
+        selectedCurrency,
+        locale
+      )}`,
       84,
       396,
       760,
@@ -990,9 +1096,9 @@ export default function Home() {
       1
     );
 
-    const cardWidth = 248;
+    const cardWidth = 198;
     const cardHeight = 96;
-    const cardGap = 20;
+    const cardGap = 18;
     const startX = 84;
     const startY = 424;
 
@@ -1053,6 +1159,10 @@ export default function Home() {
       currency: selectedCurrency,
       locale,
       data_source: backtest.dataSource,
+      fixed_fee: Number(backtestFixedFee) || 0,
+      percentage_fee: Number(backtestPercentageFee) || 0,
+      purchase_price_method: backtestPurchasePriceMethod,
+      total_fees_paid: Number(backtest.totalFeesPaid.toFixed(2)),
     };
 
     if (navigator.share && navigator.canShare?.(shareData)) {
@@ -1175,6 +1285,9 @@ export default function Home() {
                 backtestAssetType={effectiveAssetType}
                 backtestSymbol={effectiveBacktestSymbol}
                 backtestMonthlyAmount={backtestMonthlyAmount}
+                backtestFixedFee={backtestFixedFee}
+                backtestPercentageFee={backtestPercentageFee}
+                backtestPurchasePriceMethod={backtestPurchasePriceMethod}
                 backtestStartYear={normalizedBacktestStartYear}
                 backtestEndYear={normalizedBacktestEndYear}
                 availableYears={availableBacktestYears}
@@ -1183,6 +1296,11 @@ export default function Home() {
                 setBacktestAssetType={handleBacktestAssetTypeChange}
                 setBacktestSymbol={handleBacktestSymbolChange}
                 setBacktestMonthlyAmount={handleBacktestMonthlyAmountChange}
+                setBacktestFixedFee={handleBacktestFixedFeeChange}
+                setBacktestPercentageFee={handleBacktestPercentageFeeChange}
+                setBacktestPurchasePriceMethod={
+                  handleBacktestPurchasePriceMethodChange
+                }
                 setBacktestStartYear={handleBacktestStartYearChange}
                 setBacktestEndYear={handleBacktestEndYearChange}
                 setShowBacktestTable={setShowBacktestTable}

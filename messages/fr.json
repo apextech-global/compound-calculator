@@ -53,7 +53,8 @@
     "growth": "Croissance",
     "totalInvested": "Total investi",
     "totalProfit": "Profit total",
-    "totalReturn": "Rendement total"
+    "totalReturn": "Rendement total",
+    "totalFeesPaid": "Frais totaux payés"
   },
   "dca": {
     "eyebrow": "Backtest DCA historique",
@@ -414,7 +415,9 @@
     "totalReturn": "Rendement total",
     "disclaimer": "À des fins éducatives uniquement. Ce n’est pas un conseil financier.",
     "cta": "Essayez votre propre backtest",
-    "dataSource": "Source des données"
+    "dataSource": "Source des données",
+    "totalFeesPaid": "Frais totaux payés",
+    "netAmountInvested": "Montant net investi"
   },
   "mobile": {
     "backToCalculator": "Retour au calculateur"
@@ -494,6 +497,22 @@
     "totalMonthsInvestedHelper": "Nombre d’achats mensuels inclus dans ce backtest.",
     "averagePurchasePrice": "Prix d’achat moyen",
     "averagePurchasePriceHelper": "Montant total investi divisé par le nombre total de parts accumulées.",
-    "disclaimer": "Les performances passées ne garantissent pas les résultats futurs."
+    "disclaimer": "Les performances passées ne garantissent pas les résultats futurs.",
+    "netAmountInvested": "Montant net investi",
+    "netAmountInvestedHelper": "Montant réellement utilisé pour acheter l’actif après frais."
+  },
+  "advancedSettings": {
+    "title": "Paramètres avancés",
+    "fixedFee": "Frais de courtage par achat",
+    "percentageFee": "Frais en pourcentage par achat",
+    "purchasePriceMethod": "Méthode du prix d’achat",
+    "feesHelper": "Les frais réduisent le montant utilisé pour acheter l’actif chaque mois.",
+    "feeWarning": "Les frais dépassent le montant investi mensuellement, donc le montant net d’achat sera traité comme nul.",
+    "purchaseMethodNote": "Les données de marché importées simulent actuellement les achats au prix de clôture mensuel. Les options de prix moyen et premier prix disponible sont prévues pour de futures données.",
+    "purchaseMethod": {
+      "close": "Prix de clôture mensuel",
+      "average": "Prix moyen mensuel",
+      "first": "Premier prix mensuel disponible"
+    }
   }
 }

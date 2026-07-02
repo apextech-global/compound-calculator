@@ -53,7 +53,8 @@
     "growth": "增长",
     "totalInvested": "总投入",
     "totalProfit": "总利润",
-    "totalReturn": "总回报"
+    "totalReturn": "总回报",
+    "totalFeesPaid": "总手续费"
   },
   "dca": {
     "eyebrow": "历史 DCA 回测",
@@ -414,7 +415,9 @@
     "totalReturn": "总回报",
     "disclaimer": "仅供教育用途，不构成投资建议。",
     "cta": "试算你的定投结果",
-    "dataSource": "数据来源"
+    "dataSource": "数据来源",
+    "totalFeesPaid": "总手续费",
+    "netAmountInvested": "净投入金额"
   },
   "mobile": {
     "backToCalculator": "返回计算器"
@@ -494,6 +497,22 @@
     "totalMonthsInvestedHelper": "本次回测包含的每月买入次数。",
     "averagePurchasePrice": "平均买入价",
     "averagePurchasePriceHelper": "总投入金额除以累计份额。",
-    "disclaimer": "过去表现不保证未来结果。"
+    "disclaimer": "过去表现不保证未来结果。",
+    "netAmountInvested": "净投入金额",
+    "netAmountInvestedHelper": "扣除手续费后实际用于买入资产的金额。"
+  },
+  "advancedSettings": {
+    "title": "高级设置",
+    "fixedFee": "每次买入固定手续费",
+    "percentageFee": "每次买入百分比手续费",
+    "purchasePriceMethod": "买入价格方式",
+    "feesHelper": "手续费会减少每月实际用于买入资产的金额。",
+    "feeWarning": "手续费高于每月投入金额，因此净买入金额将按零处理。",
+    "purchaseMethodNote": "当前导入的市场数据会按每月收盘价模拟买入。月平均价和月初可用价选项为未来数据支持预留。",
+    "purchaseMethod": {
+      "close": "每月收盘价",
+      "average": "每月平均价",
+      "first": "每月首个可用价格"
+    }
   }
 }

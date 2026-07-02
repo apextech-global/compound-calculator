@@ -28,9 +28,13 @@ export type DcaYearlyResult = {
   invested: number;
 };
 
+export type PurchasePriceMethod = "close" | "average" | "first";
+
 export type DcaBacktestResult = {
   finalValue: number;
   totalInvested: number;
+  netAmountInvested: number;
+  totalFeesPaid: number;
   totalProfit: number;
   totalReturn: number;
   totalShares: number;
@@ -97,14 +101,24 @@ export function calculateDcaBacktest({
   startYear,
   endYear,
   monthlyPrices,
+  fixedFee = "0",
+  percentageFee = "0",
+  purchasePriceMethod = "close",
 }: {
   symbol: SymbolKey;
   monthlyAmount: string;
   startYear: string;
   endYear: string;
   monthlyPrices?: MarketCsvRow[] | null;
+  fixedFee?: string;
+  percentageFee?: string;
+  purchasePriceMethod?: PurchasePriceMethod;
 }): DcaBacktestResult {
   const monthly = Number(monthlyAmount) || 0;
+  const feeSettings = normalizeFeeSettings({
+    fixedFee,
+    percentageFee,
+  });
   const fallbackYears = getMockYearsForSymbol(symbol);
   const rawStartYear = Number(startYear) || fallbackYears[0];
   const rawEndYear = Number(endYear) || fallbackYears[fallbackYears.length - 1];
@@ -117,6 +131,8 @@ export function calculateDcaBacktest({
       firstYear,
       lastYear,
       monthlyPrices,
+      feeSettings,
+      purchasePriceMethod,
     });
   }
 
@@ -125,6 +141,8 @@ export function calculateDcaBacktest({
 
   let totalShares = 0;
   let totalInvested = 0;
+  let totalFeesPaid = 0;
+  let netAmountInvested = 0;
 
   for (const year of fallbackYears) {
     if (year < firstYear || year > lastYear) {
@@ -132,10 +150,22 @@ export function calculateDcaBacktest({
     }
 
     const price = priceHistory[year];
-    const investedThisYear = monthly * 12;
-    const sharesBought = price > 0 ? investedThisYear / price : 0;
+    let investedThisYear = 0;
+    let netInvestedThisYear = 0;
+    let feesPaidThisYear = 0;
+
+    for (let month = 1; month <= 12; month++) {
+      const purchase = calculateMonthlyPurchaseAmounts(monthly, feeSettings);
+      investedThisYear += purchase.grossAmount;
+      netInvestedThisYear += purchase.netAmount;
+      feesPaidThisYear += purchase.feePaid;
+    }
+
+    const sharesBought = price > 0 ? netInvestedThisYear / price : 0;
 
     totalInvested += investedThisYear;
+    netAmountInvested += netInvestedThisYear;
+    totalFeesPaid += feesPaidThisYear;
     totalShares += sharesBought;
 
     yearlyResults.push({
@@ -156,6 +186,7 @@ export function calculateDcaBacktest({
   const advancedMetrics = calculateDcaAdvancedMetrics({
     finalValue,
     totalInvested,
+    netAmountInvested,
     totalShares,
     totalMonthsInvested,
     portfolioValues: yearlyResults.map((item) => item.portfolioValue),
@@ -164,6 +195,8 @@ export function calculateDcaBacktest({
   return {
     finalValue,
     totalInvested,
+    netAmountInvested,
+    totalFeesPaid,
     totalProfit,
     totalReturn,
     totalShares,
@@ -178,47 +211,58 @@ function calculateDcaBacktestFromCsv({
   firstYear,
   lastYear,
   monthlyPrices,
+  feeSettings,
+  purchasePriceMethod,
 }: {
   monthly: number;
   firstYear: number;
   lastYear: number;
   monthlyPrices: MarketCsvRow[];
+  feeSettings: DcaFeeSettings;
+  purchasePriceMethod: PurchasePriceMethod;
 }): DcaBacktestResult {
   const yearlyResults: DcaYearlyResult[] = [];
   const portfolioValues: number[] = [];
   let totalShares = 0;
   let totalInvested = 0;
+  let totalFeesPaid = 0;
+  let netAmountInvested = 0;
   let currentYear: DcaYearlyResult | null = null;
   let totalMonthsInvested = 0;
 
   for (const row of monthlyPrices) {
     const year = new Date(row.date).getFullYear();
+    const purchasePrice = getPurchasePrice(row, purchasePriceMethod);
 
-    if (year < firstYear || year > lastYear || row.close <= 0) {
+    if (year < firstYear || year > lastYear || purchasePrice <= 0) {
       continue;
     }
 
     if (!currentYear || currentYear.year !== year) {
       currentYear = {
         year,
-        price: row.close,
+        price: purchasePrice,
         sharesBought: 0,
         totalShares,
-        portfolioValue: totalShares * row.close,
+        portfolioValue: totalShares * purchasePrice,
         invested: totalInvested,
       };
       yearlyResults.push(currentYear);
     }
 
-    const sharesBought = monthly / row.close;
-    totalInvested += monthly;
+    const purchase = calculateMonthlyPurchaseAmounts(monthly, feeSettings);
+    const sharesBought = purchase.netAmount / purchasePrice;
+
+    totalInvested += purchase.grossAmount;
+    netAmountInvested += purchase.netAmount;
+    totalFeesPaid += purchase.feePaid;
     totalShares += sharesBought;
     totalMonthsInvested += 1;
 
-    currentYear.price = row.close;
+    currentYear.price = purchasePrice;
     currentYear.sharesBought += sharesBought;
     currentYear.totalShares = totalShares;
-    currentYear.portfolioValue = totalShares * row.close;
+    currentYear.portfolioValue = totalShares * purchasePrice;
     currentYear.invested = totalInvested;
     portfolioValues.push(currentYear.portfolioValue);
   }
@@ -230,6 +274,7 @@ function calculateDcaBacktestFromCsv({
   const advancedMetrics = calculateDcaAdvancedMetrics({
     finalValue,
     totalInvested,
+    netAmountInvested,
     totalShares,
     totalMonthsInvested,
     portfolioValues,
@@ -238,6 +283,8 @@ function calculateDcaBacktestFromCsv({
   return {
     finalValue,
     totalInvested,
+    netAmountInvested,
+    totalFeesPaid,
     totalProfit,
     totalReturn,
     totalShares,
@@ -247,15 +294,66 @@ function calculateDcaBacktestFromCsv({
   };
 }
 
+type DcaFeeSettings = {
+  fixedFee: number;
+  percentageFee: number;
+};
+
+function normalizeFeeSettings({
+  fixedFee,
+  percentageFee,
+}: {
+  fixedFee: string;
+  percentageFee: string;
+}): DcaFeeSettings {
+  return {
+    fixedFee: Math.max(0, Number(fixedFee) || 0),
+    percentageFee: Math.max(0, Number(percentageFee) || 0),
+  };
+}
+
+function calculateMonthlyPurchaseAmounts(
+  grossAmount: number,
+  feeSettings: DcaFeeSettings
+) {
+  const safeGrossAmount = Math.max(0, grossAmount);
+  const rawFee =
+    feeSettings.fixedFee +
+    safeGrossAmount * (feeSettings.percentageFee / 100);
+  const feePaid = Math.min(safeGrossAmount, Math.max(0, rawFee));
+  const netAmount = Math.max(0, safeGrossAmount - feePaid);
+
+  return {
+    grossAmount: safeGrossAmount,
+    feePaid,
+    netAmount,
+  };
+}
+
+function getPurchasePrice(
+  row: MarketCsvRow,
+  purchasePriceMethod: PurchasePriceMethod
+) {
+  switch (purchasePriceMethod) {
+    case "average":
+    case "first":
+    case "close":
+    default:
+      return row.close;
+  }
+}
+
 function calculateDcaAdvancedMetrics({
   finalValue,
   totalInvested,
+  netAmountInvested,
   totalShares,
   totalMonthsInvested,
   portfolioValues,
 }: {
   finalValue: number;
   totalInvested: number;
+  netAmountInvested: number;
   totalShares: number;
   totalMonthsInvested: number;
   portfolioValues: number[];
@@ -266,7 +364,7 @@ function calculateDcaAdvancedMetrics({
       ? (Math.pow(finalValue / totalInvested, 1 / yearsInvested) - 1) * 100
       : 0;
   const averagePurchasePrice =
-    totalShares > 0 ? totalInvested / totalShares : 0;
+    totalShares > 0 ? netAmountInvested / totalShares : 0;
   let bestPortfolioValue = 0;
   let peakValue = 0;
   let maxDrawdown = 0;

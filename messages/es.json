@@ -53,7 +53,8 @@
     "growth": "Croissance",
     "totalInvested": "Total investi",
     "totalProfit": "Profit total",
-    "totalReturn": "Rendement total"
+    "totalReturn": "Rendement total",
+    "totalFeesPaid": "Comisiones totales pagadas"
   },
   "dca": {
     "eyebrow": "Backtest DCA historique",
@@ -414,7 +415,9 @@
     "totalReturn": "Rentabilidad total",
     "disclaimer": "Solo con fines educativos. No es asesoramiento financiero.",
     "cta": "Prueba tu propio backtest",
-    "dataSource": "Fuente de datos"
+    "dataSource": "Fuente de datos",
+    "totalFeesPaid": "Comisiones totales pagadas",
+    "netAmountInvested": "Importe neto invertido"
   },
   "mobile": {
     "backToCalculator": "Volver a la calculadora"
@@ -494,6 +497,22 @@
     "totalMonthsInvestedHelper": "Número de compras mensuales incluidas en este backtest.",
     "averagePurchasePrice": "Precio medio de compra",
     "averagePurchasePriceHelper": "Total invertido dividido entre las acciones acumuladas.",
-    "disclaimer": "El rendimiento pasado no garantiza resultados futuros."
+    "disclaimer": "El rendimiento pasado no garantiza resultados futuros.",
+    "netAmountInvested": "Importe neto invertido",
+    "netAmountInvestedHelper": "Importe usado realmente para comprar el activo después de comisiones."
+  },
+  "advancedSettings": {
+    "title": "Ajustes avanzados",
+    "fixedFee": "Comisión fija por compra",
+    "percentageFee": "Comisión porcentual por compra",
+    "purchasePriceMethod": "Método de precio de compra",
+    "feesHelper": "Las comisiones reducen el importe usado para comprar el activo cada mes.",
+    "feeWarning": "Las comisiones superan la inversión mensual, por lo que el importe neto de compra se tratará como cero.",
+    "purchaseMethodNote": "Los datos de mercado importados actualmente simulan compras con el precio de cierre mensual. Las opciones de precio medio y primer precio disponible quedan para soporte futuro.",
+    "purchaseMethod": {
+      "close": "Precio de cierre mensual",
+      "average": "Precio medio mensual",
+      "first": "Primer precio mensual disponible"
+    }
   }
 }

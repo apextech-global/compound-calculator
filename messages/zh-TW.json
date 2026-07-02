@@ -53,7 +53,8 @@
     "growth": "成長",
     "totalInvested": "總投入",
     "totalProfit": "總獲利",
-    "totalReturn": "總報酬"
+    "totalReturn": "總報酬",
+    "totalFeesPaid": "總手續費"
   },
   "dca": {
     "eyebrow": "歷史 DCA 回測",
@@ -414,7 +415,9 @@
     "totalReturn": "總回報",
     "disclaimer": "僅供教育用途，並非投資建議。",
     "cta": "試算你的定投結果",
-    "dataSource": "資料來源"
+    "dataSource": "資料來源",
+    "totalFeesPaid": "總手續費",
+    "netAmountInvested": "淨投入金額"
   },
   "mobile": {
     "backToCalculator": "返回計算器"
@@ -494,6 +497,22 @@
     "totalMonthsInvestedHelper": "本次回測包含的每月買入次數。",
     "averagePurchasePrice": "平均買入價",
     "averagePurchasePriceHelper": "總投入金額除以累計份額。",
-    "disclaimer": "過去表現不保證未來結果。"
+    "disclaimer": "過去表現不保證未來結果。",
+    "netAmountInvested": "淨投入金額",
+    "netAmountInvestedHelper": "扣除手續費後實際用於買入資產的金額。"
+  },
+  "advancedSettings": {
+    "title": "進階設定",
+    "fixedFee": "每次買入固定手續費",
+    "percentageFee": "每次買入百分比手續費",
+    "purchasePriceMethod": "買入價格方式",
+    "feesHelper": "手續費會減少每月實際用於買入資產的金額。",
+    "feeWarning": "手續費高於每月投入金額，因此淨買入金額將按零處理。",
+    "purchaseMethodNote": "目前匯入的市場資料會按每月收盤價模擬買入。月平均價和月初可用價選項為未來資料支援預留。",
+    "purchaseMethod": {
+      "close": "每月收盤價",
+      "average": "每月平均價",
+      "first": "每月首個可用價格"
+    }
   }
 }

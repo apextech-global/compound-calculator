@@ -53,7 +53,8 @@
     "growth": "Growth",
     "totalInvested": "Total Invested",
     "totalProfit": "Total Profit",
-    "totalReturn": "Total Return"
+    "totalReturn": "Total Return",
+    "totalFeesPaid": "Total fees paid"
   },
   "dca": {
     "eyebrow": "Historical DCA Backtest",
@@ -414,7 +415,9 @@
     "totalReturn": "Total return",
     "disclaimer": "Educational only. Not financial advice.",
     "cta": "Try your own backtest",
-    "dataSource": "Data source"
+    "dataSource": "Data source",
+    "totalFeesPaid": "Total fees paid",
+    "netAmountInvested": "Net amount invested"
   },
   "mobile": {
     "backToCalculator": "Back to calculator"
@@ -494,6 +497,22 @@
     "totalMonthsInvestedHelper": "Number of monthly purchases included in this backtest.",
     "averagePurchasePrice": "Average purchase price",
     "averagePurchasePriceHelper": "Total invested divided by total shares accumulated.",
-    "disclaimer": "Past performance does not guarantee future results."
+    "disclaimer": "Past performance does not guarantee future results.",
+    "netAmountInvested": "Net amount invested",
+    "netAmountInvestedHelper": "Amount actually used to buy the asset after fees."
+  },
+  "advancedSettings": {
+    "title": "Advanced settings",
+    "fixedFee": "Broker fee per purchase",
+    "percentageFee": "Percentage fee per purchase",
+    "purchasePriceMethod": "Purchase price method",
+    "feesHelper": "Fees reduce the amount used to buy the asset each month.",
+    "feeWarning": "Fees are higher than the monthly investment amount, so the net purchase amount will be treated as zero.",
+    "purchaseMethodNote": "Imported market data currently resolves purchases to monthly close prices. Average and first available price options are included for future data support.",
+    "purchaseMethod": {
+      "close": "Monthly close price",
+      "average": "Monthly average price",
+      "first": "Monthly first available price"
+    }
   }
 }
