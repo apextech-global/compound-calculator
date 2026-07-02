@@ -181,7 +181,7 @@
         "answer": "Yes. The DCA backtest calculator and compound interest calculator are currently free to use."
       },
       "etfs": {
-        "question": "Can I use this for ETFs?",
+        "question": "இதை ETFகளுக்குப் பயன்படுத்த முடியுமா?",
         "answer": "Yes. The tool supports selected ETFs, including examples such as VOO, SPY, QQQ, CSPX, and other supported instruments where data is available."
       },
       "sampleData": {
@@ -355,40 +355,40 @@
     }
   },
   "seoContent": {
-    "eyebrow": "Investment Education",
-    "title": "Learn how DCA backtesting and compound growth work",
-    "intro": "Use this compound interest calculator, DCA calculator, DCA backtest calculator, ETF investment calculator, and monthly investment calculator to explore VOO, CSPX, ETFs, and stocks.",
+    "eyebrow": "முதலீட்டு கல்வி",
+    "title": "DCA பின்சோதனை மற்றும் கூட்டு வளர்ச்சி எவ்வாறு செயல்படுகிறது",
+    "intro": "VOO, CSPX, ETFகள் மற்றும் பங்குகளை ஆய்வு செய்ய இந்த கூட்டு வட்டி கணிப்பான், DCA கணிப்பான், DCA பின்சோதனை கணிப்பான், ETF முதலீட்டு கணிப்பான் மற்றும் மாதாந்திர முதலீட்டு கணிப்பானைப் பயன்படுத்துங்கள்.",
     "sections": {
       "dca": {
-        "title": "What is dollar-cost averaging?",
-        "body": "Dollar-cost averaging means investing a fixed amount on a regular schedule. It can help investors study disciplined monthly investing across changing market prices."
+        "title": "டாலர்-செலவு சராசரி என்றால் என்ன?",
+        "body": "டாலர்-செலவு சராசரி என்பது நிரந்தர அட்டவணையில் ஒரு நிலையான தொகையை முதலீடு செய்வதாகும். மாறும் சந்தை விலைகளில் ஒழுங்கான மாதாந்திர முதலீட்டை ஆய்வு செய்ய இது உதவும்."
       },
       "compound": {
-        "title": "What is compound interest?",
-        "body": "Compound interest is growth on both original capital and prior gains. Over time, regular contributions and reinvested returns can meaningfully affect long-term outcomes."
+        "title": "கூட்டு வட்டி என்றால் என்ன?",
+        "body": "கூட்டு வட்டி என்பது ஆரம்ப முதல்தொகையிலும் முன் கிடைத்த வருமானத்திலும் ஏற்படும் வளர்ச்சி. நீண்ட காலத்தில், வழக்கமான பங்களிப்புகள் மற்றும் மீள்முதலீடு செய்யப்பட்ட வருமானம் முடிவுகளை பாதிக்கலாம்."
       },
       "dcaVsLumpSum": {
-        "title": "DCA vs lump sum investing",
-        "body": "DCA spreads purchases over time, while lump sum investing commits capital at once. This calculator focuses on monthly investing and historical backtesting."
+        "title": "DCA மற்றும் ஒருமுறை முதலீடு",
+        "body": "DCA வாங்குதல்களை காலப்போக்கில் பகிர்கிறது; ஒருமுறை முதலீடு முழுத் தொகையையும் ஒரே நேரத்தில் செலுத்துகிறது. இந்த கணிப்பான் மாதாந்திர முதலீடு மற்றும் வரலாற்று பின்சோதனையில் கவனம் செலுத்துகிறது."
       },
       "howToUse": {
-        "title": "How to use this DCA backtest calculator",
-        "body": "Choose a market, asset type, asset, monthly amount, start year, and end year to estimate total invested, ending value, accumulated shares, profit, and return."
+        "title": "இந்த DCA பின்சோதனை கணிப்பானை பயன்படுத்துவது எப்படி",
+        "body": "சந்தை, சொத்து வகை, சொத்து, மாதாந்திர தொகை, தொடக்க ஆண்டு மற்றும் முடிவு ஆண்டைத் தேர்ந்தெடுத்து மொத்த முதலீடு, இறுதி மதிப்பு, சேர்க்கப்பட்ட பங்குகள், லாபம் மற்றும் வருமானத்தை மதிப்பிடுங்கள்."
       },
       "etfExample": {
-        "title": "ETF monthly investing example",
-        "body": "A VOO DCA calculator or CSPX DCA calculator can show how recurring ETF purchases may have grown using historical monthly prices where available."
+        "title": "ETF மாதாந்திர முதலீட்டு உதாரணம்",
+        "body": "தரவு கிடைக்கும் போது, VOO DCA கணிப்பான் அல்லது CSPX DCA கணிப்பான் வரலாற்று மாதாந்திர விலைகளை பயன்படுத்தி வழக்கமான ETF வாங்குதல்கள் எவ்வாறு வளர்ந்திருக்கலாம் என்பதை காட்டும்."
       },
       "supportedAssets": {
-        "title": "Supported assets and markets",
-        "body": "Supported markets include the United States, Ireland UCITS, Taiwan, Malaysia, Singapore, Japan, and Hong Kong. Assets without imported market data clearly use sample data."
+        "title": "ஆதரிக்கப்படும் சொத்துகள் மற்றும் சந்தைகள்",
+        "body": "ஆதரிக்கப்படும் சந்தைகளில் அமெரிக்கா, அயர்லாந்து UCITS, தைவான், மலேசியா, சிங்கப்பூர், ஜப்பான் மற்றும் ஹாங்காங் அடங்கும். இறக்குமதி செய்யப்பட்ட சந்தை தரவு இல்லாத சொத்துகள் தெளிவாக மாதிரி தரவைப் பயன்படுத்தும்."
       }
     },
     "disclaimer": {
-      "title": "Important disclaimer",
-      "body": "This tool is for education only and is not financial advice. Past performance does not guarantee future results."
+      "title": "முக்கிய அறிவிப்பு",
+      "body": "இந்த கருவி கல்விக்காக மட்டுமே; இது நிதி ஆலோசனை அல்ல. கடந்தகால செயல்திறன் எதிர்கால முடிவுகளை உறுதி செய்யாது."
     },
-    "linksLabel": "Helpful site links"
+    "linksLabel": "பயனுள்ள தள இணைப்புகள்"
   },
   "share": {
     "shareResult": "முடிவைப் பகிர்",
@@ -435,7 +435,7 @@
     "totalProfit": "மொத்த லாபம்",
     "totalReturn": "மொத்த வருமானம்",
     "difference": "இறுதி மதிப்பு வேறுபாடு",
-    "betterPerformer": "சிறந்த செயல்திறன்",
+    "betterPerformer": "அதிகமான வரலாற்று இறுதி மதிப்பு",
     "tie": "சமம்",
     "chartEyebrow": "ஒப்பீட்டு வரைபடம்",
     "chartTitle": "காலப்போக்கில் சொத்து மதிப்பு",
@@ -473,7 +473,8 @@
     "status": {
       "historical": "வரலாற்று தரவு உள்ளது",
       "sample": "மாதிரி தரவு மட்டும்",
-      "notAvailable": "இல்லை"
+      "notAvailable": "கடைசி புதுப்பிப்பு: இல்லை",
+      "sampleOnly": "மாதிரி மட்டும் - உண்மையான சந்தை தரவு அல்ல"
     },
     "action": {
       "assetPage": "சொத்து பக்கத்தைத் திற",
@@ -485,8 +486,8 @@
   },
   "advancedMetrics": {
     "title": "மேம்பட்ட அளவீடுகள்",
-    "cagr": "CAGR / வருடாந்திர வருமானம்",
-    "cagrHelper": "CAGR என்பது தேர்ந்தெடுத்த பின்சோதனை காலத்தின் அடிப்படையிலான வருடாந்திர வளர்ச்சி விகிதம்.",
+    "cagr": "மதிப்பிடப்பட்ட வருடாந்திர வருமானம்",
+    "cagrHelper": "தேர்ந்தெடுத்த காலத்தில் மொத்த பண முதலீட்டுடன் இறுதி மதிப்பை ஒப்பிட்டு மதிப்பிடப்பட்ட வருடாந்திர வளர்ச்சி.",
     "maxDrawdown": "அதிகபட்ச வீழ்ச்சி",
     "maxDrawdownHelper": "அதிகபட்ச வீழ்ச்சி என்பது உச்சத்திலிருந்து தாழ்வுக்கு ஏற்பட்ட மிகப்பெரிய வரலாற்று சரிவு.",
     "bestPortfolioValue": "சிறந்த போர்ட்ஃபோலியோ மதிப்பு",

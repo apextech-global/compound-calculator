@@ -435,7 +435,7 @@
     "totalProfit": "總利潤",
     "totalReturn": "總回報",
     "difference": "最終價值差額",
-    "betterPerformer": "表現較好的資產",
+    "betterPerformer": "歷史最終價值較高",
     "tie": "持平",
     "chartEyebrow": "對比圖表",
     "chartTitle": "資產價值變化",
@@ -473,7 +473,8 @@
     "status": {
       "historical": "已有歷史資料",
       "sample": "僅範例資料",
-      "notAvailable": "不可用"
+      "notAvailable": "最後更新：不可用",
+      "sampleOnly": "僅範例資料 - 非真實市場資料"
     },
     "action": {
       "assetPage": "開啟資產頁面",
@@ -485,8 +486,8 @@
   },
   "advancedMetrics": {
     "title": "進階指標",
-    "cagr": "CAGR / 年化報酬",
-    "cagrHelper": "CAGR 表示根據所選回測期間計算的年化成長率。",
+    "cagr": "估算年化報酬",
+    "cagrHelper": "根據所選期間的最終價值與總現金投入估算的年化成長。",
     "maxDrawdown": "最大回撤",
     "maxDrawdownHelper": "最大回撤表示從歷史高點到低點的最大跌幅。",
     "bestPortfolioValue": "最高投資組合價值",

@@ -435,7 +435,7 @@
     "totalProfit": "Total profit",
     "totalReturn": "Total return",
     "difference": "Difference in final value",
-    "betterPerformer": "Better performer",
+    "betterPerformer": "Higher historical final value",
     "tie": "Tie",
     "chartEyebrow": "Comparison chart",
     "chartTitle": "Asset Value Over Time",
@@ -473,7 +473,8 @@
     "status": {
       "historical": "Historical data available",
       "sample": "Sample data only",
-      "notAvailable": "Not available"
+      "notAvailable": "Last updated: unavailable",
+      "sampleOnly": "Sample only - not real market data"
     },
     "action": {
       "assetPage": "Open asset page",
@@ -485,8 +486,8 @@
   },
   "advancedMetrics": {
     "title": "Advanced metrics",
-    "cagr": "CAGR / Annualized return",
-    "cagrHelper": "CAGR means annualized growth rate based on the selected backtest period.",
+    "cagr": "Estimated annualized return",
+    "cagrHelper": "Estimated annualized growth based on final value versus total cash invested over the selected period.",
     "maxDrawdown": "Max drawdown",
     "maxDrawdownHelper": "Max drawdown means the largest historical drop from peak to trough.",
     "bestPortfolioValue": "Best portfolio value",

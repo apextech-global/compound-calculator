@@ -409,6 +409,7 @@ export default function DcaBacktestCalculator({
               <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap lg:justify-end">
                 <button
                   type="button"
+                  data-testid="share-result-button"
                   onClick={onShareResult}
                   className="w-full rounded-2xl bg-cyan-400 px-4 py-2.5 text-sm font-bold text-slate-950 transition hover:bg-cyan-300 sm:w-auto"
                   aria-label={t("share.title")}
@@ -417,6 +418,7 @@ export default function DcaBacktestCalculator({
                 </button>
                 <button
                   type="button"
+                  data-testid="copy-link-button"
                   onClick={onCopyShareLink}
                   className="w-full rounded-2xl border border-white/10 bg-white/[0.08] px-4 py-2.5 text-sm font-semibold text-slate-100 transition hover:border-cyan-300/40 hover:text-cyan-200 sm:w-auto"
                   aria-label={t("share.copyDescription")}
@@ -425,6 +427,7 @@ export default function DcaBacktestCalculator({
                 </button>
                 <button
                   type="button"
+                  data-testid="download-result-image-button"
                   onClick={onDownloadResultImage}
                   className="w-full rounded-2xl border border-emerald-400/30 bg-emerald-400/10 px-4 py-2.5 text-sm font-semibold text-emerald-200 transition hover:bg-emerald-400/20 sm:w-auto"
                   aria-label={t("share.downloadResultImage")}
@@ -433,6 +436,7 @@ export default function DcaBacktestCalculator({
                 </button>
                 <button
                   type="button"
+                  data-testid="copy-caption-button"
                   onClick={onCopySocialCaption}
                   className="w-full rounded-2xl border border-white/10 bg-white/[0.08] px-4 py-2.5 text-sm font-semibold text-slate-100 transition hover:border-emerald-300/40 hover:text-emerald-200 sm:w-auto"
                   aria-label={t("caption.copyCaption")}
@@ -552,6 +556,7 @@ export default function DcaBacktestCalculator({
           <div className="min-w-0 rounded-2xl border border-white/10 bg-white/[0.045] p-4 shadow-xl shadow-black/20 sm:rounded-3xl sm:p-5">
             <button
               type="button"
+              data-testid="advanced-toggle-button"
               onClick={() => setShowAdvancedBacktest((value) => !value)}
               className="flex w-full min-w-0 items-center justify-between gap-3 rounded-2xl border border-cyan-400/30 bg-cyan-400/10 px-4 py-3 text-left text-sm font-bold text-cyan-100 transition hover:bg-cyan-400/20"
               aria-expanded={showAdvancedBacktest}

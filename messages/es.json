@@ -435,7 +435,7 @@
     "totalProfit": "Beneficio total",
     "totalReturn": "Rentabilidad total",
     "difference": "Diferencia en valor final",
-    "betterPerformer": "Mejor rendimiento",
+    "betterPerformer": "Valor final histórico más alto",
     "tie": "Empate",
     "chartEyebrow": "Gráfico comparativo",
     "chartTitle": "Valor de los activos con el tiempo",
@@ -473,7 +473,8 @@
     "status": {
       "historical": "Datos históricos disponibles",
       "sample": "Solo datos de muestra",
-      "notAvailable": "No disponible"
+      "notAvailable": "Última actualización: no disponible",
+      "sampleOnly": "Solo muestra - no son datos reales de mercado"
     },
     "action": {
       "assetPage": "Abrir página del activo",
@@ -485,8 +486,8 @@
   },
   "advancedMetrics": {
     "title": "Métricas avanzadas",
-    "cagr": "CAGR / Rentabilidad anualizada",
-    "cagrHelper": "CAGR significa tasa de crecimiento anualizada según el periodo de backtest seleccionado.",
+    "cagr": "Rentabilidad anualizada estimada",
+    "cagrHelper": "Crecimiento anualizado estimado según el valor final frente al efectivo total invertido durante el periodo seleccionado.",
     "maxDrawdown": "Máxima caída",
     "maxDrawdownHelper": "La máxima caída es el mayor descenso histórico desde un pico hasta un valle.",
     "bestPortfolioValue": "Mejor valor de cartera",

@@ -435,7 +435,7 @@
     "totalProfit": "总利润",
     "totalReturn": "总回报",
     "difference": "最终价值差额",
-    "betterPerformer": "表现更好的资产",
+    "betterPerformer": "历史最终价值较高",
     "tie": "持平",
     "chartEyebrow": "对比图表",
     "chartTitle": "资产价值变化",
@@ -473,7 +473,8 @@
     "status": {
       "historical": "已有历史数据",
       "sample": "仅示例数据",
-      "notAvailable": "不可用"
+      "notAvailable": "最后更新：不可用",
+      "sampleOnly": "仅示例数据 - 非真实市场数据"
     },
     "action": {
       "assetPage": "打开资产页面",
@@ -485,8 +486,8 @@
   },
   "advancedMetrics": {
     "title": "高级指标",
-    "cagr": "CAGR / 年化回报",
-    "cagrHelper": "CAGR 表示基于所选回测期间的年化增长率。",
+    "cagr": "估算年化回报",
+    "cagrHelper": "根据所选期间的最终价值与总现金投入估算的年化增长。",
     "maxDrawdown": "最大回撤",
     "maxDrawdownHelper": "最大回撤表示从历史高点到低点的最大跌幅。",
     "bestPortfolioValue": "最高组合价值",

@@ -38,6 +38,7 @@ type SupportedAssetMessages = {
     historical: string;
     sample: string;
     notAvailable: string;
+    sampleOnly: string;
   };
   action: {
     assetPage: string;
@@ -178,7 +179,9 @@ export default async function SupportedAssetsPage({
     return {
       instrument,
       hasHistoricalData,
-      lastUpdated: getMarketDataLastUpdatedDate(instrument.dataKey),
+      lastUpdated: hasHistoricalData
+        ? getMarketDataLastUpdatedDate(instrument.dataKey)
+        : null,
       href: assetPageSlug
         ? `/${typedLocale}/${assetPageSlug}`
         : `/${typedLocale}${getCalculatorQuery(instrument)}`,
@@ -255,7 +258,9 @@ export default async function SupportedAssetsPage({
                     : pageMessages.status.sample}
                 </p>
                 <p className="text-slate-400">
-                  {lastUpdated ?? pageMessages.status.notAvailable}
+                  {hasHistoricalData
+                    ? lastUpdated ?? pageMessages.status.notAvailable
+                    : pageMessages.status.sampleOnly}
                 </p>
                 <Link
                   href={href}

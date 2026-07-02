@@ -666,6 +666,7 @@ export default function DcaAssetComparison({
             <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
               <button
                 type="button"
+                data-testid="comparison-copy-link-button"
                 onClick={copyComparisonLink}
                 className="w-full rounded-2xl bg-cyan-400 px-4 py-2.5 text-sm font-bold text-slate-950 transition hover:bg-cyan-300 sm:w-auto"
               >
@@ -673,6 +674,7 @@ export default function DcaAssetComparison({
               </button>
               <button
                 type="button"
+                data-testid="comparison-copy-caption-button"
                 onClick={copyComparisonCaption}
                 className="w-full rounded-2xl border border-white/10 bg-white/[0.08] px-4 py-2.5 text-sm font-semibold text-slate-100 transition hover:border-cyan-300/40 hover:text-cyan-200 sm:w-auto"
               >

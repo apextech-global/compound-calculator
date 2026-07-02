@@ -469,7 +469,7 @@
     "totalProfit": "総利益",
     "totalReturn": "総リターン",
     "difference": "最終価値の差",
-    "betterPerformer": "より良い成績",
+    "betterPerformer": "過去の最終価値が高い",
     "tie": "同率",
     "chartEyebrow": "比較チャート",
     "chartTitle": "資産価値の推移",
@@ -507,7 +507,8 @@
     "status": {
       "historical": "過去データあり",
       "sample": "サンプルデータのみ",
-      "notAvailable": "利用不可"
+      "notAvailable": "最終更新: 利用不可",
+      "sampleOnly": "サンプルのみ - 実際の市場データではありません"
     },
     "action": {
       "assetPage": "資産ページを開く",
@@ -519,8 +520,8 @@
   },
   "advancedMetrics": {
     "title": "高度な指標",
-    "cagr": "CAGR / 年率リターン",
-    "cagrHelper": "CAGRは、選択したバックテスト期間に基づく年率成長率です。",
+    "cagr": "推定年率リターン",
+    "cagrHelper": "選択期間の最終価値と総投資額をもとにした推定年率成長です。",
     "maxDrawdown": "最大ドローダウン",
     "maxDrawdownHelper": "最大ドローダウンは、ピークからボトムまでの過去最大の下落率です。",
     "bestPortfolioValue": "最高ポートフォリオ価値",

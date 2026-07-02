@@ -435,7 +435,7 @@
     "totalProfit": "Profit total",
     "totalReturn": "Rendement total",
     "difference": "Écart de valeur finale",
-    "betterPerformer": "Meilleure performance",
+    "betterPerformer": "Valeur finale historique plus élevée",
     "tie": "Égalité",
     "chartEyebrow": "Graphique comparatif",
     "chartTitle": "Valeur des actifs dans le temps",
@@ -473,7 +473,8 @@
     "status": {
       "historical": "Données historiques disponibles",
       "sample": "Données d’exemple uniquement",
-      "notAvailable": "Non disponible"
+      "notAvailable": "Dernière mise à jour : non disponible",
+      "sampleOnly": "Échantillon uniquement - pas des données réelles de marché"
     },
     "action": {
       "assetPage": "Ouvrir la page actif",
@@ -485,8 +486,8 @@
   },
   "advancedMetrics": {
     "title": "Indicateurs avancés",
-    "cagr": "CAGR / Rendement annualisé",
-    "cagrHelper": "Le CAGR désigne le taux de croissance annualisé sur la période de backtest choisie.",
+    "cagr": "Rendement annualisé estimé",
+    "cagrHelper": "Croissance annualisée estimée à partir de la valeur finale par rapport au total investi sur la période sélectionnée.",
     "maxDrawdown": "Drawdown maximal",
     "maxDrawdownHelper": "Le drawdown maximal est la plus forte baisse historique entre un sommet et un creux.",
     "bestPortfolioValue": "Meilleure valeur du portefeuille",

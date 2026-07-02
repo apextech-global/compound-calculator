@@ -1307,7 +1307,29 @@ function assetText(
         ? `${asset.symbol} DCA定投计算器`
         : isZhTw
           ? `${asset.symbol} DCA定投計算器`
-        : `${asset.symbol} DCA Calculator`,
+          : isMs
+            ? `${asset.symbol} Kalkulator DCA`
+            : isId
+              ? `${asset.symbol} Kalkulator DCA`
+              : isJa
+                ? `${asset.symbol} DCA計算機`
+                : isKo
+                  ? `${asset.symbol} DCA 계산기`
+                  : isAr
+                    ? `حاسبة DCA لـ ${asset.symbol}`
+                    : isEs
+                      ? `Calculadora DCA de ${asset.symbol}`
+                      : isFr
+                        ? `Calculateur DCA ${asset.symbol}`
+                        : isDe
+                          ? `${asset.symbol} DCA-Rechner`
+                          : isIt
+                            ? `Calcolatore DCA ${asset.symbol}`
+                            : isRu
+                              ? `DCA-калькулятор ${asset.symbol}`
+                              : isTa
+                                ? `${asset.symbol} DCA கணிப்பான்`
+                                : `${asset.symbol} DCA Calculator`,
     intro: (asset) =>
       isZhCn
         ? `这个页面用于了解如何用 DCA 回测工具分析 ${asset.symbol}（${asset.name}）的每月投资情景。`

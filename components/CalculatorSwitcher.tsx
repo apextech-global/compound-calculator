@@ -92,6 +92,7 @@ export default function CalculatorSwitcher({
           </div>
           <button
             type="button"
+            data-testid="dca-open-button"
             onClick={(event) => {
               event.stopPropagation();
               onCalculatorChange("dca");
@@ -161,6 +162,7 @@ export default function CalculatorSwitcher({
           </div>
           <button
             type="button"
+            data-testid="compound-open-button"
             onClick={(event) => {
               event.stopPropagation();
               onCalculatorChange("compound");

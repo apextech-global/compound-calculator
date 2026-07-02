@@ -435,7 +435,7 @@
     "totalProfit": "Jumlah keuntungan",
     "totalReturn": "Jumlah pulangan",
     "difference": "Perbezaan nilai akhir",
-    "betterPerformer": "Prestasi lebih baik",
+    "betterPerformer": "Nilai akhir sejarah lebih tinggi",
     "tie": "Seri",
     "chartEyebrow": "Carta perbandingan",
     "chartTitle": "Nilai Aset Dari Masa ke Masa",
@@ -473,7 +473,8 @@
     "status": {
       "historical": "Data sejarah tersedia",
       "sample": "Data sampel sahaja",
-      "notAvailable": "Tidak tersedia"
+      "notAvailable": "Kemas kini terakhir: tidak tersedia",
+      "sampleOnly": "Sampel sahaja - bukan data pasaran sebenar"
     },
     "action": {
       "assetPage": "Buka halaman aset",
@@ -485,8 +486,8 @@
   },
   "advancedMetrics": {
     "title": "Metrik lanjutan",
-    "cagr": "CAGR / Pulangan tahunan",
-    "cagrHelper": "CAGR bermaksud kadar pertumbuhan tahunan berdasarkan tempoh backtest yang dipilih.",
+    "cagr": "Anggaran pulangan tahunan",
+    "cagrHelper": "Anggaran pertumbuhan tahunan berdasarkan nilai akhir berbanding jumlah tunai dilaburkan sepanjang tempoh dipilih.",
     "maxDrawdown": "Susut nilai maksimum",
     "maxDrawdownHelper": "Susut nilai maksimum ialah penurunan sejarah terbesar dari puncak ke dasar.",
     "bestPortfolioValue": "Nilai portfolio terbaik",
