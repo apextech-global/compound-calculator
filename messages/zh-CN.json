@@ -474,7 +474,7 @@
       "historical": "已有历史数据",
       "sample": "仅示例数据",
       "notAvailable": "最后更新：不可用",
-      "sampleOnly": "仅示例数据 - 非真实市场数据"
+      "sampleOnly": "仅示例数据，非真实市场数据"
     },
     "action": {
       "assetPage": "打开资产页面",
@@ -486,8 +486,8 @@
   },
   "advancedMetrics": {
     "title": "高级指标",
-    "cagr": "估算年化回报",
-    "cagrHelper": "根据所选期间的最终价值与总现金投入估算的年化增长。",
+    "cagr": "年化回报估算",
+    "cagrHelper": "这是根据最终价值与总现金投入计算的年化回报估算，并不是真正的 IRR 或资金加权回报。",
     "maxDrawdown": "最大回撤",
     "maxDrawdownHelper": "最大回撤表示从历史高点到低点的最大跌幅。",
     "bestPortfolioValue": "最高组合价值",

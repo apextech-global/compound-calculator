@@ -474,7 +474,7 @@
       "historical": "Historical data available",
       "sample": "Sample data only",
       "notAvailable": "Last updated: unavailable",
-      "sampleOnly": "Sample only - not real market data"
+      "sampleOnly": "Sample only, not real market data"
     },
     "action": {
       "assetPage": "Open asset page",
@@ -486,8 +486,8 @@
   },
   "advancedMetrics": {
     "title": "Advanced metrics",
-    "cagr": "Estimated annualized return",
-    "cagrHelper": "Estimated annualized growth based on final value versus total cash invested over the selected period.",
+    "cagr": "Annualized return estimate",
+    "cagrHelper": "This is an annualized return estimate based on final value versus total cash invested. It is not a true IRR or money-weighted return.",
     "maxDrawdown": "Max drawdown",
     "maxDrawdownHelper": "Max drawdown means the largest historical drop from peak to trough.",
     "bestPortfolioValue": "Best portfolio value",

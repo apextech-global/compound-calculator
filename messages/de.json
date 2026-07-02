@@ -474,7 +474,7 @@
       "historical": "Historische Daten verfügbar",
       "sample": "Nur Beispieldaten",
       "notAvailable": "Zuletzt aktualisiert: nicht verfügbar",
-      "sampleOnly": "Nur Beispieldaten - keine echten Marktdaten"
+      "sampleOnly": "Nur Beispieldaten, keine echten Marktdaten"
     },
     "action": {
       "assetPage": "Assetseite öffnen",
@@ -486,8 +486,8 @@
   },
   "advancedMetrics": {
     "title": "Erweiterte Kennzahlen",
-    "cagr": "Geschätzte annualisierte Rendite",
-    "cagrHelper": "Geschätztes annualisiertes Wachstum auf Basis des Endwerts im Verhältnis zum gesamten eingezahlten Betrag im gewählten Zeitraum.",
+    "cagr": "Schätzung der annualisierten Rendite",
+    "cagrHelper": "Dies ist eine Schätzung der annualisierten Rendite auf Basis des Endwerts im Verhältnis zum gesamten eingezahlten Betrag. Es ist kein echter IRR und keine geldgewichtete Rendite.",
     "maxDrawdown": "Maximaler Drawdown",
     "maxDrawdownHelper": "Der maximale Drawdown ist der größte historische Rückgang vom Hoch zum Tief.",
     "bestPortfolioValue": "Höchster Portfoliowert",

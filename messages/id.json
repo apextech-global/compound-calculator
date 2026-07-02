@@ -474,7 +474,7 @@
       "historical": "Data historis tersedia",
       "sample": "Hanya data sampel",
       "notAvailable": "Terakhir diperbarui: tidak tersedia",
-      "sampleOnly": "Hanya sampel - bukan data pasar nyata"
+      "sampleOnly": "Hanya sampel, bukan data pasar nyata"
     },
     "action": {
       "assetPage": "Buka halaman aset",
@@ -487,7 +487,7 @@
   "advancedMetrics": {
     "title": "Metrik lanjutan",
     "cagr": "Estimasi imbal hasil tahunan",
-    "cagrHelper": "Estimasi pertumbuhan tahunan berdasarkan nilai akhir dibanding total dana tunai yang diinvestasikan selama periode yang dipilih.",
+    "cagrHelper": "Ini adalah estimasi imbal hasil tahunan berdasarkan nilai akhir dibanding total dana tunai yang diinvestasikan. Ini bukan IRR atau imbal hasil tertimbang uang yang sebenarnya.",
     "maxDrawdown": "Drawdown maksimum",
     "maxDrawdownHelper": "Drawdown maksimum berarti penurunan historis terbesar dari puncak ke dasar.",
     "bestPortfolioValue": "Nilai portofolio terbaik",

@@ -11,11 +11,13 @@ const requestedLocales = [
   "id",
   "ja",
   "ko",
+  "ru",
   "ar",
   "es",
   "fr",
   "de",
   "it",
+  "ta",
 ];
 const importantPages = [
   "",

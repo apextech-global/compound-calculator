@@ -508,7 +508,7 @@
       "historical": "과거 데이터 사용 가능",
       "sample": "샘플 데이터만",
       "notAvailable": "마지막 업데이트: 사용할 수 없음",
-      "sampleOnly": "샘플 전용 - 실제 시장 데이터가 아닙니다"
+      "sampleOnly": "샘플 전용, 실제 시장 데이터가 아닙니다"
     },
     "action": {
       "assetPage": "자산 페이지 열기",
@@ -521,7 +521,7 @@
   "advancedMetrics": {
     "title": "고급 지표",
     "cagr": "추정 연환산 수익률",
-    "cagrHelper": "선택한 기간의 최종 가치와 총 현금 투자액을 기준으로 한 추정 연환산 성장률입니다.",
+    "cagrHelper": "최종 가치와 총 현금 투자액을 기준으로 한 추정 연환산 수익률입니다. 실제 IRR 또는 금액가중 수익률은 아닙니다.",
     "maxDrawdown": "최대 낙폭",
     "maxDrawdownHelper": "최대 낙폭은 고점에서 저점까지의 가장 큰 역사적 하락폭을 뜻합니다.",
     "bestPortfolioValue": "최고 포트폴리오 가치",

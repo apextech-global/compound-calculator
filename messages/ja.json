@@ -508,7 +508,7 @@
       "historical": "過去データあり",
       "sample": "サンプルデータのみ",
       "notAvailable": "最終更新: 利用不可",
-      "sampleOnly": "サンプルのみ - 実際の市場データではありません"
+      "sampleOnly": "サンプルのみ、実際の市場データではありません"
     },
     "action": {
       "assetPage": "資産ページを開く",
@@ -521,7 +521,7 @@
   "advancedMetrics": {
     "title": "高度な指標",
     "cagr": "推定年率リターン",
-    "cagrHelper": "選択期間の最終価値と総投資額をもとにした推定年率成長です。",
+    "cagrHelper": "これは最終価値と総投資額をもとにした推定年率リターンです。真のIRRやマネーウェイトリターンではありません。",
     "maxDrawdown": "最大ドローダウン",
     "maxDrawdownHelper": "最大ドローダウンは、ピークからボトムまでの過去最大の下落率です。",
     "bestPortfolioValue": "最高ポートフォリオ価値",

@@ -474,7 +474,7 @@
       "historical": "Datos históricos disponibles",
       "sample": "Solo datos de muestra",
       "notAvailable": "Última actualización: no disponible",
-      "sampleOnly": "Solo muestra - no son datos reales de mercado"
+      "sampleOnly": "Solo muestra, no son datos reales de mercado"
     },
     "action": {
       "assetPage": "Abrir página del activo",
@@ -486,8 +486,8 @@
   },
   "advancedMetrics": {
     "title": "Métricas avanzadas",
-    "cagr": "Rentabilidad anualizada estimada",
-    "cagrHelper": "Crecimiento anualizado estimado según el valor final frente al efectivo total invertido durante el periodo seleccionado.",
+    "cagr": "Estimación de rentabilidad anualizada",
+    "cagrHelper": "Es una estimación de rentabilidad anualizada basada en el valor final frente al total invertido. No es una TIR real ni una rentabilidad ponderada por dinero.",
     "maxDrawdown": "Máxima caída",
     "maxDrawdownHelper": "La máxima caída es el mayor descenso histórico desde un pico hasta un valle.",
     "bestPortfolioValue": "Mejor valor de cartera",

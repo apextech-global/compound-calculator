@@ -474,7 +474,7 @@
       "historical": "Dati storici disponibili",
       "sample": "Solo dati campione",
       "notAvailable": "Ultimo aggiornamento: non disponibile",
-      "sampleOnly": "Solo dati campione - non dati di mercato reali"
+      "sampleOnly": "Solo dati campione, non dati di mercato reali"
     },
     "action": {
       "assetPage": "Apri pagina asset",
@@ -486,8 +486,8 @@
   },
   "advancedMetrics": {
     "title": "Metriche avanzate",
-    "cagr": "Rendimento annualizzato stimato",
-    "cagrHelper": "Crescita annualizzata stimata in base al valore finale rispetto al totale investito nel periodo selezionato.",
+    "cagr": "Stima del rendimento annualizzato",
+    "cagrHelper": "È una stima del rendimento annualizzato basata sul valore finale rispetto al totale investito. Non è un vero IRR né un rendimento ponderato per i flussi.",
     "maxDrawdown": "Drawdown massimo",
     "maxDrawdownHelper": "Il drawdown massimo è il maggiore calo storico da un picco a un minimo.",
     "bestPortfolioValue": "Miglior valore del portafoglio",

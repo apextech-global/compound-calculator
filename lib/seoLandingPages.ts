@@ -335,7 +335,7 @@ const zhCnPages = translatePages({
     ["CSPX 定投示例", "CSPX 定投计算器会在有历史数据时估算每月定投可能如何随时间增长。"],
     ["历史数据可用性说明", "如果尚未导入 CSPX 历史 CSV 数据，计算器会明确标记示例数据，而不会伪装成真实历史表现。"],
   ],
-});
+}, "zh-CN");
 
 const zhTwPages = translatePages({
   "compound-interest-calculator": ["複利計算器 | 每月投資成長計算器", "使用複利計算器，根據每月投入、年化報酬和複利時間估算長期投資成長。", "複利計算器", "估算每月投入、年化報酬假設和時間如何共同影響長期投資成長。", ["什麼是複利？", "複利是本金與先前收益一起繼續產生收益。長期來看，再投資收益可能成為投資組合成長的重要來源。"], ["複利成長如何運作", "計算器根據初始資金、每月投入、年化報酬假設與按月複利來模擬成長。這是模型，不是預測。"], ["每月投資與複利", "每月複利計算器可以展示固定月供在假設投資報酬下長期可能如何成長。"], ["複利示例", "投資者可以比較不同每月投入金額與投資年限，了解已投入資金和成長部分如何拉開差距。"]],
@@ -343,7 +343,7 @@ const zhTwPages = translatePages({
   "etf-calculator": ["ETF投資計算器 | 每月ETF報酬計算器", "估算每月 ETF 投資結果，比較支援的 ETF 資產，並了解長期 ETF 成長。", "ETF投資計算器", "了解如何用 DCA 計算器和歷史回測資料模擬每月購買 ETF。", ["什麼是 ETF 投資計算器？", "ETF 投資計算器根據定期投入、市場價格和顯示貨幣設定，估算 ETF 定投可能如何成長。"], ["為什麼投資者用 ETF 定投", "ETF 可以透過一個可交易基金提供多元化曝險，因此常用於每月投資和定投策略。"], ["ETF 定投示例", "有資料時，計算器可模擬 VOO、SPY、QQQ、CSPX、VWRA、IWDA 等 ETF 示例。"], ["支援的 ETF 市場", "支援市場包括美國、愛爾蘭 UCITS、台灣、新加坡、日本和香港；沒有歷史檔案時會使用示例資料。"]],
   "voo-dca-calculator": ["VOO定投計算器 | 標普500 ETF回測工具", "使用可用歷史資料回測每月投資 VOO，並估算長期標普500 ETF 投資成長。", "VOO定投計算器", "使用 DCA 回測計算器，探索每月投資美國上市標普500 ETF VOO 的長期結果。", ["什麼是 VOO？", "VOO 是 Vanguard 發行的美國上市 ETF，旨在追蹤代表美國大型公司的標普500指數。"], ["VOO 定投如何運作", "VOO 定投計算器會把每月固定投資應用到 VOO 價格上，並估算累計份額和期末價值。"], ["VOO 回測示例", "你可以選擇每月金額與回測區間，使用可用歷史資料比較總投入和估算組合價值。"], ["每月投資 VOO 的注意事項", "真實 VOO 報酬可能因費用、稅務、股息處理、匯率、成交價和券商規則而不同。"]],
   "cspx-dca-calculator": ["CSPX定投計算器 | UCITS標普500 ETF回測工具", "估算 CSPX 每月投資結果；CSPX 是愛爾蘭註冊的 UCITS 標普500 ETF，有歷史資料時使用歷史資料，否則使用示例資料。", "CSPX定投計算器", "了解如何用 CSPX 定投計算器分析愛爾蘭註冊 UCITS 標普500 ETF 的每月投資。", ["什麼是 CSPX？", "CSPX 是愛爾蘭註冊的 UCITS ETF，旨在追蹤標普500，常被偏好 UCITS 結構的非美國投資者關注。"], ["為什麼有些投資者選擇 UCITS ETF", "對美國以外投資者來說，UCITS ETF 的基金註冊地、監管、稅務因素和券商可用性可能很重要。"], ["CSPX 定投示例", "CSPX 定投計算器會在有歷史資料時估算每月定投可能如何隨時間成長。"], ["歷史資料可用性說明", "如果尚未匯入 CSPX 歷史 CSV 資料，計算器會明確標記示例資料，而不會偽裝成真實歷史表現。"]],
-});
+}, "zh-TW");
 
 const msPages = translatePages({
   "compound-interest-calculator": ["Kalkulator Faedah Kompaun | Kalkulator Pertumbuhan Pelaburan Bulanan", "Anggarkan pertumbuhan pelaburan jangka panjang daripada sumbangan bulanan, pulangan tahunan dan faedah kompaun.", "Kalkulator Faedah Kompaun", "Terokai bagaimana sumbangan bulanan dan pulangan tahunan boleh mempengaruhi pertumbuhan pelaburan jangka panjang.", ["Apakah faedah kompaun?", "Faedah kompaun ialah pertumbuhan atas modal asal dan keuntungan terdahulu."], ["Cara pertumbuhan kompaun berfungsi", "Model ini menggunakan modal permulaan, sumbangan bulanan, andaian pulangan tahunan dan kompaun bulanan."], ["Pelaburan bulanan dan kompaun", "Sumbangan kecil yang dibuat secara berkala boleh memberi kesan besar dalam tempoh panjang."], ["Contoh faedah kompaun", "Bandingkan jumlah bulanan dan tempoh berbeza untuk melihat anggaran nilai akhir."]],
@@ -351,7 +351,7 @@ const msPages = translatePages({
   "etf-calculator": ["Kalkulator Pelaburan ETF | Kalkulator Pulangan ETF Bulanan", "Anggarkan hasil pelaburan ETF bulanan dan fahami pertumbuhan ETF jangka panjang.", "Kalkulator Pelaburan ETF", "Ketahui bagaimana pembelian ETF berkala boleh dimodelkan dengan kalkulator DCA.", ["Apakah kalkulator pelaburan ETF?", "Kalkulator ini menganggarkan pertumbuhan pembelian ETF berkala berdasarkan sumbangan dan harga pasaran."], ["Mengapa ETF digunakan untuk pelaburan bulanan", "ETF boleh memberikan pendedahan yang pelbagai melalui satu dana dagangan."], ["Contoh DCA ETF", "Contoh termasuk VOO, SPY, QQQ, CSPX dan ETF lain apabila data tersedia."], ["Pasaran ETF yang disokong", "Pasaran yang disokong termasuk Amerika Syarikat, Ireland UCITS, Taiwan, Singapura, Jepun dan Hong Kong."]],
   "voo-dca-calculator": ["Kalkulator DCA VOO | Alat Ujian Balik ETF S&P 500", "Uji balik pelaburan bulanan dalam VOO dan anggarkan pertumbuhan ETF S&P 500 jangka panjang.", "Kalkulator DCA VOO", "Terokai pelaburan bulanan dalam VOO menggunakan kalkulator ujian balik DCA.", ["Apakah VOO?", "VOO ialah ETF Vanguard yang disenaraikan di Amerika Syarikat dan menjejaki indeks S&P 500."], ["Cara DCA VOO berfungsi", "Kalkulator menggunakan pelaburan bulanan pada harga VOO untuk menganggarkan unit terkumpul dan nilai akhir."], ["Contoh ujian balik VOO", "Pilih jumlah bulanan dan tempoh untuk membandingkan jumlah dilaburkan dengan nilai portfolio."], ["Pertimbangan pelaburan VOO", "Pulangan sebenar boleh berbeza kerana yuran, cukai, dividen, kadar tukaran dan harga pelaksanaan."]],
   "cspx-dca-calculator": ["Kalkulator DCA CSPX | Alat Ujian Balik ETF UCITS S&P 500", "Anggarkan pelaburan bulanan untuk CSPX, ETF UCITS S&P 500 berdomisil Ireland.", "Kalkulator DCA CSPX", "Ketahui bagaimana pelaburan bulanan dalam CSPX boleh dimodelkan.", ["Apakah CSPX?", "CSPX ialah ETF UCITS berdomisil Ireland yang menjejaki S&P 500."], ["Mengapa memilih ETF UCITS", "ETF UCITS boleh relevan untuk pelabur luar Amerika Syarikat kerana struktur dan ketersediaan broker."], ["Contoh DCA CSPX", "Kalkulator menganggarkan bagaimana pembelian bulanan CSPX mungkin berkembang apabila data tersedia."], ["Nota ketersediaan data", "Jika data sejarah CSPX belum diimport, kalkulator akan menandakan data sampel dengan jelas."]],
-});
+}, "ms");
 
 const idPages = translatePages({
   "compound-interest-calculator": ["Kalkulator Bunga Majemuk | Kalkulator Pertumbuhan Investasi Bulanan", "Perkirakan pertumbuhan investasi jangka panjang dari kontribusi bulanan, return tahunan, dan bunga majemuk.", "Kalkulator Bunga Majemuk", "Jelajahi bagaimana kontribusi bulanan dan asumsi return tahunan dapat memengaruhi pertumbuhan investasi jangka panjang.", ["Apa itu bunga majemuk?", "Bunga majemuk adalah pertumbuhan dari modal awal dan keuntungan sebelumnya."], ["Cara kerja pertumbuhan majemuk", "Model ini menggunakan modal awal, kontribusi bulanan, asumsi return tahunan, dan penggabungan bulanan."], ["Investasi bulanan dan bunga majemuk", "Kontribusi kecil yang dilakukan rutin dapat berdampak besar dalam jangka panjang."], ["Contoh bunga majemuk", "Bandingkan jumlah bulanan dan periode berbeda untuk melihat estimasi nilai akhir."]],
@@ -359,17 +359,51 @@ const idPages = translatePages({
   "etf-calculator": ["Kalkulator Investasi ETF | Kalkulator Return ETF Bulanan", "Perkirakan hasil investasi ETF bulanan dan pahami pertumbuhan ETF jangka panjang.", "Kalkulator Investasi ETF", "Pelajari bagaimana pembelian ETF berkala dapat dimodelkan dengan kalkulator DCA.", ["Apa itu kalkulator investasi ETF?", "Kalkulator ini memperkirakan pertumbuhan pembelian ETF berkala berdasarkan kontribusi dan harga pasar."], ["Mengapa ETF digunakan untuk investasi bulanan", "ETF dapat memberikan eksposur terdiversifikasi melalui satu dana yang diperdagangkan."], ["Contoh DCA ETF", "Contoh termasuk VOO, SPY, QQQ, CSPX, dan ETF lain jika data tersedia."], ["Pasar ETF yang didukung", "Pasar yang didukung termasuk Amerika Serikat, Ireland UCITS, Taiwan, Singapura, Jepang, dan Hong Kong."]],
   "voo-dca-calculator": ["Kalkulator DCA VOO | Alat Backtest ETF S&P 500", "Backtest investasi bulanan di VOO dan perkirakan pertumbuhan ETF S&P 500 jangka panjang.", "Kalkulator DCA VOO", "Jelajahi investasi bulanan di VOO menggunakan kalkulator backtest DCA.", ["Apa itu VOO?", "VOO adalah ETF Vanguard yang terdaftar di Amerika Serikat dan melacak indeks S&P 500."], ["Cara kerja DCA VOO", "Kalkulator menerapkan investasi bulanan pada harga VOO untuk memperkirakan unit terkumpul dan nilai akhir."], ["Contoh backtest VOO", "Pilih jumlah bulanan dan periode untuk membandingkan total investasi dengan nilai portofolio."], ["Pertimbangan investasi VOO", "Return nyata dapat berbeda karena biaya, pajak, dividen, kurs, dan harga eksekusi."]],
   "cspx-dca-calculator": ["Kalkulator DCA CSPX | Alat Backtest ETF UCITS S&P 500", "Perkirakan investasi bulanan untuk CSPX, ETF UCITS S&P 500 berdomisili Irlandia.", "Kalkulator DCA CSPX", "Pelajari bagaimana investasi bulanan di CSPX dapat dimodelkan.", ["Apa itu CSPX?", "CSPX adalah ETF UCITS berdomisili Irlandia yang melacak S&P 500."], ["Mengapa memilih ETF UCITS", "ETF UCITS dapat relevan bagi investor di luar Amerika Serikat karena struktur dan ketersediaan broker."], ["Contoh DCA CSPX", "Kalkulator memperkirakan bagaimana pembelian bulanan CSPX mungkin tumbuh jika data tersedia."], ["Catatan ketersediaan data", "Jika data historis CSPX belum diimpor, kalkulator akan menandai data sampel dengan jelas."]],
-});
+}, "id");
 
 function translatePages(
-  source: Record<BaseSeoPageSlug, [string, string, string, string, ...Array<[string, string]>]>
+  source: Record<BaseSeoPageSlug, [string, string, string, string, ...Array<[string, string]>]>,
+  locale: Locale
 ) {
   return Object.fromEntries(
     Object.entries(source).map(([slug, [title, description, h1, intro, ...sections]]) => [
       slug,
-      buildPage(title, description, h1, intro, sections),
+      buildPage(title, description, h1, intro, sections, locale),
     ])
   ) as Record<BaseSeoPageSlug, SeoPageContent>;
+}
+
+function basePageFaq(locale: Locale) {
+  const labels: Partial<
+    Record<Locale, { adviceQuestion: string; adviceAnswer: string; calculatorQuestion: string; calculatorAnswer: string }>
+  > = {
+    "zh-CN": {
+      adviceQuestion: "这个页面提供投资建议吗？",
+      adviceAnswer: "不提供。本页面和计算器仅供教育用途，不构成金融建议，也不是投资推荐。",
+      calculatorQuestion: "可以回到主计算器使用吗？",
+      calculatorAnswer: "可以。请使用页面中的按钮返回主 DCA Backtest 计算器。",
+    },
+    "zh-TW": {
+      adviceQuestion: "這個頁面提供投資建議嗎？",
+      adviceAnswer: "不提供。本頁面和計算器僅供教育用途，不構成金融建議，也不是投資推薦。",
+      calculatorQuestion: "可以回到主計算器使用嗎？",
+      calculatorAnswer: "可以。請使用頁面中的按鈕返回主 DCA Backtest 計算器。",
+    },
+    ms: {
+      adviceQuestion: "Adakah halaman ini memberi nasihat pelaburan?",
+      adviceAnswer: "Tidak. Halaman dan kalkulator ini hanya untuk pendidikan, bukan nasihat kewangan atau cadangan pelaburan.",
+      calculatorQuestion: "Bolehkah saya kembali ke kalkulator utama?",
+      calculatorAnswer: "Ya. Gunakan butang pada halaman untuk kembali ke kalkulator utama DCA Backtest.",
+    },
+    id: {
+      adviceQuestion: "Apakah halaman ini memberi nasihat investasi?",
+      adviceAnswer: "Tidak. Halaman dan kalkulator ini hanya untuk edukasi, bukan nasihat keuangan atau rekomendasi investasi.",
+      calculatorQuestion: "Bisakah saya kembali ke kalkulator utama?",
+      calculatorAnswer: "Ya. Gunakan tombol di halaman untuk kembali ke kalkulator utama DCA Backtest.",
+    },
+  };
+
+  return labels[locale] ?? labels["zh-CN"]!;
 }
 
 function buildPage(
@@ -377,8 +411,11 @@ function buildPage(
   description: string,
   h1: string,
   intro: string,
-  sections: Array<[string, string]>
+  sections: Array<[string, string]>,
+  locale: Locale
 ): SeoPageContent {
+  const faq = basePageFaq(locale);
+
   return {
     title,
     description,
@@ -391,12 +428,12 @@ function buildPage(
         answer: sections[0]?.[1] ?? description,
       },
       {
-        question: "这个页面提供投资建议吗？",
-        answer: "不提供。本页面和计算器仅供教育用途，不构成金融建议。",
+        question: faq.adviceQuestion,
+        answer: faq.adviceAnswer,
       },
       {
-        question: "可以回到主计算器使用吗？",
-        answer: "可以。请使用页面中的按钮返回主 DCA Backtest 计算器。",
+        question: faq.calculatorQuestion,
+        answer: faq.calculatorAnswer,
       },
     ],
   };
@@ -590,7 +627,7 @@ const comparisonText: Partial<Record<Locale, ComparisonLocaleText>> = {
     dcaBody: (a, b) =>
       `Use the same monthly amount, start year, end year, and display currency for ${a} and ${b}. This keeps the comparison focused on asset performance instead of different contribution assumptions.`,
     calculatorDcaBody:
-      "Select two assets, enter a monthly amount, choose a start and end year, and review final value, profit, return, difference, and the better performer for that period.",
+      "Select two assets, enter a monthly amount, choose a start and end year, and review final value, profit, return, difference, and the higher historical final value for that period.",
     riskTitle: "Risk and result limitations",
     riskBody:
       "Results can change with time period, fund fees, taxes, exchange rates, dividends, spreads, execution prices, tracking error, data availability, and market performance. This content is educational only and not financial advice.",
@@ -1049,7 +1086,7 @@ function getEnglishComparisonPage(slug: ComparisonSeoPageSlug): SeoPageContent {
             "The comparison helps study developed-market-only exposure versus broader all-world exposure using the same monthly DCA assumptions.",
         },
         {
-          question: "Can the better performer change by time period?",
+          question: "Can the higher historical final value change by time period?",
           answer:
             "Yes. Developed and emerging markets can lead or lag in different cycles, so start and end years matter.",
         },
@@ -1065,7 +1102,7 @@ function getEnglishComparisonPage(slug: ComparisonSeoPageSlug): SeoPageContent {
       sections: [
         {
           title: "What the calculator compares",
-          body: "The tool compares Asset A and Asset B using the same monthly amount, start year, end year, and display currency. It shows final value, total profit, total return, final value difference, and better performer for the selected period.",
+          body: "The tool compares Asset A and Asset B using the same monthly amount, start year, end year, and display currency. It shows final value, total profit, total return, final value difference, and the higher historical final value for the selected period.",
         },
         {
           title: "Useful ETF comparisons",
@@ -1116,22 +1153,23 @@ function buildComparisonPages(locale: Locale): Record<ComparisonSeoPageSlug, Seo
       const definition = comparisonDefinitions[slug];
       const isCalculator = definition.theme === "calculator";
       const { assetA, assetB } = definition;
+      const pageLabel = isCalculator ? text.calculatorH1 : `${assetA} vs ${assetB}`;
       const faqs = isCalculator
         ? [
-            { question: text.faqDca, answer: text.faqDcaAnswer },
+            { question: `${pageLabel}: ${text.faqDca}`, answer: text.faqDcaAnswer },
             {
               question: text.faqBetter("VOO", "CSPX"),
               answer: text.faqBetterAnswer("VOO", "CSPX"),
             },
-            { question: text.faqAdvice, answer: text.faqAdviceAnswer },
+            { question: `${pageLabel}: ${text.faqAdvice}`, answer: text.faqAdviceAnswer },
           ]
         : [
             {
               question: text.faqBetter(assetA, assetB),
               answer: text.faqBetterAnswer(assetA, assetB),
             },
-            { question: text.faqDca, answer: text.faqDcaAnswer },
-            { question: text.faqAdvice, answer: text.faqAdviceAnswer },
+            { question: `${pageLabel}: ${text.faqDca}`, answer: text.faqDcaAnswer },
+            { question: `${pageLabel}: ${text.faqAdvice}`, answer: text.faqAdviceAnswer },
           ];
 
       return [
@@ -1290,18 +1328,8 @@ function assetText(
   const isTa = locale === "ta";
 
   return {
-    title: (asset) =>
-      isZhCn
-        ? `${asset.symbol} DCA定投计算器 | ${asset.name} 回测工具`
-        : isZhTw
-          ? `${asset.symbol} DCA定投計算器 | ${asset.name} 回測工具`
-          : `${asset.symbol} DCA Calculator | ${asset.name} ${titleWord}`,
-    description: (asset) =>
-      isZhCn
-        ? `使用 ${asset.symbol} 定投计算器回测每月投资 ${asset.name}。了解数据来源、风险限制和教育性结果。`
-        : isZhTw
-          ? `使用 ${asset.symbol} 定投計算器回測每月投資 ${asset.name}。了解資料來源、風險限制和教育性結果。`
-          : `${asset.symbol} DCA calculator for educational monthly investing backtests in ${asset.name}, with data source notes, risk limits, and no financial advice.`,
+    title: (asset) => localizedAssetTitle(locale, asset, titleWord),
+    description: (asset) => localizedAssetDescription(locale, asset),
     h1: (asset) =>
       isZhCn
         ? `${asset.symbol} DCA定投计算器`
@@ -1358,8 +1386,7 @@ function assetText(
                               : isTa
                                 ? `இந்த பக்கம் ${asset.symbol} (${asset.name}) மாதாந்திர முதலீட்டை DCA பின்சோதனையால் ஆய்வு செய்வதை விளக்குகிறது.`
                                 : `Use this page to understand ${monthlyInvesting} in ${asset.symbol} (${asset.name}) with a DCA backtest calculator.`,
-    whatTitle: (asset) =>
-      isZhCn ? `${asset.symbol} 是什么？` : isZhTw ? `${asset.symbol} 是什麼？` : `What is ${asset.symbol}?`,
+    whatTitle: (asset) => localizedWhatTitle(locale, asset),
     whatBody: (asset) =>
       `${asset.symbol} (${asset.name}) - ${asset.assetKind}. ${asset.market}. ${asset.currency}.`,
     dcaTitle: (asset) =>
@@ -1368,39 +1395,159 @@ function assetText(
         : isZhTw
           ? `${asset.symbol} 定投回測如何運作`
           : `${asset.symbol} ${backtestWord}`,
-    dcaBody: (asset) =>
-      isZhCn
-        ? `选择 ${asset.symbol}、每月投入金额、开始年份和结束年份后，计算器会估算总投入、份额、最终价值、利润和回报。`
-        : isZhTw
-          ? `選擇 ${asset.symbol}、每月投入金額、開始年份和結束年份後，計算器會估算總投入、份額、最終價值、利潤和報酬。`
-          : `Select ${asset.symbol}, a monthly amount, start year, and end year to estimate total invested, accumulated shares, final value, profit, and return.`,
+    dcaBody: (asset) => localizedAssetDcaBody(locale, asset),
     dataTitle: isZhCn ? "数据来源说明" : isZhTw ? "資料來源說明" : dataTitleByLocale(locale),
     dataBody,
     riskTitle: isZhCn ? "风险与限制" : isZhTw ? "風險與限制" : riskTitleByLocale(locale),
     riskBody,
-    faqOne: (asset) =>
-      isZhCn
-        ? `可以回测 ${asset.symbol} 每月定投吗？`
-        : isZhTw
-          ? `可以回測 ${asset.symbol} 每月定投嗎？`
-          : `Can I backtest monthly investing in ${asset.symbol}?`,
-    faqOneAnswer: (asset) =>
-      isZhCn
-        ? `可以。打开主 DCA 计算器并选择 ${asset.symbol}，即可设置每月金额和时间区间。`
-        : isZhTw
-          ? `可以。開啟主 DCA 計算器並選擇 ${asset.symbol}，即可設定每月金額和時間區間。`
-          : `Yes. Open the main DCA calculator with ${asset.symbol} selected, then set the monthly amount and time period.`,
-    faqTwo: (asset) =>
-      isZhCn
-        ? `${asset.symbol} 回测使用真实历史数据吗？`
-        : isZhTw
-          ? `${asset.symbol} 回測使用真實歷史資料嗎？`
-          : `Does the ${asset.symbol} backtest use real historical data?`,
+    faqOne: (asset) => localizedAssetFaqOne(locale, asset),
+    faqOneAnswer: (asset) => localizedAssetFaqOneAnswer(locale, asset),
+    faqTwo: (asset) => localizedAssetFaqTwo(locale, asset),
     faqTwoAnswer: () => dataBody,
     faqThree:
       isZhCn ? "这是投资建议吗？" : isZhTw ? "這是投資建議嗎？" : adviceQuestionByLocale(locale),
     faqThreeAnswer: riskBody,
   };
+}
+
+function localizedAssetTitle(locale: Locale, asset: AssetDefinition, titleWord: string) {
+  const labels: Partial<Record<Locale, string>> = {
+    "zh-CN": `${asset.symbol} DCA定投计算器 | ${asset.name} 回测工具`,
+    "zh-TW": `${asset.symbol} DCA定投計算器 | ${asset.name} 回測工具`,
+    ms: `${asset.symbol} Kalkulator DCA | ${asset.name} ${titleWord}`,
+    id: `${asset.symbol} Kalkulator DCA | ${asset.name} ${titleWord}`,
+    ja: `${asset.symbol} DCA計算機 | ${asset.name}`,
+    ko: `${asset.symbol} DCA 계산기 | ${asset.name}`,
+    ru: `DCA-калькулятор ${asset.symbol} | ${asset.name}`,
+    fr: `Calculateur DCA ${asset.symbol} | ${asset.name}`,
+    it: `Calcolatore DCA ${asset.symbol} | ${asset.name}`,
+    es: `Calculadora DCA de ${asset.symbol} | ${asset.name}`,
+    ar: `حاسبة DCA لـ ${asset.symbol} | ${asset.name}`,
+    de: `${asset.symbol} DCA-Rechner | ${asset.name}`,
+    ta: `${asset.symbol} DCA கணிப்பான் | ${asset.name}`,
+  };
+
+  return labels[locale] ?? `${asset.symbol} DCA Calculator | ${asset.name} ${titleWord}`;
+}
+
+function localizedAssetDescription(locale: Locale, asset: AssetDefinition) {
+  const labels: Partial<Record<Locale, string>> = {
+    "zh-CN": `使用 ${asset.symbol} 定投计算器回测每月投资 ${asset.name}。了解数据来源、风险限制和教育性结果。`,
+    "zh-TW": `使用 ${asset.symbol} 定投計算器回測每月投資 ${asset.name}。了解資料來源、風險限制和教育性結果。`,
+    ms: `Kalkulator DCA ${asset.symbol} untuk ujian balik pelaburan bulanan ${asset.name}, dengan nota sumber data dan risiko.`,
+    id: `Kalkulator DCA ${asset.symbol} untuk backtest investasi bulanan ${asset.name}, dengan catatan sumber data dan risiko.`,
+    ja: `${asset.name}の毎月投資を学ぶための${asset.symbol} DCA計算機。データソースとリスクの注意点を含みます。`,
+    ko: `${asset.name} 월별 투자를 학습하기 위한 ${asset.symbol} DCA 계산기입니다. 데이터 출처와 위험 한계를 안내합니다.`,
+    ru: `DCA-калькулятор ${asset.symbol} для образовательного бэктеста ежемесячных инвестиций в ${asset.name} с пояснениями по данным и рискам.`,
+    fr: `Calculateur DCA ${asset.symbol} pour étudier l’investissement mensuel dans ${asset.name}, avec notes sur les données et les risques.`,
+    it: `Calcolatore DCA ${asset.symbol} per studiare investimenti mensili in ${asset.name}, con note su dati e rischi.`,
+    es: `Calculadora DCA de ${asset.symbol} para estudiar inversiones mensuales en ${asset.name}, con notas de datos y riesgos.`,
+    ar: `حاسبة DCA لـ ${asset.symbol} لدراسة الاستثمار الشهري في ${asset.name} مع ملاحظات عن مصدر البيانات والمخاطر.`,
+    de: `${asset.symbol} DCA-Rechner für monatliche Investments in ${asset.name}, mit Datenhinweisen und Risikogrenzen.`,
+    ta: `${asset.name} மாதாந்திர முதலீட்டை ஆய்வு செய்யும் ${asset.symbol} DCA கணிப்பான், தரவு மூலம் மற்றும் அபாய குறிப்புகளுடன்.`,
+  };
+
+  return labels[locale] ?? `${asset.symbol} DCA calculator for educational monthly investing backtests in ${asset.name}, with data source notes, risk limits, and no financial advice.`;
+}
+
+function localizedWhatTitle(locale: Locale, asset: AssetDefinition) {
+  const labels: Partial<Record<Locale, string>> = {
+    "zh-CN": `${asset.symbol} 是什么？`,
+    "zh-TW": `${asset.symbol} 是什麼？`,
+    ms: `Apakah ${asset.symbol}?`,
+    id: `Apa itu ${asset.symbol}?`,
+    ja: `${asset.symbol}とは？`,
+    ko: `${asset.symbol}란?`,
+    ru: `Что такое ${asset.symbol}?`,
+    fr: `Qu’est-ce que ${asset.symbol} ?`,
+    it: `Che cos’è ${asset.symbol}?`,
+    es: `¿Qué es ${asset.symbol}?`,
+    ar: `ما هو ${asset.symbol}؟`,
+    de: `Was ist ${asset.symbol}?`,
+    ta: `${asset.symbol} என்றால் என்ன?`,
+  };
+
+  return labels[locale] ?? `What is ${asset.symbol}?`;
+}
+
+function localizedAssetDcaBody(locale: Locale, asset: AssetDefinition) {
+  const labels: Partial<Record<Locale, string>> = {
+    "zh-CN": `选择 ${asset.symbol}、每月投入金额、开始年份和结束年份后，计算器会估算总投入、份额、最终价值、利润和回报。`,
+    "zh-TW": `選擇 ${asset.symbol}、每月投入金額、開始年份和結束年份後，計算器會估算總投入、份額、最終價值、利潤和報酬。`,
+    ms: `Tetapkan ${asset.symbol}, jumlah bulanan, tahun mula dan tahun akhir untuk menganggarkan jumlah dilaburkan, unit terkumpul, nilai akhir, keuntungan dan pulangan.`,
+    id: `Atur ${asset.symbol}, jumlah bulanan, tahun mulai, dan tahun akhir untuk memperkirakan total investasi, unit terkumpul, nilai akhir, laba, dan return.`,
+    ja: `${asset.symbol}、毎月金額、開始年、終了年を設定して、総投資額、累積口数、最終価値、利益、リターンを推定します。`,
+    ko: `${asset.symbol}, 월 투자금, 시작 연도, 종료 연도를 설정해 총 투자액, 누적 수량, 최종 가치, 이익, 수익률을 추정합니다.`,
+    ru: `Укажите ${asset.symbol}, ежемесячную сумму, начальный и конечный год, чтобы оценить взносы, накопленные доли, итоговую стоимость, прибыль и доходность.`,
+    fr: `Définissez ${asset.symbol}, le montant mensuel, l’année de début et l’année de fin pour estimer capital investi, parts accumulées, valeur finale, gain et rendement.`,
+    it: `Imposta ${asset.symbol}, importo mensile, anno iniziale e finale per stimare capitale investito, quote accumulate, valore finale, profitto e rendimento.`,
+    es: `Configura ${asset.symbol}, importe mensual, año inicial y final para estimar inversión total, participaciones acumuladas, valor final, ganancia y retorno.`,
+    ar: `حدد ${asset.symbol} والمبلغ الشهري وسنة البداية والنهاية لتقدير إجمالي الاستثمار والوحدات المتراكمة والقيمة النهائية والربح والعائد.`,
+    de: `Legen Sie ${asset.symbol}, Monatsbetrag, Startjahr und Endjahr fest, um Einzahlungen, Anteile, Endwert, Gewinn und Rendite zu schätzen.`,
+    ta: `${asset.symbol}, மாதாந்திர தொகை, தொடக்க ஆண்டு மற்றும் முடிவு ஆண்டை அமைத்து மொத்த முதலீடு, சேர்க்கப்பட்ட பங்குகள், இறுதி மதிப்பு, லாபம் மற்றும் வருமானத்தை மதிப்பிடலாம்.`,
+  };
+
+  return labels[locale] ?? `Select ${asset.symbol}, a monthly amount, start year, and end year to estimate total invested, accumulated shares, final value, profit, and return.`;
+}
+
+function localizedAssetFaqOne(locale: Locale, asset: AssetDefinition) {
+  const labels: Partial<Record<Locale, string>> = {
+    "zh-CN": `可以回测 ${asset.symbol} 每月定投吗？`,
+    "zh-TW": `可以回測 ${asset.symbol} 每月定投嗎？`,
+    ms: `Bolehkah saya menguji balik pelaburan bulanan ${asset.symbol}?`,
+    id: `Bisakah saya melakukan backtest investasi bulanan ${asset.symbol}?`,
+    ja: `${asset.symbol}の毎月投資をバックテストできますか？`,
+    ko: `${asset.symbol} 월별 투자를 백테스트할 수 있나요?`,
+    ru: `Можно ли проверить ежемесячные инвестиции в ${asset.symbol}?`,
+    fr: `Puis-je tester l’investissement mensuel dans ${asset.symbol} ?`,
+    it: `Posso testare investimenti mensili in ${asset.symbol}?`,
+    es: `¿Puedo probar inversiones mensuales en ${asset.symbol}?`,
+    ar: `هل يمكن اختبار الاستثمار الشهري في ${asset.symbol}؟`,
+    de: `Kann ich monatliche Investments in ${asset.symbol} testen?`,
+    ta: `${asset.symbol} மாதாந்திர முதலீட்டை பின்சோதிக்க முடியுமா?`,
+  };
+
+  return labels[locale] ?? `Can I backtest monthly investing in ${asset.symbol}?`;
+}
+
+function localizedAssetFaqOneAnswer(locale: Locale, asset: AssetDefinition) {
+  const labels: Partial<Record<Locale, string>> = {
+    "zh-CN": `可以。打开主 DCA 计算器并选择 ${asset.symbol}，即可设置每月金额和时间区间。`,
+    "zh-TW": `可以。開啟主 DCA 計算器並選擇 ${asset.symbol}，即可設定每月金額和時間區間。`,
+    ms: `Ya. Buka kalkulator DCA utama dengan ${asset.symbol} dipilih, kemudian tetapkan jumlah bulanan dan tempoh.`,
+    id: `Ya. Buka kalkulator DCA utama dengan ${asset.symbol} dipilih, lalu atur jumlah bulanan dan periode.`,
+    ja: `はい。メインのDCA計算機で${asset.symbol}を選び、毎月金額と期間を設定します。`,
+    ko: `예. 기본 DCA 계산기에서 ${asset.symbol}을 선택한 뒤 월 투자금과 기간을 설정합니다.`,
+    ru: `Да. Откройте основной DCA-калькулятор с выбранным ${asset.symbol}, затем задайте ежемесячную сумму и период.`,
+    fr: `Oui. Ouvrez le calculateur DCA principal avec ${asset.symbol} sélectionné, puis définissez le montant mensuel et la période.`,
+    it: `Sì. Apri il calcolatore DCA principale con ${asset.symbol} selezionato, poi imposta importo mensile e periodo.`,
+    es: `Sí. Abre la calculadora DCA principal con ${asset.symbol} seleccionado y define importe mensual y periodo.`,
+    ar: `نعم. افتح حاسبة DCA الرئيسية مع اختيار ${asset.symbol} ثم حدد المبلغ الشهري والفترة.`,
+    de: `Ja. Öffnen Sie den Haupt-DCA-Rechner mit ${asset.symbol} und legen Sie Monatsbetrag und Zeitraum fest.`,
+    ta: `ஆம். ${asset.symbol} தேர்ந்தெடுக்கப்பட்ட முக்கிய DCA கணிப்பானைத் திறந்து, மாதாந்திர தொகை மற்றும் காலத்தை அமைக்கவும்.`,
+  };
+
+  return labels[locale] ?? `Yes. Open the main DCA calculator with ${asset.symbol} selected, then set the monthly amount and time period.`;
+}
+
+function localizedAssetFaqTwo(locale: Locale, asset: AssetDefinition) {
+  const labels: Partial<Record<Locale, string>> = {
+    "zh-CN": `${asset.symbol} 回测使用真实历史数据吗？`,
+    "zh-TW": `${asset.symbol} 回測使用真實歷史資料嗎？`,
+    ms: `Adakah ujian balik ${asset.symbol} menggunakan data sejarah sebenar?`,
+    id: `Apakah backtest ${asset.symbol} memakai data historis nyata?`,
+    ja: `${asset.symbol}のバックテストは実際の過去データを使いますか？`,
+    ko: `${asset.symbol} 백테스트는 실제 과거 데이터를 사용하나요?`,
+    ru: `Использует ли бэктест ${asset.symbol} реальные исторические данные?`,
+    fr: `Le backtest ${asset.symbol} utilise-t-il des données historiques réelles ?`,
+    it: `Il backtest ${asset.symbol} usa dati storici reali?`,
+    es: `¿El backtest de ${asset.symbol} usa datos históricos reales?`,
+    ar: `هل يستخدم اختبار ${asset.symbol} بيانات تاريخية حقيقية؟`,
+    de: `Verwendet der ${asset.symbol}-Backtest echte historische Daten?`,
+    ta: `${asset.symbol} பின்சோதனை உண்மையான வரலாற்று தரவை பயன்படுத்துகிறதா?`,
+  };
+
+  return labels[locale] ?? `Does the ${asset.symbol} backtest use real historical data?`;
 }
 
 function dataTitleByLocale(locale: Locale) {
@@ -1502,7 +1649,7 @@ function buildAssetPages(locale: Locale): Record<AssetSeoPageSlug, SeoPageConten
           faqs: [
             { question: text.faqOne(asset), answer: text.faqOneAnswer(asset) },
             { question: text.faqTwo(asset), answer: text.faqTwoAnswer(asset) },
-            { question: text.faqThree, answer: text.faqThreeAnswer },
+            { question: `${asset.symbol}: ${text.faqThree}`, answer: text.faqThreeAnswer },
           ],
         },
       ];

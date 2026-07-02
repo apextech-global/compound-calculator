@@ -474,7 +474,7 @@
       "historical": "Données historiques disponibles",
       "sample": "Données d’exemple uniquement",
       "notAvailable": "Dernière mise à jour : non disponible",
-      "sampleOnly": "Échantillon uniquement - pas des données réelles de marché"
+      "sampleOnly": "Échantillon uniquement, pas des données réelles de marché"
     },
     "action": {
       "assetPage": "Ouvrir la page actif",
@@ -486,8 +486,8 @@
   },
   "advancedMetrics": {
     "title": "Indicateurs avancés",
-    "cagr": "Rendement annualisé estimé",
-    "cagrHelper": "Croissance annualisée estimée à partir de la valeur finale par rapport au total investi sur la période sélectionnée.",
+    "cagr": "Estimation du rendement annualisé",
+    "cagrHelper": "Il s’agit d’une estimation du rendement annualisé basée sur la valeur finale par rapport au total investi. Ce n’est pas un véritable TRI ni un rendement pondéré par les flux.",
     "maxDrawdown": "Drawdown maximal",
     "maxDrawdownHelper": "Le drawdown maximal est la plus forte baisse historique entre un sommet et un creux.",
     "bestPortfolioValue": "Meilleure valeur du portefeuille",

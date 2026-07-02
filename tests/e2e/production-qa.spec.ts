@@ -24,7 +24,7 @@ const nonEnglishFallbackPhrases = [
   "Open calculator",
   "DCA Calculator",
   "Compound Calculator",
-  "Better performer",
+  "Higher historical final value",
 ];
 
 async function installClipboardStub(page: import("@playwright/test").Page) {
@@ -215,7 +215,7 @@ test("supported assets page distinguishes historical data from sample data", asy
   await page.goto("/en/supported-assets");
   await expect(page.getByText(/Supported Assets and Market Data/i)).toBeVisible();
   await expect(page.getByText(/Historical data available/i).first()).toBeVisible();
-  await expect(page.getByText(/Sample only - not real market data/i).first()).toBeVisible();
+  await expect(page.getByText(/Sample only, not real market data/i).first()).toBeVisible();
   const historicalRows = page.locator("article").filter({
     hasText: /Historical data available/i,
   });
@@ -225,7 +225,7 @@ test("supported assets page distinguishes historical data from sample data", asy
   await expect(historicalRows.first()).toContainText(
     /Last updated: unavailable|\d{4}-\d{2}-\d{2}/
   );
-  await expect(sampleRows.first()).toContainText(/Sample only - not real market data/i);
+  await expect(sampleRows.first()).toContainText(/Sample only, not real market data/i);
 });
 
 test("legal pages contain launch-critical disclosures", async ({ page }) => {

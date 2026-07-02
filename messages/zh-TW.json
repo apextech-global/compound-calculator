@@ -474,7 +474,7 @@
       "historical": "已有歷史資料",
       "sample": "僅範例資料",
       "notAvailable": "最後更新：不可用",
-      "sampleOnly": "僅範例資料 - 非真實市場資料"
+      "sampleOnly": "僅範例資料，非真實市場資料"
     },
     "action": {
       "assetPage": "開啟資產頁面",
@@ -486,8 +486,8 @@
   },
   "advancedMetrics": {
     "title": "進階指標",
-    "cagr": "估算年化報酬",
-    "cagrHelper": "根據所選期間的最終價值與總現金投入估算的年化成長。",
+    "cagr": "年化報酬估算",
+    "cagrHelper": "這是根據最終價值與總現金投入計算的年化報酬估算，並不是真正的 IRR 或資金加權報酬。",
     "maxDrawdown": "最大回撤",
     "maxDrawdownHelper": "最大回撤表示從歷史高點到低點的最大跌幅。",
     "bestPortfolioValue": "最高投資組合價值",
