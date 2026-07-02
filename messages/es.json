@@ -514,5 +514,9 @@
       "average": "Precio medio mensual",
       "first": "Primer precio mensual disponible"
     }
+  },
+  "advancedMode": {
+    "show": "Mostrar opciones avanzadas de backtest",
+    "hide": "Ocultar opciones avanzadas de backtest"
   }
 }

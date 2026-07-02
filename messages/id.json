@@ -514,5 +514,9 @@
       "average": "Harga rata-rata bulanan",
       "first": "Harga pertama tersedia bulanan"
     }
+  },
+  "advancedMode": {
+    "show": "Tampilkan opsi backtest lanjutan",
+    "hide": "Sembunyikan opsi backtest lanjutan"
   }
 }

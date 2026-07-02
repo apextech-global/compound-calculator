@@ -1,6 +1,7 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
+import { useState } from "react";
 import {
   CartesianGrid,
   Line,
@@ -113,6 +114,7 @@ export default function DcaBacktestCalculator({
 }: DcaBacktestCalculatorProps) {
   const t = useTranslations();
   const locale = useLocale();
+  const [showAdvancedBacktest, setShowAdvancedBacktest] = useState(false);
   const monthlyAmount = Number(backtestMonthlyAmount) || 0;
   const fixedFee = Math.max(0, Number(backtestFixedFee) || 0);
   const percentageFee = Math.max(0, Number(backtestPercentageFee) || 0);
@@ -330,88 +332,6 @@ export default function DcaBacktestCalculator({
               </label>
             </div>
 
-            <details className="rounded-2xl border border-white/10 bg-slate-950/45 p-4">
-              <summary className="cursor-pointer text-sm font-semibold text-cyan-200">
-                {t("advancedSettings.title")}
-              </summary>
-              <div className="mt-4 space-y-4">
-                <p className="text-sm leading-6 text-slate-400">
-                  {t("advancedSettings.feesHelper")}
-                </p>
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <label className="block">
-                    <span className="mb-2 block text-sm text-slate-300">
-                      {t("advancedSettings.fixedFee")}
-                    </span>
-                    <input
-                      type="number"
-                      min="0"
-                      value={formatInputAmount(backtestFixedFee, selectedCurrency)}
-                      onChange={(e) => {
-                        const value = e.target.value;
-
-                        setBacktestFixedFee(
-                          value === ""
-                            ? ""
-                            : String(
-                                convertCurrencyToUsd(
-                                  Number(value) || 0,
-                                  selectedCurrency
-                                )
-                              )
-                        );
-                      }}
-                      className="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-3 text-white outline-none transition focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/10"
-                    />
-                  </label>
-                  <label className="block">
-                    <span className="mb-2 block text-sm text-slate-300">
-                      {t("advancedSettings.percentageFee")}
-                    </span>
-                    <input
-                      type="number"
-                      min="0"
-                      step="0.01"
-                      value={backtestPercentageFee}
-                      onChange={(e) => setBacktestPercentageFee(e.target.value)}
-                      className="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-3 text-white outline-none transition focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/10"
-                    />
-                  </label>
-                </div>
-                {feesExceedMonthlyAmount ? (
-                  <p className="rounded-2xl border border-amber-300/30 bg-amber-300/10 px-4 py-3 text-sm leading-6 text-amber-100">
-                    {t("advancedSettings.feeWarning")}
-                  </p>
-                ) : null}
-                <label className="block">
-                  <span className="mb-2 block text-sm text-slate-300">
-                    {t("advancedSettings.purchasePriceMethod")}
-                  </span>
-                  <select
-                    value={backtestPurchasePriceMethod}
-                    onChange={(e) =>
-                      setBacktestPurchasePriceMethod(
-                        e.target.value as PurchasePriceMethod
-                      )
-                    }
-                    className="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-3 text-white outline-none transition focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/10"
-                  >
-                    <option value="close">
-                      {t("advancedSettings.purchaseMethod.close")}
-                    </option>
-                    <option value="average">
-                      {t("advancedSettings.purchaseMethod.average")}
-                    </option>
-                    <option value="first">
-                      {t("advancedSettings.purchaseMethod.first")}
-                    </option>
-                  </select>
-                </label>
-                <p className="text-xs leading-5 text-slate-500">
-                  {t("advancedSettings.purchaseMethodNote")}
-                </p>
-              </div>
-            </details>
           </div>
 
           <div className="mt-4 rounded-2xl border border-white/10 bg-slate-950/60 p-4 sm:mt-6">
@@ -434,7 +354,7 @@ export default function DcaBacktestCalculator({
         </div>
 
         <div className="min-w-0 space-y-4 sm:space-y-6">
-          <div className="grid min-w-0 gap-3 sm:gap-4 md:grid-cols-2 xl:grid-cols-5">
+          <div className="grid min-w-0 gap-3 sm:gap-4 md:grid-cols-4">
             <div className="min-w-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] p-4 shadow-xl shadow-black/20 sm:rounded-3xl sm:p-5">
               <p className="min-w-0 truncate whitespace-nowrap text-sm text-slate-400">
                 {t("metrics.totalInvested")}
@@ -470,110 +390,6 @@ export default function DcaBacktestCalculator({
               <p className="mt-2 min-w-0 whitespace-normal break-words text-[clamp(1.5rem,2.4vw,1.875rem)] font-bold leading-tight text-cyan-400 [overflow-wrap:anywhere]">
                 {formatPercent(backtest.totalReturn, locale)}%
               </p>
-            </div>
-            <div className="min-w-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] p-4 shadow-xl shadow-black/20 sm:rounded-3xl sm:p-5">
-              <p className="min-w-0 truncate whitespace-nowrap text-sm text-slate-400">
-                {t("metrics.totalFeesPaid")}
-              </p>
-              <p className="mt-2 min-w-0 whitespace-normal break-words text-[clamp(1.5rem,2.4vw,1.875rem)] font-bold leading-tight text-amber-200 [overflow-wrap:anywhere]">
-                {formatMoney(backtest.totalFeesPaid, selectedCurrency, locale)}
-              </p>
-            </div>
-          </div>
-
-          <div className="min-w-0 rounded-2xl border border-white/10 bg-white/[0.045] p-4 shadow-xl shadow-black/20 sm:rounded-3xl sm:p-5">
-            <div className="flex min-w-0 flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-              <div className="min-w-0">
-                <p className="text-xs font-medium uppercase tracking-[0.18em] text-slate-400 sm:text-sm sm:tracking-[0.2em]">
-                  {t("advancedMetrics.title")}
-                </p>
-                <p className="mt-1 text-xs leading-5 text-slate-500">
-                  {t("advancedMetrics.disclaimer")}
-                </p>
-              </div>
-            </div>
-            <div className="mt-4 grid min-w-0 gap-3 sm:grid-cols-2 xl:grid-cols-3">
-              {[
-                {
-                  label: t("advancedMetrics.cagr"),
-                  value: `${formatPercent(
-                    backtest.annualizedReturn,
-                    locale
-                  )}%`,
-                  helper: t("advancedMetrics.cagrHelper"),
-                  tone: "text-cyan-300",
-                },
-                {
-                  label: t("advancedMetrics.maxDrawdown"),
-                  value: `-${formatPercent(backtest.maxDrawdown, locale)}%`,
-                  helper: t("advancedMetrics.maxDrawdownHelper"),
-                  tone: "text-amber-200",
-                },
-                {
-                  label: t("advancedMetrics.netAmountInvested"),
-                  value: formatMoney(
-                    backtest.netAmountInvested,
-                    selectedCurrency,
-                    locale
-                  ),
-                  helper: t("advancedMetrics.netAmountInvestedHelper"),
-                  tone: "text-emerald-300",
-                },
-                {
-                  label: t("advancedMetrics.bestPortfolioValue"),
-                  value: formatMoney(
-                    backtest.bestPortfolioValue,
-                    selectedCurrency,
-                    locale
-                  ),
-                  helper: t("advancedMetrics.bestPortfolioValueHelper"),
-                  tone: "text-emerald-300",
-                },
-                {
-                  label: t("advancedMetrics.worstDrawdownValue"),
-                  value: formatMoney(
-                    backtest.worstDrawdownValue,
-                    selectedCurrency,
-                    locale
-                  ),
-                  helper: t("advancedMetrics.worstDrawdownValueHelper"),
-                  tone: "text-slate-100",
-                },
-                {
-                  label: t("advancedMetrics.totalMonthsInvested"),
-                  value: String(backtest.totalMonthsInvested),
-                  helper: t("advancedMetrics.totalMonthsInvestedHelper"),
-                  tone: "text-slate-100",
-                },
-                {
-                  label: t("advancedMetrics.averagePurchasePrice"),
-                  value: formatMoney(
-                    backtest.averagePurchasePrice,
-                    selectedCurrency,
-                    locale
-                  ),
-                  helper: t("advancedMetrics.averagePurchasePriceHelper"),
-                  tone: "text-slate-100",
-                },
-              ].map((metric) => (
-                <div
-                  key={metric.label}
-                  title={metric.helper}
-                  className="min-w-0 rounded-2xl border border-white/10 bg-slate-950/45 p-3"
-                >
-                  <p className="min-w-0 truncate whitespace-nowrap text-xs font-medium text-slate-400">
-                    {metric.label}
-                  </p>
-                  <p
-                    className={`mt-1 min-w-0 whitespace-normal break-words text-[clamp(1.15rem,2vw,1.5rem)] font-bold leading-tight [overflow-wrap:anywhere] ${metric.tone}`}
-                  >
-                    {metric.value}
-                  </p>
-                  <p className="mt-1 text-xs leading-5 text-slate-500">
-                    {metric.helper}
-                  </p>
-                </div>
-              ))}
             </div>
           </div>
 
@@ -733,67 +549,310 @@ export default function DcaBacktestCalculator({
             </div>
           </div>
 
-          <div className="min-w-0 rounded-2xl border border-white/10 bg-white/[0.06] p-4 shadow-xl shadow-black/20 sm:rounded-3xl sm:p-6">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <p className="text-xs font-medium uppercase tracking-[0.18em] text-slate-400 sm:text-sm sm:tracking-[0.2em]">
-                  {t("dca.annualDetail")}
-                </p>
-                <h3 className="mt-1.5 text-xl font-semibold sm:mt-2 sm:text-2xl">
-                  {t("dca.tableTitle")}
-                </h3>
-              </div>
-              <button
-                type="button"
-                onClick={() => setShowBacktestTable((value) => !value)}
-                className="rounded-2xl border border-cyan-400/30 bg-cyan-400/10 px-4 py-3 text-sm font-semibold text-cyan-200 transition hover:bg-cyan-400/20"
-              >
-                {showBacktestTable
-                  ? t("common.hideYearlyTable")
-                  : t("common.showYearlyTable")}
-              </button>
-            </div>
+          <div className="min-w-0 rounded-2xl border border-white/10 bg-white/[0.045] p-4 shadow-xl shadow-black/20 sm:rounded-3xl sm:p-5">
+            <button
+              type="button"
+              onClick={() => setShowAdvancedBacktest((value) => !value)}
+              className="flex w-full min-w-0 items-center justify-between gap-3 rounded-2xl border border-cyan-400/30 bg-cyan-400/10 px-4 py-3 text-left text-sm font-bold text-cyan-100 transition hover:bg-cyan-400/20"
+              aria-expanded={showAdvancedBacktest}
+            >
+              <span>
+                {showAdvancedBacktest
+                  ? t("advancedMode.hide")
+                  : t("advancedMode.show")}
+              </span>
+              <span className="shrink-0 text-lg leading-none">
+                {showAdvancedBacktest ? "-" : "+"}
+              </span>
+            </button>
 
-            {showBacktestTable ? (
-              <div className="mt-6 w-full overflow-x-auto">
-                <table className="min-w-max text-left text-sm">
-                  <thead className="text-slate-400">
-                    <tr>
-                      <th className="py-3 pr-6">{t("table.year")}</th>
-                      <th className="py-3 pr-6">{t("table.price")}</th>
-                      <th className="py-3 pr-6">
-                        {t("table.sharesBought")}
-                      </th>
-                      <th className="py-3 pr-6">{t("table.totalShares")}</th>
-                      <th className="py-3">{t("table.portfolioValue")}</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {backtest.yearlyResults.map((item) => (
-                      <tr key={item.year} className="border-t border-white/10">
-                        <td className="py-3 pr-6 text-slate-300">
-                          {item.year}
-                        </td>
-                        <td className="py-3 pr-6">
-                          {formatMoney(item.price, selectedCurrency, locale)}
-                        </td>
-                        <td className="py-3 pr-6 text-cyan-300">
-                          {formatShares(item.sharesBought, locale)}
-                        </td>
-                        <td className="py-3 pr-6">
-                          {formatShares(item.totalShares, locale)}
-                        </td>
-                        <td className="py-3 text-emerald-400">
-                          {formatMoney(
-                            item.portfolioValue,
-                            selectedCurrency,
-                            locale
-                          )}
-                        </td>
-                      </tr>
+            {showAdvancedBacktest ? (
+              <div className="mt-4 space-y-4 sm:space-y-5">
+                <div className="rounded-2xl border border-white/10 bg-slate-950/45 p-4">
+                  <p className="text-sm leading-6 text-slate-400">
+                    {t("advancedSettings.feesHelper")}
+                  </p>
+                  <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                    <label className="block">
+                      <span className="mb-2 block text-sm text-slate-300">
+                        {t("advancedSettings.fixedFee")}
+                      </span>
+                      <input
+                        type="number"
+                        min="0"
+                        value={formatInputAmount(
+                          backtestFixedFee,
+                          selectedCurrency
+                        )}
+                        onChange={(e) => {
+                          const value = e.target.value;
+
+                          setBacktestFixedFee(
+                            value === ""
+                              ? ""
+                              : String(
+                                  convertCurrencyToUsd(
+                                    Number(value) || 0,
+                                    selectedCurrency
+                                  )
+                                )
+                          );
+                        }}
+                        className="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-3 text-white outline-none transition focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/10"
+                      />
+                    </label>
+                    <label className="block">
+                      <span className="mb-2 block text-sm text-slate-300">
+                        {t("advancedSettings.percentageFee")}
+                      </span>
+                      <input
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        value={backtestPercentageFee}
+                        onChange={(e) =>
+                          setBacktestPercentageFee(e.target.value)
+                        }
+                        className="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-3 text-white outline-none transition focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/10"
+                      />
+                    </label>
+                  </div>
+                  {feesExceedMonthlyAmount ? (
+                    <p className="mt-4 rounded-2xl border border-amber-300/30 bg-amber-300/10 px-4 py-3 text-sm leading-6 text-amber-100">
+                      {t("advancedSettings.feeWarning")}
+                    </p>
+                  ) : null}
+                  <label className="mt-4 block">
+                    <span className="mb-2 block text-sm text-slate-300">
+                      {t("advancedSettings.purchasePriceMethod")}
+                    </span>
+                    <select
+                      value={backtestPurchasePriceMethod}
+                      onChange={(e) =>
+                        setBacktestPurchasePriceMethod(
+                          e.target.value as PurchasePriceMethod
+                        )
+                      }
+                      className="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-3 text-white outline-none transition focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/10"
+                    >
+                      <option value="close">
+                        {t("advancedSettings.purchaseMethod.close")}
+                      </option>
+                      <option value="average">
+                        {t("advancedSettings.purchaseMethod.average")}
+                      </option>
+                      <option value="first">
+                        {t("advancedSettings.purchaseMethod.first")}
+                      </option>
+                    </select>
+                  </label>
+                  <p className="mt-3 text-xs leading-5 text-slate-500">
+                    {t("advancedSettings.purchaseMethodNote")}
+                  </p>
+                </div>
+
+                <div className="grid min-w-0 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                  <div className="min-w-0 overflow-hidden rounded-2xl border border-white/10 bg-slate-950/45 p-4">
+                    <p className="min-w-0 truncate whitespace-nowrap text-sm text-slate-400">
+                      {t("metrics.totalFeesPaid")}
+                    </p>
+                    <p className="mt-2 min-w-0 whitespace-normal break-words text-[clamp(1.35rem,2.2vw,1.75rem)] font-bold leading-tight text-amber-200 [overflow-wrap:anywhere]">
+                      {formatMoney(
+                        backtest.totalFeesPaid,
+                        selectedCurrency,
+                        locale
+                      )}
+                    </p>
+                  </div>
+                  {[
+                    {
+                      label: t("advancedMetrics.cagr"),
+                      value: `${formatPercent(
+                        backtest.annualizedReturn,
+                        locale
+                      )}%`,
+                      helper: t("advancedMetrics.cagrHelper"),
+                      tone: "text-cyan-300",
+                    },
+                    {
+                      label: t("advancedMetrics.maxDrawdown"),
+                      value: `-${formatPercent(backtest.maxDrawdown, locale)}%`,
+                      helper: t("advancedMetrics.maxDrawdownHelper"),
+                      tone: "text-amber-200",
+                    },
+                    {
+                      label: t("advancedMetrics.averagePurchasePrice"),
+                      value: formatMoney(
+                        backtest.averagePurchasePrice,
+                        selectedCurrency,
+                        locale
+                      ),
+                      helper: t("advancedMetrics.averagePurchasePriceHelper"),
+                      tone: "text-slate-100",
+                    },
+                  ].map((metric) => (
+                    <div
+                      key={metric.label}
+                      title={metric.helper}
+                      className="min-w-0 rounded-2xl border border-white/10 bg-slate-950/45 p-4"
+                    >
+                      <p className="min-w-0 truncate whitespace-nowrap text-sm text-slate-400">
+                        {metric.label}
+                      </p>
+                      <p
+                        className={`mt-2 min-w-0 whitespace-normal break-words text-[clamp(1.35rem,2.2vw,1.75rem)] font-bold leading-tight [overflow-wrap:anywhere] ${metric.tone}`}
+                      >
+                        {metric.value}
+                      </p>
+                      <p className="mt-1 text-xs leading-5 text-slate-500">
+                        {metric.helper}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="min-w-0 rounded-2xl border border-white/10 bg-slate-950/45 p-4 sm:p-5">
+                  <p className="text-xs font-medium uppercase tracking-[0.18em] text-slate-400 sm:text-sm sm:tracking-[0.2em]">
+                    {t("advancedMetrics.title")}
+                  </p>
+                  <p className="mt-1 text-xs leading-5 text-slate-500">
+                    {t("advancedMetrics.disclaimer")}
+                  </p>
+                  <div className="mt-4 grid min-w-0 gap-3 sm:grid-cols-2 xl:grid-cols-3">
+                    {[
+                      {
+                        label: t("advancedMetrics.netAmountInvested"),
+                        value: formatMoney(
+                          backtest.netAmountInvested,
+                          selectedCurrency,
+                          locale
+                        ),
+                        helper: t("advancedMetrics.netAmountInvestedHelper"),
+                        tone: "text-emerald-300",
+                      },
+                      {
+                        label: t("advancedMetrics.bestPortfolioValue"),
+                        value: formatMoney(
+                          backtest.bestPortfolioValue,
+                          selectedCurrency,
+                          locale
+                        ),
+                        helper: t("advancedMetrics.bestPortfolioValueHelper"),
+                        tone: "text-emerald-300",
+                      },
+                      {
+                        label: t("advancedMetrics.worstDrawdownValue"),
+                        value: formatMoney(
+                          backtest.worstDrawdownValue,
+                          selectedCurrency,
+                          locale
+                        ),
+                        helper: t("advancedMetrics.worstDrawdownValueHelper"),
+                        tone: "text-slate-100",
+                      },
+                      {
+                        label: t("advancedMetrics.totalMonthsInvested"),
+                        value: String(backtest.totalMonthsInvested),
+                        helper: t("advancedMetrics.totalMonthsInvestedHelper"),
+                        tone: "text-slate-100",
+                      },
+                    ].map((metric) => (
+                      <div
+                        key={metric.label}
+                        title={metric.helper}
+                        className="min-w-0 rounded-2xl border border-white/10 bg-slate-900/55 p-3"
+                      >
+                        <p className="min-w-0 truncate whitespace-nowrap text-xs font-medium text-slate-400">
+                          {metric.label}
+                        </p>
+                        <p
+                          className={`mt-1 min-w-0 whitespace-normal break-words text-[clamp(1.15rem,2vw,1.5rem)] font-bold leading-tight [overflow-wrap:anywhere] ${metric.tone}`}
+                        >
+                          {metric.value}
+                        </p>
+                        <p className="mt-1 text-xs leading-5 text-slate-500">
+                          {metric.helper}
+                        </p>
+                      </div>
                     ))}
-                  </tbody>
-                </table>
+                  </div>
+                </div>
+
+                <div className="min-w-0 rounded-2xl border border-white/10 bg-slate-950/45 p-4 sm:p-5">
+                  <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                    <div>
+                      <p className="text-xs font-medium uppercase tracking-[0.18em] text-slate-400 sm:text-sm sm:tracking-[0.2em]">
+                        {t("dca.annualDetail")}
+                      </p>
+                      <h3 className="mt-1.5 text-xl font-semibold sm:mt-2 sm:text-2xl">
+                        {t("dca.tableTitle")}
+                      </h3>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setShowBacktestTable((value) => !value)}
+                      className="rounded-2xl border border-cyan-400/30 bg-cyan-400/10 px-4 py-3 text-sm font-semibold text-cyan-200 transition hover:bg-cyan-400/20"
+                    >
+                      {showBacktestTable
+                        ? t("common.hideYearlyTable")
+                        : t("common.showYearlyTable")}
+                    </button>
+                  </div>
+
+                  {showBacktestTable ? (
+                    <div className="mt-6 w-full overflow-x-auto">
+                      <table className="min-w-max text-left text-sm">
+                        <thead className="text-slate-400">
+                          <tr>
+                            <th className="py-3 pr-6">{t("table.year")}</th>
+                            <th className="py-3 pr-6">{t("table.price")}</th>
+                            <th className="py-3 pr-6">
+                              {t("table.sharesBought")}
+                            </th>
+                            <th className="py-3 pr-6">
+                              {t("table.totalShares")}
+                            </th>
+                            <th className="py-3">
+                              {t("table.portfolioValue")}
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {backtest.yearlyResults.map((item) => (
+                            <tr
+                              key={item.year}
+                              className="border-t border-white/10"
+                            >
+                              <td className="py-3 pr-6 text-slate-300">
+                                {item.year}
+                              </td>
+                              <td className="py-3 pr-6">
+                                {formatMoney(
+                                  item.price,
+                                  selectedCurrency,
+                                  locale
+                                )}
+                              </td>
+                              <td className="py-3 pr-6 text-cyan-300">
+                                {formatShares(item.sharesBought, locale)}
+                              </td>
+                              <td className="py-3 pr-6">
+                                {formatShares(item.totalShares, locale)}
+                              </td>
+                              <td className="py-3 text-emerald-400">
+                                {formatMoney(
+                                  item.portfolioValue,
+                                  selectedCurrency,
+                                  locale
+                                )}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  ) : null}
+                </div>
               </div>
             ) : null}
           </div>

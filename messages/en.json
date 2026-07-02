@@ -514,5 +514,9 @@
       "average": "Monthly average price",
       "first": "Monthly first available price"
     }
+  },
+  "advancedMode": {
+    "show": "Show advanced backtest options",
+    "hide": "Hide advanced backtest options"
   }
 }
