@@ -25,6 +25,7 @@ const importantPages = [
   "compound-interest-calculator",
   "etf-calculator",
   "etf-comparison-calculator",
+  "dca-vs-lump-sum",
   "supported-assets",
   "voo-dca-calculator",
   "cspx-dca-calculator",

@@ -14,8 +14,10 @@ import { absoluteUrl, productionBaseUrl, xDefaultUrl } from "@/lib/seoMetadata";
 
 const relatedSeoLinks: SeoPageSlug[] = [
   "dca-calculator",
+  "compound-interest-calculator",
   "etf-calculator",
   "etf-comparison-calculator",
+  "dca-vs-lump-sum",
   "voo-dca-calculator",
   "cspx-dca-calculator",
   "qqq-dca-calculator",
@@ -28,6 +30,7 @@ const relatedSeoLinks: SeoPageSlug[] = [
   "voo-vs-cspx",
   "voo-vs-qqq",
 ];
+const siteLinks = ["supported-assets"] as const;
 const legalLinks = ["privacy", "terms", "disclaimer"] as const;
 
 export function generateStaticParams() {
@@ -233,6 +236,15 @@ export default async function SeoLandingPage({
               className="rounded-full border border-cyan-300/20 bg-cyan-400/10 px-4 py-2 text-cyan-100 transition hover:border-cyan-300/50 hover:text-white"
             >
               {content.pages[link].h1}
+            </Link>
+          ))}
+          {siteLinks.map((link) => (
+            <Link
+              key={link}
+              href={`/${typedLocale}/${link}`}
+              className="rounded-full border border-cyan-300/20 bg-cyan-400/10 px-4 py-2 text-cyan-100 transition hover:border-cyan-300/50 hover:text-white"
+            >
+              {messages.footer.supportedAssets}
             </Link>
           ))}
           {legalLinks.map((link) => (

@@ -12,6 +12,7 @@ const baseSeoPageSlugs = [
 const comparisonSeoPageSlugs = [
   "voo-vs-cspx",
   "voo-vs-qqq",
+  "dca-vs-lump-sum",
   "cspx-vs-vwra",
   "iwda-vs-vwra",
   "etf-comparison-calculator",
@@ -111,45 +112,63 @@ const enPages: Record<BaseSeoPageSlug, SeoPageContent> = {
     ],
   },
   "dca-calculator": {
-    title: "DCA Calculator | Dollar Cost Averaging Investment Calculator",
+    title: "DCA Calculator | Dollar Cost Averaging Backtest Tool",
     description:
-      "Use this DCA calculator to estimate how monthly investing may grow over time using recurring contributions and historical or sample market data.",
-    h1: "DCA Calculator",
+      "Use this DCA calculator and DCA backtest calculator to study monthly investing, ETF DCA scenarios, fees, data limits, and long-term outcomes.",
+    h1: "DCA Calculator and Dollar Cost Averaging Backtest Tool",
     intro:
-      "Explore dollar-cost averaging with a monthly investment calculator built for recurring contributions, ETF examples, and long-term planning.",
+      "Use this DCA calculator to study how a fixed monthly investment may have behaved over time. It combines a dollar cost averaging calculator, ETF DCA calculator, monthly investment calculator, and historical DCA backtest calculator in one educational workflow.",
     sections: [
       {
-        title: "What is dollar-cost averaging?",
-        body: "Dollar-cost averaging, or DCA, means investing a fixed amount on a regular schedule instead of trying to time a single perfect market entry.",
+        title: "What this DCA calculator does",
+        body: "The calculator models a recurring monthly investment into a selected ETF or stock. You choose the asset, monthly amount, start year, end year, and display currency. The tool estimates total cash invested, shares accumulated, final value, total profit, total return, annualized return estimate, max drawdown, and other risk metrics where available. It is designed for learning how contribution timing, market prices, and long holding periods interact, not for predicting future returns.",
       },
       {
-        title: "How DCA works",
-        body: "When prices are lower, the same monthly amount buys more shares. When prices are higher, it buys fewer shares. Over time, the calculator estimates accumulated shares and value.",
+        title: "Who this monthly investment calculator is useful for",
+        body: "A DCA backtest is useful for people comparing recurring investment habits, ETF monthly investing plans, or long-term contribution schedules. It can help users ask practical questions such as: what if I invested a fixed amount into VOO, QQQ, CSPX, VWRA, IWDA, 0050.TW, ES3.SI, or another supported asset over a selected period? It is also useful for comparing the difference between invested capital and market growth, especially when results are shown alongside a chart and yearly table.",
       },
       {
-        title: "DCA vs lump sum investing",
-        body: "Lump sum investing commits capital at once. DCA spreads purchases across time, which some investors prefer for discipline and risk management.",
+        title: "Example DCA backtest use case",
+        body: "A user might test investing $500 per month into an S&P 500 ETF from 2018 to 2025. The DCA calculator applies the monthly contribution to available monthly prices, estimates how many shares would have been purchased, and then values the accumulated shares at the final price in the selected period. This kind of example can make the trade-off between regular contributions, market volatility, and ending value easier to understand.",
       },
       {
-        title: "Monthly investment example",
-        body: "You can model a fixed monthly contribution, choose a start and end year, and compare invested capital with estimated ending value.",
+        title: "How the backtest works",
+        body: "When historical data exists, the calculator uses monthly close prices generated from imported historical daily adjusted close data. Each month, the selected contribution is converted into estimated shares at the selected purchase price method. If advanced fee settings are enabled, fixed and percentage fees reduce the amount used to buy shares. The final value is calculated from accumulated shares and the final monthly price. If historical CSV data is unavailable for an asset, the page clearly labels sample data so it is not confused with real historical performance.",
+      },
+      {
+        title: "Data source, fees, currency, dividends, and taxes",
+        body: "Historical market prices may come from third-party sources such as Yahoo Finance and may be delayed, adjusted, incomplete, or different from exchange, broker, or fund-provider records. Display currency conversion is for presentation and uses sample exchange rates in the app. Real brokerage returns can differ because of commissions, spreads, tax treatment, dividend withholding, dividend reinvestment timing, exchange rates, tracking difference, execution price, and platform availability.",
+      },
+      {
+        title: "Risk and educational disclaimer",
+        body: "A DCA calculator can make historical scenarios easier to explore, but it cannot tell you what to buy, sell, or hold. Past performance does not guarantee future results. This page is educational only, not financial advice, not tax advice, not legal advice, and not an investment recommendation. Users are responsible for their own decisions and should verify important data with official sources or a licensed adviser.",
       },
     ],
     faqs: [
       {
-        question: "What does a DCA calculator estimate?",
+        question: "What does this DCA calculator estimate?",
         answer:
-          "It estimates total invested, shares accumulated, ending value, profit, and return for a recurring monthly investment scenario.",
+          "It estimates total invested, shares accumulated, final value, total profit, total return, annualized return estimate, drawdown, and optional fee-adjusted results for a recurring monthly investment scenario.",
       },
       {
-        question: "Is DCA always better than lump sum investing?",
+        question: "Can I use it as an ETF DCA calculator?",
         answer:
-          "No. Each approach can perform differently depending on market timing, volatility, and the investor's behavior.",
+          "Yes. The supported asset list includes ETFs such as VOO, SPY, QQQ, CSPX, VWRA, IWDA, 0050.TW, ES3.SI, and 2800.HK, plus selected stocks where available.",
       },
       {
-        question: "Can this use historical market data?",
+        question: "Does the backtest include dividends and taxes?",
         answer:
-          "Yes. Where imported CSV data exists, the backtest uses historical monthly prices; otherwise it clearly labels sample data.",
+          "Not completely. Historical adjusted prices may reflect some corporate actions, but real investor returns can differ because of dividend timing, withholding tax, local taxes, fees, spreads, and currency conversion.",
+      },
+      {
+        question: "Is dollar cost averaging always better than lump sum investing?",
+        answer:
+          "No. DCA and lump sum investing can produce different results depending on the selected start date, end date, market trend, volatility, fees, and investor behavior.",
+      },
+      {
+        question: "Is this DCA backtest calculator financial advice?",
+        answer:
+          "No. It is for education and scenario analysis only. It does not recommend any asset or strategy.",
       },
     ],
   },
@@ -568,6 +587,7 @@ const comparisonDefinitions: Record<
 > = {
   "voo-vs-cspx": { assetA: "VOO", assetB: "CSPX", theme: "comparison" },
   "voo-vs-qqq": { assetA: "VOO", assetB: "QQQ", theme: "comparison" },
+  "dca-vs-lump-sum": { assetA: "DCA", assetB: "Lump Sum", theme: "comparison" },
   "cspx-vs-vwra": { assetA: "CSPX", assetB: "VWRA", theme: "comparison" },
   "iwda-vs-vwra": { assetA: "IWDA", assetB: "VWRA", theme: "comparison" },
   "etf-comparison-calculator": {
@@ -658,7 +678,7 @@ const comparisonText: Partial<Record<Locale, ComparisonLocaleText>> = {
     calculatorKeyBody: "ETF 对比计算器可以并排比较资产，但它是教育工具，不是投资推荐系统。",
     dcaTitle: "如何对比定投回测",
     dcaBody: (a, b) => `对 ${a} 和 ${b} 使用相同每月金额、开始年份、结束年份和显示货币，这样对比更集中在资产表现而不是投入假设。`,
-    calculatorDcaBody: "选择两个资产，输入每月金额和起止年份，查看最终价值、利润、回报、差额以及该期间表现较好的资产。",
+    calculatorDcaBody: "选择两个资产，输入每月金额和起止年份，查看最终价值、利润、回报、差额以及该期间历史最终价值较高的资产。",
     riskTitle: "风险与结果限制",
     riskBody: "结果会受到时间区间、基金费用、税务、汇率、分红、价差、成交价、跟踪误差、数据可用性和市场表现影响。本内容仅供教育用途，不构成金融建议。",
     dataTitle: "历史数据与示例数据",
@@ -684,7 +704,7 @@ const comparisonText: Partial<Record<Locale, ComparisonLocaleText>> = {
     calculatorKeyBody: "ETF 對比計算器可以並排比較資產，但它是教育工具，不是投資推薦系統。",
     dcaTitle: "如何對比定投回測",
     dcaBody: (a, b) => `對 ${a} 和 ${b} 使用相同每月金額、開始年份、結束年份和顯示貨幣，讓對比更集中在資產表現而不是投入假設。`,
-    calculatorDcaBody: "選擇兩個資產，輸入每月金額和起止年份，查看最終價值、利潤、回報、差額以及該期間表現較好的資產。",
+    calculatorDcaBody: "選擇兩個資產，輸入每月金額和起止年份，查看最終價值、利潤、回報、差額以及該期間歷史最終價值較高的資產。",
     riskTitle: "風險與結果限制",
     riskBody: "結果會受到時間區間、基金費用、稅務、匯率、配息、價差、成交價、追蹤誤差、資料可用性和市場表現影響。本內容僅供教育用途，不構成金融建議。",
     dataTitle: "歷史資料與範例資料",
@@ -921,43 +941,56 @@ function comparisonLocale(
 function getEnglishComparisonPage(slug: ComparisonSeoPageSlug): SeoPageContent {
   const pages: Record<ComparisonSeoPageSlug, SeoPageContent> = {
     "voo-vs-cspx": {
-      title: "VOO vs CSPX | S&P 500 ETF DCA Comparison",
+      title: "VOO vs CSPX | S&P 500 ETF DCA Comparison Guide",
       description:
-        "Compare VOO and CSPX for educational S&P 500 ETF DCA backtesting, including domicile, currency, dividends, taxes, and fees.",
+        "Compare VOO and CSPX for educational S&P 500 ETF DCA backtesting, including listing market, domicile, currency, dividends, taxes, fees, and data limits.",
       h1: "VOO vs CSPX",
       intro:
-        "VOO and CSPX both provide S&P 500 exposure, but their fund structure, listing market, dividend treatment, and tax considerations can differ.",
+        "VOO and CSPX are both commonly used for S&P 500 exposure, but they are not identical in structure. VOO is U.S.-listed, while CSPX is an Ireland-domiciled UCITS ETF listed on the London Stock Exchange. This page explains the practical differences and how to compare them with a DCA backtest.",
       sections: [
         {
           title: "What VOO and CSPX are",
-          body: "VOO is a U.S.-listed Vanguard ETF that tracks the S&P 500. CSPX is an Ireland-domiciled UCITS ETF listed in London that also targets S&P 500 exposure.",
+          body: "VOO is the Vanguard S&P 500 ETF listed in the United States. It is designed to track the S&P 500 Index, which represents large U.S. companies across major sectors. CSPX is an iShares Core S&P 500 UCITS ETF share class that is Ireland-domiciled and commonly traded on the London Stock Exchange. Both seek broad U.S. large-cap exposure, but the fund domicile, exchange listing, tax treatment, dividend policy, trading currency, and broker availability may differ for each investor.",
         },
         {
-          title: "Key differences",
-          body: "VOO trades in the United States and distributes dividends. CSPX is commonly used as an accumulating UCITS share class by non-U.S. investors. Domicile, withholding tax, estate tax exposure, fees, spreads, broker access, and currency handling can all matter.",
+          title: "Who may find this comparison useful",
+          body: "A VOO vs CSPX comparison can be useful for investors who want S&P 500 exposure but have access to different markets or account types. U.S.-based investors may naturally see VOO on U.S. platforms. Non-U.S. investors may compare UCITS ETFs such as CSPX because of local platform availability, Ireland fund domicile, accumulating share classes, withholding-tax considerations, estate-tax concerns, or settlement currency. None of those factors makes either ETF universally better; they simply change the questions a user should study.",
         },
         {
-          title: "DCA backtest explanation",
-          body: "A fair VOO vs CSPX DCA backtest should use the same monthly investment amount and the same start and end years. The result shows one historical period, not a universal winner.",
+          title: "Example use case",
+          body: "A user might compare investing $500 per month into VOO versus CSPX from 2018 to 2025. The comparison tool applies the same monthly amount and same date range to both assets, then shows final value, total return, profit, annualized return estimate, drawdown, and final-value difference. This helps separate asset and data behavior from contribution assumptions. The result is still only one historical window, not a rule for the future.",
         },
         {
-          title: "Risk and limitations",
-          body: "Neither ETF is always better. Results depend on time period, fund fees, taxes, exchange rates, dividends, tracking difference, data availability, and market performance. This is educational only and not financial advice.",
+          title: "How the DCA backtest works",
+          body: "Where historical CSV data is available, the calculator uses monthly prices generated from historical daily adjusted close data. A monthly contribution is converted into estimated shares for each month, and the accumulated shares are valued at the final monthly price. If data is unavailable for one asset, the tool clearly labels sample data. Because VOO and CSPX can trade in different markets and currencies, users should pay attention to display currency, source data, and whether the data reflects the exact share class they intend to study.",
+        },
+        {
+          title: "Currency, tax, dividend, and platform limitations",
+          body: "VOO and CSPX may differ in trading currency, dividend treatment, fund expenses, spreads, withholding tax, estate tax exposure, local tax reporting, broker access, and exchange hours. CSPX is often discussed as an accumulating UCITS ETF, while VOO is a U.S.-listed ETF that generally distributes dividends. Actual outcomes can vary by country, broker, account type, dividend reinvestment assumptions, currency conversion cost, and execution price. The calculator cannot model every local tax rule or platform constraint.",
+        },
+        {
+          title: "Risk and disclaimer",
+          body: "This comparison is educational only and is not financial advice, tax advice, legal advice, or an investment recommendation. Neither VOO nor CSPX is always better for every investor. Past performance does not guarantee future results, and historical prices may be delayed, adjusted, incomplete, or different from official fund NAV or broker records.",
         },
       ],
       faqs: [
         {
-          question: "Do VOO and CSPX track the same market?",
+          question: "Do VOO and CSPX both target S&P 500 exposure?",
           answer:
-            "Both target S&P 500 exposure, but the fund domicile, exchange listing, dividend treatment, and investor tax experience can differ.",
+            "Yes, both are designed around S&P 500 exposure, but the fund structure, domicile, exchange listing, dividend treatment, and investor tax experience can differ.",
         },
         {
-          question: "Why do some non-U.S. investors compare CSPX with VOO?",
+          question: "Why might non-U.S. investors compare CSPX with VOO?",
           answer:
-            "Some investors compare them because UCITS structure, Ireland domicile, broker access, withholding tax, and estate tax considerations may affect real outcomes.",
+            "Some compare them because UCITS structure, Ireland domicile, broker access, withholding tax, estate tax exposure, accumulating dividends, and settlement currency may affect real-world outcomes.",
         },
         {
-          question: "Does the calculator include every tax and dividend detail?",
+          question: "Can the VOO vs CSPX backtest show which ETF is always better?",
+          answer:
+            "No. It can show historical results for the chosen assumptions and period, but it cannot prove that one ETF is always better.",
+        },
+        {
+          question: "Does this comparison include every tax and dividend detail?",
           answer:
             "No. Real results can differ because of dividend timing, withholding tax, local taxes, fees, spreads, execution price, and currency conversion.",
         },
@@ -966,26 +999,34 @@ function getEnglishComparisonPage(slug: ComparisonSeoPageSlug): SeoPageContent {
     "voo-vs-qqq": {
       title: "VOO vs QQQ | S&P 500 vs Nasdaq 100 DCA Comparison",
       description:
-        "Compare VOO and QQQ for educational DCA backtesting, including index exposure, concentration, volatility, dividends, fees, and risk.",
+        "Compare VOO and QQQ for educational DCA backtesting, including S&P 500 vs Nasdaq-100 exposure, sector concentration, volatility, fees, dividends, and risk.",
       h1: "VOO vs QQQ",
       intro:
-        "VOO and QQQ are popular U.S.-listed ETFs, but they follow different indexes. VOO is broader large-cap U.S. exposure, while QQQ is more concentrated in Nasdaq 100 companies.",
+        "VOO and QQQ are both popular U.S.-listed ETFs, but they are built around different indexes. VOO tracks broad S&P 500 exposure, while QQQ tracks the Nasdaq-100 and can be more concentrated in technology and growth-oriented companies.",
       sections: [
         {
           title: "What VOO and QQQ are",
-          body: "VOO tracks the S&P 500, which represents large U.S. companies across sectors. QQQ tracks the Nasdaq 100, which often has heavier technology and growth-company exposure.",
+          body: "VOO is a Vanguard ETF designed to track the S&P 500 Index, which includes large U.S. companies across multiple sectors. QQQ is the Invesco QQQ Trust, which tracks the Nasdaq-100 Index. The Nasdaq-100 excludes financial companies and often has heavier exposure to technology, communication services, and large growth companies. Because the underlying indexes are different, a VOO vs QQQ backtest is not just comparing two tickers; it is comparing two styles of U.S. equity exposure.",
         },
         {
-          title: "Key differences",
-          body: "VOO is usually more diversified by sector. QQQ can have higher concentration, higher volatility, different dividend yield, and stronger sensitivity to technology valuation cycles.",
+          title: "Who this comparison is useful for",
+          body: "This comparison is useful for users who want to understand how broad-market exposure and Nasdaq-100 exposure behaved under the same DCA assumptions. It can also help users study concentration risk, drawdowns, valuation cycles, and the effect of different sector weights. The page does not recommend VOO or QQQ; it gives context for using the calculator responsibly.",
         },
         {
-          title: "DCA backtest explanation",
-          body: "Use the same monthly amount and period to compare how VOO and QQQ accumulated value over time. Different start years can produce very different conclusions.",
+          title: "Example use case",
+          body: "A user might test investing $1,000 per month from 2015 to 2025 into VOO and QQQ. The comparison keeps the monthly amount and time period the same, then shows how the two historical paths differed. In some periods, growth-heavy exposure may look stronger; in others, concentration and drawdowns can matter more. Changing the start or end date can materially change the outcome.",
         },
         {
-          title: "Risk and limitations",
-          body: "Past Nasdaq 100 strength does not guarantee future outperformance. Fees, taxes, dividends, valuation cycles, drawdowns, and market leadership changes can affect results.",
+          title: "How the backtest works",
+          body: "The DCA backtest converts each monthly contribution into estimated shares using monthly prices generated from historical daily adjusted close data where available. It then calculates final value, total invested, profit, total return, annualized return estimate, and max drawdown. A comparison chart shows how both portfolios changed over time. If data is unavailable, the tool labels sample data rather than presenting it as real historical performance.",
+        },
+        {
+          title: "Fees, dividends, taxes, and currency limitations",
+          body: "VOO and QQQ can have different expense ratios, dividend yields, holdings, index rules, spreads, and tax characteristics. Real investor returns may also differ because of dividend reinvestment timing, brokerage fees, withholding tax, local tax rules, execution price, and currency conversion. The calculator is useful for comparing historical price-based scenarios, but it cannot capture every account-level detail.",
+        },
+        {
+          title: "Risk and disclaimer",
+          body: "VOO and QQQ can perform very differently because market leadership changes over time. A strong historical period for Nasdaq-100 exposure does not guarantee future results. This page is educational only, not financial advice, and not a recommendation to buy, sell, or hold either ETF.",
         },
       ],
       faqs: [
@@ -995,14 +1036,75 @@ function getEnglishComparisonPage(slug: ComparisonSeoPageSlug): SeoPageContent {
             "Generally yes. QQQ tracks the Nasdaq 100 and often has heavier technology exposure, while VOO tracks the broader S&P 500.",
         },
         {
-          question: "Can VOO and QQQ perform very differently?",
+          question: "Why can VOO and QQQ perform very differently?",
           answer:
             "Yes. Sector weights, valuation cycles, volatility, and index rules can create large differences across selected periods.",
         },
         {
-          question: "Should I choose based only on the backtest?",
+          question: "Does a higher historical final value mean an ETF is better?",
+          answer:
+            "No. A higher final value in one period is historical information only. Future performance, risk, fees, taxes, and personal circumstances can differ.",
+        },
+        {
+          question: "Should I choose VOO or QQQ based only on a backtest?",
           answer:
             "No. A backtest is educational. Diversification, fees, taxes, risk tolerance, and investment goals also matter.",
+        },
+      ],
+    },
+    "dca-vs-lump-sum": {
+      title: "DCA vs Lump Sum | Monthly Investing vs Upfront Investment",
+      description:
+        "Compare dollar-cost averaging and lump sum investing using the same total contribution assumption, with educational notes on timing, emotion, fees, and risk.",
+      h1: "DCA vs Lump Sum",
+      intro:
+        "DCA and lump sum investing answer different timing questions. DCA invests gradually over time, while lump sum invests the full contribution upfront. This page explains how to compare both approaches with the same total contribution assumption.",
+      sections: [
+        {
+          title: "What DCA and lump sum mean",
+          body: "Dollar-cost averaging invests a fixed amount on a regular schedule, such as monthly. Lump sum investing places the full available amount into the market at the beginning of the period. In the calculator, the comparison uses the same total contribution amount: if DCA invests $1,000 per month for 96 months, the lump sum scenario invests $96,000 upfront at the first available price.",
+        },
+        {
+          title: "Who this comparison is useful for",
+          body: "A DCA vs lump sum comparison is useful for users studying market timing, contribution behavior, emotional risk, and opportunity cost. Some people prefer DCA because it spreads entry points and may feel easier during volatile markets. Others study lump sum investing because markets have historically risen over many long periods, so earlier exposure can matter. The calculator helps compare scenarios without claiming one method is always superior.",
+        },
+        {
+          title: "Example use case",
+          body: "Imagine comparing $500 per month from 2018 to 2025 with investing the same total amount at the start of 2018. The DCA scenario buys gradually at different prices. The lump sum scenario buys once and then remains fully invested. If the market rises strongly soon after the start date, lump sum may show a higher historical final value. If the market falls early, DCA may benefit from buying more shares at lower prices. The answer depends heavily on start date, end date, volatility, and fees.",
+        },
+        {
+          title: "How the backtest works",
+          body: "The DCA scenario uses the existing monthly investment logic. Each month, the contribution is reduced by any selected fixed or percentage fee, then converted into estimated shares. The lump sum scenario invests the same total contribution upfront, with fees applied once. Both portfolios are valued across the same historical price series so users can compare final value, profit, annualized return estimate, CAGR for lump sum where applicable, max drawdown, and the difference in final value.",
+        },
+        {
+          title: "Fees, currency, dividends, and taxes",
+          body: "Fees can affect DCA and lump sum differently because DCA may pay transaction costs monthly, while lump sum may pay a fee once. Currency conversion, dividend reinvestment, withholding taxes, local taxes, spreads, execution price, and broker rules can all change real-world results. Display currency is for presentation and does not replace actual exchange-rate or tax calculations.",
+        },
+        {
+          title: "Risk and disclaimer",
+          body: "This comparison is educational only and does not recommend DCA or lump sum investing. Historical results depend on the selected period and cannot predict future returns. Past performance does not guarantee future results. Users should verify important assumptions and consult a licensed adviser for personal financial, tax, or legal advice.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Does the DCA vs lump sum comparison use the same total contribution?",
+          answer:
+            "Yes. The lump sum scenario invests the same total amount that the DCA scenario contributes over the full selected period.",
+        },
+        {
+          question: "Why can lump sum investing look better in some periods?",
+          answer:
+            "If prices rise early and continue rising, investing upfront can benefit from more time in the market. This is historical, not guaranteed.",
+        },
+        {
+          question: "Why might DCA look better in other periods?",
+          answer:
+            "If prices fall after the start date, DCA may buy more shares at lower prices and reduce the impact of a poor initial entry point.",
+        },
+        {
+          question: "Is DCA vs lump sum a recommendation?",
+          answer:
+            "No. It is a scenario comparison for education only and is not financial advice or an investment recommendation.",
         },
       ],
     },
@@ -1095,41 +1197,59 @@ function getEnglishComparisonPage(slug: ComparisonSeoPageSlug): SeoPageContent {
     "etf-comparison-calculator": {
       title: "ETF Comparison Calculator | Compare ETF DCA Backtests",
       description:
-        "Use the ETF comparison calculator to compare two ETF or asset DCA backtests with the same monthly amount, period, and display currency.",
+        "Use the ETF comparison calculator to compare two ETF or stock DCA backtests with the same monthly amount, time period, display currency, and data-source warnings.",
       h1: "ETF Comparison Calculator",
       intro:
-        "The ETF comparison calculator helps compare two assets using the same monthly investment assumptions, making the result easier to interpret.",
+        "The ETF comparison calculator helps compare two assets using the same monthly investment amount and the same time period. It is built for educational DCA backtesting, not recommendations.",
       sections: [
         {
           title: "What the calculator compares",
-          body: "The tool compares Asset A and Asset B using the same monthly amount, start year, end year, and display currency. It shows final value, total profit, total return, final value difference, and the higher historical final value for the selected period.",
+          body: "The tool compares Asset A and Asset B using matching assumptions: monthly investment amount, start year, end year, and display currency. It reports final value, total profit, total return, annualized return estimate, max drawdown, and the difference in final value. Using identical assumptions matters because it keeps the comparison focused on the assets and historical price paths rather than different contribution schedules.",
         },
         {
-          title: "Useful ETF comparisons",
-          body: "Examples include VOO vs CSPX, VOO vs QQQ, CSPX vs VWRA, IWDA vs VWRA, and other supported ETFs or stocks. The tool is for education and scenario analysis, not recommendations.",
+          title: "Who it is useful for",
+          body: "The comparison page is useful for users studying ETF DCA scenarios such as VOO vs CSPX, VOO vs QQQ, CSPX vs VWRA, IWDA vs VWRA, or other supported assets. It can also help users compare a broad index ETF with a more concentrated ETF, a U.S.-listed ETF with a UCITS ETF, or two regional market instruments. The goal is to understand historical behavior, risk, and assumptions, not to identify a guaranteed winner.",
         },
         {
-          title: "Historical and sample data",
-          body: "If historical CSV data is available, the calculator uses monthly prices generated from historical daily adjusted close data. If not, it clearly labels sample data.",
+          title: "Example comparison workflow",
+          body: "A user might choose VOO as Asset A and QQQ as Asset B, set $500 per month, and compare 2018 through 2025. Another user might compare VOO with CSPX to study U.S.-listed versus UCITS S&P 500 exposure. The output shows both portfolios on one chart, making it easier to see how final value and drawdowns changed over time. Share and caption tools can help preserve the settings, while the disclaimer reminds users that the result is educational.",
         },
         {
-          title: "Risk and limitations",
-          body: "Backtest results depend on period selection, fees, taxes, dividends, exchange rates, spreads, execution price, data quality, and market performance. Past performance does not guarantee future results.",
+          title: "How the comparison backtest works",
+          body: "When historical data is available, the calculator uses monthly prices generated from historical daily adjusted close data. Each monthly contribution buys estimated shares for each asset. The two portfolios are then valued through the same selected time period. If one asset lacks imported historical data, the tool displays a sample-data warning and keeps the comparison transparent. The result should not be treated as real historical performance when sample data is involved.",
+        },
+        {
+          title: "Data source, fees, currency, dividends, and taxes",
+          body: "Historical data may come from Yahoo Finance historical prices and may be delayed, adjusted, incomplete, or different from official fund NAV, exchange, or broker data. Display currency conversion is for presentation. Real returns can differ because of broker fees, spreads, taxes, dividend treatment, withholding tax, exchange rates, execution prices, tracking error, and fund expense ratios. These differences can be especially important when comparing assets listed in different countries or currencies.",
+        },
+        {
+          title: "How to use the result responsibly",
+          body: "Use the ETF comparison calculator to ask better questions: Did one asset have deeper drawdowns? Did a concentrated index create larger swings? Did a UCITS listing behave differently from a U.S.-listed ETF in the available data? The result is a historical scenario, not a forecast. Past performance does not guarantee future results, and this page is not financial advice or an investment recommendation.",
         },
       ],
       faqs: [
         {
-          question: "Can I compare two ETFs with the same DCA settings?",
+          question: "Can I compare two ETFs with the same monthly investment amount?",
           answer:
             "Yes. The comparison section uses the same monthly amount and time period for both selected assets.",
         },
         {
-          question: "What if one ETF has no historical data?",
+          question: "What metrics does the ETF comparison calculator show?",
+          answer:
+            "It can show final value, total profit, total return, annualized return estimate, max drawdown, final-value difference, and data-source labels.",
+        },
+        {
+          question: "What if one ETF has no imported historical data?",
           answer:
             "The calculator falls back to sample data and displays a sample data warning so the result is not presented as real historical performance.",
         },
         {
-          question: "Does the calculator include all real-world costs?",
+          question: "Can I compare ETFs listed in different countries?",
+          answer:
+            "Yes, if the assets exist in the supported instrument list. However, cross-market comparisons can be affected by currency, tax, dividend, exchange, and data-source differences.",
+        },
+        {
+          question: "Does the comparison include all real-world costs?",
           answer:
             "No. Real brokerage results can differ because of fees, taxes, spreads, dividends, exchange rates, execution prices, and data differences.",
         },
