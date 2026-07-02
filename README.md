@@ -99,6 +99,13 @@ Create a production build:
 npm run build
 ```
 
+Before pushing changes, run:
+
+```bash
+npm run build
+npm run check-site
+```
+
 ## Market Data Updates
 
 Yahoo Finance chart data is used as the default automated source for raw historical CSV files. If Yahoo Finance is unavailable, rate-limited, blocked, or returns invalid data, the update scripts keep existing valid CSV files unchanged.
