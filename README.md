@@ -110,6 +110,24 @@ npm run check-site
 
 Yahoo Finance chart data is used as the default automated source for raw historical CSV files. If Yahoo Finance is unavailable, rate-limited, blocked, or returns invalid data, the update scripts keep existing valid CSV files unchanged.
 
+Check current historical CSV coverage:
+
+```bash
+npm run audit-market-data
+```
+
+Show only assets missing public monthly CSV files:
+
+```bash
+npm run audit-market-data -- --missing-only
+```
+
+Fetch only missing assets that have a Yahoo Finance symbol mapping:
+
+```bash
+npm run fetch-yahoo-market-data -- --missing-only --delay=5000
+```
+
 Run the automated fetch and import flow:
 
 ```bash
@@ -121,9 +139,10 @@ npm run build
 
 Manual fallback workflow:
 
-1. Download historical daily CSV data from another reliable source.
-2. Save the file as `data/raw-market-data/{dataKey}.csv`, for example `data/raw-market-data/cspx-l.csv`.
-3. Run:
+1. Run `npm run audit-market-data` to identify assets that are missing historical data or need manual CSV files.
+2. Download historical daily CSV data from another reliable source if Yahoo Finance does not support the symbol.
+3. Save the file as `data/raw-market-data/{dataKey}.csv`, for example `data/raw-market-data/cspx-l.csv`.
+4. Run:
 
 ```bash
 npm run import-market-data

@@ -7,6 +7,38 @@
     "rowsSaved": 0,
     "status": "skipped"
   },
+  "0056-tw": {
+    "symbol": "0056.TW",
+    "name": "Yuanta Taiwan High Dividend ETF",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:22:27.899Z",
+    "rowsSaved": 4535,
+    "status": "success"
+  },
+  "0700-hk": {
+    "symbol": "0700.HK",
+    "name": "Tencent",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:22:33.728Z",
+    "rowsSaved": 5441,
+    "status": "success"
+  },
+  "0939-hk": {
+    "symbol": "0939.HK",
+    "name": "China Construction Bank",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:22:38.961Z",
+    "rowsSaved": 5096,
+    "status": "success"
+  },
+  "1023-kl": {
+    "symbol": "1023.KL",
+    "name": "CIMB",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:22:44.660Z",
+    "rowsSaved": 6619,
+    "status": "success"
+  },
   "1155-kl": {
     "symbol": "1155.KL",
     "name": "Maybank",
@@ -14,6 +46,86 @@
     "lastSuccessfulFetchAt": null,
     "rowsSaved": 0,
     "status": "skipped"
+  },
+  "1295-kl": {
+    "symbol": "1295.KL",
+    "name": "Public Bank",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:22:50.509Z",
+    "rowsSaved": 6619,
+    "status": "success"
+  },
+  "1299-hk": {
+    "symbol": "1299.HK",
+    "name": "AIA Group",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:22:55.692Z",
+    "rowsSaved": 3858,
+    "status": "success"
+  },
+  "1306-t": {
+    "symbol": "1306.T",
+    "name": "NEXT FUNDS TOPIX ETF",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:23:01.483Z",
+    "rowsSaved": 4296,
+    "status": "success"
+  },
+  "2303-tw": {
+    "symbol": "2303.TW",
+    "name": "UMC",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:23:07.025Z",
+    "rowsSaved": 6587,
+    "status": "success"
+  },
+  "2308-tw": {
+    "symbol": "2308.TW",
+    "name": "Delta Electronics",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:23:12.290Z",
+    "rowsSaved": 6587,
+    "status": "success"
+  },
+  "2317-tw": {
+    "symbol": "2317.TW",
+    "name": "Hon Hai Precision",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:23:18.236Z",
+    "rowsSaved": 8412,
+    "status": "success"
+  },
+  "2330-tw": {
+    "symbol": "2330.TW",
+    "name": "TSMC",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:23:23.833Z",
+    "rowsSaved": 6587,
+    "status": "success"
+  },
+  "2412-tw": {
+    "symbol": "2412.TW",
+    "name": "Chunghwa Telecom",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:23:29.348Z",
+    "rowsSaved": 6361,
+    "status": "success"
+  },
+  "2445-kl": {
+    "symbol": "2445.KL",
+    "name": "Kuala Lumpur Kepong",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:23:35.113Z",
+    "rowsSaved": 6618,
+    "status": "success"
+  },
+  "2454-tw": {
+    "symbol": "2454.TW",
+    "name": "MediaTek",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:23:40.350Z",
+    "rowsSaved": 6183,
+    "status": "success"
   },
   "2800-hk": {
     "symbol": "2800.HK",
@@ -23,6 +135,150 @@
     "rowsSaved": 0,
     "status": "skipped"
   },
+  "2881-tw": {
+    "symbol": "2881.TW",
+    "name": "Fubon Financial",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:23:45.598Z",
+    "rowsSaved": 6075,
+    "status": "success"
+  },
+  "2882-tw": {
+    "symbol": "2882.TW",
+    "name": "Cathay Financial",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:23:52.043Z",
+    "rowsSaved": 6587,
+    "status": "success"
+  },
+  "2891-tw": {
+    "symbol": "2891.TW",
+    "name": "CTBC Financial",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:23:58.364Z",
+    "rowsSaved": 5969,
+    "status": "success"
+  },
+  "3711-tw": {
+    "symbol": "3711.TW",
+    "name": "ASE Technology Holding",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:24:03.603Z",
+    "rowsSaved": 6587,
+    "status": "success"
+  },
+  "3816-kl": {
+    "symbol": "3816.KL",
+    "name": "MISC",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:24:08.855Z",
+    "rowsSaved": 6619,
+    "status": "success"
+  },
+  "5225-kl": {
+    "symbol": "5225.KL",
+    "name": "IHH Healthcare",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:24:14.084Z",
+    "rowsSaved": 3430,
+    "status": "success"
+  },
+  "5347-kl": {
+    "symbol": "5347.KL",
+    "name": "Tenaga Nasional",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:24:19.326Z",
+    "rowsSaved": 4976,
+    "status": "success"
+  },
+  "5819-kl": {
+    "symbol": "5819.KL",
+    "name": "Hong Leong Bank",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:24:25.177Z",
+    "rowsSaved": 6619,
+    "status": "success"
+  },
+  "6758-t": {
+    "symbol": "6758.T",
+    "name": "Sony Group",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:24:30.491Z",
+    "rowsSaved": 6612,
+    "status": "success"
+  },
+  "6888-kl": {
+    "symbol": "6888.KL",
+    "name": "Axiata",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:24:35.997Z",
+    "rowsSaved": 6618,
+    "status": "success"
+  },
+  "6947-kl": {
+    "symbol": "6947.KL",
+    "name": "CelcomDigi",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:24:41.220Z",
+    "rowsSaved": 4975,
+    "status": "success"
+  },
+  "7203-t": {
+    "symbol": "7203.T",
+    "name": "Toyota",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:24:46.821Z",
+    "rowsSaved": 6785,
+    "status": "success"
+  },
+  "8306-t": {
+    "symbol": "8306.T",
+    "name": "Mitsubishi UFJ Financial Group",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:24:52.677Z",
+    "rowsSaved": 5115,
+    "status": "success"
+  },
+  "9984-t": {
+    "symbol": "9984.T",
+    "name": "SoftBank Group",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:24:58.507Z",
+    "rowsSaved": 6612,
+    "status": "success"
+  },
+  "9988-hk": {
+    "symbol": "9988.HK",
+    "name": "Alibaba",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:25:04.102Z",
+    "rowsSaved": 1620,
+    "status": "success"
+  },
+  "aapl": {
+    "symbol": "AAPL",
+    "name": "Apple",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": null,
+    "rowsSaved": 0,
+    "status": "skipped"
+  },
+  "amzn": {
+    "symbol": "AMZN",
+    "name": "Amazon",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:25:09.425Z",
+    "rowsSaved": 7327,
+    "status": "success"
+  },
+  "brk-b": {
+    "symbol": "BRK-B",
+    "name": "Berkshire Hathaway",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:25:14.730Z",
+    "rowsSaved": 7584,
+    "status": "success"
+  },
   "cspx-l": {
     "symbol": "CSPX.L",
     "name": "iShares Core S&P 500 UCITS ETF",
@@ -30,6 +286,22 @@
     "lastSuccessfulFetchAt": null,
     "rowsSaved": 0,
     "status": "skipped"
+  },
+  "d05-si": {
+    "symbol": "D05.SI",
+    "name": "DBS Group",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:25:20.271Z",
+    "rowsSaved": 6709,
+    "status": "success"
+  },
+  "eimi-l": {
+    "symbol": "EIMI.L",
+    "name": "iShares Core MSCI EM IMI UCITS ETF",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:25:25.436Z",
+    "rowsSaved": 3056,
+    "status": "success"
   },
   "es3-si": {
     "symbol": "ES3.SI",
@@ -39,6 +311,22 @@
     "rowsSaved": 0,
     "status": "skipped"
   },
+  "g3b-si": {
+    "symbol": "G3B.SI",
+    "name": "Nikko AM Singapore STI ETF",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:25:32.116Z",
+    "rowsSaved": 4356,
+    "status": "success"
+  },
+  "googl": {
+    "symbol": "GOOGL",
+    "name": "Alphabet",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:25:37.346Z",
+    "rowsSaved": 5501,
+    "status": "success"
+  },
   "iwda-l": {
     "symbol": "IWDA.L",
     "name": "iShares Core MSCI World UCITS ETF",
@@ -47,9 +335,89 @@
     "rowsSaved": 0,
     "status": "skipped"
   },
+  "jpm": {
+    "symbol": "JPM",
+    "name": "JPMorgan Chase",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:25:42.799Z",
+    "rowsSaved": 11667,
+    "status": "success"
+  },
+  "meta": {
+    "symbol": "META",
+    "name": "Meta Platforms",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:25:47.982Z",
+    "rowsSaved": 3549,
+    "status": "success"
+  },
+  "msft": {
+    "symbol": "MSFT",
+    "name": "Microsoft",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:25:53.869Z",
+    "rowsSaved": 10153,
+    "status": "success"
+  },
+  "nvda": {
+    "symbol": "NVDA",
+    "name": "NVIDIA",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": null,
+    "rowsSaved": 0,
+    "status": "skipped"
+  },
+  "o39-si": {
+    "symbol": "O39.SI",
+    "name": "OCBC",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:25:59.159Z",
+    "rowsSaved": 6709,
+    "status": "success"
+  },
   "qqq": {
     "symbol": "QQQ",
     "name": "Invesco QQQ Trust",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": null,
+    "rowsSaved": 0,
+    "status": "skipped"
+  },
+  "spy": {
+    "symbol": "SPY",
+    "name": "SPDR S&P 500 ETF",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": null,
+    "rowsSaved": 0,
+    "status": "skipped"
+  },
+  "tsla": {
+    "symbol": "TSLA",
+    "name": "Tesla",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": null,
+    "rowsSaved": 0,
+    "status": "skipped"
+  },
+  "u11-si": {
+    "symbol": "U11.SI",
+    "name": "UOB",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:26:04.397Z",
+    "rowsSaved": 6709,
+    "status": "success"
+  },
+  "unh": {
+    "symbol": "UNH",
+    "name": "UnitedHealth Group",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-02T07:26:09.898Z",
+    "rowsSaved": 10506,
+    "status": "success"
+  },
+  "voo": {
+    "symbol": "VOO",
+    "name": "Vanguard S&P 500 ETF",
     "source": "Yahoo Finance chart API",
     "lastSuccessfulFetchAt": null,
     "rowsSaved": 0,

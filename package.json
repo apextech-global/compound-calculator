@@ -9,6 +9,7 @@
     "lint": "eslint",
     "check-seo": "node scripts/check-seo.mjs",
     "check-site": "node scripts/check-site-quality.mjs",
+    "audit-market-data": "node scripts/audit-market-data.mjs",
     "validate-market-data": "node scripts/validate-market-data.mjs",
     "update-market-data": "node scripts/update-market-data.mjs",
     "update-market-data:priority": "node scripts/update-market-data.mjs --limit=5 --delay=5000",

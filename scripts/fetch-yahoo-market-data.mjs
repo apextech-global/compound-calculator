@@ -1,52 +1,11 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const defaultAssets = [
-  {
-    yahooSymbol: "CSPX.L",
-    dataKey: "cspx-l",
-    name: "iShares Core S&P 500 UCITS ETF",
-  },
-  {
-    yahooSymbol: "VWRA.L",
-    dataKey: "vwra-l",
-    name: "Vanguard FTSE All-World UCITS ETF",
-  },
-  {
-    yahooSymbol: "IWDA.L",
-    dataKey: "iwda-l",
-    name: "iShares Core MSCI World UCITS ETF",
-  },
-  {
-    yahooSymbol: "0050.TW",
-    dataKey: "0050-tw",
-    name: "Yuanta Taiwan Top 50 ETF",
-  },
-  {
-    yahooSymbol: "1155.KL",
-    dataKey: "1155-kl",
-    name: "Maybank",
-  },
-  {
-    yahooSymbol: "ES3.SI",
-    dataKey: "es3-si",
-    name: "SPDR Straits Times Index ETF",
-  },
-  {
-    yahooSymbol: "2800.HK",
-    dataKey: "2800-hk",
-    name: "Tracker Fund of Hong Kong",
-  },
-  {
-    yahooSymbol: "QQQ",
-    dataKey: "qqq",
-    name: "Invesco QQQ Trust",
-  },
-];
-
 const rootDir = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
+const instrumentsPath = path.join(rootDir, "lib", "instruments.ts");
 const outputDir = path.join(rootDir, "data", "raw-market-data");
+const publicMarketDataDir = path.join(rootDir, "public", "market-data");
 const statusFilePath = path.join(rootDir, "data", "market-data-status.json");
 const providerName = "Yahoo Finance chart API";
 const requestHeaders = {
@@ -67,6 +26,7 @@ function parseArgs() {
     symbols: null,
     keys: null,
     delay: 2000,
+    missingOnly: false,
   };
 
   for (const arg of args) {
@@ -88,28 +48,99 @@ function parseArgs() {
       if (Number.isFinite(delay) && delay >= 0) {
         options.delay = delay;
       }
+    } else if (arg === "--missing-only") {
+      options.missingOnly = true;
     }
   }
 
   return options;
 }
 
-function selectAssets({ symbols, keys }) {
+function getStringProperty(block, propertyName) {
+  const match = block.match(new RegExp(`${propertyName}:\\s*"([^"]+)"`, "m"));
+
+  return match?.[1] ?? null;
+}
+
+async function loadAssets() {
+  const source = await readFile(instrumentsPath, "utf8");
+  const objects = source.match(/\{\n[\s\S]*?\n  \}/g) ?? [];
+
+  return objects
+    .map((block) => {
+      const symbol = getStringProperty(block, "symbol");
+      const displaySymbol = getStringProperty(block, "displaySymbol");
+      const name = getStringProperty(block, "name");
+      const dataKey = getStringProperty(block, "dataKey");
+      const country = getStringProperty(block, "country");
+      const assetType = getStringProperty(block, "assetType");
+      const currency = getStringProperty(block, "currency");
+
+      if (!symbol || !displaySymbol || !name || !dataKey) {
+        return null;
+      }
+
+      return {
+        yahooSymbol: getYahooSymbol({ symbol }),
+        symbol,
+        displaySymbol,
+        dataKey,
+        name,
+        country,
+        assetType,
+        currency,
+      };
+    })
+    .filter(Boolean)
+    .sort((a, b) => a.dataKey.localeCompare(b.dataKey));
+}
+
+function getYahooSymbol(asset) {
+  return asset.symbol?.trim() || null;
+}
+
+async function hasPublicHistoricalCsv(dataKey) {
+  const csvPath = path.join(publicMarketDataDir, `${dataKey}.csv`);
+
+  try {
+    const fileStat = await stat(csvPath);
+
+    return fileStat.size > 0;
+  } catch {
+    return false;
+  }
+}
+
+async function selectAssets(assets, { symbols, keys, missingOnly }) {
+  let selectedAssets = assets;
+
   if (symbols?.length) {
     const symbolSet = new Set(symbols);
 
-    return defaultAssets.filter((asset) =>
-      symbolSet.has(asset.yahooSymbol.toUpperCase())
+    selectedAssets = selectedAssets.filter((asset) =>
+      symbolSet.has(asset.yahooSymbol?.toUpperCase()) ||
+      symbolSet.has(asset.symbol.toUpperCase()) ||
+      symbolSet.has(asset.displaySymbol.toUpperCase())
     );
-  }
-
-  if (keys?.length) {
+  } else if (keys?.length) {
     const keySet = new Set(keys);
 
-    return defaultAssets.filter((asset) => keySet.has(asset.dataKey));
+    selectedAssets = selectedAssets.filter((asset) => keySet.has(asset.dataKey));
   }
 
-  return defaultAssets;
+  if (!missingOnly) {
+    return selectedAssets;
+  }
+
+  const missingAssets = [];
+
+  for (const asset of selectedAssets) {
+    if (!(await hasPublicHistoricalCsv(asset.dataKey))) {
+      missingAssets.push(asset);
+    }
+  }
+
+  return missingAssets;
 }
 
 function getYahooChartUrl(symbol, host) {
@@ -278,7 +309,7 @@ async function writeStatusFile(status) {
 
 function createStatusEntry(asset, status, overrides = {}) {
   return {
-    symbol: asset.yahooSymbol,
+    symbol: asset.yahooSymbol ?? asset.symbol,
     name: asset.name,
     source: providerName,
     lastSuccessfulFetchAt: null,
@@ -289,6 +320,10 @@ function createStatusEntry(asset, status, overrides = {}) {
 }
 
 async function saveAsset(asset) {
+  if (!asset.yahooSymbol) {
+    throw new Error("No Yahoo symbol mapping. Manual CSV import required.");
+  }
+
   const rows = await fetchAsset(asset);
   const outputPath = path.join(outputDir, `${asset.dataKey}.csv`);
 
@@ -309,7 +344,8 @@ async function saveAsset(asset) {
 
 async function main() {
   const options = parseArgs();
-  const assets = selectAssets(options);
+  const defaultAssets = await loadAssets();
+  const assets = await selectAssets(defaultAssets, options);
 
   await mkdir(outputDir, { recursive: true });
 
@@ -331,7 +367,7 @@ async function main() {
       status[asset.dataKey] = {
         ...createStatusEntry(asset, "skipped"),
         ...status[asset.dataKey],
-        symbol: asset.yahooSymbol,
+        symbol: asset.yahooSymbol ?? asset.symbol,
         name: asset.name,
         source: providerName,
         status: "skipped",
@@ -341,6 +377,19 @@ async function main() {
 
   for (let index = 0; index < assets.length; index += 1) {
     const asset = assets[index];
+
+    if (!asset.yahooSymbol) {
+      console.warn(`[skip] ${asset.name}`);
+      console.warn(`       display symbol: ${asset.displaySymbol}`);
+      console.warn(`       dataKey: ${asset.dataKey}`);
+      console.warn("       reason: no Yahoo symbol mapping; manual CSV required.");
+      status[asset.dataKey] = createStatusEntry(asset, "skipped", {
+        ...status[asset.dataKey],
+        status: "skipped",
+        lastError: "No Yahoo symbol mapping. Manual CSV import required.",
+      });
+      continue;
+    }
 
     try {
       const rowsSaved = await saveAsset(asset);
