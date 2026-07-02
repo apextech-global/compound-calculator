@@ -91,7 +91,9 @@
       "sample": "來源：範例資料",
       "detailsTitle": "資料來源說明",
       "historicalNote": "歷史價格來自 Yahoo Finance，並轉換為每月收盤價用於回測。資料可能延遲、經過調整，或與基金官方 NAV 有差異。",
-      "sampleNote": "當歷史資料尚未匯入時，系統會使用範例資料作示範。結果不應視為真實歷史表現。"
+      "sampleNote": "當歷史資料尚未匯入時，系統會使用範例資料作示範。結果不應視為真實歷史表現。",
+      "lastUpdated": "最後更新：{date}",
+      "staleNote": "歷史資料可能尚未包含最新市場價格。"
     }
   },
   "compound": {

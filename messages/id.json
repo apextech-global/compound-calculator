@@ -91,7 +91,9 @@
       "sample": "Sumber: Data sampel",
       "detailsTitle": "Detail sumber data",
       "historicalNote": "Harga historis bersumber dari Yahoo Finance dan dikonversi menjadi harga penutupan bulanan untuk backtesting. Data dapat tertunda, disesuaikan, atau berbeda dari NAV resmi fund.",
-      "sampleNote": "Data sampel hanya digunakan untuk demonstrasi ketika data historis yang diimpor belum tersedia. Hasil tidak boleh dianggap sebagai kinerja historis nyata."
+      "sampleNote": "Data sampel hanya digunakan untuk demonstrasi ketika data historis yang diimpor belum tersedia. Hasil tidak boleh dianggap sebagai kinerja historis nyata.",
+      "lastUpdated": "Terakhir diperbarui: {date}",
+      "staleNote": "Data historis mungkin belum mencakup harga pasar terbaru."
     }
   },
   "compound": {

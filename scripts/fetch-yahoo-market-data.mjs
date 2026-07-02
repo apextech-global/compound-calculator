@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -47,11 +47,19 @@ const defaultAssets = [
 
 const rootDir = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const outputDir = path.join(rootDir, "data", "raw-market-data");
+const statusFilePath = path.join(rootDir, "data", "market-data-status.json");
+const providerName = "Yahoo Finance chart API";
 const requestHeaders = {
   "user-agent": "Mozilla/5.0",
   accept: "application/json,text/plain,*/*",
   "accept-language": "en-US,en;q=0.9",
 };
+const providers = [
+  {
+    name: providerName,
+    hosts: ["query1.finance.yahoo.com", "query2.finance.yahoo.com"],
+  },
+];
 
 function parseArgs() {
   const args = process.argv.slice(2);
@@ -131,6 +139,21 @@ function parsePrice(value) {
   return Number.isFinite(value) ? value : null;
 }
 
+function isValidRows(rows) {
+  return (
+    Array.isArray(rows) &&
+    rows.length > 0 &&
+    rows.every(
+      (row) =>
+        row &&
+        typeof row.date === "string" &&
+        !Number.isNaN(Date.parse(row.date)) &&
+        Number.isFinite(row.close) &&
+        row.close > 0
+    )
+  );
+}
+
 function formatNumber(value) {
   return value === null ? "" : Number(value.toFixed(6)).toString();
 }
@@ -199,38 +222,79 @@ function sleep(ms) {
 async function fetchAsset(asset) {
   let lastError = null;
 
-  for (const host of ["query1.finance.yahoo.com", "query2.finance.yahoo.com"]) {
-    try {
-      const response = await fetch(getYahooChartUrl(asset.yahooSymbol, host), {
-        headers: {
-          ...requestHeaders,
-          referer: `https://finance.yahoo.com/quote/${asset.yahooSymbol}/history/`,
-        },
-      });
+  for (const provider of providers) {
+    for (const host of provider.hosts) {
+      try {
+        const response = await fetch(getYahooChartUrl(asset.yahooSymbol, host), {
+          headers: {
+            ...requestHeaders,
+            referer: `https://finance.yahoo.com/quote/${asset.yahooSymbol}/history/`,
+          },
+        });
 
-      if (!response.ok) {
-        lastError = new Error(`HTTP ${response.status} from ${host}`);
-        continue;
+        if (!response.ok) {
+          lastError = new Error(
+            `${provider.name} ${host} returned HTTP ${response.status}`
+          );
+          continue;
+        }
+
+        const rows = parseYahooChartData(await response.json());
+
+        if (rows.length === 0) {
+          throw new Error("No valid daily rows returned.");
+        }
+
+        return rows;
+      } catch (error) {
+        lastError = error;
       }
-
-      const rows = parseYahooChartData(await response.json());
-
-      if (rows.length === 0) {
-        throw new Error("No valid daily rows returned.");
-      }
-
-      return rows;
-    } catch (error) {
-      lastError = error;
     }
   }
 
   throw lastError ?? new Error("Yahoo Finance request failed.");
 }
 
+async function readStatusFile() {
+  try {
+    return JSON.parse(await readFile(statusFilePath, "utf8"));
+  } catch {
+    return {};
+  }
+}
+
+async function writeStatusFile(status) {
+  const sortedStatus = Object.fromEntries(
+    Object.entries(status).sort(([keyA], [keyB]) => keyA.localeCompare(keyB))
+  );
+
+  await mkdir(path.dirname(statusFilePath), { recursive: true });
+  await writeFile(
+    statusFilePath,
+    `${JSON.stringify(sortedStatus, null, 2)}\n`,
+    "utf8"
+  );
+}
+
+function createStatusEntry(asset, status, overrides = {}) {
+  return {
+    symbol: asset.yahooSymbol,
+    name: asset.name,
+    source: providerName,
+    lastSuccessfulFetchAt: null,
+    rowsSaved: 0,
+    status,
+    ...overrides,
+  };
+}
+
 async function saveAsset(asset) {
   const rows = await fetchAsset(asset);
   const outputPath = path.join(outputDir, `${asset.dataKey}.csv`);
+
+  if (!isValidRows(rows)) {
+    throw new Error("Fetched data had no valid rows. Existing raw CSV was kept.");
+  }
 
   await writeFile(outputPath, `${toCsv(rows)}\n`, "utf8");
 
@@ -240,7 +304,7 @@ async function saveAsset(asset) {
   console.log(`     daily rows saved: ${rows.length}`);
   console.log(`     output file path: ${path.relative(rootDir, outputPath)}`);
 
-  return true;
+  return rows.length;
 }
 
 async function main() {
@@ -255,23 +319,53 @@ async function main() {
   }
 
   let successCount = 0;
+  const status = await readStatusFile();
+  const selectedDataKeys = new Set(assets.map((asset) => asset.dataKey));
+
+  for (const asset of defaultAssets) {
+    if (!status[asset.dataKey]) {
+      status[asset.dataKey] = createStatusEntry(asset, "skipped");
+    }
+
+    if (!selectedDataKeys.has(asset.dataKey)) {
+      status[asset.dataKey] = {
+        ...createStatusEntry(asset, "skipped"),
+        ...status[asset.dataKey],
+        symbol: asset.yahooSymbol,
+        name: asset.name,
+        source: providerName,
+        status: "skipped",
+      };
+    }
+  }
 
   for (let index = 0; index < assets.length; index += 1) {
     const asset = assets[index];
 
     try {
-      const saved = await saveAsset(asset);
+      const rowsSaved = await saveAsset(asset);
 
-      if (saved) {
-        successCount += 1;
-      }
+      successCount += 1;
+      status[asset.dataKey] = createStatusEntry(asset, "success", {
+        lastSuccessfulFetchAt: new Date().toISOString(),
+        rowsSaved,
+      });
     } catch (error) {
+      const lastError = error instanceof Error ? error.message : String(error);
       console.error(`[fail] ${asset.name}`);
       console.error(`       yahoo symbol: ${asset.yahooSymbol}`);
       console.error(`       dataKey: ${asset.dataKey}`);
-      console.error(
-        `       reason: ${error instanceof Error ? error.message : String(error)}`
-      );
+      console.error(`       reason: ${lastError}`);
+      console.error("       existing raw CSV was not overwritten.");
+
+      status[asset.dataKey] = createStatusEntry(asset, "failed", {
+        ...status[asset.dataKey],
+        symbol: asset.yahooSymbol,
+        name: asset.name,
+        source: providerName,
+        status: "failed",
+        lastError,
+      });
     }
 
     if (index < assets.length - 1 && options.delay > 0) {
@@ -281,6 +375,10 @@ async function main() {
 
   console.log(
     `Yahoo raw data fetch complete: ${successCount}/${assets.length} assets saved.`
+  );
+  await writeStatusFile(status);
+  console.log(
+    `Market data status saved: ${path.relative(rootDir, statusFilePath)}`
   );
   console.log("Next run: npm run import-market-data");
 }

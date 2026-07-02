@@ -91,7 +91,9 @@
       "sample": "Source: Sample data",
       "detailsTitle": "Data source details",
       "historicalNote": "Historical prices are sourced from Yahoo Finance and converted into monthly closing prices for backtesting. Data may be delayed, adjusted, or different from official fund NAV.",
-      "sampleNote": "Sample data is used only for demonstration when imported historical data is unavailable. Results should not be treated as real historical performance."
+      "sampleNote": "Sample data is used only for demonstration when imported historical data is unavailable. Results should not be treated as real historical performance.",
+      "lastUpdated": "Last updated: {date}",
+      "staleNote": "Historical data may not include the latest market prices."
     }
   },
   "compound": {

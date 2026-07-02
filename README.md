@@ -99,6 +99,33 @@ Create a production build:
 npm run build
 ```
 
+## Market Data Updates
+
+Yahoo Finance chart data is used as the default automated source for raw historical CSV files. If Yahoo Finance is unavailable, rate-limited, blocked, or returns invalid data, the update scripts keep existing valid CSV files unchanged.
+
+Run the automated fetch and import flow:
+
+```bash
+npm run fetch-yahoo-market-data
+npm run import-market-data
+npm run validate-market-data
+npm run build
+```
+
+Manual fallback workflow:
+
+1. Download historical daily CSV data from another reliable source.
+2. Save the file as `data/raw-market-data/{dataKey}.csv`, for example `data/raw-market-data/cspx-l.csv`.
+3. Run:
+
+```bash
+npm run import-market-data
+npm run validate-market-data
+npm run build
+```
+
+Generated monthly CSV files are written to `public/market-data/`. The import script only overwrites public market data when the imported file contains valid rows.
+
 ## Disclaimer
 
 DCA Backtest is for educational purposes only. The calculators do not provide financial advice, investment recommendations, brokerage services, or guarantees of future returns. Past performance does not guarantee future results.

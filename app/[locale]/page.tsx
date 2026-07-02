@@ -30,6 +30,10 @@ import {
 } from "@/lib/marketCsv";
 import { hasImportedMarketData } from "@/lib/marketDataAvailability";
 import {
+  getMarketDataLastUpdatedDate,
+  isMarketDataUpdateOld,
+} from "@/lib/marketDataStatus";
+import {
   assetTypeOptions,
   countryOptions,
   getAssetTypesForMarket,
@@ -572,6 +576,12 @@ export default function Home() {
     backtest.dataSource === "csv" || hasSelectedInstrumentImportedMarketData
       ? "csv"
       : "mock";
+  const selectedMarketDataLastUpdated = getMarketDataLastUpdatedDate(
+    selectedInstrument?.dataKey
+  );
+  const selectedMarketDataMayBeStale =
+    displayedBacktestDataSource === "csv" &&
+    isMarketDataUpdateOld(selectedInstrument?.dataKey);
   const displayedBacktestDataSourceLabel =
     displayedBacktestDataSource === "csv"
       ? t("dca.dataSource.yahoo")
@@ -1154,6 +1164,8 @@ export default function Home() {
                 onCopySocialCaption={handleCopySocialCaption}
                 onDownloadResultImage={handleDownloadResultImage}
                 displayedDataSource={displayedBacktestDataSource}
+                dataLastUpdated={selectedMarketDataLastUpdated}
+                dataMayBeStale={selectedMarketDataMayBeStale}
               />
               <DcaAssetComparison
                 selectedCurrency={selectedCurrency}

@@ -91,7 +91,9 @@
       "sample": "Fuente: datos de muestra",
       "detailsTitle": "Detalles de fuente de datos",
       "historicalNote": "Los precios históricos provienen de Yahoo Finance y se convierten en precios de cierre mensuales para el backtesting. Los datos pueden estar retrasados, ajustados o diferir del NAV oficial del fondo.",
-      "sampleNote": "Los datos de muestra se usan solo para demostración cuando no hay datos históricos importados. Los resultados no deben tratarse como rendimiento histórico real."
+      "sampleNote": "Los datos de muestra se usan solo para demostración cuando no hay datos históricos importados. Los resultados no deben tratarse como rendimiento histórico real.",
+      "lastUpdated": "Última actualización: {date}",
+      "staleNote": "Los datos históricos pueden no incluir los precios de mercado más recientes."
     }
   },
   "compound": {

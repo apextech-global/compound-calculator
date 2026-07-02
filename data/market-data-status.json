@@ -1,0 +1,66 @@
+{
+  "0050-tw": {
+    "symbol": "0050.TW",
+    "name": "Yuanta Taiwan Top 50 ETF",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": null,
+    "rowsSaved": 0,
+    "status": "skipped"
+  },
+  "1155-kl": {
+    "symbol": "1155.KL",
+    "name": "Maybank",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": null,
+    "rowsSaved": 0,
+    "status": "skipped"
+  },
+  "2800-hk": {
+    "symbol": "2800.HK",
+    "name": "Tracker Fund of Hong Kong",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": null,
+    "rowsSaved": 0,
+    "status": "skipped"
+  },
+  "cspx-l": {
+    "symbol": "CSPX.L",
+    "name": "iShares Core S&P 500 UCITS ETF",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": null,
+    "rowsSaved": 0,
+    "status": "skipped"
+  },
+  "es3-si": {
+    "symbol": "ES3.SI",
+    "name": "SPDR Straits Times Index ETF",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": null,
+    "rowsSaved": 0,
+    "status": "skipped"
+  },
+  "iwda-l": {
+    "symbol": "IWDA.L",
+    "name": "iShares Core MSCI World UCITS ETF",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": null,
+    "rowsSaved": 0,
+    "status": "skipped"
+  },
+  "qqq": {
+    "symbol": "QQQ",
+    "name": "Invesco QQQ Trust",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": null,
+    "rowsSaved": 0,
+    "status": "skipped"
+  },
+  "vwra-l": {
+    "symbol": "VWRA.L",
+    "name": "Vanguard FTSE All-World UCITS ETF",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": null,
+    "rowsSaved": 0,
+    "status": "skipped"
+  }
+}

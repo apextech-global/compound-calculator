@@ -58,6 +58,8 @@ type DcaBacktestCalculatorProps = {
   onCopySocialCaption: () => void;
   onDownloadResultImage: () => void;
   displayedDataSource: "csv" | "mock";
+  dataLastUpdated: string | null;
+  dataMayBeStale: boolean;
 };
 
 export default function DcaBacktestCalculator({
@@ -91,6 +93,8 @@ export default function DcaBacktestCalculator({
   onCopySocialCaption,
   onDownloadResultImage,
   displayedDataSource,
+  dataLastUpdated,
+  dataMayBeStale,
 }: DcaBacktestCalculatorProps) {
   const t = useTranslations();
   const locale = useLocale();
@@ -131,6 +135,18 @@ export default function DcaBacktestCalculator({
                   ? t("dca.dataSource.yahoo")
                   : t("dca.dataUnavailableNote")}
               </p>
+              {displayedDataSource === "csv" && dataLastUpdated ? (
+                <p className="mt-1 text-xs leading-4 text-cyan-50/80">
+                  {t("dca.dataSource.lastUpdated", {
+                    date: dataLastUpdated,
+                  })}
+                </p>
+              ) : null}
+              {displayedDataSource === "csv" && dataMayBeStale ? (
+                <p className="mt-1 text-xs leading-4 text-slate-300">
+                  {t("dca.dataSource.staleNote")}
+                </p>
+              ) : null}
             </div>
           </div>
           <details className="mb-4 rounded-2xl border border-white/10 bg-slate-950/40 px-4 py-3 text-sm text-slate-300 sm:-mt-3 sm:mb-6">
