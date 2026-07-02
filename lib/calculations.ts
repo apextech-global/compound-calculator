@@ -34,6 +34,12 @@ export type DcaBacktestResult = {
   totalProfit: number;
   totalReturn: number;
   totalShares: number;
+  annualizedReturn: number;
+  maxDrawdown: number;
+  bestPortfolioValue: number;
+  worstDrawdownValue: number;
+  totalMonthsInvested: number;
+  averagePurchasePrice: number;
   dataSource: "csv" | "mock";
   yearlyResults: DcaYearlyResult[];
 };
@@ -146,6 +152,14 @@ export function calculateDcaBacktest({
   const finalValue = totalShares * finalPrice;
   const totalProfit = finalValue - totalInvested;
   const totalReturn = totalInvested > 0 ? (totalProfit / totalInvested) * 100 : 0;
+  const totalMonthsInvested = yearlyResults.length * 12;
+  const advancedMetrics = calculateDcaAdvancedMetrics({
+    finalValue,
+    totalInvested,
+    totalShares,
+    totalMonthsInvested,
+    portfolioValues: yearlyResults.map((item) => item.portfolioValue),
+  });
 
   return {
     finalValue,
@@ -153,6 +167,7 @@ export function calculateDcaBacktest({
     totalProfit,
     totalReturn,
     totalShares,
+    ...advancedMetrics,
     dataSource: "mock",
     yearlyResults,
   };
@@ -170,9 +185,11 @@ function calculateDcaBacktestFromCsv({
   monthlyPrices: MarketCsvRow[];
 }): DcaBacktestResult {
   const yearlyResults: DcaYearlyResult[] = [];
+  const portfolioValues: number[] = [];
   let totalShares = 0;
   let totalInvested = 0;
   let currentYear: DcaYearlyResult | null = null;
+  let totalMonthsInvested = 0;
 
   for (const row of monthlyPrices) {
     const year = new Date(row.date).getFullYear();
@@ -196,18 +213,27 @@ function calculateDcaBacktestFromCsv({
     const sharesBought = monthly / row.close;
     totalInvested += monthly;
     totalShares += sharesBought;
+    totalMonthsInvested += 1;
 
     currentYear.price = row.close;
     currentYear.sharesBought += sharesBought;
     currentYear.totalShares = totalShares;
     currentYear.portfolioValue = totalShares * row.close;
     currentYear.invested = totalInvested;
+    portfolioValues.push(currentYear.portfolioValue);
   }
 
   const finalPrice = yearlyResults.at(-1)?.price ?? 0;
   const finalValue = totalShares * finalPrice;
   const totalProfit = finalValue - totalInvested;
   const totalReturn = totalInvested > 0 ? (totalProfit / totalInvested) * 100 : 0;
+  const advancedMetrics = calculateDcaAdvancedMetrics({
+    finalValue,
+    totalInvested,
+    totalShares,
+    totalMonthsInvested,
+    portfolioValues,
+  });
 
   return {
     finalValue,
@@ -215,7 +241,66 @@ function calculateDcaBacktestFromCsv({
     totalProfit,
     totalReturn,
     totalShares,
+    ...advancedMetrics,
     dataSource: "csv",
     yearlyResults,
+  };
+}
+
+function calculateDcaAdvancedMetrics({
+  finalValue,
+  totalInvested,
+  totalShares,
+  totalMonthsInvested,
+  portfolioValues,
+}: {
+  finalValue: number;
+  totalInvested: number;
+  totalShares: number;
+  totalMonthsInvested: number;
+  portfolioValues: number[];
+}) {
+  const yearsInvested = totalMonthsInvested / 12;
+  const annualizedReturn =
+    totalInvested > 0 && finalValue > 0 && yearsInvested > 0
+      ? (Math.pow(finalValue / totalInvested, 1 / yearsInvested) - 1) * 100
+      : 0;
+  const averagePurchasePrice =
+    totalShares > 0 ? totalInvested / totalShares : 0;
+  let bestPortfolioValue = 0;
+  let peakValue = 0;
+  let maxDrawdown = 0;
+  let worstDrawdownValue = 0;
+
+  for (const value of portfolioValues) {
+    if (!Number.isFinite(value) || value < 0) {
+      continue;
+    }
+
+    bestPortfolioValue = Math.max(bestPortfolioValue, value);
+
+    if (value > peakValue) {
+      peakValue = value;
+    }
+
+    if (peakValue <= 0) {
+      continue;
+    }
+
+    const drawdown = ((peakValue - value) / peakValue) * 100;
+
+    if (drawdown > maxDrawdown) {
+      maxDrawdown = drawdown;
+      worstDrawdownValue = value;
+    }
+  }
+
+  return {
+    annualizedReturn,
+    maxDrawdown,
+    bestPortfolioValue,
+    worstDrawdownValue,
+    totalMonthsInvested,
+    averagePurchasePrice,
   };
 }

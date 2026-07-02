@@ -623,6 +623,8 @@ export default function Home() {
         end_year: normalizedBacktestEndYear,
         currency: selectedCurrency,
         data_source: backtest.dataSource,
+        cagr: Number(backtest.annualizedReturn.toFixed(2)),
+        max_drawdown: Number(backtest.maxDrawdown.toFixed(2)),
         locale,
       });
     }, 900);
@@ -639,6 +641,8 @@ export default function Home() {
     normalizedBacktestStartYear,
     selectedCurrency,
     selectedInstrument,
+    backtest.annualizedReturn,
+    backtest.maxDrawdown,
   ]);
 
   useEffect(() => {
@@ -767,6 +771,14 @@ export default function Home() {
       )}`,
       `${t("caption.totalReturn")}: ${formatPercent(
         backtest.totalReturn,
+        locale
+      )}%`,
+      `${t("advancedMetrics.cagr")}: ${formatPercent(
+        backtest.annualizedReturn,
+        locale
+      )}%`,
+      `${t("advancedMetrics.maxDrawdown")}: -${formatPercent(
+        backtest.maxDrawdown,
         locale
       )}%`,
       `${t("caption.dataSource")}: ${displayedBacktestDataSourceLabel}`,
@@ -960,11 +972,29 @@ export default function Home() {
       1
     );
 
+    ctx.fillStyle = "#cbd5e1";
+    ctx.font = "700 18px Inter, Arial, sans-serif";
+    drawText(
+      ctx,
+      `${t("advancedMetrics.cagr")}: ${formatPercent(
+        backtest.annualizedReturn,
+        locale
+      )}%   ${t("advancedMetrics.maxDrawdown")}: -${formatPercent(
+        backtest.maxDrawdown,
+        locale
+      )}%`,
+      84,
+      396,
+      760,
+      24,
+      1
+    );
+
     const cardWidth = 248;
-    const cardHeight = 104;
+    const cardHeight = 96;
     const cardGap = 20;
     const startX = 84;
-    const startY = 402;
+    const startY = 424;
 
     metricCards.forEach((metric, index) => {
       const x = startX + index * (cardWidth + cardGap);

@@ -479,5 +479,21 @@
     "explanationTitle": "Catatan cakupan data",
     "explanation": "Data historis dapat berasal dari harga historis Yahoo Finance dan dapat tertunda, disesuaikan, tidak lengkap, atau berbeda dari NAV resmi atau data bursa. Data sampel hanya untuk demonstrasi. Halaman ini hanya untuk edukasi dan bukan nasihat keuangan.",
     "linksTitle": "Halaman kalkulator terkait"
+  },
+  "advancedMetrics": {
+    "title": "Metrik lanjutan",
+    "cagr": "CAGR / Imbal hasil tahunan",
+    "cagrHelper": "CAGR berarti tingkat pertumbuhan tahunan berdasarkan periode backtest yang dipilih.",
+    "maxDrawdown": "Drawdown maksimum",
+    "maxDrawdownHelper": "Drawdown maksimum berarti penurunan historis terbesar dari puncak ke dasar.",
+    "bestPortfolioValue": "Nilai portofolio terbaik",
+    "bestPortfolioValueHelper": "Nilai portofolio tertinggi yang dicapai selama periode yang dipilih.",
+    "worstDrawdownValue": "Nilai saat drawdown terburuk",
+    "worstDrawdownValueHelper": "Nilai portofolio pada titik drawdown terdalam, jika praktis dihitung.",
+    "totalMonthsInvested": "Total bulan investasi",
+    "totalMonthsInvestedHelper": "Jumlah pembelian bulanan yang termasuk dalam backtest ini.",
+    "averagePurchasePrice": "Harga beli rata-rata",
+    "averagePurchasePriceHelper": "Total investasi dibagi total saham yang terkumpul.",
+    "disclaimer": "Kinerja masa lalu tidak menjamin hasil di masa depan."
   }
 }

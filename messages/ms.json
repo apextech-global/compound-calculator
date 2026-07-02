@@ -479,5 +479,21 @@
     "explanationTitle": "Nota liputan data",
     "explanation": "Data sejarah mungkin datang daripada harga sejarah Yahoo Finance dan mungkin tertangguh, diselaraskan, tidak lengkap, atau berbeza daripada NAV rasmi atau data bursa. Data sampel hanya untuk demonstrasi. Halaman ini untuk pendidikan sahaja dan bukan nasihat kewangan.",
     "linksTitle": "Halaman kalkulator berkaitan"
+  },
+  "advancedMetrics": {
+    "title": "Metrik lanjutan",
+    "cagr": "CAGR / Pulangan tahunan",
+    "cagrHelper": "CAGR bermaksud kadar pertumbuhan tahunan berdasarkan tempoh backtest yang dipilih.",
+    "maxDrawdown": "Susut nilai maksimum",
+    "maxDrawdownHelper": "Susut nilai maksimum ialah penurunan sejarah terbesar dari puncak ke dasar.",
+    "bestPortfolioValue": "Nilai portfolio terbaik",
+    "bestPortfolioValueHelper": "Nilai portfolio tertinggi yang dicapai dalam tempoh dipilih.",
+    "worstDrawdownValue": "Nilai semasa susut nilai terburuk",
+    "worstDrawdownValueHelper": "Nilai portfolio pada titik susut nilai terdalam, jika praktikal.",
+    "totalMonthsInvested": "Jumlah bulan dilabur",
+    "totalMonthsInvestedHelper": "Bilangan pembelian bulanan yang termasuk dalam backtest ini.",
+    "averagePurchasePrice": "Harga belian purata",
+    "averagePurchasePriceHelper": "Jumlah dilaburkan dibahagi dengan jumlah saham terkumpul.",
+    "disclaimer": "Prestasi lalu tidak menjamin keputusan masa depan."
   }
 }

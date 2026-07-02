@@ -479,5 +479,21 @@
     "explanationTitle": "Hinweise zur Datenabdeckung",
     "explanation": "Historische Daten können aus Yahoo Finance Preisen stammen und verzögert, angepasst, unvollständig oder von offiziellen NAV- oder Börsendaten abweichend sein. Beispieldaten dienen nur der Demonstration. Diese Seite ist Bildungsinhalt und keine Finanzberatung.",
     "linksTitle": "Verwandte Rechnerseiten"
+  },
+  "advancedMetrics": {
+    "title": "Erweiterte Kennzahlen",
+    "cagr": "CAGR / Annualisierte Rendite",
+    "cagrHelper": "CAGR bedeutet annualisierte Wachstumsrate auf Basis des gewählten Backtest-Zeitraums.",
+    "maxDrawdown": "Maximaler Drawdown",
+    "maxDrawdownHelper": "Der maximale Drawdown ist der größte historische Rückgang vom Hoch zum Tief.",
+    "bestPortfolioValue": "Höchster Portfoliowert",
+    "bestPortfolioValueHelper": "Der höchste Portfoliowert im ausgewählten Zeitraum.",
+    "worstDrawdownValue": "Wert beim stärksten Drawdown",
+    "worstDrawdownValueHelper": "Portfoliowert am tiefsten Drawdown-Punkt, soweit praktisch berechenbar.",
+    "totalMonthsInvested": "Investierte Monate insgesamt",
+    "totalMonthsInvestedHelper": "Anzahl der monatlichen Käufe in diesem Backtest.",
+    "averagePurchasePrice": "Durchschnittlicher Kaufpreis",
+    "averagePurchasePriceHelper": "Gesamtinvestition geteilt durch die angesammelten Anteile.",
+    "disclaimer": "Vergangene Wertentwicklung garantiert keine zukünftigen Ergebnisse."
   }
 }

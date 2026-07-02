@@ -479,5 +479,21 @@
     "explanationTitle": "Data coverage notes",
     "explanation": "Historical data may come from Yahoo Finance historical prices and may be delayed, adjusted, incomplete, or different from official NAV or exchange data. Sample data is only for demonstration. This page is educational only and is not financial advice.",
     "linksTitle": "Related calculator pages"
+  },
+  "advancedMetrics": {
+    "title": "Advanced metrics",
+    "cagr": "CAGR / Annualized return",
+    "cagrHelper": "CAGR means annualized growth rate based on the selected backtest period.",
+    "maxDrawdown": "Max drawdown",
+    "maxDrawdownHelper": "Max drawdown means the largest historical drop from peak to trough.",
+    "bestPortfolioValue": "Best portfolio value",
+    "bestPortfolioValueHelper": "Highest portfolio value reached during the selected period.",
+    "worstDrawdownValue": "Worst drawdown value",
+    "worstDrawdownValueHelper": "Portfolio value at the deepest drawdown point, where practical.",
+    "totalMonthsInvested": "Total months invested",
+    "totalMonthsInvestedHelper": "Number of monthly purchases included in this backtest.",
+    "averagePurchasePrice": "Average purchase price",
+    "averagePurchasePriceHelper": "Total invested divided by total shares accumulated.",
+    "disclaimer": "Past performance does not guarantee future results."
   }
 }

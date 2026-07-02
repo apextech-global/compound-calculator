@@ -368,6 +368,92 @@ export default function DcaBacktestCalculator({
             </div>
           </div>
 
+          <div className="min-w-0 rounded-2xl border border-white/10 bg-white/[0.045] p-4 shadow-xl shadow-black/20 sm:rounded-3xl sm:p-5">
+            <div className="flex min-w-0 flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+              <div className="min-w-0">
+                <p className="text-xs font-medium uppercase tracking-[0.18em] text-slate-400 sm:text-sm sm:tracking-[0.2em]">
+                  {t("advancedMetrics.title")}
+                </p>
+                <p className="mt-1 text-xs leading-5 text-slate-500">
+                  {t("advancedMetrics.disclaimer")}
+                </p>
+              </div>
+            </div>
+            <div className="mt-4 grid min-w-0 gap-3 sm:grid-cols-2 xl:grid-cols-3">
+              {[
+                {
+                  label: t("advancedMetrics.cagr"),
+                  value: `${formatPercent(
+                    backtest.annualizedReturn,
+                    locale
+                  )}%`,
+                  helper: t("advancedMetrics.cagrHelper"),
+                  tone: "text-cyan-300",
+                },
+                {
+                  label: t("advancedMetrics.maxDrawdown"),
+                  value: `-${formatPercent(backtest.maxDrawdown, locale)}%`,
+                  helper: t("advancedMetrics.maxDrawdownHelper"),
+                  tone: "text-amber-200",
+                },
+                {
+                  label: t("advancedMetrics.bestPortfolioValue"),
+                  value: formatMoney(
+                    backtest.bestPortfolioValue,
+                    selectedCurrency,
+                    locale
+                  ),
+                  helper: t("advancedMetrics.bestPortfolioValueHelper"),
+                  tone: "text-emerald-300",
+                },
+                {
+                  label: t("advancedMetrics.worstDrawdownValue"),
+                  value: formatMoney(
+                    backtest.worstDrawdownValue,
+                    selectedCurrency,
+                    locale
+                  ),
+                  helper: t("advancedMetrics.worstDrawdownValueHelper"),
+                  tone: "text-slate-100",
+                },
+                {
+                  label: t("advancedMetrics.totalMonthsInvested"),
+                  value: String(backtest.totalMonthsInvested),
+                  helper: t("advancedMetrics.totalMonthsInvestedHelper"),
+                  tone: "text-slate-100",
+                },
+                {
+                  label: t("advancedMetrics.averagePurchasePrice"),
+                  value: formatMoney(
+                    backtest.averagePurchasePrice,
+                    selectedCurrency,
+                    locale
+                  ),
+                  helper: t("advancedMetrics.averagePurchasePriceHelper"),
+                  tone: "text-slate-100",
+                },
+              ].map((metric) => (
+                <div
+                  key={metric.label}
+                  title={metric.helper}
+                  className="min-w-0 rounded-2xl border border-white/10 bg-slate-950/45 p-3"
+                >
+                  <p className="min-w-0 truncate whitespace-nowrap text-xs font-medium text-slate-400">
+                    {metric.label}
+                  </p>
+                  <p
+                    className={`mt-1 min-w-0 whitespace-normal break-words text-[clamp(1.15rem,2vw,1.5rem)] font-bold leading-tight [overflow-wrap:anywhere] ${metric.tone}`}
+                  >
+                    {metric.value}
+                  </p>
+                  <p className="mt-1 text-xs leading-5 text-slate-500">
+                    {metric.helper}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
           <div className="min-w-0 rounded-2xl border border-cyan-300/20 bg-cyan-400/10 p-4 shadow-xl shadow-cyan-950/20 sm:rounded-3xl">
             <div className="flex min-w-0 flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
               <div className="min-w-0">

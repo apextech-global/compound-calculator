@@ -479,5 +479,21 @@
     "explanationTitle": "資料覆蓋說明",
     "explanation": "歷史資料可能來自 Yahoo Finance 歷史價格，且可能延遲、經過調整、不完整，或與官方 NAV / 交易所資料不同。範例資料僅用於演示。本頁面僅供教育用途，不構成金融建議。",
     "linksTitle": "相關計算器頁面"
+  },
+  "advancedMetrics": {
+    "title": "進階指標",
+    "cagr": "CAGR / 年化報酬",
+    "cagrHelper": "CAGR 表示根據所選回測期間計算的年化成長率。",
+    "maxDrawdown": "最大回撤",
+    "maxDrawdownHelper": "最大回撤表示從歷史高點到低點的最大跌幅。",
+    "bestPortfolioValue": "最高投資組合價值",
+    "bestPortfolioValueHelper": "所選期間內達到的最高投資組合價值。",
+    "worstDrawdownValue": "最低回撤價值",
+    "worstDrawdownValueHelper": "在可計算情況下，最大回撤發生時的投資組合價值。",
+    "totalMonthsInvested": "總投資月份",
+    "totalMonthsInvestedHelper": "本次回測包含的每月買入次數。",
+    "averagePurchasePrice": "平均買入價",
+    "averagePurchasePriceHelper": "總投入金額除以累計份額。",
+    "disclaimer": "過去表現不保證未來結果。"
   }
 }

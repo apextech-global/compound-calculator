@@ -479,5 +479,21 @@
     "explanationTitle": "Notas sobre cobertura de datos",
     "explanation": "Los datos históricos pueden provenir de precios históricos de Yahoo Finance y pueden estar retrasados, ajustados, incompletos o diferir del NAV oficial o datos de bolsa. Los datos de muestra son solo para demostración. Esta página es educativa y no es asesoramiento financiero.",
     "linksTitle": "Páginas de calculadora relacionadas"
+  },
+  "advancedMetrics": {
+    "title": "Métricas avanzadas",
+    "cagr": "CAGR / Rentabilidad anualizada",
+    "cagrHelper": "CAGR significa tasa de crecimiento anualizada según el periodo de backtest seleccionado.",
+    "maxDrawdown": "Máxima caída",
+    "maxDrawdownHelper": "La máxima caída es el mayor descenso histórico desde un pico hasta un valle.",
+    "bestPortfolioValue": "Mejor valor de cartera",
+    "bestPortfolioValueHelper": "Valor de cartera más alto alcanzado durante el periodo seleccionado.",
+    "worstDrawdownValue": "Valor en la peor caída",
+    "worstDrawdownValueHelper": "Valor de la cartera en el punto de caída más profundo, cuando es práctico calcularlo.",
+    "totalMonthsInvested": "Meses totales invertidos",
+    "totalMonthsInvestedHelper": "Número de compras mensuales incluidas en este backtest.",
+    "averagePurchasePrice": "Precio medio de compra",
+    "averagePurchasePriceHelper": "Total invertido dividido entre las acciones acumuladas.",
+    "disclaimer": "El rendimiento pasado no garantiza resultados futuros."
   }
 }

@@ -513,5 +513,21 @@
     "explanationTitle": "データ対応範囲の注意",
     "explanation": "過去データはYahoo Financeの過去価格から取得される場合があり、遅延、調整、不完全、または公式NAVや取引所データと異なる可能性があります。サンプルデータはデモ用のみです。このページは教育目的のみであり金融助言ではありません。",
     "linksTitle": "関連計算機ページ"
+  },
+  "advancedMetrics": {
+    "title": "高度な指標",
+    "cagr": "CAGR / 年率リターン",
+    "cagrHelper": "CAGRは、選択したバックテスト期間に基づく年率成長率です。",
+    "maxDrawdown": "最大ドローダウン",
+    "maxDrawdownHelper": "最大ドローダウンは、ピークからボトムまでの過去最大の下落率です。",
+    "bestPortfolioValue": "最高ポートフォリオ価値",
+    "bestPortfolioValueHelper": "選択期間中に到達した最高のポートフォリオ価値です。",
+    "worstDrawdownValue": "最深ドローダウン時の価値",
+    "worstDrawdownValueHelper": "実用上計算できる場合の、最深ドローダウン時点のポートフォリオ価値です。",
+    "totalMonthsInvested": "投資月数",
+    "totalMonthsInvestedHelper": "このバックテストに含まれる毎月購入の回数です。",
+    "averagePurchasePrice": "平均購入価格",
+    "averagePurchasePriceHelper": "総投資額を累積株数で割った値です。",
+    "disclaimer": "過去の実績は将来の結果を保証しません。"
   }
 }
