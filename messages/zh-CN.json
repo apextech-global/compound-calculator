@@ -450,11 +450,11 @@
     "captionHeadline": "如果我从 {startYear} 到 {endYear} 每月定投 {assetA} 和 {assetB}，结果会怎样？"
   },
   "supportedAssets": {
-    "title": "支持的资产与市场数据",
-    "eyebrow": "市场数据覆盖",
-    "description": "查看 DCA 回测支持的 ETF 和股票，包括市场、货币、数据来源、历史数据状态和相关计算器链接。",
-    "seoTitle": "支持的资产与市场数据 | DCA Backtest",
-    "seoDescription": "查看 DCA 回测支持的 ETF 和股票，包括 VOO、CSPX、QQQ、VWRA、IWDA、0050、Maybank、ES3 和 2800.HK。",
+    "title": "支持的资产与市场数据覆盖",
+    "eyebrow": "ETF 与股票数据覆盖",
+    "description": "查看定投回测支持的 ETF 和股票，包括 VOO、CSPX、QQQ、VWRA、IWDA、0050、ES3、2800.HK 等资产的数据来源、市场、货币、历史数据状态和计算器链接。",
+    "seoTitle": "支持的资产与市场数据覆盖 | ETF 定投回测工具",
+    "seoDescription": "查看 DCA 定投回测支持的 ETF 和股票，包括 VOO、CSPX、QQQ、VWRA、IWDA、0050、Maybank、ES3 和 2800.HK 的数据状态。",
     "columns": {
       "symbol": "代码",
       "name": "资产名称",
@@ -468,7 +468,7 @@
     },
     "source": {
       "yahoo": "Yahoo Finance 历史价格",
-      "sample": "示例数据"
+      "sample": "示例数据，非真实市场数据"
     },
     "status": {
       "historical": "已有历史数据",
@@ -477,12 +477,12 @@
       "sampleOnly": "仅示例数据，非真实市场数据"
     },
     "action": {
-      "assetPage": "打开资产页面",
-      "calculator": "打开计算器"
+      "assetPage": "打开资产定投页面",
+      "calculator": "打开定投计算器"
     },
-    "explanationTitle": "数据覆盖说明",
-    "explanation": "历史数据可能来自 Yahoo Finance 历史价格，且可能延迟、经过调整、不完整，或与官方 NAV / 交易所数据不同。示例数据仅用于演示。本页面仅供教育用途，不构成金融建议。",
-    "linksTitle": "相关计算器页面"
+    "explanationTitle": "市场数据覆盖与限制说明",
+    "explanation": "本页列出当前支持的 ETF 和股票，以及它们是否已有历史 CSV 数据。历史价格可能来自 Yahoo Finance，并可能延迟、经过调整、不完整，或与官方 NAV、交易所、券商和基金公司数据不同。没有历史数据的资产会显示示例数据，示例数据仅用于演示，不应视为真实市场表现。本网站仅供教育用途，不构成投资建议。",
+    "linksTitle": "相关定投计算器与说明页面"
   },
   "advancedMetrics": {
     "title": "高级指标",
