@@ -199,7 +199,8 @@
     "privacy": "Kebijakan Privasi",
     "terms": "Ketentuan Penggunaan",
     "contact": "Kontak",
-    "disclaimer": "Disclaimer"
+    "disclaimer": "Disclaimer",
+    "supportedAssets": "Aset yang Didukung"
   },
   "legal": {
     "about": {
@@ -444,5 +445,39 @@
     "historicalData": "Menggunakan data historis",
     "sampleData": "Menggunakan data sampel",
     "captionHeadline": "Bagaimana jika saya investasi bulanan di {assetA} dibanding {assetB} dari {startYear} sampai {endYear}?"
+  },
+  "supportedAssets": {
+    "title": "Aset yang Didukung dan Data Pasar",
+    "eyebrow": "Cakupan data pasar",
+    "description": "Lihat ETF dan saham yang didukung untuk backtest DCA, termasuk pasar, mata uang, sumber data, status data historis, dan tautan kalkulator terkait.",
+    "seoTitle": "Aset yang Didukung dan Data Pasar | DCA Backtest",
+    "seoDescription": "Lihat ETF dan saham yang didukung untuk backtest DCA, termasuk VOO, CSPX, QQQ, VWRA, IWDA, 0050, Maybank, ES3, dan 2800.HK.",
+    "columns": {
+      "symbol": "Simbol",
+      "name": "Nama aset",
+      "market": "Pasar / negara",
+      "type": "Jenis aset",
+      "currency": "Mata uang",
+      "source": "Sumber data",
+      "status": "Status data historis",
+      "lastUpdated": "Terakhir diperbarui",
+      "link": "Tautan kalkulator"
+    },
+    "source": {
+      "yahoo": "Harga historis Yahoo Finance",
+      "sample": "Data sampel"
+    },
+    "status": {
+      "historical": "Data historis tersedia",
+      "sample": "Hanya data sampel",
+      "notAvailable": "Tidak tersedia"
+    },
+    "action": {
+      "assetPage": "Buka halaman aset",
+      "calculator": "Buka kalkulator"
+    },
+    "explanationTitle": "Catatan cakupan data",
+    "explanation": "Data historis dapat berasal dari harga historis Yahoo Finance dan dapat tertunda, disesuaikan, tidak lengkap, atau berbeda dari NAV resmi atau data bursa. Data sampel hanya untuk demonstrasi. Halaman ini hanya untuk edukasi dan bukan nasihat keuangan.",
+    "linksTitle": "Halaman kalkulator terkait"
   }
 }

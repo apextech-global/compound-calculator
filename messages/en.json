@@ -199,7 +199,8 @@
     "privacy": "Privacy Policy",
     "terms": "Terms of Use",
     "contact": "Contact",
-    "disclaimer": "Disclaimer"
+    "disclaimer": "Disclaimer",
+    "supportedAssets": "Supported Assets"
   },
   "legal": {
     "about": {
@@ -444,5 +445,39 @@
     "historicalData": "Using historical data",
     "sampleData": "Using sample data",
     "captionHeadline": "What if I invested monthly in {assetA} vs {assetB} from {startYear} to {endYear}?"
+  },
+  "supportedAssets": {
+    "title": "Supported Assets and Market Data",
+    "eyebrow": "Market data coverage",
+    "description": "View supported ETFs and stocks for DCA backtesting, including market, currency, data source, historical data status, and related calculator links.",
+    "seoTitle": "Supported Assets and Market Data | DCA Backtest",
+    "seoDescription": "View supported ETFs and stocks for DCA backtesting, including VOO, CSPX, QQQ, VWRA, IWDA, 0050, Maybank, ES3, and 2800.HK.",
+    "columns": {
+      "symbol": "Symbol",
+      "name": "Asset name",
+      "market": "Market / country",
+      "type": "Asset type",
+      "currency": "Currency",
+      "source": "Data source",
+      "status": "Historical data status",
+      "lastUpdated": "Last updated",
+      "link": "Calculator link"
+    },
+    "source": {
+      "yahoo": "Yahoo Finance historical prices",
+      "sample": "Sample data"
+    },
+    "status": {
+      "historical": "Historical data available",
+      "sample": "Sample data only",
+      "notAvailable": "Not available"
+    },
+    "action": {
+      "assetPage": "Open asset page",
+      "calculator": "Open calculator"
+    },
+    "explanationTitle": "Data coverage notes",
+    "explanation": "Historical data may come from Yahoo Finance historical prices and may be delayed, adjusted, incomplete, or different from official NAV or exchange data. Sample data is only for demonstration. This page is educational only and is not financial advice.",
+    "linksTitle": "Related calculator pages"
   }
 }

@@ -199,7 +199,8 @@
     "privacy": "Informativa sulla privacy",
     "terms": "Termini di utilizzo",
     "contact": "Contatti",
-    "disclaimer": "Dichiarazione di non responsabilità"
+    "disclaimer": "Dichiarazione di non responsabilità",
+    "supportedAssets": "Asset supportati"
   },
   "legal": {
     "about": {
@@ -444,5 +445,39 @@
     "historicalData": "Uso dati storici",
     "sampleData": "Uso dati di esempio",
     "captionHeadline": "E se avessi investito ogni mese in {assetA} rispetto a {assetB} dal {startYear} al {endYear}?"
+  },
+  "supportedAssets": {
+    "title": "Asset supportati e dati di mercato",
+    "eyebrow": "Copertura dati di mercato",
+    "description": "Consulta ETF e azioni supportati per il backtest DCA, con mercato, valuta, fonte dati, stato storico e link ai calcolatori.",
+    "seoTitle": "Asset supportati e dati di mercato | DCA Backtest",
+    "seoDescription": "Consulta ETF e azioni supportati per il backtest DCA, inclusi VOO, CSPX, QQQ, VWRA, IWDA, 0050, Maybank, ES3 e 2800.HK.",
+    "columns": {
+      "symbol": "Simbolo",
+      "name": "Nome asset",
+      "market": "Mercato / paese",
+      "type": "Tipo asset",
+      "currency": "Valuta",
+      "source": "Fonte dati",
+      "status": "Stato dati storici",
+      "lastUpdated": "Ultimo aggiornamento",
+      "link": "Link calcolatore"
+    },
+    "source": {
+      "yahoo": "Prezzi storici Yahoo Finance",
+      "sample": "Dati campione"
+    },
+    "status": {
+      "historical": "Dati storici disponibili",
+      "sample": "Solo dati campione",
+      "notAvailable": "Non disponibile"
+    },
+    "action": {
+      "assetPage": "Apri pagina asset",
+      "calculator": "Apri calcolatore"
+    },
+    "explanationTitle": "Note sulla copertura dati",
+    "explanation": "I dati storici possono provenire dai prezzi storici Yahoo Finance e possono essere ritardati, rettificati, incompleti o diversi da NAV ufficiale o dati di borsa. I dati campione sono solo dimostrativi. Questa pagina è educativa e non costituisce consulenza finanziaria.",
+    "linksTitle": "Pagine calcolatore correlate"
   }
 }

@@ -199,7 +199,8 @@
     "privacy": "개인정보 처리방침",
     "terms": "이용약관",
     "contact": "문의",
-    "disclaimer": "고지 사항"
+    "disclaimer": "고지 사항",
+    "supportedAssets": "지원 자산"
   },
   "legal": {
     "about": {
@@ -478,5 +479,39 @@
     "historicalData": "과거 데이터 사용",
     "sampleData": "샘플 데이터 사용",
     "captionHeadline": "{startYear}년부터 {endYear}년까지 매월 {assetA}와 {assetB}에 투자했다면?"
+  },
+  "supportedAssets": {
+    "title": "지원 자산 및 시장 데이터",
+    "eyebrow": "시장 데이터 범위",
+    "description": "DCA 백테스트에서 지원하는 ETF와 주식을 시장, 통화, 데이터 출처, 과거 데이터 상태, 관련 계산기 링크와 함께 확인하세요.",
+    "seoTitle": "지원 자산 및 시장 데이터 | DCA Backtest",
+    "seoDescription": "VOO, CSPX, QQQ, VWRA, IWDA, 0050, Maybank, ES3, 2800.HK 등 DCA 백테스트 지원 ETF와 주식을 확인하세요.",
+    "columns": {
+      "symbol": "심볼",
+      "name": "자산명",
+      "market": "시장 / 국가",
+      "type": "자산 유형",
+      "currency": "통화",
+      "source": "데이터 출처",
+      "status": "과거 데이터 상태",
+      "lastUpdated": "마지막 업데이트",
+      "link": "계산기 링크"
+    },
+    "source": {
+      "yahoo": "Yahoo Finance 과거 가격",
+      "sample": "샘플 데이터"
+    },
+    "status": {
+      "historical": "과거 데이터 사용 가능",
+      "sample": "샘플 데이터만",
+      "notAvailable": "사용 불가"
+    },
+    "action": {
+      "assetPage": "자산 페이지 열기",
+      "calculator": "계산기 열기"
+    },
+    "explanationTitle": "데이터 범위 참고",
+    "explanation": "과거 데이터는 Yahoo Finance 과거 가격에서 올 수 있으며 지연, 조정, 불완전하거나 공식 NAV 또는 거래소 데이터와 다를 수 있습니다. 샘플 데이터는 시연용입니다. 이 페이지는 교육 목적이며 금융 조언이 아닙니다.",
+    "linksTitle": "관련 계산기 페이지"
   }
 }

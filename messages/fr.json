@@ -199,7 +199,8 @@
     "privacy": "Politique de confidentialité",
     "terms": "Conditions d’utilisation",
     "contact": "Contact",
-    "disclaimer": "Avertissement"
+    "disclaimer": "Avertissement",
+    "supportedAssets": "Actifs pris en charge"
   },
   "legal": {
     "about": {
@@ -444,5 +445,39 @@
     "historicalData": "Données historiques utilisées",
     "sampleData": "Données d’exemple utilisées",
     "captionHeadline": "Et si j’avais investi chaque mois dans {assetA} plutôt que {assetB} de {startYear} à {endYear} ?"
+  },
+  "supportedAssets": {
+    "title": "Actifs pris en charge et données de marché",
+    "eyebrow": "Couverture des données de marché",
+    "description": "Consultez les ETF et actions pris en charge pour le backtest DCA, avec marché, devise, source, statut des données historiques et liens de calculateur.",
+    "seoTitle": "Actifs pris en charge et données de marché | DCA Backtest",
+    "seoDescription": "Consultez les ETF et actions pris en charge pour le backtest DCA, dont VOO, CSPX, QQQ, VWRA, IWDA, 0050, Maybank, ES3 et 2800.HK.",
+    "columns": {
+      "symbol": "Symbole",
+      "name": "Nom de l’actif",
+      "market": "Marché / pays",
+      "type": "Type d’actif",
+      "currency": "Devise",
+      "source": "Source des données",
+      "status": "Statut des données historiques",
+      "lastUpdated": "Dernière mise à jour",
+      "link": "Lien calculateur"
+    },
+    "source": {
+      "yahoo": "Prix historiques Yahoo Finance",
+      "sample": "Données d’exemple"
+    },
+    "status": {
+      "historical": "Données historiques disponibles",
+      "sample": "Données d’exemple uniquement",
+      "notAvailable": "Non disponible"
+    },
+    "action": {
+      "assetPage": "Ouvrir la page actif",
+      "calculator": "Ouvrir le calculateur"
+    },
+    "explanationTitle": "Notes sur la couverture des données",
+    "explanation": "Les données historiques peuvent provenir des prix Yahoo Finance et peuvent être retardées, ajustées, incomplètes ou différentes du NAV officiel ou des données de bourse. Les données d’exemple servent uniquement à la démonstration. Cette page est éducative et ne constitue pas un conseil financier.",
+    "linksTitle": "Pages de calcul liées"
   }
 }

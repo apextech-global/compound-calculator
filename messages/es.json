@@ -199,7 +199,8 @@
     "privacy": "Política de privacidad",
     "terms": "Términos de uso",
     "contact": "Contacto",
-    "disclaimer": "Aviso legal"
+    "disclaimer": "Aviso legal",
+    "supportedAssets": "Activos compatibles"
   },
   "legal": {
     "about": {
@@ -444,5 +445,39 @@
     "historicalData": "Usando datos históricos",
     "sampleData": "Usando datos de muestra",
     "captionHeadline": "¿Qué pasaría si invirtiera cada mes en {assetA} frente a {assetB} de {startYear} a {endYear}?"
+  },
+  "supportedAssets": {
+    "title": "Activos compatibles y datos de mercado",
+    "eyebrow": "Cobertura de datos de mercado",
+    "description": "Consulta ETF y acciones compatibles con backtest DCA, incluyendo mercado, divisa, fuente de datos, estado histórico y enlaces de calculadora.",
+    "seoTitle": "Activos compatibles y datos de mercado | DCA Backtest",
+    "seoDescription": "Consulta ETF y acciones compatibles con backtest DCA, incluidos VOO, CSPX, QQQ, VWRA, IWDA, 0050, Maybank, ES3 y 2800.HK.",
+    "columns": {
+      "symbol": "Símbolo",
+      "name": "Nombre del activo",
+      "market": "Mercado / país",
+      "type": "Tipo de activo",
+      "currency": "Divisa",
+      "source": "Fuente de datos",
+      "status": "Estado de datos históricos",
+      "lastUpdated": "Última actualización",
+      "link": "Enlace de calculadora"
+    },
+    "source": {
+      "yahoo": "Precios históricos de Yahoo Finance",
+      "sample": "Datos de muestra"
+    },
+    "status": {
+      "historical": "Datos históricos disponibles",
+      "sample": "Solo datos de muestra",
+      "notAvailable": "No disponible"
+    },
+    "action": {
+      "assetPage": "Abrir página del activo",
+      "calculator": "Abrir calculadora"
+    },
+    "explanationTitle": "Notas sobre cobertura de datos",
+    "explanation": "Los datos históricos pueden provenir de precios históricos de Yahoo Finance y pueden estar retrasados, ajustados, incompletos o diferir del NAV oficial o datos de bolsa. Los datos de muestra son solo para demostración. Esta página es educativa y no es asesoramiento financiero.",
+    "linksTitle": "Páginas de calculadora relacionadas"
   }
 }

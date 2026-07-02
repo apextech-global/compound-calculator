@@ -43,6 +43,7 @@ const seoPageSource = read("app/[locale]/[seoPage]/page.tsx");
 
 const locales = extractRoutingLocales(routingSource);
 const staticPages = extractStringArray(metadataSource, "staticPageSlugs");
+const contentPages = extractStringArray(metadataSource, "contentPageSlugs");
 const seoPages = unique([
   ...extractStringArray(seoSource, "baseSeoPageSlugs"),
   ...extractStringArray(seoSource, "comparisonSeoPageSlugs"),
@@ -54,6 +55,9 @@ const routePaths = [
   ...locales.map((locale) => `/${locale}`),
   ...locales.flatMap((locale) =>
     staticPages.map((page) => `/${locale}/${page}`)
+  ),
+  ...locales.flatMap((locale) =>
+    contentPages.map((page) => `/${locale}/${page}`)
   ),
   ...locales.flatMap((locale) => seoPages.map((page) => `/${locale}/${page}`)),
 ];
@@ -69,7 +73,7 @@ const invalidSitemapUrls = sitemapUrls.filter(
   (url) => url.includes("?") || url.includes("/api/")
 );
 
-const alternateGroups = ["", ...staticPages, ...seoPages];
+const alternateGroups = ["", ...staticPages, ...contentPages, ...seoPages];
 const missingAlternateGroups = alternateGroups.filter((page) =>
   locales.some((locale) => {
     const routePath = page ? `/${locale}/${page}` : `/${locale}`;
@@ -127,6 +131,7 @@ if (failures.length) {
 console.log("SEO check passed.");
 console.log(`Locales: ${locales.length}`);
 console.log(`Static pages per locale: ${staticPages.length}`);
+console.log(`Content pages per locale: ${contentPages.length}`);
 console.log(`SEO pages per locale: ${seoPages.length}`);
 console.log(`Sitemap URLs checked: ${sitemapUrls.length}`);
 console.log(`Alternate groups checked: ${alternateGroups.length}`);

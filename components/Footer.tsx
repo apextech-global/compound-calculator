@@ -9,6 +9,7 @@ import {
 } from "@/lib/seoLandingPages";
 
 const footerLinks = [
+  { href: "supported-assets", label: "supportedAssets" },
   { href: "about", label: "about" },
   { href: "privacy", label: "privacy" },
   { href: "terms", label: "terms" },

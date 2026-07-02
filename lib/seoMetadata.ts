@@ -13,8 +13,10 @@ export const staticPageSlugs = [
   "disclaimer",
   "contact",
 ] as const;
+export const contentPageSlugs = ["supported-assets"] as const;
 
 export type StaticPageSlug = (typeof staticPageSlugs)[number];
+export type ContentPageSlug = (typeof contentPageSlugs)[number];
 
 export function isLocale(value: string): value is Locale {
   return routing.locales.includes(value as Locale);

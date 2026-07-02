@@ -199,7 +199,8 @@
     "privacy": "隐私政策",
     "terms": "使用条款",
     "contact": "联系",
-    "disclaimer": "免责声明"
+    "disclaimer": "免责声明",
+    "supportedAssets": "支持的资产"
   },
   "legal": {
     "about": {
@@ -444,5 +445,39 @@
     "historicalData": "使用历史数据",
     "sampleData": "使用示例数据",
     "captionHeadline": "如果我从 {startYear} 到 {endYear} 每月定投 {assetA} 和 {assetB}，结果会怎样？"
+  },
+  "supportedAssets": {
+    "title": "支持的资产与市场数据",
+    "eyebrow": "市场数据覆盖",
+    "description": "查看 DCA 回测支持的 ETF 和股票，包括市场、货币、数据来源、历史数据状态和相关计算器链接。",
+    "seoTitle": "支持的资产与市场数据 | DCA Backtest",
+    "seoDescription": "查看 DCA 回测支持的 ETF 和股票，包括 VOO、CSPX、QQQ、VWRA、IWDA、0050、Maybank、ES3 和 2800.HK。",
+    "columns": {
+      "symbol": "代码",
+      "name": "资产名称",
+      "market": "市场 / 国家",
+      "type": "资产类型",
+      "currency": "货币",
+      "source": "数据来源",
+      "status": "历史数据状态",
+      "lastUpdated": "最后更新",
+      "link": "计算器链接"
+    },
+    "source": {
+      "yahoo": "Yahoo Finance 历史价格",
+      "sample": "示例数据"
+    },
+    "status": {
+      "historical": "已有历史数据",
+      "sample": "仅示例数据",
+      "notAvailable": "不可用"
+    },
+    "action": {
+      "assetPage": "打开资产页面",
+      "calculator": "打开计算器"
+    },
+    "explanationTitle": "数据覆盖说明",
+    "explanation": "历史数据可能来自 Yahoo Finance 历史价格，且可能延迟、经过调整、不完整，或与官方 NAV / 交易所数据不同。示例数据仅用于演示。本页面仅供教育用途，不构成金融建议。",
+    "linksTitle": "相关计算器页面"
   }
 }

@@ -199,7 +199,8 @@
     "privacy": "プライバシーポリシー",
     "terms": "利用規約",
     "contact": "お問い合わせ",
-    "disclaimer": "免責事項"
+    "disclaimer": "免責事項",
+    "supportedAssets": "対応資産"
   },
   "legal": {
     "about": {
@@ -478,5 +479,39 @@
     "historicalData": "履歴データを使用",
     "sampleData": "サンプルデータを使用",
     "captionHeadline": "{startYear}年から{endYear}年まで毎月 {assetA} と {assetB} に投資したら？"
+  },
+  "supportedAssets": {
+    "title": "対応資産と市場データ",
+    "eyebrow": "市場データの対応範囲",
+    "description": "DCAバックテストで対応するETFと株式を、市場、通貨、データソース、過去データ状況、関連計算機リンクとともに確認できます。",
+    "seoTitle": "対応資産と市場データ | DCA Backtest",
+    "seoDescription": "VOO、CSPX、QQQ、VWRA、IWDA、0050、Maybank、ES3、2800.HKなど、DCAバックテスト対応資産を確認できます。",
+    "columns": {
+      "symbol": "シンボル",
+      "name": "資産名",
+      "market": "市場 / 国",
+      "type": "資産タイプ",
+      "currency": "通貨",
+      "source": "データソース",
+      "status": "過去データ状況",
+      "lastUpdated": "最終更新",
+      "link": "計算機リンク"
+    },
+    "source": {
+      "yahoo": "Yahoo Finance 過去価格",
+      "sample": "サンプルデータ"
+    },
+    "status": {
+      "historical": "過去データあり",
+      "sample": "サンプルデータのみ",
+      "notAvailable": "利用不可"
+    },
+    "action": {
+      "assetPage": "資産ページを開く",
+      "calculator": "計算機を開く"
+    },
+    "explanationTitle": "データ対応範囲の注意",
+    "explanation": "過去データはYahoo Financeの過去価格から取得される場合があり、遅延、調整、不完全、または公式NAVや取引所データと異なる可能性があります。サンプルデータはデモ用のみです。このページは教育目的のみであり金融助言ではありません。",
+    "linksTitle": "関連計算機ページ"
   }
 }

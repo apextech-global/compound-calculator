@@ -199,7 +199,8 @@
     "privacy": "Dasar Privasi",
     "terms": "Terma Penggunaan",
     "contact": "Hubungi",
-    "disclaimer": "Penafian"
+    "disclaimer": "Penafian",
+    "supportedAssets": "Aset Disokong"
   },
   "legal": {
     "about": {
@@ -444,5 +445,39 @@
     "historicalData": "Menggunakan data sejarah",
     "sampleData": "Menggunakan data sampel",
     "captionHeadline": "Bagaimana jika saya melabur bulanan dalam {assetA} berbanding {assetB} dari {startYear} hingga {endYear}?"
+  },
+  "supportedAssets": {
+    "title": "Aset Disokong dan Data Pasaran",
+    "eyebrow": "Liputan data pasaran",
+    "description": "Lihat ETF dan saham yang disokong untuk ujian balik DCA, termasuk pasaran, mata wang, sumber data, status data sejarah dan pautan kalkulator.",
+    "seoTitle": "Aset Disokong dan Data Pasaran | DCA Backtest",
+    "seoDescription": "Lihat ETF dan saham disokong untuk ujian balik DCA, termasuk VOO, CSPX, QQQ, VWRA, IWDA, 0050, Maybank, ES3 dan 2800.HK.",
+    "columns": {
+      "symbol": "Simbol",
+      "name": "Nama aset",
+      "market": "Pasaran / negara",
+      "type": "Jenis aset",
+      "currency": "Mata wang",
+      "source": "Sumber data",
+      "status": "Status data sejarah",
+      "lastUpdated": "Kemas kini terakhir",
+      "link": "Pautan kalkulator"
+    },
+    "source": {
+      "yahoo": "Harga sejarah Yahoo Finance",
+      "sample": "Data sampel"
+    },
+    "status": {
+      "historical": "Data sejarah tersedia",
+      "sample": "Data sampel sahaja",
+      "notAvailable": "Tidak tersedia"
+    },
+    "action": {
+      "assetPage": "Buka halaman aset",
+      "calculator": "Buka kalkulator"
+    },
+    "explanationTitle": "Nota liputan data",
+    "explanation": "Data sejarah mungkin datang daripada harga sejarah Yahoo Finance dan mungkin tertangguh, diselaraskan, tidak lengkap, atau berbeza daripada NAV rasmi atau data bursa. Data sampel hanya untuk demonstrasi. Halaman ini untuk pendidikan sahaja dan bukan nasihat kewangan.",
+    "linksTitle": "Halaman kalkulator berkaitan"
   }
 }

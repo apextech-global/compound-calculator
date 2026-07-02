@@ -199,7 +199,8 @@
     "privacy": "隱私權政策",
     "terms": "使用條款",
     "contact": "聯絡",
-    "disclaimer": "免責聲明"
+    "disclaimer": "免責聲明",
+    "supportedAssets": "支援的資產"
   },
   "legal": {
     "about": {
@@ -444,5 +445,39 @@
     "historicalData": "使用歷史資料",
     "sampleData": "使用範例資料",
     "captionHeadline": "如果我從 {startYear} 到 {endYear} 每月定投 {assetA} 和 {assetB}，結果會怎樣？"
+  },
+  "supportedAssets": {
+    "title": "支援的資產與市場資料",
+    "eyebrow": "市場資料覆蓋",
+    "description": "查看 DCA 回測支援的 ETF 和股票，包括市場、貨幣、資料來源、歷史資料狀態和相關計算器連結。",
+    "seoTitle": "支援的資產與市場資料 | DCA Backtest",
+    "seoDescription": "查看 DCA 回測支援的 ETF 和股票，包括 VOO、CSPX、QQQ、VWRA、IWDA、0050、Maybank、ES3 和 2800.HK。",
+    "columns": {
+      "symbol": "代碼",
+      "name": "資產名稱",
+      "market": "市場 / 國家",
+      "type": "資產類型",
+      "currency": "貨幣",
+      "source": "資料來源",
+      "status": "歷史資料狀態",
+      "lastUpdated": "最後更新",
+      "link": "計算器連結"
+    },
+    "source": {
+      "yahoo": "Yahoo Finance 歷史價格",
+      "sample": "範例資料"
+    },
+    "status": {
+      "historical": "已有歷史資料",
+      "sample": "僅範例資料",
+      "notAvailable": "不可用"
+    },
+    "action": {
+      "assetPage": "開啟資產頁面",
+      "calculator": "開啟計算器"
+    },
+    "explanationTitle": "資料覆蓋說明",
+    "explanation": "歷史資料可能來自 Yahoo Finance 歷史價格，且可能延遲、經過調整、不完整，或與官方 NAV / 交易所資料不同。範例資料僅用於演示。本頁面僅供教育用途，不構成金融建議。",
+    "linksTitle": "相關計算器頁面"
   }
 }

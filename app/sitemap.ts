@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { routing } from "@/i18n/routing";
 import { seoPageSlugs } from "@/lib/seoLandingPages";
-import { absoluteUrl, staticPageSlugs } from "@/lib/seoMetadata";
+import { absoluteUrl, contentPageSlugs, staticPageSlugs } from "@/lib/seoMetadata";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const today = new Date();
@@ -25,6 +25,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: today,
         changeFrequency: "monthly" as const,
         priority: 0.7,
+      }))
+    ),
+    ...routing.locales.flatMap((locale) =>
+      contentPageSlugs.map((page) => ({
+        url: absoluteUrl(`/${locale}/${page}`),
+        lastModified: today,
+        changeFrequency: "monthly" as const,
+        priority: 0.78,
       }))
     ),
     ...routing.locales.flatMap((locale) =>
