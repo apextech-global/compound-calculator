@@ -398,9 +398,89 @@ export default async function LearnPage({
 }) {
   const { locale } = await params;
   const page = getContent(locale);
+  const pageUrl = absoluteUrl(`/${locale}/learn`);
+  const itemListLinks = [
+    {
+      name: page.quickLinks[0].title,
+      url: absoluteUrl(page.quickLinks[0].href),
+    },
+    {
+      name: page.quickLinks[1].title,
+      url: absoluteUrl(page.quickLinks[1].href),
+    },
+    {
+      name: page.quickLinks[2].title,
+      url: absoluteUrl(page.quickLinks[2].href),
+    },
+    {
+      name: page.quickLinks[3].title,
+      url: absoluteUrl(page.quickLinks[3].href),
+    },
+    {
+      name: "VOO vs CSPX",
+      url: absoluteUrl(`/${locale}/voo-vs-cspx`),
+    },
+    {
+      name: locale === "zh-CN" ? "定投 vs 一次性投入" : "定期定額 vs 單筆投入",
+      url: absoluteUrl(`/${locale}/dca-vs-lump-sum`),
+    },
+  ];
+  const webPageJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: page.h1,
+    description: page.description,
+    url: pageUrl,
+    inLanguage: locale,
+    isAccessibleForFree: true,
+    publisher: {
+      "@type": "Organization",
+      name: "DCA Backtest",
+      url: absoluteUrl("/"),
+    },
+  };
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "DCA Backtest",
+        item: absoluteUrl(`/${locale}`),
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: page.h1,
+        item: pageUrl,
+      },
+    ],
+  };
+  const itemListJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: page.h1,
+    itemListElement: itemListLinks.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      url: item.url,
+    })),
+  };
 
   return (
     <main className="min-h-screen w-full overflow-x-hidden bg-slate-950 text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([
+            webPageJsonLd,
+            breadcrumbJsonLd,
+            itemListJsonLd,
+          ]).replace(/</g, "\\u003c"),
+        }}
+      />
       <section className="relative mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 sm:py-16 lg:px-8">
         <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-96 bg-[radial-gradient(circle_at_top,_rgba(16,185,129,0.18),_transparent_34%),radial-gradient(circle_at_80%_10%,_rgba(34,211,238,0.12),_transparent_28%)]" />
 

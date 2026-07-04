@@ -33,6 +33,22 @@ const relatedSeoLinks: SeoPageSlug[] = [
 ];
 const siteLinks = ["supported-assets"] as const;
 const legalLinks = ["privacy", "terms", "disclaimer"] as const;
+const webApplicationSeoPages: SeoPageSlug[] = [
+  "dca-calculator",
+  "compound-interest-calculator",
+  "etf-comparison-calculator",
+];
+const articleSeoPages: SeoPageSlug[] = [
+  "voo-vs-cspx",
+  "voo-vs-qqq",
+  "dca-vs-lump-sum",
+  "cspx-vs-vwra",
+  "iwda-vs-vwra",
+  "how-to-buy-cspx-from-malaysia",
+  "how-to-invest-in-voo-from-malaysia",
+  "best-etf-broker-malaysia",
+  "ibkr-vs-moomoo-malaysia",
+];
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -104,6 +120,38 @@ export default async function SeoLandingPage({
   const content = getSeoLandingContent(typedLocale);
   const page = content.pages[typedPage];
   const pageUrl = absoluteUrl(`/${typedLocale}/${typedPage}`);
+  const pageTypeJsonLd = webApplicationSeoPages.includes(typedPage)
+    ? {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        name: page.h1,
+        url: pageUrl,
+        applicationCategory: "FinanceApplication",
+        operatingSystem: "Web",
+        inLanguage: typedLocale,
+        description: page.description,
+        isAccessibleForFree: true,
+        offers: {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "USD",
+        },
+      }
+    : {
+        "@context": "https://schema.org",
+        "@type": articleSeoPages.includes(typedPage) ? "Article" : "WebPage",
+        headline: page.h1,
+        name: page.h1,
+        description: page.description,
+        url: pageUrl,
+        inLanguage: typedLocale,
+        isAccessibleForFree: true,
+        publisher: {
+          "@type": "Organization",
+          name: "DCA Backtest",
+          url: absoluteUrl("/"),
+        },
+      };
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -140,10 +188,11 @@ export default async function SeoLandingPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify([breadcrumbJsonLd, faqJsonLd]).replace(
-            /</g,
-            "\\u003c"
-          ),
+          __html: JSON.stringify([
+            pageTypeJsonLd,
+            breadcrumbJsonLd,
+            faqJsonLd,
+          ]).replace(/</g, "\\u003c"),
         }}
       />
       <section className="relative mx-auto w-full max-w-5xl px-4 py-10 sm:px-6 sm:py-16 lg:px-8">
