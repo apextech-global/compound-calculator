@@ -72,6 +72,17 @@ type DcaBacktestCalculatorProps = {
   dataMayBeStale: boolean;
 };
 
+const feedbackText = {
+  en: "Found a bug or wrong data? Send feedback",
+  "zh-CN": "发现错误或数据问题？反馈给我们",
+  "zh-TW": "發現錯誤或資料問題？回報給我們",
+  ms: "Jumpa ralat atau data salah? Hantar maklum balas",
+  id: "Menemukan bug atau data salah? Kirim masukan",
+} as const;
+
+const feedbackHref =
+  "mailto:support@dcabacktest.com?subject=DCA%20Backtest%20Feedback";
+
 export default function DcaBacktestCalculator({
   selectedCurrency,
   backtest,
@@ -122,6 +133,8 @@ export default function DcaBacktestCalculator({
     fixedFee + monthlyAmount * (percentageFee / 100);
   const feesExceedMonthlyAmount =
     monthlyAmount > 0 && estimatedFeePerPurchase > monthlyAmount;
+  const feedbackLabel =
+    feedbackText[locale as keyof typeof feedbackText] ?? feedbackText.en;
 
   return (
     <section className="w-full min-w-0">
@@ -402,10 +415,16 @@ export default function DcaBacktestCalculator({
                     symbol: selectedInstrument?.displaySymbol ?? backtestSymbol,
                   })}
                 </p>
-                <p className="mt-1 text-xs leading-5 text-slate-400">
-                  {t("share.copyDescription")}
-                </p>
-              </div>
+              <p className="mt-1 text-xs leading-5 text-slate-400">
+                {t("share.copyDescription")}
+              </p>
+              <a
+                href={feedbackHref}
+                className="mt-2 inline-flex text-xs font-medium text-cyan-200 transition hover:text-cyan-100"
+              >
+                {feedbackLabel}
+              </a>
+            </div>
               <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap lg:justify-end">
                 <button
                   type="button"

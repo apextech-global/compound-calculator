@@ -17,12 +17,25 @@ const footerLinks = [
   { href: "contact", label: "contact" },
 ] as const;
 
+const feedbackText = {
+  en: "Found a bug or wrong data? Send feedback",
+  "zh-CN": "发现错误或数据问题？反馈给我们",
+  "zh-TW": "發現錯誤或資料問題？回報給我們",
+  ms: "Jumpa ralat atau data salah? Hantar maklum balas",
+  id: "Menemukan bug atau data salah? Kirim masukan",
+} as const;
+
+const feedbackHref =
+  "mailto:support@dcabacktest.com?subject=DCA%20Backtest%20Feedback";
+
 export default function Footer() {
   const locale = useLocale();
   const t = useTranslations();
   const typedLocale = locale as Locale;
   const guides = getSeoLandingContent(typedLocale);
   const guideSlugs = getSeoPageSlugsForLocale(typedLocale);
+  const feedbackLabel =
+    feedbackText[locale as keyof typeof feedbackText] ?? feedbackText.en;
 
   return (
     <footer className="w-full border-t border-white/10 bg-slate-950 text-white">
@@ -32,6 +45,12 @@ export default function Footer() {
           <p className="mt-2 max-w-xl text-sm leading-6 text-slate-400">
             {t("footer.tagline")}
           </p>
+          <a
+            href={feedbackHref}
+            className="mt-3 inline-flex text-sm font-medium text-cyan-200 transition hover:text-cyan-100"
+          >
+            {feedbackLabel}
+          </a>
         </div>
 
         <nav className="flex w-full min-w-0 flex-wrap gap-3 text-sm font-medium text-slate-300 md:max-w-sm">
