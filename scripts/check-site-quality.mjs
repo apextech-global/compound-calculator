@@ -40,6 +40,7 @@ const importantPages = [
   "voo-vs-qqq",
   "cspx-vs-vwra",
   "iwda-vs-vwra",
+  "learn",
   "how-to-buy-cspx-from-malaysia",
   "how-to-invest-in-voo-from-malaysia",
   "best-etf-broker-malaysia",
@@ -183,10 +184,11 @@ const seoPages = unique([
   ...extractStringArray(seoSource, "malaysiaGuideSeoPageSlugs"),
 ]);
 const malaysiaGuidePages = extractStringArray(seoSource, "malaysiaGuideSeoPageSlugs");
-const allPages = unique(["", ...staticPages, ...contentPages, ...seoPages]);
+const zhCnOnlyPages = ["learn", ...malaysiaGuidePages];
+const allPages = unique(["", ...staticPages, ...contentPages, ...seoPages, ...zhCnOnlyPages]);
 
 function localesForPage(page) {
-  if (malaysiaGuidePages.includes(page)) {
+  if (zhCnOnlyPages.includes(page)) {
     return appLocales.includes("zh-CN") ? ["zh-CN"] : [];
   }
 
@@ -257,6 +259,7 @@ for (const page of importantPages.filter(Boolean)) {
 const knownInternalLinks = new Set([
   ...knownPages,
   ...appLocales,
+  ...zhCnOnlyPages,
   "",
 ]);
 const linkSources = [
@@ -271,6 +274,7 @@ for (const [label, source] of linkSources) {
     .filter((value) =>
       value.includes("-calculator") ||
       value.includes("-vs-") ||
+      zhCnOnlyPages.includes(value) ||
       staticPages.includes(value) ||
       contentPages.includes(value)
     );

@@ -5,7 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import type { Locale } from "@/i18n/routing";
 import {
   getSeoLandingContent,
-  seoPageSlugs,
+  getSeoPageSlugsForLocale,
 } from "@/lib/seoLandingPages";
 
 const footerLinks = [
@@ -20,7 +20,9 @@ const footerLinks = [
 export default function Footer() {
   const locale = useLocale();
   const t = useTranslations();
-  const guides = getSeoLandingContent(locale as Locale);
+  const typedLocale = locale as Locale;
+  const guides = getSeoLandingContent(typedLocale);
+  const guideSlugs = getSeoPageSlugsForLocale(typedLocale);
 
   return (
     <footer className="w-full border-t border-white/10 bg-slate-950 text-white">
@@ -33,7 +35,15 @@ export default function Footer() {
         </div>
 
         <nav className="flex w-full min-w-0 flex-wrap gap-3 text-sm font-medium text-slate-300 md:max-w-sm">
-          {seoPageSlugs.map((slug) => (
+          {typedLocale === "zh-CN" ? (
+            <Link
+              href="/zh-CN/learn"
+              className="transition hover:text-cyan-300"
+            >
+              {t("footer.learnCenter")}
+            </Link>
+          ) : null}
+          {guideSlugs.map((slug) => (
             <Link
               key={slug}
               href={`/${locale}/${slug}`}
