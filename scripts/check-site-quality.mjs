@@ -40,6 +40,10 @@ const importantPages = [
   "voo-vs-qqq",
   "cspx-vs-vwra",
   "iwda-vs-vwra",
+  "how-to-buy-cspx-from-malaysia",
+  "how-to-invest-in-voo-from-malaysia",
+  "best-etf-broker-malaysia",
+  "ibkr-vs-moomoo-malaysia",
   "about",
   "privacy",
   "terms",
@@ -176,10 +180,21 @@ const seoPages = unique([
   ...extractStringArray(seoSource, "baseSeoPageSlugs"),
   ...extractStringArray(seoSource, "comparisonSeoPageSlugs"),
   ...extractStringArray(seoSource, "assetSeoPageSlugs"),
+  ...extractStringArray(seoSource, "malaysiaGuideSeoPageSlugs"),
 ]);
+const malaysiaGuidePages = extractStringArray(seoSource, "malaysiaGuideSeoPageSlugs");
 const allPages = unique(["", ...staticPages, ...contentPages, ...seoPages]);
-const routePaths = appLocales.flatMap((locale) =>
-  allPages.map((page) => routeFor(locale, page))
+
+function localesForPage(page) {
+  if (malaysiaGuidePages.includes(page)) {
+    return appLocales.includes("zh-CN") ? ["zh-CN"] : [];
+  }
+
+  return appLocales;
+}
+
+const routePaths = allPages.flatMap((page) =>
+  localesForPage(page).map((locale) => routeFor(locale, page))
 );
 const sitemapUrls = ["/", ...routePaths].map((route) => `${baseUrl}${route}`);
 const duplicateSitemapUrls = sitemapUrls.filter(
@@ -198,8 +213,12 @@ for (const locale of requestedLocales) {
   }
 }
 
-for (const locale of requestedLocales) {
-  for (const page of importantPages) {
+for (const page of importantPages) {
+  const expectedLocales = localesForPage(page).filter((locale) =>
+    requestedLocales.includes(locale)
+  );
+
+  for (const locale of expectedLocales) {
     const route = routeFor(locale, page);
     if (!routePaths.includes(route)) {
       addError(`Missing required page route: ${route}`);
@@ -212,7 +231,8 @@ if (!errors.some((error) => error.includes("Missing required page route"))) {
 }
 
 if (
-  sitemapSource.includes("seoPageSlugs") &&
+  (sitemapSource.includes("seoPageSlugs") ||
+    sitemapSource.includes("getSeoPageSlugsForLocale")) &&
   sitemapSource.includes("staticPageSlugs") &&
   sitemapSource.includes("contentPageSlugs")
 ) {
@@ -267,7 +287,10 @@ if (!errors.some((error) => error.includes("unknown internal route slug"))) {
 }
 
 for (const page of allPages) {
-  const missingLocales = requestedLocales.filter(
+  const expectedLocales = localesForPage(page).filter((locale) =>
+    requestedLocales.includes(locale)
+  );
+  const missingLocales = expectedLocales.filter(
     (locale) => !routePaths.includes(routeFor(locale, page))
   );
 
@@ -279,7 +302,7 @@ for (const page of allPages) {
 }
 
 if (!errors.some((error) => error.includes("Missing locale versions"))) {
-  addPass("Required pages have locale versions for every requested locale.");
+  addPass("Required pages have expected locale versions.");
 }
 
 if (
@@ -294,7 +317,7 @@ if (
 
 if (
   localeLayoutSource.includes("alternateLanguages()") &&
-  seoPageSource.includes("getSeoPageAlternates(seoPage)") &&
+  seoPageSource.includes("getSeoPageAlternates(") &&
   supportedAssetsPageSource.includes('alternateLanguages("/supported-assets")')
 ) {
   addPass("hreflang alternate metadata is detectable on home, SEO, and supported-assets pages.");

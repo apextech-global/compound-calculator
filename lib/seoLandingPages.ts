@@ -1,5 +1,5 @@
 import { routing, type Locale } from "@/i18n/routing";
-import { absoluteUrl } from "@/lib/seoMetadata";
+import { absoluteUrl, xDefaultUrl } from "@/lib/seoMetadata";
 
 const baseSeoPageSlugs = [
   "compound-interest-calculator",
@@ -28,16 +28,25 @@ const assetSeoPageSlugs = [
   "2800-dca-calculator",
 ] as const;
 
+const malaysiaGuideSeoPageSlugs = [
+  "how-to-buy-cspx-from-malaysia",
+  "how-to-invest-in-voo-from-malaysia",
+  "best-etf-broker-malaysia",
+  "ibkr-vs-moomoo-malaysia",
+] as const;
+
 export const seoPageSlugs = [
   ...baseSeoPageSlugs,
   ...comparisonSeoPageSlugs,
   ...assetSeoPageSlugs,
+  ...malaysiaGuideSeoPageSlugs,
 ] as const;
 
 export type SeoPageSlug = (typeof seoPageSlugs)[number];
 type BaseSeoPageSlug = (typeof baseSeoPageSlugs)[number];
 type ComparisonSeoPageSlug = (typeof comparisonSeoPageSlugs)[number];
 type AssetSeoPageSlug = (typeof assetSeoPageSlugs)[number];
+type MalaysiaGuideSeoPageSlug = (typeof malaysiaGuideSeoPageSlugs)[number];
 
 type SeoPageContent = {
   title: string;
@@ -2455,6 +2464,301 @@ function buildAssetPages(locale: Locale): Record<AssetSeoPageSlug, SeoPageConten
   ) as Record<AssetSeoPageSlug, SeoPageContent>;
 }
 
+function getZhCnMalaysiaGuidePage(slug: MalaysiaGuideSeoPageSlug): SeoPageContent {
+  const pages: Record<MalaysiaGuideSeoPageSlug, SeoPageContent> = {
+    "how-to-buy-cspx-from-malaysia": {
+      title: "马来西亚怎么买 CSPX | CSPX 定投与 UCITS ETF 教育指南",
+      description:
+        "面向马来西亚中文用户的 CSPX 教育指南：了解 UCITS ETF、爱尔兰注册、伦敦交易所、券商支持、费用、汇率、税务和 CSPX 定投回测。",
+      h1: "马来西亚怎么买 CSPX",
+      intro:
+        "很多马来西亚投资者会研究 CSPX，因为它是爱尔兰注册、在伦敦交易所等市场上市的 UCITS ETF，常被非美国投资者用于取得 S&P 500 敞口。本页面用中文整理购买前需要了解的步骤、成本、风险和回测方式，仅供教育用途。",
+      ctaQuery: "?market=ucits&type=ETF&asset=CSPX.L",
+      sections: [
+        {
+          title: "CSPX 是什么",
+          body: "CSPX 通常指 iShares Core S&P 500 UCITS ETF 的相关份额类别，目标是追踪 S&P 500。它属于 UCITS ETF，基金注册地通常为爱尔兰，并在伦敦交易所等市场交易。马来西亚投资者关注 CSPX，常见原因包括 UCITS 结构、爱尔兰注册地、可能的股息累积份额类别，以及与美国上市 ETF 不同的税务和平台可用性。",
+        },
+        {
+          title: "马来西亚购买 CSPX 的一般步骤",
+          body: "第一步，确认自己想买的是哪个交易所和哪个代码，例如 CSPX.L 或券商平台显示的具体份额类别。第二步，检查券商是否支持伦敦交易所和相关 UCITS ETF。第三步，了解入金方式、MYR 到 USD 或其他交易货币的换汇流程。第四步，查看交易佣金、平台费、托管费、点差和最低交易金额。第五步，买入前再次核对代码、货币、交易所、订单类型和风险。",
+        },
+        {
+          title: "用 CSPX 定投计算器做情景分析",
+          body: "在真正投资前，可以先用 CSPX 定投计算器测试每月投入的历史模拟结果。你可以设置每月投入金额、开始年份、结束年份和显示货币，观察总投入、最终价值、总回报、年化回报估算和最大回撤。回测结果只是历史模拟，不代表未来表现。",
+        },
+        {
+          title: "费用、汇率、税务和股息限制",
+          body: "马来西亚用户需要自行检查券商支持、交易佣金、换汇价差、平台费、税务规则、预扣税、股息处理和成交价格。CSPX 的数据可能来自 Yahoo Finance，并可能与官方 NAV、交易所或券商记录不同。不同券商对伦敦交易所、碎股、订单类型和交易货币的支持也可能不同。",
+        },
+        {
+          title: "Affiliate / referral disclosure",
+          body: "部分链接未来可能是 affiliate / referral link。我们可能获得佣金，但这不会影响内容的教育性质。任何券商、ETF 或工具都不应被视为适合所有人的推荐。",
+        },
+        {
+          title: "风险与免责声明",
+          body: "本页面仅供教育用途，不构成投资建议、税务建议或法律建议。CSPX 和任何 ETF 都可能下跌，过去表现不代表未来表现，也不保证未来收益。马来西亚投资者应自行判断，并在需要时咨询持牌财务顾问或税务专业人士。",
+        },
+      ],
+      faqs: [
+        {
+          question: "马来西亚怎么买 CSPX？",
+          answer:
+            "一般需要使用支持伦敦交易所和 UCITS ETF 的券商，并确认具体代码、交易货币、费用、换汇、税务和风险。不同券商支持情况可能改变，应以官方资料为准。",
+        },
+        {
+          question: "CSPX 是美国 ETF 吗？",
+          answer:
+            "CSPX 通常是爱尔兰注册的 UCITS ETF，并非美国上市 ETF。它常被用于取得 S&P 500 敞口，但结构、交易所和税务处理可能与 VOO 不同。",
+        },
+        {
+          question: "CSPX 定投适合所有马来西亚投资者吗？",
+          answer:
+            "不一定。是否适合取决于投资目标、风险承受能力、券商支持、费用、税务、货币和投资期限。本页面不构成投资建议。",
+        },
+        {
+          question: "CSPX 回测结果可以代表未来吗？",
+          answer:
+            "不能。回测只是历史模拟，未来市场表现、汇率、费用和税务都可能不同。",
+        },
+      ],
+    },
+    "how-to-invest-in-voo-from-malaysia": {
+      title: "马来西亚怎么买 VOO | 美股 ETF 定投教育指南",
+      description:
+        "了解马来西亚投资 VOO 和美股 ETF 前需要考虑的券商支持、股息税、遗产税风险、汇率、费用、VOO 定投和回测限制。",
+      h1: "马来西亚怎么买 VOO",
+      intro:
+        "VOO 是美国上市的 Vanguard S&P 500 ETF，常被用来研究美国大型股市场敞口。马来西亚投资者在购买 VOO 前，需要了解美股 ETF、券商支持、股息预扣税、美国遗产税风险、汇率风险和交易成本。",
+      ctaQuery: "?market=us&type=ETF&asset=VOO",
+      sections: [
+        {
+          title: "VOO 是什么",
+          body: "VOO 是美国上市 ETF，目标是追踪 S&P 500 指数。它与 CSPX 都可以用于研究 S&P 500 敞口，但基金注册地、交易市场、股息处理、税务和平台支持可能不同。不能简单说 VOO 一定比 CSPX 好，或 CSPX 一定比 VOO 好。",
+        },
+        {
+          title: "马来西亚投资 VOO 的一般步骤",
+          body: "第一步，选择支持美股 ETF 的券商，并确认账户是否可以交易 VOO。第二步，了解从 MYR 入金到 USD 交易的换汇流程和成本。第三步，检查交易佣金、平台费、股息税处理、碎股支持和订单类型。第四步，在下单前确认代码、交易所、交易货币和风险。",
+        },
+        {
+          title: "用 VOO 定投计算器做历史模拟",
+          body: "你可以使用 VOO 定投计算器，测试从不同年份开始每月投入 VOO 的历史表现。计算器会估算总投入、最终价值、总利润、总回报、年化回报估算和最大回撤。它适合做教育性情景分析，不是未来收益预测。",
+        },
+        {
+          title: "股息税、遗产税、汇率和费用",
+          body: "马来西亚用户研究美国上市 ETF 时，通常需要了解美国股息预扣税、潜在遗产税风险、券商费用、换汇成本、买卖价差、成交价格和本地税务申报要求。相关规则可能变化，应以官方券商、税务和监管资料为准。",
+        },
+        {
+          title: "Affiliate / referral disclosure",
+          body: "部分链接未来可能是 affiliate / referral link。我们可能获得佣金，但这不会影响内容的教育性质。券商或 ETF 的选择应由用户自行判断。",
+        },
+        {
+          title: "风险与免责声明",
+          body: "本页面仅供教育用途，不构成投资建议、税务建议或法律建议。VOO 可能下跌，汇率也可能波动。过去表现不代表未来表现，用户应自行判断或咨询持牌财务顾问。",
+        },
+      ],
+      faqs: [
+        {
+          question: "马来西亚怎么买 VOO？",
+          answer:
+            "通常需要使用支持美股 ETF 的券商，完成开户、入金、换汇，并确认 VOO 的交易权限、费用和订单细节。",
+        },
+        {
+          question: "VOO 和 CSPX 哪个一定比较好？",
+          answer:
+            "没有一定答案。两者在基金注册地、交易市场、税务、股息处理、券商支持和费用方面可能不同，需要按个人情况比较。",
+        },
+        {
+          question: "马来西亚买美股 ETF 要注意什么税务？",
+          answer:
+            "常见关注点包括美国股息预扣税、潜在遗产税风险和本地税务申报。税务规则复杂且可能变化，应自行核实或咨询专业人士。",
+        },
+        {
+          question: "VOO 定投回测能保证未来收益吗？",
+          answer:
+            "不能。回测只是历史模拟，不保证未来收益，也不是投资建议。",
+        },
+      ],
+    },
+    "best-etf-broker-malaysia": {
+      title: "马来西亚 ETF 券商怎么选 | 买美股 ETF 与 UCITS ETF 教育指南",
+      description:
+        "马来西亚 ETF 券商选择指南：了解美股 ETF、CSPX、VOO、VWRA、IWDA、费用、换汇、市场支持、税务和平台限制。",
+      h1: "马来西亚 ETF 券商怎么选",
+      intro:
+        "选择 ETF 券商时，马来西亚中文用户通常会比较是否支持美股 ETF、UCITS ETF、伦敦交易所、换汇、费用、入金方式、平台稳定性和税务资料。本页面提供中立的教育性检查清单，不推荐任何券商一定最好。",
+      sections: [
+        {
+          title: "先确认你想买什么 ETF",
+          body: "如果你想买 VOO 或 QQQ，需要确认券商是否支持美股 ETF。如果你想买 CSPX、VWRA 或 IWDA，需要确认是否支持伦敦交易所或相关 UCITS ETF。不同券商支持的市场、代码显示、交易货币和订单类型可能不同。",
+        },
+        {
+          title: "比较 ETF 券商时可以看哪些项目",
+          body: "常见比较项目包括开户门槛、入金方式、MYR 换汇成本、交易佣金、平台费、托管费、碎股支持、市场覆盖、报表下载、客服语言、移动 App 易用性和安全设置。不要只看单一费用，因为总成本可能来自多个环节。",
+        },
+        {
+          title: "费用和优惠可能变化",
+          body: "券商费用、市场支持、促销活动、入金渠道和汇率点差都可能随时间改变。本页面不列出需要频繁维护的精确促销或费用排名。用户应在开户或交易前查看券商官方网站和最新费用表。",
+        },
+        {
+          title: "如何配合 ETF 定投计算器使用",
+          body: "在选择券商前，你可以先用 DCA 定投计算器或 ETF 对比计算器测试资产本身的历史模拟结果，例如 VOO 定投、CSPX 定投或 VOO vs CSPX。然后再把券商费用、换汇和税务因素纳入自己的判断。",
+        },
+        {
+          title: "Affiliate / referral disclosure",
+          body: "部分链接未来可能是 affiliate / referral link。我们可能获得佣金，但这不会影响内容的教育性质。任何券商介绍都不应被理解为保证适合所有人。",
+        },
+        {
+          title: "风险与免责声明",
+          body: "本页面仅供教育用途，不构成投资建议、券商推荐、税务建议或法律建议。券商服务、费用和监管状态可能变化，用户应自行核实官方资料，并自行承担投资和平台选择责任。",
+        },
+      ],
+      faqs: [
+        {
+          question: "马来西亚 ETF 券商应该怎么选？",
+          answer:
+            "可以从市场支持、费用、换汇、入金方式、平台稳定性、报表、客服和安全设置等方面比较，并以券商官方资料为准。",
+        },
+        {
+          question: "马来西亚买美股 ETF 一定要选最低佣金券商吗？",
+          answer:
+            "不一定。低佣金只是其中一项，总成本还包括汇率点差、平台费、入金成本、买卖价差和税务处理。",
+        },
+        {
+          question: "哪个券商最适合买 CSPX？",
+          answer:
+            "没有固定答案。需要确认券商是否支持伦敦交易所或相关 UCITS ETF，并比较费用、汇率、订单类型和个人需求。",
+        },
+        {
+          question: "券商费用和促销会不会改变？",
+          answer:
+            "会。费用、市场支持和促销都可能变化，交易前应查看券商官方网站的最新资料。",
+        },
+      ],
+    },
+    "ibkr-vs-moomoo-malaysia": {
+      title: "IBKR vs Moomoo 马来西亚 | ETF 券商中立比较指南",
+      description:
+        "IBKR vs Moomoo 马来西亚中文比较：了解美股 ETF、UCITS ETF、费用、换汇、市场支持、平台体验、税务资料和风险限制。",
+      h1: "IBKR vs Moomoo 马来西亚",
+      intro:
+        "IBKR 和 Moomoo 都是马来西亚投资者常拿来比较的券商选择。两者可能在市场覆盖、费用结构、换汇、平台体验、ETF 支持和报表工具方面不同。本页面保持中立，不说哪一个永远更好。",
+      sections: [
+        {
+          title: "比较前先明确投资需求",
+          body: "如果你的重点是买美股 ETF，例如 VOO 或 QQQ，需要确认美股市场支持、交易费用、股息税资料和换汇成本。如果你的重点是买 UCITS ETF，例如 CSPX、VWRA 或 IWDA，需要确认伦敦交易所或相关市场支持。不同需求可能对应不同平台优势。",
+        },
+        {
+          title: "IBKR 和 Moomoo 可以比较哪些方面",
+          body: "常见比较维度包括可交易市场、ETF 覆盖、佣金结构、换汇方式、入金出金、平台语言、移动体验、研究工具、报表、税务文件、安全设置和客服。某个平台对某类用户方便，不代表对所有人都最好。",
+        },
+        {
+          title: "不要依赖过期费用或促销信息",
+          body: "券商费用、汇率点差、促销、市场支持和产品权限都可能变化。本页面不会列出需要频繁维护的精确费用排名。用户应在开户、入金或下单前查看 IBKR、Moomoo 或相关券商官方网站的最新资料。",
+        },
+        {
+          title: "如何用回测工具辅助判断资产而不是券商",
+          body: "券商比较解决的是交易渠道问题，ETF 定投回测解决的是资产历史情景问题。你可以先用 VOO 定投计算器、CSPX 定投计算器或 ETF 对比计算器理解资产差异，再单独比较券商费用、换汇和平台体验。",
+        },
+        {
+          title: "Affiliate / referral disclosure",
+          body: "部分链接未来可能是 affiliate / referral link。我们可能获得佣金，但这不会影响内容的教育性质。任何券商比较都不构成开户建议或投资建议。",
+        },
+        {
+          title: "风险与免责声明",
+          body: "本页面仅供教育用途，不构成投资建议、券商推荐、税务建议或法律建议。券商服务可能变化，投资产品可能亏损，汇率也可能波动。用户应自行判断并核实官方资料。",
+        },
+      ],
+      faqs: [
+        {
+          question: "IBKR vs Moomoo 马来西亚哪个比较好？",
+          answer:
+            "没有永远更好的答案。应根据你要买的市场、ETF 类型、费用、换汇、平台体验、报表和个人需求比较。",
+        },
+        {
+          question: "IBKR 和 Moomoo 都能买美股 ETF 吗？",
+          answer:
+            "支持情况、权限和费用可能随时间变化。用户应查看官方平台确认是否支持 VOO、QQQ 等美股 ETF。",
+        },
+        {
+          question: "买 CSPX、VWRA、IWDA 要特别看什么？",
+          answer:
+            "需要确认券商是否支持相关 UCITS ETF、伦敦交易所或对应市场，以及交易货币、费用、订单类型和税务资料。",
+        },
+        {
+          question: "这篇 IBKR vs Moomoo 比较是推荐开户吗？",
+          answer:
+            "不是。本页面仅供教育用途，不构成券商推荐、开户建议或投资建议。",
+        },
+      ],
+    },
+  };
+
+  return pages[slug];
+}
+
+function getGenericMalaysiaGuidePage(slug: MalaysiaGuideSeoPageSlug): SeoPageContent {
+  const titleMap: Record<MalaysiaGuideSeoPageSlug, string> = {
+    "how-to-buy-cspx-from-malaysia": "How to Buy CSPX from Malaysia",
+    "how-to-invest-in-voo-from-malaysia": "How to Invest in VOO from Malaysia",
+    "best-etf-broker-malaysia": "Malaysia ETF Broker Guide",
+    "ibkr-vs-moomoo-malaysia": "IBKR vs Moomoo Malaysia",
+  };
+  const h1 = titleMap[slug];
+
+  return {
+    title: `${h1} | Educational ETF Guide`,
+    description:
+      "Educational guide for Malaysia-based investors researching ETFs, brokers, currency conversion, taxes, data limitations, and DCA backtesting.",
+    h1,
+    intro:
+      "This educational guide explains ETF access, broker considerations, fees, currency conversion, taxes, and historical backtesting for Malaysia-based investors.",
+    sections: [
+      {
+        title: "Educational overview",
+        body: "The page helps users think through ETF access, market availability, broker support, cost structure, and the difference between historical scenarios and future outcomes.",
+      },
+      {
+        title: "Important considerations",
+        body: "Users should verify broker availability, fees, currency conversion, tax treatment, dividend handling, execution price, data source quality, and local rules on official websites before acting.",
+      },
+      {
+        title: "Affiliate disclosure",
+        body: "Some links may become affiliate or referral links in the future. We may receive compensation, but the content remains educational.",
+      },
+      {
+        title: "Risk and disclaimer",
+        body: "This page is for educational purposes only and is not financial advice, broker recommendation, tax advice, or legal advice. Past performance does not guarantee future results.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Is this investment advice?",
+        answer:
+          "No. It is educational content only and does not recommend any ETF, broker, or strategy.",
+      },
+      {
+        question: "Can fees and availability change?",
+        answer:
+          "Yes. Broker fees, market access, promotions, and product availability can change, so users should verify official sources.",
+      },
+    ],
+  };
+}
+
+function buildMalaysiaGuidePages(
+  locale: Locale
+): Record<MalaysiaGuideSeoPageSlug, SeoPageContent> {
+  return Object.fromEntries(
+    malaysiaGuideSeoPageSlugs.map((slug) => [
+      slug,
+      locale === "zh-CN"
+        ? getZhCnMalaysiaGuidePage(slug)
+        : getGenericMalaysiaGuidePage(slug),
+    ])
+  ) as Record<MalaysiaGuideSeoPageSlug, SeoPageContent>;
+}
+
 function adaptEnglishPages(locale: Locale): Record<BaseSeoPageSlug, SeoPageContent> {
   const text = simpleLocaleText[locale];
 
@@ -2502,6 +2806,7 @@ export function getSeoLandingContent(locale: Locale): LocaleSeoContent {
       ...(localizedPages[locale] ?? {}),
       ...buildComparisonPages(locale),
       ...buildAssetPages(locale),
+      ...buildMalaysiaGuidePages(locale),
     },
   };
 }
@@ -2514,8 +2819,42 @@ export function isSeoPageSlug(value: string): value is SeoPageSlug {
   return seoPageSlugs.includes(value as SeoPageSlug);
 }
 
-export function getSeoPageAlternates(slug: SeoPageSlug) {
-  return Object.fromEntries(
-    routing.locales.map((locale) => [locale, absoluteUrl(`/${locale}/${slug}`)])
+function isMalaysiaGuideSeoPageSlug(
+  value: string
+): value is MalaysiaGuideSeoPageSlug {
+  return malaysiaGuideSeoPageSlugs.includes(
+    value as MalaysiaGuideSeoPageSlug
   );
+}
+
+export function getSeoPageSlugsForLocale(locale: Locale): SeoPageSlug[] {
+  if (locale === "zh-CN") {
+    return [...seoPageSlugs];
+  }
+
+  return seoPageSlugs.filter((slug) => !isMalaysiaGuideSeoPageSlug(slug));
+}
+
+export function isSeoPageSlugForLocale(
+  locale: Locale,
+  value: string
+): value is SeoPageSlug {
+  return (
+    isSeoPageSlug(value) &&
+    getSeoPageSlugsForLocale(locale).includes(value)
+  );
+}
+
+export function getSeoPageAlternates(slug: SeoPageSlug) {
+  const locales = isMalaysiaGuideSeoPageSlug(slug) ? ["zh-CN"] : routing.locales;
+
+  return Object.fromEntries(
+    locales.map((locale) => [locale, absoluteUrl(`/${locale}/${slug}`)])
+  );
+}
+
+export function getSeoPageXDefault(slug: SeoPageSlug) {
+  return isMalaysiaGuideSeoPageSlug(slug)
+    ? absoluteUrl(`/zh-CN/${slug}`)
+    : xDefaultUrl;
 }

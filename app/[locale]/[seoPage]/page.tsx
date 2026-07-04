@@ -6,11 +6,12 @@ import {
   getSeoLandingContent,
   getSeoLandingPage,
   getSeoPageAlternates,
-  isSeoPageSlug,
-  seoPageSlugs,
+  getSeoPageSlugsForLocale,
+  getSeoPageXDefault,
+  isSeoPageSlugForLocale,
   type SeoPageSlug,
 } from "@/lib/seoLandingPages";
-import { absoluteUrl, productionBaseUrl, xDefaultUrl } from "@/lib/seoMetadata";
+import { absoluteUrl, productionBaseUrl } from "@/lib/seoMetadata";
 
 const relatedSeoLinks: SeoPageSlug[] = [
   "dca-calculator",
@@ -35,7 +36,7 @@ const legalLinks = ["privacy", "terms", "disclaimer"] as const;
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
-    seoPageSlugs.map((seoPage) => ({ locale, seoPage }))
+    getSeoPageSlugsForLocale(locale).map((seoPage) => ({ locale, seoPage }))
   );
 }
 
@@ -48,12 +49,12 @@ export async function generateMetadata({
 
   if (
     !routing.locales.includes(locale as Locale) ||
-    !isSeoPageSlug(seoPage)
+    !isSeoPageSlugForLocale(locale as Locale, seoPage)
   ) {
     notFound();
   }
 
-  const page = getSeoLandingPage(locale as Locale, seoPage);
+  const page = getSeoLandingPage(locale as Locale, seoPage as SeoPageSlug);
 
   return {
     title: page.title,
@@ -62,8 +63,8 @@ export async function generateMetadata({
     alternates: {
       canonical: absoluteUrl(`/${locale}/${seoPage}`),
       languages: {
-        ...getSeoPageAlternates(seoPage),
-        "x-default": xDefaultUrl,
+        ...getSeoPageAlternates(seoPage as SeoPageSlug),
+        "x-default": getSeoPageXDefault(seoPage as SeoPageSlug),
       },
     },
     openGraph: {
@@ -91,7 +92,7 @@ export default async function SeoLandingPage({
 
   if (
     !routing.locales.includes(locale as Locale) ||
-    !isSeoPageSlug(seoPage)
+    !isSeoPageSlugForLocale(locale as Locale, seoPage)
   ) {
     notFound();
   }
