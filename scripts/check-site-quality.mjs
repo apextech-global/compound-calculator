@@ -184,10 +184,16 @@ const seoPages = unique([
   ...extractStringArray(seoSource, "malaysiaGuideSeoPageSlugs"),
 ]);
 const malaysiaGuidePages = extractStringArray(seoSource, "malaysiaGuideSeoPageSlugs");
-const zhCnOnlyPages = ["learn", ...malaysiaGuidePages];
-const allPages = unique(["", ...staticPages, ...contentPages, ...seoPages, ...zhCnOnlyPages]);
+const chineseLearnPages = ["learn"];
+const zhCnOnlyPages = malaysiaGuidePages;
+const localeSpecificPages = [...chineseLearnPages, ...zhCnOnlyPages];
+const allPages = unique(["", ...staticPages, ...contentPages, ...seoPages, ...localeSpecificPages]);
 
 function localesForPage(page) {
+  if (chineseLearnPages.includes(page)) {
+    return appLocales.filter((locale) => locale === "zh-CN" || locale === "zh-TW");
+  }
+
   if (zhCnOnlyPages.includes(page)) {
     return appLocales.includes("zh-CN") ? ["zh-CN"] : [];
   }
@@ -259,7 +265,7 @@ for (const page of importantPages.filter(Boolean)) {
 const knownInternalLinks = new Set([
   ...knownPages,
   ...appLocales,
-  ...zhCnOnlyPages,
+  ...localeSpecificPages,
   "",
 ]);
 const linkSources = [
@@ -274,7 +280,7 @@ for (const [label, source] of linkSources) {
     .filter((value) =>
       value.includes("-calculator") ||
       value.includes("-vs-") ||
-      zhCnOnlyPages.includes(value) ||
+      localeSpecificPages.includes(value) ||
       staticPages.includes(value) ||
       contentPages.includes(value)
     );

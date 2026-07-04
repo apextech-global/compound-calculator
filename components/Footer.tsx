@@ -35,9 +35,9 @@ export default function Footer() {
         </div>
 
         <nav className="flex w-full min-w-0 flex-wrap gap-3 text-sm font-medium text-slate-300 md:max-w-sm">
-          {typedLocale === "zh-CN" ? (
+          {typedLocale === "zh-CN" || typedLocale === "zh-TW" ? (
             <Link
-              href="/zh-CN/learn"
+              href={`/${typedLocale}/learn`}
               className="transition hover:text-cyan-300"
             >
               {t("footer.learnCenter")}

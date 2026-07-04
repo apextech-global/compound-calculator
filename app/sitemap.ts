@@ -35,12 +35,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.78,
       }))
     ),
-    {
-      url: absoluteUrl("/zh-CN/learn"),
+    ...(["zh-CN", "zh-TW"] as const).map((locale) => ({
+      url: absoluteUrl(`/${locale}/learn`),
       lastModified: today,
-      changeFrequency: "monthly",
+      changeFrequency: "monthly" as const,
       priority: 0.86,
-    },
+    })),
     ...routing.locales.flatMap((locale) =>
       getSeoPageSlugsForLocale(locale).map((page) => ({
         url: absoluteUrl(`/${locale}/${page}`),
