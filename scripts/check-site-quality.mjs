@@ -9,15 +9,6 @@ const requestedLocales = [
   "zh-TW",
   "ms",
   "id",
-  "ja",
-  "ko",
-  "ru",
-  "ar",
-  "es",
-  "fr",
-  "de",
-  "it",
-  "ta",
 ];
 const importantPages = [
   "",
@@ -191,14 +182,14 @@ const allPages = unique(["", ...staticPages, ...contentPages, ...seoPages, ...lo
 
 function localesForPage(page) {
   if (chineseLearnPages.includes(page)) {
-    return appLocales.filter((locale) => locale === "zh-CN" || locale === "zh-TW");
+    return requestedLocales.filter((locale) => locale === "zh-CN" || locale === "zh-TW");
   }
 
   if (zhCnOnlyPages.includes(page)) {
-    return appLocales.includes("zh-CN") ? ["zh-CN"] : [];
+    return requestedLocales.includes("zh-CN") ? ["zh-CN"] : [];
   }
 
-  return appLocales;
+  return requestedLocales;
 }
 
 const routePaths = allPages.flatMap((page) =>
@@ -335,7 +326,7 @@ if (
   addWarning("Could not detect hreflang alternates on every page type.");
 }
 
-for (const locale of appLocales) {
+for (const locale of requestedLocales) {
   const file = `messages/${locale}.json`;
   if (!exists(file)) {
     addError(`Missing locale message file: ${file}`);
@@ -382,7 +373,7 @@ if (duplicateFaqQuestions.length) {
   addPass("No duplicate FAQ question literals detected in SEO page source.");
 }
 
-for (const locale of appLocales.filter((locale) => locale !== "en")) {
+for (const locale of requestedLocales.filter((locale) => locale !== "en")) {
   const messages = JSON.parse(read(`messages/${locale}.json`));
   const flattened = flattenStrings(messages);
   const possibleFallbacks = [];
@@ -414,7 +405,7 @@ if (!warnings.some((warning) => warning.includes("possible English fallback"))) 
   addPass("No obvious English fallback phrases detected in non-English locale files.");
 }
 
-for (const [locale, messages] of appLocales.map((locale) => [
+for (const [locale, messages] of requestedLocales.map((locale) => [
   locale,
   JSON.parse(read(`messages/${locale}.json`)),
 ])) {
@@ -457,7 +448,7 @@ printSection("❌", "Errors", errors);
 console.log("");
 console.log(`Routes checked: ${routePaths.length}`);
 console.log(`Sitemap URLs checked: ${sitemapUrls.length}`);
-console.log(`Locales checked: ${appLocales.length}`);
+console.log(`Public locales checked: ${requestedLocales.length}`);
 
 if (errors.length) {
   process.exit(1);

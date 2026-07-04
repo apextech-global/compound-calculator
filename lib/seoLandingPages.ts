@@ -1,4 +1,5 @@
 import { routing, type Locale } from "@/i18n/routing";
+import { publicLocaleCodes } from "@/lib/locales";
 import { absoluteUrl, xDefaultUrl } from "@/lib/seoMetadata";
 
 const baseSeoPageSlugs = [
@@ -2846,7 +2847,9 @@ export function isSeoPageSlugForLocale(
 }
 
 export function getSeoPageAlternates(slug: SeoPageSlug) {
-  const locales = isMalaysiaGuideSeoPageSlug(slug) ? ["zh-CN"] : routing.locales;
+  const locales = isMalaysiaGuideSeoPageSlug(slug)
+    ? ["zh-CN"]
+    : publicLocaleCodes;
 
   return Object.fromEntries(
     locales.map((locale) => [locale, absoluteUrl(`/${locale}/${slug}`)])

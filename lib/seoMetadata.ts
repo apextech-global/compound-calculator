@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { routing, type Locale } from "@/i18n/routing";
+import { publicLocaleCodes } from "@/lib/locales";
 
 export const productionBaseUrl = "https://dcabacktest.com";
 export const xDefaultUrl = `${productionBaseUrl}/en`;
@@ -34,7 +35,7 @@ export function localeAlternates(pathSuffix = "") {
   const suffix = pathSuffix ? normalizedSuffix : "";
 
   return Object.fromEntries(
-    routing.locales.map((locale) => [
+    publicLocaleCodes.map((locale) => [
       locale,
       absoluteUrl(`/${locale}${suffix}`),
     ])

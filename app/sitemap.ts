@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { routing } from "@/i18n/routing";
+import { publicLocaleCodes } from "@/lib/locales";
 import { getSeoPageSlugsForLocale } from "@/lib/seoLandingPages";
 import { absoluteUrl, contentPageSlugs, staticPageSlugs } from "@/lib/seoMetadata";
 
@@ -13,13 +13,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 1,
     },
-    ...routing.locales.map((locale) => ({
+    ...publicLocaleCodes.map((locale) => ({
       url: absoluteUrl(`/${locale}`),
       lastModified: today,
       changeFrequency: "weekly" as const,
-      priority: locale === routing.defaultLocale ? 0.95 : 0.9,
+      priority: locale === "en" ? 0.95 : 0.9,
     })),
-    ...routing.locales.flatMap((locale) =>
+    ...publicLocaleCodes.flatMap((locale) =>
       staticPageSlugs.map((page) => ({
         url: absoluteUrl(`/${locale}/${page}`),
         lastModified: today,
@@ -27,7 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.7,
       }))
     ),
-    ...routing.locales.flatMap((locale) =>
+    ...publicLocaleCodes.flatMap((locale) =>
       contentPageSlugs.map((page) => ({
         url: absoluteUrl(`/${locale}/${page}`),
         lastModified: today,
@@ -41,7 +41,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.86,
     })),
-    ...routing.locales.flatMap((locale) =>
+    ...publicLocaleCodes.flatMap((locale) =>
       getSeoPageSlugsForLocale(locale).map((page) => ({
         url: absoluteUrl(`/${locale}/${page}`),
         lastModified: today,

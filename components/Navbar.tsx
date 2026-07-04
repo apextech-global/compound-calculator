@@ -2,7 +2,7 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { currencyCodes, type CurrencyCode } from "@/lib/currencies";
-import { languageCodes } from "@/lib/locales";
+import { publicLocaleCodes } from "@/lib/locales";
 
 type NavbarProps = {
   selectedCurrency: CurrencyCode;
@@ -35,7 +35,7 @@ export default function Navbar({
             }}
             className="w-full rounded-2xl border border-white/10 bg-white/[0.06] px-4 py-3 text-sm font-medium text-white outline-none transition focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/10 sm:w-auto"
           >
-            {languageCodes.map((language) => (
+            {publicLocaleCodes.map((language) => (
               <option key={language} value={language}>
                 {t(`languages.${language}`)}
               </option>
