@@ -14,6 +14,11 @@ type LearnContent = {
   intro: string;
   disclaimerTitle: string;
   disclaimer: string;
+  quickLinksTitle: string;
+  quickLinks: Array<{
+    title: string;
+    href: string;
+  }>;
   sections: Array<{
     title: string;
     description: string;
@@ -40,6 +45,14 @@ const content: Record<LearnLocale, LearnContent> = {
     disclaimerTitle: "教育用途免责声明",
     disclaimer:
       "仅供教育用途，不构成投资建议。过去表现不代表未来表现。ETF、股票、汇率和税务结果都可能变化，用户应自行判断并在需要时咨询持牌专业人士。",
+    quickLinksTitle: "常用工具与重要说明",
+    quickLinks: [
+      { title: "DCA 定投计算器", href: "/zh-CN/dca-calculator" },
+      { title: "复利计算器", href: "/zh-CN/compound-interest-calculator" },
+      { title: "ETF 对比工具", href: "/zh-CN/etf-comparison-calculator" },
+      { title: "支持的资产", href: "/zh-CN/supported-assets" },
+      { title: "免责声明", href: "/zh-CN/disclaimer" },
+    ],
     sections: [
       {
         title: "新手入门",
@@ -189,6 +202,14 @@ const content: Record<LearnLocale, LearnContent> = {
     disclaimerTitle: "教育用途免責聲明",
     disclaimer:
       "僅供教育用途，不構成投資建議。過去表現不代表未來表現。ETF、股票、匯率、費用與稅務結果都可能改變，使用者應自行判斷並視需要諮詢持牌專業人士。",
+    quickLinksTitle: "常用工具與重要說明",
+    quickLinks: [
+      { title: "DCA 定期定額計算機", href: "/zh-TW/dca-calculator" },
+      { title: "複利計算機", href: "/zh-TW/compound-interest-calculator" },
+      { title: "ETF 對比工具", href: "/zh-TW/etf-comparison-calculator" },
+      { title: "支援的資產", href: "/zh-TW/supported-assets" },
+      { title: "免責聲明", href: "/zh-TW/disclaimer" },
+    ],
     sections: [
       {
         title: "新手入門",
@@ -445,6 +466,21 @@ export default async function LearnPage({
             {page.disclaimer}
           </p>
         </section>
+
+        <nav
+          aria-label={page.quickLinksTitle}
+          className="mt-5 flex w-full flex-wrap gap-2.5 text-sm sm:mt-6 sm:gap-3"
+        >
+          {page.quickLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="rounded-full border border-cyan-300/20 bg-cyan-400/10 px-4 py-2 text-cyan-100 transition hover:border-cyan-300/50 hover:text-white"
+            >
+              {link.title}
+            </Link>
+          ))}
+        </nav>
       </section>
     </main>
   );

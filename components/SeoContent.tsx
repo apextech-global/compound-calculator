@@ -5,7 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import type { Locale } from "@/i18n/routing";
 import {
   getSeoLandingContent,
-  seoPageSlugs,
+  getSeoPageSlugsForLocale,
 } from "@/lib/seoLandingPages";
 
 const sectionKeys = [
@@ -22,7 +22,27 @@ const legalLinks = ["about", "privacy", "terms", "contact"] as const;
 export default function SeoContent() {
   const t = useTranslations();
   const locale = useLocale();
-  const guides = getSeoLandingContent(locale as Locale);
+  const typedLocale = locale as Locale;
+  const guides = getSeoLandingContent(typedLocale);
+  const guideSlugs = getSeoPageSlugsForLocale(typedLocale);
+  const learningHub =
+    typedLocale === "zh-CN"
+      ? {
+          title: "ETF 定投学习中心",
+          description:
+            "学习 ETF 定投、复利、DCA 回测、VOO、CSPX 和定投 vs 一次性投入。",
+          href: "/zh-CN/learn",
+          button: "打开学习中心",
+        }
+      : typedLocale === "zh-TW"
+        ? {
+            title: "ETF 定期定額學習中心",
+            description:
+              "學習 ETF 定期定額、複利、DCA 回測、VOO、CSPX 和定期定額 vs 單筆投入。",
+            href: "/zh-TW/learn",
+            button: "打開學習中心",
+          }
+        : null;
 
   return (
     <section className="mt-10 w-full min-w-0 border-t border-white/10 pt-8 sm:mt-14 sm:pt-10">
@@ -37,6 +57,27 @@ export default function SeoContent() {
           {t("seoContent.intro")}
         </p>
       </div>
+
+      {learningHub ? (
+        <section className="mb-5 w-full min-w-0 rounded-2xl border border-cyan-300/20 bg-cyan-400/10 p-4 shadow-xl shadow-cyan-950/20 sm:mb-6 sm:rounded-3xl sm:p-6">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="min-w-0">
+              <h3 className="break-words text-xl font-bold tracking-tight text-white sm:text-2xl">
+                {learningHub.title}
+              </h3>
+              <p className="mt-2 break-words text-sm leading-6 text-slate-300">
+                {learningHub.description}
+              </p>
+            </div>
+            <Link
+              href={learningHub.href}
+              className="inline-flex w-full shrink-0 justify-center rounded-2xl bg-cyan-400 px-5 py-3 text-center text-sm font-bold text-slate-950 transition hover:bg-cyan-300 sm:w-auto"
+            >
+              {learningHub.button}
+            </Link>
+          </div>
+        </section>
+      ) : null}
 
       <div className="grid w-full grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-2">
         {sectionKeys.map((section) => (
@@ -70,7 +111,7 @@ export default function SeoContent() {
         aria-label={t("seoContent.linksLabel")}
         className="mt-5 flex flex-wrap gap-2.5 text-sm sm:mt-6 sm:gap-3"
       >
-        {seoPageSlugs.map((slug) => (
+        {guideSlugs.map((slug) => (
           <Link
             key={slug}
             href={`/${locale}/${slug}`}
