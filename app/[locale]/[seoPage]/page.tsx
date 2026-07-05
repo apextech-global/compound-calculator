@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import RecommendedToolsCta from "@/components/RecommendedToolsCta";
 import { routing, type Locale } from "@/i18n/routing";
 import {
   getSeoLandingContent,
@@ -31,8 +32,13 @@ const relatedSeoLinks: SeoPageSlug[] = [
   "voo-vs-cspx",
   "voo-vs-qqq",
 ];
-const siteLinks = ["supported-assets"] as const;
-const legalLinks = ["privacy", "terms", "disclaimer"] as const;
+const siteLinks = ["supported-assets", "recommended-tools"] as const;
+const legalLinks = [
+  "privacy",
+  "terms",
+  "disclaimer",
+  "affiliate-disclosure",
+] as const;
 const webApplicationSeoPages: SeoPageSlug[] = [
   "dca-calculator",
   "compound-interest-calculator",
@@ -44,6 +50,12 @@ const articleSeoPages: SeoPageSlug[] = [
   "dca-vs-lump-sum",
   "cspx-vs-vwra",
   "iwda-vs-vwra",
+  "how-to-buy-cspx-from-malaysia",
+  "how-to-invest-in-voo-from-malaysia",
+  "best-etf-broker-malaysia",
+  "ibkr-vs-moomoo-malaysia",
+];
+const malaysiaGuidePages: SeoPageSlug[] = [
   "how-to-buy-cspx-from-malaysia",
   "how-to-invest-in-voo-from-malaysia",
   "best-etf-broker-malaysia",
@@ -247,6 +259,10 @@ export default async function SeoLandingPage({
           </Link>
         </section>
 
+        {typedLocale === "zh-CN" && malaysiaGuidePages.includes(typedPage) ? (
+          <RecommendedToolsCta locale={typedLocale} sourcePage={typedPage} />
+        ) : null}
+
         <section className="mt-8 w-full sm:mt-10">
           <h2 className="break-words text-2xl font-bold tracking-tight sm:text-3xl">
             {messages.faq.title}
@@ -294,7 +310,9 @@ export default async function SeoLandingPage({
               href={`/${typedLocale}/${link}`}
               className="rounded-full border border-cyan-300/20 bg-cyan-400/10 px-4 py-2 text-cyan-100 transition hover:border-cyan-300/50 hover:text-white"
             >
-              {messages.footer.supportedAssets}
+              {link === "supported-assets"
+                ? messages.footer.supportedAssets
+                : messages.footer.recommendedTools}
             </Link>
           ))}
           {legalLinks.map((link) => (
@@ -305,6 +323,8 @@ export default async function SeoLandingPage({
             >
               {link === "disclaimer"
                 ? messages.footer.disclaimer
+                : link === "affiliate-disclosure"
+                  ? messages.footer.affiliateDisclosure
                 : messages.footer[link]}
             </Link>
           ))}

@@ -2493,6 +2493,10 @@ function getZhCnMalaysiaGuidePage(slug: MalaysiaGuideSeoPageSlug): SeoPageConten
           body: "马来西亚用户需要自行检查券商支持、交易佣金、换汇价差、平台费、税务规则、预扣税、股息处理和成交价格。CSPX 的数据可能来自 Yahoo Finance，并可能与官方 NAV、交易所或券商记录不同。不同券商对伦敦交易所、碎股、订单类型和交易货币的支持也可能不同。",
         },
         {
+          title: "真实投资前可以先检查哪些工具",
+          body: "在行动前，用户可以分别比较券商平台、换汇或转账工具、费用表、入金路径和报表功能。重点不是找一个永远最好的平台，而是确认该平台是否支持你要买的市场、交易货币、订单类型、税务文件和风险承受范围。平台可用性、费用和条款可能变化，应以官方资料为准。",
+        },
+        {
           title: "Affiliate / referral disclosure",
           body: "部分链接未来可能是 affiliate / referral link。我们可能获得佣金，但这不会影响内容的教育性质。任何券商、ETF 或工具都不应被视为适合所有人的推荐。",
         },
@@ -2503,24 +2507,34 @@ function getZhCnMalaysiaGuidePage(slug: MalaysiaGuideSeoPageSlug): SeoPageConten
       ],
       faqs: [
         {
-          question: "马来西亚怎么买 CSPX？",
+          question: "马来西亚可以买 CSPX 吗？",
           answer:
             "一般需要使用支持伦敦交易所和 UCITS ETF 的券商，并确认具体代码、交易货币、费用、换汇、税务和风险。不同券商支持情况可能改变，应以官方资料为准。",
         },
         {
-          question: "CSPX 是美国 ETF 吗？",
+          question: "马来西亚可以买 VOO 吗？",
           answer:
-            "CSPX 通常是爱尔兰注册的 UCITS ETF，并非美国上市 ETF。它常被用于取得 S&P 500 敞口，但结构、交易所和税务处理可能与 VOO 不同。",
+            "很多券商可能提供美股 ETF 交易权限，但支持情况、费用、股息税和账户条件会变化。用户应在官方券商平台确认 VOO 是否可交易。",
         },
         {
-          question: "CSPX 定投适合所有马来西亚投资者吗？",
+          question: "CSPX 和 VOO 哪个适合马来西亚投资者？",
           answer:
-            "不一定。是否适合取决于投资目标、风险承受能力、券商支持、费用、税务、货币和投资期限。本页面不构成投资建议。",
+            "没有固定答案。CSPX 和 VOO 在注册地、交易所、货币、股息处理、税务和券商支持方面可能不同，用户应按自身情况比较。",
         },
         {
-          question: "CSPX 回测结果可以代表未来吗？",
+          question: "买海外 ETF 要注意哪些费用？",
           answer:
-            "不能。回测只是历史模拟，未来市场表现、汇率、费用和税务都可能不同。",
+            "常见费用包括交易佣金、平台费、托管费、换汇价差、买卖价差、入金或出金费用，以及可能的税务成本。",
+        },
+        {
+          question: "券商费用和汇率会影响定投结果吗？",
+          answer:
+            "会。长期定投中，换汇成本、固定手续费、百分比费用、买卖价差和成交价格都可能影响真实结果。",
+        },
+        {
+          question: "这些内容是不是投资建议？",
+          answer:
+            "不是。本页面仅供教育用途，不构成投资建议、券商推荐、税务建议或法律建议。",
         },
       ],
     },
@@ -2550,6 +2564,10 @@ function getZhCnMalaysiaGuidePage(slug: MalaysiaGuideSeoPageSlug): SeoPageConten
           body: "马来西亚用户研究美国上市 ETF 时，通常需要了解美国股息预扣税、潜在遗产税风险、券商费用、换汇成本、买卖价差、成交价格和本地税务申报要求。相关规则可能变化，应以官方券商、税务和监管资料为准。",
         },
         {
+          title: "真实投资前可以先检查哪些工具",
+          body: "研究 VOO 前，用户可以先比较券商是否支持美股 ETF、MYR 到 USD 的换汇路径、转账成本、报表下载、股息税文件和账户安全设置。工具选择不应只看广告或促销，也不应假设某个平台永远最低成本。请以官方费用表、条款和风险说明为准。",
+        },
+        {
           title: "Affiliate / referral disclosure",
           body: "部分链接未来可能是 affiliate / referral link。我们可能获得佣金，但这不会影响内容的教育性质。券商或 ETF 的选择应由用户自行判断。",
         },
@@ -2560,24 +2578,34 @@ function getZhCnMalaysiaGuidePage(slug: MalaysiaGuideSeoPageSlug): SeoPageConten
       ],
       faqs: [
         {
+          question: "马来西亚用户可以买 CSPX 来比较 VOO 吗？",
+          answer:
+            "可以研究支持伦敦交易所或 UCITS ETF 的券商，但实际可交易性、代码、货币和费用应以券商官方资料为准。",
+        },
+        {
           question: "马来西亚怎么买 VOO？",
           answer:
             "通常需要使用支持美股 ETF 的券商，完成开户、入金、换汇，并确认 VOO 的交易权限、费用和订单细节。",
         },
         {
-          question: "VOO 和 CSPX 哪个一定比较好？",
+          question: "VOO 和 CSPX 哪个更适合马来西亚投资者研究？",
           answer:
             "没有一定答案。两者在基金注册地、交易市场、税务、股息处理、券商支持和费用方面可能不同，需要按个人情况比较。",
         },
         {
-          question: "马来西亚买美股 ETF 要注意什么税务？",
+          question: "买 VOO 这类海外 ETF 要注意哪些费用？",
           answer:
-            "常见关注点包括美国股息预扣税、潜在遗产税风险和本地税务申报。税务规则复杂且可能变化，应自行核实或咨询专业人士。",
+            "常见费用包括交易佣金、平台费、换汇价差、买卖价差、入金出金费用，以及与股息或税务处理相关的成本。",
         },
         {
-          question: "VOO 定投回测能保证未来收益吗？",
+          question: "VOO 定投时券商费用和汇率会影响结果吗？",
           answer:
-            "不能。回测只是历史模拟，不保证未来收益，也不是投资建议。",
+            "会。定投金额、手续费、百分比费用、汇率、点差和成交价格都会影响真实投资结果，回测只能作为教育模拟。",
+        },
+        {
+          question: "这篇 VOO 指南是不是投资建议？",
+          answer:
+            "不是。本页面仅供教育用途，不构成投资建议、券商推荐、税务建议或法律建议。",
         },
       ],
     },
@@ -2606,6 +2634,10 @@ function getZhCnMalaysiaGuidePage(slug: MalaysiaGuideSeoPageSlug): SeoPageConten
           body: "在选择券商前，你可以先用 DCA 定投计算器或 ETF 对比计算器测试资产本身的历史模拟结果，例如 VOO 定投、CSPX 定投或 VOO vs CSPX。然后再把券商费用、换汇和税务因素纳入自己的判断。",
         },
         {
+          title: "真实投资前可以先检查哪些工具",
+          body: "用户可以分别了解券商平台、换汇或转账工具、投资组合记录工具和官方费用表。券商选择、换汇渠道和交易市场支持都可能影响体验，但这些工具本身不代表投资收益，也不保证更低成本。请在官方页面核实可用性、费用、风险和条款。",
+        },
+        {
           title: "Affiliate / referral disclosure",
           body: "部分链接未来可能是 affiliate / referral link。我们可能获得佣金，但这不会影响内容的教育性质。任何券商介绍都不应被理解为保证适合所有人。",
         },
@@ -2616,24 +2648,34 @@ function getZhCnMalaysiaGuidePage(slug: MalaysiaGuideSeoPageSlug): SeoPageConten
       ],
       faqs: [
         {
-          question: "马来西亚 ETF 券商应该怎么选？",
+          question: "马来西亚 ETF 券商需要支持 CSPX 吗？",
           answer:
-            "可以从市场支持、费用、换汇、入金方式、平台稳定性、报表、客服和安全设置等方面比较，并以券商官方资料为准。",
+            "可以研究支持伦敦交易所或 UCITS ETF 的券商，但实际支持、费用和交易权限应以官方资料为准。",
         },
         {
-          question: "马来西亚买美股 ETF 一定要选最低佣金券商吗？",
+          question: "马来西亚 ETF 券商需要支持 VOO 吗？",
           answer:
-            "不一定。低佣金只是其中一项，总成本还包括汇率点差、平台费、入金成本、买卖价差和税务处理。",
+            "可能可以通过支持美股 ETF 的券商交易，但用户应确认账户权限、交易费用、换汇成本和税务资料。",
         },
         {
-          question: "哪个券商最适合买 CSPX？",
+          question: "选择券商时如何比较 CSPX 和 VOO 的需求？",
           answer:
-            "没有固定答案。需要确认券商是否支持伦敦交易所或相关 UCITS ETF，并比较费用、汇率、订单类型和个人需求。",
+            "没有统一答案。两者在基金注册地、税务、股息处理、交易市场、货币和券商支持方面可能不同。",
         },
         {
-          question: "券商费用和促销会不会改变？",
+          question: "通过券商买海外 ETF 要注意哪些费用？",
           answer:
-            "会。费用、市场支持和促销都可能变化，交易前应查看券商官方网站的最新资料。",
+            "可以关注交易佣金、平台费、换汇价差、买卖价差、入金出金费用、托管费和税务相关成本。",
+        },
+        {
+          question: "券商费用和汇率会怎样影响定投结果？",
+          answer:
+            "会。长期定投中，费用和汇率差异会累积影响净投入、买入份额和最终结果。",
+        },
+        {
+          question: "这篇券商指南是不是投资建议？",
+          answer:
+            "不是。本页面仅供教育用途，不构成投资建议、券商推荐、税务建议或法律建议。",
         },
       ],
     },
@@ -2662,6 +2704,10 @@ function getZhCnMalaysiaGuidePage(slug: MalaysiaGuideSeoPageSlug): SeoPageConten
           body: "券商比较解决的是交易渠道问题，ETF 定投回测解决的是资产历史情景问题。你可以先用 VOO 定投计算器、CSPX 定投计算器或 ETF 对比计算器理解资产差异，再单独比较券商费用、换汇和平台体验。",
         },
         {
+          title: "真实投资前可以先检查哪些工具",
+          body: "比较 IBKR、Moomoo 或其他平台时，可以同时记录换汇工具、入金路径、交易市场、费用表、报表功能和税务文件可用性。平台条款、市场支持和促销活动可能变化，用户应以官方信息为准，并避免只根据单一广告或奖励做决定。",
+        },
+        {
           title: "Affiliate / referral disclosure",
           body: "部分链接未来可能是 affiliate / referral link。我们可能获得佣金，但这不会影响内容的教育性质。任何券商比较都不构成开户建议或投资建议。",
         },
@@ -2672,22 +2718,32 @@ function getZhCnMalaysiaGuidePage(slug: MalaysiaGuideSeoPageSlug): SeoPageConten
       ],
       faqs: [
         {
-          question: "IBKR vs Moomoo 马来西亚哪个比较好？",
+          question: "IBKR 或 Moomoo 可以让马来西亚用户买 CSPX 吗？",
           answer:
-            "没有永远更好的答案。应根据你要买的市场、ETF 类型、费用、换汇、平台体验、报表和个人需求比较。",
+            "可以研究支持伦敦交易所或 UCITS ETF 的券商，但不同平台对 CSPX 或相关代码的支持可能不同，应以官方资料为准。",
         },
         {
-          question: "IBKR 和 Moomoo 都能买美股 ETF 吗？",
+          question: "IBKR 或 Moomoo 可以让马来西亚用户买 VOO 吗？",
           answer:
-            "支持情况、权限和费用可能随时间变化。用户应查看官方平台确认是否支持 VOO、QQQ 等美股 ETF。",
+            "很多用户会通过支持美股 ETF 的券商研究 VOO，但交易权限、费用、股息税和账户条件需要自行核实。",
         },
         {
-          question: "买 CSPX、VWRA、IWDA 要特别看什么？",
+          question: "比较 IBKR 和 Moomoo 时如何看 CSPX 和 VOO？",
           answer:
-            "需要确认券商是否支持相关 UCITS ETF、伦敦交易所或对应市场，以及交易货币、费用、订单类型和税务资料。",
+            "没有固定答案。CSPX 和 VOO 涉及不同注册地、交易所、税务、股息处理、货币和券商支持。",
         },
         {
-          question: "这篇 IBKR vs Moomoo 比较是推荐开户吗？",
+          question: "用券商买海外 ETF 要注意哪些费用？",
+          answer:
+            "需要关注交易佣金、平台费、换汇价差、买卖价差、入金出金费用、托管费和可能的税务成本。",
+        },
+        {
+          question: "IBKR vs Moomoo 比较中汇率和费用重要吗？",
+          answer:
+            "会。费用、汇率和成交价格会影响每月净投入、可买份额和长期结果，尤其在定投时间较长时更明显。",
+        },
+        {
+          question: "这篇 IBKR vs Moomoo 比较是不是投资建议？",
           answer:
             "不是。本页面仅供教育用途，不构成券商推荐、开户建议或投资建议。",
         },
