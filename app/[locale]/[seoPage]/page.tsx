@@ -38,6 +38,7 @@ const chineseLearningRelatedLinks: SeoPageSlug[] = [
   "etf-dca-backtest-guide",
   "dca-vs-lump-sum-guide",
   "compound-interest-guide",
+  "sp500-dca-simulation",
 ];
 const siteLinks = ["supported-assets", "recommended-tools", "learn"] as const;
 const legalLinks = [
@@ -66,6 +67,7 @@ const articleSeoPages: SeoPageSlug[] = [
   "etf-dca-backtest-guide",
   "dca-vs-lump-sum-guide",
   "compound-interest-guide",
+  "sp500-dca-simulation",
 ];
 const malaysiaGuidePages: SeoPageSlug[] = [
   "how-to-buy-cspx-from-malaysia",
@@ -145,14 +147,18 @@ export default async function SeoLandingPage({
   const page = content.pages[typedPage];
   const pageUrl = absoluteUrl(`/${typedLocale}/${typedPage}`);
   const seoLinks =
-    typedLocale === "zh-CN" || typedLocale === "zh-TW" || typedLocale === "ms"
+    typedLocale === "zh-CN" ||
+    typedLocale === "zh-TW" ||
+    typedLocale === "ms" ||
+    typedLocale === "ja"
       ? [...relatedSeoLinks, ...chineseLearningRelatedLinks]
       : relatedSeoLinks;
   const visibleSiteLinks =
     typedLocale === "en" ||
     typedLocale === "zh-CN" ||
     typedLocale === "zh-TW" ||
-    typedLocale === "ms"
+    typedLocale === "ms" ||
+    typedLocale === "ja"
       ? siteLinks
       : siteLinks.filter((link) => link !== "learn");
   const pageTypeJsonLd = webApplicationSeoPages.includes(typedPage)
@@ -343,7 +349,7 @@ export default async function SeoLandingPage({
                   ? messages.footer.learnCenter
                 : typedLocale === "zh-TW"
                   ? messages.footer.learnCenter
-                : typedLocale === "ms"
+                : typedLocale === "ms" || typedLocale === "ja"
                   ? messages.footer.learnCenter
                 : "Learn"}
             </Link>

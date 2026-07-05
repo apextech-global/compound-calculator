@@ -44,12 +44,15 @@ const chineseLearningSeoPageSlugs = [
   "compound-interest-guide",
 ] as const;
 
+const japaneseLearningSeoPageSlugs = ["sp500-dca-simulation"] as const;
+
 export const seoPageSlugs = [
   ...baseSeoPageSlugs,
   ...comparisonSeoPageSlugs,
   ...assetSeoPageSlugs,
   ...malaysiaGuideSeoPageSlugs,
   ...chineseLearningSeoPageSlugs,
+  ...japaneseLearningSeoPageSlugs,
 ] as const;
 
 export type SeoPageSlug = (typeof seoPageSlugs)[number];
@@ -58,6 +61,7 @@ type ComparisonSeoPageSlug = (typeof comparisonSeoPageSlugs)[number];
 type AssetSeoPageSlug = (typeof assetSeoPageSlugs)[number];
 type MalaysiaGuideSeoPageSlug = (typeof malaysiaGuideSeoPageSlugs)[number];
 type ChineseLearningSeoPageSlug = (typeof chineseLearningSeoPageSlugs)[number];
+type JapaneseLearningSeoPageSlug = (typeof japaneseLearningSeoPageSlugs)[number];
 
 type SeoPageContent = {
   title: string;
@@ -3690,9 +3694,302 @@ const msLearningPages: Record<ChineseLearningSeoPageSlug, SeoPageContent> = {
   },
 };
 
+const jaSharedLearningPages: Partial<
+  Record<ChineseLearningSeoPageSlug, SeoPageContent>
+> = {
+  "etf-dca-backtest-guide": {
+    title: "ETF積立投資バックテストの見方 | DCA Backtest",
+    description:
+      "ETF積立投資バックテストの使い方、毎月投資額、開始年、終了年、手数料、過去データ、サンプルデータの見方を日本語で解説します。",
+    h1: "ETF積立投資バックテストの見方",
+    intro:
+      "ETF積立投資バックテストは、過去データを使って毎月一定額を投資した場合のシナリオを学ぶためのツールです。このページでは、入力項目、結果指標、データの限界をシンプルに説明します。",
+    ctaQuery: "?market=us&type=ETF&asset=VOO",
+    sections: [
+      {
+        title: "ステップ1：対象ETFと期間を選ぶ",
+        body: "まず市場、資産タイプ、ETFを選びます。VOO、QQQなどの資産を選び、毎月の投資額、開始年、終了年を設定します。対応状況は /ja/supported-assets で確認できます。",
+      },
+      {
+        title: "ステップ2：結果指標を読む",
+        body: "総投資額、最終価値、利益、総リターン、年率リターン推定、最大ドローダウンを確認します。最終価値だけでなく、途中の下落幅や投資期間も見ることが大切です。",
+      },
+      {
+        title: "ステップ3：データの種類を確認する",
+        body: "過去データがある場合は月次価格を使います。データが未インポートの場合はサンプルデータとして表示されます。サンプルデータは実際の市場成績ではありません。",
+      },
+      {
+        title: "簡単な例",
+        body: "/ja/dca-calculator でVOOを選び、毎月1,000ドル、2018年から2025年までを設定すると、過去データに基づく積立シナリオを確認できます。",
+      },
+      {
+        title: "注意点",
+        body: "実際の投資結果は、手数料、税金、為替レート、配当、スプレッド、約定価格、データ差で変わる可能性があります。過去の実績は将来の結果を保証しません。",
+      },
+      {
+        title: "関連リンク",
+        body: "次に /ja/learn、/ja/voo-dca-calculator、/ja/qqq-dca-calculator、/ja/etf-comparison-calculator、/ja/disclaimer を確認すると理解が深まります。",
+      },
+    ],
+    faqs: [
+      {
+        question: "ETF積立投資バックテストは正確ですか？",
+        answer:
+          "利用可能な過去価格と入力条件に基づくシミュレーションです。実際の証券口座の結果とは異なる場合があります。",
+      },
+      {
+        question: "サンプルデータとは何ですか？",
+        answer:
+          "過去データが未インポートの資産で使うデモ用データです。実際の市場成績として扱わないでください。",
+      },
+      {
+        question: "どの指標を見るべきですか？",
+        answer:
+          "最終価値だけでなく、総投資額、最大ドローダウン、データソース、手数料前提も確認してください。",
+      },
+      {
+        question: "これは投資助言ですか？",
+        answer:
+          "いいえ。教育目的の説明であり、ETFや投資方法を推奨するものではありません。",
+      },
+    ],
+  },
+  "voo-vs-qqq-dca": {
+    title: "VOO vs QQQ 積立投資バックテスト | ETF比較ガイド",
+    description:
+      "VOOとQQQを同じ毎月投資額・同じ期間で比較し、S&P 500、Nasdaq-100、セクター集中度、ドローダウンの違いを学びます。",
+    h1: "VOO vs QQQ 積立投資バックテスト",
+    intro:
+      "VOOはS&P 500への広い米国大型株エクスポージャー、QQQはNasdaq-100へのより成長株寄りのエクスポージャーとして使われることがあります。このページでは、同じ積立条件で比較する見方を説明します。",
+    ctaQuery: "?market=us&type=ETF&asset=VOO",
+    sections: [
+      {
+        title: "ステップ1：指数の違いを理解する",
+        body: "VOOはS&P 500、QQQはNasdaq-100に連動するETFとして知られています。QQQはテクノロジー比率が高くなりやすく、期間によってリターンや下落幅が大きく変わることがあります。",
+      },
+      {
+        title: "ステップ2：同じ条件で比較する",
+        body: "/ja/etf-comparison-calculator で毎月投資額、開始年、終了年、表示通貨をそろえると、入力条件ではなく資産価格の違いに注目できます。",
+      },
+      {
+        title: "ステップ3：リターンとリスクを見る",
+        body: "最終価値、総利益、年率リターン推定、最大ドローダウン、チャートの形を確認します。過去に高かった結果が将来も続くとは限りません。",
+      },
+      {
+        title: "簡単な例",
+        body: "2018年から2025年まで毎月500ドルまたは1,000ドルを投資した場合を比較し、/ja/voo-dca-calculator と /ja/qqq-dca-calculator で個別ページも確認できます。",
+      },
+      {
+        title: "注意点",
+        body: "VOOとQQQはどちらも下落する可能性があります。手数料、税金、為替、配当、約定価格、投資期間によって実際の結果は変わります。",
+      },
+      {
+        title: "関連リンク",
+        body: "関連ページとして /ja/voo-vs-qqq、/ja/dca-vs-lump-sum、/ja/etf-dca-backtest-guide、/ja/disclaimer も確認できます。",
+      },
+    ],
+    faqs: [
+      {
+        question: "VOOとQQQはどちらが良いですか？",
+        answer:
+          "一概には言えません。目的、期間、リスク許容度、税金、手数料によって見方が変わります。このページは推奨ではありません。",
+      },
+      {
+        question: "QQQはVOOよりリスクが高いですか？",
+        answer:
+          "QQQはセクター集中度が高くなりやすいですが、リスクは期間や市場環境によって変わります。",
+      },
+      {
+        question: "バックテスト結果は将来も再現されますか？",
+        answer:
+          "いいえ。過去データは学習用であり、将来のリターンを保証しません。",
+      },
+      {
+        question: "手数料や為替は含まれますか？",
+        answer:
+          "一部の手数料設定は使えますが、実際の税金、為替、配当、約定価格を完全には反映できません。",
+      },
+    ],
+  },
+  "dca-vs-lump-sum-guide": {
+    title: "積立投資 vs 一括投資 | 過去データで比較する方法",
+    description:
+      "積立投資と一括投資を同じ総投資額で比較する方法、タイミングリスク、心理面、最大ドローダウン、過去データの限界を解説します。",
+    h1: "積立投資 vs 一括投資：過去データで比較する方法",
+    intro:
+      "積立投資は資金を時間に分けて投資し、一括投資は最初にまとめて投資します。このページでは、同じ総投資額で比較する方法と、過去データを見るときの注意点を説明します。",
+    ctaQuery: "?market=us&type=ETF&asset=VOO",
+    sections: [
+      {
+        title: "ステップ1：投資タイミングの違いを理解する",
+        body: "積立投資は買付時点を分散します。一括投資は早く市場に参加します。上昇相場では一括投資が有利に見えることもありますが、下落相場では心理的な負担が大きくなることがあります。",
+      },
+      {
+        title: "ステップ2：同じ総投資額で比較する",
+        body: "毎月1,000ドルを96か月投資するなら、総投資額は96,000ドルです。一括投資の比較では、同じ96,000ドルを最初の価格で投資したものとして扱います。",
+      },
+      {
+        title: "ステップ3：最終価値だけで判断しない",
+        body: "最大ドローダウン、途中の含み損、投資期間、手数料、心理的な続けやすさも確認してください。",
+      },
+      {
+        title: "簡単な例",
+        body: "/ja/dca-vs-lump-sum または /ja/dca-calculator でVOOやQQQを選び、期間を変えて結果の違いを確認できます。",
+      },
+      {
+        title: "注意点",
+        body: "積立投資の手数料は毎月発生し、一括投資では一度だけ発生する場合があります。税金、配当、為替、約定価格も実際の結果に影響します。",
+      },
+      {
+        title: "関連リンク",
+        body: "/ja/etf-dca-backtest-guide、/ja/compound-interest-guide、/ja/etf-comparison-calculator、/ja/disclaimer もあわせて確認できます。",
+      },
+    ],
+    faqs: [
+      {
+        question: "積立投資と一括投資はどちらが良いですか？",
+        answer:
+          "固定の答えはありません。相場環境、投資期間、手元資金、リスク許容度によって変わります。",
+      },
+      {
+        question: "なぜ同じ総投資額で比べるのですか？",
+        answer:
+          "投資額の差ではなく、投資タイミングの違いを比較しやすくするためです。",
+      },
+      {
+        question: "一括投資はリスクが高いですか？",
+        answer:
+          "最初の価格に大きく依存するため、短期的な下落や心理的負担が大きくなることがあります。",
+      },
+      {
+        question: "これは投資戦略の推奨ですか？",
+        answer:
+          "いいえ。比較方法を説明する教育コンテンツであり、投資戦略の推奨ではありません。",
+      },
+    ],
+  },
+  "compound-interest-guide": {
+    title: "複利計算ガイド | 毎月積立で資産はどう増える？",
+    description:
+      "複利計算の基本、毎月積立、想定年率リターン、投資期間、バックテストとの違い、手数料や税金の注意点を解説します。",
+    h1: "複利計算ガイド：毎月積立で資産はどう増える？",
+    intro:
+      "複利計算は、毎月積立、投資期間、想定年率リターンが長期の資産成長にどう影響するかを学ぶためのモデルです。固定リターンを約束するものではありません。",
+    ctaQuery: "",
+    sections: [
+      {
+        title: "ステップ1：複利の基本を理解する",
+        body: "複利とは、元本だけでなく過去の利益も次の成長に参加する考え方です。時間が長いほど、投資額と想定リターンの影響が大きくなります。",
+      },
+      {
+        title: "ステップ2：想定リターンを慎重に置く",
+        body: "年率リターンは入力上の仮定です。実際の市場は毎年一定ではなく、大きく上がる年も下がる年もあります。",
+      },
+      {
+        title: "ステップ3：バックテストと使い分ける",
+        body: "複利計算は一定の想定リターンを使います。DCAバックテストは過去価格の道筋を使います。どちらも学習用ですが、答える問いが違います。",
+      },
+      {
+        title: "簡単な例",
+        body: "/ja/compound-interest-calculator で毎月500ドル、20年、想定年率8%を入力し、その後 /ja/dca-calculator で過去データのシナリオと比べられます。",
+      },
+      {
+        title: "注意点",
+        body: "実際の結果は手数料、税金、インフレ、為替、配当、途中の入出金によって変わります。計算結果は将来の保証ではありません。",
+      },
+      {
+        title: "関連リンク",
+        body: "/ja/compound-interest-calculator、/ja/dca-calculator、/ja/etf-dca-backtest-guide、/ja/dca-vs-lump-sum-guide、/ja/learn も参考になります。",
+      },
+    ],
+    faqs: [
+      {
+        question: "複利計算は将来の資産額を保証しますか？",
+        answer:
+          "いいえ。入力した仮定に基づく数学的な推定であり、将来の市場リターンを保証しません。",
+      },
+      {
+        question: "毎月積立は複利にどう影響しますか？",
+        answer:
+          "同じ仮定なら、毎月積立額が大きく期間が長いほど推定値は大きくなりやすいですが、実際の市場は一定ではありません。",
+      },
+      {
+        question: "複利計算とDCAバックテストの違いは何ですか？",
+        answer:
+          "複利計算は一定のリターン仮定を使い、DCAバックテストは過去価格を使って毎月購入をシミュレーションします。",
+      },
+      {
+        question: "これは金融助言ですか？",
+        answer:
+          "いいえ。教育目的のみであり、金融助言、投資助言、税務助言、法的助言ではありません。",
+      },
+    ],
+  },
+};
+
+const jaLearningPages: Record<JapaneseLearningSeoPageSlug, SeoPageContent> = {
+  "sp500-dca-simulation": {
+    title: "S&P500積立シミュレーション | 過去データで確認する方法",
+    description:
+      "S&P500への積立投資を過去データで確認する方法、VOOを使ったDCAバックテスト、手数料、為替、税金、データ差の注意点を解説します。",
+    h1: "S&P500積立シミュレーション",
+    intro:
+      "S&P500積立シミュレーションは、米国大型株市場に毎月投資した場合の過去シナリオを学ぶための方法です。このページでは、VOOなどのS&P 500 ETFを使って、過去データの見方と注意点を説明します。",
+    ctaQuery: "?market=us&type=ETF&asset=VOO",
+    sections: [
+      {
+        title: "ステップ1：S&P500の対象を決める",
+        body: "S&P500そのものを直接買うのではなく、通常はS&P 500に連動するETFを使ってシミュレーションします。DCA BacktestではVOOなどの対応ETFを選んで確認できます。",
+      },
+      {
+        title: "ステップ2：毎月投資額と期間を設定する",
+        body: "毎月の投資額、開始年、終了年を設定します。期間を変えると、強気相場、弱気相場、急落局面を含むかどうかで結果が変わります。",
+      },
+      {
+        title: "ステップ3：結果を総合的に見る",
+        body: "最終価値だけでなく、総投資額、利益、年率リターン推定、最大ドローダウン、チャートの途中経過を確認します。",
+      },
+      {
+        title: "簡単な例",
+        body: "/ja/voo-dca-calculator でVOOを選び、毎月1,000ドル、2018年から2025年までを設定すると、S&P500に近い積立シナリオを確認できます。",
+      },
+      {
+        title: "注意点",
+        body: "実際の投資結果は、ETFの経費率、配当、税金、為替、証券会社の手数料、スプレッド、約定価格、公式データとの差によって変わります。",
+      },
+      {
+        title: "関連リンク",
+        body: "/ja/dca-calculator、/ja/voo-dca-calculator、/ja/etf-dca-backtest-guide、/ja/compound-interest-guide、/ja/disclaimer を確認できます。",
+      },
+    ],
+    faqs: [
+      {
+        question: "S&P500積立シミュレーションは将来を予測しますか？",
+        answer:
+          "いいえ。過去データを使った教育用シミュレーションであり、将来のリターンを保証しません。",
+      },
+      {
+        question: "VOOでS&P500積立を確認できますか？",
+        answer:
+          "VOOはS&P 500に連動するETFとして使われるため、対応データがある場合は参考シナリオとして確認できます。",
+      },
+      {
+        question: "円建ての実際の結果とは違いますか？",
+        answer:
+          "はい。為替、税金、手数料、配当、約定価格によって、実際の円建て結果は変わります。",
+      },
+      {
+        question: "これは投資推奨ですか？",
+        answer:
+          "いいえ。S&P500やVOOへの投資を推奨するものではなく、教育目的の説明です。",
+      },
+    ],
+  },
+};
+
 function buildChineseLearningPages(
   locale: Locale
-): Record<ChineseLearningSeoPageSlug, SeoPageContent> {
+): Partial<Record<ChineseLearningSeoPageSlug, SeoPageContent>> {
   if (locale === "zh-CN") {
     return zhCnLearningPages;
   }
@@ -3705,7 +4002,21 @@ function buildChineseLearningPages(
     return msLearningPages;
   }
 
-  return {} as Record<ChineseLearningSeoPageSlug, SeoPageContent>;
+  if (locale === "ja") {
+    return jaSharedLearningPages;
+  }
+
+  return {};
+}
+
+function buildJapaneseLearningPages(
+  locale: Locale
+): Partial<Record<JapaneseLearningSeoPageSlug, SeoPageContent>> {
+  if (locale === "ja") {
+    return jaLearningPages;
+  }
+
+  return {};
 }
 
 function adaptEnglishPages(locale: Locale): Record<BaseSeoPageSlug, SeoPageContent> {
@@ -3757,6 +4068,7 @@ export function getSeoLandingContent(locale: Locale): LocaleSeoContent {
       ...buildAssetPages(locale),
       ...buildMalaysiaGuidePages(locale),
       ...buildChineseLearningPages(locale),
+      ...buildJapaneseLearningPages(locale),
     },
   };
 }
@@ -3785,19 +4097,44 @@ function isChineseLearningSeoPageSlug(
   );
 }
 
+function isJapaneseLearningSeoPageSlug(
+  value: string
+): value is JapaneseLearningSeoPageSlug {
+  return japaneseLearningSeoPageSlugs.includes(
+    value as JapaneseLearningSeoPageSlug
+  );
+}
+
+function isSharedLearningSeoPageSlug(value: string) {
+  return (
+    isChineseLearningSeoPageSlug(value) &&
+    value !== "cspx-vs-voo-malaysia"
+  );
+}
+
 export function getSeoPageSlugsForLocale(locale: Locale): SeoPageSlug[] {
   if (locale === "zh-CN") {
-    return [...seoPageSlugs];
+    return seoPageSlugs.filter((slug) => !isJapaneseLearningSeoPageSlug(slug));
   }
 
   if (locale === "zh-TW" || locale === "ms") {
-    return seoPageSlugs.filter((slug) => !isMalaysiaGuideSeoPageSlug(slug));
+    return seoPageSlugs.filter((slug) =>
+      !isMalaysiaGuideSeoPageSlug(slug) && !isJapaneseLearningSeoPageSlug(slug)
+    );
+  }
+
+  if (locale === "ja") {
+    return seoPageSlugs.filter((slug) =>
+      !isMalaysiaGuideSeoPageSlug(slug) &&
+      (slug !== "cspx-vs-voo-malaysia")
+    );
   }
 
   return seoPageSlugs.filter(
     (slug) =>
       !isMalaysiaGuideSeoPageSlug(slug) &&
-      !isChineseLearningSeoPageSlug(slug)
+      !isChineseLearningSeoPageSlug(slug) &&
+      !isJapaneseLearningSeoPageSlug(slug)
   );
 }
 
@@ -3814,9 +4151,13 @@ export function isSeoPageSlugForLocale(
 export function getSeoPageAlternates(slug: SeoPageSlug) {
   const locales = isMalaysiaGuideSeoPageSlug(slug)
     ? ["zh-CN"]
-    : isChineseLearningSeoPageSlug(slug)
+    : slug === "cspx-vs-voo-malaysia"
       ? ["zh-CN", "zh-TW", "ms"]
-    : publicLocaleCodes;
+      : isSharedLearningSeoPageSlug(slug)
+        ? ["zh-CN", "zh-TW", "ms", "ja"]
+        : isJapaneseLearningSeoPageSlug(slug)
+          ? ["ja"]
+          : publicLocaleCodes;
 
   return Object.fromEntries(
     locales.map((locale) => [locale, absoluteUrl(`/${locale}/${slug}`)])
@@ -3824,6 +4165,10 @@ export function getSeoPageAlternates(slug: SeoPageSlug) {
 }
 
 export function getSeoPageXDefault(slug: SeoPageSlug) {
+  if (isJapaneseLearningSeoPageSlug(slug)) {
+    return absoluteUrl(`/ja/${slug}`);
+  }
+
   return isMalaysiaGuideSeoPageSlug(slug) || isChineseLearningSeoPageSlug(slug)
     ? absoluteUrl(`/zh-CN/${slug}`)
     : xDefaultUrl;

@@ -58,7 +58,15 @@ export default function SeoContent() {
               href: "/ms/learn",
               button: "Buka pusat pembelajaran",
             }
-          : null;
+          : typedLocale === "ja"
+            ? {
+                title: "ETF積立投資学習センター",
+                description:
+                  "ETF積立投資、バックテスト、複利、VOO、QQQ、積立投資 vs 一括投資を学べます。",
+                href: "/ja/learn",
+                button: "学習センターを開く",
+              }
+            : null;
 
   return (
     <section className="mt-10 w-full min-w-0 border-t border-white/10 pt-8 sm:mt-14 sm:pt-10">

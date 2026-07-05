@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { absoluteUrl, productionBaseUrl } from "@/lib/seoMetadata";
 
-type LearnLocale = "en" | "zh-CN" | "zh-TW" | "ms";
+type LearnLocale = "en" | "zh-CN" | "zh-TW" | "ms" | "ja";
 
 type LearnLink = {
   title: string;
@@ -33,7 +33,7 @@ type LearnContent = {
   }>;
 };
 
-const learnLocales: LearnLocale[] = ["en", "zh-CN", "zh-TW", "ms"];
+const learnLocales: LearnLocale[] = ["en", "zh-CN", "zh-TW", "ms", "ja"];
 
 const content: Record<LearnLocale, LearnContent> = {
   en: {
@@ -1078,6 +1078,239 @@ const content: Record<LearnLocale, LearnContent> = {
         question: "Adakah kandungan ini nasihat pelaburan?",
         answer:
           "Tidak. DCA Backtest ialah laman pendidikan dan tidak mengesyorkan ETF, saham, broker atau strategi tertentu.",
+      },
+    ],
+  },
+  ja: {
+    title: "ETF積立投資学習センター | DCA Backtest",
+    description:
+      "ETF積立投資、ドルコスト平均法、バックテスト、VOO、QQQ、積立投資 vs 一括投資、複利計算、ETF比較を学べる日本語ガイドです。",
+    h1: "ETF積立投資学習センター",
+    breadcrumb: "学習センター",
+    eyebrow: "ETF積立投資の学習ガイド",
+    intro:
+      "この学習センターでは、ETF積立投資、ドルコスト平均法、過去データを使ったバックテスト、VOOとQQQの比較、複利計算、ETF比較の考え方をシンプルに整理しています。内容は教育目的のみで、特定のETFや投資方法を推奨するものではありません。",
+    disclaimerTitle: "教育目的の免責事項",
+    disclaimer:
+      "本サイトの内容は教育目的のみであり、金融助言、投資助言、税務助言、法的助言ではありません。過去データによる結果は将来のリターンを保証しません。",
+    quickLinksTitle: "主要ツールとガイド",
+    quickLinks: [
+      { title: "DCA計算機", href: "/ja/dca-calculator" },
+      {
+        title: "複利計算機",
+        href: "/ja/compound-interest-calculator",
+      },
+      {
+        title: "ETF比較計算機",
+        href: "/ja/etf-comparison-calculator",
+      },
+      { title: "対応資産", href: "/ja/supported-assets" },
+      { title: "免責事項", href: "/ja/disclaimer" },
+    ],
+    sections: [
+      {
+        title: "ETF積立投資の基本",
+        description:
+          "毎月一定額を投資する考え方、ドルコスト平均法、そして過去データの見方を学びます。",
+        links: [
+          {
+            title: "DCA計算機",
+            description:
+              "資産、毎月の投資額、開始年、終了年を設定して、過去の積立シナリオを確認できます。",
+            href: "/ja/dca-calculator",
+          },
+          {
+            title: "ETF積立投資バックテストの見方",
+            description:
+              "バックテスト結果を読むときの基本、注意点、データの限界を整理します。",
+            href: "/ja/etf-dca-backtest-guide",
+          },
+          {
+            title: "対応資産",
+            description:
+              "どのETFや株式に過去データがあり、どれがサンプルデータかを確認できます。",
+            href: "/ja/supported-assets",
+          },
+        ],
+      },
+      {
+        title: "ETFバックテスト",
+        description:
+          "過去の月次価格を使って、毎月投資した場合の累積口数、最終価値、ドローダウンを確認します。",
+        links: [
+          {
+            title: "ETFバックテストガイド",
+            description:
+              "入力項目、結果指標、データソース、手数料や為替の注意点を説明します。",
+            href: "/ja/etf-dca-backtest-guide",
+          },
+          {
+            title: "ETF比較計算機",
+            description:
+              "同じ毎月投資額と同じ期間で、2つの資産を比較できます。",
+            href: "/ja/etf-comparison-calculator",
+          },
+          {
+            title: "免責事項",
+            description:
+              "データ、税金、手数料、投資助言ではないことに関する重要な説明です。",
+            href: "/ja/disclaimer",
+          },
+        ],
+      },
+      {
+        title: "VOO / QQQ バックテスト",
+        description:
+          "S&P 500に連動するVOOと、Nasdaq-100に連動するQQQの積立シナリオを学びます。",
+        links: [
+          {
+            title: "VOO DCA計算機",
+            description:
+              "米国S&P 500 ETFの積立投資シナリオを確認できます。",
+            href: "/ja/voo-dca-calculator",
+          },
+          {
+            title: "QQQ DCA計算機",
+            description:
+              "Nasdaq-100関連ETFの積立投資シナリオを確認できます。",
+            href: "/ja/qqq-dca-calculator",
+          },
+          {
+            title: "S&P500積立シミュレーション",
+            description:
+              "S&P 500に積立投資した場合を、過去データで確認する考え方を学べます。",
+            href: "/ja/sp500-dca-simulation",
+          },
+        ],
+      },
+      {
+        title: "VOO vs QQQ",
+        description:
+          "広い米国大型株への分散と、Nasdaq-100の成長株寄りの特徴を比較します。",
+        links: [
+          {
+            title: "VOO vs QQQ 積立投資バックテスト",
+            description:
+              "同じ条件でVOOとQQQを比較するときの見方を整理します。",
+            href: "/ja/voo-vs-qqq-dca",
+          },
+          {
+            title: "VOO vs QQQ",
+            description:
+              "指数、セクター集中度、リスク、過去期間による違いを確認します。",
+            href: "/ja/voo-vs-qqq",
+          },
+          {
+            title: "ETF比較計算機",
+            description:
+              "VOO、QQQ、その他の対応資産を同じ条件で比較できます。",
+            href: "/ja/etf-comparison-calculator",
+          },
+        ],
+      },
+      {
+        title: "積立投資 vs 一括投資",
+        description:
+          "同じ総投資額を、毎月分けて投資する場合と最初にまとめて投資する場合で比較します。",
+        links: [
+          {
+            title: "積立投資 vs 一括投資ガイド",
+            description:
+              "過去データで比較する方法、心理面、タイミングリスクを説明します。",
+            href: "/ja/dca-vs-lump-sum-guide",
+          },
+          {
+            title: "DCA vs Lump Sum",
+            description:
+              "既存の比較ページで、期間や金額を変えてシナリオを確認できます。",
+            href: "/ja/dca-vs-lump-sum",
+          },
+        ],
+      },
+      {
+        title: "複利計算",
+        description:
+          "毎月積立、期間、想定年率リターンが長期の資産成長にどう影響するかを学びます。",
+        links: [
+          {
+            title: "複利計算ガイド",
+            description:
+              "固定リターンのモデルと、過去価格を使うバックテストの違いを説明します。",
+            href: "/ja/compound-interest-guide",
+          },
+          {
+            title: "複利計算機",
+            description:
+              "毎月の拠出額、想定年率リターン、投資年数から長期シナリオを試せます。",
+            href: "/ja/compound-interest-calculator",
+          },
+        ],
+      },
+      {
+        title: "ETF比較",
+        description:
+          "2つのETFや資産を同じ毎月投資額・同じ期間で比較し、リターンとリスク指標を確認します。",
+        links: [
+          {
+            title: "ETF比較計算機",
+            description:
+              "最終価値、総リターン、年率リターン推定、最大ドローダウンを比較できます。",
+            href: "/ja/etf-comparison-calculator",
+          },
+          {
+            title: "VOO vs QQQ",
+            description:
+              "代表的な米国ETFの比較ページです。",
+            href: "/ja/voo-vs-qqq",
+          },
+          {
+            title: "対応資産",
+            description:
+              "バックテストで利用できるETF、株式、データ状況を確認できます。",
+            href: "/ja/supported-assets",
+          },
+        ],
+      },
+      {
+        title: "よくある質問",
+        description:
+          "過去データ、手数料、税金、為替、サンプルデータ、投資助言ではないことを確認します。",
+        links: [
+          {
+            title: "ETF積立投資バックテストの見方",
+            description:
+              "バックテストを初めて使う場合は、ここから読むと理解しやすくなります。",
+            href: "/ja/etf-dca-backtest-guide",
+          },
+          {
+            title: "免責事項",
+            description:
+              "利用前に、データと投資判断に関する制限を確認してください。",
+            href: "/ja/disclaimer",
+          },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "ETF積立投資のバックテストで将来のリターンは分かりますか？",
+        answer:
+          "分かりません。バックテストは過去データを使った学習用のシミュレーションであり、将来の結果を保証しません。",
+      },
+      {
+        question: "VOOとQQQを同じ条件で比較できますか？",
+        answer:
+          "はい。ETF比較計算機を使うと、同じ毎月投資額と同じ期間で比較できます。",
+      },
+      {
+        question: "実際の投資結果と違う理由は何ですか？",
+        answer:
+          "手数料、税金、為替、配当、スプレッド、約定価格、データ差により、実際の結果は変わる可能性があります。",
+      },
+      {
+        question: "このサイトは投資助言を提供しますか？",
+        answer:
+          "いいえ。DCA Backtestは教育目的のサイトであり、ETF、株式、証券会社、投資戦略を推奨しません。",
       },
     ],
   },

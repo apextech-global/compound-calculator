@@ -25,6 +25,7 @@ const feedbackText = {
   "zh-TW": "發現錯誤或資料問題？回報給我們",
   ms: "Jumpa ralat atau data salah? Hantar maklum balas",
   id: "Menemukan bug atau data salah? Kirim masukan",
+  ja: "不具合やデータの誤りを見つけましたか？フィードバックを送る",
 } as const;
 
 const feedbackHref =
@@ -59,7 +60,8 @@ export default function Footer() {
           {typedLocale === "en" ||
           typedLocale === "zh-CN" ||
           typedLocale === "zh-TW" ||
-          typedLocale === "ms" ? (
+          typedLocale === "ms" ||
+          typedLocale === "ja" ? (
             <Link
               href={`/${typedLocale}/learn`}
               className="transition hover:text-cyan-300"

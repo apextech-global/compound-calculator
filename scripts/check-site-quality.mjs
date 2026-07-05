@@ -9,6 +9,7 @@ const requestedLocales = [
   "zh-TW",
   "ms",
   "id",
+  "ja",
 ];
 const importantPages = [
   "",
@@ -174,26 +175,51 @@ const seoPages = unique([
   ...extractStringArray(seoSource, "assetSeoPageSlugs"),
   ...extractStringArray(seoSource, "malaysiaGuideSeoPageSlugs"),
   ...extractStringArray(seoSource, "chineseLearningSeoPageSlugs"),
+  ...extractStringArray(seoSource, "japaneseLearningSeoPageSlugs"),
 ]);
 const malaysiaGuidePages = extractStringArray(seoSource, "malaysiaGuideSeoPageSlugs");
 const chineseLearningPages = extractStringArray(seoSource, "chineseLearningSeoPageSlugs");
+const japaneseLearningPages = extractStringArray(seoSource, "japaneseLearningSeoPageSlugs");
 const learnPages = ["learn"];
 const zhCnOnlyPages = malaysiaGuidePages;
-const zhCnZhTwPages = chineseLearningPages;
-const localeSpecificPages = [...learnPages, ...zhCnOnlyPages, ...zhCnZhTwPages];
+const sharedLearningPages = chineseLearningPages.filter(
+  (page) => page !== "cspx-vs-voo-malaysia"
+);
+const zhCnZhTwMsPages = chineseLearningPages;
+const jaOnlyPages = japaneseLearningPages;
+const localeSpecificPages = [
+  ...learnPages,
+  ...zhCnOnlyPages,
+  ...zhCnZhTwMsPages,
+  ...jaOnlyPages,
+];
 const allPages = unique(["", ...staticPages, ...contentPages, ...seoPages, ...localeSpecificPages]);
 
 function localesForPage(page) {
   if (learnPages.includes(page)) {
-    return requestedLocales.filter((locale) => locale === "en" || locale === "zh-CN" || locale === "zh-TW" || locale === "ms");
+    return requestedLocales.filter((locale) =>
+      ["en", "zh-CN", "zh-TW", "ms", "ja"].includes(locale)
+    );
   }
 
   if (zhCnOnlyPages.includes(page)) {
     return requestedLocales.includes("zh-CN") ? ["zh-CN"] : [];
   }
 
-  if (zhCnZhTwPages.includes(page)) {
-    return requestedLocales.filter((locale) => locale === "zh-CN" || locale === "zh-TW" || locale === "ms");
+  if (page === "cspx-vs-voo-malaysia") {
+    return requestedLocales.filter((locale) =>
+      ["zh-CN", "zh-TW", "ms"].includes(locale)
+    );
+  }
+
+  if (sharedLearningPages.includes(page)) {
+    return requestedLocales.filter((locale) =>
+      ["zh-CN", "zh-TW", "ms", "ja"].includes(locale)
+    );
+  }
+
+  if (jaOnlyPages.includes(page)) {
+    return requestedLocales.includes("ja") ? ["ja"] : [];
   }
 
   return requestedLocales;
