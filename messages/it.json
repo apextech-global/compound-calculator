@@ -202,7 +202,11 @@
     "contact": "Contatti",
     "disclaimer": "Dichiarazione di non responsabilità",
     "affiliateDisclosure": "Informativa affiliazioni",
+    "recommendedTools": "Strumenti consigliati",
     "supportedAssets": "Asset supportati"
+  },
+  "recommendedTools": {
+    "cta": "Vuoi investire davvero? Confronta gli strumenti e verifica prima le commissioni ufficiali."
   },
   "legal": {
     "about": {

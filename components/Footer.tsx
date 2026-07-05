@@ -10,6 +10,7 @@ import {
 
 const footerLinks = [
   { href: "supported-assets", label: "supportedAssets" },
+  { href: "recommended-tools", label: "recommendedTools" },
   { href: "about", label: "about" },
   { href: "privacy", label: "privacy" },
   { href: "terms", label: "terms" },

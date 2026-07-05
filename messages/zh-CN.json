@@ -202,9 +202,13 @@
     "contact": "联系",
     "disclaimer": "免责声明",
     "affiliateDisclosure": "推荐链接说明",
+    "recommendedTools": "推荐工具",
     "supportedAssets": "支持的资产",
     "learnCenter": "学习中心",
     "feedback": "发现错误或数据问题？反馈给我们"
+  },
+  "recommendedTools": {
+    "cta": "准备开始真实投资？先了解常见工具，并以官方费用和条款为准。"
   },
   "legal": {
     "about": {

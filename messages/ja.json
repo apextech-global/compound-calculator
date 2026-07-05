@@ -202,7 +202,11 @@
     "contact": "お問い合わせ",
     "disclaimer": "免責事項",
     "affiliateDisclosure": "アフィリエイト開示",
+    "recommendedTools": "おすすめツール",
     "supportedAssets": "対応資産"
+  },
+  "recommendedTools": {
+    "cta": "実際に投資する前に、ツールを比較し公式手数料を確認してください。"
   },
   "legal": {
     "about": {

@@ -202,8 +202,12 @@
     "contact": "Contact",
     "disclaimer": "Disclaimer",
     "affiliateDisclosure": "Affiliate Disclosure",
+    "recommendedTools": "Recommended Tools",
     "supportedAssets": "Supported Assets",
     "feedback": "Found a bug or wrong data? Send feedback"
+  },
+  "recommendedTools": {
+    "cta": "Planning to invest for real? Compare tools and verify official fees first."
   },
   "legal": {
     "about": {

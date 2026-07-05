@@ -202,8 +202,12 @@
     "contact": "聯絡",
     "disclaimer": "免責聲明",
     "affiliateDisclosure": "推薦連結說明",
+    "recommendedTools": "推薦工具",
     "supportedAssets": "支援的資產",
     "learnCenter": "學習中心"
+  },
+  "recommendedTools": {
+    "cta": "準備開始真實投資？先了解常見工具，並以官方費用和條款為準。"
   },
   "legal": {
     "about": {

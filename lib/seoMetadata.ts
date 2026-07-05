@@ -15,7 +15,7 @@ export const staticPageSlugs = [
   "affiliate-disclosure",
   "contact",
 ] as const;
-export const contentPageSlugs = ["supported-assets"] as const;
+export const contentPageSlugs = ["supported-assets", "recommended-tools"] as const;
 
 export type StaticPageSlug = (typeof staticPageSlugs)[number];
 export type ContentPageSlug = (typeof contentPageSlugs)[number];

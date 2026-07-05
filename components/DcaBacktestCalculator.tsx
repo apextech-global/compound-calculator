@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import {
@@ -886,6 +887,14 @@ export default function DcaBacktestCalculator({
       <p className="mt-6 text-sm leading-6 text-slate-400">
         {t("dca.disclaimer")}
       </p>
+      <div className="mt-4 rounded-2xl border border-cyan-300/15 bg-cyan-400/[0.055] p-4 text-sm leading-6 text-slate-300">
+        <Link
+          href={`/${locale}/recommended-tools`}
+          className="font-semibold text-cyan-200 transition hover:text-cyan-100"
+        >
+          {t("recommendedTools.cta")}
+        </Link>
+      </div>
     </section>
   );
 }

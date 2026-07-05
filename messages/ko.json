@@ -202,7 +202,11 @@
     "contact": "문의",
     "disclaimer": "고지 사항",
     "affiliateDisclosure": "제휴 공시",
+    "recommendedTools": "추천 도구",
     "supportedAssets": "지원 자산"
+  },
+  "recommendedTools": {
+    "cta": "실제 투자 전 도구를 비교하고 공식 수수료를 먼저 확인하세요."
   },
   "legal": {
     "about": {

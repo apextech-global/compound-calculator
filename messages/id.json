@@ -202,7 +202,11 @@
     "contact": "Kontak",
     "disclaimer": "Disclaimer",
     "affiliateDisclosure": "Pengungkapan Afiliasi",
+    "recommendedTools": "Alat Rekomendasi",
     "supportedAssets": "Aset yang Didukung"
+  },
+  "recommendedTools": {
+    "cta": "Siap berinvestasi sungguhan? Bandingkan alat dan verifikasi biaya resmi terlebih dahulu."
   },
   "legal": {
     "about": {

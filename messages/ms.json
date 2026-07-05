@@ -202,7 +202,11 @@
     "contact": "Hubungi",
     "disclaimer": "Penafian",
     "affiliateDisclosure": "Pendedahan Affiliate",
+    "recommendedTools": "Alat Disyorkan",
     "supportedAssets": "Aset Disokong"
+  },
+  "recommendedTools": {
+    "cta": "Bersedia untuk melabur sebenar? Bandingkan alat dan sahkan yuran rasmi dahulu."
   },
   "legal": {
     "about": {

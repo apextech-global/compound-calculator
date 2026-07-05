@@ -202,7 +202,11 @@
     "contact": "Contact",
     "disclaimer": "Avertissement",
     "affiliateDisclosure": "Divulgation d’affiliation",
+    "recommendedTools": "Outils recommandés",
     "supportedAssets": "Actifs pris en charge"
+  },
+  "recommendedTools": {
+    "cta": "Vous prévoyez d’investir réellement ? Comparez les outils et vérifiez d’abord les frais officiels."
   },
   "legal": {
     "about": {

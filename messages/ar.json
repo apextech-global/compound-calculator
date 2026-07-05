@@ -202,7 +202,11 @@
     "contact": "اتصل بنا",
     "disclaimer": "إخلاء المسؤولية",
     "affiliateDisclosure": "إفصاح الروابط التابعة",
+    "recommendedTools": "أدوات موصى بها",
     "supportedAssets": "الأصول المدعومة"
+  },
+  "recommendedTools": {
+    "cta": "هل تخطط للاستثمار فعليًا؟ قارن الأدوات وتحقق أولًا من الرسوم الرسمية."
   },
   "legal": {
     "about": {
