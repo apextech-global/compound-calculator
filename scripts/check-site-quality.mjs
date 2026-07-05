@@ -173,20 +173,27 @@ const seoPages = unique([
   ...extractStringArray(seoSource, "comparisonSeoPageSlugs"),
   ...extractStringArray(seoSource, "assetSeoPageSlugs"),
   ...extractStringArray(seoSource, "malaysiaGuideSeoPageSlugs"),
+  ...extractStringArray(seoSource, "chineseLearningSeoPageSlugs"),
 ]);
 const malaysiaGuidePages = extractStringArray(seoSource, "malaysiaGuideSeoPageSlugs");
-const chineseLearnPages = ["learn"];
+const chineseLearningPages = extractStringArray(seoSource, "chineseLearningSeoPageSlugs");
+const learnPages = ["learn"];
 const zhCnOnlyPages = malaysiaGuidePages;
-const localeSpecificPages = [...chineseLearnPages, ...zhCnOnlyPages];
+const zhCnZhTwPages = chineseLearningPages;
+const localeSpecificPages = [...learnPages, ...zhCnOnlyPages, ...zhCnZhTwPages];
 const allPages = unique(["", ...staticPages, ...contentPages, ...seoPages, ...localeSpecificPages]);
 
 function localesForPage(page) {
-  if (chineseLearnPages.includes(page)) {
-    return requestedLocales.filter((locale) => locale === "zh-CN" || locale === "zh-TW");
+  if (learnPages.includes(page)) {
+    return requestedLocales.filter((locale) => locale === "en" || locale === "zh-CN" || locale === "zh-TW");
   }
 
   if (zhCnOnlyPages.includes(page)) {
     return requestedLocales.includes("zh-CN") ? ["zh-CN"] : [];
+  }
+
+  if (zhCnZhTwPages.includes(page)) {
+    return requestedLocales.filter((locale) => locale === "zh-CN" || locale === "zh-TW");
   }
 
   return requestedLocales;

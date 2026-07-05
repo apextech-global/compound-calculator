@@ -36,11 +36,20 @@ const malaysiaGuideSeoPageSlugs = [
   "ibkr-vs-moomoo-malaysia",
 ] as const;
 
+const chineseLearningSeoPageSlugs = [
+  "cspx-vs-voo-malaysia",
+  "voo-vs-qqq-dca",
+  "etf-dca-backtest-guide",
+  "dca-vs-lump-sum-guide",
+  "compound-interest-guide",
+] as const;
+
 export const seoPageSlugs = [
   ...baseSeoPageSlugs,
   ...comparisonSeoPageSlugs,
   ...assetSeoPageSlugs,
   ...malaysiaGuideSeoPageSlugs,
+  ...chineseLearningSeoPageSlugs,
 ] as const;
 
 export type SeoPageSlug = (typeof seoPageSlugs)[number];
@@ -48,6 +57,7 @@ type BaseSeoPageSlug = (typeof baseSeoPageSlugs)[number];
 type ComparisonSeoPageSlug = (typeof comparisonSeoPageSlugs)[number];
 type AssetSeoPageSlug = (typeof assetSeoPageSlugs)[number];
 type MalaysiaGuideSeoPageSlug = (typeof malaysiaGuideSeoPageSlugs)[number];
+type ChineseLearningSeoPageSlug = (typeof chineseLearningSeoPageSlugs)[number];
 
 type SeoPageContent = {
   title: string;
@@ -2816,6 +2826,516 @@ function buildMalaysiaGuidePages(
   ) as Record<MalaysiaGuideSeoPageSlug, SeoPageContent>;
 }
 
+const zhCnLearningPages: Record<ChineseLearningSeoPageSlug, SeoPageContent> = {
+  "cspx-vs-voo-malaysia": {
+    title: "CSPX vs VOO 马来西亚 | ETF 定投与回测教育指南",
+    description:
+      "面向马来西亚中文用户，比较 CSPX 与 VOO 在基金注册地、交易市场、股息税、费用、货币和定投回测上的差异。",
+    h1: "CSPX vs VOO：马来西亚投资者教育指南",
+    intro:
+      "CSPX 和 VOO 都常被用于研究 S&P 500 敞口，但它们不是完全相同的产品。本页帮助马来西亚中文用户理解 UCITS ETF、美国上市 ETF、费用、汇率、股息、税务和回测限制，不判断哪个一定更好。",
+    ctaQuery: "?market=us&type=ETF&asset=VOO",
+    sections: [
+      {
+        title: "第一步：先理解两个 ETF 的结构",
+        body: "VOO 是美国上市 ETF，CSPX 通常指爱尔兰注册、在伦敦交易所等市场上市的 UCITS ETF。两者都可用于研究 S&P 500 敞口，但注册地、交易市场、交易货币、股息处理和税务路径可能不同。",
+      },
+      {
+        title: "第二步：比较马来西亚用户会遇到的实际问题",
+        body: "购买前应核实券商是否支持相关市场、是否能交易 CSPX.L 或 VOO、入金和换汇路径、交易佣金、平台费、买卖价差、订单类型、报表和税务文件。平台可用性可能变化，应以官方资料为准。",
+      },
+      {
+        title: "第三步：用回测工具做相同假设比较",
+        body: "你可以使用 /zh-CN/etf-comparison-calculator 或 /zh-CN/voo-vs-cspx，用相同每月投入金额、开始年份和结束年份比较历史结果。回测只能说明过去某个区间的表现，不代表未来。",
+      },
+      {
+        title: "示例用法",
+        body: "例如，你可以测试 2018 到 2025 年每月投入 1000 美元到 VOO 与 CSPX 的历史模拟结果，再阅读 /zh-CN/disclaimer 和 /zh-CN/supported-assets，确认数据来源、样本数据和费用限制。",
+      },
+    ],
+    faqs: [
+      {
+        question: "马来西亚投资者一定要选 CSPX 或 VOO 其中一个吗？",
+        answer:
+          "不是。本页只解释差异，不推荐任何 ETF。选择取决于个人情况、券商支持、费用、税务和风险承受能力。",
+      },
+      {
+        question: "CSPX 和 VOO 的回测结果为什么可能不同？",
+        answer:
+          "价格数据、基金结构、股息处理、货币、费用和交易市场都可能让结果不同。",
+      },
+      {
+        question: "马来西亚用户要注意哪些费用？",
+        answer:
+          "常见项目包括交易佣金、平台费、换汇价差、买卖价差、入金出金费用、托管费和税务相关成本。",
+      },
+      {
+        question: "这篇 CSPX vs VOO 马来西亚指南是不是投资建议？",
+        answer:
+          "不是。本页仅供教育用途，不构成投资建议、税务建议、法律建议或买卖建议。",
+      },
+    ],
+  },
+  "voo-vs-qqq-dca": {
+    title: "VOO vs QQQ DCA 回测 | ETF 定投比较指南",
+    description:
+      "学习如何用 DCA 回测比较 VOO 与 QQQ，理解 S&P 500 与 Nasdaq-100 敞口、行业集中度、回撤和历史区间差异。",
+    h1: "VOO vs QQQ DCA 回测指南",
+    intro:
+      "VOO 和 QQQ 都是常见美国 ETF，但市场敞口不同。VOO 偏向 S&P 500 广泛市场，QQQ 偏向 Nasdaq-100 和科技成长权重。本页说明如何用相同投入条件做历史 DCA 比较。",
+    ctaQuery: "?market=us&type=ETF&asset=VOO",
+    sections: [
+      {
+        title: "第一步：理解资产差异",
+        body: "VOO 通常代表美国大型股广泛市场敞口，QQQ 更集中于 Nasdaq-100 成分股，科技和成长股权重可能更高。不同年份的历史表现和回撤可能差很多。",
+      },
+      {
+        title: "第二步：设置相同回测条件",
+        body: "使用 /zh-CN/etf-comparison-calculator 时，应尽量让每月投入金额、开始年份、结束年份和显示货币一致，这样比较才更聚焦于资产价格路径，而不是输入假设差异。",
+      },
+      {
+        title: "第三步：观察回报和风险指标",
+        body: "除了最终价值，也要看总投入、总利润、年化回报估算、最大回撤和图表路径。较高历史最终价值不代表未来一定较好。",
+      },
+      {
+        title: "示例用法",
+        body: "可以测试 2018 到 2025 年每月投入 500 或 1000 美元，比较 VOO 和 QQQ 的历史 DCA 结果，再打开 /zh-CN/voo-dca-calculator 与 /zh-CN/qqq-dca-calculator 查看单一资产页面。",
+      },
+    ],
+    faqs: [
+      {
+        question: "VOO vs QQQ 哪个历史定投结果更好？",
+        answer:
+          "这取决于开始时间、结束时间和市场周期。不能用一个历史区间判断未来。",
+      },
+      {
+        question: "QQQ 风险一定比 VOO 高吗？",
+        answer:
+          "QQQ 通常行业集中度更高，但风险需要结合估值、市场周期、持有期和个人承受能力理解。",
+      },
+      {
+        question: "DCA 回测包含所有费用吗？",
+        answer:
+          "计算器可模拟部分费用设置，但真实结果还可能受税务、汇率、买卖价差、股息和成交价格影响。",
+      },
+      {
+        question: "这是 ETF 推荐吗？",
+        answer:
+          "不是。本页仅用于教育比较，不推荐购买 VOO、QQQ 或任何 ETF。",
+      },
+    ],
+  },
+  "etf-dca-backtest-guide": {
+    title: "ETF 定投回测指南 | 如何使用 DCA Backtest",
+    description:
+      "学习 ETF 定投回测如何工作，如何设置每月投入、开始年份、结束年份、费用和资产，并理解历史数据限制。",
+    h1: "ETF 定投回测指南",
+    intro:
+      "ETF 定投回测可以帮助你用历史价格模拟每月投入的结果。本页说明如何逐步使用 DCA Backtest、如何看结果，以及为什么回测不能代表未来收益。",
+    ctaQuery: "?market=us&type=ETF&asset=VOO",
+    sections: [
+      {
+        title: "第一步：选择资产和市场",
+        body: "先选择市场、资产类型和具体资产，例如 VOO、CSPX、QQQ、VWRA 或 IWDA。你也可以查看 /zh-CN/supported-assets 了解哪些资产有历史数据。",
+      },
+      {
+        title: "第二步：设置投入金额和年份",
+        body: "输入每月投入金额，选择开始年份和结束年份。年份范围会受到可用历史数据影响。如果某个资产没有历史数据，页面会标示示例数据。",
+      },
+      {
+        title: "第三步：理解结果指标",
+        body: "常见结果包括总投入、最终价值、总利润、总回报、年化回报估算和最大回撤。年化回报估算不是个人真实收益率，也不等于未来预期。",
+      },
+      {
+        title: "示例用法",
+        body: "例如，你可以在 /zh-CN/dca-calculator 测试 VOO 每月 1000 美元从 2018 到 2025 年的历史模拟，再调整年份观察结果变化。",
+      },
+    ],
+    faqs: [
+      {
+        question: "ETF 定投回测准确吗？",
+        answer:
+          "它是基于可用历史价格和输入假设的模拟，不能完全反映真实券商成交、税费、汇率和个人现金流。",
+      },
+      {
+        question: "为什么有些资产显示示例数据？",
+        answer:
+          "因为该资产的历史 CSV 数据尚未导入。示例数据只用于演示，不是真实市场表现。",
+      },
+      {
+        question: "回测应该看哪个指标？",
+        answer:
+          "不要只看最终价值，也要看投入金额、回撤、时间区间、数据来源和费用假设。",
+      },
+      {
+        question: "这是投资建议吗？",
+        answer:
+          "不是。回测结果只用于学习历史情景，不构成投资建议。",
+      },
+    ],
+  },
+  "dca-vs-lump-sum-guide": {
+    title: "定投 vs 一次性投入指南 | DCA 与 Lump Sum 比较",
+    description:
+      "学习定投和一次性投入的差异，如何用相同总投入金额比较历史结果，以及市场时点、心理压力和风险限制。",
+    h1: "定投 vs 一次性投入指南",
+    intro:
+      "定投是分批投入，一次性投入是在期初投入全部金额。两种方式的历史结果取决于市场路径、开始时间和结束时间。本页帮助你理解比较方式，而不是推荐哪种一定更好。",
+    ctaQuery: "?market=us&type=ETF&asset=VOO",
+    sections: [
+      {
+        title: "第一步：理解投入节奏",
+        body: "定投会把资金分散到多个买入时间点；一次性投入则更早获得市场敞口。上涨市场中一次性投入可能更有利，但下跌或震荡市场中定投可能降低一次买在高点的压力。",
+      },
+      {
+        title: "第二步：使用相同总投入金额",
+        body: "比较时应让总投入一致。例如每月 1000 美元投入 96 个月，总投入为 96000 美元；一次性投入情景则在期初投入同样总额。",
+      },
+      {
+        title: "第三步：观察风险和心理因素",
+        body: "除了最终价值，也要考虑最大回撤、市场时点、现金流现实、心理压力和风险承受能力。历史较高最终价值不等于未来一定较好。",
+      },
+      {
+        title: "示例用法",
+        body: "可以打开 /zh-CN/dca-vs-lump-sum 或 /zh-CN/dca-calculator，选择 VOO、CSPX 或 QQQ，测试不同年份的历史差异。",
+      },
+    ],
+    faqs: [
+      {
+        question: "定投和一次性投入哪个更好？",
+        answer:
+          "没有固定答案。结果取决于时间区间、市场路径、风险承受能力和个人现金流。",
+      },
+      {
+        question: "比较时为什么要用相同总投入？",
+        answer:
+          "这样可以避免一个情景投入更多资金导致结果不可比。",
+      },
+      {
+        question: "一次性投入风险更高吗？",
+        answer:
+          "它更集中暴露于期初价格，因此短期波动和心理压力可能更明显。",
+      },
+      {
+        question: "这是不是投资建议？",
+        answer:
+          "不是。本页只解释比较方法和历史模拟限制。",
+      },
+    ],
+  },
+  "compound-interest-guide": {
+    title: "复利计算指南 | 每月投入与长期增长教育说明",
+    description:
+      "学习复利计算如何使用每月投入、年化回报假设和时间估算长期增长，并理解费用、税务和未来不确定性。",
+    h1: "复利计算指南",
+    intro:
+      "复利计算器适合用来理解时间、每月投入和假设年化回报之间的关系。它不是收益承诺，也不能替代真实市场回测或个人财务规划。",
+    ctaQuery: "",
+    sections: [
+      {
+        title: "第一步：理解复利的核心",
+        body: "复利指收益继续产生收益。在长期情景中，投入金额、投资时间和假设回报率都会影响最终估算值。",
+      },
+      {
+        title: "第二步：谨慎设置年化回报假设",
+        body: "年化回报只是输入假设，不是保证。真实市场每年表现可能大幅波动，费用、税务和汇率也会影响结果。",
+      },
+      {
+        title: "第三步：区分复利预测和历史回测",
+        body: "复利计算器使用固定假设回报；DCA 回测使用历史价格路径。两者适合回答不同问题，可以一起用于教育分析。",
+      },
+      {
+        title: "示例用法",
+        body: "例如，你可以在 /zh-CN/compound-interest-calculator 输入每月 500 美元、20 年和假设 8% 年化回报，再到 /zh-CN/dca-calculator 比较历史价格情景。",
+      },
+    ],
+    faqs: [
+      {
+        question: "复利计算器能保证收益吗？",
+        answer:
+          "不能。它只根据输入假设计算数学结果，不代表任何资产未来会按该回报率增长。",
+      },
+      {
+        question: "每月投入会怎样影响复利结果？",
+        answer:
+          "每月投入越多、时间越长，在相同假设回报下最终估算值通常越高，但真实市场不保证固定回报。",
+      },
+      {
+        question: "复利计算和 DCA 回测有什么不同？",
+        answer:
+          "复利计算使用固定回报假设；DCA 回测使用历史价格数据模拟每月买入。",
+      },
+      {
+        question: "这是财务建议吗？",
+        answer:
+          "不是。本页仅供教育用途，不构成财务、投资、税务或法律建议。",
+      },
+    ],
+  },
+};
+
+const zhTwLearningPages: Record<ChineseLearningSeoPageSlug, SeoPageContent> = {
+  "cspx-vs-voo-malaysia": {
+    title: "CSPX vs VOO 馬來西亞 | ETF 定期定額教育指南",
+    description:
+      "面向繁體中文使用者，比較 CSPX 與 VOO 在基金註冊地、交易市場、股息稅、費用、貨幣和定期定額回測上的差異。",
+    h1: "CSPX vs VOO：馬來西亞投資者教育指南",
+    intro:
+      "CSPX 和 VOO 都常被用來研究 S&P 500 敞口，但基金結構、交易市場、貨幣、稅務和股息處理可能不同。本頁僅供教育用途，不判斷哪一個一定更好。",
+    ctaQuery: "?market=us&type=ETF&asset=VOO",
+    sections: [
+      {
+        title: "第一步：理解兩個 ETF 的結構",
+        body: "VOO 是美國上市 ETF，CSPX 通常指愛爾蘭註冊、在倫敦交易所等市場上市的 UCITS ETF。兩者都可用於研究 S&P 500 敞口，但註冊地、交易市場、交易貨幣和股息處理可能不同。",
+      },
+      {
+        title: "第二步：比較實際操作因素",
+        body: "使用者應核實券商是否支援相關市場、交易代號、入金與換匯方式、交易佣金、平台費、買賣價差、報表和稅務文件。平台可用性可能改變，應以官方資訊為準。",
+      },
+      {
+        title: "第三步：用相同假設做回測",
+        body: "可以使用 /zh-TW/etf-comparison-calculator 或 /zh-TW/voo-vs-cspx，用相同每月投入金額、開始年份和結束年份比較歷史結果。",
+      },
+      {
+        title: "示例用法",
+        body: "例如測試 2018 到 2025 年每月投入 1000 美元到 VOO 與 CSPX 的歷史情境，並閱讀 /zh-TW/disclaimer 了解限制。",
+      },
+    ],
+    faqs: [
+      {
+        question: "CSPX 和 VOO 哪個一定更好？",
+        answer:
+          "沒有一定答案。兩者差異需要依照個人情況、券商支援、費用、稅務和風險承受能力判斷。",
+      },
+      {
+        question: "回測結果可以代表未來嗎？",
+        answer:
+          "不能。回測只是歷史情境分析，未來市場和匯率都可能不同。",
+      },
+      {
+        question: "需要注意哪些費用？",
+        answer:
+          "常見項目包括交易佣金、平台費、換匯價差、買賣價差、入金出金費用和稅務成本。",
+      },
+      {
+        question: "這篇複利計算指南是投資建議嗎？",
+        answer:
+          "不是。本頁僅供教育用途，不構成投資、稅務或法律建議。",
+      },
+    ],
+  },
+  "voo-vs-qqq-dca": {
+    title: "VOO vs QQQ DCA 回測 | ETF 定期定額比較指南",
+    description:
+      "學習如何用 DCA 回測比較 VOO 與 QQQ，理解 S&P 500 與 Nasdaq-100 敞口、集中度、回撤和歷史期間差異。",
+    h1: "VOO vs QQQ DCA 回測指南",
+    intro:
+      "VOO 偏向 S&P 500 廣泛市場，QQQ 偏向 Nasdaq-100 和科技成長權重。本頁說明如何用相同投入條件做歷史 DCA 比較。",
+    ctaQuery: "?market=us&type=ETF&asset=VOO",
+    sections: [
+      {
+        title: "第一步：理解資產差異",
+        body: "VOO 通常代表美國大型股廣泛市場敞口，QQQ 更集中於 Nasdaq-100 成分股。不同年份的歷史表現和回撤可能差很多。",
+      },
+      {
+        title: "第二步：設定相同回測條件",
+        body: "使用 /zh-TW/etf-comparison-calculator 時，應讓每月投入金額、開始年份、結束年份和顯示貨幣一致。",
+      },
+      {
+        title: "第三步：觀察報酬與風險",
+        body: "除了最終價值，也要看總投入、總利潤、年化報酬估算、最大回撤和圖表路徑。",
+      },
+      {
+        title: "示例用法",
+        body: "可以測試 2018 到 2025 年每月投入 500 或 1000 美元，比較 VOO 和 QQQ 的歷史 DCA 結果。",
+      },
+    ],
+    faqs: [
+      {
+        question: "VOO vs QQQ 哪個歷史定期定額結果更好？",
+        answer:
+          "取決於開始時間、結束時間和市場週期，不能用單一歷史區間判斷未來。",
+      },
+      {
+        question: "QQQ 風險一定比 VOO 高嗎？",
+        answer:
+          "QQQ 通常集中度較高，但風險需要結合估值、週期、持有期和個人承受能力理解。",
+      },
+      {
+        question: "回測包含所有費用嗎？",
+        answer:
+          "未必。真實結果還可能受稅務、匯率、買賣價差、股息和成交價格影響。",
+      },
+      {
+        question: "這是 ETF 推薦嗎？",
+        answer:
+          "不是。本頁僅用於教育比較，不推薦購買任何 ETF。",
+      },
+    ],
+  },
+  "etf-dca-backtest-guide": {
+    title: "ETF 定期定額回測指南 | 如何使用 DCA Backtest",
+    description:
+      "學習 ETF 定期定額回測如何運作，如何設定每月投入、開始年份、結束年份、費用和資產，並理解歷史資料限制。",
+    h1: "ETF 定期定額回測指南",
+    intro:
+      "ETF 定期定額回測可以幫助你用歷史價格模擬每月投入的結果。本頁說明如何逐步使用 DCA Backtest，以及為什麼回測不能代表未來報酬。",
+    ctaQuery: "?market=us&type=ETF&asset=VOO",
+    sections: [
+      {
+        title: "第一步：選擇資產和市場",
+        body: "先選擇市場、資產類型和具體資產，例如 VOO、CSPX、QQQ、VWRA 或 IWDA。也可以查看 /zh-TW/supported-assets 了解資料覆蓋。",
+      },
+      {
+        title: "第二步：設定投入金額和年份",
+        body: "輸入每月投入金額，選擇開始年份和結束年份。年份範圍會受到可用歷史資料影響。",
+      },
+      {
+        title: "第三步：理解結果指標",
+        body: "常見結果包括總投入、最終價值、總利潤、總報酬、年化報酬估算和最大回撤。",
+      },
+      {
+        title: "示例用法",
+        body: "可以在 /zh-TW/dca-calculator 測試 VOO 每月 1000 美元從 2018 到 2025 年的歷史情境。",
+      },
+    ],
+    faqs: [
+      {
+        question: "ETF 定期定額回測準確嗎？",
+        answer:
+          "它是基於可用歷史價格和輸入假設的模擬，不能完全反映真實券商成交、稅費和匯率。",
+      },
+      {
+        question: "為什麼有些資產顯示範例資料？",
+        answer:
+          "因為該資產的歷史資料尚未匯入。範例資料只用於展示，不是真實市場表現。",
+      },
+      {
+        question: "回測應該看哪個指標？",
+        answer:
+          "不要只看最終價值，也要看投入金額、回撤、期間、資料來源和費用假設。",
+      },
+      {
+        question: "這是投資建議嗎？",
+        answer:
+          "不是。回測結果只用於學習歷史情境。",
+      },
+    ],
+  },
+  "dca-vs-lump-sum-guide": {
+    title: "定期定額 vs 單筆投入指南 | DCA 與 Lump Sum 比較",
+    description:
+      "學習定期定額和單筆投入的差異，如何用相同總投入金額比較歷史結果，以及市場時點和心理風險。",
+    h1: "定期定額 vs 單筆投入指南",
+    intro:
+      "定期定額是分批投入，單筆投入是在期初投入全部金額。兩種方式的歷史結果取決於市場路徑、開始時間和結束時間。",
+    ctaQuery: "?market=us&type=ETF&asset=VOO",
+    sections: [
+      {
+        title: "第一步：理解投入節奏",
+        body: "定期定額把資金分散到多個買入時間點；單筆投入則更早取得市場敞口。",
+      },
+      {
+        title: "第二步：使用相同總投入金額",
+        body: "比較時應讓總投入一致，避免一個情境投入更多資金導致結果不可比。",
+      },
+      {
+        title: "第三步：觀察風險和心理因素",
+        body: "除了最終價值，也要考慮最大回撤、市場時點、現金流現實和心理壓力。",
+      },
+      {
+        title: "示例用法",
+        body: "可以打開 /zh-TW/dca-vs-lump-sum 或 /zh-TW/dca-calculator，測試不同年份的歷史差異。",
+      },
+    ],
+    faqs: [
+      {
+        question: "定期定額和單筆投入哪個更好？",
+        answer:
+          "沒有固定答案。結果取決於期間、市場路徑、風險承受能力和個人現金流。",
+      },
+      {
+        question: "為什麼要用相同總投入？",
+        answer:
+          "這樣比較才聚焦於投入方式，而不是投入金額不同。",
+      },
+      {
+        question: "單筆投入風險更高嗎？",
+        answer:
+          "它更集中暴露於期初價格，短期波動和心理壓力可能更明顯。",
+      },
+      {
+        question: "這是不是投資建議？",
+        answer:
+          "不是。本頁只解釋比較方法和歷史模擬限制。",
+      },
+    ],
+  },
+  "compound-interest-guide": {
+    title: "複利計算指南 | 每月投入與長期成長教育說明",
+    description:
+      "學習複利計算如何使用每月投入、年化報酬假設和時間估算長期成長，並理解費用、稅務和未來不確定性。",
+    h1: "複利計算指南",
+    intro:
+      "複利計算機適合用來理解時間、每月投入和假設年化報酬之間的關係。它不是收益承諾，也不能替代真實市場回測。",
+    ctaQuery: "",
+    sections: [
+      {
+        title: "第一步：理解複利的核心",
+        body: "複利指收益繼續產生收益。在長期情境中，投入金額、投資時間和假設報酬率都會影響估算值。",
+      },
+      {
+        title: "第二步：謹慎設定年化報酬假設",
+        body: "年化報酬只是輸入假設，不是保證。真實市場每年表現可能大幅波動。",
+      },
+      {
+        title: "第三步：區分複利預測和歷史回測",
+        body: "複利計算器使用固定假設報酬；DCA 回測使用歷史價格路徑。",
+      },
+      {
+        title: "示例用法",
+        body: "可以在 /zh-TW/compound-interest-calculator 輸入每月 500 美元、20 年和假設 8% 年化報酬，再到 /zh-TW/dca-calculator 比較歷史情境。",
+      },
+    ],
+    faqs: [
+      {
+        question: "複利計算器能保證收益嗎？",
+        answer:
+          "不能。它只根據輸入假設計算數學結果，不代表任何資產未來會按該回報率成長。",
+      },
+      {
+        question: "每月投入會怎樣影響結果？",
+        answer:
+          "在相同假設下，每月投入越多、時間越長，估算值通常越高，但真實市場不保證固定回報。",
+      },
+      {
+        question: "複利計算和 DCA 回測有什麼不同？",
+        answer:
+          "複利計算使用固定回報假設；DCA 回測使用歷史價格資料模擬每月買入。",
+      },
+      {
+        question: "這是財務建議嗎？",
+        answer:
+          "不是。本頁僅供教育用途，不構成財務、投資、稅務或法律建議。",
+      },
+    ],
+  },
+};
+
+function buildChineseLearningPages(
+  locale: Locale
+): Record<ChineseLearningSeoPageSlug, SeoPageContent> {
+  if (locale === "zh-CN") {
+    return zhCnLearningPages;
+  }
+
+  if (locale === "zh-TW") {
+    return zhTwLearningPages;
+  }
+
+  return {} as Record<ChineseLearningSeoPageSlug, SeoPageContent>;
+}
+
 function adaptEnglishPages(locale: Locale): Record<BaseSeoPageSlug, SeoPageContent> {
   const text = simpleLocaleText[locale];
 
@@ -2864,6 +3384,7 @@ export function getSeoLandingContent(locale: Locale): LocaleSeoContent {
       ...buildComparisonPages(locale),
       ...buildAssetPages(locale),
       ...buildMalaysiaGuidePages(locale),
+      ...buildChineseLearningPages(locale),
     },
   };
 }
@@ -2884,12 +3405,28 @@ function isMalaysiaGuideSeoPageSlug(
   );
 }
 
+function isChineseLearningSeoPageSlug(
+  value: string
+): value is ChineseLearningSeoPageSlug {
+  return chineseLearningSeoPageSlugs.includes(
+    value as ChineseLearningSeoPageSlug
+  );
+}
+
 export function getSeoPageSlugsForLocale(locale: Locale): SeoPageSlug[] {
   if (locale === "zh-CN") {
     return [...seoPageSlugs];
   }
 
-  return seoPageSlugs.filter((slug) => !isMalaysiaGuideSeoPageSlug(slug));
+  if (locale === "zh-TW") {
+    return seoPageSlugs.filter((slug) => !isMalaysiaGuideSeoPageSlug(slug));
+  }
+
+  return seoPageSlugs.filter(
+    (slug) =>
+      !isMalaysiaGuideSeoPageSlug(slug) &&
+      !isChineseLearningSeoPageSlug(slug)
+  );
 }
 
 export function isSeoPageSlugForLocale(
@@ -2905,6 +3442,8 @@ export function isSeoPageSlugForLocale(
 export function getSeoPageAlternates(slug: SeoPageSlug) {
   const locales = isMalaysiaGuideSeoPageSlug(slug)
     ? ["zh-CN"]
+    : isChineseLearningSeoPageSlug(slug)
+      ? ["zh-CN", "zh-TW"]
     : publicLocaleCodes;
 
   return Object.fromEntries(
@@ -2913,7 +3452,7 @@ export function getSeoPageAlternates(slug: SeoPageSlug) {
 }
 
 export function getSeoPageXDefault(slug: SeoPageSlug) {
-  return isMalaysiaGuideSeoPageSlug(slug)
+  return isMalaysiaGuideSeoPageSlug(slug) || isChineseLearningSeoPageSlug(slug)
     ? absoluteUrl(`/zh-CN/${slug}`)
     : xDefaultUrl;
 }

@@ -56,12 +56,14 @@ export default function Footer() {
         </div>
 
         <nav className="flex w-full min-w-0 flex-wrap gap-3 text-sm font-medium text-slate-300 md:max-w-sm">
-          {typedLocale === "zh-CN" || typedLocale === "zh-TW" ? (
+          {typedLocale === "en" ||
+          typedLocale === "zh-CN" ||
+          typedLocale === "zh-TW" ? (
             <Link
               href={`/${typedLocale}/learn`}
               className="transition hover:text-cyan-300"
             >
-              {t("footer.learnCenter")}
+              {typedLocale === "en" ? "Learn" : t("footer.learnCenter")}
             </Link>
           ) : null}
           {guideSlugs.map((slug) => (

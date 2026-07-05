@@ -3,7 +3,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { absoluteUrl, productionBaseUrl } from "@/lib/seoMetadata";
 
-type LearnLocale = "zh-CN" | "zh-TW";
+type LearnLocale = "en" | "zh-CN" | "zh-TW";
+
+type LearnLink = {
+  title: string;
+  description: string;
+  href: string;
+};
 
 type LearnContent = {
   title: string;
@@ -15,36 +21,197 @@ type LearnContent = {
   disclaimerTitle: string;
   disclaimer: string;
   quickLinksTitle: string;
-  quickLinks: Array<{
-    title: string;
-    href: string;
-  }>;
+  quickLinks: Array<{ title: string; href: string }>;
   sections: Array<{
     title: string;
     description: string;
-    links: Array<{
-      title: string;
-      description: string;
-      href: string;
-    }>;
+    links: LearnLink[];
+  }>;
+  faqs: Array<{
+    question: string;
+    answer: string;
   }>;
 };
 
-const learnLocales: LearnLocale[] = ["zh-CN", "zh-TW"];
+const learnLocales: LearnLocale[] = ["en", "zh-CN", "zh-TW"];
 
 const content: Record<LearnLocale, LearnContent> = {
+  en: {
+    title: "ETF DCA Learning Hub | DCA Backtest",
+    description:
+      "Learn ETF dollar-cost averaging, DCA backtests, VOO, CSPX, QQQ, DCA vs lump sum, compound interest, and ETF comparison basics.",
+    h1: "ETF DCA Learning Hub",
+    breadcrumb: "Learn",
+    eyebrow: "ETF DCA learning center",
+    intro:
+      "Use this learning hub to understand ETF dollar-cost averaging, historical DCA backtesting, compound interest, VOO, CSPX, QQQ, ETF comparisons, and the limits of historical simulations. The content is educational only and does not recommend what to buy.",
+    disclaimerTitle: "Educational disclaimer",
+    disclaimer:
+      "This content is for education only and is not financial advice, investment advice, tax advice, legal advice, or a recommendation. Past performance does not guarantee future results.",
+    quickLinksTitle: "Popular tools and guides",
+    quickLinks: [
+      { title: "DCA Calculator", href: "/en/dca-calculator" },
+      {
+        title: "Compound Interest Calculator",
+        href: "/en/compound-interest-calculator",
+      },
+      {
+        title: "ETF Comparison Calculator",
+        href: "/en/etf-comparison-calculator",
+      },
+      { title: "Supported Assets", href: "/en/supported-assets" },
+      { title: "Disclaimer", href: "/en/disclaimer" },
+    ],
+    sections: [
+      {
+        title: "ETF DCA basics",
+        description:
+          "Start with the core ideas behind monthly investing, DCA backtests, and why historical results are not forecasts.",
+        links: [
+          {
+            title: "DCA Calculator",
+            description:
+              "Estimate how fixed monthly investments would have behaved across historical market periods.",
+            href: "/en/dca-calculator",
+          },
+          {
+            title: "ETF Calculator",
+            description:
+              "Explore ETF monthly investing scenarios and compare supported ETF data coverage.",
+            href: "/en/etf-calculator",
+          },
+          {
+            title: "Supported Assets",
+            description:
+              "Check which ETFs and stocks currently have historical data and which use sample data.",
+            href: "/en/supported-assets",
+          },
+        ],
+      },
+      {
+        title: "VOO / CSPX / QQQ backtests",
+        description:
+          "Compare common ETF examples without treating any single fund as universally better.",
+        links: [
+          {
+            title: "VOO DCA Calculator",
+            description:
+              "Study historical monthly investing scenarios for a U.S.-listed S&P 500 ETF.",
+            href: "/en/voo-dca-calculator",
+          },
+          {
+            title: "CSPX DCA Calculator",
+            description:
+              "Learn how a UCITS S&P 500 ETF can be modeled with the DCA backtest tool.",
+            href: "/en/cspx-dca-calculator",
+          },
+          {
+            title: "QQQ DCA Calculator",
+            description:
+              "Explore Nasdaq-100 related DCA scenarios and period-dependent results.",
+            href: "/en/qqq-dca-calculator",
+          },
+        ],
+      },
+      {
+        title: "DCA vs Lump Sum",
+        description:
+          "Understand the difference between investing gradually and investing the same total amount upfront.",
+        links: [
+          {
+            title: "DCA vs Lump Sum",
+            description:
+              "Compare the same total contribution under monthly DCA and upfront lump sum assumptions.",
+            href: "/en/dca-vs-lump-sum",
+          },
+          {
+            title: "VOO vs CSPX",
+            description:
+              "Learn how fund domicile, listing market, currency, tax, and dividend handling can matter.",
+            href: "/en/voo-vs-cspx",
+          },
+        ],
+      },
+      {
+        title: "Compound interest",
+        description:
+          "Use compound-growth examples for long-term planning assumptions, not guaranteed returns.",
+        links: [
+          {
+            title: "Compound Interest Calculator",
+            description:
+              "Model monthly contributions, assumed annual return, and investment time.",
+            href: "/en/compound-interest-calculator",
+          },
+          {
+            title: "DCA Backtest Calculator",
+            description:
+              "Use historical prices when you want scenario testing rather than a fixed return assumption.",
+            href: "/en/dca-calculator",
+          },
+        ],
+      },
+      {
+        title: "ETF comparison",
+        description:
+          "Compare two assets using the same amount and period while keeping risk and data limits visible.",
+        links: [
+          {
+            title: "ETF Comparison Calculator",
+            description:
+              "Compare two supported assets with the same monthly contribution and time period.",
+            href: "/en/etf-comparison-calculator",
+          },
+          {
+            title: "VOO vs QQQ",
+            description:
+              "Compare broad S&P 500 exposure with Nasdaq-100 exposure in a historical context.",
+            href: "/en/voo-vs-qqq",
+          },
+          {
+            title: "Disclaimer",
+            description:
+              "Review important data, investment, tax, and legal limitations before relying on results.",
+            href: "/en/disclaimer",
+          },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What is ETF DCA?",
+        answer:
+          "ETF DCA means investing a fixed amount into an ETF on a regular schedule, such as monthly. Results still depend on price, fees, currency, taxes, and the selected period.",
+      },
+      {
+        question: "Can a DCA backtest predict future returns?",
+        answer:
+          "No. A DCA backtest uses historical data to study a past scenario. Future returns can be very different.",
+      },
+      {
+        question: "Can I compare VOO, CSPX, and QQQ?",
+        answer:
+          "Yes. Use the asset pages and ETF comparison calculator to study them with the same contribution assumptions.",
+      },
+      {
+        question: "Is this investment advice?",
+        answer:
+          "No. DCA Backtest is an educational website and does not recommend any ETF, stock, broker, or strategy.",
+      },
+    ],
+  },
   "zh-CN": {
     title: "ETF 定投学习中心｜DCA Backtest",
     description:
-      "学习 ETF 定投、复利、DCA 回测、VOO、CSPX、定投 vs 一次性投入，以及马来西亚投资 ETF 的基础知识。",
+      "学习 ETF 定投、DCA 回测、VOO、CSPX、QQQ、定投 vs 一次性投入、复利计算和 ETF 对比基础知识。",
     h1: "ETF 定投学习中心",
     breadcrumb: "学习中心",
     eyebrow: "ETF DCA 学习入口",
     intro:
-      "这里是 DCA Backtest 的中文 ETF 定投学习入口，帮助你系统了解 ETF 定投、DCA 回测、复利、VOO、CSPX、ETF 对比，以及马来西亚投资 ETF 时常见的券商、换汇、税务和风险问题。",
+      "这里是 DCA Backtest 的中文 ETF 定投学习入口，帮助你系统了解 ETF 定投、DCA 回测、复利、VOO、CSPX、QQQ、ETF 对比，以及马来西亚买 ETF 时常见的券商、换汇、费用、税务和风险问题。",
     disclaimerTitle: "教育用途免责声明",
     disclaimer:
-      "仅供教育用途，不构成投资建议。过去表现不代表未来表现。ETF、股票、汇率和税务结果都可能变化，用户应自行判断并在需要时咨询持牌专业人士。",
+      "仅供教育用途，不构成投资建议。过去表现不代表未来表现。ETF、股票、汇率、费用和税务结果都可能变化，用户应自行判断并在需要时咨询持牌专业人士。",
     quickLinksTitle: "常用工具与重要说明",
     quickLinks: [
       { title: "DCA 定投计算器", href: "/zh-CN/dca-calculator" },
@@ -55,67 +222,39 @@ const content: Record<LearnLocale, LearnContent> = {
     ],
     sections: [
       {
-        title: "新手入门",
-        description: "先理解 ETF 定投、DCA 回测和复利的基本概念。",
+        title: "ETF 定投入门",
+        description:
+          "先理解 ETF 定投、DCA 回测、月度投入和历史模拟的基本概念。",
         links: [
           {
             title: "什么是 ETF 定投？",
             description:
-              "了解每月固定投入 ETF 的基本思路，以及为什么定投结果仍会受到市场价格、费用和时间影响。",
+              "了解每月固定投入 ETF 的基本思路，以及费用、时间和市场价格如何影响结果。",
+            href: "/zh-CN/etf-dca-backtest-guide",
+          },
+          {
+            title: "DCA 定投计算器",
+            description:
+              "用历史价格模拟每月定投，并观察总投入、最终价值和回撤。",
             href: "/zh-CN/dca-calculator",
-          },
-          {
-            title: "什么是 DCA 回测？",
-            description:
-              "学习如何用历史价格模拟每月投入，并理解回测不能代表未来收益。",
-            href: "/zh-CN/dca-calculator",
-          },
-          {
-            title: "什么是复利？",
-            description:
-              "用复利计算器理解每月投入、假设年化回报和投资时间之间的关系。",
-            href: "/zh-CN/compound-interest-calculator",
-          },
-        ],
-      },
-      {
-        title: "ETF 定投工具",
-        description: "从计算器开始，比较不同资产、时间和投入金额的历史情景。",
-        links: [
-          {
-            title: "ETF 定投计算器",
-            description:
-              "回测 VOO、CSPX、QQQ、VWRA、IWDA 等资产的每月定投历史表现。",
-            href: "/zh-CN/etf-calculator",
-          },
-          {
-            title: "复利计算器",
-            description:
-              "用假设回报率估算长期复利增长，适合做教育性的投资规划。",
-            href: "/zh-CN/compound-interest-calculator",
-          },
-          {
-            title: "ETF 对比工具",
-            description:
-              "用相同每月投入金额和时间区间，对比两个 ETF 或股票的历史结果。",
-            href: "/zh-CN/etf-comparison-calculator",
           },
           {
             title: "支持的资产与市场数据",
             description:
-              "查看当前支持的 ETF、股票、市场、货币和历史数据覆盖情况。",
+              "查看哪些 ETF 和股票有历史数据，哪些目前只提供示例数据。",
             href: "/zh-CN/supported-assets",
           },
         ],
       },
       {
-        title: "热门 ETF",
-        description: "从常见 ETF 页面进入具体资产的定投回测。",
+        title: "VOO / CSPX / QQQ 回测",
+        description:
+          "学习常见 ETF 的回测入口，理解不同市场、指数和基金结构的差异。",
         links: [
           {
             title: "VOO 定投计算器",
             description:
-              "研究美国上市 S&P 500 ETF 的每月定投历史情景和风险限制。",
+              "研究美国上市 S&P 500 ETF 的每月定投历史情景。",
             href: "/zh-CN/voo-dca-calculator",
           },
           {
@@ -125,75 +264,148 @@ const content: Record<LearnLocale, LearnContent> = {
             href: "/zh-CN/cspx-dca-calculator",
           },
           {
-            title: "QQQ 定投计算器",
+            title: "VOO vs QQQ DCA",
             description:
-              "查看 Nasdaq-100 相关 ETF 在不同年份开始定投时的历史差异。",
-            href: "/zh-CN/qqq-dca-calculator",
+              "比较 S&P 500 广泛市场敞口和 Nasdaq-100 科技权重的历史差异。",
+            href: "/zh-CN/voo-vs-qqq-dca",
           },
         ],
       },
       {
-        title: "热门对比",
-        description:
-          "比较不同 ETF、市场敞口和投入方式，但不把结果当成投资推荐。",
-        links: [
-          {
-            title: "VOO vs CSPX",
-            description:
-              "比较美国上市 ETF 与 UCITS ETF 在市场、税务、股息、货币和券商支持方面的差异。",
-            href: "/zh-CN/voo-vs-cspx",
-          },
-          {
-            title: "VOO vs QQQ",
-            description:
-              "了解 S&P 500 广泛市场敞口和 Nasdaq-100 科技权重之间的不同。",
-            href: "/zh-CN/voo-vs-qqq",
-          },
-          {
-            title: "定投 vs 一次性投入",
-            description:
-              "用相同总投入金额理解分批投入和开始时一次性投入的历史差异。",
-            href: "/zh-CN/dca-vs-lump-sum",
-          },
-        ],
-      },
-      {
-        title: "马来西亚投资 ETF",
+        title: "马来西亚买 ETF",
         description:
           "面向马来西亚中文用户，整理 CSPX、VOO、券商、换汇、税务和平台支持的教育指南。",
         links: [
           {
+            title: "CSPX vs VOO 马来西亚",
+            description:
+              "理解 UCITS ETF 和美国上市 ETF 在注册地、税务、股息和券商支持上的差异。",
+            href: "/zh-CN/cspx-vs-voo-malaysia",
+          },
+          {
             title: "马来西亚怎么买 CSPX",
             description:
-              "了解 CSPX、UCITS ETF、爱尔兰注册、伦敦交易所和马来西亚投资者需要注意的事项。",
+              "了解 CSPX、伦敦交易所、UCITS ETF 和马来西亚用户需要核实的事项。",
             href: "/zh-CN/how-to-buy-cspx-from-malaysia",
           },
           {
             title: "马来西亚怎么买 VOO",
             description:
-              "学习购买美国上市 ETF 前需要了解的美股 ETF、股息税、遗产税风险和汇率因素。",
+              "学习购买美国上市 ETF 前需要了解的股息税、汇率、费用和券商支持。",
             href: "/zh-CN/how-to-invest-in-voo-from-malaysia",
           },
+        ],
+      },
+      {
+        title: "DCA vs Lump Sum",
+        description:
+          "用相同总投入金额理解分批投入和期初一次性投入的历史差异。",
+        links: [
           {
-            title: "IBKR vs Moomoo 马来西亚",
+            title: "定投 vs 一次性投入指南",
             description:
-              "中立比较券商覆盖市场、费用、换汇、平台体验和 ETF 支持，不构成开户建议。",
-            href: "/zh-CN/ibkr-vs-moomoo-malaysia",
+              "学习两种投入方式的情景差异、心理风险和市场时点影响。",
+            href: "/zh-CN/dca-vs-lump-sum-guide",
           },
           {
-            title: "马来西亚 ETF 券商",
+            title: "定投 vs 一次性投入",
             description:
-              "用检查清单比较 ETF 券商时可关注的市场支持、费用、换汇和风险。",
-            href: "/zh-CN/best-etf-broker-malaysia",
+              "查看现有比较页面，并回到计算器测试不同年份和金额。",
+            href: "/zh-CN/dca-vs-lump-sum",
           },
         ],
+      },
+      {
+        title: "复利计算",
+        description:
+          "理解每月投入、假设年化回报、时间和长期复利增长之间的关系。",
+        links: [
+          {
+            title: "复利计算指南",
+            description:
+              "学习复利计算器适合做什么、不适合承诺什么，以及如何看待假设回报。",
+            href: "/zh-CN/compound-interest-guide",
+          },
+          {
+            title: "复利计算器",
+            description:
+              "用假设年化回报率估算长期复利增长，不代表固定收益。",
+            href: "/zh-CN/compound-interest-calculator",
+          },
+        ],
+      },
+      {
+        title: "ETF 比较",
+        description:
+          "用相同每月投入和时间区间比较两个资产，同时保留风险和数据限制说明。",
+        links: [
+          {
+            title: "ETF 对比工具",
+            description:
+              "比较两个 ETF 或股票的最终价值、总回报、年化回报估算和最大回撤。",
+            href: "/zh-CN/etf-comparison-calculator",
+          },
+          {
+            title: "VOO vs CSPX",
+            description:
+              "比较美国上市 ETF 与 UCITS ETF 的市场、货币、税务和股息差异。",
+            href: "/zh-CN/voo-vs-cspx",
+          },
+          {
+            title: "推荐工具",
+            description:
+              "了解常见券商、换汇工具和费用注意事项，但不构成推荐。",
+            href: "/zh-CN/recommended-tools",
+          },
+        ],
+      },
+      {
+        title: "常见问题",
+        description:
+          "快速理解回测、数据来源、费用、风险和非投资建议等重要限制。",
+        links: [
+          {
+            title: "ETF 定投回测指南",
+            description:
+              "系统学习如何使用历史数据、如何设置区间，以及为什么结果不代表未来。",
+            href: "/zh-CN/etf-dca-backtest-guide",
+          },
+          {
+            title: "免责声明",
+            description:
+              "阅读数据来源、非投资建议、税务和法律限制等重要说明。",
+            href: "/zh-CN/disclaimer",
+          },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "ETF 定投回测可以代表未来收益吗？",
+        answer:
+          "不能。回测只是用历史数据模拟过去某个情景，未来市场、费用、汇率和税务都可能不同。",
+      },
+      {
+        question: "VOO、CSPX、QQQ 可以一起比较吗？",
+        answer:
+          "可以使用 ETF 对比工具或相关资产页面，用相同每月投入和时间区间进行历史情景比较。",
+      },
+      {
+        question: "马来西亚买 ETF 要注意什么？",
+        answer:
+          "需要核实券商支持、交易市场、货币兑换、费用、股息处理、税务和官方条款。",
+      },
+      {
+        question: "这些内容是不是投资建议？",
+        answer:
+          "不是。本网站仅供教育用途，不推荐任何 ETF、股票、券商或投资策略。",
       },
     ],
   },
   "zh-TW": {
     title: "ETF 定期定額學習中心｜DCA Backtest",
     description:
-      "學習 ETF 定期定額、複利、DCA 回測、VOO、CSPX、定期定額 vs 單筆投入，以及 ETF 投資的基礎知識。",
+      "學習 ETF 定期定額、DCA 回測、VOO、CSPX、QQQ、定期定額 vs 單筆投入、複利計算和 ETF 比較。",
     h1: "ETF 定期定額學習中心",
     breadcrumb: "學習中心",
     eyebrow: "ETF DCA 學習入口",
@@ -212,63 +424,34 @@ const content: Record<LearnLocale, LearnContent> = {
     ],
     sections: [
       {
-        title: "新手入門",
-        description: "先掌握 ETF 定期定額、DCA 回測與複利的基本觀念。",
+        title: "ETF 定期定額入門",
+        description:
+          "先掌握 ETF 定期定額、DCA 回測與月度投入的基本觀念。",
         links: [
           {
             title: "什麼是 ETF 定期定額？",
             description:
               "理解每月固定投入 ETF 的概念，以及價格波動、投入時間和費用如何影響結果。",
+            href: "/zh-TW/etf-dca-backtest-guide",
+          },
+          {
+            title: "DCA 定期定額計算機",
+            description:
+              "用歷史價格模擬每月投入，觀察總投入、最終價值和回撤。",
             href: "/zh-TW/dca-calculator",
-          },
-          {
-            title: "什麼是 DCA 回測？",
-            description:
-              "用歷史價格模擬每月投入的情境，同時了解回測只是歷史資料分析，不代表未來報酬。",
-            href: "/zh-TW/dca-calculator",
-          },
-          {
-            title: "什麼是複利？",
-            description:
-              "透過複利計算機觀察每月投入、假設年化報酬與時間之間的關係。",
-            href: "/zh-TW/compound-interest-calculator",
-          },
-        ],
-      },
-      {
-        title: "ETF 定期定額工具",
-        description:
-          "用相同的輸入方式，比較不同資產、時間區間和投入金額的歷史情境。",
-        links: [
-          {
-            title: "ETF 定期定額計算機",
-            description:
-              "回測 VOO、CSPX、QQQ、VWRA、IWDA 等資產的每月投入歷史結果。",
-            href: "/zh-TW/etf-calculator",
-          },
-          {
-            title: "複利計算機",
-            description:
-              "用假設報酬率估算長期複利成長，適合做教育性的投資規劃練習。",
-            href: "/zh-TW/compound-interest-calculator",
-          },
-          {
-            title: "ETF 對比工具",
-            description:
-              "用相同每月投入金額和期間，對比兩個 ETF 或股票的歷史結果。",
-            href: "/zh-TW/etf-comparison-calculator",
           },
           {
             title: "支援的資產與市場資料",
             description:
-              "查看目前支援的 ETF、股票、市場、貨幣，以及歷史資料覆蓋狀態。",
+              "查看哪些 ETF 和股票有歷史資料，哪些目前只提供範例資料。",
             href: "/zh-TW/supported-assets",
           },
         ],
       },
       {
-        title: "熱門 ETF",
-        description: "從常見 ETF 頁面進入個別資產的定期定額回測。",
+        title: "VOO / CSPX / QQQ 回測",
+        description:
+          "從常見 ETF 頁面進入個別資產的定期定額回測。",
         links: [
           {
             title: "VOO 定期定額計算機",
@@ -283,61 +466,135 @@ const content: Record<LearnLocale, LearnContent> = {
             href: "/zh-TW/cspx-dca-calculator",
           },
           {
-            title: "QQQ 定期定額計算機",
+            title: "VOO vs QQQ DCA",
             description:
-              "觀察 Nasdaq-100 相關 ETF 在不同起始年份下的歷史差異。",
-            href: "/zh-TW/qqq-dca-calculator",
+              "觀察 S&P 500 廣泛市場和 Nasdaq-100 科技權重較高的歷史差異。",
+            href: "/zh-TW/voo-vs-qqq-dca",
           },
         ],
       },
       {
-        title: "熱門對比",
+        title: "馬來西亞買 ETF",
         description:
-          "比較 ETF、市場敞口和投入方式，但不要把歷史結果視為投資建議。",
+          "用繁體中文理解 CSPX、VOO、券商支援、換匯、費用與稅務注意事項。",
         links: [
+          {
+            title: "CSPX vs VOO 馬來西亞",
+            description:
+              "比較 UCITS ETF 和美國上市 ETF 在市場、稅務、股息和券商支援上的差異。",
+            href: "/zh-TW/cspx-vs-voo-malaysia",
+          },
           {
             title: "VOO vs CSPX",
             description:
-              "了解美國上市 ETF 與 UCITS ETF 在市場、股息、稅務、貨幣和券商支援上的差異。",
+              "了解美國上市 ETF 與 UCITS ETF 的交易市場、貨幣和股息處理差異。",
             href: "/zh-TW/voo-vs-cspx",
           },
+        ],
+      },
+      {
+        title: "DCA vs Lump Sum",
+        description:
+          "以相同總投入金額，理解分批投入和期初一次投入的歷史差異。",
+        links: [
           {
-            title: "VOO vs QQQ",
+            title: "定期定額 vs 單筆投入指南",
             description:
-              "比較 S&P 500 廣泛市場敞口與 Nasdaq-100 科技權重較高的差異。",
-            href: "/zh-TW/voo-vs-qqq",
+              "學習兩種投入方式的情境差異、心理風險和市場時點影響。",
+            href: "/zh-TW/dca-vs-lump-sum-guide",
           },
           {
             title: "定期定額 vs 單筆投入",
             description:
-              "以相同總投入金額，理解分批投入和期初一次投入的歷史差異。",
+              "查看既有比較頁面，並回到計算機測試不同年份和投入金額。",
             href: "/zh-TW/dca-vs-lump-sum",
           },
         ],
       },
       {
-        title: "延伸學習",
-        description: "繼續查看資料來源、支援資產和風險說明。",
+        title: "複利計算",
+        description:
+          "理解每月投入、假設年化報酬、時間和長期複利成長之間的關係。",
         links: [
           {
-            title: "ETF 回測工具",
+            title: "複利計算指南",
             description:
-              "使用 ETF 回測工具檢視不同資產、期間和投入金額的歷史模擬。",
-            href: "/zh-TW/etf-calculator",
+              "學習複利計算機適合做什麼、不適合承諾什麼，以及如何看待假設報酬。",
+            href: "/zh-TW/compound-interest-guide",
           },
           {
-            title: "支援的資產",
+            title: "複利計算機",
             description:
-              "確認哪些 ETF 和股票有歷史資料，哪些目前只提供示範資料。",
-            href: "/zh-TW/supported-assets",
+              "用假設年化報酬率估算長期複利成長，不代表固定收益。",
+            href: "/zh-TW/compound-interest-calculator",
+          },
+        ],
+      },
+      {
+        title: "ETF 比較",
+        description:
+          "用相同每月投入和時間區間比較兩個資產，同時保留風險和資料限制說明。",
+        links: [
+          {
+            title: "ETF 對比工具",
+            description:
+              "比較兩個 ETF 或股票的最終價值、總報酬、年化報酬估算和最大回撤。",
+            href: "/zh-TW/etf-comparison-calculator",
+          },
+          {
+            title: "VOO vs CSPX",
+            description:
+              "比較美國上市 ETF 與 UCITS ETF 的市場、貨幣、稅務和股息差異。",
+            href: "/zh-TW/voo-vs-cspx",
+          },
+          {
+            title: "推薦工具",
+            description:
+              "了解常見券商、換匯工具和費用注意事項，但不構成推薦。",
+            href: "/zh-TW/recommended-tools",
+          },
+        ],
+      },
+      {
+        title: "常見問題",
+        description:
+          "快速理解回測、資料來源、費用、風險和非投資建議等重要限制。",
+        links: [
+          {
+            title: "ETF 定期定額回測指南",
+            description:
+              "系統學習如何使用歷史資料、如何設定區間，以及為什麼結果不代表未來。",
+            href: "/zh-TW/etf-dca-backtest-guide",
           },
           {
             title: "免責聲明",
             description:
-              "閱讀資料來源、回測限制、非投資建議和使用者責任等重要說明。",
+              "閱讀資料來源、非投資建議、稅務和法律限制等重要說明。",
             href: "/zh-TW/disclaimer",
           },
         ],
+      },
+    ],
+    faqs: [
+      {
+        question: "ETF 定期定額回測可以代表未來報酬嗎？",
+        answer:
+          "不能。回測只是使用歷史資料模擬過去情境，未來市場、費用、匯率和稅務都可能不同。",
+      },
+      {
+        question: "VOO、CSPX、QQQ 可以一起比較嗎？",
+        answer:
+          "可以使用 ETF 對比工具或相關資產頁面，用相同每月投入和時間區間進行歷史情境比較。",
+      },
+      {
+        question: "馬來西亞買 ETF 要注意什麼？",
+        answer:
+          "需要核實券商支援、交易市場、貨幣兌換、費用、股息處理、稅務和官方條款。",
+      },
+      {
+        question: "這些內容是不是投資建議？",
+        answer:
+          "不是。本網站僅供教育用途，不推薦任何 ETF、股票、券商或投資策略。",
       },
     ],
   },
@@ -349,6 +606,12 @@ function getContent(locale: string) {
   }
 
   return content[locale as LearnLocale];
+}
+
+function learnAlternates(path = "/learn") {
+  return Object.fromEntries(
+    learnLocales.map((locale) => [locale, absoluteUrl(`/${locale}${path}`)])
+  );
 }
 
 export function generateStaticParams() {
@@ -371,8 +634,8 @@ export async function generateMetadata({
     alternates: {
       canonical: absoluteUrl(pagePath),
       languages: {
-        [locale]: absoluteUrl(pagePath),
-        "x-default": absoluteUrl(pagePath),
+        ...learnAlternates(),
+        "x-default": absoluteUrl("/en/learn"),
       },
     },
     openGraph: {
@@ -400,31 +663,17 @@ export default async function LearnPage({
   const page = getContent(locale);
   const pageUrl = absoluteUrl(`/${locale}/learn`);
   const itemListLinks = [
-    {
-      name: page.quickLinks[0].title,
-      url: absoluteUrl(page.quickLinks[0].href),
-    },
-    {
-      name: page.quickLinks[1].title,
-      url: absoluteUrl(page.quickLinks[1].href),
-    },
-    {
-      name: page.quickLinks[2].title,
-      url: absoluteUrl(page.quickLinks[2].href),
-    },
-    {
-      name: page.quickLinks[3].title,
-      url: absoluteUrl(page.quickLinks[3].href),
-    },
-    {
-      name: "VOO vs CSPX",
-      url: absoluteUrl(`/${locale}/voo-vs-cspx`),
-    },
-    {
-      name: locale === "zh-CN" ? "定投 vs 一次性投入" : "定期定額 vs 單筆投入",
-      url: absoluteUrl(`/${locale}/dca-vs-lump-sum`),
-    },
-  ];
+    ...page.quickLinks.map((item) => ({
+      name: item.title,
+      url: absoluteUrl(item.href),
+    })),
+    ...page.sections.flatMap((section) =>
+      section.links.slice(0, 1).map((link) => ({
+        name: link.title,
+        url: absoluteUrl(link.href),
+      }))
+    ),
+  ].slice(0, 12);
   const webPageJsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -468,6 +717,18 @@ export default async function LearnPage({
       url: item.url,
     })),
   };
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: page.faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
 
   return (
     <main className="min-h-screen w-full overflow-x-hidden bg-slate-950 text-white">
@@ -478,6 +739,7 @@ export default async function LearnPage({
             webPageJsonLd,
             breadcrumbJsonLd,
             itemListJsonLd,
+            faqJsonLd,
           ]).replace(/</g, "\\u003c"),
         }}
       />
@@ -537,6 +799,29 @@ export default async function LearnPage({
             </section>
           ))}
         </div>
+
+        <section className="mt-6 w-full rounded-2xl border border-white/10 bg-white/[0.055] p-4 sm:mt-8 sm:rounded-3xl sm:p-6">
+          <h2 className="text-2xl font-bold tracking-tight text-white">
+            {locale === "en"
+              ? "Common questions"
+              : locale === "zh-CN"
+                ? "常见问题"
+                : "常見問題"}
+          </h2>
+          <div className="mt-5 grid grid-cols-1 gap-3 md:grid-cols-2">
+            {page.faqs.map((faq) => (
+              <article
+                key={faq.question}
+                className="rounded-2xl border border-white/10 bg-slate-900/80 p-4"
+              >
+                <h3 className="font-semibold text-white">{faq.question}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-300">
+                  {faq.answer}
+                </p>
+              </article>
+            ))}
+          </div>
+        </section>
 
         <section className="mt-6 rounded-2xl border border-amber-300/20 bg-amber-300/[0.07] p-4 sm:mt-8 sm:rounded-3xl sm:p-6">
           <h2 className="text-lg font-semibold text-amber-100">
