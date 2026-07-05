@@ -12,6 +12,7 @@ export const staticPageSlugs = [
   "privacy",
   "terms",
   "disclaimer",
+  "affiliate-disclosure",
   "contact",
 ] as const;
 export const contentPageSlugs = ["supported-assets"] as const;

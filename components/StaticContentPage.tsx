@@ -1,13 +1,20 @@
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
 
-type StaticPageKey = "about" | "privacy" | "terms" | "contact" | "disclaimer";
+type StaticPageKey =
+  | "about"
+  | "privacy"
+  | "terms"
+  | "contact"
+  | "disclaimer"
+  | "affiliate-disclosure";
 
 const legalLinks: StaticPageKey[] = [
   "about",
   "privacy",
   "terms",
   "disclaimer",
+  "affiliate-disclosure",
   "contact",
 ];
 
@@ -82,7 +89,11 @@ export default async function StaticContentPage({
                 link === pageKey ? "text-cyan-300" : ""
               }`}
             >
-              {link === "disclaimer" ? common("disclaimer") : footer(link)}
+              {link === "disclaimer"
+                ? common("disclaimer")
+                : link === "affiliate-disclosure"
+                  ? footer("affiliateDisclosure")
+                  : footer(link)}
             </Link>
           ))}
         </nav>

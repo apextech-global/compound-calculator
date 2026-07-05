@@ -201,6 +201,7 @@
     "terms": "Ketentuan Penggunaan",
     "contact": "Kontak",
     "disclaimer": "Disclaimer",
+    "affiliateDisclosure": "Pengungkapan Afiliasi",
     "supportedAssets": "Aset yang Didukung"
   },
   "legal": {
@@ -296,6 +297,37 @@
         {
           "title": "Perubahan dari waktu ke waktu",
           "body": "Kami dapat memperbarui situs, aset yang didukung, file data, fitur, dan syarat ini dari waktu ke waktu. Penggunaan berkelanjutan berarti Anda menerima syarat terbaru."
+        }
+      ]
+    },
+    "affiliate-disclosure": {
+      "eyebrow": "Pengungkapan Afiliasi",
+      "title": "Pengungkapan Afiliasi",
+      "paragraphs": {
+        "p1": "Beberapa tautan di DCA Backtest dapat menjadi tautan afiliasi atau referral di masa depan.",
+        "p2": "Jika pengguna mendaftar atau menggunakan layanan melalui tautan tersebut, situs ini dapat memperoleh komisi atau hadiah referral.",
+        "p3": "Hal ini tidak mengubah sifat edukatif konten dan tidak berarti situs ini merekomendasikan broker, ETF, produk, atau layanan tertentu."
+      },
+      "sections": [
+        {
+          "title": "Tautan afiliasi atau referral di masa depan",
+          "body": "Beberapa tautan di situs ini dapat menjadi tautan afiliasi atau referral di masa depan. Jika Anda mengklik tautan tersebut lalu mendaftar atau menggunakan layanan terkait, DCA Backtest dapat memperoleh komisi atau hadiah referral tanpa biaya tambahan bagi Anda."
+        },
+        {
+          "title": "Konten tetap bersifat edukatif",
+          "body": "Kompensasi afiliasi atau referral tidak mengubah tujuan edukatif DCA Backtest. Kalkulator, panduan, dan contoh disediakan untuk membantu pengguna memahami skenario, asumsi, dan risiko."
+        },
+        {
+          "title": "Bukan rekomendasi broker atau produk",
+          "body": "Tautan afiliasi atau referral tidak berarti DCA Backtest merekomendasikan broker, ETF, saham, produk, atau layanan tertentu. Pengguna harus membandingkan penyedia secara mandiri."
+        },
+        {
+          "title": "Verifikasi informasi resmi",
+          "body": "Biaya, ketentuan, risiko, pajak, ketersediaan, fitur, dan promosi dapat berubah. Selalu periksa detail penting di situs resmi penyedia sebelum membuka akun atau menggunakan layanan."
+        },
+        {
+          "title": "Bukan nasihat keuangan, pajak, atau hukum",
+          "body": "DCA Backtest tidak memberikan nasihat keuangan, nasihat investasi, nasihat pajak, atau nasihat hukum. Kinerja masa lalu tidak menjamin hasil di masa depan."
         }
       ]
     },

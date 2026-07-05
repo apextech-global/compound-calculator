@@ -201,6 +201,7 @@
     "terms": "Terms of Use",
     "contact": "Contact",
     "disclaimer": "Disclaimer",
+    "affiliateDisclosure": "Affiliate Disclosure",
     "supportedAssets": "Supported Assets",
     "feedback": "Found a bug or wrong data? Send feedback"
   },
@@ -297,6 +298,37 @@
         {
           "title": "Changes over time",
           "body": "We may update the website, supported assets, data files, features, and these terms over time. Continued use of the website means you accept the updated terms."
+        }
+      ]
+    },
+    "affiliate-disclosure": {
+      "eyebrow": "Affiliate Disclosure",
+      "title": "Affiliate Disclosure",
+      "paragraphs": {
+        "p1": "Some links on DCA Backtest may become affiliate or referral links in the future.",
+        "p2": "If you sign up for or use a service through those links, DCA Backtest may earn a commission or referral reward.",
+        "p3": "Affiliate or referral relationships do not change the educational nature of the website and do not mean we recommend a specific broker, ETF, product, or service."
+      },
+      "sections": [
+        {
+          "title": "Future affiliate or referral links",
+          "body": "Some links on this website may be affiliate or referral links in the future. If you click those links and sign up for or use a service, the website may earn a commission or referral reward at no additional cost to you."
+        },
+        {
+          "title": "Educational content remains educational",
+          "body": "Affiliate or referral compensation does not affect the educational purpose of DCA Backtest. The calculators, guides, and examples are intended to help users understand scenarios and assumptions."
+        },
+        {
+          "title": "No broker or product recommendation",
+          "body": "An affiliate or referral link does not mean DCA Backtest recommends a specific broker, ETF, stock, product, or service. Users should compare providers independently."
+        },
+        {
+          "title": "Verify official information",
+          "body": "Fees, terms, risks, taxes, availability, features, and promotions may change. Always verify important details on the official provider website before opening an account or using a service."
+        },
+        {
+          "title": "Not financial, tax, or legal advice",
+          "body": "DCA Backtest does not provide financial advice, investment advice, tax advice, or legal advice. Past performance does not guarantee future results."
         }
       ]
     },
