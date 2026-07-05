@@ -32,7 +32,14 @@ const relatedSeoLinks: SeoPageSlug[] = [
   "voo-vs-cspx",
   "voo-vs-qqq",
 ];
-const siteLinks = ["supported-assets", "recommended-tools"] as const;
+const chineseLearningRelatedLinks: SeoPageSlug[] = [
+  "cspx-vs-voo-malaysia",
+  "voo-vs-qqq-dca",
+  "etf-dca-backtest-guide",
+  "dca-vs-lump-sum-guide",
+  "compound-interest-guide",
+];
+const siteLinks = ["supported-assets", "recommended-tools", "learn"] as const;
 const legalLinks = [
   "privacy",
   "terms",
@@ -54,6 +61,11 @@ const articleSeoPages: SeoPageSlug[] = [
   "how-to-invest-in-voo-from-malaysia",
   "best-etf-broker-malaysia",
   "ibkr-vs-moomoo-malaysia",
+  "cspx-vs-voo-malaysia",
+  "voo-vs-qqq-dca",
+  "etf-dca-backtest-guide",
+  "dca-vs-lump-sum-guide",
+  "compound-interest-guide",
 ];
 const malaysiaGuidePages: SeoPageSlug[] = [
   "how-to-buy-cspx-from-malaysia",
@@ -132,6 +144,14 @@ export default async function SeoLandingPage({
   const content = getSeoLandingContent(typedLocale);
   const page = content.pages[typedPage];
   const pageUrl = absoluteUrl(`/${typedLocale}/${typedPage}`);
+  const seoLinks =
+    typedLocale === "zh-CN" || typedLocale === "zh-TW"
+      ? [...relatedSeoLinks, ...chineseLearningRelatedLinks]
+      : relatedSeoLinks;
+  const visibleSiteLinks =
+    typedLocale === "en" || typedLocale === "zh-CN" || typedLocale === "zh-TW"
+      ? siteLinks
+      : siteLinks.filter((link) => link !== "learn");
   const pageTypeJsonLd = webApplicationSeoPages.includes(typedPage)
     ? {
         "@context": "https://schema.org",
@@ -295,7 +315,9 @@ export default async function SeoLandingPage({
           aria-label={content.internalLinksLabel}
           className="mt-6 flex w-full flex-wrap gap-2.5 text-sm sm:mt-8 sm:gap-3"
         >
-          {relatedSeoLinks.map((link) => (
+          {seoLinks
+            .filter((link) => isSeoPageSlugForLocale(typedLocale, link))
+            .map((link) => (
             <Link
               key={link}
               href={`/${typedLocale}/${link}`}
@@ -304,7 +326,7 @@ export default async function SeoLandingPage({
               {content.pages[link].h1}
             </Link>
           ))}
-          {siteLinks.map((link) => (
+          {visibleSiteLinks.map((link) => (
             <Link
               key={link}
               href={`/${typedLocale}/${link}`}
@@ -312,7 +334,13 @@ export default async function SeoLandingPage({
             >
               {link === "supported-assets"
                 ? messages.footer.supportedAssets
-                : messages.footer.recommendedTools}
+                : link === "recommended-tools"
+                  ? messages.footer.recommendedTools
+                : typedLocale === "zh-CN"
+                  ? messages.footer.learnCenter
+                : typedLocale === "zh-TW"
+                  ? messages.footer.learnCenter
+                : "Learn"}
             </Link>
           ))}
           {legalLinks.map((link) => (

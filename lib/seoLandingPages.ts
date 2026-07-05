@@ -2852,6 +2852,14 @@ const zhCnLearningPages: Record<ChineseLearningSeoPageSlug, SeoPageContent> = {
         title: "示例用法",
         body: "例如，你可以测试 2018 到 2025 年每月投入 1000 美元到 VOO 与 CSPX 的历史模拟结果，再阅读 /zh-CN/disclaimer 和 /zh-CN/supported-assets，确认数据来源、样本数据和费用限制。",
       },
+      {
+        title: "需要特别注意什么",
+        body: "真实投资结果可能受到交易费用、换汇点差、股息处理、预扣税、遗产税风险、平台可用性、成交价格和追踪误差影响。马来西亚用户也应确认券商是否支持相关市场和官方条款。",
+      },
+      {
+        title: "相关工具和下一步",
+        body: "可以继续阅读 /zh-CN/learn、/zh-CN/voo-vs-cspx、/zh-CN/voo-dca-calculator、/zh-CN/cspx-dca-calculator、/zh-CN/etf-comparison-calculator 和 /zh-CN/recommended-tools。所有内容仅供教育用途。",
+      },
     ],
     faqs: [
       {
@@ -2900,6 +2908,14 @@ const zhCnLearningPages: Record<ChineseLearningSeoPageSlug, SeoPageContent> = {
       {
         title: "示例用法",
         body: "可以测试 2018 到 2025 年每月投入 500 或 1000 美元，比较 VOO 和 QQQ 的历史 DCA 结果，再打开 /zh-CN/voo-dca-calculator 与 /zh-CN/qqq-dca-calculator 查看单一资产页面。",
+      },
+      {
+        title: "需要特别注意什么",
+        body: "VOO 和 QQQ 的行业集中度、估值敏感度、回撤路径和上涨周期可能不同。历史较高最终价值并不代表未来会继续领先，也不代表适合所有投资者。",
+      },
+      {
+        title: "相关工具和下一步",
+        body: "可以继续使用 /zh-CN/etf-comparison-calculator、/zh-CN/voo-vs-qqq、/zh-CN/voo-dca-calculator、/zh-CN/qqq-dca-calculator、/zh-CN/dca-vs-lump-sum 和 /zh-CN/disclaimer。",
       },
     ],
     faqs: [
@@ -2950,6 +2966,14 @@ const zhCnLearningPages: Record<ChineseLearningSeoPageSlug, SeoPageContent> = {
         title: "示例用法",
         body: "例如，你可以在 /zh-CN/dca-calculator 测试 VOO 每月 1000 美元从 2018 到 2025 年的历史模拟，再调整年份观察结果变化。",
       },
+      {
+        title: "需要特别注意什么",
+        body: "回测不是预测。真实结果可能因费用、税务、汇率、股息再投资、买卖价差、成交时间和数据来源不同而变化。若页面显示示例数据，不应把结果当作真实市场表现。",
+      },
+      {
+        title: "相关工具和下一步",
+        body: "可以从 /zh-CN/learn 进入学习中心，也可以查看 /zh-CN/supported-assets、/zh-CN/voo-dca-calculator、/zh-CN/cspx-dca-calculator、/zh-CN/qqq-dca-calculator 和 /zh-CN/etf-comparison-calculator。",
+      },
     ],
     faqs: [
       {
@@ -2999,6 +3023,14 @@ const zhCnLearningPages: Record<ChineseLearningSeoPageSlug, SeoPageContent> = {
         title: "示例用法",
         body: "可以打开 /zh-CN/dca-vs-lump-sum 或 /zh-CN/dca-calculator，选择 VOO、CSPX 或 QQQ，测试不同年份的历史差异。",
       },
+      {
+        title: "需要特别注意什么",
+        body: "一次性投入更依赖期初价格，定投更依赖持续现金流和纪律。比较时要留意最大回撤、资金使用时间、心理压力、手续费差异和税务影响。",
+      },
+      {
+        title: "相关工具和下一步",
+        body: "可以继续阅读 /zh-CN/dca-vs-lump-sum、/zh-CN/etf-dca-backtest-guide、/zh-CN/dca-calculator、/zh-CN/compound-interest-calculator 和 /zh-CN/disclaimer。",
+      },
     ],
     faqs: [
       {
@@ -3047,6 +3079,14 @@ const zhCnLearningPages: Record<ChineseLearningSeoPageSlug, SeoPageContent> = {
       {
         title: "示例用法",
         body: "例如，你可以在 /zh-CN/compound-interest-calculator 输入每月 500 美元、20 年和假设 8% 年化回报，再到 /zh-CN/dca-calculator 比较历史价格情景。",
+      },
+      {
+        title: "需要特别注意什么",
+        body: "复利计算通常使用平滑的假设年化回报，但真实市场不会每年稳定增长。费用、税务、通胀、汇率和现金流中断都会影响长期结果。",
+      },
+      {
+        title: "相关工具和下一步",
+        body: "可以继续阅读 /zh-CN/compound-interest-calculator、/zh-CN/dca-calculator、/zh-CN/etf-dca-backtest-guide、/zh-CN/dca-vs-lump-sum-guide 和 /zh-CN/learn。",
       },
     ],
     faqs: [
@@ -3100,6 +3140,14 @@ const zhTwLearningPages: Record<ChineseLearningSeoPageSlug, SeoPageContent> = {
         title: "示例用法",
         body: "例如測試 2018 到 2025 年每月投入 1000 美元到 VOO 與 CSPX 的歷史情境，並閱讀 /zh-TW/disclaimer 了解限制。",
       },
+      {
+        title: "需要特別注意什麼",
+        body: "真實投資結果可能受到交易費用、換匯點差、股息處理、預扣稅、遺產稅風險、平台可用性、成交價格和追蹤誤差影響。使用者應以券商和基金官方資訊為準。",
+      },
+      {
+        title: "相關工具和下一步",
+        body: "可以繼續閱讀 /zh-TW/learn、/zh-TW/voo-vs-cspx、/zh-TW/voo-dca-calculator、/zh-TW/cspx-dca-calculator、/zh-TW/etf-comparison-calculator 和 /zh-TW/recommended-tools。所有內容僅供教育用途。",
+      },
     ],
     faqs: [
       {
@@ -3148,6 +3196,14 @@ const zhTwLearningPages: Record<ChineseLearningSeoPageSlug, SeoPageContent> = {
       {
         title: "示例用法",
         body: "可以測試 2018 到 2025 年每月投入 500 或 1000 美元，比較 VOO 和 QQQ 的歷史 DCA 結果。",
+      },
+      {
+        title: "需要特別注意什麼",
+        body: "VOO 和 QQQ 的產業集中度、估值敏感度、回撤路徑和上漲週期可能不同。歷史較高最終價值不代表未來會繼續領先，也不代表適合所有人。",
+      },
+      {
+        title: "相關工具和下一步",
+        body: "可以繼續使用 /zh-TW/etf-comparison-calculator、/zh-TW/voo-vs-qqq、/zh-TW/voo-dca-calculator、/zh-TW/qqq-dca-calculator、/zh-TW/dca-vs-lump-sum 和 /zh-TW/disclaimer。",
       },
     ],
     faqs: [
@@ -3198,6 +3254,14 @@ const zhTwLearningPages: Record<ChineseLearningSeoPageSlug, SeoPageContent> = {
         title: "示例用法",
         body: "可以在 /zh-TW/dca-calculator 測試 VOO 每月 1000 美元從 2018 到 2025 年的歷史情境。",
       },
+      {
+        title: "需要特別注意什麼",
+        body: "回測不是預測。真實結果可能因費用、稅務、匯率、股息再投入、買賣價差、成交時間和資料來源不同而變化。若頁面顯示範例資料，不應把結果當作真實市場表現。",
+      },
+      {
+        title: "相關工具和下一步",
+        body: "可以從 /zh-TW/learn 進入學習中心，也可以查看 /zh-TW/supported-assets、/zh-TW/voo-dca-calculator、/zh-TW/cspx-dca-calculator、/zh-TW/qqq-dca-calculator 和 /zh-TW/etf-comparison-calculator。",
+      },
     ],
     faqs: [
       {
@@ -3247,6 +3311,14 @@ const zhTwLearningPages: Record<ChineseLearningSeoPageSlug, SeoPageContent> = {
         title: "示例用法",
         body: "可以打開 /zh-TW/dca-vs-lump-sum 或 /zh-TW/dca-calculator，測試不同年份的歷史差異。",
       },
+      {
+        title: "需要特別注意什麼",
+        body: "單筆投入更依賴期初價格，定期定額更依賴持續現金流和紀律。比較時要留意最大回撤、資金使用時間、心理壓力、手續費差異和稅務影響。",
+      },
+      {
+        title: "相關工具和下一步",
+        body: "可以繼續閱讀 /zh-TW/dca-vs-lump-sum、/zh-TW/etf-dca-backtest-guide、/zh-TW/dca-calculator、/zh-TW/compound-interest-calculator 和 /zh-TW/disclaimer。",
+      },
     ],
     faqs: [
       {
@@ -3295,6 +3367,14 @@ const zhTwLearningPages: Record<ChineseLearningSeoPageSlug, SeoPageContent> = {
       {
         title: "示例用法",
         body: "可以在 /zh-TW/compound-interest-calculator 輸入每月 500 美元、20 年和假設 8% 年化報酬，再到 /zh-TW/dca-calculator 比較歷史情境。",
+      },
+      {
+        title: "需要特別注意什麼",
+        body: "複利計算通常使用平滑的假設年化報酬，但真實市場不會每年穩定成長。費用、稅務、通膨、匯率和現金流中斷都會影響長期結果。",
+      },
+      {
+        title: "相關工具和下一步",
+        body: "可以繼續閱讀 /zh-TW/compound-interest-calculator、/zh-TW/dca-calculator、/zh-TW/etf-dca-backtest-guide、/zh-TW/dca-vs-lump-sum-guide 和 /zh-TW/learn。",
       },
     ],
     faqs: [
