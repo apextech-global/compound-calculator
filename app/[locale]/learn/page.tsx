@@ -89,6 +89,31 @@ const content: Record<LearnLocale, LearnContent> = {
         ],
       },
       {
+        title: "ETF DCA backtesting",
+        description:
+          "Learn how the calculator turns historical monthly prices into an educational scenario for steady contributions.",
+        links: [
+          {
+            title: "DCA Backtest Calculator",
+            description:
+              "Run a historical monthly investing scenario with asset, amount, start year, and end year controls.",
+            href: "/en/dca-calculator",
+          },
+          {
+            title: "ETF Comparison Calculator",
+            description:
+              "Compare two assets using the same monthly contribution and time period.",
+            href: "/en/etf-comparison-calculator",
+          },
+          {
+            title: "Data and Disclaimer",
+            description:
+              "Understand Yahoo Finance historical prices, sample data, fees, currency, tax, and other limits.",
+            href: "/en/disclaimer",
+          },
+        ],
+      },
+      {
         title: "VOO / CSPX / QQQ backtests",
         description:
           "Compare common ETF examples without treating any single fund as universally better.",
@@ -110,6 +135,56 @@ const content: Record<LearnLocale, LearnContent> = {
             description:
               "Explore Nasdaq-100 related DCA scenarios and period-dependent results.",
             href: "/en/qqq-dca-calculator",
+          },
+        ],
+      },
+      {
+        title: "CSPX vs VOO",
+        description:
+          "Study U.S.-listed and UCITS S&P 500 ETF examples with attention to domicile, currency, dividends, tax, and platform availability.",
+        links: [
+          {
+            title: "VOO vs CSPX",
+            description:
+              "Compare the educational differences between a U.S.-listed ETF and an Ireland-domiciled UCITS ETF.",
+            href: "/en/voo-vs-cspx",
+          },
+          {
+            title: "CSPX DCA Calculator",
+            description:
+              "Open a CSPX-focused DCA calculator page for historical scenario testing.",
+            href: "/en/cspx-dca-calculator",
+          },
+          {
+            title: "VOO DCA Calculator",
+            description:
+              "Open a VOO-focused DCA calculator page for the same kind of monthly investing analysis.",
+            href: "/en/voo-dca-calculator",
+          },
+        ],
+      },
+      {
+        title: "VOO vs QQQ",
+        description:
+          "Compare broad S&P 500 exposure with Nasdaq-100 exposure while remembering that historical leadership changes by period.",
+        links: [
+          {
+            title: "VOO vs QQQ",
+            description:
+              "Read the comparison guide before testing different periods in the calculator.",
+            href: "/en/voo-vs-qqq",
+          },
+          {
+            title: "QQQ DCA Calculator",
+            description:
+              "Model a Nasdaq-100 related ETF with monthly contribution assumptions.",
+            href: "/en/qqq-dca-calculator",
+          },
+          {
+            title: "ETF Comparison Calculator",
+            description:
+              "Compare VOO, QQQ, CSPX, or another supported asset with the same inputs.",
+            href: "/en/etf-comparison-calculator",
           },
         ],
       },
@@ -247,6 +322,31 @@ const content: Record<LearnLocale, LearnContent> = {
         ],
       },
       {
+        title: "ETF DCA 回测",
+        description:
+          "学习如何用历史月度价格模拟每月投入，并理解数据来源、示例数据和回测限制。",
+        links: [
+          {
+            title: "ETF 定投回测指南",
+            description:
+              "系统学习 ETF DCA 回测的输入、输出、数据来源和风险提示。",
+            href: "/zh-CN/etf-dca-backtest-guide",
+          },
+          {
+            title: "DCA 定投计算器",
+            description:
+              "用资产、金额、开始年份和结束年份快速测试历史情景。",
+            href: "/zh-CN/dca-calculator",
+          },
+          {
+            title: "ETF 对比工具",
+            description:
+              "用相同每月投入和期间比较两个资产的历史结果。",
+            href: "/zh-CN/etf-comparison-calculator",
+          },
+        ],
+      },
+      {
         title: "VOO / CSPX / QQQ 回测",
         description:
           "学习常见 ETF 的回测入口，理解不同市场、指数和基金结构的差异。",
@@ -272,7 +372,57 @@ const content: Record<LearnLocale, LearnContent> = {
         ],
       },
       {
-        title: "马来西亚买 ETF",
+        title: "CSPX vs VOO",
+        description:
+          "从马来西亚和海外投资者角度理解 CSPX 与 VOO 在注册地、市场、股息、税务和券商支持上的差异。",
+        links: [
+          {
+            title: "CSPX vs VOO 马来西亚",
+            description:
+              "了解 UCITS ETF 与美国上市 ETF 的常见差异，不把任何一个产品描述成必然更好。",
+            href: "/zh-CN/cspx-vs-voo-malaysia",
+          },
+          {
+            title: "VOO vs CSPX",
+            description:
+              "阅读更完整的 VOO 和 CSPX 教育对比页面。",
+            href: "/zh-CN/voo-vs-cspx",
+          },
+          {
+            title: "CSPX 定投计算器",
+            description:
+              "打开 CSPX 定投页面，用历史情景测试不同投入期间。",
+            href: "/zh-CN/cspx-dca-calculator",
+          },
+        ],
+      },
+      {
+        title: "VOO vs QQQ",
+        description:
+          "理解 S&P 500 广泛市场敞口与 Nasdaq-100 科技权重较高组合之间的历史差异。",
+        links: [
+          {
+            title: "VOO vs QQQ DCA",
+            description:
+              "学习不同年份中 VOO 与 QQQ 的回测结果为什么可能差异很大。",
+            href: "/zh-CN/voo-vs-qqq-dca",
+          },
+          {
+            title: "VOO vs QQQ",
+            description:
+              "阅读 VOO 与 QQQ 的指数、行业权重和风险差异。",
+            href: "/zh-CN/voo-vs-qqq",
+          },
+          {
+            title: "QQQ 定投计算器",
+            description:
+              "用 QQQ 页面测试 Nasdaq-100 相关 ETF 的月度投入情景。",
+            href: "/zh-CN/qqq-dca-calculator",
+          },
+        ],
+      },
+      {
+        title: "马来西亚买 ETF 注意事项",
         description:
           "面向马来西亚中文用户，整理 CSPX、VOO、券商、换汇、税务和平台支持的教育指南。",
         links: [
@@ -449,6 +599,31 @@ const content: Record<LearnLocale, LearnContent> = {
         ],
       },
       {
+        title: "ETF DCA 回測",
+        description:
+          "學習如何用歷史月度價格模擬每月投入，並理解資料來源、範例資料和回測限制。",
+        links: [
+          {
+            title: "ETF 定期定額回測指南",
+            description:
+              "系統學習 ETF DCA 回測的輸入、輸出、資料來源和風險提示。",
+            href: "/zh-TW/etf-dca-backtest-guide",
+          },
+          {
+            title: "DCA 定期定額計算機",
+            description:
+              "用資產、金額、開始年份和結束年份快速測試歷史情境。",
+            href: "/zh-TW/dca-calculator",
+          },
+          {
+            title: "ETF 對比工具",
+            description:
+              "用相同每月投入和期間比較兩個資產的歷史結果。",
+            href: "/zh-TW/etf-comparison-calculator",
+          },
+        ],
+      },
+      {
         title: "VOO / CSPX / QQQ 回測",
         description:
           "從常見 ETF 頁面進入個別資產的定期定額回測。",
@@ -474,7 +649,57 @@ const content: Record<LearnLocale, LearnContent> = {
         ],
       },
       {
-        title: "馬來西亞買 ETF",
+        title: "CSPX vs VOO",
+        description:
+          "從馬來西亞和海外投資者角度理解 CSPX 與 VOO 在註冊地、市場、股息、稅務和券商支援上的差異。",
+        links: [
+          {
+            title: "CSPX vs VOO 馬來西亞",
+            description:
+              "了解 UCITS ETF 與美國上市 ETF 的常見差異，不把任何一個產品描述成必然更好。",
+            href: "/zh-TW/cspx-vs-voo-malaysia",
+          },
+          {
+            title: "VOO vs CSPX",
+            description:
+              "閱讀更完整的 VOO 和 CSPX 教育對比頁面。",
+            href: "/zh-TW/voo-vs-cspx",
+          },
+          {
+            title: "CSPX 定期定額計算機",
+            description:
+              "開啟 CSPX 定期定額頁面，用歷史情境測試不同投入期間。",
+            href: "/zh-TW/cspx-dca-calculator",
+          },
+        ],
+      },
+      {
+        title: "VOO vs QQQ",
+        description:
+          "理解 S&P 500 廣泛市場敞口與 Nasdaq-100 科技權重較高組合之間的歷史差異。",
+        links: [
+          {
+            title: "VOO vs QQQ DCA",
+            description:
+              "學習不同年份中 VOO 與 QQQ 的回測結果為什麼可能差異很大。",
+            href: "/zh-TW/voo-vs-qqq-dca",
+          },
+          {
+            title: "VOO vs QQQ",
+            description:
+              "閱讀 VOO 與 QQQ 的指數、產業權重和風險差異。",
+            href: "/zh-TW/voo-vs-qqq",
+          },
+          {
+            title: "QQQ 定期定額計算機",
+            description:
+              "用 QQQ 頁面測試 Nasdaq-100 相關 ETF 的月度投入情境。",
+            href: "/zh-TW/qqq-dca-calculator",
+          },
+        ],
+      },
+      {
+        title: "馬來西亞買 ETF 注意事項",
         description:
           "用繁體中文理解 CSPX、VOO、券商支援、換匯、費用與稅務注意事項。",
         links: [

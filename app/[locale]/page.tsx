@@ -1380,6 +1380,20 @@ export default function Home() {
 
   const structuredData = useMemo(() => {
     const pageUrl = `https://dcabacktest.com/${locale}`;
+    const webSiteStructuredData = {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "DCA Backtest",
+      url: "https://dcabacktest.com/",
+      inLanguage: locale,
+      description: t("seo.description"),
+      isAccessibleForFree: true,
+      publisher: {
+        "@type": "Organization",
+        name: "DCA Backtest",
+        url: "https://dcabacktest.com/",
+      },
+    };
     const faqStructuredData = {
       "@context": "https://schema.org",
       "@type": "FAQPage",
@@ -1427,6 +1441,7 @@ export default function Home() {
     };
 
     return JSON.stringify([
+      webSiteStructuredData,
       faqStructuredData,
       webApplicationStructuredData,
       breadcrumbStructuredData,

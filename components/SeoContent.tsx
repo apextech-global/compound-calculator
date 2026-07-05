@@ -26,7 +26,15 @@ export default function SeoContent() {
   const guides = getSeoLandingContent(typedLocale);
   const guideSlugs = getSeoPageSlugsForLocale(typedLocale);
   const learningHub =
-    typedLocale === "zh-CN"
+    typedLocale === "en"
+      ? {
+          title: "ETF DCA Learning Hub",
+          description:
+            "Learn ETF DCA basics, DCA backtesting, compound interest, VOO, CSPX, QQQ, and DCA vs lump sum.",
+          href: "/en/learn",
+          button: "Open learning hub",
+        }
+      : typedLocale === "zh-CN"
       ? {
           title: "ETF 定投学习中心",
           description:

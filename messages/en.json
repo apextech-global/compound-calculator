@@ -18,8 +18,8 @@
   "hero": {
     "eyebrow": "ETF DCA, backtest, and compound growth tools",
     "title": "DCA Calculator and ETF Backtest Tool",
-    "description": "Backtest monthly investing in VOO, CSPX, QQQ, VWRA, IWDA, ETFs, and stocks, then compare DCA performance with compound interest projections.",
-    "seoIntro": "Use this DCA calculator, DCA backtest, ETF calculator, monthly investing tool, and compound interest calculator to study long-term scenarios for education only.",
+    "description": "Backtest monthly investing in VOO, CSPX, QQQ, VWRA, IWDA, ETFs, and stocks, compare two assets, and project compound growth with educational assumptions.",
+    "seoIntro": "Use the DCA Backtest calculator, compound interest calculator, ETF comparison calculator, and DCA vs lump sum tools to study monthly investing scenarios. Historical data may come from third-party sources such as Yahoo Finance and results are educational only.",
     "linksLabel": "Popular calculator pages",
     "links": {
       "dca-calculator": "DCA calculator",
@@ -147,10 +147,10 @@
     "ta": "தமிழ்"
   },
   "seo": {
-    "title": "DCA Calculator & Backtest Tool | ETF and Compound Interest Calculator",
-    "description": "Backtest monthly investments in VOO, CSPX, QQQ, VWRA, and IWDA, compare ETF and stock DCA performance, and use the compound interest calculator for educational planning only.",
-    "openGraphTitle": "DCA Calculator & Backtest Tool | ETF and Compound Interest Calculator",
-    "openGraphDescription": "Backtest monthly investments in VOO, CSPX, QQQ, VWRA, and IWDA, compare ETF and stock DCA performance, and use the compound interest calculator for educational planning only."
+    "title": "DCA Backtest Calculator for ETFs | Compound Interest and ETF Comparison",
+    "description": "Backtest monthly investments in VOO, CSPX, QQQ, VWRA, and IWDA, compare ETF DCA results, test DCA vs lump sum, and project compound growth for education only.",
+    "openGraphTitle": "DCA Backtest Calculator for ETFs | Compound Interest and ETF Comparison",
+    "openGraphDescription": "Backtest monthly investments in VOO, CSPX, QQQ, VWRA, and IWDA, compare ETF DCA results, test DCA vs lump sum, and project compound growth for education only."
   },
   "faq": {
     "eyebrow": "FAQ",
@@ -394,7 +394,7 @@
   "seoContent": {
     "eyebrow": "Investment Education",
     "title": "Learn how DCA backtesting and compound growth work",
-    "intro": "Use this DCA calculator, compound interest calculator, ETF investment calculator, and monthly investment calculator to explore long-term investing scenarios for VOO, CSPX, ETFs, and stocks.",
+    "intro": "Use this DCA calculator, compound interest calculator, ETF comparison calculator, and monthly investment calculator to explore VOO, CSPX, QQQ, VWRA, IWDA, ETFs, stocks, and DCA vs lump sum scenarios. Historical prices are for educational backtesting only and are not financial advice.",
     "sections": {
       "dca": {
         "title": "What is dollar-cost averaging?",
@@ -410,15 +410,15 @@
       },
       "howToUse": {
         "title": "How to use this DCA backtest calculator",
-        "body": "Choose a market, asset type, ETF or stock, monthly investment amount, start year, and end year. The calculator estimates total invested, shares accumulated, ending value, profit, and return."
+        "body": "Choose a market, asset type, ETF or stock, monthly investment amount, start year, and end year. The calculator estimates total invested, shares accumulated, ending value, profit, return, and optional advanced metrics."
       },
       "etfExample": {
         "title": "ETF monthly investing example",
-        "body": "For example, a VOO DCA calculator or CSPX DCA calculator can model how regular ETF investing may have grown using historical monthly prices where data is available."
+        "body": "For example, a VOO DCA calculator, CSPX DCA calculator, or QQQ DCA calculator can model how regular ETF investing may have grown using historical monthly prices where data is available."
       },
       "supportedAssets": {
         "title": "Supported assets and markets",
-        "body": "The calculator supports selected ETFs and stocks across the United States, Ireland UCITS, Taiwan, Malaysia, Singapore, Japan, and Hong Kong. Assets without imported market data clearly use sample data."
+        "body": "The calculator supports selected ETFs and stocks across the United States, Ireland UCITS, Taiwan, Malaysia, Singapore, Japan, and Hong Kong, including VOO, CSPX, QQQ, VWRA, and IWDA where available. Assets without imported market data clearly use sample data."
       }
     },
     "disclaimer": {

@@ -16,10 +16,10 @@
     "compoundCalculator": "複利計算器"
   },
   "hero": {
-    "eyebrow": "ETF 定投、回測與複利成長工具",
-    "title": "DCA 定投計算器與 ETF 回測工具",
-    "description": "回測每月定投 VOO、CSPX、QQQ、VWRA、IWDA、ETF 和股票的表現，並結合複利計算器進行長期情境分析。",
-    "seoIntro": "使用這個 DCA 定投計算器、DCA 回測工具、ETF 計算器、每月投資工具和複利計算器，學習長期投資情境，僅供教育用途。",
+    "eyebrow": "ETF 定期定額、回測與複利成長工具",
+    "title": "DCA 定期定額計算機與 ETF 回測工具",
+    "description": "回測每月定期定額 VOO、CSPX、QQQ、VWRA、IWDA、ETF 和股票的表現，對比兩個資產，並用複利計算機進行長期情境分析。",
+    "seoIntro": "使用 DCA Backtest 定期定額計算機、複利計算機、ETF 對比計算機和定期定額 vs 單筆投入工具，學習每月投資情境。歷史資料可能來自 Yahoo Finance 等第三方來源，結果僅供教育用途。",
     "linksLabel": "熱門計算器頁面",
     "links": {
       "dca-calculator": "DCA 定投計算器",
@@ -147,10 +147,10 @@
     "ta": "தமிழ்"
   },
   "seo": {
-    "title": "DCA 定投計算器與回測工具 | ETF與複利計算器",
-    "description": "回測每月定投 VOO、CSPX、QQQ、VWRA、IWDA，對比 ETF 和股票 DCA 表現，並使用複利計算器作教育性規劃。",
-    "openGraphTitle": "DCA 定投計算器與回測工具 | ETF與複利計算器",
-    "openGraphDescription": "回測每月定投 VOO、CSPX、QQQ、VWRA、IWDA，對比 ETF 和股票 DCA 表現，並使用複利計算器作教育性規劃。"
+    "title": "ETF 定期定額回測計算機 | 複利計算機與 ETF 對比工具",
+    "description": "回測每月定期定額 VOO、CSPX、QQQ、VWRA、IWDA，對比 ETF DCA 表現，測試定期定額 vs 單筆投入，並用複利計算機做教育性規劃。",
+    "openGraphTitle": "ETF 定期定額回測計算機 | 複利計算機與 ETF 對比工具",
+    "openGraphDescription": "回測每月定期定額 VOO、CSPX、QQQ、VWRA、IWDA，對比 ETF DCA 表現，測試定期定額 vs 單筆投入，並用複利計算機做教育性規劃。"
   },
   "faq": {
     "eyebrow": "常見問題",
@@ -394,7 +394,7 @@
   "seoContent": {
     "eyebrow": "投資教育",
     "title": "了解定投回測與複利成長如何運作",
-    "intro": "使用複利計算器、DCA 計算器、DCA 回測計算器、ETF 投資計算器和每月投資計算器，探索 VOO、CSPX、ETF 與股票的長期投資情境。",
+    "intro": "使用複利計算機、DCA 定期定額計算機、DCA 回測計算機、ETF 對比計算機和每月投資計算機，探索 VOO、CSPX、QQQ、VWRA、IWDA、ETF、股票，以及定期定額 vs 單筆投入情境。歷史價格僅用於教育性回測，不構成投資建議。",
     "sections": {
       "dca": {
         "title": "什麼是定期定額投資？",
@@ -410,15 +410,15 @@
       },
       "howToUse": {
         "title": "如何使用這個定投回測計算器",
-        "body": "選擇市場、資產類型、ETF 或股票、每月投資金額、開始年份與結束年份。計算器會估算總投入、累積股數、期末價值、獲利與報酬率。"
+        "body": "選擇市場、資產類型、ETF 或股票、每月投資金額、開始年份與結束年份。計算機會估算總投入、累積股數、期末價值、獲利、報酬率和可選進階指標。"
       },
       "etfExample": {
         "title": "ETF 每月定投示例",
-        "body": "例如，VOO DCA 計算器或 CSPX DCA 計算器可在有資料時使用歷史月度價格，模擬定期投資 ETF 的成長。"
+        "body": "例如，VOO 定期定額計算機、CSPX 定期定額計算機或 QQQ 定期定額計算機可在有資料時使用歷史月度價格，模擬定期投資 ETF 的成長。"
       },
       "supportedAssets": {
         "title": "支援的資產與市場",
-        "body": "計算器支援美國、愛爾蘭 UCITS、台灣、馬來西亞、新加坡、日本和香港的部分 ETF 與股票。未匯入市場資料的資產會明確使用示例資料。"
+        "body": "計算機支援美國、愛爾蘭 UCITS、台灣、馬來西亞、新加坡、日本和香港的部分 ETF 與股票，包括有資料時的 VOO、CSPX、QQQ、VWRA 和 IWDA。未匯入市場資料的資產會明確使用範例資料。"
       }
     },
     "disclaimer": {
