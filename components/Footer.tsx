@@ -58,7 +58,8 @@ export default function Footer() {
         <nav className="flex w-full min-w-0 flex-wrap gap-3 text-sm font-medium text-slate-300 md:max-w-sm">
           {typedLocale === "en" ||
           typedLocale === "zh-CN" ||
-          typedLocale === "zh-TW" ? (
+          typedLocale === "zh-TW" ||
+          typedLocale === "ms" ? (
             <Link
               href={`/${typedLocale}/learn`}
               className="transition hover:text-cyan-300"

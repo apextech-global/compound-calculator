@@ -185,7 +185,7 @@ const allPages = unique(["", ...staticPages, ...contentPages, ...seoPages, ...lo
 
 function localesForPage(page) {
   if (learnPages.includes(page)) {
-    return requestedLocales.filter((locale) => locale === "en" || locale === "zh-CN" || locale === "zh-TW");
+    return requestedLocales.filter((locale) => locale === "en" || locale === "zh-CN" || locale === "zh-TW" || locale === "ms");
   }
 
   if (zhCnOnlyPages.includes(page)) {
@@ -193,7 +193,7 @@ function localesForPage(page) {
   }
 
   if (zhCnZhTwPages.includes(page)) {
-    return requestedLocales.filter((locale) => locale === "zh-CN" || locale === "zh-TW");
+    return requestedLocales.filter((locale) => locale === "zh-CN" || locale === "zh-TW" || locale === "ms");
   }
 
   return requestedLocales;

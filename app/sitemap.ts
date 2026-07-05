@@ -35,7 +35,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.78,
       }))
     ),
-    ...(["en", "zh-CN", "zh-TW"] as const).map((locale) => ({
+    ...(["en", "zh-CN", "zh-TW", "ms"] as const).map((locale) => ({
       url: absoluteUrl(`/${locale}/learn`),
       lastModified: today,
       changeFrequency: "monthly" as const,

@@ -145,11 +145,14 @@ export default async function SeoLandingPage({
   const page = content.pages[typedPage];
   const pageUrl = absoluteUrl(`/${typedLocale}/${typedPage}`);
   const seoLinks =
-    typedLocale === "zh-CN" || typedLocale === "zh-TW"
+    typedLocale === "zh-CN" || typedLocale === "zh-TW" || typedLocale === "ms"
       ? [...relatedSeoLinks, ...chineseLearningRelatedLinks]
       : relatedSeoLinks;
   const visibleSiteLinks =
-    typedLocale === "en" || typedLocale === "zh-CN" || typedLocale === "zh-TW"
+    typedLocale === "en" ||
+    typedLocale === "zh-CN" ||
+    typedLocale === "zh-TW" ||
+    typedLocale === "ms"
       ? siteLinks
       : siteLinks.filter((link) => link !== "learn");
   const pageTypeJsonLd = webApplicationSeoPages.includes(typedPage)
@@ -339,6 +342,8 @@ export default async function SeoLandingPage({
                 : typedLocale === "zh-CN"
                   ? messages.footer.learnCenter
                 : typedLocale === "zh-TW"
+                  ? messages.footer.learnCenter
+                : typedLocale === "ms"
                   ? messages.footer.learnCenter
                 : "Learn"}
             </Link>

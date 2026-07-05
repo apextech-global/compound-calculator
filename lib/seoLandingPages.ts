@@ -3402,6 +3402,294 @@ const zhTwLearningPages: Record<ChineseLearningSeoPageSlug, SeoPageContent> = {
   },
 };
 
+const msLearningPages: Record<ChineseLearningSeoPageSlug, SeoPageContent> = {
+  "cspx-vs-voo-malaysia": {
+    title: "CSPX vs VOO untuk Pelabur Malaysia | Panduan ETF DCA",
+    description:
+      "Fahami perbezaan CSPX dan VOO untuk pelabur Malaysia, termasuk UCITS ETF, ETF AS, USD, dividen, cukai, yuran, broker dan DCA backtest.",
+    h1: "CSPX vs VOO untuk Pelabur Malaysia",
+    intro:
+      "CSPX dan VOO sama-sama sering digunakan untuk mengkaji pendedahan S&P 500, tetapi kedua-duanya tidak sama. Panduan ini membantu pengguna Malaysia memahami struktur UCITS, ETF tersenarai di Amerika Syarikat, mata wang, dividen, cukai, yuran dan batasan backtest tanpa membuat cadangan pelaburan.",
+    ctaQuery: "?market=us&type=ETF&asset=VOO",
+    sections: [
+      {
+        title: "Langkah 1: Fahami struktur CSPX dan VOO",
+        body: "VOO ialah ETF yang disenaraikan di Amerika Syarikat. CSPX biasanya merujuk kepada iShares Core S&P 500 UCITS ETF yang berdomisil Ireland dan didagangkan di London Stock Exchange atau pasaran berkaitan. Kedua-duanya boleh memberi pendedahan kepada S&P 500, tetapi domisil, pasaran dagangan, mata wang, dividen dan cukai boleh berbeza.",
+      },
+      {
+        title: "Langkah 2: Semak perkara praktikal untuk pengguna Malaysia",
+        body: "Sebelum membuat keputusan sendiri, pengguna perlu menyemak sama ada broker menyokong VOO atau CSPX.L, cara deposit dan tukaran mata wang, yuran transaksi, spread, yuran platform, penyata cukai, rawatan dividen dan peraturan rasmi. Ketersediaan platform boleh berubah.",
+      },
+      {
+        title: "Langkah 3: Bandingkan dengan andaian yang sama",
+        body: "Gunakan /ms/etf-comparison-calculator atau /ms/voo-vs-cspx dengan jumlah bulanan, tahun mula dan tahun akhir yang sama. Ini membantu perbandingan lebih jelas, tetapi keputusan sejarah tidak menjamin hasil masa depan.",
+      },
+      {
+        title: "Contoh mudah",
+        body: "Sebagai contoh, anda boleh menguji RM atau USD bersamaan $1,000 sebulan dari 2018 hingga 2025 untuk VOO dan CSPX, kemudian lihat nilai akhir, jumlah pulangan dan drawdown. Baca juga /ms/supported-assets dan /ms/disclaimer untuk memahami status data.",
+      },
+      {
+        title: "Perkara yang perlu diberi perhatian",
+        body: "Hasil sebenar boleh dipengaruhi oleh yuran broker, spread tukaran mata wang, pendedahan USD, cukai pegangan, rawatan dividen, harga pelaksanaan, tracking error dan data rasmi dana. Tiada ETF yang sentiasa lebih baik untuk semua orang.",
+      },
+      {
+        title: "Pautan berkaitan",
+        body: "Teruskan dengan /ms/learn, /ms/voo-dca-calculator, /ms/cspx-dca-calculator, /ms/etf-comparison-calculator, /ms/recommended-tools dan /ms/disclaimer. Semua kandungan adalah pendidikan sahaja.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Adakah CSPX semestinya lebih sesuai daripada VOO untuk pelabur Malaysia?",
+        answer:
+          "Tidak semestinya. Perbandingan bergantung pada broker, yuran, cukai, mata wang, dividen dan keadaan peribadi. Halaman ini tidak membuat cadangan.",
+      },
+      {
+        question: "Mengapa keputusan backtest CSPX dan VOO boleh berbeza?",
+        answer:
+          "Data harga, mata wang, struktur dana, dividen, yuran dan pasaran dagangan boleh menyebabkan keputusan berbeza.",
+      },
+      {
+        question: "Apa kos yang perlu disemak oleh pengguna Malaysia?",
+        answer:
+          "Semak yuran transaksi, yuran platform, spread tukaran mata wang, spread beli jual, kos deposit atau pengeluaran dan kos berkaitan cukai.",
+      },
+      {
+        question: "Adakah ini nasihat pelaburan?",
+        answer:
+          "Tidak. Ini hanya panduan pendidikan dan bukan nasihat kewangan, cukai, undang-undang atau cadangan beli jual.",
+      },
+    ],
+  },
+  "voo-vs-qqq-dca": {
+    title: "VOO vs QQQ DCA Backtest | Panduan Perbandingan ETF",
+    description:
+      "Bandingkan VOO dan QQQ melalui DCA backtest, fahami S&P 500, Nasdaq-100, tumpuan sektor, drawdown, yuran dan batasan keputusan sejarah.",
+    h1: "VOO vs QQQ DCA Backtest",
+    intro:
+      "VOO dan QQQ ialah ETF popular, tetapi pendedahan pasaran mereka berbeza. VOO biasanya mewakili S&P 500 yang lebih luas, manakala QQQ lebih tertumpu kepada Nasdaq-100 dan sektor teknologi. Panduan ini menerangkan cara membandingkan kedua-duanya dengan andaian DCA yang sama.",
+    ctaQuery: "?market=us&type=ETF&asset=VOO",
+    sections: [
+      {
+        title: "Langkah 1: Fahami perbezaan pendedahan",
+        body: "VOO memberi pendedahan kepada syarikat besar AS dalam S&P 500. QQQ pula lebih tertumpu kepada Nasdaq-100, dengan tumpuan teknologi dan saham pertumbuhan yang biasanya lebih tinggi. Tempoh sejarah berbeza boleh menghasilkan keputusan yang sangat berbeza.",
+      },
+      {
+        title: "Langkah 2: Gunakan input yang sama",
+        body: "Dalam /ms/etf-comparison-calculator, gunakan jumlah bulanan, tahun mula, tahun akhir dan mata wang paparan yang sama. Ini menjadikan perbandingan lebih tertumpu kepada laluan harga aset, bukan perbezaan input.",
+      },
+      {
+        title: "Langkah 3: Lihat pulangan dan risiko",
+        body: "Jangan hanya melihat nilai akhir. Perhatikan jumlah dilaburkan, keuntungan, anggaran pulangan tahunan, maksimum drawdown dan bentuk carta. Nilai akhir sejarah yang lebih tinggi bukan jaminan masa depan.",
+      },
+      {
+        title: "Contoh mudah",
+        body: "Anda boleh menguji $500 atau $1,000 sebulan dari 2018 hingga 2025, kemudian buka /ms/voo-dca-calculator dan /ms/qqq-dca-calculator untuk melihat halaman aset secara berasingan.",
+      },
+      {
+        title: "Perkara yang perlu diberi perhatian",
+        body: "QQQ boleh mempunyai tumpuan sektor yang lebih tinggi, manakala VOO lebih luas tetapi masih boleh turun. Yuran, cukai, dividen, USD, spread dan tempoh pilihan boleh mengubah hasil sebenar.",
+      },
+      {
+        title: "Pautan berkaitan",
+        body: "Baca juga /ms/voo-vs-qqq, /ms/dca-vs-lump-sum, /ms/etf-dca-backtest-guide, /ms/supported-assets dan /ms/disclaimer.",
+      },
+    ],
+    faqs: [
+      {
+        question: "VOO atau QQQ lebih baik berdasarkan sejarah?",
+        answer:
+          "Ia bergantung pada tempoh mula dan akhir. Satu tempoh sejarah tidak boleh digunakan untuk meramal masa depan.",
+      },
+      {
+        question: "Adakah QQQ lebih berisiko daripada VOO?",
+        answer:
+          "QQQ biasanya lebih tertumpu kepada sektor tertentu, tetapi risiko sebenar perlu dinilai bersama tempoh, penilaian pasaran dan toleransi risiko.",
+      },
+      {
+        question: "Adakah backtest memasukkan semua yuran?",
+        answer:
+          "Tidak semestinya. Kalkulator boleh memodelkan sebahagian yuran, tetapi hasil sebenar juga dipengaruhi cukai, dividen, spread, tukaran mata wang dan harga pelaksanaan.",
+      },
+      {
+        question: "Adakah halaman ini mencadangkan VOO atau QQQ?",
+        answer:
+          "Tidak. Halaman ini hanya untuk pendidikan dan tidak mencadangkan membeli mana-mana ETF.",
+      },
+    ],
+  },
+  "etf-dca-backtest-guide": {
+    title: "Panduan ETF DCA Backtest | Cara Membaca Keputusan Sejarah",
+    description:
+      "Belajar cara menggunakan ETF DCA backtest, menetapkan jumlah bulanan, tahun mula, tahun akhir, yuran, aset dan memahami batasan data sejarah.",
+    h1: "Panduan ETF DCA Backtest",
+    intro:
+      "ETF DCA backtest membantu anda mensimulasikan pelaburan bulanan menggunakan harga sejarah. Panduan ini menerangkan cara menggunakan DCA Backtest, cara membaca keputusan dan mengapa hasil sejarah bukan ramalan masa depan.",
+    ctaQuery: "?market=us&type=ETF&asset=VOO",
+    sections: [
+      {
+        title: "Langkah 1: Pilih pasaran dan aset",
+        body: "Pilih negara atau pasaran, jenis aset dan instrumen seperti VOO, CSPX, QQQ, VWRA atau IWDA. Semak /ms/supported-assets untuk melihat aset yang mempunyai data sejarah dan aset yang masih menggunakan data sampel.",
+      },
+      {
+        title: "Langkah 2: Tetapkan jumlah bulanan dan tempoh",
+        body: "Masukkan jumlah pelaburan bulanan, tahun mula dan tahun akhir. Julat tahun bergantung pada data yang tersedia. Jika data sejarah belum ada, kalkulator akan menandakan data sampel.",
+      },
+      {
+        title: "Langkah 3: Baca metrik utama",
+        body: "Lihat jumlah dilaburkan, nilai akhir, keuntungan, jumlah pulangan, anggaran pulangan tahunan dan maksimum drawdown. Metrik ini membantu memahami senario, bukan menjamin hasil masa depan.",
+      },
+      {
+        title: "Contoh mudah",
+        body: "Cuba /ms/dca-calculator dengan VOO, $1,000 sebulan, 2018 hingga 2025. Kemudian ubah tahun mula untuk melihat bagaimana tempoh pasaran mengubah keputusan.",
+      },
+      {
+        title: "Perkara yang perlu diberi perhatian",
+        body: "Backtest tidak menggantikan rekod broker sebenar. Yuran, cukai, dividen, kadar tukaran, spread, harga pelaksanaan dan data rasmi boleh menyebabkan hasil sebenar berbeza.",
+      },
+      {
+        title: "Pautan berkaitan",
+        body: "Teruskan ke /ms/learn, /ms/voo-dca-calculator, /ms/cspx-dca-calculator, /ms/qqq-dca-calculator, /ms/etf-comparison-calculator dan /ms/disclaimer.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Adakah ETF DCA backtest tepat?",
+        answer:
+          "Ia ialah simulasi berdasarkan data dan andaian yang tersedia. Ia tidak semestinya sama dengan transaksi broker sebenar.",
+      },
+      {
+        question: "Mengapa sesetengah aset menggunakan data sampel?",
+        answer:
+          "Data sejarah untuk aset tersebut belum diimport. Data sampel hanya untuk demonstrasi dan bukan prestasi pasaran sebenar.",
+      },
+      {
+        question: "Metrik mana yang patut dilihat?",
+        answer:
+          "Lihat nilai akhir bersama jumlah dilaburkan, drawdown, tempoh, sumber data dan andaian yuran.",
+      },
+      {
+        question: "Adakah panduan ETF DCA ini nasihat kewangan?",
+        answer:
+          "Tidak. Backtest hanya untuk pembelajaran dan bukan nasihat kewangan atau cadangan pelaburan.",
+      },
+    ],
+  },
+  "dca-vs-lump-sum-guide": {
+    title: "DCA vs Lump Sum | Mana Satu Lebih Baik Berdasarkan Sejarah?",
+    description:
+      "Fahami perbezaan DCA dan lump sum, cara membandingkan jumlah sumbangan yang sama, risiko masa pasaran, drawdown dan tekanan emosi.",
+    h1: "DCA vs Lump Sum: Panduan Perbandingan Sejarah",
+    intro:
+      "DCA melabur secara berperingkat, manakala lump sum melaburkan jumlah penuh pada permulaan tempoh. Panduan ini menerangkan cara membandingkan kedua-duanya secara pendidikan menggunakan jumlah sumbangan yang sama.",
+    ctaQuery: "?market=us&type=ETF&asset=VOO",
+    sections: [
+      {
+        title: "Langkah 1: Fahami rentak pelaburan",
+        body: "DCA membahagikan pembelian mengikut bulan. Lump sum memberi pendedahan pasaran lebih awal. Dalam pasaran yang menaik, lump sum boleh kelihatan lebih baik, tetapi dalam pasaran jatuh atau tidak menentu, DCA boleh mengurangkan tekanan membeli pada satu titik harga.",
+      },
+      {
+        title: "Langkah 2: Gunakan jumlah sumbangan yang sama",
+        body: "Jika DCA melabur $1,000 sebulan selama 96 bulan, jumlah sumbangan ialah $96,000. Perbandingan lump sum harus menggunakan jumlah yang sama pada harga pertama yang tersedia.",
+      },
+      {
+        title: "Langkah 3: Nilai risiko dan psikologi",
+        body: "Lihat nilai akhir, keuntungan, drawdown, masa pasaran, realiti aliran tunai dan tekanan emosi. Hasil sejarah yang lebih tinggi tidak bermakna pilihan itu sesuai untuk semua orang.",
+      },
+      {
+        title: "Contoh mudah",
+        body: "Buka /ms/dca-vs-lump-sum atau /ms/dca-calculator, pilih VOO, CSPX atau QQQ, kemudian uji tempoh sejarah berbeza.",
+      },
+      {
+        title: "Perkara yang perlu diberi perhatian",
+        body: "Yuran DCA boleh berlaku setiap bulan, manakala yuran lump sum mungkin sekali sahaja. Cukai, dividen, mata wang dan harga pelaksanaan juga boleh mengubah hasil sebenar.",
+      },
+      {
+        title: "Pautan berkaitan",
+        body: "Baca /ms/etf-dca-backtest-guide, /ms/compound-interest-guide, /ms/etf-comparison-calculator, /ms/supported-assets dan /ms/disclaimer.",
+      },
+    ],
+    faqs: [
+      {
+        question: "DCA atau lump sum mana lebih baik?",
+        answer:
+          "Tiada jawapan tetap. Ia bergantung pada tempoh, laluan pasaran, toleransi risiko dan aliran tunai pengguna.",
+      },
+      {
+        question: "Mengapa jumlah sumbangan perlu sama?",
+        answer:
+          "Supaya perbandingan fokus kepada kaedah pelaburan, bukan jumlah modal yang berbeza.",
+      },
+      {
+        question: "Adakah lump sum lebih berisiko?",
+        answer:
+          "Ia lebih bergantung pada harga permulaan, jadi turun naik awal dan tekanan emosi boleh menjadi lebih jelas.",
+      },
+      {
+        question: "Adakah ini cadangan strategi?",
+        answer:
+          "Tidak. Halaman ini hanya menerangkan kaedah perbandingan dan batasan simulasi sejarah.",
+      },
+    ],
+  },
+  "compound-interest-guide": {
+    title: "Panduan Compound Interest | Bagaimana Pelaburan Bulanan Boleh Berkembang",
+    description:
+      "Belajar cara compound interest menggunakan jumlah bulanan, andaian pulangan tahunan dan masa untuk menganggarkan pertumbuhan jangka panjang.",
+    h1: "Panduan Compound Interest",
+    intro:
+      "Kalkulator compound interest sesuai untuk memahami hubungan antara masa, pelaburan bulanan dan andaian pulangan tahunan. Ia bukan janji pulangan dan tidak menggantikan ujian balik sejarah atau perancangan kewangan peribadi.",
+    ctaQuery: "",
+    sections: [
+      {
+        title: "Langkah 1: Fahami idea kompaun",
+        body: "Compound interest bermaksud pulangan terdahulu juga boleh menghasilkan pulangan berikutnya. Dalam tempoh panjang, jumlah bulanan, tempoh dan andaian pulangan boleh memberi kesan besar kepada anggaran akhir.",
+      },
+      {
+        title: "Langkah 2: Tetapkan andaian dengan berhati-hati",
+        body: "Pulangan tahunan hanyalah input model. Pasaran sebenar tidak bergerak secara stabil setiap tahun, dan keputusan sebenar boleh dipengaruhi yuran, cukai, inflasi dan kadar tukaran.",
+      },
+      {
+        title: "Langkah 3: Bezakan unjuran dan backtest",
+        body: "Kalkulator compound interest menggunakan pulangan tetap andaian. DCA backtest pula menggunakan laluan harga sejarah. Kedua-duanya menjawab soalan yang berbeza.",
+      },
+      {
+        title: "Contoh mudah",
+        body: "Dalam /ms/compound-interest-calculator, cuba $500 sebulan selama 20 tahun dengan andaian 8% setahun. Kemudian bandingkan dengan /ms/dca-calculator untuk melihat senario harga sejarah.",
+      },
+      {
+        title: "Perkara yang perlu diberi perhatian",
+        body: "Hasil model kompaun boleh nampak licin, tetapi realiti pelaburan boleh turun naik. Yuran, cukai, dividen, mata wang dan gangguan aliran tunai boleh mengubah hasil sebenar.",
+      },
+      {
+        title: "Pautan berkaitan",
+        body: "Teruskan ke /ms/compound-interest-calculator, /ms/dca-calculator, /ms/etf-dca-backtest-guide, /ms/dca-vs-lump-sum-guide dan /ms/learn.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Bolehkah compound interest menjamin pulangan?",
+        answer:
+          "Tidak. Ia hanya mengira hasil matematik berdasarkan andaian input.",
+      },
+      {
+        question: "Bagaimana pelaburan bulanan mempengaruhi hasil?",
+        answer:
+          "Dengan andaian yang sama, jumlah bulanan lebih tinggi dan tempoh lebih panjang biasanya meningkatkan anggaran, tetapi pasaran sebenar tidak menjamin pulangan tetap.",
+      },
+      {
+        question: "Apa beza compound interest dan DCA backtest?",
+        answer:
+          "Compound interest menggunakan pulangan tetap andaian; DCA backtest menggunakan data harga sejarah untuk mensimulasikan pembelian bulanan.",
+      },
+      {
+        question: "Adakah panduan compound interest ini nasihat kewangan?",
+        answer:
+          "Tidak. Halaman ini hanya untuk pendidikan dan bukan nasihat kewangan, pelaburan, cukai atau undang-undang.",
+      },
+    ],
+  },
+};
+
 function buildChineseLearningPages(
   locale: Locale
 ): Record<ChineseLearningSeoPageSlug, SeoPageContent> {
@@ -3411,6 +3699,10 @@ function buildChineseLearningPages(
 
   if (locale === "zh-TW") {
     return zhTwLearningPages;
+  }
+
+  if (locale === "ms") {
+    return msLearningPages;
   }
 
   return {} as Record<ChineseLearningSeoPageSlug, SeoPageContent>;
@@ -3498,7 +3790,7 @@ export function getSeoPageSlugsForLocale(locale: Locale): SeoPageSlug[] {
     return [...seoPageSlugs];
   }
 
-  if (locale === "zh-TW") {
+  if (locale === "zh-TW" || locale === "ms") {
     return seoPageSlugs.filter((slug) => !isMalaysiaGuideSeoPageSlug(slug));
   }
 
@@ -3523,7 +3815,7 @@ export function getSeoPageAlternates(slug: SeoPageSlug) {
   const locales = isMalaysiaGuideSeoPageSlug(slug)
     ? ["zh-CN"]
     : isChineseLearningSeoPageSlug(slug)
-      ? ["zh-CN", "zh-TW"]
+      ? ["zh-CN", "zh-TW", "ms"]
     : publicLocaleCodes;
 
   return Object.fromEntries(

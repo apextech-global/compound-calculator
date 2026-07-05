@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { absoluteUrl, productionBaseUrl } from "@/lib/seoMetadata";
 
-type LearnLocale = "en" | "zh-CN" | "zh-TW";
+type LearnLocale = "en" | "zh-CN" | "zh-TW" | "ms";
 
 type LearnLink = {
   title: string;
@@ -33,7 +33,7 @@ type LearnContent = {
   }>;
 };
 
-const learnLocales: LearnLocale[] = ["en", "zh-CN", "zh-TW"];
+const learnLocales: LearnLocale[] = ["en", "zh-CN", "zh-TW", "ms"];
 
 const content: Record<LearnLocale, LearnContent> = {
   en: {
@@ -820,6 +820,264 @@ const content: Record<LearnLocale, LearnContent> = {
         question: "這些內容是不是投資建議？",
         answer:
           "不是。本網站僅供教育用途，不推薦任何 ETF、股票、券商或投資策略。",
+      },
+    ],
+  },
+  ms: {
+    title: "Pusat Pembelajaran ETF DCA | DCA Backtest",
+    description:
+      "Belajar asas ETF DCA, DCA backtest, VOO, CSPX, QQQ, DCA vs Lump Sum, compound interest dan perkara yang pelabur Malaysia perlu semak.",
+    h1: "Pusat Pembelajaran ETF DCA",
+    breadcrumb: "Belajar",
+    eyebrow: "Pusat pembelajaran ETF DCA",
+    intro:
+      "Pusat pembelajaran ini membantu pengguna Malaysia memahami ETF DCA, ujian balik sejarah, compound interest, perbandingan VOO, CSPX dan QQQ, serta had penting seperti yuran, tukaran mata wang, cukai, dividen dan ketersediaan broker.",
+    disclaimerTitle: "Penafian pendidikan",
+    disclaimer:
+      "Kandungan ini untuk pendidikan sahaja dan bukan nasihat kewangan, nasihat pelaburan, nasihat cukai, nasihat undang-undang atau cadangan membeli mana-mana ETF. Prestasi lalu tidak menjamin hasil masa depan.",
+    quickLinksTitle: "Alat dan panduan popular",
+    quickLinks: [
+      { title: "Kalkulator DCA", href: "/ms/dca-calculator" },
+      {
+        title: "Kalkulator Compound Interest",
+        href: "/ms/compound-interest-calculator",
+      },
+      {
+        title: "Kalkulator Perbandingan ETF",
+        href: "/ms/etf-comparison-calculator",
+      },
+      { title: "Aset Disokong", href: "/ms/supported-assets" },
+      { title: "Penafian", href: "/ms/disclaimer" },
+    ],
+    sections: [
+      {
+        title: "Asas ETF DCA",
+        description:
+          "Mulakan dengan konsep pelaburan bulanan, dollar-cost averaging dan mengapa hasil sejarah bukan ramalan masa depan.",
+        links: [
+          {
+            title: "Kalkulator DCA",
+            description:
+              "Uji senario pelaburan bulanan dengan aset, jumlah, tahun mula dan tahun akhir.",
+            href: "/ms/dca-calculator",
+          },
+          {
+            title: "Panduan ETF DCA Backtest",
+            description:
+              "Belajar cara membaca keputusan sejarah, data sampel dan had ujian balik.",
+            href: "/ms/etf-dca-backtest-guide",
+          },
+          {
+            title: "Aset Disokong",
+            description:
+              "Semak ETF dan saham yang mempunyai data sejarah atau hanya data sampel.",
+            href: "/ms/supported-assets",
+          },
+        ],
+      },
+      {
+        title: "ETF DCA Backtest",
+        description:
+          "Fahami bagaimana harga bulanan sejarah digunakan untuk menganggarkan unit terkumpul, nilai akhir dan drawdown.",
+        links: [
+          {
+            title: "Panduan ETF DCA Backtest",
+            description:
+              "Panduan langkah demi langkah untuk menetapkan input dan menilai hasil.",
+            href: "/ms/etf-dca-backtest-guide",
+          },
+          {
+            title: "Kalkulator Perbandingan ETF",
+            description:
+              "Bandingkan dua aset dengan jumlah bulanan dan tempoh masa yang sama.",
+            href: "/ms/etf-comparison-calculator",
+          },
+          {
+            title: "Penafian Data",
+            description:
+              "Fahami batasan Yahoo Finance, data sampel, yuran, cukai dan tukaran mata wang.",
+            href: "/ms/disclaimer",
+          },
+        ],
+      },
+      {
+        title: "VOO / CSPX / QQQ Backtest",
+        description:
+          "Terokai contoh ETF popular tanpa menganggap mana-mana ETF sentiasa lebih baik.",
+        links: [
+          {
+            title: "Kalkulator DCA VOO",
+            description:
+              "Kajian senario bulanan untuk ETF S&P 500 yang disenaraikan di Amerika Syarikat.",
+            href: "/ms/voo-dca-calculator",
+          },
+          {
+            title: "Kalkulator DCA CSPX",
+            description:
+              "Ketahui bagaimana ETF UCITS S&P 500 boleh dimodelkan dalam DCA Backtest.",
+            href: "/ms/cspx-dca-calculator",
+          },
+          {
+            title: "Kalkulator DCA QQQ",
+            description:
+              "Terokai senario Nasdaq-100 dan hasil yang bergantung pada tempoh sejarah.",
+            href: "/ms/qqq-dca-calculator",
+          },
+        ],
+      },
+      {
+        title: "CSPX vs VOO",
+        description:
+          "Fahami perbezaan domisil, pasaran dagangan, mata wang, dividen, cukai dan ketersediaan broker untuk pengguna Malaysia.",
+        links: [
+          {
+            title: "CSPX vs VOO untuk Pelabur Malaysia",
+            description:
+              "Panduan pendidikan untuk membandingkan UCITS ETF dan ETF tersenarai di Amerika Syarikat.",
+            href: "/ms/cspx-vs-voo-malaysia",
+          },
+          {
+            title: "VOO vs CSPX",
+            description:
+              "Baca perbandingan umum tentang struktur dana, mata wang dan dividen.",
+            href: "/ms/voo-vs-cspx",
+          },
+          {
+            title: "Kalkulator Perbandingan ETF",
+            description:
+              "Uji kedua-dua aset dengan jumlah bulanan dan tempoh yang sama.",
+            href: "/ms/etf-comparison-calculator",
+          },
+        ],
+      },
+      {
+        title: "VOO vs QQQ",
+        description:
+          "Bandingkan pendedahan pasaran luas S&P 500 dengan pendedahan Nasdaq-100 yang lebih tertumpu kepada teknologi.",
+        links: [
+          {
+            title: "VOO vs QQQ DCA Backtest",
+            description:
+              "Ketahui mengapa hasil sejarah boleh berubah mengikut tahun mula dan tahun akhir.",
+            href: "/ms/voo-vs-qqq-dca",
+          },
+          {
+            title: "VOO vs QQQ",
+            description:
+              "Baca perbezaan indeks, tumpuan sektor dan risiko sejarah.",
+            href: "/ms/voo-vs-qqq",
+          },
+          {
+            title: "Kalkulator DCA QQQ",
+            description:
+              "Uji senario pelaburan bulanan untuk ETF berkaitan Nasdaq-100.",
+            href: "/ms/qqq-dca-calculator",
+          },
+        ],
+      },
+      {
+        title: "DCA vs Lump Sum",
+        description:
+          "Bandingkan pelaburan berperingkat dengan pelaburan jumlah penuh pada permulaan tempoh.",
+        links: [
+          {
+            title: "Panduan DCA vs Lump Sum",
+            description:
+              "Fahami perbezaan jumlah sumbangan, masa pasaran, drawdown dan tekanan emosi.",
+            href: "/ms/dca-vs-lump-sum-guide",
+          },
+          {
+            title: "DCA vs Lump Sum",
+            description:
+              "Buka halaman perbandingan sedia ada untuk menguji senario sejarah.",
+            href: "/ms/dca-vs-lump-sum",
+          },
+        ],
+      },
+      {
+        title: "Compound Interest",
+        description:
+          "Gunakan model pertumbuhan kompaun untuk memahami hubungan antara jumlah bulanan, masa dan andaian pulangan.",
+        links: [
+          {
+            title: "Panduan Compound Interest",
+            description:
+              "Belajar perbezaan antara anggaran pulangan tetap dan ujian balik harga sejarah.",
+            href: "/ms/compound-interest-guide",
+          },
+          {
+            title: "Kalkulator Compound Interest",
+            description:
+              "Modelkan sumbangan bulanan, pulangan tahunan andaian dan tempoh pelaburan.",
+            href: "/ms/compound-interest-calculator",
+          },
+        ],
+      },
+      {
+        title: "Perkara yang Pelabur Malaysia Perlu Semak",
+        description:
+          "Semak tukaran mata wang, pendedahan USD, yuran, spread, cukai, dividen dan ketersediaan platform sebelum membuat keputusan sendiri.",
+        links: [
+          {
+            title: "Alat Disyorkan",
+            description:
+              "Ketahui kategori alat biasa seperti broker, pertukaran mata wang dan penjejak portfolio tanpa cadangan khusus.",
+            href: "/ms/recommended-tools",
+          },
+          {
+            title: "Aset Disokong",
+            description:
+              "Semak status data sejarah untuk VOO, CSPX, QQQ dan aset lain.",
+            href: "/ms/supported-assets",
+          },
+          {
+            title: "Penafian",
+            description:
+              "Baca had data, cukai, undang-undang dan bukan nasihat kewangan.",
+            href: "/ms/disclaimer",
+          },
+        ],
+      },
+      {
+        title: "Soalan Lazim",
+        description:
+          "Jawapan ringkas tentang data sejarah, yuran, risiko dan penggunaan keputusan secara bertanggungjawab.",
+        links: [
+          {
+            title: "Panduan ETF DCA Backtest",
+            description:
+              "Mulakan di sini jika anda mahu memahami aliran kerja ujian balik.",
+            href: "/ms/etf-dca-backtest-guide",
+          },
+          {
+            title: "Pusat Pembelajaran",
+            description:
+              "Kembali ke halaman ini untuk meneroka topik berkaitan.",
+            href: "/ms/learn",
+          },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Adakah ETF DCA backtest boleh meramal pulangan masa depan?",
+        answer:
+          "Tidak. Backtest menggunakan data sejarah untuk mengkaji senario lalu. Masa depan boleh sangat berbeza.",
+      },
+      {
+        question: "Bolehkah pengguna Malaysia membandingkan VOO, CSPX dan QQQ?",
+        answer:
+          "Ya, gunakan halaman aset dan kalkulator perbandingan ETF dengan andaian jumlah bulanan dan tempoh yang sama.",
+      },
+      {
+        question: "Apa yang perlu disemak sebelum melabur sebenar?",
+        answer:
+          "Semak ketersediaan broker, yuran, spread, tukaran mata wang, cukai, dividen, risiko USD dan maklumat rasmi penyedia.",
+      },
+      {
+        question: "Adakah kandungan ini nasihat pelaburan?",
+        answer:
+          "Tidak. DCA Backtest ialah laman pendidikan dan tidak mengesyorkan ETF, saham, broker atau strategi tertentu.",
       },
     ],
   },

@@ -18,8 +18,8 @@
   "hero": {
     "eyebrow": "Alat ETF DCA, backtest dan pertumbuhan kompaun",
     "title": "Kalkulator DCA dan Alat Backtest ETF",
-    "description": "Uji balik pelaburan bulanan dalam VOO, CSPX, QQQ, VWRA, IWDA, ETF dan saham, kemudian bandingkan prestasi DCA dengan unjuran faedah kompaun.",
-    "seoIntro": "Gunakan kalkulator DCA, backtest DCA, kalkulator ETF, alat pelaburan bulanan dan kalkulator faedah kompaun ini untuk mengkaji senario jangka panjang bagi tujuan pendidikan sahaja.",
+    "description": "Uji balik pelaburan bulanan dalam VOO, CSPX, QQQ, VWRA, IWDA, ETF dan saham, bandingkan dua aset, serta kaji pertumbuhan compound interest untuk pendidikan sahaja.",
+    "seoIntro": "Gunakan DCA Backtest, kalkulator compound interest, kalkulator perbandingan ETF dan alat DCA vs Lump Sum untuk memahami senario pelaburan bulanan. Data sejarah mungkin datang daripada Yahoo Finance dan hasil hanya untuk pendidikan, bukan nasihat kewangan.",
     "linksLabel": "Halaman kalkulator popular",
     "links": {
       "dca-calculator": "Kalkulator DCA",
@@ -147,10 +147,10 @@
     "ta": "தமிழ்"
   },
   "seo": {
-    "title": "Kalkulator DCA & Alat Backtest | ETF dan Faedah Kompaun",
-    "description": "Uji balik pelaburan bulanan dalam VOO, CSPX, QQQ, VWRA dan IWDA, bandingkan prestasi DCA ETF dan saham, serta gunakan kalkulator faedah kompaun untuk pendidikan sahaja.",
-    "openGraphTitle": "Kalkulator DCA & Alat Backtest | ETF dan Faedah Kompaun",
-    "openGraphDescription": "Uji balik pelaburan bulanan dalam VOO, CSPX, QQQ, VWRA dan IWDA, bandingkan prestasi DCA ETF dan saham, serta gunakan kalkulator faedah kompaun untuk pendidikan sahaja."
+    "title": "Kalkulator DCA ETF Malaysia | Backtest, Compound Interest dan Perbandingan ETF",
+    "description": "Uji balik pelaburan bulanan dalam VOO, CSPX, QQQ, VWRA dan IWDA, bandingkan prestasi DCA ETF, kaji DCA vs Lump Sum dan gunakan kalkulator compound interest untuk pendidikan sahaja.",
+    "openGraphTitle": "Kalkulator DCA ETF Malaysia | Backtest, Compound Interest dan Perbandingan ETF",
+    "openGraphDescription": "Uji balik pelaburan bulanan dalam VOO, CSPX, QQQ, VWRA dan IWDA, bandingkan prestasi DCA ETF, kaji DCA vs Lump Sum dan gunakan kalkulator compound interest untuk pendidikan sahaja."
   },
   "faq": {
     "eyebrow": "FAQ",
@@ -203,7 +203,8 @@
     "disclaimer": "Penafian",
     "affiliateDisclosure": "Pendedahan Affiliate",
     "recommendedTools": "Alat Disyorkan",
-    "supportedAssets": "Aset Disokong"
+    "supportedAssets": "Aset Disokong",
+    "learnCenter": "Pusat Pembelajaran"
   },
   "recommendedTools": {
     "cta": "Bersedia untuk melabur sebenar? Bandingkan alat dan sahkan yuran rasmi dahulu."
@@ -393,7 +394,7 @@
   "seoContent": {
     "eyebrow": "Pendidikan Pelaburan",
     "title": "Ketahui cara ujian balik DCA dan pertumbuhan faedah kompaun berfungsi",
-    "intro": "Gunakan kalkulator faedah kompaun, kalkulator DCA, kalkulator ujian balik DCA, kalkulator pelaburan ETF dan kalkulator pelaburan bulanan ini untuk meneroka VOO, CSPX, ETF dan saham.",
+    "intro": "Gunakan kalkulator DCA, kalkulator compound interest, kalkulator perbandingan ETF dan kalkulator pelaburan bulanan ini untuk meneroka VOO, CSPX, QQQ, VWRA, IWDA, ETF, saham dan senario DCA vs Lump Sum. Harga sejarah digunakan untuk pendidikan sahaja dan bukan nasihat kewangan.",
     "sections": {
       "dca": {
         "title": "Apakah dollar-cost averaging?",
@@ -409,20 +410,20 @@
       },
       "howToUse": {
         "title": "Cara menggunakan kalkulator ujian balik DCA ini",
-        "body": "Pilih pasaran, jenis aset, aset, jumlah bulanan, tahun mula dan tahun akhir untuk menganggarkan jumlah dilaburkan, nilai akhir, unit terkumpul, keuntungan dan pulangan."
+        "body": "Pilih pasaran, jenis aset, aset, jumlah bulanan, tahun mula dan tahun akhir untuk menganggarkan jumlah dilaburkan, nilai akhir, unit terkumpul, keuntungan, pulangan dan metrik risiko pilihan."
       },
       "etfExample": {
         "title": "Contoh pelaburan bulanan ETF",
-        "body": "Kalkulator DCA VOO atau kalkulator DCA CSPX boleh menunjukkan bagaimana pembelian ETF secara berkala mungkin berkembang menggunakan harga bulanan sejarah jika data tersedia."
+        "body": "Kalkulator DCA VOO, kalkulator DCA CSPX atau kalkulator DCA QQQ boleh menunjukkan bagaimana pembelian ETF secara berkala mungkin berkembang menggunakan harga bulanan sejarah jika data tersedia."
       },
       "supportedAssets": {
         "title": "Aset dan pasaran yang disokong",
-        "body": "Pasaran yang disokong termasuk Amerika Syarikat, Ireland UCITS, Taiwan, Malaysia, Singapura, Jepun dan Hong Kong. Aset tanpa data pasaran yang diimport akan ditandakan dengan jelas sebagai data sampel."
+        "body": "Pasaran yang disokong termasuk Amerika Syarikat, Ireland UCITS, Taiwan, Malaysia, Singapura, Jepun dan Hong Kong, termasuk VOO, CSPX, QQQ, VWRA dan IWDA apabila data tersedia. Aset tanpa data pasaran yang diimport akan ditandakan dengan jelas sebagai data sampel."
       }
     },
     "disclaimer": {
       "title": "Penafian penting",
-      "body": "Alat ini adalah untuk tujuan pendidikan sahaja dan bukan nasihat kewangan."
+      "body": "Alat ini adalah untuk tujuan pendidikan sahaja dan bukan nasihat kewangan. Prestasi lalu tidak menjamin hasil masa depan, dan pulangan sebenar boleh berbeza kerana yuran, cukai, dividen, harga pelaksanaan dan tukaran mata wang."
     },
     "linksLabel": "Pautan laman yang berguna"
   },

@@ -50,7 +50,15 @@ export default function SeoContent() {
             href: "/zh-TW/learn",
             button: "打開學習中心",
           }
-        : null;
+        : typedLocale === "ms"
+          ? {
+              title: "Pusat Pembelajaran ETF DCA",
+              description:
+                "Belajar ETF DCA, compound interest, DCA backtest, VOO, CSPX, QQQ dan DCA vs Lump Sum.",
+              href: "/ms/learn",
+              button: "Buka pusat pembelajaran",
+            }
+          : null;
 
   return (
     <section className="mt-10 w-full min-w-0 border-t border-white/10 pt-8 sm:mt-14 sm:pt-10">
