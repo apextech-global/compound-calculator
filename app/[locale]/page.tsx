@@ -46,6 +46,95 @@ import {
 import { getMockYearsForSymbol, type SymbolKey } from "@/lib/mockMarketData";
 
 type ActiveCalculator = "dca" | "compound";
+type QuickStartPresetId =
+  | "voo-dca"
+  | "cspx-dca"
+  | "voo-cspx-comparison"
+  | "voo-qqq-comparison"
+  | "dca-vs-lump-sum"
+  | "compound-growth";
+
+type QuickStartPreset = {
+  id: QuickStartPresetId;
+  mode: "dca" | "comparison" | "dca_vs_lump_sum" | "compound";
+  assetSymbol?: string;
+  comparisonAssets?: string;
+};
+
+const quickStartCopy = {
+  en: {
+    title: "Popular examples",
+    presets: {
+      "voo-dca": "VOO DCA: $1,000/month, 2018-2025",
+      "cspx-dca": "CSPX DCA: $1,000/month, 2018-2025",
+      "voo-cspx-comparison": "VOO vs CSPX comparison",
+      "voo-qqq-comparison": "VOO vs QQQ comparison",
+      "dca-vs-lump-sum": "DCA vs Lump Sum example",
+      "compound-growth": "Compound growth: $500/month for 20 years",
+    },
+  },
+  "zh-CN": {
+    title: "热门试算案例",
+    presets: {
+      "voo-dca": "VOO 定投：每月 $1,000，2018-2025",
+      "cspx-dca": "CSPX 定投：每月 $1,000，2018-2025",
+      "voo-cspx-comparison": "VOO vs CSPX 对比",
+      "voo-qqq-comparison": "VOO vs QQQ 对比",
+      "dca-vs-lump-sum": "定投 vs 一次性投入示例",
+      "compound-growth": "复利增长：每月 $500，20 年",
+    },
+  },
+  "zh-TW": {
+    title: "熱門試算案例",
+    presets: {
+      "voo-dca": "VOO 定期定額：每月 $1,000，2018-2025",
+      "cspx-dca": "CSPX 定期定額：每月 $1,000，2018-2025",
+      "voo-cspx-comparison": "VOO vs CSPX 對比",
+      "voo-qqq-comparison": "VOO vs QQQ 對比",
+      "dca-vs-lump-sum": "定期定額 vs 單筆投入範例",
+      "compound-growth": "複利成長：每月 $500，20 年",
+    },
+  },
+  ms: {
+    title: "Contoh popular",
+    presets: {
+      "voo-dca": "VOO DCA: $1,000/bulan, 2018-2025",
+      "cspx-dca": "CSPX DCA: $1,000/bulan, 2018-2025",
+      "voo-cspx-comparison": "Perbandingan VOO vs CSPX",
+      "voo-qqq-comparison": "Perbandingan VOO vs QQQ",
+      "dca-vs-lump-sum": "Contoh DCA vs pelaburan sekaligus",
+      "compound-growth": "Pertumbuhan kompaun: $500/bulan selama 20 tahun",
+    },
+  },
+  id: {
+    title: "Contoh populer",
+    presets: {
+      "voo-dca": "VOO DCA: $1.000/bulan, 2018-2025",
+      "cspx-dca": "CSPX DCA: $1.000/bulan, 2018-2025",
+      "voo-cspx-comparison": "Perbandingan VOO vs CSPX",
+      "voo-qqq-comparison": "Perbandingan VOO vs QQQ",
+      "dca-vs-lump-sum": "Contoh DCA vs investasi sekaligus",
+      "compound-growth": "Pertumbuhan majemuk: $500/bulan selama 20 tahun",
+    },
+  },
+} as const;
+
+const quickStartPresets: QuickStartPreset[] = [
+  { id: "voo-dca", mode: "dca", assetSymbol: "VOO" },
+  { id: "cspx-dca", mode: "dca", assetSymbol: "CSPX.L" },
+  {
+    id: "voo-cspx-comparison",
+    mode: "comparison",
+    comparisonAssets: "VOO,CSPX.L",
+  },
+  {
+    id: "voo-qqq-comparison",
+    mode: "comparison",
+    comparisonAssets: "VOO,QQQ",
+  },
+  { id: "dca-vs-lump-sum", mode: "dca_vs_lump_sum", assetSymbol: "VOO" },
+  { id: "compound-growth", mode: "compound" },
+];
 
 const marketQueryAliases: Record<string, string> = {
   us: "United States",
@@ -298,6 +387,28 @@ export default function Home() {
   const hasTrackedInitialCompoundCalculation = useRef(false);
   const hasUserChangedDcaCalculation = useRef(false);
   const hasUserChangedCompoundCalculation = useRef(false);
+  const quickStartLabels =
+    quickStartCopy[locale as keyof typeof quickStartCopy] ?? quickStartCopy.en;
+
+  const scrollToCalculator = () => {
+    window.requestAnimationFrame(() => {
+      document
+        .getElementById("calculator")
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  };
+
+  const trackQuickStartPreset = (preset: QuickStartPreset) => {
+    trackGaEvent("quick_start_preset_clicked", {
+      preset_id: preset.id,
+      locale,
+      mode: preset.mode,
+      ...(preset.assetSymbol ? { asset_symbol: preset.assetSymbol } : {}),
+      ...(preset.comparisonAssets
+        ? { comparison_assets: preset.comparisonAssets }
+        : {}),
+    });
+  };
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -531,6 +642,87 @@ export default function Home() {
   const handleYearsChange = (value: string) => {
     hasUserChangedCompoundCalculation.current = true;
     setYears(value);
+  };
+
+  const applyDcaQuickStartPreset = (
+    assetId: SymbolKey,
+    preset: QuickStartPreset
+  ) => {
+    const instrument = getInstrumentById(assetId);
+
+    if (!instrument) {
+      return;
+    }
+
+    setSelectedCurrency("USD");
+    setActiveCalculator("dca");
+    setBacktestCountry(instrument.country);
+    setBacktestAssetType(instrument.assetType);
+    setBacktestSymbol(instrument.id);
+    setBacktestMonthlyAmount("1000");
+    setBacktestFixedFee("0");
+    setBacktestPercentageFee("0");
+    setBacktestPurchasePriceMethod("close");
+    setBacktestStartYear("2018");
+    setBacktestEndYear("2025");
+    hasUserChangedDcaCalculation.current = true;
+    trackQuickStartPreset(preset);
+    scrollToCalculator();
+  };
+
+  const applyCompoundQuickStartPreset = (preset: QuickStartPreset) => {
+    setSelectedCurrency("USD");
+    setActiveCalculator("compound");
+    setInitialAmount("0");
+    setMonthlyContribution("500");
+    setAnnualReturn("8");
+    setYears("20");
+    hasUserChangedCompoundCalculation.current = true;
+    trackQuickStartPreset(preset);
+    scrollToCalculator();
+  };
+
+  const navigateToComparisonQuickStartPreset = (
+    assetA: string,
+    assetB: string,
+    preset: QuickStartPreset
+  ) => {
+    const url = new URL(`/${locale}`, window.location.origin);
+
+    url.searchParams.set("compare", "assets");
+    url.searchParams.set("assetA", assetA);
+    url.searchParams.set("assetB", assetB);
+    url.searchParams.set("compareAmount", "1000");
+    url.searchParams.set("compareStart", "2018");
+    url.searchParams.set("compareEnd", "2025");
+    url.searchParams.set("currency", "USD");
+    url.hash = "calculator";
+
+    trackQuickStartPreset(preset);
+    window.location.assign(url.toString());
+  };
+
+  const handleQuickStartPreset = (preset: QuickStartPreset) => {
+    switch (preset.id) {
+      case "voo-dca":
+        applyDcaQuickStartPreset("voo", preset);
+        break;
+      case "cspx-dca":
+        applyDcaQuickStartPreset("cspx-l", preset);
+        break;
+      case "voo-cspx-comparison":
+        navigateToComparisonQuickStartPreset("VOO", "CSPX.L", preset);
+        break;
+      case "voo-qqq-comparison":
+        navigateToComparisonQuickStartPreset("VOO", "QQQ", preset);
+        break;
+      case "dca-vs-lump-sum":
+        applyDcaQuickStartPreset("voo", preset);
+        break;
+      case "compound-growth":
+        applyCompoundQuickStartPreset(preset);
+        break;
+    }
   };
 
   useEffect(() => {
@@ -1269,6 +1461,29 @@ export default function Home() {
           growthMultiple={growthMultiple}
           onCalculatorChange={handleCalculatorChange}
         />
+
+        <section
+          aria-label={quickStartLabels.title}
+          className="mb-4 w-full rounded-2xl border border-white/10 bg-white/[0.045] p-3 shadow-[0_18px_60px_rgba(2,6,23,0.24)] sm:p-4"
+        >
+          <div className="flex w-full min-w-0 flex-col gap-3 lg:flex-row lg:items-center">
+            <p className="shrink-0 text-xs font-semibold uppercase tracking-[0.22em] text-cyan-200/85">
+              {quickStartLabels.title}
+            </p>
+            <div className="flex w-full min-w-0 flex-wrap gap-2">
+              {quickStartPresets.map((preset) => (
+                <button
+                  key={preset.id}
+                  type="button"
+                  onClick={() => handleQuickStartPreset(preset)}
+                  className="min-w-0 rounded-full border border-white/10 bg-slate-900/75 px-3 py-2 text-left text-xs font-semibold leading-snug text-slate-100 transition hover:border-cyan-300/50 hover:bg-cyan-300/10 hover:text-white focus:outline-none focus:ring-2 focus:ring-cyan-300/50 sm:px-4 sm:text-sm"
+                >
+                  {quickStartLabels.presets[preset.id]}
+                </button>
+              ))}
+            </div>
+          </div>
+        </section>
 
         <div id="calculator" className="w-full min-w-0 scroll-mt-24">
           {activeCalculator === "dca" ? (
