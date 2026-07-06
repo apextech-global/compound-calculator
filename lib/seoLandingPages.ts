@@ -87,7 +87,7 @@ type LocaleSeoContent = {
   internalLinksLabel: string;
   disclaimerTitle: string;
   disclaimer: string;
-  pages: Record<SeoPageSlug, SeoPageContent>;
+  pages: Partial<Record<SeoPageSlug, SeoPageContent>>;
 };
 
 const enPages: Record<BaseSeoPageSlug, SeoPageContent> = {
@@ -4074,7 +4074,13 @@ export function getSeoLandingContent(locale: Locale): LocaleSeoContent {
 }
 
 export function getSeoLandingPage(locale: Locale, slug: SeoPageSlug) {
-  return getSeoLandingContent(locale).pages[slug];
+  const page = getSeoLandingContent(locale).pages[slug];
+
+  if (!page) {
+    throw new Error(`Missing SEO page content for ${locale}/${slug}`);
+  }
+
+  return page;
 }
 
 export function isSeoPageSlug(value: string): value is SeoPageSlug {

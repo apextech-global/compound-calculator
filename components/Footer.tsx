@@ -75,7 +75,7 @@ export default function Footer() {
               href={`/${locale}/${slug}`}
               className="transition hover:text-cyan-300"
             >
-              {guides.pages[slug].h1}
+              {guides.pages[slug]?.h1 ?? slug}
             </Link>
           ))}
         </nav>

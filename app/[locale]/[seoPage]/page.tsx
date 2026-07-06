@@ -144,7 +144,7 @@ export default async function SeoLandingPage({
   const messages = (await import(`../../../messages/${typedLocale}.json`))
     .default;
   const content = getSeoLandingContent(typedLocale);
-  const page = content.pages[typedPage];
+  const page = getSeoLandingPage(typedLocale, typedPage);
   const pageUrl = absoluteUrl(`/${typedLocale}/${typedPage}`);
   const seoLinks =
     typedLocale === "zh-CN" ||
@@ -332,7 +332,7 @@ export default async function SeoLandingPage({
               href={`/${typedLocale}/${link}`}
               className="rounded-full border border-cyan-300/20 bg-cyan-400/10 px-4 py-2 text-cyan-100 transition hover:border-cyan-300/50 hover:text-white"
             >
-              {content.pages[link].h1}
+              {content.pages[link]?.h1 ?? link}
             </Link>
           ))}
           {visibleSiteLinks.map((link) => (

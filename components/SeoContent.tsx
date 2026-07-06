@@ -141,7 +141,7 @@ export default function SeoContent() {
             href={`/${locale}/${slug}`}
             className="rounded-full border border-cyan-300/20 bg-cyan-400/10 px-4 py-2 text-cyan-100 transition hover:border-cyan-300/50 hover:text-white"
           >
-            {guides.pages[slug].h1}
+            {guides.pages[slug]?.h1 ?? slug}
           </Link>
         ))}
         {legalLinks.map((link) => (
