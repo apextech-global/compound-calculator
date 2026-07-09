@@ -1,4 +1,4 @@
-import { routing, type Locale } from "@/i18n/routing";
+import type { Locale } from "@/i18n/routing";
 import { publicLocaleCodes } from "@/lib/locales";
 import { absoluteUrl, xDefaultUrl } from "@/lib/seoMetadata";
 

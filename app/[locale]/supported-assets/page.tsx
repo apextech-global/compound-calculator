@@ -5,7 +5,7 @@ import { routing, type Locale } from "@/i18n/routing";
 import { hasImportedMarketData } from "@/lib/marketDataAvailability";
 import { getMarketDataLastUpdatedDate } from "@/lib/marketDataStatus";
 import { instruments } from "@/lib/instruments";
-import { getSeoLandingContent, type SeoPageSlug } from "@/lib/seoLandingPages";
+import { getSeoLandingPage, type SeoPageSlug } from "@/lib/seoLandingPages";
 import {
   absoluteUrl,
   alternateLanguages,
@@ -171,7 +171,6 @@ export default async function SupportedAssetsPage({
   const messages = await getMessages(typedLocale);
   const pageMessages = messages.supportedAssets as SupportedAssetMessages;
   const footer = messages.footer as Record<string, string>;
-  const seoPages = getSeoLandingContent(typedLocale).pages;
   const rows = instruments.map((instrument) => {
     const hasHistoricalData = hasImportedMarketData(instrument.dataKey);
     const assetPageSlug = assetPageSlugs[instrument.id];
@@ -294,7 +293,7 @@ export default async function SupportedAssetsPage({
             >
               {link === "disclaimer"
                 ? footer.disclaimer
-                : seoPages[link].h1}
+                : getSeoLandingPage(typedLocale, link).h1}
             </Link>
           ))}
         </nav>
