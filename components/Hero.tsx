@@ -16,6 +16,7 @@ const priorityLinks = [
 export default function Hero() {
   const t = useTranslations();
   const locale = useLocale();
+  const calculatorLinksLabel = t("hero.calculatorLinksLabel");
 
   return (
     <div className="mb-3 w-full max-w-4xl sm:mb-4">
@@ -31,20 +32,22 @@ export default function Hero() {
       <p className="mt-2 max-w-3xl break-words text-xs leading-5 text-slate-400 sm:mt-3 sm:text-sm sm:leading-6">
         {t("hero.seoIntro")}
       </p>
+
       <nav
-        aria-label={t("hero.linksLabel")}
+        aria-label={calculatorLinksLabel}
         className="mt-3 flex w-full flex-wrap gap-2 text-xs sm:mt-4 sm:text-sm"
       >
         {priorityLinks.map((link) => (
           <Link
             key={link}
             href={`/${locale}/${link}`}
-            className="min-w-0 rounded-full border border-white/10 bg-white/[0.06] px-3 py-1.5 text-slate-200 transition hover:border-cyan-300/40 hover:text-cyan-100"
+            className="min-w-0 rounded-full border border-white/10 bg-white/[0.06] px-3 py-1.5 text-slate-200 transition hover:border-cyan-300/40 hover:text-cyan-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/80 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
           >
             {t(`hero.links.${link}`)}
           </Link>
         ))}
       </nav>
+
     </div>
   );
 }

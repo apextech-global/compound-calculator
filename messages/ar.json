@@ -20,7 +20,8 @@
     "title": "حاسبة DCA وأداة اختبار ETF التاريخي",
     "description": "اختبر الاستثمار الشهري في VOO وCSPX وQQQ وVWRA وIWDA وصناديق ETF والأسهم، ثم قارن أداء DCA بتوقعات الفائدة المركبة.",
     "seoIntro": "استخدم حاسبة DCA واختبار DCA التاريخي وحاسبة ETF وأداة الاستثمار الشهري وحاسبة الفائدة المركبة لدراسة سيناريوهات طويلة الأجل لأغراض تعليمية فقط.",
-    "linksLabel": "صفحات الحاسبات الشائعة",
+    "relatedLinksLabel": "متابعة الاستكشاف",
+    "calculatorLinksLabel": "صفحات الآلة الحاسبة الشائعة",
     "links": {
       "dca-calculator": "حاسبة DCA",
       "compound-interest-calculator": "حاسبة الفائدة المركبة",
@@ -28,6 +29,24 @@
       "etf-comparison-calculator": "حاسبة مقارنة ETF",
       "voo-vs-cspx": "VOO مقابل CSPX",
       "voo-vs-qqq": "VOO مقابل QQQ"
+    },
+    "relatedLinks": {
+      "learn": {
+        "title": "اعرف المزيد",
+        "description": "تعرف على DCA والنمو المركب وأساسيات ETF."
+      },
+      "supported-assets": {
+        "title": "الأصول المدعومة",
+        "description": "استعرض أمثلة ETF والأسهم المدعومة."
+      },
+      "recommended-tools": {
+        "title": "الأدوات الموصى بها",
+        "description": "اطلع على الأدوات والموارد الاستثمارية ذات الصلة."
+      },
+      "voo-vs-cspx": {
+        "title": "VOO مقابل CSPX",
+        "description": "قارن بين حالتين شائعتين من ETF بسرعة."
+      }
     }
   },
   "cards": {

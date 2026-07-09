@@ -20,7 +20,8 @@
     "title": "DCA計算機とETFバックテストツール",
     "description": "VOO、QQQ、CSPX、VWRA、IWDAなどのETFや株式への毎月投資をバックテストし、複利計算やETF比較を教育目的で確認できます。",
     "seoIntro": "DCA計算機、ETFバックテスト、複利計算機、ETF比較計算機を使って、積立投資、一括投資、過去データの違いを学べます。",
-    "linksLabel": "人気の計算機ページ",
+    "relatedLinksLabel": "さらに探す",
+    "calculatorLinksLabel": "人気の計算機ページ",
     "links": {
       "dca-calculator": "DCA計算機",
       "compound-interest-calculator": "複利計算機",
@@ -28,6 +29,24 @@
       "etf-comparison-calculator": "ETF比較計算機",
       "voo-vs-cspx": "VOO vs CSPX",
       "voo-vs-qqq": "VOO vs QQQ"
+    },
+    "relatedLinks": {
+      "learn": {
+        "title": "もっと詳しく",
+        "description": "DCA、複利成長、ETFの基礎を学びましょう。"
+      },
+      "supported-assets": {
+        "title": "対応資産",
+        "description": "対応するETFや株式の例を確認します。"
+      },
+      "recommended-tools": {
+        "title": "おすすめツール",
+        "description": "関連するツールや投資リソースを見る。"
+      },
+      "voo-vs-cspx": {
+        "title": "VOO vs CSPX",
+        "description": "人気のETFシナリオをすばやく比較します。"
+      }
     }
   },
   "cards": {

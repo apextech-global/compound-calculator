@@ -20,7 +20,8 @@
     "title": "Calculateur DCA et outil de backtest ETF",
     "description": "Backtestez des investissements mensuels dans VOO, CSPX, QQQ, VWRA, IWDA, ETF et actions, puis comparez le DCA avec des projections composées.",
     "seoIntro": "Utilisez ce calculateur DCA, backtest DCA, calculateur ETF, outil d’investissement mensuel et calculateur d’intérêts composés pour étudier des scénarios long terme à des fins éducatives.",
-    "linksLabel": "Pages de calcul populaires",
+    "relatedLinksLabel": "Continuer à explorer",
+    "calculatorLinksLabel": "Pages de calculatrices populaires",
     "links": {
       "dca-calculator": "Calculateur DCA",
       "compound-interest-calculator": "Calculateur d’intérêts composés",
@@ -28,6 +29,24 @@
       "etf-comparison-calculator": "Calculateur de comparaison ETF",
       "voo-vs-cspx": "VOO vs CSPX",
       "voo-vs-qqq": "VOO vs QQQ"
+    },
+    "relatedLinks": {
+      "learn": {
+        "title": "En savoir plus",
+        "description": "Apprenez le DCA, la croissance composée et les bases des ETF."
+      },
+      "supported-assets": {
+        "title": "Actifs pris en charge",
+        "description": "Parcourez des exemples d’ETF et d’actions pris en charge."
+      },
+      "recommended-tools": {
+        "title": "Outils recommandés",
+        "description": "Découvrez des outils et ressources d’investissement connexes."
+      },
+      "voo-vs-cspx": {
+        "title": "VOO vs CSPX",
+        "description": "Comparez rapidement deux scénarios ETF populaires."
+      }
     }
   },
   "cards": {

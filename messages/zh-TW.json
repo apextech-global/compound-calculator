@@ -16,11 +16,12 @@
     "compoundCalculator": "複利計算器"
   },
   "hero": {
-    "eyebrow": "ETF 定期定額、回測與複利成長工具",
-    "title": "DCA 定期定額計算機與 ETF 回測工具",
-    "description": "回測每月定期定額 VOO、CSPX、QQQ、VWRA、IWDA、ETF 和股票的表現，對比兩個資產，並用複利計算機進行長期情境分析。",
-    "seoIntro": "使用 DCA Backtest 定期定額計算機、複利計算機、ETF 對比計算機和定期定額 vs 單筆投入工具，學習每月投資情境。歷史資料可能來自 Yahoo Finance 等第三方來源，結果僅供教育用途。",
-    "linksLabel": "熱門計算器頁面",
+    "eyebrow": "教育型 DCA 回測與複利成長工具",
+    "title": "DCA 回測 + 複利成長計算器",
+    "description": "使用這個教育型網站，回測 ETF 和股票的歷史定期投入表現，對比資產，並用定期投入模擬複利成長。",
+    "seoIntro": "教育型 DCA 回測與複利成長計算器，適用於 ETF 和股票場景，可使用歷史資料或範例資料探索不同方案。",
+    "relatedLinksLabel": "繼續探索",
+    "calculatorLinksLabel": "熱門計算器頁面",
     "links": {
       "dca-calculator": "DCA 定投計算器",
       "compound-interest-calculator": "複利計算器",
@@ -28,6 +29,24 @@
       "etf-comparison-calculator": "ETF 對比計算器",
       "voo-vs-cspx": "VOO 對比 CSPX",
       "voo-vs-qqq": "VOO 對比 QQQ"
+    },
+    "relatedLinks": {
+      "learn": {
+        "title": "學習中心",
+        "description": "了解 DCA、複利與 ETF 的基礎概念。"
+      },
+      "supported-assets": {
+        "title": "支援的資產",
+        "description": "查看支援的 ETF 與股票範例。"
+      },
+      "recommended-tools": {
+        "title": "推薦工具",
+        "description": "查看相關工具與投資資源入口。"
+      },
+      "voo-vs-cspx": {
+        "title": "VOO vs CSPX",
+        "description": "快速比較兩個常見 ETF 的回測差異。"
+      }
     }
   },
   "cards": {
@@ -35,13 +54,13 @@
       "eyebrow": "預設",
       "title": "歷史 DCA 回測",
       "description": "使用 ETF 與高成長股票的歷史市場資料，回測每月定期投入表現。",
-      "cta": "開啟 DCA 回測"
+      "cta": "開始 DCA 回測"
     },
     "compound": {
       "eyebrow": "預測",
       "title": "複利計算器",
       "description": "透過定期投入與按月複利，估算未來投資組合成長。",
-      "cta": "開啟複利計算器"
+      "cta": "開始複利模擬"
     }
   },
   "metrics": {

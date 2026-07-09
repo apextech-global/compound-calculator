@@ -20,7 +20,8 @@
     "title": "Kalkulator DCA dan Alat Backtest ETF",
     "description": "Backtest investasi bulanan di VOO, CSPX, QQQ, VWRA, IWDA, ETF, dan saham, lalu bandingkan performa DCA dengan proyeksi bunga majemuk.",
     "seoIntro": "Gunakan kalkulator DCA, backtest DCA, kalkulator ETF, alat investasi bulanan, dan kalkulator bunga majemuk ini untuk mempelajari skenario jangka panjang hanya untuk edukasi.",
-    "linksLabel": "Halaman kalkulator populer",
+    "relatedLinksLabel": "Lanjut jelajah",
+    "calculatorLinksLabel": "Halaman kalkulator populer",
     "links": {
       "dca-calculator": "Kalkulator DCA",
       "compound-interest-calculator": "Kalkulator bunga majemuk",
@@ -28,6 +29,24 @@
       "etf-comparison-calculator": "Kalkulator perbandingan ETF",
       "voo-vs-cspx": "VOO vs CSPX",
       "voo-vs-qqq": "VOO vs QQQ"
+    },
+    "relatedLinks": {
+      "learn": {
+        "title": "Pelajari lebih lanjut",
+        "description": "Pelajari DCA, pertumbuhan majemuk, dan dasar ETF."
+      },
+      "supported-assets": {
+        "title": "Aset yang didukung",
+        "description": "Jelajahi contoh ETF dan saham yang didukung."
+      },
+      "recommended-tools": {
+        "title": "Alat yang disarankan",
+        "description": "Lihat alat dan sumber daya investasi terkait."
+      },
+      "voo-vs-cspx": {
+        "title": "VOO vs CSPX",
+        "description": "Bandingkan dua skenario ETF populer dengan cepat."
+      }
     }
   },
   "cards": {

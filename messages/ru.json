@@ -20,7 +20,8 @@
     "title": "DCA-калькулятор и ETF-бэктест",
     "description": "Тестируйте ежемесячные инвестиции в VOO, CSPX, QQQ, VWRA, IWDA, ETF и акции, затем сравнивайте DCA с прогнозами сложного процента.",
     "seoIntro": "Используйте этот DCA-калькулятор, DCA-бэктест, ETF-калькулятор, инструмент ежемесячных инвестиций и калькулятор сложного процента для образовательного анализа долгосрочных сценариев.",
-    "linksLabel": "Популярные страницы калькуляторов",
+    "relatedLinksLabel": "Продолжить изучение",
+    "calculatorLinksLabel": "Популярные страницы калькуляторов",
     "links": {
       "dca-calculator": "DCA-калькулятор",
       "compound-interest-calculator": "Калькулятор сложного процента",
@@ -28,6 +29,24 @@
       "etf-comparison-calculator": "ETF-калькулятор сравнения",
       "voo-vs-cspx": "VOO vs CSPX",
       "voo-vs-qqq": "VOO vs QQQ"
+    },
+    "relatedLinks": {
+      "learn": {
+        "title": "Узнать больше",
+        "description": "Изучите DCA, сложный рост и основы ETF."
+      },
+      "supported-assets": {
+        "title": "Поддерживаемые активы",
+        "description": "Просмотрите примеры поддерживаемых ETF и акций."
+      },
+      "recommended-tools": {
+        "title": "Рекомендуемые инструменты",
+        "description": "Ознакомьтесь с полезными инструментами и инвестиционными ресурсами."
+      },
+      "voo-vs-cspx": {
+        "title": "VOO vs CSPX",
+        "description": "Быстро сравните два популярных сценария ETF."
+      }
     }
   },
   "cards": {

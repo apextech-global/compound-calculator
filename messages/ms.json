@@ -20,7 +20,8 @@
     "title": "Kalkulator DCA dan Alat Backtest ETF",
     "description": "Uji balik pelaburan bulanan dalam VOO, CSPX, QQQ, VWRA, IWDA, ETF dan saham, bandingkan dua aset, serta kaji pertumbuhan compound interest untuk pendidikan sahaja.",
     "seoIntro": "Gunakan DCA Backtest, kalkulator compound interest, kalkulator perbandingan ETF dan alat DCA vs Lump Sum untuk memahami senario pelaburan bulanan. Data sejarah mungkin datang daripada Yahoo Finance dan hasil hanya untuk pendidikan, bukan nasihat kewangan.",
-    "linksLabel": "Halaman kalkulator popular",
+    "relatedLinksLabel": "Teruskan meneroka",
+    "calculatorLinksLabel": "Halaman kalkulator popular",
     "links": {
       "dca-calculator": "Kalkulator DCA",
       "compound-interest-calculator": "Kalkulator faedah kompaun",
@@ -28,6 +29,24 @@
       "etf-comparison-calculator": "Kalkulator perbandingan ETF",
       "voo-vs-cspx": "VOO vs CSPX",
       "voo-vs-qqq": "VOO vs QQQ"
+    },
+    "relatedLinks": {
+      "learn": {
+        "title": "Ketahui lebih lanjut",
+        "description": "Ketahui tentang DCA, pertumbuhan kompaun dan asas ETF."
+      },
+      "supported-assets": {
+        "title": "Aset yang disokong",
+        "description": "Semak contoh ETF dan saham yang disokong."
+      },
+      "recommended-tools": {
+        "title": "Alat yang disyorkan",
+        "description": "Lihat alat dan sumber pelaburan yang berkaitan."
+      },
+      "voo-vs-cspx": {
+        "title": "VOO vs CSPX",
+        "description": "Bandingkan dua senario ETF popular dengan cepat."
+      }
     }
   },
   "cards": {

@@ -20,7 +20,8 @@
     "title": "DCA-Rechner und ETF-Backtest-Tool",
     "description": "Testen Sie monatliche Investments in VOO, CSPX, QQQ, VWRA, IWDA, ETFs und Aktien und vergleichen Sie DCA-Ergebnisse mit Zinseszinsprojektionen.",
     "seoIntro": "Nutzen Sie diesen DCA-Rechner, DCA-Backtest, ETF-Rechner, monatlichen Investment-Rechner und Zinseszinsrechner, um langfristige Szenarien nur zu Bildungszwecken zu prüfen.",
-    "linksLabel": "Beliebte Rechnerseiten",
+    "relatedLinksLabel": "Weiter entdecken",
+    "calculatorLinksLabel": "Beliebte Rechnerseiten",
     "links": {
       "dca-calculator": "DCA-Rechner",
       "compound-interest-calculator": "Zinseszinsrechner",
@@ -28,6 +29,24 @@
       "etf-comparison-calculator": "ETF-Vergleichsrechner",
       "voo-vs-cspx": "VOO vs CSPX",
       "voo-vs-qqq": "VOO vs QQQ"
+    },
+    "relatedLinks": {
+      "learn": {
+        "title": "Mehr erfahren",
+        "description": "Lerne mehr über DCA, Compound Growth und ETF-Grundlagen."
+      },
+      "supported-assets": {
+        "title": "Unterstützte Assets",
+        "description": "Durchsuche unterstützte ETF- und Aktienbeispiele."
+      },
+      "recommended-tools": {
+        "title": "Empfohlene Tools",
+        "description": "Sieh dir verwandte Tools und Anlagequellen an."
+      },
+      "voo-vs-cspx": {
+        "title": "VOO vs. CSPX",
+        "description": "Vergleiche zwei beliebte ETF-Szenarien schnell."
+      }
     }
   },
   "cards": {

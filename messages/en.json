@@ -16,11 +16,12 @@
     "compoundCalculator": "Compound Calculator"
   },
   "hero": {
-    "eyebrow": "ETF DCA, backtest, and compound growth tools",
-    "title": "DCA Calculator and ETF Backtest Tool",
-    "description": "Backtest monthly investing in VOO, CSPX, QQQ, VWRA, IWDA, ETFs, and stocks, compare two assets, and project compound growth with educational assumptions.",
-    "seoIntro": "Use the DCA Backtest calculator, compound interest calculator, ETF comparison calculator, and DCA vs lump sum tools to study monthly investing scenarios. Historical data may come from third-party sources such as Yahoo Finance and results are educational only.",
-    "linksLabel": "Popular calculator pages",
+    "eyebrow": "Educational DCA backtest and compound growth tools",
+    "title": "DCA Backtest + Compound Growth Calculator",
+    "description": "Use this educational site to backtest historical DCA investing in ETFs and stocks, compare assets, and model compound growth with recurring contributions.",
+    "seoIntro": "Explore DCA backtest and compound growth scenarios for ETFs and stocks in a simple, educational way using historical data or sample data.",
+    "relatedLinksLabel": "Continue exploring",
+    "calculatorLinksLabel": "Popular calculator pages",
     "links": {
       "dca-calculator": "DCA calculator",
       "compound-interest-calculator": "Compound interest calculator",
@@ -28,6 +29,24 @@
       "etf-comparison-calculator": "ETF comparison calculator",
       "voo-vs-cspx": "VOO vs CSPX",
       "voo-vs-qqq": "VOO vs QQQ"
+    },
+    "relatedLinks": {
+      "learn": {
+        "title": "Learn more",
+        "description": "Learn DCA, compound growth, and ETF basics."
+      },
+      "supported-assets": {
+        "title": "Supported assets",
+        "description": "Browse supported ETF and stock examples."
+      },
+      "recommended-tools": {
+        "title": "Recommended tools",
+        "description": "See related tools and investment resources."
+      },
+      "voo-vs-cspx": {
+        "title": "VOO vs CSPX",
+        "description": "Compare two popular ETF scenarios quickly."
+      }
     }
   },
   "cards": {
@@ -35,13 +54,13 @@
       "eyebrow": "Default",
       "title": "Historical DCA Backtest",
       "description": "Backtest monthly investments with historical market data for ETFs and high-growth stocks.",
-      "cta": "Open DCA Backtest"
+      "cta": "Start DCA backtest"
     },
     "compound": {
       "eyebrow": "Projection",
       "title": "Compound Interest Calculator",
       "description": "Estimate future portfolio growth with recurring contributions and monthly compounding.",
-      "cta": "Open Compound Calculator"
+      "cta": "Start compound growth"
     }
   },
   "metrics": {

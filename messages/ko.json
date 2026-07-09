@@ -20,7 +20,8 @@
     "title": "DCA 계산기와 ETF 백테스트 도구",
     "description": "VOO, CSPX, QQQ, VWRA, IWDA, ETF, 주식의 월별 투자를 백테스트하고 DCA 성과를 복리 전망과 비교하세요.",
     "seoIntro": "이 DCA 계산기, DCA 백테스트, ETF 계산기, 월별 투자 도구, 복리 계산기로 교육 목적의 장기 시나리오를 살펴보세요.",
-    "linksLabel": "인기 계산기 페이지",
+    "relatedLinksLabel": "더 알아보기",
+    "calculatorLinksLabel": "인기 계산기 페이지",
     "links": {
       "dca-calculator": "DCA 계산기",
       "compound-interest-calculator": "복리 계산기",
@@ -28,6 +29,24 @@
       "etf-comparison-calculator": "ETF 비교 계산기",
       "voo-vs-cspx": "VOO vs CSPX",
       "voo-vs-qqq": "VOO vs QQQ"
+    },
+    "relatedLinks": {
+      "learn": {
+        "title": "더 알아보기",
+        "description": "DCA, 복리 성장, ETF 기초를 알아보세요."
+      },
+      "supported-assets": {
+        "title": "지원 자산",
+        "description": "지원되는 ETF 및 주식 예시를 살펴보세요."
+      },
+      "recommended-tools": {
+        "title": "추천 도구",
+        "description": "관련 도구와 투자 리소스를 확인하세요."
+      },
+      "voo-vs-cspx": {
+        "title": "VOO vs CSPX",
+        "description": "인기 ETF 시나리오 두 가지를 빠르게 비교하세요."
+      }
     }
   },
   "cards": {

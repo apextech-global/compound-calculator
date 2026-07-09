@@ -10,6 +10,7 @@ import Faq, { faqItems } from "@/components/Faq";
 import Hero from "@/components/Hero";
 import MobileBackToCalculator from "@/components/MobileBackToCalculator";
 import Navbar from "@/components/Navbar";
+import RelatedLinks from "@/components/RelatedLinks";
 import SeoContent from "@/components/SeoContent";
 import { trackGaEvent } from "@/lib/analytics";
 import {
@@ -1502,6 +1503,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <RelatedLinks />
 
         <div id="calculator" className="w-full min-w-0 scroll-mt-24">
           {activeCalculator === "dca" ? (
