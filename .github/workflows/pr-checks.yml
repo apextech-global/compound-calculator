@@ -1,0 +1,50 @@
+name: PR Checks
+
+on:
+  pull_request:
+
+jobs:
+  checks:
+    name: Lint / Build / Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
+
+      - name: Run lint
+        run: |
+          if node -e "process.exit(require('./package.json').scripts && require('./package.json').scripts.lint ? 0 : 1)"; then
+            npm run lint
+          else
+            echo "No lint script found, skipping."
+          fi
+
+      - name: Run build
+        run: |
+          if node -e "process.exit(require('./package.json').scripts && require('./package.json').scripts.build ? 0 : 1)"; then
+            npm run build
+          else
+            echo "No build script found, skipping."
+          fi
+
+      - name: Run algorithm tests
+        run: |
+          if node -e "process.exit(require('./package.json').scripts && require('./package.json').scripts['test:algorithms'] ? 0 : 1)"; then
+            npm run test:algorithms
+          else
+            echo "No test:algorithms script found, skipping."
+          fi
