@@ -277,17 +277,30 @@ export default function DcaAssetComparison({
     normalizedStartYear,
     selectedCurrency,
   ]);
-  const eventParams = {
-    asset_a_symbol: assetA.displaySymbol,
-    asset_b_symbol: assetB.displaySymbol,
-    monthly_amount: Number(monthlyAmount) || 0,
-    start_year: normalizedStartYear,
-    end_year: normalizedEndYear,
-    currency: selectedCurrency,
-    locale,
-    asset_a_data_source: assetADataSource,
-    asset_b_data_source: assetBDataSource,
-  };
+  const eventParams = useMemo(
+    () => ({
+      asset_a_symbol: assetA.displaySymbol,
+      asset_b_symbol: assetB.displaySymbol,
+      monthly_amount: Number(monthlyAmount) || 0,
+      start_year: normalizedStartYear,
+      end_year: normalizedEndYear,
+      currency: selectedCurrency,
+      locale,
+      asset_a_data_source: assetADataSource,
+      asset_b_data_source: assetBDataSource,
+    }),
+    [
+      assetADataSource,
+      assetBDataSource,
+      assetA.displaySymbol,
+      assetB.displaySymbol,
+      locale,
+      monthlyAmount,
+      normalizedEndYear,
+      normalizedStartYear,
+      selectedCurrency,
+    ]
+  );
 
   useEffect(() => {
     if (!hasTrackedInitialCalculation.current) {
@@ -300,17 +313,7 @@ export default function DcaAssetComparison({
     }, 900);
 
     return () => window.clearTimeout(timeoutId);
-  }, [
-    assetADataSource,
-    assetBDataSource,
-    assetA.displaySymbol,
-    assetB.displaySymbol,
-    locale,
-    monthlyAmount,
-    normalizedEndYear,
-    normalizedStartYear,
-    selectedCurrency,
-  ]);
+  }, [eventParams]);
 
   const handleAssetAChange = (value: SymbolKey) => {
     setAssetAId(value);

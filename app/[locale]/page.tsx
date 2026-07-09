@@ -427,6 +427,7 @@ export default function Home() {
     );
 
     if (queryCurrency) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- overrides the locale-derived default only when the URL query string (client-only) specifies a currency
       setSelectedCurrency(queryCurrency);
     }
 
@@ -482,6 +483,7 @@ export default function Home() {
     setBacktestAssetType(nextAssetType);
     setBacktestSymbol((nextInstrument?.id ?? "voo") as SymbolKey);
     setActiveCalculator("dca");
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- intentionally mount-only: re-running on locale change would clobber state already restored from the URL query string
   }, []);
 
   const availableAssetTypes = useMemo(
@@ -972,6 +974,7 @@ export default function Home() {
     url.searchParams.set("percentageFee", backtestPercentageFee || "0");
     url.searchParams.set("priceMethod", backtestPurchasePriceMethod);
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- shareUrl depends on window.location.origin, unavailable during SSR; computing it during render would mismatch the server-rendered link text
     setShareUrl(url.toString());
   }, [
     backtestCountry,

@@ -25,8 +25,8 @@ function loadTsModule(relativePath) {
       target: ts.ScriptTarget.ES2022,
     },
   }).outputText;
-  const module = { exports: {} };
-  moduleCache.set(absolutePath, module);
+  const moduleRecord = { exports: {} };
+  moduleCache.set(absolutePath, moduleRecord);
 
   const localRequire = (specifier) => {
     if (specifier === "./mockMarketData") {
@@ -44,9 +44,9 @@ function loadTsModule(relativePath) {
     `(function (exports, require, module) { ${output}\n})`,
     { filename: absolutePath }
   );
-  script.runInThisContext()(module.exports, localRequire, module);
+  script.runInThisContext()(moduleRecord.exports, localRequire, moduleRecord);
 
-  return module.exports;
+  return moduleRecord.exports;
 }
 
 const { calculateDcaBacktest } = loadTsModule("lib/calculations.ts");
