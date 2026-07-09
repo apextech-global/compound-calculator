@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { publicLocaleCodes } from "@/lib/locales";
+import { publicLearnLocales, publicLocaleCodes } from "@/lib/locales";
 import { getSeoPageSlugsForLocale } from "@/lib/seoLandingPages";
 import { absoluteUrl, contentPageSlugs, staticPageSlugs } from "@/lib/seoMetadata";
 
@@ -35,7 +35,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.78,
       }))
     ),
-    ...(["en", "zh-CN", "zh-TW", "ms", "ja"] as const).map((locale) => ({
+    ...publicLearnLocales.map((locale) => ({
       url: absoluteUrl(`/${locale}/learn`),
       lastModified: today,
       changeFrequency: "monthly" as const,

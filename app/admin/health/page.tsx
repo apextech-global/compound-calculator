@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { instruments } from "@/lib/instruments";
 import { seoPageSlugs } from "@/lib/seoLandingPages";
@@ -31,6 +32,10 @@ export const metadata: Metadata = {
     },
   },
 };
+
+const isHealthPageEnabled =
+  process.env.NODE_ENV !== "production" ||
+  process.env.ENABLE_HEALTH_PAGE === "true";
 
 const domain = "dcabacktest.com";
 const publicMarketDataDir = path.join(process.cwd(), "public", "market-data");
@@ -124,6 +129,10 @@ function DetailRow({
 }
 
 export default function HealthPage() {
+  if (!isHealthPageEnabled) {
+    notFound();
+  }
+
   const historicalDataKeys = getHistoricalDataKeys();
   const now = new Date();
   const gaConfigured = Boolean(process.env.NEXT_PUBLIC_GA_ID);

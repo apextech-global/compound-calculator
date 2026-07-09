@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { routing, type Locale } from "@/i18n/routing";
-import { publicLocaleCodes } from "@/lib/locales";
+import { isPublicLocale, publicLocaleCodes } from "@/lib/locales";
 
 export const productionBaseUrl = "https://dcabacktest.com";
 export const xDefaultUrl = `${productionBaseUrl}/en`;
@@ -63,8 +63,18 @@ export async function staticPageMetadata(
   page: StaticPageSlug
 ): Promise<Metadata> {
   const typedLocale = validateLocale(locale);
+
+  if (!isPublicLocale(typedLocale)) {
+    notFound();
+  }
+
   const messages = (await import(`../messages/${typedLocale}.json`)).default;
-  const legalPage = messages.legal[page];
+  const legalPage = messages.legal?.[page];
+
+  if (!legalPage) {
+    notFound();
+  }
+
   const title = `${legalPage.title} | DCA Backtest`;
   const description =
     legalPage.paragraphs?.p1 ??

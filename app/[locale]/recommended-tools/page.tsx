@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { routing, type Locale } from "@/i18n/routing";
+import type { Locale } from "@/i18n/routing";
+import { isPublicLocale, publicLocaleCodes } from "@/lib/locales";
 import {
   absoluteUrl,
   alternateLanguages,
@@ -332,7 +333,7 @@ function getCategoryTools(category: ToolCard["category"]) {
 }
 
 export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
+  return publicLocaleCodes.map((locale) => ({ locale }));
 }
 
 export async function generateMetadata({
@@ -342,7 +343,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
 
-  if (!routing.locales.includes(locale as Locale)) {
+  if (!isPublicLocale(locale)) {
     notFound();
   }
 
@@ -395,7 +396,7 @@ export default async function RecommendedToolsPage({
 }) {
   const { locale } = await params;
 
-  if (!routing.locales.includes(locale as Locale)) {
+  if (!isPublicLocale(locale)) {
     notFound();
   }
 

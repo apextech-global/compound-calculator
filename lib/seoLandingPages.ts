@@ -87,6 +87,8 @@ type LocaleSeoContent = {
   internalLinksLabel: string;
   disclaimerTitle: string;
   disclaimer: string;
+  relatedGuidesHeading: string;
+  relatedGuidesDescription: string;
   pages: Partial<Record<SeoPageSlug, SeoPageContent>>;
 };
 
@@ -550,6 +552,9 @@ const genericLocaleLabels: Record<string, Omit<LocaleSeoContent, "pages">> = {
     disclaimerTitle: "Educational disclaimer",
     disclaimer:
       "This page is for educational purposes only and is not financial advice. Past performance does not guarantee future results.",
+    relatedGuidesHeading: "Related guides",
+    relatedGuidesDescription:
+      "Continue with these related calculators and guides.",
   },
   "zh-CN": {
     pageLabel: "指南",
@@ -559,6 +564,8 @@ const genericLocaleLabels: Record<string, Omit<LocaleSeoContent, "pages">> = {
     internalLinksLabel: "相关站内链接",
     disclaimerTitle: "教育用途免责声明",
     disclaimer: "本页面仅供教育用途，不构成金融建议。过往表现不保证未来结果。",
+    relatedGuidesHeading: "相关指南",
+    relatedGuidesDescription: "继续浏览下面这些相关计算器和指南。",
   },
   "zh-TW": {
     pageLabel: "指南",
@@ -568,6 +575,8 @@ const genericLocaleLabels: Record<string, Omit<LocaleSeoContent, "pages">> = {
     internalLinksLabel: "相關站內連結",
     disclaimerTitle: "教育用途免責聲明",
     disclaimer: "本頁面僅供教育用途，不構成金融建議。過往表現不保證未來結果。",
+    relatedGuidesHeading: "相關指南",
+    relatedGuidesDescription: "繼續瀏覽以下相關計算機和指南。",
   },
 };
 
@@ -593,6 +602,9 @@ const localeLabels: Partial<Record<Locale, Omit<LocaleSeoContent, "pages">>> = {
     disclaimerTitle: "Penafian pendidikan",
     disclaimer:
       "Halaman ini untuk tujuan pendidikan sahaja dan bukan nasihat kewangan. Prestasi lalu tidak menjamin hasil masa depan.",
+    relatedGuidesHeading: "Panduan berkaitan",
+    relatedGuidesDescription:
+      "Teruskan dengan kalkulator dan panduan berkaitan di bawah.",
   },
   id: {
     pageLabel: "Panduan",
@@ -604,6 +616,9 @@ const localeLabels: Partial<Record<Locale, Omit<LocaleSeoContent, "pages">>> = {
     disclaimerTitle: "Penafian edukasi",
     disclaimer:
       "Halaman ini hanya untuk tujuan edukasi dan bukan nasihat keuangan. Kinerja masa lalu tidak menjamin hasil masa depan.",
+    relatedGuidesHeading: "Panduan terkait",
+    relatedGuidesDescription:
+      "Lanjutkan dengan kalkulator dan panduan terkait di bawah ini.",
   },
   ja: labels("ガイド", "計算機ガイド", "メイン計算機を開く", "このページは教育目的のみであり、金融助言ではありません。過去の実績は将来の結果を保証しません。"),
   ko: labels("가이드", "계산기 가이드", "메인 계산기 열기", "이 페이지는 교육 목적이며 금융 조언이 아닙니다. 과거 성과는 미래 결과를 보장하지 않습니다."),
@@ -630,6 +645,8 @@ function labels(
     internalLinksLabel: pageLabel,
     disclaimerTitle: pageLabel,
     disclaimer,
+    relatedGuidesHeading: genericLocaleLabels.en.relatedGuidesHeading,
+    relatedGuidesDescription: genericLocaleLabels.en.relatedGuidesDescription,
   };
 }
 
@@ -4155,7 +4172,7 @@ export function isSeoPageSlugForLocale(
 }
 
 export function getSeoPageAlternates(slug: SeoPageSlug) {
-  const locales = isMalaysiaGuideSeoPageSlug(slug)
+  const candidateLocales = isMalaysiaGuideSeoPageSlug(slug)
     ? ["zh-CN"]
     : slug === "cspx-vs-voo-malaysia"
       ? ["zh-CN", "zh-TW", "ms"]
@@ -4165,17 +4182,114 @@ export function getSeoPageAlternates(slug: SeoPageSlug) {
           ? ["ja"]
           : publicLocaleCodes;
 
+  // Never emit an hreflang alternate for a locale outside publicLocaleCodes
+  // (e.g. `ja`) — those pages 404, so linking to them would be a broken
+  // hreflang reference on an otherwise-public page.
+  const locales = candidateLocales.filter((locale) =>
+    (publicLocaleCodes as readonly string[]).includes(locale)
+  );
+
   return Object.fromEntries(
     locales.map((locale) => [locale, absoluteUrl(`/${locale}/${slug}`)])
   );
 }
 
 export function getSeoPageXDefault(slug: SeoPageSlug) {
-  if (isJapaneseLearningSeoPageSlug(slug)) {
-    return absoluteUrl(`/ja/${slug}`);
-  }
-
   return isMalaysiaGuideSeoPageSlug(slug) || isChineseLearningSeoPageSlug(slug)
     ? absoluteUrl(`/zh-CN/${slug}`)
     : xDefaultUrl;
+}
+
+const curatedRelatedGuides: Partial<Record<SeoPageSlug, SeoPageSlug[]>> = {
+  "dca-calculator": [
+    "compound-interest-calculator",
+    "etf-comparison-calculator",
+    "voo-dca-calculator",
+    "dca-vs-lump-sum",
+    "etf-dca-backtest-guide",
+  ],
+  "compound-interest-calculator": [
+    "dca-calculator",
+    "compound-interest-guide",
+    "etf-comparison-calculator",
+    "dca-vs-lump-sum",
+  ],
+  "etf-comparison-calculator": [
+    "voo-vs-cspx",
+    "voo-vs-qqq",
+    "dca-calculator",
+    "dca-vs-lump-sum",
+  ],
+  "voo-dca-calculator": [
+    "cspx-dca-calculator",
+    "qqq-dca-calculator",
+    "voo-vs-cspx",
+    "voo-vs-qqq",
+    "dca-calculator",
+  ],
+  "cspx-dca-calculator": [
+    "voo-dca-calculator",
+    "voo-vs-cspx",
+    "cspx-vs-voo-malaysia",
+    "dca-calculator",
+  ],
+  "qqq-dca-calculator": [
+    "voo-dca-calculator",
+    "voo-vs-qqq",
+    "voo-vs-qqq-dca",
+    "dca-calculator",
+  ],
+  "voo-vs-cspx": [
+    "voo-dca-calculator",
+    "cspx-dca-calculator",
+    "cspx-vs-voo-malaysia",
+    "etf-comparison-calculator",
+  ],
+  "voo-vs-qqq": [
+    "voo-dca-calculator",
+    "qqq-dca-calculator",
+    "voo-vs-qqq-dca",
+    "etf-comparison-calculator",
+  ],
+  "dca-vs-lump-sum": [
+    "dca-vs-lump-sum-guide",
+    "dca-calculator",
+    "compound-interest-calculator",
+    "etf-comparison-calculator",
+  ],
+  "cspx-vs-voo-malaysia": [
+    "voo-vs-cspx",
+    "cspx-dca-calculator",
+    "voo-dca-calculator",
+    "how-to-buy-cspx-from-malaysia",
+    "how-to-invest-in-voo-from-malaysia",
+  ],
+  "voo-vs-qqq-dca": [
+    "voo-vs-qqq",
+    "qqq-dca-calculator",
+    "voo-dca-calculator",
+    "etf-comparison-calculator",
+  ],
+  "etf-dca-backtest-guide": [
+    "dca-calculator",
+    "etf-comparison-calculator",
+    "compound-interest-guide",
+    "dca-vs-lump-sum-guide",
+  ],
+  "dca-vs-lump-sum-guide": [
+    "dca-vs-lump-sum",
+    "dca-calculator",
+    "compound-interest-guide",
+  ],
+  "compound-interest-guide": [
+    "compound-interest-calculator",
+    "dca-calculator",
+    "etf-dca-backtest-guide",
+  ],
+};
+
+export function getCuratedRelatedGuideSlugs(
+  slug: SeoPageSlug
+): SeoPageSlug[] {
+  return curatedRelatedGuides[slug] ?? [];
 }

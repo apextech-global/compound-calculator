@@ -1,21 +1,10 @@
 import { expect, test } from "@playwright/test";
+import { languageCodes, publicLocaleCodes } from "@/lib/locales";
 
-const locales = [
-  "en",
-  "zh-CN",
-  "zh-TW",
-  "ms",
-  "id",
-  "ja",
-  "ko",
-  "ar",
-  "es",
-  "fr",
-  "de",
-  "it",
-  "ru",
-  "ta",
-];
+const locales: readonly string[] = publicLocaleCodes;
+const unsupportedLocales = languageCodes.filter(
+  (code) => !(publicLocaleCodes as readonly string[]).includes(code)
+);
 
 const nonEnglishFallbackPhrases = [
   "What is",
@@ -104,6 +93,28 @@ test.describe("localized public homepages", () => {
       await expect(page.locator("input[type='number']").first()).toBeVisible();
       await expect(page.locator(".recharts-responsive-container").first()).toBeVisible();
       await expect(page.locator("footer")).toBeVisible();
+    });
+  }
+});
+
+test.describe("unsupported locales are not publicly routable", () => {
+  for (const locale of unsupportedLocales) {
+    test(`/${locale} returns 404`, async ({ page }) => {
+      const response = await page.goto(`/${locale}`);
+      expect(response?.status()).toBe(404);
+    });
+  }
+
+  const unsupportedExampleRoutes = [
+    "/ru/dca-calculator",
+    "/fr/recommended-tools",
+    "/ja/supported-assets",
+  ];
+
+  for (const path of unsupportedExampleRoutes) {
+    test(`${path} returns 404`, async ({ page }) => {
+      const response = await page.goto(path);
+      expect(response?.status()).toBe(404);
     });
   }
 });

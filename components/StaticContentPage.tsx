@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
+import { notFound } from "next/navigation";
+import { isPublicLocale } from "@/lib/locales";
 
 type StaticPageKey =
   | "about"
@@ -29,6 +31,20 @@ export default async function StaticContentPage({
   pageKey: StaticPageKey;
 }) {
   const locale = await getLocale();
+
+  if (!isPublicLocale(locale)) {
+    notFound();
+  }
+
+  const messages = (await import(`../messages/${locale}.json`)).default;
+
+  if (!messages.legal?.[pageKey]) {
+    notFound();
+  }
+
+  const availableLegalLinks = legalLinks.filter(
+    (link) => link !== "affiliate-disclosure" || Boolean(messages.legal?.[link])
+  );
   const t = await getTranslations(`legal.${pageKey}`);
   const common = await getTranslations("legal.common");
   const footer = await getTranslations("footer");
@@ -81,7 +97,7 @@ export default async function StaticContentPage({
 
         <nav className="mt-6 flex w-full flex-wrap gap-3 text-sm font-semibold text-slate-300">
           <span className="text-slate-500">{common("linksTitle")}</span>
-          {legalLinks.map((link) => (
+          {availableLegalLinks.map((link) => (
             <Link
               key={link}
               href={`/${locale}/${link}`}

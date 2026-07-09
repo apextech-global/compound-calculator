@@ -18,6 +18,7 @@ import {
   formatInputAmount,
   formatMoney,
 } from "@/lib/formatting";
+import NextStepCta from "./NextStepCta";
 import SummaryCard from "./SummaryCard";
 
 type CompoundInterestCalculatorProps = {
@@ -370,6 +371,9 @@ export default function CompoundInterestCalculator({
       <p className="mx-auto mt-8 max-w-3xl text-center text-sm leading-6 text-slate-400">
         {t("compound.disclaimer")}
       </p>
+      <div className="mx-auto max-w-3xl text-center">
+        <NextStepCta />
+      </div>
     </section>
   );
 }

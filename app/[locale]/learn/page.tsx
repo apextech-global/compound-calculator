@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import {
+  publicLearnLocales,
+  type LearnContentLocale,
+} from "@/lib/locales";
 import { absoluteUrl, productionBaseUrl } from "@/lib/seoMetadata";
 
-type LearnLocale = "en" | "zh-CN" | "zh-TW" | "ms" | "ja";
+type LearnLocale = LearnContentLocale;
 
 type LearnLink = {
   title: string;
@@ -33,7 +37,11 @@ type LearnContent = {
   }>;
 };
 
-const learnLocales: LearnLocale[] = ["en", "zh-CN", "zh-TW", "ms", "ja"];
+// The learn hub only has authored content for `learnContentLocales`, but it
+// must never render for a locale outside `publicLocaleCodes` — intersecting
+// the two here (via `publicLearnLocales`) is what keeps /ja/learn 404ing
+// even though ja's content in `content` below is complete.
+const learnLocales: LearnLocale[] = [...publicLearnLocales] as LearnLocale[];
 
 const content: Record<LearnLocale, LearnContent> = {
   en: {
@@ -248,6 +256,37 @@ const content: Record<LearnLocale, LearnContent> = {
             description:
               "Review important data, investment, tax, and legal limitations before relying on results.",
             href: "/en/disclaimer",
+          },
+        ],
+      },
+      {
+        title: "Legal and disclaimer",
+        description:
+          "Read the data, privacy, and terms information before relying on any result.",
+        links: [
+          {
+            title: "Disclaimer",
+            description:
+              "Understand data sources, sample data, and why results are not financial advice.",
+            href: "/en/disclaimer",
+          },
+          {
+            title: "Privacy Policy",
+            description:
+              "See what information is collected and how it is used.",
+            href: "/en/privacy",
+          },
+          {
+            title: "Terms of Use",
+            description:
+              "Review the terms that apply when using DCA Backtest.",
+            href: "/en/terms",
+          },
+          {
+            title: "Affiliate Disclosure",
+            description:
+              "Understand how recommended tools and links are disclosed.",
+            href: "/en/affiliate-disclosure",
           },
         ],
       },
@@ -528,6 +567,34 @@ const content: Record<LearnLocale, LearnContent> = {
           },
         ],
       },
+      {
+        title: "法律与免责声明",
+        description:
+          "在参考任何结果之前，先阅读数据来源、隐私和条款相关说明。",
+        links: [
+          {
+            title: "免责声明",
+            description:
+              "了解数据来源、示例数据，以及为什么结果不构成投资建议。",
+            href: "/zh-CN/disclaimer",
+          },
+          {
+            title: "隐私政策",
+            description: "了解网站收集哪些信息，以及如何使用这些信息。",
+            href: "/zh-CN/privacy",
+          },
+          {
+            title: "使用条款",
+            description: "查看使用 DCA Backtest 时适用的条款。",
+            href: "/zh-CN/terms",
+          },
+          {
+            title: "联盟披露",
+            description: "了解推荐工具和相关链接的披露方式。",
+            href: "/zh-CN/affiliate-disclosure",
+          },
+        ],
+      },
     ],
     faqs: [
       {
@@ -799,6 +866,34 @@ const content: Record<LearnLocale, LearnContent> = {
           },
         ],
       },
+      {
+        title: "法律與免責聲明",
+        description:
+          "在參考任何結果之前，先閱讀資料來源、隱私和條款相關說明。",
+        links: [
+          {
+            title: "免責聲明",
+            description:
+              "了解資料來源、範例資料，以及為什麼結果不構成投資建議。",
+            href: "/zh-TW/disclaimer",
+          },
+          {
+            title: "隱私政策",
+            description: "了解網站蒐集哪些資訊，以及如何使用這些資訊。",
+            href: "/zh-TW/privacy",
+          },
+          {
+            title: "使用條款",
+            description: "查看使用 DCA Backtest 時適用的條款。",
+            href: "/zh-TW/terms",
+          },
+          {
+            title: "聯盟揭露",
+            description: "了解推薦工具和相關連結的揭露方式。",
+            href: "/zh-TW/affiliate-disclosure",
+          },
+        ],
+      },
     ],
     faqs: [
       {
@@ -1057,6 +1152,34 @@ const content: Record<LearnLocale, LearnContent> = {
           },
         ],
       },
+      {
+        title: "Undang-undang dan penafian",
+        description:
+          "Baca maklumat data, privasi dan terma sebelum bergantung pada sebarang keputusan.",
+        links: [
+          {
+            title: "Penafian",
+            description:
+              "Fahami sumber data, data sampel dan sebab keputusan bukan nasihat kewangan.",
+            href: "/ms/disclaimer",
+          },
+          {
+            title: "Dasar Privasi",
+            description: "Ketahui maklumat yang dikumpul dan cara ia digunakan.",
+            href: "/ms/privacy",
+          },
+          {
+            title: "Terma Penggunaan",
+            description: "Semak terma yang terpakai apabila menggunakan DCA Backtest.",
+            href: "/ms/terms",
+          },
+          {
+            title: "Pendedahan Gabungan",
+            description: "Fahami cara alat dan pautan disyorkan didedahkan.",
+            href: "/ms/affiliate-disclosure",
+          },
+        ],
+      },
     ],
     faqs: [
       {
@@ -1287,6 +1410,29 @@ const content: Record<LearnLocale, LearnContent> = {
             description:
               "利用前に、データと投資判断に関する制限を確認してください。",
             href: "/ja/disclaimer",
+          },
+        ],
+      },
+      {
+        title: "法的情報と免責事項",
+        description:
+          "結果を参考にする前に、データ、プライバシー、利用規約に関する説明をご確認ください。",
+        links: [
+          {
+            title: "免責事項",
+            description:
+              "データソース、サンプルデータ、投資助言ではない理由について説明します。",
+            href: "/ja/disclaimer",
+          },
+          {
+            title: "プライバシーポリシー",
+            description: "収集する情報とその利用方法について説明します。",
+            href: "/ja/privacy",
+          },
+          {
+            title: "利用規約",
+            description: "DCA Backtestを利用する際に適用される規約です。",
+            href: "/ja/terms",
           },
         ],
       },

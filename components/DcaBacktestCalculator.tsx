@@ -27,6 +27,7 @@ import {
 } from "@/lib/formatting";
 import type { AssetType, Instrument } from "@/lib/instruments";
 import type { SymbolKey } from "@/lib/mockMarketData";
+import NextStepCta from "./NextStepCta";
 
 type DcaBacktestCalculatorProps = {
   selectedCurrency: CurrencyCode;
@@ -887,6 +888,7 @@ export default function DcaBacktestCalculator({
       <p className="mt-6 text-sm leading-6 text-slate-400">
         {t("dca.disclaimer")}
       </p>
+      <NextStepCta />
       <div className="mt-4 rounded-2xl border border-cyan-300/15 bg-cyan-400/[0.055] p-4 text-sm leading-6 text-slate-300">
         <Link
           href={`/${locale}/recommended-tools`}

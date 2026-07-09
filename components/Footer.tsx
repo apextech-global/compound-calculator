@@ -4,6 +4,11 @@ import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import type { Locale } from "@/i18n/routing";
 import {
+  publicLearnLocales,
+  publicLocaleCodes,
+  type PublicLocaleCode,
+} from "@/lib/locales";
+import {
   getSeoLandingContent,
   getSeoPageSlugsForLocale,
 } from "@/lib/seoLandingPages";
@@ -18,6 +23,10 @@ const footerLinks = [
   { href: "affiliate-disclosure", label: "affiliateDisclosure" },
   { href: "contact", label: "contact" },
 ] as const;
+
+function isPublicLocale(locale: Locale): locale is PublicLocaleCode {
+  return (publicLocaleCodes as readonly string[]).includes(locale);
+}
 
 const feedbackText = {
   en: "Found a bug or wrong data? Send feedback",
@@ -35,8 +44,12 @@ export default function Footer() {
   const locale = useLocale();
   const t = useTranslations();
   const typedLocale = locale as Locale;
+  const localeIsPublic = isPublicLocale(typedLocale);
   const guides = getSeoLandingContent(typedLocale);
-  const guideSlugs = getSeoPageSlugsForLocale(typedLocale);
+  const guideSlugs = localeIsPublic ? getSeoPageSlugsForLocale(typedLocale) : [];
+  const visibleFooterLinks = footerLinks.filter(
+    (link) => link.href !== "affiliate-disclosure" || localeIsPublic
+  );
   const feedbackLabel =
     feedbackText[locale as keyof typeof feedbackText] ?? feedbackText.en;
 
@@ -57,11 +70,7 @@ export default function Footer() {
         </div>
 
         <nav className="flex w-full min-w-0 flex-wrap gap-3 text-sm font-medium text-slate-300 md:max-w-sm">
-          {typedLocale === "en" ||
-          typedLocale === "zh-CN" ||
-          typedLocale === "zh-TW" ||
-          typedLocale === "ms" ||
-          typedLocale === "ja" ? (
+          {(publicLearnLocales as readonly string[]).includes(typedLocale) ? (
             <Link
               href={`/${typedLocale}/learn`}
               className="transition hover:text-cyan-300"
@@ -81,7 +90,7 @@ export default function Footer() {
         </nav>
 
         <nav className="flex w-full min-w-0 flex-wrap gap-4 text-sm font-medium text-slate-300 md:justify-end">
-          {footerLinks.map((link) => (
+          {visibleFooterLinks.map((link) => (
             <Link
               key={link.href}
               href={`/${locale}/${link.href}`}

@@ -2,8 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import RecommendedToolsCta from "@/components/RecommendedToolsCta";
-import { routing, type Locale } from "@/i18n/routing";
+import RelatedGuides from "@/components/RelatedGuides";
+import type { Locale } from "@/i18n/routing";
 import {
+  isPublicLocale,
+  publicLearnLocales,
+  publicLocaleCodes,
+} from "@/lib/locales";
+import {
+  getCuratedRelatedGuideSlugs,
   getSeoLandingContent,
   getSeoLandingPage,
   getSeoPageAlternates,
@@ -77,7 +84,7 @@ const malaysiaGuidePages: SeoPageSlug[] = [
 ];
 
 export function generateStaticParams() {
-  return routing.locales.flatMap((locale) =>
+  return publicLocaleCodes.flatMap((locale) =>
     getSeoPageSlugsForLocale(locale).map((seoPage) => ({ locale, seoPage }))
   );
 }
@@ -90,7 +97,7 @@ export async function generateMetadata({
   const { locale, seoPage } = await params;
 
   if (
-    !routing.locales.includes(locale as Locale) ||
+    !isPublicLocale(locale) ||
     !isSeoPageSlugForLocale(locale as Locale, seoPage)
   ) {
     notFound();
@@ -133,7 +140,7 @@ export default async function SeoLandingPage({
   const { locale, seoPage } = await params;
 
   if (
-    !routing.locales.includes(locale as Locale) ||
+    !isPublicLocale(locale) ||
     !isSeoPageSlugForLocale(locale as Locale, seoPage)
   ) {
     notFound();
@@ -146,6 +153,13 @@ export default async function SeoLandingPage({
   const content = getSeoLandingContent(typedLocale);
   const page = getSeoLandingPage(typedLocale, typedPage);
   const pageUrl = absoluteUrl(`/${typedLocale}/${typedPage}`);
+  const curatedRelatedGuideLinks = getCuratedRelatedGuideSlugs(typedPage)
+    .filter((slug) => isSeoPageSlugForLocale(typedLocale, slug))
+    .map((slug) => ({
+      slug,
+      title: content.pages[slug]?.h1 ?? slug,
+      description: content.pages[slug]?.description,
+    }));
   const seoLinks =
     typedLocale === "zh-CN" ||
     typedLocale === "zh-TW" ||
@@ -153,14 +167,17 @@ export default async function SeoLandingPage({
     typedLocale === "ja"
       ? [...relatedSeoLinks, ...chineseLearningRelatedLinks]
       : relatedSeoLinks;
-  const visibleSiteLinks =
-    typedLocale === "en" ||
-    typedLocale === "zh-CN" ||
-    typedLocale === "zh-TW" ||
-    typedLocale === "ms" ||
-    typedLocale === "ja"
-      ? siteLinks
-      : siteLinks.filter((link) => link !== "learn");
+  const visibleSiteLinks = (publicLearnLocales as readonly string[]).includes(
+    typedLocale
+  )
+    ? siteLinks
+    : siteLinks.filter((link) => link !== "learn");
+  const localeIsPublic = (publicLocaleCodes as readonly string[]).includes(
+    typedLocale
+  );
+  const visibleLegalLinks = legalLinks.filter(
+    (link) => link !== "affiliate-disclosure" || localeIsPublic
+  );
   const pageTypeJsonLd = webApplicationSeoPages.includes(typedPage)
     ? {
         "@context": "https://schema.org",
@@ -244,7 +261,7 @@ export default async function SeoLandingPage({
             DCA Backtest
           </Link>
           <span className="mx-2">/</span>
-          <span>{content.pageLabel}</span>
+          <span>{page.h1}</span>
         </nav>
 
         <div className="w-full max-w-3xl">
@@ -311,6 +328,15 @@ export default async function SeoLandingPage({
           </div>
         </section>
 
+        <RelatedGuides
+          locale={typedLocale}
+          currentSlug={typedPage}
+          category="seo-landing-page"
+          heading={content.relatedGuidesHeading}
+          description={content.relatedGuidesDescription}
+          links={curatedRelatedGuideLinks}
+        />
+
         <section className="mt-6 w-full min-w-0 rounded-2xl border border-amber-300/20 bg-amber-300/[0.07] p-4 sm:mt-8 sm:rounded-3xl sm:p-6">
           <h2 className="break-words text-lg font-semibold text-amber-100 sm:text-xl">
             {content.disclaimerTitle}
@@ -325,7 +351,10 @@ export default async function SeoLandingPage({
           className="mt-6 flex w-full flex-wrap gap-2.5 text-sm sm:mt-8 sm:gap-3"
         >
           {seoLinks
-            .filter((link) => isSeoPageSlugForLocale(typedLocale, link))
+            .filter(
+              (link) =>
+                link !== typedPage && isSeoPageSlugForLocale(typedLocale, link)
+            )
             .map((link) => (
             <Link
               key={link}
@@ -354,7 +383,7 @@ export default async function SeoLandingPage({
                 : "Learn"}
             </Link>
           ))}
-          {legalLinks.map((link) => (
+          {visibleLegalLinks.map((link) => (
             <Link
               key={link}
               href={`/${typedLocale}/${link}`}

@@ -3,14 +3,6 @@ import path from "node:path";
 
 const root = process.cwd();
 const baseUrl = "https://dcabacktest.com";
-const requestedLocales = [
-  "en",
-  "zh-CN",
-  "zh-TW",
-  "ms",
-  "id",
-  "ja",
-];
 const importantPages = [
   "",
   "dca-calculator",
@@ -155,6 +147,7 @@ function addError(message) {
   errors.push(message);
 }
 
+const localesSource = read("lib/locales.ts");
 const routingSource = read("i18n/routing.ts");
 const seoSource = read("lib/seoLandingPages.ts");
 const metadataSource = read("lib/seoMetadata.ts");
@@ -163,8 +156,27 @@ const robotsSource = read("app/robots.ts");
 const localeLayoutSource = read("app/[locale]/layout.tsx");
 const seoPageSource = read("app/[locale]/[seoPage]/page.tsx");
 const supportedAssetsPageSource = read("app/[locale]/supported-assets/page.tsx");
+const recommendedToolsPageSource = read("app/[locale]/recommended-tools/page.tsx");
+const learnPageSource = read("app/[locale]/learn/page.tsx");
 const footerSource = read("components/Footer.tsx");
 const heroSource = read("components/Hero.tsx");
+const staticContentPageSource = read("components/StaticContentPage.tsx");
+const adminHealthSource = read("app/admin/health/page.tsx");
+
+// Single source of truth for which locales are publicly marketed lives in
+// lib/locales.ts (publicLocaleCodes). Deriving it here — instead of
+// hardcoding a duplicate list — is what makes this script actually catch a
+// regression like re-adding an incomplete locale (e.g. `ja`) to public
+// surfaces.
+const allLanguageCodes = extractStringArray(localesSource, "languageCodes");
+const requestedLocales = extractStringArray(localesSource, "publicLocaleCodes");
+const learnContentLocalesFromSource = extractStringArray(
+  localesSource,
+  "learnContentLocales"
+);
+const unsupportedLanguageCodes = allLanguageCodes.filter(
+  (code) => !requestedLocales.includes(code)
+);
 
 const appLocales = extractRoutingLocales(routingSource);
 const staticPages = extractStringArray(metadataSource, "staticPageSlugs");
@@ -198,7 +210,7 @@ const allPages = unique(["", ...staticPages, ...contentPages, ...seoPages, ...lo
 function localesForPage(page) {
   if (learnPages.includes(page)) {
     return requestedLocales.filter((locale) =>
-      ["en", "zh-CN", "zh-TW", "ms", "ja"].includes(locale)
+      learnContentLocalesFromSource.includes(locale)
     );
   }
 
@@ -459,6 +471,163 @@ if (!sitemapUrls.some((url) => url.includes("?") || url.includes("/api/"))) {
   addPass("Generated sitemap route list contains no query URLs or API URLs.");
 } else {
   addError("Generated sitemap route list contains query URLs or API URLs.");
+}
+
+// --- Locale/SEO routing safety net (Codex P0 regression protection) -----
+// These checks exist so that re-introducing an incomplete/unsupported
+// locale to a public surface (sitemap, hreflang, footer) fails CI instead
+// of shipping a crash like /ja/affiliate-disclosure.
+
+const unsupportedLocaleInSitemap = unsupportedLanguageCodes.filter((code) =>
+  sitemapSource.includes(`"${code}"`)
+);
+if (unsupportedLocaleInSitemap.length) {
+  addError(
+    `app/sitemap.ts hardcodes unsupported locale(s): ${unsupportedLocaleInSitemap.join(
+      ", "
+    )}. Sitemap must only be driven by publicLocaleCodes/publicLearnLocales.`
+  );
+} else {
+  addPass("Sitemap source contains no hardcoded unsupported locale codes.");
+}
+
+if (sitemapSource.toLowerCase().includes("admin")) {
+  addError("app/sitemap.ts references an admin route; admin pages must never be in the sitemap.");
+} else {
+  addPass("Sitemap source contains no admin route references.");
+}
+
+for (const locale of requestedLocales) {
+  const messages = JSON.parse(read(`messages/${locale}.json`));
+
+  for (const page of staticPages) {
+    if (!messages.legal?.[page]) {
+      addError(
+        `${locale} is a public locale but is missing legal.${page} content — /${locale}/${page} would crash or 404 unexpectedly.`
+      );
+    }
+  }
+}
+if (!errors.some((error) => error.includes("is missing legal."))) {
+  addPass(
+    "All public locales have complete legal.* content for every static page (about/privacy/terms/disclaimer/affiliate-disclosure/contact)."
+  );
+}
+
+if (footerSource.includes("publicLocaleCodes") && footerSource.includes("publicLearnLocales")) {
+  addPass("Footer gates its dynamic locale links behind the public locale allow-list.");
+} else {
+  addError(
+    "components/Footer.tsx no longer appears to gate locale-specific links (learn, guides, affiliate-disclosure) behind publicLocaleCodes/publicLearnLocales."
+  );
+}
+
+if (
+  seoPageSource.includes("publicLocaleCodes") &&
+  seoPageSource.includes("publicLearnLocales")
+) {
+  addPass("SEO landing page gates its legal/learn links behind the public locale allow-list.");
+} else {
+  addError(
+    "app/[locale]/[seoPage]/page.tsx no longer appears to gate legal/learn links behind publicLocaleCodes/publicLearnLocales."
+  );
+}
+
+if (staticContentPageSource.includes("if (!messages.legal?.[pageKey])")) {
+  addPass("StaticContentPage guards against missing legal.* content with notFound().");
+} else {
+  addError(
+    "components/StaticContentPage.tsx no longer guards against missing legal.* content before rendering."
+  );
+}
+
+if (metadataSource.includes("if (!legalPage)")) {
+  addPass("lib/seoMetadata.ts staticPageMetadata guards against missing legal.* content with notFound().");
+} else {
+  addError(
+    "lib/seoMetadata.ts staticPageMetadata no longer guards against missing legal.* content."
+  );
+}
+
+if (
+  adminHealthSource.includes("isHealthPageEnabled") &&
+  adminHealthSource.includes("notFound()")
+) {
+  addPass("Admin health page is gated behind an enable flag with a notFound() fallback in production.");
+} else {
+  addError(
+    "app/admin/health/page.tsx is not gated behind an enable flag — it would be publicly reachable in production."
+  );
+}
+
+// --- Unsupported locales must not be directly routable/indexable --------
+// routing.locales (i18n/routing.ts) is intentionally broader than
+// publicLocaleCodes (some locales' translations are routable pre-launch).
+// Every route under app/[locale] must therefore guard with isPublicLocale()
+// and notFound() itself — the checks below confirm each of Codex's example
+// unsupported routes (/ja, /ko, /ru/dca-calculator, /fr/recommended-tools,
+// /ja/supported-assets) is actually guarded in source, not just unlinked.
+
+if (localeLayoutSource.includes("isPublicLocale(locale)")) {
+  addPass(
+    "app/[locale]/layout.tsx gates every descendant route with isPublicLocale() — covers /ja, /ko, and any locale-prefixed route with no page-specific guard."
+  );
+} else {
+  addError(
+    "app/[locale]/layout.tsx no longer gates on isPublicLocale() — unsupported locales (e.g. /ja, /ko) would render real pages again."
+  );
+}
+
+const unsupportedRouteExamples = [
+  {
+    path: "/ru/dca-calculator (and other SEO landing pages)",
+    file: "app/[locale]/[seoPage]/page.tsx",
+    source: seoPageSource,
+  },
+  {
+    path: "/fr/recommended-tools",
+    file: "app/[locale]/recommended-tools/page.tsx",
+    source: recommendedToolsPageSource,
+  },
+  {
+    path: "/ja/supported-assets",
+    file: "app/[locale]/supported-assets/page.tsx",
+    source: supportedAssetsPageSource,
+  },
+];
+
+for (const example of unsupportedRouteExamples) {
+  if (example.source.includes("isPublicLocale(locale)")) {
+    addPass(`${example.path} is guarded by isPublicLocale() in ${example.file}.`);
+  } else {
+    addError(
+      `${example.path} is not guarded by isPublicLocale() in ${example.file} — an unsupported locale could still render this page.`
+    );
+  }
+}
+
+if (learnPageSource.includes("publicLearnLocales")) {
+  addPass("app/[locale]/learn/page.tsx restricts itself to publicLearnLocales (public AND has content).");
+} else {
+  addError(
+    "app/[locale]/learn/page.tsx no longer derives its locale gate from publicLearnLocales — it may expose /ja/learn again."
+  );
+}
+
+if (seoSource.includes("candidateLocales.filter(")) {
+  addPass("lib/seoLandingPages.ts filters SEO page hreflang alternates down to publicLocaleCodes before returning them.");
+} else {
+  addError(
+    "lib/seoLandingPages.ts getSeoPageAlternates no longer filters to publicLocaleCodes — it can leak an unsupported locale (e.g. ja) into hreflang."
+  );
+}
+
+if (seoSource.includes('absoluteUrl(`/ja/${slug}`)')) {
+  addError(
+    "lib/seoLandingPages.ts getSeoPageXDefault still hardcodes an /ja/ URL as x-default — ja is unsupported and that URL 404s."
+  );
+} else {
+  addPass("lib/seoLandingPages.ts getSeoPageXDefault does not point x-default at an unsupported locale.");
 }
 
 function printSection(icon, title, items) {

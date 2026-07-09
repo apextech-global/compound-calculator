@@ -3,8 +3,8 @@ import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import Footer from "@/components/Footer";
 import HtmlLocaleSync from "@/components/HtmlLocaleSync";
-import { routing, type Locale } from "@/i18n/routing";
-import { getTextDirection } from "@/lib/locales";
+import { routing } from "@/i18n/routing";
+import { getTextDirection, isPublicLocale } from "@/lib/locales";
 import {
   absoluteUrl,
   alternateLanguages,
@@ -13,7 +13,9 @@ import {
 } from "@/lib/seoMetadata";
 
 export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
+  return routing.locales
+    .filter((locale) => isPublicLocale(locale))
+    .map((locale) => ({ locale }));
 }
 
 export async function generateMetadata({
@@ -23,7 +25,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
 
-  if (!routing.locales.includes(locale as Locale)) {
+  if (!isPublicLocale(locale)) {
     notFound();
   }
 
@@ -80,7 +82,7 @@ export default async function LocaleLayout({
 }>) {
   const { locale } = await params;
 
-  if (!routing.locales.includes(locale as never)) {
+  if (!isPublicLocale(locale)) {
     notFound();
   }
 
