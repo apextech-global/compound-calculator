@@ -74,8 +74,12 @@ override or stop any step.
   use v0 for UI prototyping and hand its output to ChatGPT for review.
 - [../../AGENTS.md](../../AGENTS.md) — baseline rules shared by any AI agent
   working in this repo.
-- [../../agent_memory/](../../agent_memory/) — short, current project
-  memory (context, progress, bugs/risks) carried between tasks.
+- [.ai/](../../.ai/) — project-specific memory and workflow documentation:
+  - `PROJECT_MEMORY.md` — stable, long-term project context
+  - `TASKS.md` — current active task, ready work, and backlog
+  - `DECISIONS.md` — confirmed product and technical decisions
+  - `PITFALLS.md` — project-specific mistakes, risks, and prevention rules
+  - `HANDOFF.md` — latest implementation and review handoff
 
 ## Safety Rules for Solo Founder Development
 

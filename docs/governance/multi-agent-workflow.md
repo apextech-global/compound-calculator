@@ -1,84 +1,140 @@
 # Multi-Agent Task Workflow
-
-This document defines how to scope work when more than one AI agent role is
-needed within a single implementation task (for example, a read-only
-exploration pass before editing, or a separate verification pass after a
-change). It is a lightweight extension of
-[ai-development-workflow.md](./ai-development-workflow.md), not a
-replacement for it — the ChatGPT / Claude Code / Codex / Gemini tool
-responsibilities across the Issue-to-PR lifecycle still apply.
-
+## Purpose
+Use multiple AI roles only when role separation clearly improves safety, speed, or review quality.
+This document supports `AGENTS.md`; it does not replace it.
+`AGENTS.md` remains the source of truth for project rules, Git permissions, testing, documentation, and completion criteria.
+## Default Model
+Most tasks use:
+1. One implementation agent
+2. One independent review agent
+Add another role only when:
+- The repository area is unfamiliar
+- The change is security-sensitive
+- Production-critical behavior is affected
+- Independent verification is valuable
+- File ownership can be clearly separated
+Do not add roles merely because the tools are available.
 ## Roles
-
-- **Read-only explorer** — locates code, reads files, answers "where is X"
-  or "how does Y work" questions. Cannot edit files.
-- **Scoped implementation worker** — makes the actual code change, within
-  an explicit, disjoint area of ownership.
-- **Security reviewer** — checks a change for security risk (injection,
-  secrets, unsafe dependencies, auth gaps) without making edits.
-- **Verification worker** — runs and reports on tests, lint, build, or
-  manual checks against a change, without making unrelated edits.
-- **Handoff writer** — summarizes findings and evidence into a short report
-  for the next role or the founder; does not implement or review code.
-
-## Required Brief Template
-
-Whenever work is split across more than one agent/role, write a short brief
-for each role using this template:
-
+### Read-Only Explorer
+Purpose:
+- Locate relevant files
+- Understand current behavior
+- Identify dependencies and risks
+- Report evidence before implementation
+May read files, search the repository, inspect configuration, and inspect Git history.
+Must not edit, commit, push, create a Pull Request, merge, or deploy.
+### Implementation Agent
+Purpose:
+- Implement the approved task
+- Keep changes focused
+- Follow existing architecture
+- Run required tests
+- Update relevant `.ai` files
+Typical tool: Claude Code.
+Must not expand scope without approval.
+### Review Agent
+Purpose:
+- Review independently
+- Find bugs and regressions
+- Check security, maintainability, and performance
+- Verify acceptance criteria and test evidence
+Typical tool: Codex.
+Read-only by default unless explicitly approved to fix confirmed issues.
+### Verification Agent
+Purpose:
+- Run tests and checks
+- Verify commands and results
+- Report failures accurately
+- Confirm whether evidence supports completion
+Must not make unrelated fixes.
+## Task Brief
+When more than one role is used, provide:
+```text
+Role:
+Goal:
+Business reason:
+Context:
+Allowed actions:
+Owned files or areas:
+Forbidden actions:
+Required evidence:
+Output format:
+Stop condition:
 ```
-Role: <one of the roles above>
-Goal: <the single outcome this role must produce>
-Context: <the minimum this role needs — issue link, files, prior findings>
-Allowed actions: <what this role may do>
-Ownership: <exact files/areas this role owns, disjoint from other roles>
-Forbidden actions: <what this role must not do>
-Output format: <what the role reports back, e.g. findings + evidence>
-Stop condition: <when the role stops and hands off or asks for guidance>
-```
-
-See [prompts/multi-agent-task-brief.md](../../prompts/multi-agent-task-brief.md)
-for a copyable version of this template.
-
-## Rules
-
-- Do not spawn multiple agents just because this workflow exists. Most
-  tasks need exactly one role — usually the scoped implementation worker.
-- Use more than one role only when the task clearly needs it, e.g. a large
-  or security-sensitive change benefits from a separate review pass.
-- When multiple agents/roles are used, ownership must be disjoint: no two
-  roles edit the same files at the same time.
-- Every handoff requires findings and evidence, not just a summary claim
-  (e.g. "tests pass" must say what was run and what it showed, not just
-  assert it).
-- Stop and ask the founder if permissions, ownership, or data access across
-  roles are unclear.
-
-## How This Maps to Apex Tech Tools
-
-- **ChatGPT** — CTO + Product Lead + final decision maker across the whole
-  Issue-to-PR lifecycle (see
-  [ai-development-workflow.md](./ai-development-workflow.md)).
-- **Claude Code** — scoped implementation worker; may use its own
-  read-only-explorer or verification sub-agents within a single task, per
-  `AGENTS.md` and `CLAUDE.md`.
-- **Codex** — security reviewer / PR reviewer / verification reviewer.
-- **Gemini** — read-only explorer for market and discovery research.
-- **v0** — read-only explorer for UI/frontend visual prototyping; produces
-  draft UI concepts (landing pages, dashboards, pricing/calculator UI,
-  onboarding flows) for ChatGPT to review. It is not a scoped
-  implementation worker and does not review code; see
-  [prompts/v0-ui-prototyping.md](../../prompts/v0-ui-prototyping.md).
-- The founder keeps final control over merge, release, billing, DNS,
-  secrets, and production settings, regardless of how many agent roles
-  were used to produce a change.
-
+Keep the brief task-specific.
+## Ownership
+- Every editable file has one owner.
+- Two implementation agents must not edit the same file at the same time.
+- Shared files require one designated owner.
+- Review and verification roles are read-only by default.
+- A reviewer must not silently become an implementation agent.
+- If ownership is unclear, stop and ask the Founder.
+## Required Reading
+Every role follows the reading order in `AGENTS.md`.
+At minimum:
+1. `AGENTS.md`
+2. `.ai/PROJECT_MEMORY.md`
+3. `.ai/TASKS.md`
+4. `.ai/DECISIONS.md`
+5. `.ai/PITFALLS.md`
+6. `.ai/HANDOFF.md`
+7. Relevant task files
+8. `git status`
+9. Current `git diff`
+Do not create a second or conflicting rule system.
+## Read-Only Review
+A reviewer may:
+- Inspect files and the full diff
+- Run non-destructive checks
+- Report findings by severity
+- Recommend corrections
+A reviewer must not:
+- Modify files
+- Commit
+- Push
+- Create or update a Pull Request
+- Merge
+- Deploy
+- Approve without evidence
+If fixes are required, return findings to the Implementation Agent or request explicit permission to change roles.
+## Evidence-Based Handoff
+Every handoff includes:
+1. Role
+2. Goal
+3. Work completed
+4. Files inspected or changed
+5. Commands run
+6. Results
+7. Risks
+8. Remaining work
+9. Recommended next step
+10. Stop condition reached: Yes / No
+Claims such as “Tests pass”, “No issues”, or “Safe” require evidence.
+## Git Authorization
+Local reading, editing, and testing may proceed within approved scope.
+Without explicit Founder approval, AI agents must not:
+- Create or switch branches
+- Commit
+- Push
+- Create or update a Pull Request
+- Merge
+- Deploy
+Approval for one action does not authorize another.
+## Completion
+Multi-agent work is complete only when:
+- Every role reaches its stop condition
+- Acceptance criteria are satisfied
+- Required tests pass
+- Review findings are resolved or explicitly accepted
+- Relevant `.ai` files are updated
+- The final report states `Safe to commit: Yes / No`
+- Founder approval is obtained before Git or production actions
 ## Related Documents
-
-- [ai-development-workflow.md](./ai-development-workflow.md) — full
-  Issue-to-PR tool responsibility model.
-- [prompts/multi-agent-task-brief.md](../../prompts/multi-agent-task-brief.md)
-  — copyable brief template for assigning a role.
-- `AGENTS.md` — baseline rules for any agent working in this repo.
-- `agent_memory/` — where context, progress, and risk notes live between
-  tasks.
+- `AGENTS.md`
+- `.ai/PROJECT_MEMORY.md`
+- `.ai/TASKS.md`
+- `.ai/DECISIONS.md`
+- `.ai/PITFALLS.md`
+- `.ai/HANDOFF.md`
+- `docs/governance/ai-development-workflow.md`
+- `docs/governance/issue-to-pr-workflow.md`
