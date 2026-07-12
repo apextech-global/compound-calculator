@@ -18,7 +18,7 @@
   "hero": {
     "eyebrow": "教育型 DCA 回測與複利成長工具",
     "title": "DCA 回測 + 複利成長計算器",
-    "description": "使用這個教育型網站，回測 ETF 和股票的歷史定期投入表現，對比資產，並用定期投入模擬複利成長。",
+    "description": "對 VOO、CSPX 或 QQQ 做 DCA 定期定額回測，用複利計算機預測成長，或用 ETF 對比工具並排比較兩個資產。",
     "seoIntro": "教育型 DCA 回測與複利成長計算器，適用於 ETF 和股票場景，可使用歷史資料或範例資料探索不同方案。",
     "relatedLinksLabel": "繼續探索",
     "calculatorLinksLabel": "熱門計算器頁面",

@@ -18,7 +18,7 @@
   "hero": {
     "eyebrow": "Educational DCA backtest and compound growth tools",
     "title": "DCA Backtest + Compound Growth Calculator",
-    "description": "Use this educational site to backtest historical DCA investing in ETFs and stocks, compare assets, and model compound growth with recurring contributions.",
+    "description": "Run a DCA backtest on VOO, CSPX, or QQQ, project growth with the compound interest calculator, or compare ETFs side by side.",
     "seoIntro": "Explore DCA backtest and compound growth scenarios for ETFs and stocks in a simple, educational way using historical data or sample data.",
     "relatedLinksLabel": "Continue exploring",
     "calculatorLinksLabel": "Popular calculator pages",

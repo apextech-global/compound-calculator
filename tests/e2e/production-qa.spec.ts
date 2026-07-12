@@ -274,11 +274,153 @@ test("footer legal and supported asset links are reachable", async ({ page }) =>
     ["disclaimer", /Disclaimer/i],
     ["contact", /Contact/i],
     ["supported-assets", /Supported Assets/i],
+    ["recommended-tools", /Recommended Tools/i],
+    ["learn", /Learn/i],
   ] as const;
 
   for (const [slug, label] of links) {
     await page.getByRole("contentinfo").getByRole("link", { name: label }).first().click();
     await expect(page).toHaveURL(new RegExp(`/en/${slug}`));
     await page.goto("/en");
+  }
+});
+
+test("footer keeps core links compact and popular guides capped at 6", async ({ page }) => {
+  await page.goto("/en");
+  const footer = page.getByRole("contentinfo");
+
+  // Learn (its own nav) + supported-assets, recommended-tools, about,
+  // privacy, terms, disclaimer, affiliate-disclosure, contact = 9 core
+  // links. Previously this also rendered every SEO landing-page slug
+  // (25+ extra links) — that wall must not come back.
+  const coreLinkCount = await footer
+    .getByTestId("footer-core-links")
+    .getByRole("link")
+    .count();
+  expect(coreLinkCount).toBeLessThanOrEqual(8);
+
+  const learnLinkCount = await footer.getByRole("link", { name: "Learn" }).count();
+  expect(coreLinkCount + learnLinkCount).toBeLessThanOrEqual(9);
+
+  const popularGuides = footer.getByTestId("footer-popular-guides");
+  const popularGuideCount = await popularGuides.getByRole("link").count();
+  expect(popularGuideCount).toBeLessThanOrEqual(6);
+  expect(popularGuideCount).toBeGreaterThan(0);
+});
+
+test("desktop homepage shows the calculator without scrolling", async ({
+  page,
+}, testInfo) => {
+  test.skip(testInfo.project.name !== "chromium", "desktop-only viewport check");
+
+  await page.goto("/en");
+  await page.waitForLoadState("networkidle");
+
+  const viewportHeight = page.viewportSize()?.height ?? 720;
+  const calculatorBox = await page.locator("#calculator").boundingBox();
+
+  expect(calculatorBox).not.toBeNull();
+  expect(calculatorBox!.y).toBeLessThan(viewportHeight);
+});
+
+test("quick-start presets show more/less toggle reveals and applies hidden presets", async ({
+  page,
+}) => {
+  const consoleErrors = await prepareEnglishHome(page);
+  const toggle = page.getByTestId("quick-start-toggle-button");
+  const hiddenPreset = page.getByRole("button", {
+    name: /DCA vs Lump Sum example/i,
+  });
+
+  await expect(hiddenPreset).toHaveCount(0);
+  await clickVisible(toggle);
+  await expect(toggle).toHaveAttribute("aria-expanded", "true");
+  await expect(hiddenPreset).toBeVisible();
+
+  const monthlyAmountInput = page.locator("#calculator input[type='number']").first();
+  await expect(monthlyAmountInput).not.toHaveValue("1000");
+
+  await clickVisible(hiddenPreset);
+  await expect(monthlyAmountInput).toHaveValue("1000");
+
+  expect(consoleErrors).toEqual([]);
+});
+
+test("calculator mode switch has complete tab accessibility wiring", async ({ page }) => {
+  await prepareEnglishHome(page);
+
+  const dcaTab = page.getByTestId("dca-open-button");
+  const compoundTab = page.getByTestId("compound-open-button");
+  const panel = page.locator("#calculator");
+
+  await expect(dcaTab).toHaveAttribute("role", "tab");
+  await expect(compoundTab).toHaveAttribute("role", "tab");
+  await expect(dcaTab).toHaveAttribute("aria-selected", "true");
+  await expect(compoundTab).toHaveAttribute("aria-selected", "false");
+  await expect(dcaTab).toHaveAttribute("aria-controls", "calculator");
+  await expect(compoundTab).toHaveAttribute("aria-controls", "calculator");
+  await expect(panel).toHaveAttribute("role", "tabpanel");
+
+  const dcaTabId = await dcaTab.getAttribute("id");
+  const compoundTabId = await compoundTab.getAttribute("id");
+  expect(dcaTabId).toBeTruthy();
+  expect(compoundTabId).toBeTruthy();
+  await expect(panel).toHaveAttribute("aria-labelledby", dcaTabId!);
+});
+
+test("calculator mode switch supports keyboard arrow navigation", async ({ page }) => {
+  await prepareEnglishHome(page);
+
+  const dcaTab = page.getByTestId("dca-open-button");
+  const compoundTab = page.getByTestId("compound-open-button");
+  const panel = page.locator("#calculator");
+
+  await dcaTab.focus();
+  await expect(dcaTab).toBeFocused();
+
+  await page.keyboard.press("ArrowRight");
+  await expect(compoundTab).toBeFocused();
+  await expect(compoundTab).toHaveAttribute("aria-selected", "true");
+  await expect(dcaTab).toHaveAttribute("tabindex", "-1");
+  await expect(compoundTab).toHaveAttribute("tabindex", "0");
+  const compoundTabId = await compoundTab.getAttribute("id");
+  await expect(panel).toHaveAttribute("aria-labelledby", compoundTabId!);
+  await expect(page.getByText(/Projected portfolio value/i)).toBeVisible();
+
+  await page.keyboard.press("ArrowLeft");
+  await expect(dcaTab).toBeFocused();
+  await expect(dcaTab).toHaveAttribute("aria-selected", "true");
+  await expect(page.getByText(/DCA Scenario/i)).toBeVisible();
+});
+
+test("calculator mode switch labels are not truncated in any public locale", async ({
+  page,
+}) => {
+  for (const locale of locales) {
+    await page.goto(`/${locale}`);
+    await page.waitForLoadState("networkidle");
+
+    for (const testId of ["dca-open-button", "compound-open-button"]) {
+      const tab = page.getByTestId(testId);
+      const overflow = await tab.evaluate(
+        (el) => el.scrollWidth - el.clientWidth
+      );
+      expect(overflow, `${locale} ${testId} should not clip its label`).toBeLessThanOrEqual(1);
+    }
+  }
+});
+
+test.describe("mobile layout has no horizontal overflow", () => {
+  for (const locale of locales) {
+    test(`/${locale} does not overflow horizontally on mobile`, async ({ page }) => {
+      await page.goto(`/${locale}`);
+      await page.waitForLoadState("networkidle");
+
+      const overflow = await page.evaluate(
+        () => document.documentElement.scrollWidth - window.innerWidth
+      );
+
+      expect(overflow).toBeLessThanOrEqual(1);
+    });
   }
 });

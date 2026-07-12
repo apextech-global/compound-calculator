@@ -18,7 +18,7 @@
   "hero": {
     "eyebrow": "Alat ETF DCA, backtest, dan pertumbuhan majemuk",
     "title": "Kalkulator DCA dan Alat Backtest ETF",
-    "description": "Backtest investasi bulanan di VOO, CSPX, QQQ, VWRA, IWDA, ETF, dan saham, lalu bandingkan performa DCA dengan proyeksi bunga majemuk.",
+    "description": "Jalankan backtest DCA untuk VOO, CSPX, atau QQQ, proyeksikan pertumbuhan dengan kalkulator bunga majemuk, atau bandingkan ETF secara berdampingan.",
     "seoIntro": "Gunakan kalkulator DCA, backtest DCA, kalkulator ETF, alat investasi bulanan, dan kalkulator bunga majemuk ini untuk mempelajari skenario jangka panjang hanya untuk edukasi.",
     "relatedLinksLabel": "Lanjut jelajah",
     "calculatorLinksLabel": "Halaman kalkulator populer",

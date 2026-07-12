@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
+import RelatedGuides from "@/components/RelatedGuides";
 import type { Locale } from "@/i18n/routing";
 import {
   getSeoLandingContent,
@@ -16,8 +17,6 @@ const sectionKeys = [
   "etfExample",
   "supportedAssets",
 ] as const;
-
-const legalLinks = ["about", "privacy", "terms", "contact"] as const;
 
 export default function SeoContent() {
   const t = useTranslations();
@@ -131,29 +130,17 @@ export default function SeoContent() {
         </p>
       </div>
 
-      <nav
-        aria-label={t("seoContent.linksLabel")}
-        className="mt-5 flex flex-wrap gap-2.5 text-sm sm:mt-6 sm:gap-3"
-      >
-        {guideSlugs.map((slug) => (
-          <Link
-            key={slug}
-            href={`/${locale}/${slug}`}
-            className="rounded-full border border-cyan-300/20 bg-cyan-400/10 px-4 py-2 text-cyan-100 transition hover:border-cyan-300/50 hover:text-white"
-          >
-            {guides.pages[slug]?.h1 ?? slug}
-          </Link>
-        ))}
-        {legalLinks.map((link) => (
-          <Link
-            key={link}
-            href={`/${locale}/${link}`}
-            className="rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-slate-200 transition hover:border-cyan-300/40 hover:text-cyan-200"
-          >
-            {t(`footer.${link}`)}
-          </Link>
-        ))}
-      </nav>
+      <RelatedGuides
+        locale={locale}
+        currentSlug=""
+        heading={guides.relatedGuidesHeading}
+        description={guides.relatedGuidesDescription}
+        links={guideSlugs.map((slug) => ({
+          slug,
+          title: guides.pages[slug]?.h1 ?? slug,
+        }))}
+        maxLinks={8}
+      />
     </section>
   );
 }

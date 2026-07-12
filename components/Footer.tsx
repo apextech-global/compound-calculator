@@ -9,8 +9,8 @@ import {
   type PublicLocaleCode,
 } from "@/lib/locales";
 import {
+  getFooterPopularGuideSlugs,
   getSeoLandingContent,
-  getSeoPageSlugsForLocale,
 } from "@/lib/seoLandingPages";
 
 const footerLinks = [
@@ -40,18 +40,31 @@ const feedbackText = {
 const feedbackHref =
   "mailto:support@dcabacktest.com?subject=DCA%20Backtest%20Feedback";
 
+const popularGuidesLabel = {
+  en: "Popular Guides",
+  "zh-CN": "热门指南",
+  "zh-TW": "熱門指南",
+  ms: "Panduan Popular",
+  id: "Panduan Populer",
+} as const;
+
 export default function Footer() {
   const locale = useLocale();
   const t = useTranslations();
   const typedLocale = locale as Locale;
   const localeIsPublic = isPublicLocale(typedLocale);
-  const guides = getSeoLandingContent(typedLocale);
-  const guideSlugs = localeIsPublic ? getSeoPageSlugsForLocale(typedLocale) : [];
   const visibleFooterLinks = footerLinks.filter(
     (link) => link.href !== "affiliate-disclosure" || localeIsPublic
   );
   const feedbackLabel =
     feedbackText[locale as keyof typeof feedbackText] ?? feedbackText.en;
+  const popularGuideSlugs = localeIsPublic
+    ? getFooterPopularGuideSlugs(typedLocale)
+    : [];
+  const guides = getSeoLandingContent(typedLocale);
+  const popularGuidesTitle =
+    popularGuidesLabel[locale as keyof typeof popularGuidesLabel] ??
+    popularGuidesLabel.en;
 
   return (
     <footer className="w-full border-t border-white/10 bg-slate-950 text-white">
@@ -69,27 +82,46 @@ export default function Footer() {
           </a>
         </div>
 
-        <nav className="flex w-full min-w-0 flex-wrap gap-3 text-sm font-medium text-slate-300 md:max-w-sm">
-          {(publicLearnLocales as readonly string[]).includes(typedLocale) ? (
-            <Link
-              href={`/${typedLocale}/learn`}
-              className="transition hover:text-cyan-300"
-            >
-              {typedLocale === "en" ? "Learn" : t("footer.learnCenter")}
-            </Link>
-          ) : null}
-          {guideSlugs.map((slug) => (
-            <Link
-              key={slug}
-              href={`/${locale}/${slug}`}
-              className="transition hover:text-cyan-300"
-            >
-              {guides.pages[slug]?.h1 ?? slug}
-            </Link>
-          ))}
-        </nav>
+        <div className="flex w-full min-w-0 flex-col gap-3 md:max-w-sm">
+          <nav className="flex w-full min-w-0 flex-wrap gap-3 text-sm font-medium text-slate-300">
+            {(publicLearnLocales as readonly string[]).includes(typedLocale) ? (
+              <Link
+                href={`/${typedLocale}/learn`}
+                className="transition hover:text-cyan-300"
+              >
+                {typedLocale === "en" ? "Learn" : t("footer.learnCenter")}
+              </Link>
+            ) : null}
+          </nav>
 
-        <nav className="flex w-full min-w-0 flex-wrap gap-4 text-sm font-medium text-slate-300 md:justify-end">
+          {popularGuideSlugs.length > 0 ? (
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                {popularGuidesTitle}
+              </p>
+              <nav
+                aria-label={popularGuidesTitle}
+                data-testid="footer-popular-guides"
+                className="mt-2 flex w-full min-w-0 flex-wrap gap-x-3 gap-y-1.5 text-sm font-medium text-slate-300"
+              >
+                {popularGuideSlugs.map((slug) => (
+                  <Link
+                    key={slug}
+                    href={`/${locale}/${slug}`}
+                    className="transition hover:text-cyan-300"
+                  >
+                    {guides.pages[slug]?.h1 ?? slug}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+          ) : null}
+        </div>
+
+        <nav
+          data-testid="footer-core-links"
+          className="flex w-full min-w-0 flex-wrap gap-4 text-sm font-medium text-slate-300 md:justify-end"
+        >
           {visibleFooterLinks.map((link) => (
             <Link
               key={link.href}

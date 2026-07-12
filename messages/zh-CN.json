@@ -18,7 +18,7 @@
   "hero": {
     "eyebrow": "教育型 DCA 回测与复利增长工具",
     "title": "DCA 回测 + 复利增长计算器",
-    "description": "使用这个教育型网站，回测 ETF 和股票的历史定投表现，对比资产，并用定期投入模拟复利增长。",
+    "description": "对 VOO、CSPX 或 QQQ 做 DCA 定投回测，用复利计算器预测增长，或用 ETF 对比工具并排比较两个资产。",
     "seoIntro": "教育型 DCA 回测与复利增长计算器，适用于 ETF 和股票场景，可使用历史数据或示例数据探索不同方案。",
     "relatedLinksLabel": "继续探索",
     "calculatorLinksLabel": "热门计算器页面",

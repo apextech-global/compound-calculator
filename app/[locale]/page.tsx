@@ -2,7 +2,9 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef, useState } from "react";
-import CalculatorSwitcher from "@/components/CalculatorSwitcher";
+import CalculatorSwitcher, {
+  CALCULATOR_TAB_IDS,
+} from "@/components/CalculatorSwitcher";
 import CompoundInterestCalculator from "@/components/CompoundInterestCalculator";
 import DcaAssetComparison from "@/components/DcaAssetComparison";
 import DcaBacktestCalculator from "@/components/DcaBacktestCalculator";
@@ -65,6 +67,8 @@ type QuickStartPreset = {
 const quickStartCopy = {
   en: {
     title: "Popular examples",
+    showMore: "Show more examples",
+    showLess: "Show fewer examples",
     presets: {
       "voo-dca": "VOO DCA: $1,000/month, 2018-2025",
       "cspx-dca": "CSPX DCA: $1,000/month, 2018-2025",
@@ -76,6 +80,8 @@ const quickStartCopy = {
   },
   "zh-CN": {
     title: "热门试算案例",
+    showMore: "查看更多案例",
+    showLess: "收起更多案例",
     presets: {
       "voo-dca": "VOO 定投：每月 $1,000，2018-2025",
       "cspx-dca": "CSPX 定投：每月 $1,000，2018-2025",
@@ -87,6 +93,8 @@ const quickStartCopy = {
   },
   "zh-TW": {
     title: "熱門試算案例",
+    showMore: "查看更多案例",
+    showLess: "收起更多案例",
     presets: {
       "voo-dca": "VOO 定期定額：每月 $1,000，2018-2025",
       "cspx-dca": "CSPX 定期定額：每月 $1,000，2018-2025",
@@ -98,6 +106,8 @@ const quickStartCopy = {
   },
   ms: {
     title: "Contoh popular",
+    showMore: "Lihat lebih banyak contoh",
+    showLess: "Sembunyikan contoh tambahan",
     presets: {
       "voo-dca": "VOO DCA: $1,000/bulan, 2018-2025",
       "cspx-dca": "CSPX DCA: $1,000/bulan, 2018-2025",
@@ -109,6 +119,8 @@ const quickStartCopy = {
   },
   id: {
     title: "Contoh populer",
+    showMore: "Lihat lebih banyak contoh",
+    showLess: "Sembunyikan contoh tambahan",
     presets: {
       "voo-dca": "VOO DCA: $1.000/bulan, 2018-2025",
       "cspx-dca": "CSPX DCA: $1.000/bulan, 2018-2025",
@@ -119,6 +131,13 @@ const quickStartCopy = {
     },
   },
 } as const;
+
+const primaryQuickStartPresetIds: QuickStartPresetId[] = [
+  "voo-dca",
+  "cspx-dca",
+  "voo-qqq-comparison",
+  "compound-growth",
+];
 
 const quickStartPresets: QuickStartPreset[] = [
   { id: "voo-dca", mode: "dca", assetSymbol: "VOO" },
@@ -361,6 +380,7 @@ export default function Home() {
   );
   const [activeCalculator, setActiveCalculator] =
     useState<ActiveCalculator>("dca");
+  const [showMorePresets, setShowMorePresets] = useState(false);
   const [showCompoundTable, setShowCompoundTable] = useState(false);
   const [showBacktestTable, setShowBacktestTable] = useState(false);
   const [initialAmount, setInitialAmount] = useState("10000");
@@ -390,6 +410,11 @@ export default function Home() {
   const hasUserChangedCompoundCalculation = useRef(false);
   const quickStartLabels =
     quickStartCopy[locale as keyof typeof quickStartCopy] ?? quickStartCopy.en;
+  const visibleQuickStartPresets = showMorePresets
+    ? quickStartPresets
+    : quickStartPresets.filter((preset) =>
+        primaryQuickStartPresetIds.includes(preset.id)
+      );
 
   const scrollToCalculator = () => {
     window.requestAnimationFrame(() => {
@@ -1471,42 +1496,59 @@ export default function Home() {
 
         <CalculatorSwitcher
           activeCalculator={activeCalculator}
-          selectedCurrency={selectedCurrency}
-          backtestSymbol={selectedInstrument?.displaySymbol ?? backtestSymbol}
-          backtestFinalValue={backtest.finalValue}
-          backtestTotalReturn={backtest.totalReturn}
-          compoundYears={years}
-          compoundFinalValue={result.finalValue}
-          growthMultiple={growthMultiple}
           onCalculatorChange={handleCalculatorChange}
         />
 
         <section
           aria-label={quickStartLabels.title}
-          className="mb-4 w-full rounded-2xl border border-white/10 bg-white/[0.045] p-3 shadow-[0_18px_60px_rgba(2,6,23,0.24)] sm:p-4"
+          className="mb-4 w-full"
         >
-          <div className="flex w-full min-w-0 flex-col gap-3 lg:flex-row lg:items-center">
-            <p className="shrink-0 text-xs font-semibold uppercase tracking-[0.22em] text-cyan-200/85">
+          <div className="flex w-full min-w-0 flex-col gap-2 lg:flex-row lg:items-center lg:gap-3">
+            <p className="shrink-0 text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
               {quickStartLabels.title}
             </p>
-            <div className="flex w-full min-w-0 flex-wrap gap-2">
-              {quickStartPresets.map((preset) => (
+            <div className="flex w-full min-w-0 flex-wrap items-center gap-2">
+              {visibleQuickStartPresets.map((preset) => (
                 <button
                   key={preset.id}
                   type="button"
                   onClick={() => handleQuickStartPreset(preset)}
-                  className="min-w-0 rounded-full border border-white/10 bg-slate-900/75 px-3 py-2 text-left text-xs font-semibold leading-snug text-slate-100 transition hover:border-cyan-300/50 hover:bg-cyan-300/10 hover:text-white focus:outline-none focus:ring-2 focus:ring-cyan-300/50 sm:px-4 sm:text-sm"
+                  className="min-w-0 rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-left text-xs font-semibold leading-snug text-slate-200 transition hover:border-cyan-300/50 hover:bg-cyan-300/10 hover:text-white focus:outline-none focus:ring-2 focus:ring-cyan-300/50 sm:px-4 sm:text-sm"
                 >
                   {quickStartLabels.presets[preset.id]}
                 </button>
               ))}
+              <button
+                type="button"
+                data-testid="quick-start-toggle-button"
+                onClick={() => setShowMorePresets((current) => !current)}
+                aria-expanded={showMorePresets}
+                className="inline-flex min-w-0 items-center gap-1 rounded-full border border-white/15 px-3 py-2 text-left text-xs font-semibold leading-snug text-cyan-200/85 transition hover:border-cyan-300/50 hover:text-cyan-100 focus:outline-none focus:ring-2 focus:ring-cyan-300/50 sm:px-4 sm:text-sm"
+              >
+                {showMorePresets
+                  ? quickStartLabels.showLess
+                  : quickStartLabels.showMore}
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 12 8"
+                  className={`h-2.5 w-2.5 shrink-0 fill-none stroke-current stroke-2 transition-transform ${
+                    showMorePresets ? "rotate-180" : ""
+                  }`}
+                >
+                  <path d="M1 1.5 6 6.5 11 1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
             </div>
           </div>
         </section>
 
-        <RelatedLinks />
-
-        <div id="calculator" className="w-full min-w-0 scroll-mt-24">
+        <div
+          id="calculator"
+          role="tabpanel"
+          aria-labelledby={CALCULATOR_TAB_IDS[activeCalculator]}
+          tabIndex={0}
+          className="w-full min-w-0 scroll-mt-24 focus-visible:outline-none"
+        >
           {activeCalculator === "dca" ? (
             <>
               <DcaBacktestCalculator
@@ -1576,6 +1618,7 @@ export default function Home() {
           )}
         </div>
 
+        <RelatedLinks />
         <SeoContent />
         <Faq />
       </section>

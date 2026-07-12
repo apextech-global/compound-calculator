@@ -4171,6 +4171,37 @@ export function isSeoPageSlugForLocale(
   );
 }
 
+const footerPopularGuideCandidates: SeoPageSlug[] = [
+  "voo-vs-cspx",
+  "voo-vs-qqq",
+  "dca-vs-lump-sum",
+  "etf-dca-backtest-guide",
+  "compound-interest-guide",
+];
+
+const footerMalaysiaGuideByLocale: Partial<Record<Locale, SeoPageSlug>> = {
+  "zh-CN": "how-to-invest-in-voo-from-malaysia",
+  "zh-TW": "cspx-vs-voo-malaysia",
+  ms: "cspx-vs-voo-malaysia",
+};
+
+/**
+ * A small, curated set of high-value guide links for the footer's "Popular
+ * Guides" group (max 6) — distinct from getSeoPageSlugsForLocale, which
+ * returns every page for a locale and is meant for full crawlability
+ * surfaces (sitemap, homepage related-guides), not a compact footer.
+ */
+export function getFooterPopularGuideSlugs(locale: Locale): SeoPageSlug[] {
+  const malaysiaSlug = footerMalaysiaGuideByLocale[locale];
+  const candidates = malaysiaSlug
+    ? [...footerPopularGuideCandidates, malaysiaSlug]
+    : footerPopularGuideCandidates;
+
+  return candidates
+    .filter((slug) => isSeoPageSlugForLocale(locale, slug))
+    .slice(0, 6);
+}
+
 export function getSeoPageAlternates(slug: SeoPageSlug) {
   const candidateLocales = isMalaysiaGuideSeoPageSlug(slug)
     ? ["zh-CN"]
