@@ -10,6 +10,7 @@ import { getSeoLandingPage, type SeoPageSlug } from "@/lib/seoLandingPages";
 import {
   absoluteUrl,
   alternateLanguages,
+  buildBreadcrumbJsonLd,
   productionBaseUrl,
   socialImageAlt,
 } from "@/lib/seoMetadata";
@@ -191,8 +192,19 @@ export default async function SupportedAssetsPage({
     };
   });
 
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "DCA Backtest", url: absoluteUrl(`/${typedLocale}`) },
+    { name: pageMessages.title, url: absoluteUrl(`/${typedLocale}/supported-assets`) },
+  ]);
+
   return (
     <main className="min-h-screen w-full overflow-x-hidden bg-slate-950 text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
       <section className="relative mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 sm:py-16 lg:px-8">
         <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-96 bg-[radial-gradient(circle_at_top,_rgba(16,185,129,0.18),_transparent_34%),radial-gradient(circle_at_80%_10%,_rgba(34,211,238,0.12),_transparent_28%)]" />
 

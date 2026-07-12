@@ -14,6 +14,7 @@ import {
   getSeoLandingContent,
   getSeoLandingPage,
   getSeoPageAlternates,
+  getSeoPageLastModified,
   getSeoPageSlugsForLocale,
   getSeoPageXDefault,
   isSeoPageSlugForLocale,
@@ -38,6 +39,8 @@ const relatedSeoLinks: SeoPageSlug[] = [
   "2800-dca-calculator",
   "voo-vs-cspx",
   "voo-vs-qqq",
+  "cspx-vs-vwra",
+  "iwda-vs-vwra",
 ];
 const chineseLearningRelatedLinks: SeoPageSlug[] = [
   "cspx-vs-voo-malaysia",
@@ -46,13 +49,17 @@ const chineseLearningRelatedLinks: SeoPageSlug[] = [
   "dca-vs-lump-sum-guide",
   "compound-interest-guide",
   "sp500-dca-simulation",
+  "best-etf-broker-malaysia",
+  "ibkr-vs-moomoo-malaysia",
 ];
 const siteLinks = ["supported-assets", "recommended-tools", "learn"] as const;
 const legalLinks = [
+  "about",
   "privacy",
   "terms",
   "disclaimer",
   "affiliate-disclosure",
+  "contact",
 ] as const;
 const webApplicationSeoPages: SeoPageSlug[] = [
   "dca-calculator",
@@ -104,6 +111,7 @@ export async function generateMetadata({
   }
 
   const page = getSeoLandingPage(locale as Locale, seoPage as SeoPageSlug);
+  const lastModified = getSeoPageLastModified(seoPage as SeoPageSlug);
 
   return {
     title: page.title,
@@ -123,6 +131,7 @@ export async function generateMetadata({
       siteName: "DCA Backtest",
       type: "article",
       locale,
+      modifiedTime: lastModified ?? undefined,
     },
     twitter: {
       card: "summary_large_image",
@@ -246,11 +255,13 @@ export default async function SeoLandingPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify([
-            pageTypeJsonLd,
-            breadcrumbJsonLd,
-            faqJsonLd,
-          ]).replace(/</g, "\\u003c"),
+          __html: JSON.stringify(
+            [
+              pageTypeJsonLd,
+              breadcrumbJsonLd,
+              page.faqs.length > 0 ? faqJsonLd : null,
+            ].filter(Boolean)
+          ).replace(/</g, "\\u003c"),
         }}
       />
       <section className="relative mx-auto w-full max-w-5xl px-4 py-10 sm:px-6 sm:py-16 lg:px-8">

@@ -1,5 +1,6 @@
 import type { Locale } from "@/i18n/routing";
 import { publicLocaleCodes } from "@/lib/locales";
+import { getMarketDataLastUpdatedDate } from "@/lib/marketDataStatus";
 import { absoluteUrl, xDefaultUrl } from "@/lib/seoMetadata";
 
 const baseSeoPageSlugs = [
@@ -4288,6 +4289,18 @@ const curatedRelatedGuides: Partial<Record<SeoPageSlug, SeoPageSlug[]>> = {
     "compound-interest-calculator",
     "etf-comparison-calculator",
   ],
+  "cspx-vs-vwra": [
+    "vwra-dca-calculator",
+    "cspx-dca-calculator",
+    "voo-vs-cspx",
+    "etf-comparison-calculator",
+  ],
+  "iwda-vs-vwra": [
+    "iwda-dca-calculator",
+    "vwra-dca-calculator",
+    "voo-vs-qqq",
+    "etf-comparison-calculator",
+  ],
   "cspx-vs-voo-malaysia": [
     "voo-vs-cspx",
     "cspx-dca-calculator",
@@ -4323,4 +4336,29 @@ export function getCuratedRelatedGuideSlugs(
   slug: SeoPageSlug
 ): SeoPageSlug[] {
   return curatedRelatedGuides[slug] ?? [];
+}
+
+const assetSeoPageDataKeys: Partial<Record<SeoPageSlug, string>> = {
+  "voo-dca-calculator": "voo",
+  "cspx-dca-calculator": "cspx-l",
+  "qqq-dca-calculator": "qqq",
+  "vwra-dca-calculator": "vwra-l",
+  "iwda-dca-calculator": "iwda-l",
+  "0050-dca-calculator": "0050-tw",
+  "1155-dca-calculator": "1155-kl",
+  "es3-dca-calculator": "es3-si",
+  "2800-dca-calculator": "2800-hk",
+};
+
+/**
+ * Real "last modified" date for asset-tied SEO pages, sourced from the same
+ * market-data freshness tracking already used in the Supported Assets table
+ * (lib/marketDataStatus.ts). Returns null for comparison/guide/base pages,
+ * where no single accurate content-change date exists — callers should fall
+ * back to a build-time date rather than fabricate one.
+ */
+export function getSeoPageLastModified(slug: SeoPageSlug): string | null {
+  const dataKey = assetSeoPageDataKeys[slug];
+
+  return dataKey ? getMarketDataLastUpdatedDate(dataKey) : null;
 }

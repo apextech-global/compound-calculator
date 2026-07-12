@@ -58,6 +58,19 @@ export function validateLocale(locale: string): Locale {
   return locale;
 }
 
+export function buildBreadcrumbJsonLd(items: { name: string; url: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: item.url,
+    })),
+  };
+}
+
 export async function staticPageMetadata(
   locale: string,
   page: StaticPageSlug
@@ -81,6 +94,13 @@ export async function staticPageMetadata(
     legalPage.sections?.[0]?.body ??
     messages.seo.description;
   const canonicalPath = `/${typedLocale}/${page}`;
+  const lastUpdatedDate = legalPage.lastUpdated
+    ? new Date(legalPage.lastUpdated)
+    : null;
+  const modifiedTime =
+    lastUpdatedDate && !Number.isNaN(lastUpdatedDate.getTime())
+      ? lastUpdatedDate.toISOString()
+      : undefined;
 
   return {
     metadataBase: new URL(productionBaseUrl),
@@ -97,6 +117,7 @@ export async function staticPageMetadata(
       siteName: "DCA Backtest",
       type: "article",
       locale: typedLocale,
+      modifiedTime,
       images: [
         {
           url: "/og-image.png",

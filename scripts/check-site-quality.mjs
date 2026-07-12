@@ -98,6 +98,18 @@ function extractStringArray(source, name) {
   return [...match[1].matchAll(/"([^"]+)"/g)].map((item) => item[1]);
 }
 
+function extractTypedArray(source, name) {
+  const match = source.match(
+    new RegExp(`const\\s+${name}\\s*:\\s*[A-Za-z\\[\\]]+\\s*=\\s*\\[([\\s\\S]*?)\\];`)
+  );
+
+  if (!match) {
+    return [];
+  }
+
+  return [...match[1].matchAll(/"([^"]+)"/g)].map((item) => item[1]);
+}
+
 function extractRoutingLocales(source) {
   const match = source.match(/locales:\s*\[([\s\S]*?)\]\s*,/);
 
@@ -154,12 +166,15 @@ const metadataSource = read("lib/seoMetadata.ts");
 const sitemapSource = read("app/sitemap.ts");
 const robotsSource = read("app/robots.ts");
 const localeLayoutSource = read("app/[locale]/layout.tsx");
+const homePageSource = read("app/[locale]/page.tsx");
 const seoPageSource = read("app/[locale]/[seoPage]/page.tsx");
 const supportedAssetsPageSource = read("app/[locale]/supported-assets/page.tsx");
 const recommendedToolsPageSource = read("app/[locale]/recommended-tools/page.tsx");
 const learnPageSource = read("app/[locale]/learn/page.tsx");
 const footerSource = read("components/Footer.tsx");
 const heroSource = read("components/Hero.tsx");
+const relatedLinksSource = read("components/RelatedLinks.tsx");
+const seoContentSource = read("components/SeoContent.tsx");
 const staticContentPageSource = read("components/StaticContentPage.tsx");
 const adminHealthSource = read("app/admin/health/page.tsx");
 
@@ -628,6 +643,130 @@ if (seoSource.includes('absoluteUrl(`/ja/${slug}`)')) {
   );
 } else {
   addPass("lib/seoLandingPages.ts getSeoPageXDefault does not point x-default at an unsupported locale.");
+}
+
+// --- Canonical coverage across every indexable page type ------------------
+
+const canonicalSources = [
+  ["Homepage (app/[locale]/layout.tsx)", localeLayoutSource],
+  ["SEO landing pages", seoPageSource],
+  ["Learn hub", learnPageSource],
+  ["Supported assets", supportedAssetsPageSource],
+  ["Recommended tools", recommendedToolsPageSource],
+  ["Legal/static pages (lib/seoMetadata.ts staticPageMetadata)", metadataSource],
+];
+
+for (const [label, source] of canonicalSources) {
+  if (source.includes("canonical:")) {
+    addPass(`${label} sets a self-referencing canonical URL.`);
+  } else {
+    addError(`${label} is missing a canonical URL in its metadata.`);
+  }
+}
+
+// --- Breadcrumb structured data on every indexable page type --------------
+
+const breadcrumbSources = [
+  ["Homepage", homePageSource],
+  ["SEO landing pages", seoPageSource],
+  ["Learn hub", learnPageSource],
+  ["Supported assets", supportedAssetsPageSource],
+  ["Recommended tools", recommendedToolsPageSource],
+  ["Legal/static pages (components/StaticContentPage.tsx)", staticContentPageSource],
+];
+
+for (const [label, source] of breadcrumbSources) {
+  if (source.includes("BreadcrumbList") || source.includes("buildBreadcrumbJsonLd(")) {
+    addPass(`${label} emits BreadcrumbList structured data.`);
+  } else {
+    addError(`${label} is missing BreadcrumbList structured data.`);
+  }
+}
+
+// --- Internal linking: previously-orphaned SEO pages must stay linked -----
+// (regression guard for the Google Index Optimization V1 internal-link fix)
+
+const relatedSeoLinksSlugs = extractTypedArray(seoPageSource, "relatedSeoLinks");
+const chineseLearningRelatedLinksSlugs = extractTypedArray(
+  seoPageSource,
+  "chineseLearningRelatedLinks"
+);
+const previouslyOrphanedSeoSlugs = [
+  "cspx-vs-vwra",
+  "iwda-vs-vwra",
+  "vwra-dca-calculator",
+  "iwda-dca-calculator",
+  "0050-dca-calculator",
+  "1155-dca-calculator",
+  "es3-dca-calculator",
+  "2800-dca-calculator",
+  "best-etf-broker-malaysia",
+  "ibkr-vs-moomoo-malaysia",
+];
+const missingOrphanFixSlugs = previouslyOrphanedSeoSlugs.filter(
+  (slug) =>
+    !relatedSeoLinksSlugs.includes(slug) &&
+    !chineseLearningRelatedLinksSlugs.includes(slug)
+);
+
+if (missingOrphanFixSlugs.length) {
+  addError(
+    `app/[locale]/[seoPage]/page.tsx no longer links to previously-orphaned page(s): ${missingOrphanFixSlugs.join(", ")}.`
+  );
+} else {
+  addPass("app/[locale]/[seoPage]/page.tsx links to all previously-orphaned SEO pages.");
+}
+
+// --- Orphan-page detection --------------------------------------------------
+// Every SEO landing page must be reachable through at least one known
+// internal-linking surface. Uses the precisely-extracted relatedSeoLinks /
+// chineseLearningRelatedLinks arrays (not the whole [seoPage] file) so that
+// schema-only slug references (webApplicationSeoPages, articleSeoPages,
+// malaysiaGuidePages — used purely to select a JSON-LD @type, never
+// rendered as a link) can't hide a genuinely unlinked page.
+
+function sourceReferencesSlug(source, slug) {
+  const escapedSlug = slug.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  // Matches a bare quoted slug ("slug") or a slug embedded at the end of a
+  // path literal (/slug" or /slug`), so hrefs like `/${locale}/slug` or
+  // "/zh-CN/slug" both count as a real inbound reference.
+  return new RegExp(`[/"\`]${escapedSlug}["\`]`).test(source);
+}
+
+const linkArraySlugs = [...relatedSeoLinksSlugs, ...chineseLearningRelatedLinksSlugs];
+const fullTextLinkSources = [
+  footerSource,
+  heroSource,
+  relatedLinksSource,
+  learnPageSource,
+  supportedAssetsPageSource,
+  recommendedToolsPageSource,
+];
+
+// sp500-dca-simulation only exists under the `ja` locale, which is
+// deliberately unpublished (isPublicLocale() gates it out of every public
+// route — see lib/locales.ts) — it is never actually reachable or
+// indexable in production regardless of internal linking, so it's exempt.
+const orphanCheckExemptSlugs = new Set(["sp500-dca-simulation"]);
+
+const orphanSlugs = seoPages.filter((slug) => {
+  if (orphanCheckExemptSlugs.has(slug)) {
+    return false;
+  }
+
+  if (linkArraySlugs.includes(slug)) {
+    return false;
+  }
+
+  return !fullTextLinkSources.some((source) => sourceReferencesSlug(source, slug));
+});
+
+if (orphanSlugs.length) {
+  addError(
+    `SEO landing page(s) with no inbound internal link from any known linking surface: ${orphanSlugs.join(", ")}.`
+  );
+} else {
+  addPass("Every SEO landing page has at least one inbound internal link.");
 }
 
 function printSection(icon, title, items) {
