@@ -35,6 +35,27 @@ export function getMarketDataLastUpdatedDate(dataKey: string | undefined) {
   return date.toISOString().slice(0, 10);
 }
 
+/**
+ * Genuine "last modified" date for the Supported Assets page: the most
+ * recent successful fetch across every tracked instrument. Used by the
+ * sitemap instead of a build-time date, since this reflects an actual
+ * content change (a row's data updating) rather than when the app was
+ * last deployed.
+ */
+export function getLatestMarketDataLastUpdatedDate() {
+  const timestamps = Object.values(marketDataStatus)
+    .map((status) => status.lastSuccessfulFetchAt)
+    .filter((value): value is string => Boolean(value))
+    .map((value) => new Date(value).getTime())
+    .filter((time) => !Number.isNaN(time));
+
+  if (timestamps.length === 0) {
+    return null;
+  }
+
+  return new Date(Math.max(...timestamps)).toISOString().slice(0, 10);
+}
+
 export function isMarketDataUpdateOld(
   dataKey: string | undefined,
   maxAgeDays = 14

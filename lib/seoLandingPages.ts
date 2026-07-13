@@ -4354,8 +4354,8 @@ const assetSeoPageDataKeys: Partial<Record<SeoPageSlug, string>> = {
  * Real "last modified" date for asset-tied SEO pages, sourced from the same
  * market-data freshness tracking already used in the Supported Assets table
  * (lib/marketDataStatus.ts). Returns null for comparison/guide/base pages,
- * where no single accurate content-change date exists — callers should fall
- * back to a build-time date rather than fabricate one.
+ * where no single accurate content-change date exists — callers should omit
+ * lastModified entirely rather than fabricate one.
  */
 export function getSeoPageLastModified(slug: SeoPageSlug): string | null {
   const dataKey = assetSeoPageDataKeys[slug];
