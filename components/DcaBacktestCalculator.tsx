@@ -139,7 +139,7 @@ export default function DcaBacktestCalculator({
     feedbackText[locale as keyof typeof feedbackText] ?? feedbackText.en;
 
   return (
-    <section className="w-full min-w-0">
+    <section data-testid="calculator-dashboard" className="calculator-dashboard w-full min-w-0">
       <div className="mb-3 w-full max-w-4xl sm:mb-4">
         <p className="mb-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300 sm:mb-2 sm:text-sm sm:tracking-[0.24em]">
           {t("dca.eyebrow")}
@@ -153,7 +153,7 @@ export default function DcaBacktestCalculator({
       </div>
 
       <div className="grid w-full min-w-0 grid-cols-1 gap-4 lg:grid-cols-[400px_minmax(0,1fr)] lg:gap-5">
-        <div className="w-full min-w-0 rounded-2xl border border-white/10 bg-white/[0.06] p-4 shadow-2xl shadow-black/30 backdrop-blur sm:rounded-3xl sm:p-6">
+        <div data-testid="calculator-input-panel" className="calculator-input-panel w-full min-w-0 rounded-2xl border p-4 sm:rounded-3xl sm:p-6">
           <div className="mb-4 flex flex-col gap-3 sm:mb-6 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
             <div>
               <p className="text-xs font-medium uppercase tracking-[0.18em] text-slate-400 sm:text-sm sm:tracking-[0.2em]">
@@ -369,9 +369,9 @@ export default function DcaBacktestCalculator({
         </div>
 
         <div className="min-w-0 space-y-4 sm:space-y-6">
-          <div className="grid min-w-0 gap-3 sm:gap-4 md:grid-cols-4">
-            <div className="min-w-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] p-4 shadow-xl shadow-black/20 sm:rounded-3xl sm:p-5">
-              <p className="min-w-0 truncate whitespace-nowrap text-sm text-slate-400">
+          <div data-testid="calculator-primary-metrics" className="grid min-w-0 gap-3 sm:grid-cols-2 sm:gap-4 xl:grid-cols-4">
+            <div className="result-metric-card min-w-0 overflow-hidden border p-4 sm:p-5">
+              <p className="min-w-0 break-words text-xs font-semibold uppercase leading-5 tracking-[0.08em] text-slate-400">
                 {t("metrics.totalInvested")}
               </p>
               <p className="mt-2 min-w-0 whitespace-normal break-words text-[clamp(1.5rem,2.4vw,1.875rem)] font-bold leading-tight [overflow-wrap:anywhere]">
@@ -382,24 +382,24 @@ export default function DcaBacktestCalculator({
                 )}
               </p>
             </div>
-            <div className="min-w-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] p-4 shadow-xl shadow-black/20 sm:rounded-3xl sm:p-5">
-              <p className="min-w-0 truncate whitespace-nowrap text-sm text-slate-400">
+            <div data-testid="metric-final-value" className="result-metric-card result-metric-card--primary min-w-0 overflow-hidden border p-4 sm:p-5">
+              <p className="min-w-0 break-words text-xs font-semibold uppercase leading-5 tracking-[0.08em] text-cyan-200/80">
                 {t("metrics.finalValueTitle")}
               </p>
               <p className="mt-2 min-w-0 whitespace-normal break-words text-[clamp(1.5rem,2.4vw,1.875rem)] font-bold leading-tight text-cyan-300 [overflow-wrap:anywhere]">
                 {formatMoney(backtest.finalValue, selectedCurrency, locale)}
               </p>
             </div>
-            <div className="min-w-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] p-4 shadow-xl shadow-black/20 sm:rounded-3xl sm:p-5">
-              <p className="min-w-0 truncate whitespace-nowrap text-sm text-slate-400">
+            <div className="result-metric-card min-w-0 overflow-hidden border p-4 sm:p-5">
+              <p className="min-w-0 break-words text-xs font-semibold uppercase leading-5 tracking-[0.08em] text-slate-400">
                 {t("metrics.totalProfit")}
               </p>
               <p className="mt-2 min-w-0 whitespace-normal break-words text-[clamp(1.5rem,2.4vw,1.875rem)] font-bold leading-tight text-emerald-400 [overflow-wrap:anywhere]">
                 {formatMoney(backtest.totalProfit, selectedCurrency, locale)}
               </p>
             </div>
-            <div className="min-w-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] p-4 shadow-xl shadow-black/20 sm:rounded-3xl sm:p-5">
-              <p className="min-w-0 truncate whitespace-nowrap text-sm text-slate-400">
+            <div className="result-metric-card min-w-0 overflow-hidden border p-4 sm:p-5">
+              <p className="min-w-0 break-words text-xs font-semibold uppercase leading-5 tracking-[0.08em] text-slate-400">
                 {t("metrics.totalReturn")}
               </p>
               <p className="mt-2 min-w-0 whitespace-normal break-words text-[clamp(1.5rem,2.4vw,1.875rem)] font-bold leading-tight text-cyan-400 [overflow-wrap:anywhere]">
@@ -427,12 +427,12 @@ export default function DcaBacktestCalculator({
                 {feedbackLabel}
               </a>
             </div>
-              <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap lg:justify-end">
+              <div className="calculator-action-group flex flex-col gap-2 sm:flex-row sm:flex-wrap lg:justify-end">
                 <button
                   type="button"
                   data-testid="share-result-button"
                   onClick={onShareResult}
-                  className="w-full rounded-2xl bg-cyan-400 px-4 py-2.5 text-sm font-bold text-slate-950 transition hover:bg-cyan-300 sm:w-auto"
+                  className="w-full rounded-2xl border border-cyan-300/30 bg-cyan-300/10 px-4 py-2.5 text-sm font-semibold text-cyan-100 transition hover:border-cyan-200/50 hover:bg-cyan-300/15 sm:w-auto"
                   aria-label={t("share.title")}
                 >
                   {t("share.shareResult")}

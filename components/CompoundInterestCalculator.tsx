@@ -62,7 +62,7 @@ export default function CompoundInterestCalculator({
   const locale = useLocale();
 
   return (
-    <section className="w-full min-w-0">
+    <section data-testid="calculator-dashboard" className="calculator-dashboard w-full min-w-0">
       <div className="mb-4 grid w-full min-w-0 grid-cols-1 gap-4 sm:mb-5 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-end lg:gap-5">
         <div className="min-w-0">
           <p className="mb-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400 sm:mb-2 sm:text-sm sm:tracking-[0.24em]">
@@ -93,7 +93,7 @@ export default function CompoundInterestCalculator({
       </div>
 
       <div className="grid w-full min-w-0 grid-cols-1 gap-4 lg:grid-cols-[400px_minmax(0,1fr)] lg:gap-5">
-        <div className="w-full min-w-0 rounded-2xl border border-white/10 bg-white/[0.06] p-4 shadow-2xl shadow-black/30 backdrop-blur sm:rounded-3xl sm:p-6">
+        <div data-testid="calculator-input-panel" className="calculator-input-panel w-full min-w-0 rounded-2xl border p-4 sm:rounded-3xl sm:p-6">
           <div className="mb-4 flex items-start justify-between gap-4 sm:mb-6">
             <div>
               <p className="text-xs font-medium uppercase tracking-[0.18em] text-slate-400 sm:text-sm sm:tracking-[0.2em]">
@@ -205,11 +205,13 @@ export default function CompoundInterestCalculator({
         </div>
 
         <div className="min-w-0 space-y-4 sm:space-y-6">
-          <div className="grid gap-3 sm:gap-4 md:grid-cols-3">
+          <div data-testid="calculator-primary-metrics" className="grid gap-3 sm:grid-cols-2 sm:gap-4 xl:grid-cols-3">
             <SummaryCard
               label={t("metrics.finalValueTitle")}
               value={formatMoney(result.finalValue, selectedCurrency, locale)}
               valueClassName="text-emerald-400"
+              primary
+              testId="metric-final-value"
             />
             <SummaryCard
               label={t("metrics.totalInvested")}

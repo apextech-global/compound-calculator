@@ -133,6 +133,46 @@ test("English homepage calculator controls render", async ({ page }) => {
   expect(consoleErrors).toEqual([]);
 });
 
+test("calculator V2 dashboard keeps controls and result hierarchy usable", async ({
+  page,
+}) => {
+  await prepareEnglishHome(page);
+
+  const dashboard = page.getByTestId("calculator-dashboard");
+  await expect(dashboard).toBeVisible();
+  await expect(page.getByTestId("calculator-input-panel")).toBeVisible();
+  await expect(page.getByTestId("calculator-primary-metrics")).toBeVisible();
+
+  for (const control of await dashboard.locator("input, select, button").all()) {
+    const box = await control.boundingBox();
+    expect(box?.height ?? 0).toBeGreaterThanOrEqual(44);
+  }
+
+  await clickVisible(page.getByTestId("compound-open-button"));
+  await expect(page.getByTestId("calculator-dashboard")).toBeVisible();
+  await expect(page.getByTestId("calculator-primary-metrics")).toBeVisible();
+});
+
+test("calculator result cards stay honest and update with inputs", async ({ page }) => {
+  await prepareEnglishHome(page);
+  await clickVisible(page.getByTestId("compound-open-button"));
+
+  const finalValue = page.getByTestId("metric-final-value");
+  await expect(finalValue).toBeVisible();
+  const initialResult = await finalValue.textContent();
+  expect(initialResult?.trim()).toBeTruthy();
+
+  const initialInvestment = page
+    .getByTestId("calculator-input-panel")
+    .locator("input[type='number']")
+    .first();
+  await initialInvestment.fill("0");
+  await expect(finalValue).not.toHaveText(initialResult ?? "");
+
+  const updatedResult = await finalValue.textContent();
+  expect(updatedResult?.trim()).toBeTruthy();
+});
+
 test("English homepage advanced options toggle works", async ({ page }) => {
   const consoleErrors = await prepareEnglishHome(page);
   const toggle = page.getByTestId("advanced-toggle-button");
@@ -421,6 +461,16 @@ test.describe("mobile layout has no horizontal overflow", () => {
       );
 
       expect(overflow).toBeLessThanOrEqual(1);
+
+      const dashboard = page.getByTestId("calculator-dashboard");
+      await expect(dashboard).toBeVisible();
+      const clippedText = await dashboard.locator("label, button").evaluateAll(
+        (elements) =>
+          elements.filter(
+            (element) => element.scrollWidth - element.clientWidth > 1
+          ).length
+      );
+      expect(clippedText, `${locale} calculator labels should not clip`).toBe(0);
     });
   }
 });

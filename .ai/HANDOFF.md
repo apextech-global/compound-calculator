@@ -2,90 +2,62 @@
 
 ## Session
 
-- Date: 2026-07-11
-- Implementer: Founder-guided documentation migration
-- Reviewer: Codex
-- Task: Migrate the project AI documentation system from the legacy structure to V3
+- Date: 2026-07-14
+- Implementer: Codex
+- Reviewer: Codex validation workflow
+- Task: Calculator UI V2.1 — Financial Dashboard Polish
 
 ## Completed
 
-- Created the five required `.ai` documentation files
-- Updated `AGENTS.md` as the single AI rule source
-- Removed the root AI-specific rule file
-- Removed the legacy project-memory directory
-- Updated governance documents to use `AGENTS.md` and `.ai/`
-- Updated the Issue-to-PR workflow
-- Updated the Claude implementation prompt
-- Moved the pre-V3 backup outside the repository
-- Confirmed no business source code was modified
-- Confirmed no active project files instruct AI agents to use the legacy structure
+- Added a scoped premium dashboard shell to both calculators
+- Standardized calculator control height, borders, focus, hover, and disabled states
+- Improved DCA and compound result metric hierarchy without adding metrics
+- Unified share, copy, and download button geometry while preserving handlers and test IDs
+- Improved mobile spacing, wrapping, and result-card behavior
+- Added Playwright coverage for dashboard structure, 44px touch targets, locale label clipping, and mobile overflow
+- Preserved the existing instant-calculation workflow
+- Refined dashboard separation with lighter shadow treatment and clearer borders
+- Normalized label rhythm, input padding, and secondary-text line height
+- Stabilized KPI card height and added an input-driven KPI integrity regression test
+- Kept Share secondary because the existing instant-calculation workflow has no Calculate/Run button
 
 ## Files Changed
 
-- `AGENTS.md`
-- `.ai/PROJECT_MEMORY.md`
 - `.ai/TASKS.md`
-- `.ai/DECISIONS.md`
-- `.ai/PITFALLS.md`
 - `.ai/HANDOFF.md`
-- `docs/governance/ai-development-workflow.md`
-- `docs/governance/issue-to-pr-workflow.md`
-- `docs/governance/multi-agent-workflow.md`
-- `prompts/claude-issue-to-pr.md`
-- Removed legacy AI documentation files
+- `app/globals.css`
+- `components/DcaBacktestCalculator.tsx`
+- `components/CompoundInterestCalculator.tsx`
+- `components/SummaryCard.tsx`
+- `tests/e2e/production-qa.spec.ts`
 
 ## Verification Performed
 
-```bash
-git status --short
-git diff --check
-git diff --stat
-git diff --name-status
-git diff
-```
+`npm run build`, `npm run check-site`, `npm run lint`, and `npm run qa:production`.
 
 Results:
 
-- All five required `.ai` files exist and are non-empty
-- No business code changes were detected
-- No secrets, environment variables, or production configuration were changed
-- Active references to the legacy AI documentation structure were removed
-- `git diff --check` passed
-
-## Codex Review Findings
-
-Codex initially reported:
-
-1. Git authorization rules conflicted across project documents
-2. The current V3 migration was not recorded in `HANDOFF.md`
-3. `TASKS.md` marked the migration complete before final review
-4. `multi-agent-workflow.md` was overdesigned and too long
-
-## Fixes Completed
-
-- Aligned Git authorization rules across `AGENTS.md`, the Issue-to-PR workflow, and the Claude implementation prompt
-- Confirmed local editing and testing are allowed
-- Confirmed branch creation, commit, push, PR creation, merge, and deployment require explicit Founder approval
-- Updated this Handoff to describe the current V3 migration
+- Build passed on Next.js 16.2.9 (171 static pages generated)
+- Site quality passed for 158 routes, 159 sitemap URLs, and 5 public locales
+- Lint passed with 0 errors and one pre-existing warning in `scripts/check-site-quality.mjs`
+- Algorithm tests passed: 4/4
+- Playwright passed: 79 passed, 1 expected conditional skip across desktop and mobile projects
 
 ## Remaining Work
 
-- Adjust `.ai/TASKS.md` to show implementation complete but final review pending
-- Simplify `docs/governance/multi-agent-workflow.md`
-- Run another short Codex review
-- Obtain Founder approval before commit
+- Optional Founder visual review on physical mobile devices
+- Founder approval before commit
 
 ## Risks
 
-- `multi-agent-workflow.md` may still duplicate too much content from `AGENTS.md`
-- The migration has not yet passed the final follow-up review
-- Commit must not occur before the remaining findings are resolved
+- Styling is implemented with calculator-scoped CSS and existing Tailwind utilities; no data or formula risk was introduced.
+- The existing unrelated lint warning remains.
 
 ## Recommended Next Step
 
-Update `.ai/TASKS.md`, then simplify `docs/governance/multi-agent-workflow.md`.
+Review the V2 calculator visually, then approve a commit if acceptable.
 
 ## Commit Recommendation
 
-- Safe to commit: No
-- Reason: Final review is pending and two documentation findings still require correction.
+- Safe to commit: Yes
+- Reason: Requested checks and full production QA passed; formulas, data, SEO, routing, analytics, and translations were untouched.

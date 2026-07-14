@@ -2,59 +2,54 @@
 
 ## Active Task
 
-### V3 Documentation Migration — Final Review
+### Calculator UI V2.1 — Financial Dashboard Polish
 
-**Status:** In review
+**Status:** Implementation complete; validation passed
 
 **Objective:**
 
-Complete the final review and correction of the V3 AI documentation migration.
+Polish the existing V2 dashboard container, controls, KPI cards, action hierarchy, typography, and mobile behavior without changing workflow or calculation behavior.
 
 **Business reason:**
 
-Ensure the new AI documentation structure is consistent, maintainable, safe for a Solo Founder workflow, and free from conflicting instructions.
+Improve calculator clarity, trust, mobile usability, and result scanning while preserving formulas, data, SEO, routing, analytics, and translations.
 
 **In scope:**
 
-- Confirm Git authorization rules are consistent
-- Confirm `.ai/HANDOFF.md` reflects the current migration
-- Simplify `docs/governance/multi-agent-workflow.md`
-- Run final documentation-only review
-- Confirm whether the migration is safe to commit
+- Calculator container and visual hierarchy
+- Standardized inputs, focus states, and mobile touch targets
+- Primary and secondary result metric hierarchy
+- Unified share/copy/download action styling
+- Advanced options presentation
+- Public-locale clipping and mobile overflow regression coverage
+- KPI integrity coverage before and after input changes
 
 **Out of scope:**
 
-- Product feature changes
-- Calculator logic changes
-- SEO content changes
-- Market data changes
-- Dependency changes
-- Production deployment
+- Calculator formulas and output logic
+- Market data and Yahoo Finance scripts
+- SEO, routes, locales, translations, analytics, and advertising
+- New actions, metrics, dependencies, or workflow changes
+- Commit, push, PR, or deployment
 
 **Acceptance criteria:**
 
-- Git permissions are consistent across active documents
-- `HANDOFF.md` reflects the current migration
-- `multi-agent-workflow.md` is concise and does not duplicate `AGENTS.md`
-- No active file requires `CLAUDE.md` or the legacy memory structure
-- No business code is modified
-- `git diff --check` passes
-- Codex final review returns `Safe to commit: Yes`
+- Both calculators use the V2 dashboard hierarchy
+- Existing controls, mode switch, advanced options, and secondary share actions work
+- Result metrics remain unchanged and are easier to scan
+- All five public locales avoid obvious calculator label clipping
+- Mobile view has no horizontal overflow
+- Required build, site, lint, algorithm, and Playwright checks pass
 
 **Required tests:**
 
 ```bash
-git status --short
-git diff --check
-git diff --stat
-git diff --name-status
-git diff
+npm run build
+npm run check-site
+npm run lint
+npm run qa:production
 ```
-Risks:
-
-* Governance documents may still contain duplicated rules
-* The multi-agent workflow may remain too complex
-* The migration may be committed before the final review passes
+**Risks:** CSS primitives are scoped to calculator dashboards, but final visual review on additional physical devices remains useful.
 
 ⸻
 
