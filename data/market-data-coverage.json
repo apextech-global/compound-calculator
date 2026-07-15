@@ -1,8 +1,7 @@
 {
-  "generatedAt": "2026-07-02T07:26:10.988Z",
   "summary": {
-    "totalAssets": 54,
-    "historicalDataAvailable": 54,
+    "totalAssets": 63,
+    "historicalDataAvailable": 63,
     "missingHistoricalData": 0,
     "missingYahooMapping": 0,
     "sampleDataOnlyAssets": 0
@@ -20,7 +19,7 @@
       "expectedCsvPath": "public/market-data/0050-tw.csv",
       "hasHistoricalCsv": true,
       "rowCount": 211,
-      "lastModified": "2026-07-02T07:26:10.307Z",
+      "latestTradingDate": "2026-07-01",
       "hasYahooMapping": true,
       "yahooSymbol": "0050.TW",
       "status": "historical-data-available"
@@ -37,7 +36,7 @@
       "expectedCsvPath": "public/market-data/0056-tw.csv",
       "hasHistoricalCsv": true,
       "rowCount": 223,
-      "lastModified": "2026-07-02T07:26:10.317Z",
+      "latestTradingDate": "2026-07-02",
       "hasYahooMapping": true,
       "yahooSymbol": "0056.TW",
       "status": "historical-data-available"
@@ -54,7 +53,7 @@
       "expectedCsvPath": "public/market-data/0700-hk.csv",
       "hasHistoricalCsv": true,
       "rowCount": 266,
-      "lastModified": "2026-07-02T07:26:10.329Z",
+      "latestTradingDate": "2026-07-02",
       "hasYahooMapping": true,
       "yahooSymbol": "0700.HK",
       "status": "historical-data-available"
@@ -71,7 +70,7 @@
       "expectedCsvPath": "public/market-data/0939-hk.csv",
       "hasHistoricalCsv": true,
       "rowCount": 250,
-      "lastModified": "2026-07-02T07:26:10.339Z",
+      "latestTradingDate": "2026-07-02",
       "hasYahooMapping": true,
       "yahooSymbol": "0939.HK",
       "status": "historical-data-available"
@@ -88,7 +87,7 @@
       "expectedCsvPath": "public/market-data/1023-kl.csv",
       "hasHistoricalCsv": true,
       "rowCount": 319,
-      "lastModified": "2026-07-02T07:26:10.370Z",
+      "latestTradingDate": "2026-07-02",
       "hasYahooMapping": true,
       "yahooSymbol": "1023.KL",
       "status": "historical-data-available"
@@ -105,7 +104,7 @@
       "expectedCsvPath": "public/market-data/1155-kl.csv",
       "hasHistoricalCsv": true,
       "rowCount": 319,
-      "lastModified": "2026-07-02T07:26:10.384Z",
+      "latestTradingDate": "2026-07-01",
       "hasYahooMapping": true,
       "yahooSymbol": "1155.KL",
       "status": "historical-data-available"
@@ -122,7 +121,7 @@
       "expectedCsvPath": "public/market-data/1295-kl.csv",
       "hasHistoricalCsv": true,
       "rowCount": 319,
-      "lastModified": "2026-07-02T07:26:10.396Z",
+      "latestTradingDate": "2026-07-02",
       "hasYahooMapping": true,
       "yahooSymbol": "1295.KL",
       "status": "historical-data-available"
@@ -139,7 +138,7 @@
       "expectedCsvPath": "public/market-data/1299-hk.csv",
       "hasHistoricalCsv": true,
       "rowCount": 190,
-      "lastModified": "2026-07-02T07:26:10.404Z",
+      "latestTradingDate": "2026-07-02",
       "hasYahooMapping": true,
       "yahooSymbol": "1299.HK",
       "status": "historical-data-available"
@@ -156,7 +155,7 @@
       "expectedCsvPath": "public/market-data/1306-t.csv",
       "hasHistoricalCsv": true,
       "rowCount": 211,
-      "lastModified": "2026-07-02T07:26:10.411Z",
+      "latestTradingDate": "2026-07-02",
       "hasYahooMapping": true,
       "yahooSymbol": "1306.T",
       "status": "historical-data-available"
@@ -173,7 +172,7 @@
       "expectedCsvPath": "public/market-data/2303-tw.csv",
       "hasHistoricalCsv": true,
       "rowCount": 319,
-      "lastModified": "2026-07-02T07:26:10.423Z",
+      "latestTradingDate": "2026-07-02",
       "hasYahooMapping": true,
       "yahooSymbol": "2303.TW",
       "status": "historical-data-available"
@@ -190,7 +189,7 @@
       "expectedCsvPath": "public/market-data/2308-tw.csv",
       "hasHistoricalCsv": true,
       "rowCount": 319,
-      "lastModified": "2026-07-02T07:26:10.434Z",
+      "latestTradingDate": "2026-07-02",
       "hasYahooMapping": true,
       "yahooSymbol": "2308.TW",
       "status": "historical-data-available"
@@ -207,7 +206,7 @@
       "expectedCsvPath": "public/market-data/2317-tw.csv",
       "hasHistoricalCsv": true,
       "rowCount": 403,
-      "lastModified": "2026-07-02T07:26:10.451Z",
+      "latestTradingDate": "2026-07-02",
       "hasYahooMapping": true,
       "yahooSymbol": "2317.TW",
       "status": "historical-data-available"
@@ -224,7 +223,7 @@
       "expectedCsvPath": "public/market-data/2330-tw.csv",
       "hasHistoricalCsv": true,
       "rowCount": 319,
-      "lastModified": "2026-07-02T07:26:10.462Z",
+      "latestTradingDate": "2026-07-02",
       "hasYahooMapping": true,
       "yahooSymbol": "2330.TW",
       "status": "historical-data-available"
@@ -241,7 +240,7 @@
       "expectedCsvPath": "public/market-data/2412-tw.csv",
       "hasHistoricalCsv": true,
       "rowCount": 309,
-      "lastModified": "2026-07-02T07:26:10.473Z",
+      "latestTradingDate": "2026-07-02",
       "hasYahooMapping": true,
       "yahooSymbol": "2412.TW",
       "status": "historical-data-available"
@@ -258,7 +257,7 @@
       "expectedCsvPath": "public/market-data/2445-kl.csv",
       "hasHistoricalCsv": true,
       "rowCount": 319,
-      "lastModified": "2026-07-02T07:26:10.486Z",
+      "latestTradingDate": "2026-07-02",
       "hasYahooMapping": true,
       "yahooSymbol": "2445.KL",
       "status": "historical-data-available"
@@ -275,7 +274,7 @@
       "expectedCsvPath": "public/market-data/2454-tw.csv",
       "hasHistoricalCsv": true,
       "rowCount": 301,
-      "lastModified": "2026-07-02T07:26:10.496Z",
+      "latestTradingDate": "2026-07-02",
       "hasYahooMapping": true,
       "yahooSymbol": "2454.TW",
       "status": "historical-data-available"
@@ -292,7 +291,7 @@
       "expectedCsvPath": "public/market-data/2800-hk.csv",
       "hasHistoricalCsv": true,
       "rowCount": 222,
-      "lastModified": "2026-07-02T07:26:10.504Z",
+      "latestTradingDate": "2026-06-30",
       "hasYahooMapping": true,
       "yahooSymbol": "2800.HK",
       "status": "historical-data-available"
@@ -309,7 +308,7 @@
       "expectedCsvPath": "public/market-data/2881-tw.csv",
       "hasHistoricalCsv": true,
       "rowCount": 296,
-      "lastModified": "2026-07-02T07:26:10.515Z",
+      "latestTradingDate": "2026-07-02",
       "hasYahooMapping": true,
       "yahooSymbol": "2881.TW",
       "status": "historical-data-available"
@@ -326,7 +325,7 @@
       "expectedCsvPath": "public/market-data/2882-tw.csv",
       "hasHistoricalCsv": true,
       "rowCount": 319,
-      "lastModified": "2026-07-02T07:26:10.527Z",
+      "latestTradingDate": "2026-07-02",
       "hasYahooMapping": true,
       "yahooSymbol": "2882.TW",
       "status": "historical-data-available"
@@ -343,7 +342,7 @@
       "expectedCsvPath": "public/market-data/2891-tw.csv",
       "hasHistoricalCsv": true,
       "rowCount": 291,
-      "lastModified": "2026-07-02T07:26:10.537Z",
+      "latestTradingDate": "2026-07-02",
       "hasYahooMapping": true,
       "yahooSymbol": "2891.TW",
       "status": "historical-data-available"
@@ -360,7 +359,7 @@
       "expectedCsvPath": "public/market-data/3711-tw.csv",
       "hasHistoricalCsv": true,
       "rowCount": 319,
-      "lastModified": "2026-07-02T07:26:10.549Z",
+      "latestTradingDate": "2026-07-02",
       "hasYahooMapping": true,
       "yahooSymbol": "3711.TW",
       "status": "historical-data-available"
@@ -377,7 +376,7 @@
       "expectedCsvPath": "public/market-data/3816-kl.csv",
       "hasHistoricalCsv": true,
       "rowCount": 319,
-      "lastModified": "2026-07-02T07:26:10.559Z",
+      "latestTradingDate": "2026-07-02",
       "hasYahooMapping": true,
       "yahooSymbol": "3816.KL",
       "status": "historical-data-available"
@@ -394,7 +393,7 @@
       "expectedCsvPath": "public/market-data/5225-kl.csv",
       "hasHistoricalCsv": true,
       "rowCount": 169,
-      "lastModified": "2026-07-02T07:26:10.565Z",
+      "latestTradingDate": "2026-07-02",
       "hasYahooMapping": true,
       "yahooSymbol": "5225.KL",
       "status": "historical-data-available"
@@ -411,7 +410,7 @@
       "expectedCsvPath": "public/market-data/5347-kl.csv",
       "hasHistoricalCsv": true,
       "rowCount": 243,
-      "lastModified": "2026-07-02T07:26:10.572Z",
+      "latestTradingDate": "2026-07-02",
       "hasYahooMapping": true,
       "yahooSymbol": "5347.KL",
       "status": "historical-data-available"
@@ -428,7 +427,7 @@
       "expectedCsvPath": "public/market-data/5819-kl.csv",
       "hasHistoricalCsv": true,
       "rowCount": 319,
-      "lastModified": "2026-07-02T07:26:10.584Z",
+      "latestTradingDate": "2026-07-02",
       "hasYahooMapping": true,
       "yahooSymbol": "5819.KL",
       "status": "historical-data-available"
@@ -445,7 +444,7 @@
       "expectedCsvPath": "public/market-data/6758-t.csv",
       "hasHistoricalCsv": true,
       "rowCount": 319,
-      "lastModified": "2026-07-02T07:26:10.595Z",
+      "latestTradingDate": "2026-07-02",
       "hasYahooMapping": true,
       "yahooSymbol": "6758.T",
       "status": "historical-data-available"
@@ -462,7 +461,7 @@
       "expectedCsvPath": "public/market-data/6888-kl.csv",
       "hasHistoricalCsv": true,
       "rowCount": 319,
-      "lastModified": "2026-07-02T07:26:10.606Z",
+      "latestTradingDate": "2026-07-02",
       "hasYahooMapping": true,
       "yahooSymbol": "6888.KL",
       "status": "historical-data-available"
@@ -479,7 +478,7 @@
       "expectedCsvPath": "public/market-data/6947-kl.csv",
       "hasHistoricalCsv": true,
       "rowCount": 243,
-      "lastModified": "2026-07-02T07:26:10.613Z",
+      "latestTradingDate": "2026-07-02",
       "hasYahooMapping": true,
       "yahooSymbol": "6947.KL",
       "status": "historical-data-available"
@@ -496,7 +495,7 @@
       "expectedCsvPath": "public/market-data/7203-t.csv",
       "hasHistoricalCsv": true,
       "rowCount": 327,
-      "lastModified": "2026-07-02T07:26:10.625Z",
+      "latestTradingDate": "2026-07-02",
       "hasYahooMapping": true,
       "yahooSymbol": "7203.T",
       "status": "historical-data-available"
@@ -513,7 +512,7 @@
       "expectedCsvPath": "public/market-data/8306-t.csv",
       "hasHistoricalCsv": true,
       "rowCount": 251,
-      "lastModified": "2026-07-02T07:26:10.637Z",
+      "latestTradingDate": "2026-07-02",
       "hasYahooMapping": true,
       "yahooSymbol": "8306.T",
       "status": "historical-data-available"
@@ -530,7 +529,7 @@
       "expectedCsvPath": "public/market-data/9984-t.csv",
       "hasHistoricalCsv": true,
       "rowCount": 319,
-      "lastModified": "2026-07-02T07:26:10.649Z",
+      "latestTradingDate": "2026-07-02",
       "hasYahooMapping": true,
       "yahooSymbol": "9984.T",
       "status": "historical-data-available"
@@ -547,7 +546,7 @@
       "expectedCsvPath": "public/market-data/9988-hk.csv",
       "hasHistoricalCsv": true,
       "rowCount": 81,
-      "lastModified": "2026-07-02T07:26:10.652Z",
+      "latestTradingDate": "2026-07-02",
       "hasYahooMapping": true,
       "yahooSymbol": "9988.HK",
       "status": "historical-data-available"
@@ -564,9 +563,26 @@
       "expectedCsvPath": "public/market-data/aapl.csv",
       "hasHistoricalCsv": true,
       "rowCount": 547,
-      "lastModified": "2026-06-29T13:54:24.047Z",
+      "latestTradingDate": "2026-06-29",
       "hasYahooMapping": true,
       "yahooSymbol": "AAPL",
+      "status": "historical-data-available"
+    },
+    {
+      "symbol": "ACWI",
+      "displaySymbol": "ACWI",
+      "name": "iShares MSCI ACWI ETF",
+      "market": "United States",
+      "country": "United States",
+      "assetType": "ETF",
+      "currency": "USD",
+      "dataKey": "acwi",
+      "expectedCsvPath": "public/market-data/acwi.csv",
+      "hasHistoricalCsv": true,
+      "rowCount": 221,
+      "latestTradingDate": "2026-07-14",
+      "hasYahooMapping": true,
+      "yahooSymbol": "ACWI",
       "status": "historical-data-available"
     },
     {
@@ -581,9 +597,26 @@
       "expectedCsvPath": "public/market-data/amzn.csv",
       "hasHistoricalCsv": true,
       "rowCount": 351,
-      "lastModified": "2026-07-02T07:26:10.666Z",
+      "latestTradingDate": "2026-07-01",
       "hasYahooMapping": true,
       "yahooSymbol": "AMZN",
+      "status": "historical-data-available"
+    },
+    {
+      "symbol": "BND",
+      "displaySymbol": "BND",
+      "name": "Vanguard Total Bond Market ETF",
+      "market": "United States",
+      "country": "United States",
+      "assetType": "ETF",
+      "currency": "USD",
+      "dataKey": "bnd",
+      "expectedCsvPath": "public/market-data/bnd.csv",
+      "hasHistoricalCsv": true,
+      "rowCount": 232,
+      "latestTradingDate": "2026-07-14",
+      "hasYahooMapping": true,
+      "yahooSymbol": "BND",
       "status": "historical-data-available"
     },
     {
@@ -598,7 +631,7 @@
       "expectedCsvPath": "public/market-data/brk-b.csv",
       "hasHistoricalCsv": true,
       "rowCount": 363,
-      "lastModified": "2026-07-02T07:26:10.680Z",
+      "latestTradingDate": "2026-07-01",
       "hasYahooMapping": true,
       "yahooSymbol": "BRK-B",
       "status": "historical-data-available"
@@ -615,7 +648,7 @@
       "expectedCsvPath": "public/market-data/cspx-l.csv",
       "hasHistoricalCsv": true,
       "rowCount": 190,
-      "lastModified": "2026-07-02T07:26:10.689Z",
+      "latestTradingDate": "2026-06-30",
       "hasYahooMapping": true,
       "yahooSymbol": "CSPX.L",
       "status": "historical-data-available"
@@ -632,7 +665,7 @@
       "expectedCsvPath": "public/market-data/d05-si.csv",
       "hasHistoricalCsv": true,
       "rowCount": 319,
-      "lastModified": "2026-07-02T07:26:10.705Z",
+      "latestTradingDate": "2026-07-02",
       "hasYahooMapping": true,
       "yahooSymbol": "D05.SI",
       "status": "historical-data-available"
@@ -649,7 +682,7 @@
       "expectedCsvPath": "public/market-data/eimi-l.csv",
       "hasHistoricalCsv": true,
       "rowCount": 147,
-      "lastModified": "2026-07-02T07:26:10.711Z",
+      "latestTradingDate": "2026-07-02",
       "hasYahooMapping": true,
       "yahooSymbol": "EIMI.L",
       "status": "historical-data-available"
@@ -666,7 +699,7 @@
       "expectedCsvPath": "public/market-data/es3-si.csv",
       "hasHistoricalCsv": true,
       "rowCount": 223,
-      "lastModified": "2026-07-02T07:26:10.720Z",
+      "latestTradingDate": "2026-07-01",
       "hasYahooMapping": true,
       "yahooSymbol": "ES3.SI",
       "status": "historical-data-available"
@@ -683,7 +716,7 @@
       "expectedCsvPath": "public/market-data/g3b-si.csv",
       "hasHistoricalCsv": true,
       "rowCount": 210,
-      "lastModified": "2026-07-02T07:26:10.728Z",
+      "latestTradingDate": "2026-07-02",
       "hasYahooMapping": true,
       "yahooSymbol": "G3B.SI",
       "status": "historical-data-available"
@@ -700,9 +733,26 @@
       "expectedCsvPath": "public/market-data/googl.csv",
       "hasHistoricalCsv": true,
       "rowCount": 264,
-      "lastModified": "2026-07-02T07:26:10.739Z",
+      "latestTradingDate": "2026-07-01",
       "hasYahooMapping": true,
       "yahooSymbol": "GOOGL",
+      "status": "historical-data-available"
+    },
+    {
+      "symbol": "IVV",
+      "displaySymbol": "IVV",
+      "name": "iShares Core S&P 500 ETF",
+      "market": "United States",
+      "country": "United States",
+      "assetType": "ETF",
+      "currency": "USD",
+      "dataKey": "ivv",
+      "expectedCsvPath": "public/market-data/ivv.csv",
+      "hasHistoricalCsv": true,
+      "rowCount": 315,
+      "latestTradingDate": "2026-07-14",
+      "hasYahooMapping": true,
+      "yahooSymbol": "IVV",
       "status": "historical-data-available"
     },
     {
@@ -717,7 +767,7 @@
       "expectedCsvPath": "public/market-data/iwda-l.csv",
       "hasHistoricalCsv": true,
       "rowCount": 202,
-      "lastModified": "2026-07-02T07:26:10.746Z",
+      "latestTradingDate": "2026-06-30",
       "hasYahooMapping": true,
       "yahooSymbol": "IWDA.L",
       "status": "historical-data-available"
@@ -734,7 +784,7 @@
       "expectedCsvPath": "public/market-data/jpm.csv",
       "hasHistoricalCsv": true,
       "rowCount": 557,
-      "lastModified": "2026-07-02T07:26:10.767Z",
+      "latestTradingDate": "2026-07-01",
       "hasYahooMapping": true,
       "yahooSymbol": "JPM",
       "status": "historical-data-available"
@@ -751,7 +801,7 @@
       "expectedCsvPath": "public/market-data/meta.csv",
       "hasHistoricalCsv": true,
       "rowCount": 171,
-      "lastModified": "2026-07-02T07:26:10.774Z",
+      "latestTradingDate": "2026-07-01",
       "hasYahooMapping": true,
       "yahooSymbol": "META",
       "status": "historical-data-available"
@@ -768,7 +818,7 @@
       "expectedCsvPath": "public/market-data/msft.csv",
       "hasHistoricalCsv": true,
       "rowCount": 485,
-      "lastModified": "2026-07-02T07:26:10.794Z",
+      "latestTradingDate": "2026-07-01",
       "hasYahooMapping": true,
       "yahooSymbol": "MSFT",
       "status": "historical-data-available"
@@ -785,7 +835,7 @@
       "expectedCsvPath": "public/market-data/nvda.csv",
       "hasHistoricalCsv": true,
       "rowCount": 330,
-      "lastModified": "2026-06-29T13:54:24.344Z",
+      "latestTradingDate": "2026-06-29",
       "hasYahooMapping": true,
       "yahooSymbol": "NVDA",
       "status": "historical-data-available"
@@ -802,7 +852,7 @@
       "expectedCsvPath": "public/market-data/o39-si.csv",
       "hasHistoricalCsv": true,
       "rowCount": 319,
-      "lastModified": "2026-07-02T07:26:10.806Z",
+      "latestTradingDate": "2026-07-02",
       "hasYahooMapping": true,
       "yahooSymbol": "O39.SI",
       "status": "historical-data-available"
@@ -819,9 +869,43 @@
       "expectedCsvPath": "public/market-data/qqq.csv",
       "hasHistoricalCsv": true,
       "rowCount": 328,
-      "lastModified": "2026-07-02T07:26:10.823Z",
+      "latestTradingDate": "2026-06-30",
       "hasYahooMapping": true,
       "yahooSymbol": "QQQ",
+      "status": "historical-data-available"
+    },
+    {
+      "symbol": "QQQM",
+      "displaySymbol": "QQQM",
+      "name": "Invesco NASDAQ 100 ETF",
+      "market": "United States",
+      "country": "United States",
+      "assetType": "ETF",
+      "currency": "USD",
+      "dataKey": "qqqm",
+      "expectedCsvPath": "public/market-data/qqqm.csv",
+      "hasHistoricalCsv": true,
+      "rowCount": 70,
+      "latestTradingDate": "2026-07-14",
+      "hasYahooMapping": true,
+      "yahooSymbol": "QQQM",
+      "status": "historical-data-available"
+    },
+    {
+      "symbol": "SCHD",
+      "displaySymbol": "SCHD",
+      "name": "Schwab U.S. Dividend Equity ETF",
+      "market": "United States",
+      "country": "United States",
+      "assetType": "ETF",
+      "currency": "USD",
+      "dataKey": "schd",
+      "expectedCsvPath": "public/market-data/schd.csv",
+      "hasHistoricalCsv": true,
+      "rowCount": 178,
+      "latestTradingDate": "2026-07-14",
+      "hasYahooMapping": true,
+      "yahooSymbol": "SCHD",
       "status": "historical-data-available"
     },
     {
@@ -835,8 +919,8 @@
       "dataKey": "spy",
       "expectedCsvPath": "public/market-data/spy.csv",
       "hasHistoricalCsv": true,
-      "rowCount": 402,
-      "lastModified": "2026-06-29T13:54:22.969Z",
+      "rowCount": 403,
+      "latestTradingDate": "2026-07-14",
       "hasYahooMapping": true,
       "yahooSymbol": "SPY",
       "status": "historical-data-available"
@@ -853,7 +937,7 @@
       "expectedCsvPath": "public/market-data/tsla.csv",
       "hasHistoricalCsv": true,
       "rowCount": 193,
-      "lastModified": "2026-06-29T13:54:24.145Z",
+      "latestTradingDate": "2026-06-29",
       "hasYahooMapping": true,
       "yahooSymbol": "TSLA",
       "status": "historical-data-available"
@@ -870,7 +954,7 @@
       "expectedCsvPath": "public/market-data/u11-si.csv",
       "hasHistoricalCsv": true,
       "rowCount": 319,
-      "lastModified": "2026-07-02T07:26:10.836Z",
+      "latestTradingDate": "2026-07-02",
       "hasYahooMapping": true,
       "yahooSymbol": "U11.SI",
       "status": "historical-data-available"
@@ -887,9 +971,26 @@
       "expectedCsvPath": "public/market-data/unh.csv",
       "hasHistoricalCsv": true,
       "rowCount": 502,
-      "lastModified": "2026-07-02T07:26:10.854Z",
+      "latestTradingDate": "2026-07-01",
       "hasYahooMapping": true,
       "yahooSymbol": "UNH",
+      "status": "historical-data-available"
+    },
+    {
+      "symbol": "VIG",
+      "displaySymbol": "VIG",
+      "name": "Vanguard Dividend Appreciation ETF",
+      "market": "United States",
+      "country": "United States",
+      "assetType": "ETF",
+      "currency": "USD",
+      "dataKey": "vig",
+      "expectedCsvPath": "public/market-data/vig.csv",
+      "hasHistoricalCsv": true,
+      "rowCount": 243,
+      "latestTradingDate": "2026-07-14",
+      "hasYahooMapping": true,
+      "yahooSymbol": "VIG",
       "status": "historical-data-available"
     },
     {
@@ -904,9 +1005,43 @@
       "expectedCsvPath": "public/market-data/voo.csv",
       "hasHistoricalCsv": true,
       "rowCount": 190,
-      "lastModified": "2026-06-30T09:55:07.929Z",
+      "latestTradingDate": "2026-06-29",
       "hasYahooMapping": true,
       "yahooSymbol": "VOO",
+      "status": "historical-data-available"
+    },
+    {
+      "symbol": "VT",
+      "displaySymbol": "VT",
+      "name": "Vanguard Total World Stock ETF",
+      "market": "United States",
+      "country": "United States",
+      "assetType": "ETF",
+      "currency": "USD",
+      "dataKey": "vt",
+      "expectedCsvPath": "public/market-data/vt.csv",
+      "hasHistoricalCsv": true,
+      "rowCount": 218,
+      "latestTradingDate": "2026-07-14",
+      "hasYahooMapping": true,
+      "yahooSymbol": "VT",
+      "status": "historical-data-available"
+    },
+    {
+      "symbol": "VTI",
+      "displaySymbol": "VTI",
+      "name": "Vanguard Total Stock Market ETF",
+      "market": "United States",
+      "country": "United States",
+      "assetType": "ETF",
+      "currency": "USD",
+      "dataKey": "vti",
+      "expectedCsvPath": "public/market-data/vti.csv",
+      "hasHistoricalCsv": true,
+      "rowCount": 302,
+      "latestTradingDate": "2026-07-14",
+      "hasYahooMapping": true,
+      "yahooSymbol": "VTI",
       "status": "historical-data-available"
     },
     {
@@ -921,9 +1056,26 @@
       "expectedCsvPath": "public/market-data/vwra-l.csv",
       "hasHistoricalCsv": true,
       "rowCount": 84,
-      "lastModified": "2026-07-02T07:26:10.858Z",
+      "latestTradingDate": "2026-06-30",
       "hasYahooMapping": true,
       "yahooSymbol": "VWRA.L",
+      "status": "historical-data-available"
+    },
+    {
+      "symbol": "VXUS",
+      "displaySymbol": "VXUS",
+      "name": "Vanguard Total International Stock ETF",
+      "market": "United States",
+      "country": "United States",
+      "assetType": "ETF",
+      "currency": "USD",
+      "dataKey": "vxus",
+      "expectedCsvPath": "public/market-data/vxus.csv",
+      "hasHistoricalCsv": true,
+      "rowCount": 187,
+      "latestTradingDate": "2026-07-14",
+      "hasYahooMapping": true,
+      "yahooSymbol": "VXUS",
       "status": "historical-data-available"
     }
   ]

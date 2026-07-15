@@ -2,6 +2,19 @@ import type { Locale } from "@/i18n/routing";
 import { publicLocaleCodes } from "@/lib/locales";
 import { getMarketDataLastUpdatedDate } from "@/lib/marketDataStatus";
 import { absoluteUrl, xDefaultUrl } from "@/lib/seoMetadata";
+import type { ComparisonContentModel } from "@/lib/comparisonContent/models";
+import {
+  generateComparisonPage,
+  type ComparisonSourceEntry,
+} from "@/lib/comparisonContent/service";
+import { getComparisonConfigDescriptor } from "@/lib/comparisonContent/registry";
+import {
+  comparisonLibrarySlugs,
+  getBrokerComparisonEntry,
+  getComparisonLibraryEntry,
+  getComparisonRelatedSlugs,
+  type ComparisonLibrarySlug,
+} from "@/lib/comparisonLibrary";
 
 const baseSeoPageSlugs = [
   "compound-interest-calculator",
@@ -18,9 +31,20 @@ const comparisonSeoPageSlugs = [
   "cspx-vs-vwra",
   "iwda-vs-vwra",
   "etf-comparison-calculator",
+  ...comparisonLibrarySlugs,
 ] as const;
 
 const assetSeoPageSlugs = [
+  "spy-dca-calculator",
+  "ivv-dca-calculator",
+  "vti-dca-calculator",
+  "vt-dca-calculator",
+  "schd-dca-calculator",
+  "vig-dca-calculator",
+  "vxus-dca-calculator",
+  "acwi-dca-calculator",
+  "bnd-dca-calculator",
+  "qqqm-dca-calculator",
   "qqq-dca-calculator",
   "vwra-dca-calculator",
   "iwda-dca-calculator",
@@ -35,6 +59,7 @@ const malaysiaGuideSeoPageSlugs = [
   "how-to-invest-in-voo-from-malaysia",
   "best-etf-broker-malaysia",
   "ibkr-vs-moomoo-malaysia",
+  "tiger-vs-moomoo-malaysia",
 ] as const;
 
 const chineseLearningSeoPageSlugs = [
@@ -64,12 +89,16 @@ type MalaysiaGuideSeoPageSlug = (typeof malaysiaGuideSeoPageSlugs)[number];
 type ChineseLearningSeoPageSlug = (typeof chineseLearningSeoPageSlugs)[number];
 type JapaneseLearningSeoPageSlug = (typeof japaneseLearningSeoPageSlugs)[number];
 
-type SeoPageContent = {
+export type SeoPageContent = {
   title: string;
   description: string;
   h1: string;
   intro: string;
   ctaQuery?: string;
+  calculatorStatus?: "available" | "unavailable";
+  calculatorNotice?: string;
+  comparedItems?: Array<{ name: string; url?: string }>;
+  contentEngine?: ComparisonContentModel;
   sections: Array<{
     title: string;
     body: string;
@@ -681,7 +710,7 @@ const simpleLocaleText: Partial<Record<Locale, {
 };
 
 const comparisonDefinitions: Record<
-  ComparisonSeoPageSlug,
+  Exclude<ComparisonSeoPageSlug, ComparisonLibrarySlug>,
   { assetA: string; assetB: string; theme: "comparison" | "calculator" }
 > = {
   "voo-vs-cspx": { assetA: "VOO", assetB: "CSPX", theme: "comparison" },
@@ -1038,7 +1067,10 @@ function comparisonLocale(
 }
 
 function getEnglishComparisonPage(slug: ComparisonSeoPageSlug): SeoPageContent {
-  const pages: Record<ComparisonSeoPageSlug, SeoPageContent> = {
+  if ((comparisonLibrarySlugs as readonly string[]).includes(slug)) {
+    return getComparisonLibraryEntry("en", slug as ComparisonLibrarySlug).page;
+  }
+  const pages: Record<Exclude<ComparisonSeoPageSlug, ComparisonLibrarySlug>, SeoPageContent> = {
     "voo-vs-cspx": {
       title: "VOO vs CSPX | S&P 500 ETF DCA Comparison Guide",
       description:
@@ -1356,7 +1388,7 @@ function getEnglishComparisonPage(slug: ComparisonSeoPageSlug): SeoPageContent {
     },
   };
 
-  return pages[slug];
+  return pages[slug as Exclude<ComparisonSeoPageSlug, ComparisonLibrarySlug>];
 }
 
 function getZhCnComparisonOverride(
@@ -1825,10 +1857,47 @@ function getZhTwComparisonOverride(
   return pages[slug];
 }
 
+function generateConfiguredComparisonPage(
+  locale: Locale,
+  entry: ComparisonSourceEntry
+): SeoPageContent {
+  const generated = generateComparisonPage(entry, {
+    locale,
+    pageUrl: absoluteUrl(`/${locale}/${entry.slug}`),
+    homeUrl: absoluteUrl(`/${locale}`),
+    publisherUrl: absoluteUrl("/"),
+    validRelatedSlugs: seoPageSlugs,
+  });
+  return generated ?? entry.page;
+}
+
+function applyComparisonContentEngine(
+  locale: Locale,
+  slug: Exclude<ComparisonSeoPageSlug, ComparisonLibrarySlug>,
+  page: SeoPageContent
+): SeoPageContent {
+  const descriptor = getComparisonConfigDescriptor(slug);
+  if (!descriptor) return page;
+  return generateConfiguredComparisonPage(locale, {
+    slug,
+    comparisonKind: descriptor.comparisonKind,
+    page,
+    relatedLinks: [...descriptor.relatedLinks],
+    pageType: descriptor.pageType,
+    calculatorAvailability: descriptor.calculatorAvailability,
+    supportedLocales: descriptor.supportedLocales,
+  });
+}
+
 function buildComparisonPages(locale: Locale): Record<ComparisonSeoPageSlug, SeoPageContent> {
   if (locale === "en") {
     return Object.fromEntries(
-      comparisonSeoPageSlugs.map((slug) => [slug, getEnglishComparisonPage(slug)])
+      comparisonSeoPageSlugs.map((slug) => {
+        const page = getEnglishComparisonPage(slug);
+        return [slug, (comparisonLibrarySlugs as readonly string[]).includes(slug)
+          ? generateConfiguredComparisonPage(locale, { slug, ...getComparisonLibraryEntry(locale, slug as ComparisonLibrarySlug) })
+          : applyComparisonContentEngine(locale, slug as Exclude<ComparisonSeoPageSlug, ComparisonLibrarySlug>, page)];
+      })
     ) as Record<ComparisonSeoPageSlug, SeoPageContent>;
   }
 
@@ -1836,20 +1905,25 @@ function buildComparisonPages(locale: Locale): Record<ComparisonSeoPageSlug, Seo
 
   return Object.fromEntries(
     comparisonSeoPageSlugs.map((slug) => {
+      if ((comparisonLibrarySlugs as readonly string[]).includes(slug)) {
+        return [slug, generateConfiguredComparisonPage(locale, { slug, ...getComparisonLibraryEntry(locale, slug as ComparisonLibrarySlug) })];
+      }
       const zhCnOverride =
         locale === "zh-CN" ? getZhCnComparisonOverride(slug) : undefined;
       const zhTwOverride =
         locale === "zh-TW" ? getZhTwComparisonOverride(slug) : undefined;
 
       if (zhCnOverride) {
-        return [slug, zhCnOverride];
+        return [slug, applyComparisonContentEngine(locale, slug as Exclude<ComparisonSeoPageSlug, ComparisonLibrarySlug>, zhCnOverride)];
       }
 
       if (zhTwOverride) {
-        return [slug, zhTwOverride];
+        return [slug, applyComparisonContentEngine(locale, slug as Exclude<ComparisonSeoPageSlug, ComparisonLibrarySlug>, zhTwOverride)];
       }
 
-      const definition = comparisonDefinitions[slug];
+      const definition = comparisonDefinitions[
+        slug as Exclude<ComparisonSeoPageSlug, ComparisonLibrarySlug>
+      ];
       const isCalculator = definition.theme === "calculator";
       const { assetA, assetB } = definition;
       const pageLabel = isCalculator ? text.calculatorH1 : `${assetA} vs ${assetB}`;
@@ -1871,9 +1945,7 @@ function buildComparisonPages(locale: Locale): Record<ComparisonSeoPageSlug, Seo
             { question: `${pageLabel}: ${text.faqAdvice}`, answer: text.faqAdviceAnswer },
           ];
 
-      return [
-        slug,
-        {
+      const page: SeoPageContent = {
           title: isCalculator
             ? text.calculatorTitle
             : text.title(assetA, assetB),
@@ -1901,7 +1973,10 @@ function buildComparisonPages(locale: Locale): Record<ComparisonSeoPageSlug, Seo
             { title: text.riskTitle, body: text.riskBody },
           ],
           faqs,
-        },
+        };
+      return [
+        slug,
+        applyComparisonContentEngine(locale, slug as Exclude<ComparisonSeoPageSlug, ComparisonLibrarySlug>, page),
       ];
     })
   ) as Record<ComparisonSeoPageSlug, SeoPageContent>;
@@ -1918,6 +1993,36 @@ type AssetDefinition = {
 };
 
 const assetDefinitions: Record<AssetSeoPageSlug, AssetDefinition> = {
+  "spy-dca-calculator": {
+    symbol: "SPY", name: "SPDR S&P 500 ETF Trust", market: "United States / NYSE Arca", currency: "USD", assetKind: "S&P 500 ETF", assetType: "ETF", countryQuery: "us",
+  },
+  "ivv-dca-calculator": {
+    symbol: "IVV", name: "iShares Core S&P 500 ETF", market: "United States / NYSE Arca", currency: "USD", assetKind: "S&P 500 ETF", assetType: "ETF", countryQuery: "us",
+  },
+  "vti-dca-calculator": {
+    symbol: "VTI", name: "Vanguard Total Stock Market ETF", market: "United States / NYSE Arca", currency: "USD", assetKind: "total U.S. stock market ETF", assetType: "ETF", countryQuery: "us",
+  },
+  "vt-dca-calculator": {
+    symbol: "VT", name: "Vanguard Total World Stock ETF", market: "United States / NYSE Arca", currency: "USD", assetKind: "global stock market ETF", assetType: "ETF", countryQuery: "us",
+  },
+  "schd-dca-calculator": {
+    symbol: "SCHD", name: "Schwab U.S. Dividend Equity ETF", market: "United States / NYSE Arca", currency: "USD", assetKind: "U.S. dividend equity ETF", assetType: "ETF", countryQuery: "us",
+  },
+  "vig-dca-calculator": {
+    symbol: "VIG", name: "Vanguard Dividend Appreciation ETF", market: "United States / NYSE Arca", currency: "USD", assetKind: "dividend growth ETF", assetType: "ETF", countryQuery: "us",
+  },
+  "vxus-dca-calculator": {
+    symbol: "VXUS", name: "Vanguard Total International Stock ETF", market: "United States / Nasdaq", currency: "USD", assetKind: "international stock ETF", assetType: "ETF", countryQuery: "us",
+  },
+  "acwi-dca-calculator": {
+    symbol: "ACWI", name: "iShares MSCI ACWI ETF", market: "United States / Nasdaq", currency: "USD", assetKind: "global stock market ETF", assetType: "ETF", countryQuery: "us",
+  },
+  "bnd-dca-calculator": {
+    symbol: "BND", name: "Vanguard Total Bond Market ETF", market: "United States / Nasdaq", currency: "USD", assetKind: "U.S. investment-grade bond ETF", assetType: "ETF", countryQuery: "us",
+  },
+  "qqqm-dca-calculator": {
+    symbol: "QQQM", name: "Invesco NASDAQ 100 ETF", market: "United States / Nasdaq", currency: "USD", assetKind: "Nasdaq-100 ETF", assetType: "ETF", countryQuery: "us",
+  },
   "qqq-dca-calculator": {
     symbol: "QQQ",
     name: "Invesco QQQ Trust",
@@ -2498,7 +2603,10 @@ function buildAssetPages(locale: Locale): Record<AssetSeoPageSlug, SeoPageConten
 }
 
 function getZhCnMalaysiaGuidePage(slug: MalaysiaGuideSeoPageSlug): SeoPageContent {
-  const pages: Record<MalaysiaGuideSeoPageSlug, SeoPageContent> = {
+  if (slug === "ibkr-vs-moomoo-malaysia" || slug === "tiger-vs-moomoo-malaysia") {
+    return generateConfiguredComparisonPage("zh-CN", { slug, ...getBrokerComparisonEntry(slug) });
+  }
+  const pages: Record<Exclude<MalaysiaGuideSeoPageSlug, "tiger-vs-moomoo-malaysia">, SeoPageContent> = {
     "how-to-buy-cspx-from-malaysia": {
       title: "马来西亚怎么买 CSPX | CSPX 定投与 UCITS ETF 教育指南",
       description:
@@ -2783,15 +2891,19 @@ function getZhCnMalaysiaGuidePage(slug: MalaysiaGuideSeoPageSlug): SeoPageConten
     },
   };
 
-  return pages[slug];
+  return pages[slug as Exclude<MalaysiaGuideSeoPageSlug, "tiger-vs-moomoo-malaysia">];
 }
 
 function getGenericMalaysiaGuidePage(slug: MalaysiaGuideSeoPageSlug): SeoPageContent {
+  if (slug === "ibkr-vs-moomoo-malaysia" || slug === "tiger-vs-moomoo-malaysia") {
+    return generateConfiguredComparisonPage("zh-CN", { slug, ...getBrokerComparisonEntry(slug) });
+  }
   const titleMap: Record<MalaysiaGuideSeoPageSlug, string> = {
     "how-to-buy-cspx-from-malaysia": "How to Buy CSPX from Malaysia",
     "how-to-invest-in-voo-from-malaysia": "How to Invest in VOO from Malaysia",
     "best-etf-broker-malaysia": "Malaysia ETF Broker Guide",
     "ibkr-vs-moomoo-malaysia": "IBKR vs Moomoo Malaysia",
+    "tiger-vs-moomoo-malaysia": "Tiger vs Moomoo Malaysia",
   };
   const h1 = titleMap[slug];
 
@@ -4105,6 +4217,12 @@ export function isSeoPageSlug(value: string): value is SeoPageSlug {
   return seoPageSlugs.includes(value as SeoPageSlug);
 }
 
+export function isComparisonSeoPageSlug(value: SeoPageSlug): boolean {
+  return (comparisonSeoPageSlugs as readonly string[]).includes(value)
+    || value === "ibkr-vs-moomoo-malaysia"
+    || value === "tiger-vs-moomoo-malaysia";
+}
+
 function isMalaysiaGuideSeoPageSlug(
   value: string
 ): value is MalaysiaGuideSeoPageSlug {
@@ -4335,10 +4453,23 @@ const curatedRelatedGuides: Partial<Record<SeoPageSlug, SeoPageSlug[]>> = {
 export function getCuratedRelatedGuideSlugs(
   slug: SeoPageSlug
 ): SeoPageSlug[] {
-  return curatedRelatedGuides[slug] ?? [];
+  const comparisonLinks = getComparisonRelatedSlugs(slug).filter(isSeoPageSlug);
+  return comparisonLinks.length > 0
+    ? comparisonLinks
+    : curatedRelatedGuides[slug] ?? [];
 }
 
 const assetSeoPageDataKeys: Partial<Record<SeoPageSlug, string>> = {
+  "spy-dca-calculator": "spy",
+  "ivv-dca-calculator": "ivv",
+  "vti-dca-calculator": "vti",
+  "vt-dca-calculator": "vt",
+  "schd-dca-calculator": "schd",
+  "vig-dca-calculator": "vig",
+  "vxus-dca-calculator": "vxus",
+  "acwi-dca-calculator": "acwi",
+  "bnd-dca-calculator": "bnd",
+  "qqqm-dca-calculator": "qqqm",
   "voo-dca-calculator": "voo",
   "cspx-dca-calculator": "cspx-l",
   "qqq-dca-calculator": "qqq",

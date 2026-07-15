@@ -263,12 +263,28 @@
     "rowsSaved": 0,
     "status": "skipped"
   },
+  "acwi": {
+    "symbol": "ACWI",
+    "name": "iShares MSCI ACWI ETF",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-14T18:04:16.359Z",
+    "rowsSaved": 4602,
+    "status": "success"
+  },
   "amzn": {
     "symbol": "AMZN",
     "name": "Amazon",
     "source": "Yahoo Finance chart API",
     "lastSuccessfulFetchAt": "2026-07-02T07:25:09.425Z",
     "rowsSaved": 7327,
+    "status": "success"
+  },
+  "bnd": {
+    "symbol": "BND",
+    "name": "Vanguard Total Bond Market ETF",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-14T18:04:16.775Z",
+    "rowsSaved": 4846,
     "status": "success"
   },
   "brk-b": {
@@ -327,6 +343,14 @@
     "rowsSaved": 5501,
     "status": "success"
   },
+  "ivv": {
+    "symbol": "IVV",
+    "name": "iShares Core S&P 500 ETF",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-14T18:04:17.276Z",
+    "rowsSaved": 6575,
+    "status": "success"
+  },
   "iwda-l": {
     "symbol": "IWDA.L",
     "name": "iShares Core MSCI World UCITS ETF",
@@ -383,13 +407,29 @@
     "rowsSaved": 0,
     "status": "skipped"
   },
+  "qqqm": {
+    "symbol": "QQQM",
+    "name": "Invesco NASDAQ 100 ETF",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-14T18:04:17.588Z",
+    "rowsSaved": 1443,
+    "status": "success"
+  },
+  "schd": {
+    "symbol": "SCHD",
+    "name": "Schwab U.S. Dividend Equity ETF",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-14T18:04:17.944Z",
+    "rowsSaved": 3702,
+    "status": "success"
+  },
   "spy": {
     "symbol": "SPY",
     "name": "SPDR S&P 500 ETF",
     "source": "Yahoo Finance chart API",
-    "lastSuccessfulFetchAt": null,
-    "rowsSaved": 0,
-    "status": "skipped"
+    "lastSuccessfulFetchAt": "2026-07-14T18:04:18.454Z",
+    "rowsSaved": 8420,
+    "status": "success"
   },
   "tsla": {
     "symbol": "TSLA",
@@ -415,6 +455,14 @@
     "rowsSaved": 10506,
     "status": "success"
   },
+  "vig": {
+    "symbol": "VIG",
+    "name": "Vanguard Dividend Appreciation ETF",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-14T18:04:18.862Z",
+    "rowsSaved": 5081,
+    "status": "success"
+  },
   "voo": {
     "symbol": "VOO",
     "name": "Vanguard S&P 500 ETF",
@@ -423,6 +471,22 @@
     "rowsSaved": 0,
     "status": "skipped"
   },
+  "vt": {
+    "symbol": "VT",
+    "name": "Vanguard Total World Stock ETF",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-14T18:04:19.252Z",
+    "rowsSaved": 4539,
+    "status": "success"
+  },
+  "vti": {
+    "symbol": "VTI",
+    "name": "Vanguard Total Stock Market ETF",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-14T18:04:19.687Z",
+    "rowsSaved": 6305,
+    "status": "success"
+  },
   "vwra-l": {
     "symbol": "VWRA.L",
     "name": "Vanguard FTSE All-World UCITS ETF",
@@ -430,5 +494,13 @@
     "lastSuccessfulFetchAt": null,
     "rowsSaved": 0,
     "status": "skipped"
+  },
+  "vxus": {
+    "symbol": "VXUS",
+    "name": "Vanguard Total International Stock ETF",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-07-14T18:04:20.049Z",
+    "rowsSaved": 3886,
+    "status": "success"
   }
 }

@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import { execFileSync } from "node:child_process";
 import path from "node:path";
 
 const root = process.cwd();
@@ -162,6 +163,41 @@ function addError(message) {
 const localesSource = read("lib/locales.ts");
 const routingSource = read("i18n/routing.ts");
 const seoSource = read("lib/seoLandingPages.ts");
+const comparisonLibrarySource = read("lib/comparisonLibrary.ts");
+const comparisonEngineFiles = [
+  "lib/comparisonContent/engine.ts",
+  "lib/comparisonContent/models.ts",
+  "lib/comparisonContent/generators/hero.ts",
+  "lib/comparisonContent/generators/metadata.ts",
+  "lib/comparisonContent/generators/jsonLd.ts",
+  "lib/comparisonContent/generators/faq.ts",
+  "lib/comparisonContent/generators/relatedLinks.ts",
+  "lib/comparisonContent/generators/calculatorCta.ts",
+  "lib/comparisonContent/generators/prosCons.ts",
+  "lib/comparisonContent/generators/breadcrumb.ts",
+  "lib/comparisonContent/generators/summary.ts",
+  "lib/comparisonContent/validation.ts",
+  "lib/comparisonContent/registry.ts",
+  "lib/comparisonContent/service.ts",
+];
+for (const file of comparisonEngineFiles) {
+  if (!fs.existsSync(path.join(root, file))) {
+    errors.push(`Content Engine V1 is missing ${file}.`);
+  }
+}
+let comparisonConfigRegistry = [];
+try {
+  execFileSync("npm", ["run", "test:content-engine"], { cwd: root, stdio: "pipe" });
+  comparisonConfigRegistry = JSON.parse(
+    execFileSync(process.execPath, ["scripts/test-content-engine.mjs", "--registry-json"], {
+      cwd: root,
+      encoding: "utf8",
+    })
+  );
+  addPass("Content Engine contract tests and runtime registry loading pass.");
+} catch (error) {
+  addError(`Content Engine contract audit failed: ${error.message}`);
+}
 const metadataSource = read("lib/seoMetadata.ts");
 const sitemapSource = read("app/sitemap.ts");
 const robotsSource = read("app/robots.ts");
@@ -177,6 +213,45 @@ const relatedLinksSource = read("components/RelatedLinks.tsx");
 const seoContentSource = read("components/SeoContent.tsx");
 const staticContentPageSource = read("components/StaticContentPage.tsx");
 const adminHealthSource = read("app/admin/health/page.tsx");
+const instrumentsSource = read("lib/instruments.ts");
+const yahooFetchSource = read("scripts/fetch-yahoo-market-data.mjs");
+const marketDataAuditSource = read("scripts/audit-market-data.mjs");
+
+const sprintOneEtfs = ["SPY", "IVV", "VTI", "VT", "SCHD", "VIG", "VXUS", "ACWI", "BND", "QQQM"];
+const sprintOneAssetSlugs = sprintOneEtfs.map(
+  (symbol) => `${symbol.toLowerCase()}-dca-calculator`
+);
+
+for (const symbol of sprintOneEtfs) {
+  if (!instrumentsSource.includes(`symbol: "${symbol}"`)) {
+    addError(`Asset Expansion Sprint 1 instrument missing: ${symbol}`);
+  }
+}
+
+for (const slug of sprintOneAssetSlugs) {
+  if (!seoSource.includes(`"${slug}"`)) {
+    addError(`Asset Expansion Sprint 1 SEO page missing: ${slug}`);
+  }
+  if (!supportedAssetsPageSource.includes(`${slug}`)) {
+    addError(`Asset Expansion Sprint 1 supported-assets link missing: ${slug}`);
+  }
+}
+
+if (!errors.some((error) => error.includes("Asset Expansion Sprint 1"))) {
+  addPass("Asset Expansion Sprint 1 ETFs are wired to instruments and SEO pages.");
+}
+
+if (yahooFetchSource.includes('status: "skipped",\n      };')) {
+  addError("Targeted Yahoo fetches must not overwrite unselected asset statuses.");
+} else {
+  addPass("Targeted Yahoo fetches preserve unselected asset statuses.");
+}
+
+if (marketDataAuditSource.includes("generatedAt: new Date().toISOString()")) {
+  addError("Market data coverage output must not contain a generated timestamp.");
+} else {
+  addPass("Market data coverage output is free of generated timestamp churn.");
+}
 
 // Single source of truth for which locales are publicly marketed lives in
 // lib/locales.ts (publicLocaleCodes). Deriving it here — instead of
@@ -199,11 +274,67 @@ const contentPages = extractStringArray(metadataSource, "contentPageSlugs");
 const seoPages = unique([
   ...extractStringArray(seoSource, "baseSeoPageSlugs"),
   ...extractStringArray(seoSource, "comparisonSeoPageSlugs"),
+  ...extractStringArray(comparisonLibrarySource, "comparisonLibrarySlugs"),
   ...extractStringArray(seoSource, "assetSeoPageSlugs"),
   ...extractStringArray(seoSource, "malaysiaGuideSeoPageSlugs"),
   ...extractStringArray(seoSource, "chineseLearningSeoPageSlugs"),
   ...extractStringArray(seoSource, "japaneseLearningSeoPageSlugs"),
 ]);
+const plannedComparisonSlugs = [
+  "voo-vs-spy", "voo-vs-ivv", "vti-vs-schb", "schd-vs-vig", "qqq-vs-qqqm",
+  "cspx-vs-vuaa", "cspx-vs-spyl", "vwra-vs-isac", "iwda-vs-swda",
+];
+for (const slug of plannedComparisonSlugs) {
+  if (!seoPages.includes(slug)) errors.push(`Comparison library is missing ${slug}.`);
+}
+if (!seoPages.includes("tiger-vs-moomoo-malaysia")) {
+  errors.push("Comparison library is missing tiger-vs-moomoo-malaysia.");
+}
+if (!seoSource.includes('calculatorStatus?: "available" | "unavailable"')) {
+  errors.push("Comparison pages must model historical calculator availability explicitly.");
+}
+const expectedComparisonConfigSlugs = unique([
+  ...extractStringArray(seoSource, "comparisonSeoPageSlugs"),
+  ...extractStringArray(comparisonLibrarySource, "comparisonLibrarySlugs"),
+  "ibkr-vs-moomoo-malaysia",
+  "tiger-vs-moomoo-malaysia",
+]);
+const registrySlugCounts = new Map();
+for (const config of comparisonConfigRegistry) {
+  registrySlugCounts.set(config.slug, (registrySlugCounts.get(config.slug) ?? 0) + 1);
+  if (!expectedComparisonConfigSlugs.includes(config.slug)) {
+    addError(`Unexpected Content Engine config: ${config.slug}.`);
+  }
+  if (config.relatedLinks.includes(config.slug)) {
+    addError(`Content Engine config links to itself: ${config.slug}.`);
+  }
+  for (const relatedSlug of config.relatedLinks) {
+    if (!seoPages.includes(relatedSlug)) {
+      addError(`Content Engine config ${config.slug} has broken related link: ${relatedSlug}.`);
+    }
+  }
+  if (!config.supportedLocales.length
+    || config.supportedLocales.some((locale) => !requestedLocales.includes(locale))) {
+    addError(`Content Engine config ${config.slug} exposes an unsupported locale.`);
+  }
+  const expectedLocales = config.comparisonKind === "broker" ? ["zh-CN"] : requestedLocales;
+  if (expectedLocales.some((locale) => !config.supportedLocales.includes(locale))) {
+    addError(`Content Engine config ${config.slug} is incomplete for public locales.`);
+  }
+  if (config.comparisonKind === "calculator" && config.pageType !== "WebApplication") {
+    addError(`Content Engine calculator ${config.slug} has invalid JSON-LD type.`);
+  }
+  if (config.comparisonKind === "broker" && config.calculatorAvailability !== "unavailable") {
+    addError(`Content Engine broker ${config.slug} incorrectly enables a calculator.`);
+  }
+}
+for (const slug of expectedComparisonConfigSlugs) {
+  const count = registrySlugCounts.get(slug) ?? 0;
+  if (count !== 1) addError(`Content Engine route ${slug} has ${count} registered configs.`);
+}
+if (!errors.some((error) => error.includes("Content Engine"))) {
+  addPass("Every comparison route has one valid, complete Content Engine config.");
+}
 const malaysiaGuidePages = extractStringArray(seoSource, "malaysiaGuideSeoPageSlugs");
 const chineseLearningPages = extractStringArray(seoSource, "chineseLearningSeoPageSlugs");
 const japaneseLearningPages = extractStringArray(seoSource, "japaneseLearningSeoPageSlugs");
@@ -368,7 +499,8 @@ if (!errors.some((error) => error.includes("Missing locale versions"))) {
 
 if (
   localeLayoutSource.includes("canonical: absoluteUrl(`/${locale}`)") &&
-  seoPageSource.includes("canonical: absoluteUrl(`/${locale}/${seoPage}`)") &&
+  (seoPageSource.includes("canonical: absoluteUrl(`/${locale}/${seoPage}`)")
+    || seoPageSource.includes("canonical: generatedMetadata?.canonical")) &&
   supportedAssetsPageSource.includes("canonical: absoluteUrl(canonicalPath)")
 ) {
   addPass("Canonical metadata is detectable on home, SEO, and supported-assets pages.");

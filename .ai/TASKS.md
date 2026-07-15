@@ -2,54 +2,56 @@
 
 ## Active Task
 
-### Calculator UI V2.1 — Financial Dashboard Polish
+### Content Engine V1 Stabilization / Release Blocker Fix V1
 
-**Status:** Implementation complete; validation passed
+**Status:** Stabilization and validation completed; deterministic market-data coverage release blocker fixed
 
 **Objective:**
 
-Polish the existing V2 dashboard container, controls, KPI cards, action hierarchy, typography, and mobile behavior without changing workflow or calculation behavior.
+Stabilize the shared comparison content engine with enforceable contracts, runtime configuration auditing, direct model rendering, and regression tests.
+
+Make the generated market-data coverage report deterministic when CSV contents do not change.
 
 **Business reason:**
 
-Improve calculator clarity, trust, mobile usability, and result scanning while preserving formulas, data, SEO, routing, analytics, and translations.
+Make future comparison-page additions safe and configuration-led without changing current content, SEO, routes, or calculator behavior.
 
 **In scope:**
 
-- Calculator container and visual hierarchy
-- Standardized inputs, focus states, and mobile touch targets
-- Primary and secondary result metric hierarchy
-- Unified share/copy/download action styling
-- Advanced options presentation
-- Public-locale clipping and mobile overflow regression coverage
-- KPI integrity coverage before and after input changes
+- Discriminated configuration contracts for ETF, strategy, calculator, and broker pages
+- Runtime validation, safe missing-config behavior, and one authoritative registry
+- Direct generated-model rendering in the SEO page layer
+- Focused Content Engine contract tests and deterministic site audits
+- Market-data coverage dates derived from CSV trading data instead of filesystem timestamps
 
 **Out of scope:**
 
-- Calculator formulas and output logic
-- Market data and Yahoo Finance scripts
-- SEO, routes, locales, translations, analytics, and advertising
-- New actions, metrics, dependencies, or workflow changes
+- New pages, ETFs, comparison pairs, visible content, UI, routes, or URLs
+- Calculator formulas, Yahoo Finance, analytics, AdSense, translations, or market data
+- Reverting legitimate earlier approved work already present in the dirty workspace
 - Commit, push, PR, or deployment
 
 **Acceptance criteria:**
 
-- Both calculators use the V2 dashboard hierarchy
-- Existing controls, mode switch, advanced options, and secondary share actions work
-- Result metrics remain unchanged and are easier to scan
-- All five public locales avoid obvious calculator label clipping
-- Mobile view has no horizontal overflow
-- Required build, site, lint, algorithm, and Playwright checks pass
+- Every comparison route maps to exactly one valid descriptor
+- Invalid or missing configuration cannot render an incomplete comparison page
+- Contract tests cover four kinds, locale, metadata, JSON-LD, breadcrumb, links, CTA, determinism, and unsupported data
+- Visible content and existing SEO behavior remain compatible
+- Required validation passes
+- Consecutive market-data audits produce byte-identical coverage output
 
 **Required tests:**
 
 ```bash
+npm run audit-market-data
+npm run audit-market-data
 npm run build
 npm run check-site
 npm run lint
 npm run qa:production
+git diff --check
 ```
-**Risks:** CSS primitives are scoped to calculator dashboards, but final visual review on additional physical devices remains useful.
+**Risks:** The workspace still contains legitimate earlier Asset Expansion and Comparison Library changes; they must be reviewed as part of the eventual combined commit or separated by the Founder.
 
 ⸻
 

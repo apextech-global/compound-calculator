@@ -356,24 +356,6 @@ async function main() {
 
   let successCount = 0;
   const status = await readStatusFile();
-  const selectedDataKeys = new Set(assets.map((asset) => asset.dataKey));
-
-  for (const asset of defaultAssets) {
-    if (!status[asset.dataKey]) {
-      status[asset.dataKey] = createStatusEntry(asset, "skipped");
-    }
-
-    if (!selectedDataKeys.has(asset.dataKey)) {
-      status[asset.dataKey] = {
-        ...createStatusEntry(asset, "skipped"),
-        ...status[asset.dataKey],
-        symbol: asset.yahooSymbol ?? asset.symbol,
-        name: asset.name,
-        source: providerName,
-        status: "skipped",
-      };
-    }
-  }
 
   for (let index = 0; index < assets.length; index += 1) {
     const asset = assets[index];

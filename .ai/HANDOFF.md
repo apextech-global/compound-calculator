@@ -2,62 +2,58 @@
 
 ## Session
 
-- Date: 2026-07-14
+- Date: 2026-07-15
 - Implementer: Codex
-- Reviewer: Codex validation workflow
-- Task: Calculator UI V2.1 — Financial Dashboard Polish
+- Task: Content Engine V1 Stabilization / Release Blocker Fix V1
 
 ## Completed
 
-- Added a scoped premium dashboard shell to both calculators
-- Standardized calculator control height, borders, focus, hover, and disabled states
-- Improved DCA and compound result metric hierarchy without adding metrics
-- Unified share, copy, and download button geometry while preserving handlers and test IDs
-- Improved mobile spacing, wrapping, and result-card behavior
-- Added Playwright coverage for dashboard structure, 44px touch targets, locale label clipping, and mobile overflow
-- Preserved the existing instant-calculation workflow
-- Refined dashboard separation with lighter shadow treatment and clearer borders
-- Normalized label rhythm, input padding, and secondary-text line height
-- Stabilized KPI card height and added an input-driven KPI integrity regression test
-- Kept Share secondary because the existing instant-calculation workflow has no Calculate/Run button
+- Replaced the flat config contract with a discriminated union that constrains CTA and JSON-LD behavior by comparison kind
+- Added pure runtime validation for required content, locale support, CTA rules, schema strategy, and related links
+- Added one authoritative comparison registry covering ETF, strategy, calculator, and broker routes
+- Consolidated duplicate content transformation into `comparisonContent/service.ts`
+- Kept the engine stateless and separated summary, hero, metadata, FAQ, pros/cons, related links, CTA, JSON-LD, and breadcrumb responsibilities
+- Updated the page layer to reject invalid comparison models with `notFound()` and render comparison fields directly from generated models
+- Added executable Content Engine contract tests and connected them to deterministic site-quality auditing
+- Preserved previously approved market-data, instrument, Yahoo, and audit changes without modifying or reverting them during stabilization
+- Removed filesystem mtime from market-data coverage generation and derived `latestTradingDate` only from stable CSV content
+- Regenerated `data/market-data-coverage.json`; consecutive audits now produce byte-identical output
+- Kept the genuine newer Yahoo SPY history through 2026-07-14
 
-## Files Changed
+## Stabilization Files
 
-- `.ai/TASKS.md`
-- `.ai/HANDOFF.md`
-- `app/globals.css`
-- `components/DcaBacktestCalculator.tsx`
-- `components/CompoundInterestCalculator.tsx`
-- `components/SummaryCard.tsx`
-- `tests/e2e/production-qa.spec.ts`
+- `lib/comparisonContent/models.ts`
+- `lib/comparisonContent/validation.ts`
+- `lib/comparisonContent/registry.ts`
+- `lib/comparisonContent/service.ts`
+- `lib/comparisonContent/engine.ts`
+- `lib/comparisonContent/generators/*`
+- `lib/comparisonLibrary.ts`
+- `lib/seoLandingPages.ts`
+- `app/[locale]/[seoPage]/page.tsx`
+- `tests/content-engine/contracts.mjs`
+- `scripts/test-content-engine.mjs`
+- `scripts/check-site-quality.mjs`
+- `package.json`
+- `scripts/audit-market-data.mjs`
+- `data/market-data-coverage.json`
 
-## Verification Performed
+## Verification
 
-`npm run build`, `npm run check-site`, `npm run lint`, and `npm run qa:production`.
-
-Results:
-
-- Build passed on Next.js 16.2.9 (171 static pages generated)
-- Site quality passed for 158 routes, 159 sitemap URLs, and 5 public locales
-- Lint passed with 0 errors and one pre-existing warning in `scripts/check-site-quality.mjs`
-- Algorithm tests passed: 4/4
-- Playwright passed: 79 passed, 1 expected conditional skip across desktop and mobile projects
-
-## Remaining Work
-
-- Optional Founder visual review on physical mobile devices
-- Founder approval before commit
+- `npm run test:content-engine`: passed, 15/15 contracts
+- `npm run audit-market-data` twice: passed; identical SHA-256 and identical Git diff after the second run
+- mtime-only regression check: passed; unchanged SPY CSV content produced byte-identical coverage output
+- `npm run build`: passed, 267 static pages generated
+- `npm run check-site`: passed, 254 routes and 255 sitemap URLs checked, no warnings or errors
+- `npm run lint`: passed with 0 errors and 1 pre-existing unused-variable warning
+- `npm run qa:production`: passed, including 79 Playwright tests with 1 expected skip
+- `git diff --check`: passed
 
 ## Risks
 
-- Styling is implemented with calculator-scoped CSS and existing Tailwind utilities; no data or formula risk was introduced.
-- The existing unrelated lint warning remains.
-
-## Recommended Next Step
-
-Review the V2 calculator visually, then approve a commit if acceptable.
+- The dirty workspace includes earlier approved Asset Expansion and Comparison Library work; no destructive reset was used to separate it.
+- Local QA does not prove post-deployment production behavior.
 
 ## Commit Recommendation
 
-- Safe to commit: Yes
-- Reason: Requested checks and full production QA passed; formulas, data, SEO, routing, analytics, and translations were untouched.
+- Safe to commit the current combined approved diff after Founder review; do not commit or push automatically

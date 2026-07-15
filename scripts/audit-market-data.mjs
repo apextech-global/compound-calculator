@@ -1,4 +1,4 @@
-import { mkdir, readFile, stat, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -74,27 +74,34 @@ function countCsvRows(csv) {
   );
 }
 
+function getLatestTradingDate(csv) {
+  const dates = csv
+    .split(/\r?\n/)
+    .slice(1)
+    .map((line) => line.split(",", 1)[0]?.trim())
+    .filter((date) => /^\d{4}-\d{2}-\d{2}$/.test(date));
+
+  return dates.sort().at(-1) ?? null;
+}
+
 async function getCsvStatus(dataKey) {
   const csvPath = path.join(marketDataDir, `${dataKey}.csv`);
 
   try {
-    const [fileStat, csv] = await Promise.all([
-      stat(csvPath),
-      readFile(csvPath, "utf8"),
-    ]);
+    const csv = await readFile(csvPath, "utf8");
     const rows = countCsvRows(csv);
 
     return {
       exists: rows > 0,
       rows,
-      lastModified: fileStat.mtime.toISOString(),
+      latestTradingDate: getLatestTradingDate(csv),
       csvPath,
     };
   } catch {
     return {
       exists: false,
       rows: 0,
-      lastModified: null,
+      latestTradingDate: null,
       csvPath,
     };
   }
@@ -135,7 +142,7 @@ async function main() {
       expectedCsvPath: path.relative(rootDir, csvStatus.csvPath),
       hasHistoricalCsv: csvStatus.exists,
       rowCount: csvStatus.rows,
-      lastModified: csvStatus.lastModified,
+      latestTradingDate: csvStatus.latestTradingDate,
       hasYahooMapping,
       yahooSymbol: instrument.yahooSymbol,
       status: csvStatus.exists
@@ -151,7 +158,6 @@ async function main() {
     ? items.filter((item) => !item.hasHistoricalCsv)
     : items;
   const report = {
-    generatedAt: new Date().toISOString(),
     summary,
     assets: items,
   };
@@ -160,7 +166,6 @@ async function main() {
   await writeFile(reportPath, `${JSON.stringify(report, null, 2)}\n`, "utf8");
 
   console.log("Market data coverage audit");
-  console.log(`Generated: ${report.generatedAt}`);
   console.log(`Report: ${path.relative(rootDir, reportPath)}`);
   console.log(`Total assets: ${summary.totalAssets}`);
   console.log(
@@ -190,8 +195,8 @@ async function main() {
     console.log(`     ${dataStatus}`);
     console.log(`     ${mappingStatus}`);
     console.log(`     CSV: ${item.expectedCsvPath}`);
-    if (item.lastModified) {
-      console.log(`     Last modified: ${item.lastModified}`);
+    if (item.latestTradingDate) {
+      console.log(`     Latest trading date: ${item.latestTradingDate}`);
     }
   }
 

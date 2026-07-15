@@ -18,6 +18,7 @@ import {
   getSeoPageSlugsForLocale,
   getSeoPageXDefault,
   isSeoPageSlugForLocale,
+  isComparisonSeoPageSlug,
   type SeoPageSlug,
 } from "@/lib/seoLandingPages";
 import { absoluteUrl, productionBaseUrl } from "@/lib/seoMetadata";
@@ -28,6 +29,16 @@ const relatedSeoLinks: SeoPageSlug[] = [
   "etf-calculator",
   "etf-comparison-calculator",
   "dca-vs-lump-sum",
+  "spy-dca-calculator",
+  "ivv-dca-calculator",
+  "vti-dca-calculator",
+  "vt-dca-calculator",
+  "schd-dca-calculator",
+  "vig-dca-calculator",
+  "vxus-dca-calculator",
+  "acwi-dca-calculator",
+  "bnd-dca-calculator",
+  "qqqm-dca-calculator",
   "voo-dca-calculator",
   "cspx-dca-calculator",
   "qqq-dca-calculator",
@@ -41,6 +52,15 @@ const relatedSeoLinks: SeoPageSlug[] = [
   "voo-vs-qqq",
   "cspx-vs-vwra",
   "iwda-vs-vwra",
+  "voo-vs-spy",
+  "voo-vs-ivv",
+  "vti-vs-schb",
+  "schd-vs-vig",
+  "qqq-vs-qqqm",
+  "cspx-vs-vuaa",
+  "cspx-vs-spyl",
+  "vwra-vs-isac",
+  "iwda-vs-swda",
 ];
 const chineseLearningRelatedLinks: SeoPageSlug[] = [
   "cspx-vs-voo-malaysia",
@@ -51,6 +71,7 @@ const chineseLearningRelatedLinks: SeoPageSlug[] = [
   "sp500-dca-simulation",
   "best-etf-broker-malaysia",
   "ibkr-vs-moomoo-malaysia",
+  "tiger-vs-moomoo-malaysia",
 ];
 const siteLinks = ["supported-assets", "recommended-tools", "learn"] as const;
 const legalLinks = [
@@ -111,22 +132,26 @@ export async function generateMetadata({
   }
 
   const page = getSeoLandingPage(locale as Locale, seoPage as SeoPageSlug);
+  if (isComparisonSeoPageSlug(seoPage as SeoPageSlug) && !page.contentEngine) {
+    notFound();
+  }
+  const generatedMetadata = page.contentEngine?.metadata;
   const lastModified = getSeoPageLastModified(seoPage as SeoPageSlug);
 
   return {
-    title: page.title,
-    description: page.description,
+    title: generatedMetadata?.title ?? page.title,
+    description: generatedMetadata?.description ?? page.description,
     metadataBase: new URL(productionBaseUrl),
     alternates: {
-      canonical: absoluteUrl(`/${locale}/${seoPage}`),
+      canonical: generatedMetadata?.canonical ?? absoluteUrl(`/${locale}/${seoPage}`),
       languages: {
         ...getSeoPageAlternates(seoPage as SeoPageSlug),
         "x-default": getSeoPageXDefault(seoPage as SeoPageSlug),
       },
     },
     openGraph: {
-      title: page.title,
-      description: page.description,
+      title: generatedMetadata?.title ?? page.title,
+      description: generatedMetadata?.description ?? page.description,
       url: absoluteUrl(`/${locale}/${seoPage}`),
       siteName: "DCA Backtest",
       type: "article",
@@ -135,8 +160,8 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: page.title,
-      description: page.description,
+      title: generatedMetadata?.title ?? page.title,
+      description: generatedMetadata?.description ?? page.description,
     },
   };
 }
@@ -161,8 +186,22 @@ export default async function SeoLandingPage({
     .default;
   const content = getSeoLandingContent(typedLocale);
   const page = getSeoLandingPage(typedLocale, typedPage);
+  const generated = page.contentEngine;
+  if (isComparisonSeoPageSlug(typedPage) && !generated) {
+    notFound();
+  }
+  const renderedPage = generated
+    ? {
+        h1: generated.hero.h1,
+        intro: generated.hero.intro,
+        description: generated.metadata.description,
+        sections: generated.sections,
+        faqs: generated.faqs,
+        comparedItems: generated.comparedItems,
+      }
+    : page;
   const pageUrl = absoluteUrl(`/${typedLocale}/${typedPage}`);
-  const curatedRelatedGuideLinks = getCuratedRelatedGuideSlugs(typedPage)
+  const curatedRelatedGuideLinks = (generated?.relatedLinks ?? getCuratedRelatedGuideSlugs(typedPage))
     .filter((slug) => isSeoPageSlugForLocale(typedLocale, slug))
     .map((slug) => ({
       slug,
@@ -206,10 +245,10 @@ export default async function SeoLandingPage({
       }
     : {
         "@context": "https://schema.org",
-        "@type": articleSeoPages.includes(typedPage) ? "Article" : "WebPage",
-        headline: page.h1,
-        name: page.h1,
-        description: page.description,
+        "@type": articleSeoPages.includes(typedPage) || isComparisonSeoPageSlug(typedPage) ? "Article" : "WebPage",
+        headline: renderedPage.h1,
+        name: renderedPage.h1,
+        description: renderedPage.description,
         url: pageUrl,
         inLanguage: typedLocale,
         isAccessibleForFree: true,
@@ -232,7 +271,7 @@ export default async function SeoLandingPage({
       {
         "@type": "ListItem",
         position: 2,
-        name: page.h1,
+        name: renderedPage.h1,
         item: pageUrl,
       },
     ],
@@ -240,7 +279,7 @@ export default async function SeoLandingPage({
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: page.faqs.map((faq) => ({
+    mainEntity: renderedPage.faqs.map((faq) => ({
       "@type": "Question",
       name: faq.question,
       acceptedAnswer: {
@@ -249,6 +288,25 @@ export default async function SeoLandingPage({
       },
     })),
   };
+  const comparisonJsonLd = renderedPage.comparedItems?.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        name: renderedPage.h1,
+        itemListElement: renderedPage.comparedItems.map((item, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: item.name,
+          ...(item.url ? { url: item.url } : {}),
+        })),
+      }
+    : null;
+  const structuredData = generated?.jsonLd ?? [
+    pageTypeJsonLd,
+    breadcrumbJsonLd,
+    renderedPage.faqs.length > 0 ? faqJsonLd : null,
+    comparisonJsonLd,
+  ].filter(Boolean);
 
   return (
     <main className="min-h-screen w-full overflow-x-hidden bg-slate-950 text-white">
@@ -256,11 +314,7 @@ export default async function SeoLandingPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
-            [
-              pageTypeJsonLd,
-              breadcrumbJsonLd,
-              page.faqs.length > 0 ? faqJsonLd : null,
-            ].filter(Boolean)
+            structuredData
           ).replace(/</g, "\\u003c"),
         }}
       />
@@ -272,7 +326,7 @@ export default async function SeoLandingPage({
             DCA Backtest
           </Link>
           <span className="mx-2">/</span>
-          <span>{page.h1}</span>
+          <span>{renderedPage.h1}</span>
         </nav>
 
         <div className="w-full max-w-3xl">
@@ -280,15 +334,15 @@ export default async function SeoLandingPage({
             {content.eyebrow}
           </p>
           <h1 className="min-w-0 break-words text-3xl font-bold tracking-tight sm:text-4xl md:text-6xl">
-            {page.h1}
+            {renderedPage.h1}
           </h1>
           <p className="mt-4 text-base leading-7 text-slate-300 sm:mt-5 sm:text-lg sm:leading-8">
-            {page.intro}
+            {renderedPage.intro}
           </p>
         </div>
 
         <div className="mt-8 grid w-full grid-cols-1 gap-3 sm:gap-4 md:mt-10 md:grid-cols-2">
-          {page.sections.map((section) => (
+          {renderedPage.sections.map((section) => (
             <article
               key={section.title}
               className="min-w-0 rounded-2xl border border-white/10 bg-white/[0.06] p-4 shadow-xl shadow-black/20 sm:rounded-3xl sm:p-6"
@@ -306,14 +360,16 @@ export default async function SeoLandingPage({
         <section className="mt-5 w-full min-w-0 rounded-2xl border border-cyan-300/20 bg-cyan-400/10 p-4 shadow-2xl shadow-cyan-950/20 sm:mt-6 sm:rounded-3xl sm:p-6">
           <h2 className="break-words text-xl font-bold sm:text-2xl">{content.ctaLabel}</h2>
           <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-300">
-            {content.ctaText}
+            {generated?.calculatorCta.notice ?? page.calculatorNotice ?? content.ctaText}
           </p>
-          <Link
-            href={`/${typedLocale}${page.ctaQuery ?? ""}`}
-            className="mt-5 inline-flex w-full justify-center rounded-2xl bg-cyan-400 px-5 py-3 text-center text-sm font-bold text-slate-950 transition hover:bg-cyan-300 sm:w-auto"
-          >
-            {content.ctaLabel}
-          </Link>
+          {(generated?.calculatorCta.availability ?? page.calculatorStatus) !== "unavailable" ? (
+            <Link
+              href={`/${typedLocale}${generated?.calculatorCta.query ?? page.ctaQuery ?? ""}`}
+              className="mt-5 inline-flex w-full justify-center rounded-2xl bg-cyan-400 px-5 py-3 text-center text-sm font-bold text-slate-950 transition hover:bg-cyan-300 sm:w-auto"
+            >
+              {content.ctaLabel}
+            </Link>
+          ) : null}
         </section>
 
         {typedLocale === "zh-CN" && malaysiaGuidePages.includes(typedPage) ? (
@@ -325,7 +381,7 @@ export default async function SeoLandingPage({
             {messages.faq.title}
           </h2>
           <div className="mt-4 grid w-full grid-cols-1 gap-3 sm:mt-5 sm:gap-4 md:grid-cols-2">
-            {page.faqs.map((faq) => (
+            {renderedPage.faqs.map((faq) => (
               <article
                 key={faq.question}
                 className="min-w-0 rounded-2xl border border-white/10 bg-white/[0.055] p-4 sm:rounded-3xl sm:p-6"

@@ -52,6 +52,16 @@ type SupportedAssetMessages = {
 };
 
 const assetPageSlugs: Record<string, string> = {
+  spy: "spy-dca-calculator",
+  ivv: "ivv-dca-calculator",
+  vti: "vti-dca-calculator",
+  vt: "vt-dca-calculator",
+  schd: "schd-dca-calculator",
+  vig: "vig-dca-calculator",
+  vxus: "vxus-dca-calculator",
+  acwi: "acwi-dca-calculator",
+  bnd: "bnd-dca-calculator",
+  qqqm: "qqqm-dca-calculator",
   voo: "voo-dca-calculator",
   "cspx-l": "cspx-dca-calculator",
   qqq: "qqq-dca-calculator",

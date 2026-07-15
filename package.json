@@ -9,6 +9,7 @@
     "lint": "eslint",
     "test:e2e": "playwright test",
     "test:algorithms": "node scripts/test-algorithms.mjs",
+    "test:content-engine": "node scripts/test-content-engine.mjs",
     "qa:production": "npm run build && npm run check-site && npm run test:algorithms && npm run test:e2e",
     "check-seo": "node scripts/check-seo.mjs",
     "check-site": "node scripts/check-site-quality.mjs",
