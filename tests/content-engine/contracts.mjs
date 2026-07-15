@@ -18,9 +18,31 @@ const {
   getComparisonConfigDescriptor,
 } = await load("lib/comparisonContent/registry.js");
 const {
+  comparisonLibrarySlugs,
   getBrokerComparisonEntry,
   getComparisonLibraryEntry,
 } = await load("lib/comparisonLibrary.js");
+
+const comparisonLibraryExpansionV2Slugs = [
+  "schd-vs-vig",
+  "schd-vs-dgro",
+  "schd-vs-vym",
+  "voo-vs-vti",
+  "vti-vs-itot",
+  "cspx-vs-voo",
+  "cspx-vs-ivv",
+  "swda-vs-vwra",
+  "swda-vs-iwda",
+  "vwra-vs-vti",
+  "vuaa-vs-cspx",
+  "spyl-vs-cspx",
+  "spyl-vs-vuaa",
+  "qqq-vs-schg",
+  "qqq-vs-xlk",
+  "vxus-vs-ixus",
+  "vt-vs-vti",
+  "vt-vs-vwra",
+];
 
 const context = {
   locale: "en",
@@ -172,4 +194,34 @@ test("real broker config remains educational and unavailable", () => {
   assert.equal(result.calculatorStatus, "unavailable");
   assert.equal(result.contentEngine.jsonLd[0]["@type"], "Article");
   assert.match(result.faqs.at(-1).answer, /仅供教育用途/);
+});
+
+test("Comparison Library Expansion V2 registers and generates every requested page", () => {
+  const registrySlugs = comparisonConfigRegistry.map((entry) => entry.slug);
+  const validRelatedSlugs = comparisonConfigRegistry.flatMap((entry) => [
+    entry.slug,
+    ...entry.relatedLinks,
+  ]);
+
+  for (const slug of comparisonLibraryExpansionV2Slugs) {
+    assert.equal(comparisonLibrarySlugs.filter((item) => item === slug).length, 1, `${slug}: library registration`);
+    assert.equal(registrySlugs.filter((item) => item === slug).length, 1, `${slug}: registry registration`);
+
+    const entry = getComparisonLibraryEntry("en", slug);
+    const result = generateComparisonPage({ slug, ...entry }, {
+      ...context,
+      pageUrl: `https://dcabacktest.com/en/${slug}`,
+      validRelatedSlugs,
+    });
+
+    assert.ok(result, `${slug}: generated page`);
+    assert.ok(result.title, `${slug}: metadata title`);
+    assert.ok(result.description, `${slug}: metadata description`);
+    assert.ok(result.faqs.length > 0, `${slug}: FAQ`);
+    assert.equal(result.contentEngine.jsonLd[0]["@type"], "Article", `${slug}: Article JSON-LD`);
+    assert.equal(result.contentEngine.jsonLd[1]["@type"], "BreadcrumbList", `${slug}: breadcrumb JSON-LD`);
+    assert.equal(result.contentEngine.jsonLd[1].itemListElement[1].item, `https://dcabacktest.com/en/${slug}`, `${slug}: breadcrumb URL`);
+    assert.ok(result.contentEngine.relatedLinks.length > 0, `${slug}: related links`);
+    assert.ok(!result.contentEngine.relatedLinks.includes(slug), `${slug}: no self-link`);
+  }
 });

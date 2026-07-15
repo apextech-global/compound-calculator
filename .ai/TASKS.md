@@ -2,56 +2,47 @@
 
 ## Active Task
 
-### Content Engine V1 Stabilization / Release Blocker Fix V1
+### Release Verification V1
 
-**Status:** Stabilization and validation completed; deterministic market-data coverage release blocker fixed
+**Status:** Verification completed; GO recommendation awaiting Founder approval
 
 **Objective:**
 
-Stabilize the shared comparison content engine with enforceable contracts, runtime configuration auditing, direct model rendering, and regression tests.
-
-Make the generated market-data coverage report deterministic when CSV contents do not change.
+Verify that the Comparison Library Expansion V2 production candidate is ready for release.
 
 **Business reason:**
 
-Make future comparison-page additions safe and configuration-led without changing current content, SEO, routes, or calculator behavior.
+Prevent SEO, routing, structured-data, calculator, content, or market-data regressions from reaching production.
 
 **In scope:**
 
-- Discriminated configuration contracts for ETF, strategy, calculator, and broker pages
-- Runtime validation, safe missing-config behavior, and one authoritative registry
-- Direct generated-model rendering in the SEO page layer
-- Focused Content Engine contract tests and deterministic site audits
-- Market-data coverage dates derived from CSV trading data instead of filesystem timestamps
+- Build, sitemap, robots, metadata, canonical, hreflang, JSON-LD, internal-link, comparison, calculator, supported-assets, Content Engine, and Search Console technical-readiness verification
+- Duplicate-page, orphan-page, metadata, related-link, breadcrumb, FAQ, and structured-data audits
+- Required command execution and evidence-based release report
 
 **Out of scope:**
 
-- New pages, ETFs, comparison pairs, visible content, UI, routes, or URLs
-- Calculator formulas, Yahoo Finance, analytics, AdSense, translations, or market data
-- Reverting legitimate earlier approved work already present in the dirty workspace
+- New features, redesign, product-code fixes, dependency changes, or deployment
 - Commit, push, PR, or deployment
 
 **Acceptance criteria:**
 
-- Every comparison route maps to exactly one valid descriptor
-- Invalid or missing configuration cannot render an incomplete comparison page
-- Contract tests cover four kinds, locale, metadata, JSON-LD, breadcrumb, links, CTA, determinism, and unsupported data
-- Visible content and existing SEO behavior remain compatible
-- Required validation passes
-- Consecutive market-data audits produce byte-identical coverage output
+- All Founder-required commands pass
+- No release-blocking SEO, routing, content, calculator, or structured-data defect remains
+- Release report clearly separates local technical readiness from post-deployment and Search Console verification
 
 **Required tests:**
 
 ```bash
-npm run audit-market-data
-npm run audit-market-data
 npm run build
 npm run check-site
-npm run lint
 npm run qa:production
+npm run test:content-engine
+npm run audit-market-data
+npm run lint
 git diff --check
 ```
-**Risks:** The workspace still contains legitimate earlier Asset Expansion and Comparison Library changes; they must be reviewed as part of the eventual combined commit or separated by the Founder.
+**Risks:** Local QA cannot prove a future Vercel deployment or Google Search Console indexing state. One pre-existing lint warning and one stale optional SEO audit remain documented as non-blocking.
 
 ⸻
 

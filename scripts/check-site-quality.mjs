@@ -283,6 +283,10 @@ const seoPages = unique([
 const plannedComparisonSlugs = [
   "voo-vs-spy", "voo-vs-ivv", "vti-vs-schb", "schd-vs-vig", "qqq-vs-qqqm",
   "cspx-vs-vuaa", "cspx-vs-spyl", "vwra-vs-isac", "iwda-vs-swda",
+  "schd-vs-dgro", "schd-vs-vym", "voo-vs-vti", "vti-vs-itot",
+  "cspx-vs-voo", "cspx-vs-ivv", "swda-vs-vwra", "swda-vs-iwda",
+  "vwra-vs-vti", "vuaa-vs-cspx", "spyl-vs-cspx", "spyl-vs-vuaa",
+  "qqq-vs-schg", "qqq-vs-xlk", "vxus-vs-ixus", "vt-vs-vti", "vt-vs-vwra",
 ];
 for (const slug of plannedComparisonSlugs) {
   if (!seoPages.includes(slug)) errors.push(`Comparison library is missing ${slug}.`);
@@ -865,7 +869,14 @@ function sourceReferencesSlug(source, slug) {
   return new RegExp(`[/"\`]${escapedSlug}["\`]`).test(source);
 }
 
-const linkArraySlugs = [...relatedSeoLinksSlugs, ...chineseLearningRelatedLinksSlugs];
+const registryRelatedLinksSlugs = comparisonConfigRegistry.flatMap(
+  (config) => config.relatedLinks
+);
+const linkArraySlugs = [
+  ...relatedSeoLinksSlugs,
+  ...chineseLearningRelatedLinksSlugs,
+  ...registryRelatedLinksSlugs,
+];
 const fullTextLinkSources = [
   footerSource,
   heroSource,
