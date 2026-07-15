@@ -68,6 +68,56 @@ Do not begin implementation before understanding:
 - Known pitfalls
 - Required tests
 
+## Implementation Sprint Policy
+
+For normal implementation sprints:
+
+- Skip design proposals.
+- Skip specification generation.
+- Skip architecture discussion.
+- Proceed directly to implementation after completing the required reading.
+
+Stop for Founder approval before database schema changes, API contract changes,
+routing architecture changes, authentication or authorization, payment or
+billing, infrastructure or deployment, large-scale architecture refactoring,
+or work with unclear or conflicting requirements.
+
+For all other clear, in-scope implementation work, implement directly, run the
+project-specific validation required below, and update `.ai/HANDOFF.md` and
+`.ai/TASKS.md`.
+
+This section overrides the general requirement for a short plan before normal
+implementation. It does not weaken the calculator, market-data, framework,
+testing, SEO, security, documentation, or Founder approval rules in this file.
+
+## Sprint Continuation Mode
+
+When the Founder says `Continue`, `Proceed`, or `继续下一步`, read
+`.ai/TASKS.md`, select the highest-priority unfinished task, implement it,
+self-review, run validation, update `.ai/HANDOFF.md`, and stop at Founder
+Review. Do not ask what to do next unless no unfinished task remains.
+
+## Founder Review Mode
+
+Never commit automatically. After every implementation sprint, stop at Founder
+Review. Commit, push, merge, and deploy each require explicit Founder approval.
+Do not ask for implementation confirmation twice.
+
+## Automatic Sprint Recommendation
+
+After a successful sprint, recommend the next highest-priority unfinished task
+from `.ai/TASKS.md` without asking whether to continue. Output only:
+
+```text
+Completed
+Next Sprint
+Business value
+Estimated scope
+```
+
+If no unfinished task remains, state that under `Next Sprint`; only then ask for
+new direction.
+
 ## 4. AI Roles
 
 ### ChatGPT — CTO and Product Lead
@@ -163,7 +213,10 @@ Before implementation, the active task must define:
 - Risks
 - Status
 
-For non-trivial work, provide a short plan before changing files.
+For normal implementation sprints, follow the Implementation Sprint Policy and
+do not require a separate pre-implementation plan. Stop when requirements are
+unclear or conflicting, or when the work crosses an approval boundary listed in
+that policy.
 
 ## 7. Scope Control
 

@@ -82,6 +82,13 @@ Backlog
 
 Completed Recently
 
+2026-07-15 — Adopted AADS v1.2 Implementation Sprint Policy
+
+* Updated `AGENTS.md` only within project governance.
+* Preserved project-specific calculator and operational rules.
+* Removed the contradictory default requirement for a pre-implementation plan.
+* No application source code was modified; no commit or push was performed.
+
 2026-07-11 — V3 migration implementation
 
 Implementation completed:

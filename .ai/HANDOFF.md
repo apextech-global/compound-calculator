@@ -1,5 +1,25 @@
 # Latest Handoff
 
+## 2026-07-15 — AADS v1.3 Sprint Execution Lifecycle
+
+- Added Sprint Continuation Mode, Founder Review Mode, and Automatic Sprint
+  Recommendation to `AGENTS.md`.
+- Future `Continue`, `Proceed`, and `继续下一步` instructions automatically select
+  the highest-priority unfinished task from `.ai/TASKS.md`.
+- Automatic commit, push, merge, and deploy remain prohibited.
+- No application source code changed; no commit or push was performed.
+
+## 2026-07-15 — AADS v1.2 Governance Update
+
+- Added the approved Implementation Sprint Policy to `AGENTS.md`.
+- Preserved all calculator, market-data, framework, testing, SEO, security,
+  documentation, communication, and Git approval rules.
+- Reconciled the former default short-plan requirement: normal implementation
+  now proceeds directly, while the listed high-impact changes and unclear or
+  conflicting requirements still require Founder approval.
+- Validation: documentation checks only; no application source code changed.
+- Commit/push status: not performed.
+
 ## Session
 
 - Date: 2026-07-15
