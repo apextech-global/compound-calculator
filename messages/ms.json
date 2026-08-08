@@ -11,6 +11,19 @@
     "showYearlyTable": "Tunjuk jadual tahunan",
     "hideYearlyTable": "Sembunyi jadual tahunan"
   },
+  "calculatorDashboard": {
+    "groups": {
+      "asset": "Aset",
+      "investmentPlan": "Pelan pelaburan",
+      "costs": "Kos dan tetapan lanjutan"
+    },
+    "resultTitle": "Keputusan",
+    "emptyDca": "Masukkan butiran pelaburan dan jalankan backtest untuk melihat keputusan.",
+    "emptyCompound": "Masukkan butiran pelaburan dan buat pengiraan untuk melihat unjuran.",
+    "emptyHint": "Keputusan dan alat perkongsian akan dipaparkan selepas pengiraan.",
+    "runBacktest": "Jalankan backtest",
+    "calculateProjection": "Kira unjuran"
+  },
   "nav": {
     "dcaBacktest": "Ujian Balik DCA",
     "compoundCalculator": "Kalkulator Kompaun"
@@ -450,6 +463,9 @@
     "shareResult": "Kongsi hasil",
     "copyLink": "Salin pautan",
     "linkCopied": "Pautan disalin",
+    "resultShared": "Hasil berjaya dikongsi",
+    "imageDownloaded": "Imej hasil telah dimuat turun",
+    "actionFailed": "Tindakan itu tidak dapat diselesaikan. Sila cuba lagi.",
     "title": "Kongsi hasil DCA ini",
     "description": "Buka hasil DCA Backtest ini dengan tetapan kalkulator yang sama.",
     "copyDescription": "Salin pautan hasil kalkulator ini",

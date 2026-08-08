@@ -8,6 +8,7 @@ import CalculatorSwitcher, {
 import CompoundInterestCalculator from "@/components/CompoundInterestCalculator";
 import DcaAssetComparison from "@/components/DcaAssetComparison";
 import DcaBacktestCalculator from "@/components/DcaBacktestCalculator";
+import type { ResultActionOutcome } from "@/components/ResultActionBar";
 import Faq, { faqItems } from "@/components/Faq";
 import Hero from "@/components/Hero";
 import MobileBackToCalculator from "@/components/MobileBackToCalculator";
@@ -46,6 +47,7 @@ import {
   instruments,
   type AssetType,
 } from "@/lib/instruments";
+import { buildJsonLdGraph } from "@/lib/jsonLd";
 import { getMockYearsForSymbol, type SymbolKey } from "@/lib/mockMarketData";
 
 type ActiveCalculator = "dca" | "compound";
@@ -130,6 +132,19 @@ const quickStartCopy = {
       "compound-growth": "Pertumbuhan majemuk: $500/bulan selama 20 tahun",
     },
   },
+  ko: {
+    title: "인기 예시",
+    showMore: "예시 더 보기",
+    showLess: "추가 예시 숨기기",
+    presets: {
+      "voo-dca": "VOO DCA: 월 $1,000, 2018-2025",
+      "cspx-dca": "CSPX DCA: 월 $1,000, 2018-2025",
+      "voo-cspx-comparison": "VOO vs CSPX 비교",
+      "voo-qqq-comparison": "VOO vs QQQ 비교",
+      "dca-vs-lump-sum": "DCA vs 일시 투자 예시",
+      "compound-growth": "복리 성장: 20년 동안 월 $500",
+    },
+  },
 } as const;
 
 const primaryQuickStartPresetIds: QuickStartPresetId[] = [
@@ -169,6 +184,10 @@ const marketQueryAliases: Record<string, string> = {
   japan: "Japan",
   hongkong: "Hong Kong",
   hong_kong: "Hong Kong",
+  korea: "South Korea",
+  kr: "South Korea",
+  southkorea: "South Korea",
+  south_korea: "South Korea",
 };
 
 function normalizeQueryToken(value: string) {
@@ -184,6 +203,7 @@ function getMarketQueryCode(country: string) {
     Singapore: "singapore",
     Japan: "japan",
     "Hong Kong": "hongkong",
+    "South Korea": "south-korea",
   };
 
   return aliases[country] ?? country;
@@ -247,6 +267,10 @@ function getInstrumentFromQuery(value: string | null) {
 }
 
 function getAmountFromQuery(value: string | null) {
+  if (value === null || value.trim() === "") {
+    return null;
+  }
+
   const amount = Number(value);
 
   return Number.isFinite(amount) && amount >= 0 ? String(amount) : null;
@@ -275,8 +299,18 @@ async function copyTextToClipboard(text: string) {
   textArea.style.opacity = "0";
   document.body.appendChild(textArea);
   textArea.select();
-  document.execCommand("copy");
-  document.body.removeChild(textArea);
+
+  let copied = false;
+
+  try {
+    copied = document.execCommand("copy");
+  } finally {
+    textArea.remove();
+  }
+
+  if (!copied) {
+    throw new Error("Clipboard copy was not accepted");
+  }
 }
 
 function roundRect(
@@ -381,8 +415,12 @@ export default function Home() {
   const [activeCalculator, setActiveCalculator] =
     useState<ActiveCalculator>("dca");
   const [showMorePresets, setShowMorePresets] = useState(false);
+  const [selectedQuickStartPreset, setSelectedQuickStartPreset] =
+    useState<QuickStartPresetId | null>(null);
   const [showCompoundTable, setShowCompoundTable] = useState(false);
   const [showBacktestTable, setShowBacktestTable] = useState(false);
+  const [hasDcaCalculated, setHasDcaCalculated] = useState(false);
+  const [hasCompoundCalculated, setHasCompoundCalculated] = useState(false);
   const [initialAmount, setInitialAmount] = useState("10000");
   const [monthlyContribution, setMonthlyContribution] = useState("500");
   const [annualReturn, setAnnualReturn] = useState("8");
@@ -401,8 +439,6 @@ export default function Home() {
     symbol: SymbolKey;
     rows: MarketCsvRow[] | null;
   } | null>(null);
-  const [copiedShareLink, setCopiedShareLink] = useState(false);
-  const [copiedSocialCaption, setCopiedSocialCaption] = useState(false);
   const [shareUrl, setShareUrl] = useState("");
   const hasTrackedInitialDcaCalculation = useRef(false);
   const hasTrackedInitialCompoundCalculation = useRef(false);
@@ -410,17 +446,23 @@ export default function Home() {
   const hasUserChangedCompoundCalculation = useRef(false);
   const quickStartLabels =
     quickStartCopy[locale as keyof typeof quickStartCopy] ?? quickStartCopy.en;
-  const visibleQuickStartPresets = showMorePresets
-    ? quickStartPresets
-    : quickStartPresets.filter((preset) =>
-        primaryQuickStartPresetIds.includes(preset.id)
-      );
+  const primaryQuickStartPresets = quickStartPresets.filter((preset) =>
+    primaryQuickStartPresetIds.includes(preset.id)
+  );
+  const additionalQuickStartPresets = quickStartPresets.filter(
+    (preset) => !primaryQuickStartPresetIds.includes(preset.id)
+  );
 
   const scrollToCalculator = () => {
     window.requestAnimationFrame(() => {
       document
         .getElementById("calculator")
-        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+        ?.scrollIntoView({
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+            ? "auto"
+            : "smooth",
+          block: "start",
+        });
     });
   };
 
@@ -451,9 +493,18 @@ export default function Home() {
     const queryPurchasePriceMethod = getPurchasePriceMethodFromQuery(
       params.get("priceMethod")
     );
+    const hasSharedBacktestResult =
+      queryAmount !== null &&
+      Number(queryAmount) > 0 &&
+      params.has("start") &&
+      params.has("end");
+
+    if (hasSharedBacktestResult) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- a complete shared-result query is restored once from the client-only URL before exposing its result actions
+      setHasDcaCalculated(true);
+    }
 
     if (queryCurrency) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- overrides the locale-derived default only when the URL query string (client-only) specifies a currency
       setSelectedCurrency(queryCurrency);
     }
 
@@ -556,11 +607,17 @@ export default function Home() {
     });
   };
 
+  const handleCurrencyChange = (currency: CurrencyCode) => {
+    setSelectedQuickStartPreset(null);
+    setSelectedCurrency(currency);
+  };
+
   const handleCalculatorChange = (calculator: ActiveCalculator) => {
     if (calculator === activeCalculator) {
       return;
     }
 
+    setSelectedQuickStartPreset(null);
     setActiveCalculator(calculator);
     trackGaEvent("calculator_mode_changed", {
       mode:
@@ -579,6 +636,7 @@ export default function Home() {
       nextAssetType
     );
 
+    setSelectedQuickStartPreset(null);
     setBacktestCountry(country);
     setBacktestAssetType(nextAssetType);
     setBacktestSymbol(nextInstruments[0]?.id ?? backtestSymbol);
@@ -600,6 +658,7 @@ export default function Home() {
       return;
     }
 
+    setSelectedQuickStartPreset(null);
     setBacktestAssetType(assetType);
     setBacktestSymbol(nextInstruments[0].id);
     hasUserChangedDcaCalculation.current = true;
@@ -615,6 +674,7 @@ export default function Home() {
       filteredInstruments.find((instrument) => instrument.id === symbol) ??
       getInstrumentById(symbol);
 
+    setSelectedQuickStartPreset(null);
     setBacktestSymbol(symbol);
     hasUserChangedDcaCalculation.current = true;
     trackAssetSelected(nextInstrument, backtestCountry, effectiveAssetType);
@@ -622,16 +682,19 @@ export default function Home() {
 
   const handleBacktestMonthlyAmountChange = (value: string) => {
     hasUserChangedDcaCalculation.current = true;
+    setSelectedQuickStartPreset(null);
     setBacktestMonthlyAmount(value);
   };
 
   const handleBacktestFixedFeeChange = (value: string) => {
     hasUserChangedDcaCalculation.current = true;
+    setSelectedQuickStartPreset(null);
     setBacktestFixedFee(value);
   };
 
   const handleBacktestPercentageFeeChange = (value: string) => {
     hasUserChangedDcaCalculation.current = true;
+    setSelectedQuickStartPreset(null);
     setBacktestPercentageFee(value);
   };
 
@@ -639,36 +702,43 @@ export default function Home() {
     value: PurchasePriceMethod
   ) => {
     hasUserChangedDcaCalculation.current = true;
+    setSelectedQuickStartPreset(null);
     setBacktestPurchasePriceMethod(value);
   };
 
   const handleBacktestStartYearChange = (value: string) => {
     hasUserChangedDcaCalculation.current = true;
+    setSelectedQuickStartPreset(null);
     setBacktestStartYear(value);
   };
 
   const handleBacktestEndYearChange = (value: string) => {
     hasUserChangedDcaCalculation.current = true;
+    setSelectedQuickStartPreset(null);
     setBacktestEndYear(value);
   };
 
   const handleInitialAmountChange = (value: string) => {
     hasUserChangedCompoundCalculation.current = true;
+    setSelectedQuickStartPreset(null);
     setInitialAmount(value);
   };
 
   const handleMonthlyContributionChange = (value: string) => {
     hasUserChangedCompoundCalculation.current = true;
+    setSelectedQuickStartPreset(null);
     setMonthlyContribution(value);
   };
 
   const handleAnnualReturnChange = (value: string) => {
     hasUserChangedCompoundCalculation.current = true;
+    setSelectedQuickStartPreset(null);
     setAnnualReturn(value);
   };
 
   const handleYearsChange = (value: string) => {
     hasUserChangedCompoundCalculation.current = true;
+    setSelectedQuickStartPreset(null);
     setYears(value);
   };
 
@@ -731,6 +801,8 @@ export default function Home() {
   };
 
   const handleQuickStartPreset = (preset: QuickStartPreset) => {
+    setSelectedQuickStartPreset(preset.id);
+
     switch (preset.id) {
       case "voo-dca":
         applyDcaQuickStartPreset("voo", preset);
@@ -751,6 +823,28 @@ export default function Home() {
         applyCompoundQuickStartPreset(preset);
         break;
     }
+  };
+
+  const renderQuickStartPreset = (preset: QuickStartPreset) => {
+    const isSelected = selectedQuickStartPreset === preset.id;
+
+    return (
+      <button
+        key={preset.id}
+        type="button"
+        data-testid={`quick-start-preset-${preset.id}`}
+        data-selected={isSelected}
+        aria-pressed={isSelected}
+        onClick={() => handleQuickStartPreset(preset)}
+        className={`calculator-quick-preset min-w-0 rounded-full border px-3 py-2 text-left text-xs font-semibold leading-snug focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/70 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 sm:px-4 sm:text-sm ${
+          isSelected
+            ? "calculator-quick-preset--selected border-cyan-300/60 bg-cyan-300/15 text-cyan-100"
+            : "border-white/10 bg-white/[0.04] text-slate-200 hover:border-cyan-300/50 hover:bg-cyan-300/10 hover:text-white"
+        }`}
+      >
+        {quickStartLabels.presets[preset.id]}
+      </button>
+    );
   };
 
   useEffect(() => {
@@ -1017,13 +1111,14 @@ export default function Home() {
     selectedInstrument,
   ]);
 
-  const copyShareUrl = async (shouldTrackEvent = true) => {
+  const copyShareUrl = async (
+    shouldTrackEvent = true
+  ): Promise<ResultActionOutcome> => {
     if (!shareUrl) {
-      return;
+      throw new Error("Share URL is not ready");
     }
 
     await copyTextToClipboard(shareUrl);
-    setCopiedShareLink(true);
     if (shouldTrackEvent) {
       trackGaEvent("copy_result_link_clicked", {
         symbol: selectedInstrument?.displaySymbol ?? effectiveBacktestSymbol,
@@ -1033,10 +1128,11 @@ export default function Home() {
         locale,
       });
     }
-    window.setTimeout(() => setCopiedShareLink(false), 2200);
+
+    return "linkCopied";
   };
 
-  const handleCopySocialCaption = async () => {
+  const handleCopySocialCaption = async (): Promise<ResultActionOutcome> => {
     const instrumentSymbol =
       selectedInstrument?.displaySymbol ?? effectiveBacktestSymbol;
     const caption = [
@@ -1106,7 +1202,6 @@ export default function Home() {
     ].join("\n");
 
     await copyTextToClipboard(caption);
-    setCopiedSocialCaption(true);
     trackGaEvent("copy_social_caption_clicked", {
       symbol: instrumentSymbol,
       market: backtestCountry,
@@ -1115,10 +1210,11 @@ export default function Home() {
       locale,
       data_source: backtest.dataSource,
     });
-    window.setTimeout(() => setCopiedSocialCaption(false), 2200);
+
+    return "captionCopied";
   };
 
-  const handleShareResult = async () => {
+  const handleShareResult = async (): Promise<ResultActionOutcome> => {
     trackGaEvent("share_result_clicked", {
       symbol: selectedInstrument?.displaySymbol ?? effectiveBacktestSymbol,
       market: backtestCountry,
@@ -1134,16 +1230,16 @@ export default function Home() {
           text: t("share.description"),
           url: shareUrl,
         });
-        return;
+        return "resultShared";
       } catch {
         // Fall back to copying when native share is dismissed or unavailable.
       }
     }
 
-    await copyShareUrl(false);
+    return copyShareUrl(false);
   };
 
-  const handleDownloadResultImage = async () => {
+  const handleDownloadResultImage = async (): Promise<ResultActionOutcome> => {
     const canvas = document.createElement("canvas");
     const width = 1200;
     const height = 630;
@@ -1191,7 +1287,7 @@ export default function Home() {
     const ctx = canvas.getContext("2d");
 
     if (!ctx) {
-      return;
+      throw new Error("Result image canvas is unavailable");
     }
 
     ctx.scale(scale, scale);
@@ -1362,7 +1458,7 @@ export default function Home() {
     });
 
     if (!blob) {
-      return;
+      throw new Error("Result image could not be created");
     }
 
     const file = new File([blob], "dca-backtest-result.png", {
@@ -1390,7 +1486,7 @@ export default function Home() {
       try {
         await navigator.share(shareData);
         trackGaEvent("result_image_share_clicked", eventParams);
-        return;
+        return "resultShared";
       } catch {
         // Fall back to downloading if native image sharing is dismissed or fails.
       }
@@ -1405,6 +1501,8 @@ export default function Home() {
     document.body.removeChild(link);
     URL.revokeObjectURL(imageUrl);
     trackGaEvent("result_image_download_clicked", eventParams);
+
+    return "imageDownloaded";
   };
 
   const structuredData = useMemo(() => {
@@ -1469,16 +1567,18 @@ export default function Home() {
       ],
     };
 
-    return JSON.stringify([
-      webSiteStructuredData,
-      faqStructuredData,
-      webApplicationStructuredData,
-      breadcrumbStructuredData,
-    ]).replace(/</g, "\\u003c");
+    return JSON.stringify(
+      buildJsonLdGraph([
+        webSiteStructuredData,
+        faqStructuredData,
+        webApplicationStructuredData,
+        breadcrumbStructuredData,
+      ])
+    ).replace(/</g, "\\u003c");
   }, [locale, t]);
 
   return (
-    <main className="min-h-screen w-full overflow-x-hidden bg-slate-950 text-white">
+    <main className="calculator-motion-scope min-h-screen w-full overflow-x-hidden bg-slate-950 text-white">
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -1486,7 +1586,7 @@ export default function Home() {
       />
       <Navbar
         selectedCurrency={selectedCurrency}
-        onCurrencyChange={setSelectedCurrency}
+        onCurrencyChange={handleCurrencyChange}
       />
 
       <section className="relative mx-auto w-full max-w-7xl px-4 py-4 sm:px-6 sm:py-7 lg:px-8">
@@ -1507,37 +1607,43 @@ export default function Home() {
             <p className="shrink-0 text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
               {quickStartLabels.title}
             </p>
-            <div className="flex w-full min-w-0 flex-wrap items-center gap-2">
-              {visibleQuickStartPresets.map((preset) => (
+            <div className="w-full min-w-0">
+              <div className="flex w-full min-w-0 flex-wrap items-center gap-2">
+                {primaryQuickStartPresets.map(renderQuickStartPreset)}
                 <button
-                  key={preset.id}
                   type="button"
-                  onClick={() => handleQuickStartPreset(preset)}
-                  className="min-w-0 rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-left text-xs font-semibold leading-snug text-slate-200 transition hover:border-cyan-300/50 hover:bg-cyan-300/10 hover:text-white focus:outline-none focus:ring-2 focus:ring-cyan-300/50 sm:px-4 sm:text-sm"
+                  data-testid="quick-start-toggle-button"
+                  onClick={() => setShowMorePresets((current) => !current)}
+                  aria-expanded={showMorePresets}
+                  className="calculator-show-more inline-flex min-w-0 items-center gap-1 rounded-full border border-white/15 px-3 py-2 text-left text-xs font-semibold leading-snug text-cyan-200/85 hover:border-cyan-300/50 hover:text-cyan-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/70 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 sm:px-4 sm:text-sm"
                 >
-                  {quickStartLabels.presets[preset.id]}
+                  {showMorePresets
+                    ? quickStartLabels.showLess
+                    : quickStartLabels.showMore}
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 12 8"
+                    className={`calculator-show-more-icon h-2.5 w-2.5 shrink-0 fill-none stroke-current stroke-2 ${
+                      showMorePresets ? "rotate-180" : ""
+                    }`}
+                  >
+                    <path d="M1 1.5 6 6.5 11 1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
                 </button>
-              ))}
-              <button
-                type="button"
-                data-testid="quick-start-toggle-button"
-                onClick={() => setShowMorePresets((current) => !current)}
-                aria-expanded={showMorePresets}
-                className="inline-flex min-w-0 items-center gap-1 rounded-full border border-white/15 px-3 py-2 text-left text-xs font-semibold leading-snug text-cyan-200/85 transition hover:border-cyan-300/50 hover:text-cyan-100 focus:outline-none focus:ring-2 focus:ring-cyan-300/50 sm:px-4 sm:text-sm"
+              </div>
+              <div
+                data-testid="quick-start-additional-presets"
+                data-open={showMorePresets}
+                aria-hidden={!showMorePresets}
+                inert={!showMorePresets}
+                className="calculator-collapsible"
               >
-                {showMorePresets
-                  ? quickStartLabels.showLess
-                  : quickStartLabels.showMore}
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 12 8"
-                  className={`h-2.5 w-2.5 shrink-0 fill-none stroke-current stroke-2 transition-transform ${
-                    showMorePresets ? "rotate-180" : ""
-                  }`}
-                >
-                  <path d="M1 1.5 6 6.5 11 1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </button>
+                <div className="calculator-collapsible-inner">
+                  <div className="flex min-w-0 flex-wrap gap-2 pt-2">
+                    {additionalQuickStartPresets.map(renderQuickStartPreset)}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -1549,11 +1655,19 @@ export default function Home() {
           tabIndex={0}
           className="w-full min-w-0 scroll-mt-24 focus-visible:outline-none"
         >
+          <div
+            key={activeCalculator}
+            data-testid="calculator-mode-panel"
+            data-calculator-mode={activeCalculator}
+            className="calculator-mode-panel min-w-0"
+          >
           {activeCalculator === "dca" ? (
             <>
               <DcaBacktestCalculator
                 selectedCurrency={selectedCurrency}
                 backtest={backtest}
+                hasCalculated={hasDcaCalculated}
+                onCalculate={() => setHasDcaCalculated(true)}
                 backtestChartData={backtestChartData}
                 countryOptions={countryOptions}
                 assetTypeOptions={assetTypeOptions}
@@ -1583,8 +1697,6 @@ export default function Home() {
                 setBacktestEndYear={handleBacktestEndYearChange}
                 setShowBacktestTable={setShowBacktestTable}
                 shareUrl={shareUrl}
-                copiedShareLink={copiedShareLink}
-                copiedSocialCaption={copiedSocialCaption}
                 onShareResult={handleShareResult}
                 onCopyShareLink={copyShareUrl}
                 onCopySocialCaption={handleCopySocialCaption}
@@ -1595,13 +1707,15 @@ export default function Home() {
               />
               <DcaAssetComparison
                 selectedCurrency={selectedCurrency}
-                onCurrencyChange={setSelectedCurrency}
+                onCurrencyChange={handleCurrencyChange}
               />
             </>
           ) : (
             <CompoundInterestCalculator
               selectedCurrency={selectedCurrency}
               result={result}
+              hasCalculated={hasCompoundCalculated}
+              onCalculate={() => setHasCompoundCalculated(true)}
               chartData={chartData}
               growthMultiple={growthMultiple}
               initialAmount={initialAmount}
@@ -1616,6 +1730,7 @@ export default function Home() {
               setShowCompoundTable={setShowCompoundTable}
             />
           )}
+          </div>
         </div>
 
         <RelatedLinks />

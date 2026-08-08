@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import RecommendedToolsCta from "@/components/RecommendedToolsCta";
 import RelatedGuides from "@/components/RelatedGuides";
 import type { Locale } from "@/i18n/routing";
+import { buildJsonLdGraph } from "@/lib/jsonLd";
 import {
   isPublicLocale,
   publicLearnLocales,
@@ -313,9 +314,10 @@ export default async function SeoLandingPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            structuredData
-          ).replace(/</g, "\\u003c"),
+          __html: JSON.stringify(buildJsonLdGraph(structuredData)).replace(
+            /</g,
+            "\\u003c"
+          ),
         }}
       />
       <section className="relative mx-auto w-full max-w-5xl px-4 py-10 sm:px-6 sm:py-16 lg:px-8">

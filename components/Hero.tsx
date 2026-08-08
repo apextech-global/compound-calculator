@@ -16,14 +16,14 @@ export default function Hero() {
   const calculatorLinksLabel = t("hero.calculatorLinksLabel");
 
   return (
-    <div className="mb-2.5 w-full max-w-4xl sm:mb-3">
+    <div className="mb-2 w-full max-w-4xl sm:mb-2.5">
       <p className="mb-1 text-xs font-semibold uppercase tracking-[0.24em] text-cyan-300 sm:mb-1.5 sm:text-sm sm:tracking-[0.28em]">
         {t("hero.eyebrow")}
       </p>
       <h1 className="min-w-0 break-words text-[1.9rem] font-bold leading-tight tracking-tight sm:text-[2.15rem] md:text-[3.35rem]">
         {t("hero.title")}
       </h1>
-      <p className="mt-2 max-w-2xl break-words text-sm leading-6 text-slate-300 sm:mt-3 sm:text-base sm:leading-7 md:text-[1.05rem]">
+      <p className="mt-1.5 max-w-2xl break-words text-sm leading-6 text-slate-300 sm:mt-2.5 sm:text-base sm:leading-7 md:text-[1.05rem]">
         {t("hero.description")}
       </p>
       <p className="mt-1.5 max-w-3xl break-words text-xs leading-5 text-slate-500 sm:mt-2">
@@ -32,7 +32,7 @@ export default function Hero() {
 
       <nav
         aria-label={calculatorLinksLabel}
-        className="mt-2.5 flex w-full flex-wrap items-center gap-x-4 gap-y-1.5 text-xs sm:mt-3 sm:text-sm"
+        className="mt-2 flex w-full flex-wrap items-center gap-x-4 gap-y-1.5 text-xs sm:mt-2.5 sm:text-sm"
       >
         {priorityLinks.map((link, index) => (
           <span key={link} className="flex items-center gap-x-4">

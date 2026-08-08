@@ -11,6 +11,19 @@
     "showYearlyTable": "Tampilkan tabel tahunan",
     "hideYearlyTable": "Sembunyikan tabel tahunan"
   },
+  "calculatorDashboard": {
+    "groups": {
+      "asset": "Aset",
+      "investmentPlan": "Rencana investasi",
+      "costs": "Biaya dan pengaturan lanjutan"
+    },
+    "resultTitle": "Hasil",
+    "emptyDca": "Masukkan rincian investasi dan jalankan backtest untuk melihat hasil.",
+    "emptyCompound": "Masukkan rincian investasi dan hitung untuk melihat proyeksi.",
+    "emptyHint": "Hasil dan alat berbagi akan ditampilkan setelah penghitungan.",
+    "runBacktest": "Jalankan backtest",
+    "calculateProjection": "Hitung proyeksi"
+  },
   "nav": {
     "dcaBacktest": "Backtest DCA",
     "compoundCalculator": "Kalkulator Kompon"
@@ -449,6 +462,9 @@
     "shareResult": "Bagikan hasil",
     "copyLink": "Salin tautan",
     "linkCopied": "Tautan disalin",
+    "resultShared": "Hasil berhasil dibagikan",
+    "imageDownloaded": "Gambar hasil telah diunduh",
+    "actionFailed": "Tindakan tersebut tidak dapat diselesaikan. Silakan coba lagi.",
     "title": "Bagikan hasil DCA ini",
     "description": "Buka hasil DCA Backtest ini dengan pengaturan kalkulator yang sama.",
     "copyDescription": "Salin tautan hasil kalkulator ini",

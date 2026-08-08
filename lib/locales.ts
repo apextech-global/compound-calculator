@@ -32,6 +32,7 @@ export const publicLocaleCodes = [
   "zh-TW",
   "ms",
   "id",
+  "ko",
 ] as const satisfies readonly LocaleCode[];
 
 export type PublicLocaleCode = (typeof publicLocaleCodes)[number];

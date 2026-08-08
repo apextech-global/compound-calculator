@@ -93,6 +93,7 @@ const marketQueryCodes: Record<string, string> = {
   Singapore: "singapore",
   Japan: "japan",
   "Hong Kong": "hongkong",
+  "South Korea": "south-korea",
 };
 
 async function getMessages(locale: Locale) {

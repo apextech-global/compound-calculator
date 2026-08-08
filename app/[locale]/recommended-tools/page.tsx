@@ -321,6 +321,58 @@ const copy: Record<string, RecommendedToolsCopy> = {
       malaysiaVoo: "Panduan VOO Malaysia",
     },
   },
+  ko: {
+    title: "추천 도구",
+    eyebrow: "교육 자료",
+    description:
+      "투자 전에 비교할 수 있는 증권사 플랫폼, 환전·송금 도구와 포트폴리오 관리 도구를 알아보세요.",
+    seoTitle: "추천 도구 | DCA Backtest",
+    seoDescription:
+      "투자 전에 조사할 증권사 플랫폼, 송금 도구와 포트폴리오 관리 도구를 알아보세요. 교육 목적으로만 제공됩니다.",
+    disclosure:
+      "일부 링크는 향후 제휴 또는 추천 링크가 될 수 있습니다. 추가 비용 없이 수수료나 추천 보상을 받을 수 있으며, 이는 콘텐츠의 교육적 성격에 영향을 주지 않습니다.",
+    sections: {
+      brokerage: "증권사 플랫폼",
+      transfer: "환전·송금 도구",
+      portfolio: "포트폴리오 관리 도구",
+      reminders: "중요 안내",
+    },
+    verifyLabel: "확인할 사항",
+    verifyItems:
+      "수수료, 지원 시장, 환전, 세금 처리, 이용 가능 여부, 위험과 약관",
+    learnMore: "자세히 보기",
+    toolDescriptions: {
+      "Interactive Brokers":
+        "여러 시장에 접근하기 위해 일부 투자자가 조사하는 글로벌 증권사 플랫폼입니다.",
+      Moomoo:
+        "일부 시장에서 제공되며 시장 접근성과 계좌 기능을 비교할 수 있는 증권사 플랫폼입니다.",
+      Wise:
+        "지원 통화와 송금 비용을 비교할 수 있는 환전 및 송금 서비스입니다.",
+      Instarem:
+        "환율, 수수료와 지원 목적지를 검토할 수 있는 송금 서비스입니다.",
+      MoneyMatch:
+        "지원 송금 경로와 이용 조건을 비교할 수 있는 환전 및 송금 서비스입니다.",
+    },
+    portfolioBody:
+      "포트폴리오 관리 도구는 가정을 기록하고 자산 배분을 검토하며 증권사 명세서와 결과를 비교하는 데 도움이 될 수 있습니다. 공식 계좌 기록과 세금 서류는 별도로 확인해야 합니다.",
+    reminders: [
+      "이 페이지는 교육 목적이며 특정 증권사, ETF, 상품 또는 서비스를 추천하지 않습니다.",
+      "공식 수수료, 지원 시장, 환율, 프로모션과 약관은 변경될 수 있습니다.",
+      "서비스를 이용하기 전에 공식 제공업체 웹사이트에서 중요한 정보를 확인하세요.",
+      "DCA Backtest는 금융, 투자, 세무 또는 법률 조언을 제공하지 않습니다.",
+    ],
+    linksTitle: "관련 페이지",
+    links: {
+      affiliate: "제휴 공시",
+      disclaimer: "고지 사항",
+      terms: "이용약관",
+      privacy: "개인정보 처리방침",
+      dca: "DCA 계산기",
+      comparison: "ETF 비교 계산기",
+      malaysiaCspx: "말레이시아 CSPX 가이드",
+      malaysiaVoo: "말레이시아 VOO 가이드",
+    },
+  },
 };
 
 const fallbackCopy = copy.en;

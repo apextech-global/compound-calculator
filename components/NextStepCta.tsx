@@ -3,7 +3,7 @@
 import { useLocale } from "next-intl";
 import Link from "next/link";
 
-type SupportedLocale = "en" | "zh-CN" | "zh-TW" | "ms" | "id";
+type SupportedLocale = "en" | "zh-CN" | "zh-TW" | "ms" | "id" | "ko";
 
 type NextStepCopy = {
   prefix: string;
@@ -54,6 +54,14 @@ const copyByLocale: Record<SupportedLocale, NextStepCopy> = {
     guideLinkText: "panduan pemula",
     suffix: ".",
     guideHref: "/id/dca-calculator",
+  },
+  ko: {
+    prefix: "다음 단계: 이 결과를 다른 ",
+    compareLinkText: "ETF",
+    middle: "와 비교하거나 ",
+    guideLinkText: "DCA 계산기 가이드",
+    suffix: "를 읽어보세요.",
+    guideHref: "/ko/dca-calculator",
   },
 };
 

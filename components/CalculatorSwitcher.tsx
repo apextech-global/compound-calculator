@@ -22,6 +22,7 @@ const switcherCopy: Record<string, SwitcherCopy> = {
   "zh-TW": { label: "計算器模式", dca: "定期定額回測", compound: "複利計算" },
   ms: { label: "Mod kalkulator", dca: "Backtest DCA", compound: "Faedah Kompaun" },
   id: { label: "Mode kalkulator", dca: "Backtest DCA", compound: "Bunga Majemuk" },
+  ko: { label: "계산기 모드", dca: "DCA 백테스트", compound: "복리 계산" },
 };
 
 export const CALCULATOR_TAB_IDS: Record<ActiveCalculator, string> = {
@@ -64,7 +65,7 @@ export default function CalculatorSwitcher({
   };
 
   const tabClassName = (calculator: ActiveCalculator, activeClasses: string) =>
-    `min-w-0 flex-1 whitespace-normal break-words rounded-full px-4 py-2 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/70 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 sm:flex-none ${
+    `calculator-mode-tab min-w-0 flex-1 whitespace-normal break-words rounded-full px-4 py-2 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/70 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 sm:flex-none ${
       activeCalculator === calculator
         ? activeClasses
         : "text-slate-300 hover:bg-white/[0.06] hover:text-white"
@@ -75,13 +76,14 @@ export default function CalculatorSwitcher({
       role="tablist"
       aria-label={copy.label}
       aria-orientation="horizontal"
-      className="mb-3 flex w-full max-w-full flex-wrap gap-1 rounded-full border border-white/10 bg-white/[0.04] p-1 sm:mb-4 sm:w-auto sm:flex-nowrap"
+      className="calculator-mode-switch mb-3 flex w-full max-w-full flex-wrap gap-1 rounded-full border border-white/10 bg-white/[0.04] p-1 sm:mb-4 sm:w-auto sm:flex-nowrap"
     >
       <button
         type="button"
         role="tab"
         id={CALCULATOR_TAB_IDS.dca}
         aria-selected={activeCalculator === "dca"}
+        data-selected={activeCalculator === "dca"}
         aria-controls="calculator"
         tabIndex={activeCalculator === "dca" ? 0 : -1}
         ref={(el) => {
@@ -99,6 +101,7 @@ export default function CalculatorSwitcher({
         role="tab"
         id={CALCULATOR_TAB_IDS.compound}
         aria-selected={activeCalculator === "compound"}
+        data-selected={activeCalculator === "compound"}
         aria-controls="calculator"
         tabIndex={activeCalculator === "compound" ? 0 : -1}
         ref={(el) => {

@@ -5,6 +5,7 @@ import {
   publicLearnLocales,
   type LearnContentLocale,
 } from "@/lib/locales";
+import { buildJsonLdGraph } from "@/lib/jsonLd";
 import { absoluteUrl, productionBaseUrl } from "@/lib/seoMetadata";
 
 type LearnLocale = LearnContentLocale;
@@ -1597,12 +1598,14 @@ export default async function LearnPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify([
-            webPageJsonLd,
-            breadcrumbJsonLd,
-            itemListJsonLd,
-            faqJsonLd,
-          ]).replace(/</g, "\\u003c"),
+          __html: JSON.stringify(
+            buildJsonLdGraph([
+              webPageJsonLd,
+              breadcrumbJsonLd,
+              itemListJsonLd,
+              faqJsonLd,
+            ])
+          ).replace(/</g, "\\u003c"),
         }}
       />
       <section className="relative mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 sm:py-16 lg:px-8">

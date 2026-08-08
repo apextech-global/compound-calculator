@@ -38,7 +38,9 @@ export default function MobileBackToCalculator({
 
   const scrollToCalculator = () => {
     document.getElementById(targetId)?.scrollIntoView({
-      behavior: "smooth",
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth",
       block: "start",
     });
   };

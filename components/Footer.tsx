@@ -35,6 +35,7 @@ const feedbackText = {
   ms: "Jumpa ralat atau data salah? Hantar maklum balas",
   id: "Menemukan bug atau data salah? Kirim masukan",
   ja: "不具合やデータの誤りを見つけましたか？フィードバックを送る",
+  ko: "오류나 잘못된 데이터를 발견하셨나요? 의견 보내기",
 } as const;
 
 const feedbackHref =
@@ -46,6 +47,7 @@ const popularGuidesLabel = {
   "zh-TW": "熱門指南",
   ms: "Panduan Popular",
   id: "Panduan Populer",
+  ko: "인기 가이드",
 } as const;
 
 export default function Footer() {

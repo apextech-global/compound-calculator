@@ -11,6 +11,19 @@
     "showYearlyTable": "显示年度表",
     "hideYearlyTable": "隐藏年度表"
   },
+  "calculatorDashboard": {
+    "groups": {
+      "asset": "资产",
+      "investmentPlan": "投资计划",
+      "costs": "费用与高级设置"
+    },
+    "resultTitle": "计算结果",
+    "emptyDca": "输入投资详情并运行回测，即可查看结果。",
+    "emptyCompound": "输入投资详情并计算，即可查看预测结果。",
+    "emptyHint": "计算后将显示结果和分享工具。",
+    "runBacktest": "运行回测",
+    "calculateProjection": "计算预测"
+  },
   "nav": {
     "dcaBacktest": "DCA 回测",
     "compoundCalculator": "复利计算器"
@@ -451,6 +464,9 @@
     "shareResult": "分享结果",
     "copyLink": "复制链接",
     "linkCopied": "链接已复制",
+    "resultShared": "结果已分享",
+    "imageDownloaded": "结果图片已下载",
+    "actionFailed": "无法完成此操作，请重试。",
     "title": "分享这个 DCA 结果",
     "description": "使用相同计算器设置打开这个 DCA 回测结果。",
     "copyDescription": "复制这个计算器结果链接",

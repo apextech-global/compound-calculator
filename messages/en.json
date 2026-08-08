@@ -11,6 +11,19 @@
     "showYearlyTable": "Show yearly table",
     "hideYearlyTable": "Hide yearly table"
   },
+  "calculatorDashboard": {
+    "groups": {
+      "asset": "Asset",
+      "investmentPlan": "Investment plan",
+      "costs": "Costs and advanced settings"
+    },
+    "resultTitle": "Results",
+    "emptyDca": "Enter your investment details and run the backtest to see the result.",
+    "emptyCompound": "Enter your investment details and calculate to see the projection.",
+    "emptyHint": "Results and sharing tools will appear after calculation.",
+    "runBacktest": "Run backtest",
+    "calculateProjection": "Calculate projection"
+  },
   "nav": {
     "dcaBacktest": "DCA Backtest",
     "compoundCalculator": "Compound Calculator"
@@ -450,6 +463,9 @@
     "shareResult": "Share result",
     "copyLink": "Copy link",
     "linkCopied": "Link copied",
+    "resultShared": "Result shared",
+    "imageDownloaded": "Result image downloaded",
+    "actionFailed": "We could not complete that action. Please try again.",
     "title": "Share this DCA result",
     "description": "Open this DCA Backtest result with the same calculator settings.",
     "copyDescription": "Copy this calculator result link",
