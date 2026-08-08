@@ -1,4 +1,12 @@
 {
+  "000660-ks": {
+    "symbol": "000660.KS",
+    "name": "SK hynix",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-08-08T06:52:49.506Z",
+    "rowsSaved": 6649,
+    "status": "success"
+  },
   "0050-tw": {
     "symbol": "0050.TW",
     "name": "Yuanta Taiwan Top 50 ETF",
@@ -7,12 +15,44 @@
     "rowsSaved": 0,
     "status": "skipped"
   },
+  "005380-ks": {
+    "symbol": "005380.KS",
+    "name": "Hyundai Motor",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-08-08T06:52:49.807Z",
+    "rowsSaved": 6649,
+    "status": "success"
+  },
   "0056-tw": {
     "symbol": "0056.TW",
     "name": "Yuanta Taiwan High Dividend ETF",
     "source": "Yahoo Finance chart API",
     "lastSuccessfulFetchAt": "2026-07-02T07:22:27.899Z",
     "rowsSaved": 4535,
+    "status": "success"
+  },
+  "005930-ks": {
+    "symbol": "005930.KS",
+    "name": "Samsung Electronics",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-08-08T06:52:50.074Z",
+    "rowsSaved": 6649,
+    "status": "success"
+  },
+  "035420-ks": {
+    "symbol": "035420.KS",
+    "name": "NAVER",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-08-08T06:52:50.353Z",
+    "rowsSaved": 5914,
+    "status": "success"
+  },
+  "069500-ks": {
+    "symbol": "069500.KS",
+    "name": "KODEX 200 ETF",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-08-08T06:52:50.589Z",
+    "rowsSaved": 4242,
     "status": "success"
   },
   "0700-hk": {
@@ -69,6 +109,22 @@
     "source": "Yahoo Finance chart API",
     "lastSuccessfulFetchAt": "2026-07-02T07:23:01.483Z",
     "rowsSaved": 4296,
+    "status": "success"
+  },
+  "133690-ks": {
+    "symbol": "133690.KS",
+    "name": "TIGER U.S. NASDAQ 100 ETF",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-08-08T06:52:50.780Z",
+    "rowsSaved": 3856,
+    "status": "success"
+  },
+  "207940-ks": {
+    "symbol": "207940.KS",
+    "name": "Samsung Biologics",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-08-08T06:52:50.941Z",
+    "rowsSaved": 2383,
     "status": "success"
   },
   "2303-tw": {
@@ -157,6 +213,14 @@
     "source": "Yahoo Finance chart API",
     "lastSuccessfulFetchAt": "2026-07-02T07:23:58.364Z",
     "rowsSaved": 5969,
+    "status": "success"
+  },
+  "360750-ks": {
+    "symbol": "360750.KS",
+    "name": "TIGER U.S. S&P 500 ETF",
+    "source": "Yahoo Finance chart API",
+    "lastSuccessfulFetchAt": "2026-08-08T06:52:51.103Z",
+    "rowsSaved": 1447,
     "status": "success"
   },
   "3711-tw": {

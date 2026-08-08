@@ -27,11 +27,19 @@ import {
 } from "@/lib/formatting";
 import type { AssetType, Instrument } from "@/lib/instruments";
 import type { SymbolKey } from "@/lib/mockMarketData";
+import {
+  getPerformanceTone,
+  getPerformanceToneClassName,
+} from "@/lib/performanceTone";
+import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
 import NextStepCta from "./NextStepCta";
+import ResultActionBar, { type ResultActionOutcome } from "./ResultActionBar";
 
 type DcaBacktestCalculatorProps = {
   selectedCurrency: CurrencyCode;
   backtest: DcaBacktestResult;
+  hasCalculated: boolean;
+  onCalculate: () => void;
   backtestChartData: Array<{
     year: number;
     portfolioValue: number;
@@ -63,12 +71,10 @@ type DcaBacktestCalculatorProps = {
   setBacktestEndYear: (value: string) => void;
   setShowBacktestTable: (updater: (value: boolean) => boolean) => void;
   shareUrl: string;
-  copiedShareLink: boolean;
-  copiedSocialCaption: boolean;
-  onShareResult: () => void;
-  onCopyShareLink: () => void;
-  onCopySocialCaption: () => void;
-  onDownloadResultImage: () => void;
+  onShareResult: () => Promise<ResultActionOutcome>;
+  onCopyShareLink: () => Promise<ResultActionOutcome>;
+  onCopySocialCaption: () => Promise<ResultActionOutcome>;
+  onDownloadResultImage: () => Promise<ResultActionOutcome>;
   displayedDataSource: "csv" | "mock";
   dataLastUpdated: string | null;
   dataMayBeStale: boolean;
@@ -80,6 +86,7 @@ const feedbackText = {
   "zh-TW": "發現錯誤或資料問題？回報給我們",
   ms: "Jumpa ralat atau data salah? Hantar maklum balas",
   id: "Menemukan bug atau data salah? Kirim masukan",
+  ko: "오류나 잘못된 데이터를 발견하셨나요? 의견 보내기",
 } as const;
 
 const feedbackHref =
@@ -88,6 +95,8 @@ const feedbackHref =
 export default function DcaBacktestCalculator({
   selectedCurrency,
   backtest,
+  hasCalculated,
+  onCalculate,
   backtestChartData,
   countryOptions,
   assetTypeOptions,
@@ -115,8 +124,6 @@ export default function DcaBacktestCalculator({
   setBacktestEndYear,
   setShowBacktestTable,
   shareUrl,
-  copiedShareLink,
-  copiedSocialCaption,
   onShareResult,
   onCopyShareLink,
   onCopySocialCaption,
@@ -128,6 +135,7 @@ export default function DcaBacktestCalculator({
   const t = useTranslations();
   const locale = useLocale();
   const [showAdvancedBacktest, setShowAdvancedBacktest] = useState(false);
+  const prefersReducedMotion = usePrefersReducedMotion();
   const monthlyAmount = Number(backtestMonthlyAmount) || 0;
   const fixedFee = Math.max(0, Number(backtestFixedFee) || 0);
   const percentageFee = Math.max(0, Number(backtestPercentageFee) || 0);
@@ -137,9 +145,16 @@ export default function DcaBacktestCalculator({
     monthlyAmount > 0 && estimatedFeePerPurchase > monthlyAmount;
   const feedbackLabel =
     feedbackText[locale as keyof typeof feedbackText] ?? feedbackText.en;
+  const canCalculate = monthlyAmount > 0 && availableYears.length > 0;
+  const totalProfitTone = getPerformanceTone(backtest.totalProfit);
+  const totalReturnTone = getPerformanceTone(backtest.totalReturn);
 
   return (
-    <section data-testid="calculator-dashboard" className="calculator-dashboard w-full min-w-0">
+    <section
+      data-testid="calculator-dashboard"
+      data-reduced-motion={prefersReducedMotion}
+      className="calculator-dashboard w-full min-w-0"
+    >
       <div className="mb-3 w-full max-w-4xl sm:mb-4">
         <p className="mb-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300 sm:mb-2 sm:text-sm sm:tracking-[0.24em]">
           {t("dca.eyebrow")}
@@ -200,6 +215,17 @@ export default function DcaBacktestCalculator({
           </details>
 
           <div className="space-y-4 sm:space-y-5">
+            <div
+              role="group"
+              aria-labelledby="dca-asset-group-heading"
+              className="calculator-input-group space-y-4"
+            >
+              <p
+                id="dca-asset-group-heading"
+                className="calculator-input-group-title"
+              >
+                {t("calculatorDashboard.groups.asset")}
+              </p>
             <label className="block">
               <span className="mb-2 block text-sm text-slate-300">
                 {t("dca.countryMarket")}
@@ -258,7 +284,10 @@ export default function DcaBacktestCalculator({
             </div>
 
             {selectedInstrument ? (
-              <div className="space-y-2 rounded-2xl border border-white/10 bg-slate-950/50 px-4 py-3 text-sm text-slate-300">
+              <div
+                key={selectedInstrument.id}
+                className="calculator-asset-information space-y-2 rounded-2xl border border-white/10 bg-slate-950/50 px-4 py-3 text-sm text-slate-300"
+              >
                 <p>
                   <span className="text-slate-500">{t("dca.asset")}:</span>{" "}
                   {selectedInstrument.displaySymbol} - {selectedInstrument.name}
@@ -281,7 +310,19 @@ export default function DcaBacktestCalculator({
                 </p>
               </div>
             ) : null}
+            </div>
 
+            <div
+              role="group"
+              aria-labelledby="dca-investment-plan-heading"
+              className="calculator-input-group space-y-4"
+            >
+              <p
+                id="dca-investment-plan-heading"
+                className="calculator-input-group-title"
+              >
+                {t("calculatorDashboard.groups.investmentPlan")}
+              </p>
             <label className="block">
               <span className="mb-2 block text-sm text-slate-300">
                 {t("dca.monthlyInvestment")}
@@ -346,337 +387,221 @@ export default function DcaBacktestCalculator({
                 </select>
               </label>
             </div>
-
-          </div>
-
-          <div className="mt-4 rounded-2xl border border-white/10 bg-slate-950/60 p-4 sm:mt-6">
-            <p className="text-sm text-slate-400">
-              {t("dca.sharesAccumulated")}
-            </p>
-            <div className="mt-3 flex items-end justify-between gap-4">
-              <p className="min-w-0 break-words text-2xl font-bold leading-tight text-emerald-300 sm:text-3xl">
-                {formatShares(backtest.totalShares, locale)}
-              </p>
-              <p className="text-right text-sm text-slate-400">
-                {t("dca.fractionalShares")}
-              </p>
             </div>
           </div>
+
+          <div className="calculator-input-group mt-4 sm:mt-5">
+            <button
+              type="button"
+              data-testid="advanced-toggle-button"
+              onClick={() => setShowAdvancedBacktest((value) => !value)}
+              className="flex w-full min-w-0 items-center justify-between gap-3 rounded-xl border border-white/10 bg-white/[0.045] px-4 py-3 text-left text-sm font-semibold text-slate-200 transition hover:border-cyan-300/30 hover:bg-cyan-300/[0.07]"
+              aria-expanded={showAdvancedBacktest}
+            >
+              <span>{t("calculatorDashboard.groups.costs")}</span>
+              <span className="shrink-0 text-lg leading-none" aria-hidden="true">
+                {showAdvancedBacktest ? "−" : "+"}
+              </span>
+            </button>
+
+            <div
+              data-testid="advanced-options-panel"
+              data-open={showAdvancedBacktest}
+              aria-hidden={!showAdvancedBacktest}
+              inert={!showAdvancedBacktest}
+              className="calculator-collapsible"
+            >
+              <div className="calculator-collapsible-inner">
+              <div className="space-y-4 pt-4">
+                <p className="text-sm leading-6 text-slate-400">
+                  {t("advancedSettings.feesHelper")}
+                </p>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <label className="block">
+                    <span className="mb-2 block text-sm text-slate-300">
+                      {t("advancedSettings.fixedFee")}
+                    </span>
+                    <input
+                      type="number"
+                      min="0"
+                      value={formatInputAmount(
+                        backtestFixedFee,
+                        selectedCurrency
+                      )}
+                      onChange={(e) => {
+                        const value = e.target.value;
+
+                        setBacktestFixedFee(
+                          value === ""
+                            ? ""
+                            : String(
+                                convertCurrencyToUsd(
+                                  Number(value) || 0,
+                                  selectedCurrency
+                                )
+                              )
+                        );
+                      }}
+                      className="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-3 text-white outline-none transition focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/10"
+                    />
+                  </label>
+                  <label className="block">
+                    <span className="mb-2 block text-sm text-slate-300">
+                      {t("advancedSettings.percentageFee")}
+                    </span>
+                    <input
+                      type="number"
+                      min="0"
+                      step="0.01"
+                      value={backtestPercentageFee}
+                      onChange={(e) =>
+                        setBacktestPercentageFee(e.target.value)
+                      }
+                      className="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-3 text-white outline-none transition focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/10"
+                    />
+                  </label>
+                </div>
+                {feesExceedMonthlyAmount ? (
+                  <p className="rounded-xl border border-amber-300/30 bg-amber-300/10 px-4 py-3 text-sm leading-6 text-amber-100">
+                    {t("advancedSettings.feeWarning")}
+                  </p>
+                ) : null}
+                <label className="block">
+                  <span className="mb-2 block text-sm text-slate-300">
+                    {t("advancedSettings.purchasePriceMethod")}
+                  </span>
+                  <select
+                    value={backtestPurchasePriceMethod}
+                    onChange={(e) =>
+                      setBacktestPurchasePriceMethod(
+                        e.target.value as PurchasePriceMethod
+                      )
+                    }
+                    className="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-3 text-white outline-none transition focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/10"
+                  >
+                    <option value="close">
+                      {t("advancedSettings.purchaseMethod.close")}
+                    </option>
+                    <option value="average">
+                      {t("advancedSettings.purchaseMethod.average")}
+                    </option>
+                    <option value="first">
+                      {t("advancedSettings.purchaseMethod.first")}
+                    </option>
+                  </select>
+                </label>
+                <p className="text-xs leading-5 text-slate-500">
+                  {t("advancedSettings.purchaseMethodNote")}
+                </p>
+              </div>
+              </div>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            data-testid="calculate-primary-button"
+            onClick={onCalculate}
+            disabled={!canCalculate}
+            className="calculator-primary-button mt-4 w-full px-5 py-3.5 text-base font-bold sm:mt-6"
+          >
+            {t("calculatorDashboard.runBacktest")}
+          </button>
 
           <p className="mt-4 text-sm leading-6 text-slate-400">
             {t("dca.dataNote")}
           </p>
         </div>
 
-        <div className="min-w-0 space-y-4 sm:space-y-6">
-          <div data-testid="calculator-primary-metrics" className="grid min-w-0 gap-3 sm:grid-cols-2 sm:gap-4 xl:grid-cols-4">
-            <div className="result-metric-card min-w-0 overflow-hidden border p-4 sm:p-5">
-              <p className="min-w-0 break-words text-xs font-semibold uppercase leading-5 tracking-[0.08em] text-slate-400">
-                {t("metrics.totalInvested")}
-              </p>
-              <p className="mt-2 min-w-0 whitespace-normal break-words text-[clamp(1.5rem,2.4vw,1.875rem)] font-bold leading-tight [overflow-wrap:anywhere]">
-                {formatMoney(
-                  backtest.totalInvested,
-                  selectedCurrency,
-                  locale
-                )}
-              </p>
-            </div>
-            <div data-testid="metric-final-value" className="result-metric-card result-metric-card--primary min-w-0 overflow-hidden border p-4 sm:p-5">
+        <div
+          data-testid="calculator-result-panel"
+          className="calculator-result-panel min-w-0 space-y-4 sm:space-y-6"
+        >
+          {hasCalculated && canCalculate ? (
+            <>
+          <div data-testid="calculator-primary-metrics" className="space-y-3 sm:space-y-4">
+            <div
+              data-testid="metric-final-value"
+              data-result-reveal-step="1"
+              className="calculator-result-reveal result-metric-card result-metric-card--primary min-w-0 overflow-hidden border p-5 sm:p-6"
+            >
               <p className="min-w-0 break-words text-xs font-semibold uppercase leading-5 tracking-[0.08em] text-cyan-200/80">
                 {t("metrics.finalValueTitle")}
               </p>
-              <p className="mt-2 min-w-0 whitespace-normal break-words text-[clamp(1.5rem,2.4vw,1.875rem)] font-bold leading-tight text-cyan-300 [overflow-wrap:anywhere]">
+              <p className="mt-2 min-w-0 whitespace-normal break-words text-[clamp(2rem,4vw,3rem)] font-bold leading-tight text-cyan-300 [overflow-wrap:anywhere]">
                 {formatMoney(backtest.finalValue, selectedCurrency, locale)}
               </p>
             </div>
-            <div className="result-metric-card min-w-0 overflow-hidden border p-4 sm:p-5">
-              <p className="min-w-0 break-words text-xs font-semibold uppercase leading-5 tracking-[0.08em] text-slate-400">
-                {t("metrics.totalProfit")}
-              </p>
-              <p className="mt-2 min-w-0 whitespace-normal break-words text-[clamp(1.5rem,2.4vw,1.875rem)] font-bold leading-tight text-emerald-400 [overflow-wrap:anywhere]">
-                {formatMoney(backtest.totalProfit, selectedCurrency, locale)}
-              </p>
-            </div>
-            <div className="result-metric-card min-w-0 overflow-hidden border p-4 sm:p-5">
-              <p className="min-w-0 break-words text-xs font-semibold uppercase leading-5 tracking-[0.08em] text-slate-400">
-                {t("metrics.totalReturn")}
-              </p>
-              <p className="mt-2 min-w-0 whitespace-normal break-words text-[clamp(1.5rem,2.4vw,1.875rem)] font-bold leading-tight text-cyan-400 [overflow-wrap:anywhere]">
-                {formatPercent(backtest.totalReturn, locale)}%
-              </p>
-            </div>
-          </div>
-
-          <div className="min-w-0 rounded-2xl border border-cyan-300/20 bg-cyan-400/10 p-4 shadow-xl shadow-cyan-950/20 sm:rounded-3xl">
-            <div className="flex min-w-0 flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
-              <div className="min-w-0">
-                <p className="text-sm leading-6 text-slate-300">
-                  {t("dca.returnSummary", {
-                    returnValue: formatPercent(backtest.totalReturn, locale),
-                    symbol: selectedInstrument?.displaySymbol ?? backtestSymbol,
-                  })}
-                </p>
-              <p className="mt-1 text-xs leading-5 text-slate-400">
-                {t("share.copyDescription")}
-              </p>
-              <a
-                href={feedbackHref}
-                className="mt-2 inline-flex text-xs font-medium text-cyan-200 transition hover:text-cyan-100"
-              >
-                {feedbackLabel}
-              </a>
-            </div>
-              <div className="calculator-action-group flex flex-col gap-2 sm:flex-row sm:flex-wrap lg:justify-end">
-                <button
-                  type="button"
-                  data-testid="share-result-button"
-                  onClick={onShareResult}
-                  className="w-full rounded-2xl border border-cyan-300/30 bg-cyan-300/10 px-4 py-2.5 text-sm font-semibold text-cyan-100 transition hover:border-cyan-200/50 hover:bg-cyan-300/15 sm:w-auto"
-                  aria-label={t("share.title")}
-                >
-                  {t("share.shareResult")}
-                </button>
-                <button
-                  type="button"
-                  data-testid="copy-link-button"
-                  onClick={onCopyShareLink}
-                  className="w-full rounded-2xl border border-white/10 bg-white/[0.08] px-4 py-2.5 text-sm font-semibold text-slate-100 transition hover:border-cyan-300/40 hover:text-cyan-200 sm:w-auto"
-                  aria-label={t("share.copyDescription")}
-                >
-                  {t("share.copyLink")}
-                </button>
-                <button
-                  type="button"
-                  data-testid="download-result-image-button"
-                  onClick={onDownloadResultImage}
-                  className="w-full rounded-2xl border border-emerald-400/30 bg-emerald-400/10 px-4 py-2.5 text-sm font-semibold text-emerald-200 transition hover:bg-emerald-400/20 sm:w-auto"
-                  aria-label={t("share.downloadResultImage")}
-                >
-                  {t("share.downloadResultImage")}
-                </button>
-                <button
-                  type="button"
-                  data-testid="copy-caption-button"
-                  onClick={onCopySocialCaption}
-                  className="w-full rounded-2xl border border-white/10 bg-white/[0.08] px-4 py-2.5 text-sm font-semibold text-slate-100 transition hover:border-emerald-300/40 hover:text-emerald-200 sm:w-auto"
-                  aria-label={t("caption.copyCaption")}
-                >
-                  {t("caption.copyCaption")}
-                </button>
-              </div>
-            </div>
-            <div className="mt-2 min-w-0">
-              {copiedShareLink ? (
-                <p className="text-sm font-semibold text-emerald-300">
-                  {t("share.linkCopied")}
-                </p>
-              ) : null}
-              {copiedSocialCaption ? (
-                <p className="text-sm font-semibold text-emerald-300">
-                  {t("caption.captionCopied")}
-                </p>
-              ) : null}
-              {shareUrl ? (
-                <p className="mt-2 truncate rounded-xl border border-white/10 bg-slate-950/50 px-3 py-2 text-xs text-slate-500">
-                  {shareUrl}
-                </p>
-              ) : null}
-            </div>
-          </div>
-
-          <div className="min-w-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] p-4 shadow-2xl shadow-black/30 sm:rounded-3xl sm:p-6">
-            <div className="mb-4 flex flex-col justify-between gap-3 sm:mb-6 sm:flex-row sm:items-start sm:gap-4">
-              <div>
-                <p className="text-xs font-medium uppercase tracking-[0.18em] text-slate-400 sm:text-sm sm:tracking-[0.2em]">
-                  {t("dca.projectionEyebrow")}
-                </p>
-                <h3 className="mt-1.5 text-xl font-semibold sm:mt-2 sm:text-2xl">
-                  {t("dca.chartTitle")}
-                </h3>
-              </div>
-
-              <div className="flex flex-wrap gap-3 text-sm">
-                <div className="flex items-center gap-2 text-slate-300">
-                  <span className="h-2.5 w-2.5 rounded-full bg-cyan-400" />
-                  {t("dca.portfolioValue")}
-                </div>
-                <div className="flex items-center gap-2 text-slate-300">
-                  <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
-                  {t("dca.totalInvested")}
-                </div>
-              </div>
-            </div>
-
-            <div className="h-[240px] w-full min-w-0 sm:h-[300px] lg:h-[320px]">
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart
-                  data={backtestChartData}
-                  margin={{ top: 8, right: 12, bottom: 0, left: 0 }}
-                >
-                  <CartesianGrid
-                    stroke="rgba(148, 163, 184, 0.16)"
-                    vertical={false}
-                  />
-                  <XAxis
-                    dataKey="year"
-                    tick={{ fill: "#94a3b8", fontSize: 12 }}
-                    tickLine={false}
-                    axisLine={{ stroke: "rgba(148, 163, 184, 0.2)" }}
-                    minTickGap={18}
-                  />
-                  <YAxis
-                    tickFormatter={(value) =>
-                      formatCompactMoney(
-                        Number(value),
-                        selectedCurrency,
-                        locale
-                      )
-                    }
-                    tick={{ fill: "#94a3b8", fontSize: 12 }}
-                    tickLine={false}
-                    axisLine={false}
-                    width={62}
-                  />
-                  <Tooltip
-                    formatter={(value) =>
-                      formatMoney(Number(value ?? 0), selectedCurrency, locale)
-                    }
-                    contentStyle={{
-                      background: "#020617",
-                      border: "1px solid rgba(255,255,255,0.12)",
-                      borderRadius: "18px",
-                      boxShadow: "0 20px 45px rgba(0,0,0,0.35)",
-                      color: "#fff",
-                    }}
-                    labelStyle={{ color: "#cbd5e1", marginBottom: 8 }}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="portfolioValue"
-                    name={t("dca.portfolioValue")}
-                    stroke="#22d3ee"
-                    strokeWidth={3}
-                    dot={false}
-                    activeDot={{ r: 6, fill: "#22d3ee", strokeWidth: 0 }}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="invested"
-                    name={t("dca.totalInvested")}
-                    stroke="#34d399"
-                    strokeWidth={3}
-                    dot={false}
-                    activeDot={{ r: 6, fill: "#34d399", strokeWidth: 0 }}
-                  />
-                </LineChart>
-              </ResponsiveContainer>
-            </div>
-          </div>
-
-          <div className="min-w-0 rounded-2xl border border-white/10 bg-white/[0.045] p-4 shadow-xl shadow-black/20 sm:rounded-3xl sm:p-5">
-            <button
-              type="button"
-              data-testid="advanced-toggle-button"
-              onClick={() => setShowAdvancedBacktest((value) => !value)}
-              className="flex w-full min-w-0 items-center justify-between gap-3 rounded-2xl border border-cyan-400/30 bg-cyan-400/10 px-4 py-3 text-left text-sm font-bold text-cyan-100 transition hover:bg-cyan-400/20"
-              aria-expanded={showAdvancedBacktest}
+            <div
+              data-result-reveal-step="2"
+              className="calculator-result-reveal grid min-w-0 gap-3 sm:grid-cols-3 sm:gap-4"
             >
-              <span>
-                {showAdvancedBacktest
-                  ? t("advancedMode.hide")
-                  : t("advancedMode.show")}
-              </span>
-              <span className="shrink-0 text-lg leading-none">
-                {showAdvancedBacktest ? "-" : "+"}
-              </span>
-            </button>
+              <div className="result-metric-card min-w-0 overflow-hidden border p-4 sm:p-5">
+                <p className="min-w-0 break-words text-xs font-semibold uppercase leading-5 tracking-[0.08em] text-slate-400">
+                  {t("metrics.totalInvested")}
+                </p>
+                <p className="mt-2 min-w-0 whitespace-normal break-words text-[clamp(1.35rem,2.2vw,1.75rem)] font-bold leading-tight [overflow-wrap:anywhere]">
+                  {formatMoney(
+                    backtest.totalInvested,
+                    selectedCurrency,
+                    locale
+                  )}
+                </p>
+              </div>
+              <div className="result-metric-card min-w-0 overflow-hidden border p-4 sm:p-5">
+                <p className="min-w-0 break-words text-xs font-semibold uppercase leading-5 tracking-[0.08em] text-slate-400">
+                  {t("metrics.totalProfit")}
+                </p>
+                <p
+                  data-testid="metric-total-profit"
+                  data-performance-tone={totalProfitTone}
+                  className={`mt-2 min-w-0 whitespace-normal break-words text-[clamp(1.35rem,2.2vw,1.75rem)] font-bold leading-tight [overflow-wrap:anywhere] ${getPerformanceToneClassName(totalProfitTone)}`}
+                >
+                  {formatMoney(backtest.totalProfit, selectedCurrency, locale)}
+                </p>
+              </div>
+              <div className="result-metric-card min-w-0 overflow-hidden border p-4 sm:p-5">
+                <p className="min-w-0 break-words text-xs font-semibold uppercase leading-5 tracking-[0.08em] text-slate-400">
+                  {t("metrics.totalReturn")}
+                </p>
+                <p
+                  data-testid="metric-total-return"
+                  data-performance-tone={totalReturnTone}
+                  className={`mt-2 min-w-0 whitespace-normal break-words text-[clamp(1.35rem,2.2vw,1.75rem)] font-bold leading-tight [overflow-wrap:anywhere] ${getPerformanceToneClassName(totalReturnTone)}`}
+                >
+                  {formatPercent(backtest.totalReturn, locale)}%
+                </p>
+              </div>
+            </div>
+          </div>
 
+          <div
+            data-result-reveal-step="3"
+            className="calculator-result-reveal result-detail-card flex min-w-0 flex-col gap-2 p-4 sm:flex-row sm:items-end sm:justify-between sm:p-5"
+          >
+            <div className="min-w-0">
+              <p className="text-sm text-slate-400">
+                {t("dca.sharesAccumulated")}
+              </p>
+              <p className="mt-1 min-w-0 break-words text-2xl font-bold leading-tight text-emerald-300 sm:text-3xl">
+                {formatShares(backtest.totalShares, locale)}
+              </p>
+            </div>
+            <p className="text-sm text-slate-400">
+              {t("dca.fractionalShares")}
+            </p>
+          </div>
+
+          <div
+            data-result-reveal-step={showAdvancedBacktest ? "3" : undefined}
+            className={
+              showAdvancedBacktest
+                ? "calculator-result-reveal min-w-0 rounded-2xl border border-white/10 bg-white/[0.045] p-4 shadow-xl shadow-black/20 sm:rounded-3xl sm:p-5"
+                : "hidden"
+            }
+          >
             {showAdvancedBacktest ? (
-              <div className="mt-4 space-y-4 sm:space-y-5">
-                <div className="rounded-2xl border border-white/10 bg-slate-950/45 p-4">
-                  <p className="text-sm leading-6 text-slate-400">
-                    {t("advancedSettings.feesHelper")}
-                  </p>
-                  <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                    <label className="block">
-                      <span className="mb-2 block text-sm text-slate-300">
-                        {t("advancedSettings.fixedFee")}
-                      </span>
-                      <input
-                        type="number"
-                        min="0"
-                        value={formatInputAmount(
-                          backtestFixedFee,
-                          selectedCurrency
-                        )}
-                        onChange={(e) => {
-                          const value = e.target.value;
-
-                          setBacktestFixedFee(
-                            value === ""
-                              ? ""
-                              : String(
-                                  convertCurrencyToUsd(
-                                    Number(value) || 0,
-                                    selectedCurrency
-                                  )
-                                )
-                          );
-                        }}
-                        className="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-3 text-white outline-none transition focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/10"
-                      />
-                    </label>
-                    <label className="block">
-                      <span className="mb-2 block text-sm text-slate-300">
-                        {t("advancedSettings.percentageFee")}
-                      </span>
-                      <input
-                        type="number"
-                        min="0"
-                        step="0.01"
-                        value={backtestPercentageFee}
-                        onChange={(e) =>
-                          setBacktestPercentageFee(e.target.value)
-                        }
-                        className="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-3 text-white outline-none transition focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/10"
-                      />
-                    </label>
-                  </div>
-                  {feesExceedMonthlyAmount ? (
-                    <p className="mt-4 rounded-2xl border border-amber-300/30 bg-amber-300/10 px-4 py-3 text-sm leading-6 text-amber-100">
-                      {t("advancedSettings.feeWarning")}
-                    </p>
-                  ) : null}
-                  <label className="mt-4 block">
-                    <span className="mb-2 block text-sm text-slate-300">
-                      {t("advancedSettings.purchasePriceMethod")}
-                    </span>
-                    <select
-                      value={backtestPurchasePriceMethod}
-                      onChange={(e) =>
-                        setBacktestPurchasePriceMethod(
-                          e.target.value as PurchasePriceMethod
-                        )
-                      }
-                      className="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-3 text-white outline-none transition focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/10"
-                    >
-                      <option value="close">
-                        {t("advancedSettings.purchaseMethod.close")}
-                      </option>
-                      <option value="average">
-                        {t("advancedSettings.purchaseMethod.average")}
-                      </option>
-                      <option value="first">
-                        {t("advancedSettings.purchaseMethod.first")}
-                      </option>
-                    </select>
-                  </label>
-                  <p className="mt-3 text-xs leading-5 text-slate-500">
-                    {t("advancedSettings.purchaseMethodNote")}
-                  </p>
-                </div>
-
+              <div className="space-y-4 sm:space-y-5">
                 <div className="grid min-w-0 gap-3 sm:grid-cols-2 lg:grid-cols-4">
                   <div className="min-w-0 overflow-hidden rounded-2xl border border-white/10 bg-slate-950/45 p-4">
                     <p className="min-w-0 truncate whitespace-nowrap text-sm text-slate-400">
@@ -882,13 +807,196 @@ export default function DcaBacktestCalculator({
               </div>
             ) : null}
           </div>
+
+          <div
+            data-result-reveal-step="4"
+            className="calculator-result-reveal min-w-0 rounded-2xl border border-cyan-300/20 bg-cyan-400/10 p-4 shadow-xl shadow-cyan-950/20 sm:rounded-3xl"
+          >
+            <div className="flex min-w-0 flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+              <div className="min-w-0">
+                <p className="text-sm leading-6 text-slate-300">
+                  {t("dca.returnSummary", {
+                    returnValue: formatPercent(backtest.totalReturn, locale),
+                    symbol: selectedInstrument?.displaySymbol ?? backtestSymbol,
+                  })}
+                </p>
+                <p className="mt-1 text-xs leading-5 text-slate-400">
+                  {t("share.copyDescription")}
+                </p>
+                <a
+                  href={feedbackHref}
+                  className="mt-2 inline-flex text-xs font-medium text-cyan-200 transition hover:text-cyan-100"
+                >
+                  {feedbackLabel}
+                </a>
+              </div>
+              <ResultActionBar
+                shareUrl={shareUrl}
+                onShareResult={onShareResult}
+                onCopyShareLink={onCopyShareLink}
+                onDownloadResultImage={onDownloadResultImage}
+                onCopySocialCaption={onCopySocialCaption}
+              />
+            </div>
+          </div>
+
+          <div
+            data-result-reveal-step="5"
+            className="calculator-result-reveal min-w-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] p-4 shadow-2xl shadow-black/30 sm:rounded-3xl sm:p-6"
+          >
+            <div className="mb-4 flex flex-col justify-between gap-3 sm:mb-6 sm:flex-row sm:items-start sm:gap-4">
+              <div>
+                <p className="text-xs font-medium uppercase tracking-[0.18em] text-slate-400 sm:text-sm sm:tracking-[0.2em]">
+                  {t("dca.projectionEyebrow")}
+                </p>
+                <h3 className="mt-1.5 text-xl font-semibold sm:mt-2 sm:text-2xl">
+                  {t("dca.chartTitle")}
+                </h3>
+              </div>
+
+              <div className="flex flex-wrap gap-3 text-sm">
+                <div className="flex items-center gap-2 text-slate-300">
+                  <span className="h-2.5 w-2.5 rounded-full bg-cyan-400" />
+                  {t("dca.portfolioValue")}
+                </div>
+                <div className="flex items-center gap-2 text-slate-300">
+                  <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
+                  {t("dca.totalInvested")}
+                </div>
+              </div>
+            </div>
+
+            <div className="h-[240px] w-full min-w-0 sm:h-[300px] lg:h-[320px]">
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart
+                  data={backtestChartData}
+                  margin={{ top: 8, right: 12, bottom: 0, left: 0 }}
+                >
+                  <CartesianGrid
+                    stroke="rgba(148, 163, 184, 0.16)"
+                    vertical={false}
+                  />
+                  <XAxis
+                    dataKey="year"
+                    tick={{ fill: "#94a3b8", fontSize: 12 }}
+                    tickLine={false}
+                    axisLine={{ stroke: "rgba(148, 163, 184, 0.2)" }}
+                    minTickGap={18}
+                  />
+                  <YAxis
+                    tickFormatter={(value) =>
+                      formatCompactMoney(
+                        Number(value),
+                        selectedCurrency,
+                        locale
+                      )
+                    }
+                    tick={{ fill: "#94a3b8", fontSize: 12 }}
+                    tickLine={false}
+                    axisLine={false}
+                    width={62}
+                  />
+                  <Tooltip
+                    formatter={(value) =>
+                      formatMoney(Number(value ?? 0), selectedCurrency, locale)
+                    }
+                    contentStyle={{
+                      background: "#020617",
+                      border: "1px solid rgba(255,255,255,0.12)",
+                      borderRadius: "18px",
+                      boxShadow: "0 20px 45px rgba(0,0,0,0.35)",
+                      color: "#fff",
+                    }}
+                    labelStyle={{ color: "#cbd5e1", marginBottom: 8 }}
+                    cursor={{
+                      stroke: "rgba(148, 163, 184, 0.45)",
+                      strokeDasharray: "4 4",
+                      strokeWidth: 1,
+                    }}
+                    isAnimationActive={!prefersReducedMotion}
+                    animationDuration={160}
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="portfolioValue"
+                    name={t("dca.portfolioValue")}
+                    stroke="#22d3ee"
+                    strokeWidth={3}
+                    dot={false}
+                    activeDot={{
+                      r: 5,
+                      fill: "#22d3ee",
+                      stroke: "#e2e8f0",
+                      strokeWidth: 2,
+                    }}
+                    isAnimationActive={!prefersReducedMotion}
+                    animationDuration={420}
+                    animationEasing="ease-out"
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="invested"
+                    name={t("dca.totalInvested")}
+                    stroke="#34d399"
+                    strokeWidth={3}
+                    dot={false}
+                    activeDot={{
+                      r: 5,
+                      fill: "#34d399",
+                      stroke: "#e2e8f0",
+                      strokeWidth: 2,
+                    }}
+                    isAnimationActive={!prefersReducedMotion}
+                    animationDuration={420}
+                    animationEasing="ease-out"
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+            </>
+          ) : (
+            <div
+              data-testid="calculator-empty-state"
+              role="status"
+              aria-live="polite"
+              className="calculator-empty-state"
+            >
+              <div
+                aria-hidden="true"
+                data-empty-state-item="icon"
+                className="calculator-empty-state-icon calculator-empty-state-item calculator-empty-state-item--icon"
+              >
+                <span />
+                <span />
+                <span />
+              </div>
+              <div
+                data-empty-state-item="heading"
+                className="calculator-empty-state-item calculator-empty-state-item--heading"
+              >
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300">
+                  {t("calculatorDashboard.resultTitle")}
+                </p>
+                <p className="mt-3 max-w-md text-lg font-semibold leading-7 text-slate-100 sm:text-xl">
+                  {t("calculatorDashboard.emptyDca")}
+                </p>
+              </div>
+              <p
+                data-empty-state-item="supporting-text"
+                className="calculator-empty-state-item calculator-empty-state-item--support mt-2 max-w-md text-sm leading-6 text-slate-400"
+              >
+                {t("calculatorDashboard.emptyHint")}
+              </p>
+            </div>
+          )}
         </div>
       </div>
 
       <p className="mt-6 text-sm leading-6 text-slate-400">
         {t("dca.disclaimer")}
       </p>
-      <NextStepCta />
+      {hasCalculated && canCalculate ? <NextStepCta /> : null}
       <div className="mt-4 rounded-2xl border border-cyan-300/15 bg-cyan-400/[0.055] p-4 text-sm leading-6 text-slate-300">
         <Link
           href={`/${locale}/recommended-tools`}

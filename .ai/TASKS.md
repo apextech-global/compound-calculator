@@ -2,34 +2,41 @@
 
 ## Active Task
 
-### Release Verification V1
+### Korean Market Launch V1 + Safari JSON-LD Compatibility
 
-**Status:** Verification completed; GO recommendation awaiting Founder approval
+**Status:** Implementation and local verification completed; awaiting Founder Review
 
 **Objective:**
 
-Verify that the Comparison Library Expansion V2 production candidate is ready for release.
+Launch Korean as a public locale, add the approved first eight South Korean ETFs and stocks with real historical data, and remove the Safari development overlay caused by top-level JSON-LD arrays.
 
 **Business reason:**
 
-Prevent SEO, routing, structured-data, calculator, content, or market-data regressions from reaching production.
+Open the product to Korean-language search and calculator users while providing locally relevant KRW assets and a clean Safari experience.
 
 **In scope:**
 
-- Build, sitemap, robots, metadata, canonical, hreflang, JSON-LD, internal-link, comparison, calculator, supported-assets, Content Engine, and Search Console technical-readiness verification
-- Duplicate-page, orphan-page, metadata, related-link, breadcrumb, FAQ, and structured-data audits
-- Required command execution and evidence-based release report
+- Promote `ko` through existing locale, sitemap, canonical, hreflang, navigation, legal, metadata, Content Engine, and internal-linking paths
+- Complete the Korean message contract and Korean-only hardcoded copy used by the current UI/content implementation
+- Add KODEX 200, TIGER U.S. S&P 500, TIGER U.S. NASDAQ 100, Samsung Electronics, SK hynix, Hyundai Motor, NAVER, and Samsung Biologics
+- Fetch Yahoo Finance daily data through the existing pipeline and import monthly KRW backtest CSV files
+- Preserve every structured-data node while serializing multi-node JSON-LD as an object-root `@graph`
+- Add automated Korean-launch, historical-data, sitemap, metadata, and Safari JSON-LD regression coverage
 
 **Out of scope:**
 
-- New features, redesign, product-code fixes, dependency changes, or deployment
-- Commit, push, PR, or deployment
+- Calculator formulas or financial output changes
+- UI redesign, new routing architecture, Content Engine architecture changes, new dependencies, or infrastructure changes
+- Commit, push, merge, or deployment
 
 **Acceptance criteria:**
 
-- All Founder-required commands pass
-- No release-blocking SEO, routing, content, calculator, or structured-data defect remains
-- Release report clearly separates local technical readiness from post-deployment and Search Console verification
+- `/ko` and all shared public routes render with Korean metadata, canonical, hreflang, legal content, structured data, and internal links
+- The calculator defaults to KRW for Korean and selects all eight South Korean assets through the existing query contract
+- All eight assets use imported historical data rather than sample data
+- Multi-node JSON-LD has a string top-level `@context` and object root on homepage, comparison, and learn pages
+- Existing calculations, routing behavior, UI design, Content Engine architecture, and non-Korean locales remain functional
+- Required validation passes with no blocking issue
 
 **Required tests:**
 
@@ -39,10 +46,14 @@ npm run check-site
 npm run qa:production
 npm run test:content-engine
 npm run audit-market-data
+npm run validate-market-data
 npm run lint
 git diff --check
 ```
-**Risks:** Local QA cannot prove a future Vercel deployment or Google Search Console indexing state. One pre-existing lint warning and one stale optional SEO audit remain documented as non-blocking.
+
+**Validation result:** All required commands pass. Production QA reports algorithm tests 4/4 and Playwright 103 passed with 1 expected desktop-only skip. Site checks report 402 routes, 403 sitemap URLs, 6 public locales, 0 warnings, and 0 errors. Market-data audit and validation report 71/71 historical assets with 0 missing or sample-only assets.
+
+**Risks:** Local QA cannot prove the future deployed Vercel rendering, Safari behavior on every release, or Search Console indexing. Yahoo Finance is a third-party source and may later revise or temporarily withhold data.
 
 ⸻
 
@@ -81,6 +92,17 @@ Backlog
 ⸻
 
 Completed Recently
+
+2026-08-08 — DCA Backtest Design V3.2
+
+* Added approved restrained motion, result feedback, reduced-motion handling, and interaction polish.
+* Local validation completed before Korean Market Launch V1 began; no commit or push was performed.
+
+2026-08-08 — DCA Backtest Design V3.1
+
+* Added the approved calculator dashboard and honest pre-calculation empty state.
+* Preserved formulas, outputs, data, routing, SEO, analytics, Content Engine, and Comparison Library behavior.
+* Local validation completed before V3.2 began; no commit or push was performed.
 
 2026-07-15 — Adopted AADS v1.2 Implementation Sprint Policy
 

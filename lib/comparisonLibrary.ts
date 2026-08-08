@@ -137,6 +137,31 @@ const copy = {
   "zh-TW": { performance: "績效摘要", fees: "費用", ratio: "費用率", dividend: "股息", holdings: "持倉", pros: "優點", cons: "缺點", who: "適合誰", faqBetter: "哪一個較好？", faqBacktest: "可以回測這組資產嗎？", faqAdvice: "這是投資推薦嗎？", quarterly: "按季派發股息", semiAnnual: "每半年派發股息", accumulating: "在累積型股份內再投資收入", unavailable: "這組資產目前無法進行歷史對比回測，因為至少一個資產尚無 DCA Backtest 已驗證歷史資料。頁面不會模擬或估算報酬。", available: "兩個資產都有 DCA Backtest 已驗證歷史資料。比較時應使用相同日期、投入、費用和貨幣。", advice: "不是。本頁是教育性比較，不構成投資建議。", costs: "亦應比較券商佣金、買賣價差、稅務和換匯成本；這些成本因投資者而異，不屬於基金費用率。", performanceBody: "歷史結果取決於所選期間。指數曝險相近時，扣費前績效可能接近，但費用、追蹤差異、成交價和股息時間會影響實際結果。", prosBody: "兩者都提供透明的指數曝險。較合適的選擇取決於指數覆蓋、基金結構、交易市場、流動性和投資者總成本。", consBody: "兩者都可能下跌。指數集中度、追蹤差異、稅務、貨幣、價差和券商支援仍是重要風險。", whoBody: "適合能在選擇前評估基金註冊地、稅務、交易管道和投資組合重疊的長期指數投資者。", sameFund: "IWDA 和 SWDA 是同一隻 iShares 累積型基金在倫敦證券交易所的交易代碼，並非持倉或報酬獨立的兩隻基金。" },
   ms: { performance: "Ringkasan prestasi", fees: "Fi", ratio: "Nisbah perbelanjaan", dividend: "Dividen", holdings: "Pegangan", pros: "Kelebihan", cons: "Kekurangan", who: "Untuk siapa", faqBetter: "Yang mana lebih baik?", faqBacktest: "Bolehkah pasangan ini diuji balik?", faqAdvice: "Adakah ini cadangan pelaburan?", quarterly: "mengagihkan dividen setiap suku tahun", semiAnnual: "mengagihkan dividen setiap setengah tahun", accumulating: "melabur semula pendapatan dalam kelas saham akumulasi", unavailable: "Ujian balik sejarah bagi pasangan ini belum tersedia kerana sekurang-kurangnya satu aset belum mempunyai data sejarah yang disahkan dalam DCA Backtest. Tiada pulangan disimulasi atau dianggarkan.", available: "Kedua-dua aset mempunyai data sejarah yang disahkan dalam DCA Backtest. Gunakan tarikh, sumbangan, fi dan mata wang yang sama.", advice: "Tidak. Ini perbandingan pendidikan, bukan nasihat pelaburan.", costs: "Bandingkan juga komisen broker, spread, cukai dan kos pertukaran asing; kos ini berbeza dan bukan sebahagian nisbah perbelanjaan dana.", performanceBody: "Prestasi lalu bergantung pada tempoh pilihan. Pendedahan indeks yang serupa boleh menghasilkan prestasi kasar yang hampir sama, tetapi fi, perbezaan penjejakan, harga dagangan dan masa dividen mempengaruhi hasil.", prosBody: "Kedua-duanya menawarkan pendedahan indeks yang telus. Pilihan bergantung pada liputan indeks, struktur dana, tempat dagangan, kecairan dan jumlah kos.", consBody: "Kedua-duanya boleh jatuh nilainya. Kepekatan indeks, perbezaan penjejakan, cukai, mata wang, spread dan akses broker kekal sebagai risiko.", whoBody: "Untuk pelabur indeks jangka panjang yang boleh menilai domisil, cukai, akses dagangan dan pertindihan portfolio.", sameFund: "IWDA dan SWDA ialah ticker dagangan Bursa Saham London untuk dana akumulasi iShares yang sama, bukan dua portfolio berasingan." },
   id: { performance: "Ringkasan kinerja", fees: "Biaya", ratio: "Rasio biaya", dividend: "Dividen", holdings: "Kepemilikan", pros: "Kelebihan", cons: "Kekurangan", who: "Untuk siapa", faqBetter: "Mana yang lebih baik?", faqBacktest: "Bisakah pasangan ini diuji balik?", faqAdvice: "Apakah ini rekomendasi investasi?", quarterly: "membagikan dividen setiap kuartal", semiAnnual: "membagikan dividen setiap semester", accumulating: "menginvestasikan kembali pendapatan dalam kelas saham akumulasi", unavailable: "Uji balik historis untuk pasangan ini belum tersedia karena setidaknya satu aset belum memiliki data historis tervalidasi di DCA Backtest. Tidak ada imbal hasil yang disimulasikan atau diperkirakan.", available: "Kedua aset memiliki data historis tervalidasi di DCA Backtest. Gunakan tanggal, kontribusi, biaya, dan mata uang yang sama.", advice: "Tidak. Ini perbandingan edukatif, bukan nasihat investasi.", costs: "Bandingkan juga komisi broker, spread, pajak, dan biaya valuta asing; biaya ini berbeda menurut investor dan bukan bagian dari rasio biaya dana.", performanceBody: "Kinerja masa lalu bergantung pada periode pilihan. Eksposur indeks serupa dapat menghasilkan kinerja bruto yang dekat, tetapi biaya, selisih pelacakan, harga perdagangan, dan waktu dividen memengaruhi hasil.", prosBody: "Keduanya menawarkan eksposur indeks yang transparan. Pilihan bergantung pada cakupan indeks, struktur dana, bursa, likuiditas, dan total biaya investor.", consBody: "Keduanya dapat turun nilainya. Konsentrasi indeks, selisih pelacakan, pajak, mata uang, spread, dan akses broker tetap menjadi risiko.", whoBody: "Untuk investor indeks jangka panjang yang dapat menilai domisili, pajak, akses perdagangan, dan tumpang tindih portofolio.", sameFund: "IWDA dan SWDA adalah ticker perdagangan Bursa Efek London untuk dana akumulasi iShares yang sama, bukan dua portofolio terpisah." },
+  ko: {
+    performance: "성과 요약",
+    fees: "비용",
+    ratio: "총보수율",
+    dividend: "분배금",
+    holdings: "보유 종목",
+    pros: "장점",
+    cons: "단점",
+    who: "적합한 투자자",
+    faqBetter: "어느 쪽이 더 적합한가요?",
+    faqBacktest: "이 조합을 백테스트할 수 있나요?",
+    faqAdvice: "투자 추천인가요?",
+    quarterly: "분기마다 분배금을 지급합니다",
+    semiAnnual: "반기마다 분배금을 지급합니다",
+    accumulating: "누적형 주식 클래스 내부에서 수익을 재투자합니다",
+    unavailable: "이 조합은 적어도 한 자산에 DCA Backtest에서 검증된 과거 데이터가 없어 아직 과거 비교 백테스트를 제공하지 않습니다. 수익률을 시뮬레이션하거나 추정하지 않습니다.",
+    available: "두 자산 모두 DCA Backtest에서 검증된 과거 데이터가 있습니다. 비교할 때 동일한 기간, 납입액, 수수료와 통화를 사용하세요.",
+    advice: "아닙니다. 교육 목적의 비교이며 투자 조언이 아닙니다.",
+    costs: "증권사 수수료, 매수·매도 스프레드, 세금과 환전 비용도 비교해야 합니다. 이러한 비용은 투자자마다 다르며 펀드 총보수율에 포함되지 않습니다.",
+    performanceBody: "과거 결과는 선택한 기간에 따라 달라집니다. 지수 노출이 비슷하면 비용 차감 전 성과가 유사할 수 있지만, 비용, 추적 차이, 거래 가격과 분배 시점이 실제 결과에 영향을 줄 수 있습니다.",
+    prosBody: "두 상품 모두 투명한 지수 노출을 제공합니다. 더 적합한 선택은 지수 범위, 펀드 구조, 거래 시장, 유동성과 투자자의 총비용에 따라 달라집니다.",
+    consBody: "두 상품 모두 가치가 하락할 수 있습니다. 지수 집중도, 추적 차이, 세금, 통화, 스프레드와 증권사 접근성은 여전히 중요한 위험입니다.",
+    whoBody: "선택 전에 펀드 소재지, 세금, 거래 접근성과 포트폴리오 중복을 평가할 수 있는 장기 지수 투자자를 위한 비교입니다.",
+    sameFund: "IWDA와 SWDA는 동일한 iShares 누적형 펀드가 런던증권거래소에서 사용하는 거래 티커이며, 보유 종목이나 수익률이 독립된 두 포트폴리오가 아닙니다.",
+  },
 } as const;
 
 export function getComparisonLibraryEntry(locale: Locale, slug: ComparisonLibrarySlug): ComparisonLibraryEntry {
@@ -160,8 +185,10 @@ export function getComparisonLibraryEntry(locale: Locale, slug: ComparisonLibrar
       ? "QQQM 的歷史短於 QQQ，因此只能比較兩者均有已驗證資料的重疊期間。"
       : locale === "ms"
         ? "Sejarah QQQM lebih pendek daripada QQQ, jadi perbandingan hanya boleh menggunakan tempoh disahkan yang bertindih."
-        : locale === "id"
+      : locale === "id"
           ? "Riwayat QQQM lebih pendek daripada QQQ, sehingga perbandingan hanya dapat memakai periode tervalidasi yang bertumpang tindih."
+          : locale === "ko"
+            ? "QQQM의 과거 데이터 기간은 QQQ보다 짧으므로 두 자산에 검증된 데이터가 겹치는 기간만 비교할 수 있습니다."
           : "QQQM has a shorter history than QQQ, so the comparison can only use their overlapping validated period.";
   const calculatorNotice = available && slug === "qqq-vs-qqqm"
     ? `${t.available} ${shorterHistory}`
@@ -174,6 +201,8 @@ export function getComparisonLibraryEntry(locale: Locale, slug: ComparisonLibrar
         ? { title: `${pair} | Perbandingan Fi, Pegangan & DCA ETF`, description: `Bandingkan nisbah perbelanjaan, dividen, pegangan, kelebihan, kekurangan dan ketersediaan data ${d.a.symbol} dengan ${d.b.symbol}.`, intro: `${d.a.name} dan ${d.b.name} dibandingkan mengikut struktur dana, pendedahan indeks dan kos yang diterbitkan. Prestasi sejarah tidak direka.` }
         : locale === "id"
           ? { title: `${pair} | Perbandingan Biaya, Kepemilikan & DCA ETF`, description: `Bandingkan rasio biaya, dividen, kepemilikan, kelebihan, kekurangan, dan ketersediaan data ${d.a.symbol} dengan ${d.b.symbol}.`, intro: `${d.a.name} dan ${d.b.name} dibandingkan berdasarkan struktur dana, eksposur indeks, dan biaya terpublikasi. Kinerja historis tidak direkayasa.` }
+          : locale === "ko"
+            ? { title: `${pair} | ETF 비용, 보유 종목 및 DCA 비교`, description: `${d.a.symbol}와 ${d.b.symbol}의 총보수율, 분배금, 보유 종목, 장단점과 과거 데이터 가용성을 비교합니다.`, intro: `${d.a.name}와 ${d.b.name}를 펀드 구조, 지수 노출과 공개된 비용으로 비교합니다. 과거 성과를 임의로 만들지 않습니다.` }
           : { title: `${pair} | ETF Fees, Holdings & DCA Comparison`, description: `Compare ${d.a.symbol} and ${d.b.symbol}: expense ratios, dividends, holdings, pros, cons, historical-data availability and educational FAQs.`, intro: `${d.a.name} and ${d.b.name} are compared using fund structure, index exposure and published costs. Historical performance is never fabricated.` };
 
   return { comparisonKind: descriptor.comparisonKind, relatedLinks: [...descriptor.relatedLinks], pageType: descriptor.pageType, calculatorAvailability: descriptor.calculatorAvailability, supportedLocales: descriptor.supportedLocales, prosConsIndexes: { pros: 5, cons: 6 }, page: {

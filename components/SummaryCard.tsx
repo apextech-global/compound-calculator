@@ -1,9 +1,12 @@
+import type { PerformanceTone } from "@/lib/performanceTone";
+
 type SummaryCardProps = {
   label: string;
   value: string;
   valueClassName?: string;
   primary?: boolean;
   testId?: string;
+  performanceTone?: PerformanceTone;
 };
 
 export default function SummaryCard({
@@ -12,10 +15,12 @@ export default function SummaryCard({
   valueClassName = "",
   primary = false,
   testId,
+  performanceTone,
 }: SummaryCardProps) {
   return (
     <div
       data-testid={testId}
+      data-performance-tone={performanceTone}
       className={`result-metric-card w-full min-w-0 overflow-hidden border p-4 sm:p-5 ${primary ? "result-metric-card--primary" : ""}`}
     >
       <p className="min-w-0 break-words text-xs font-semibold uppercase leading-5 tracking-[0.08em] text-slate-400">

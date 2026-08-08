@@ -144,6 +144,43 @@ function flattenStrings(value, prefix = "") {
   return [];
 }
 
+function compareJsonShape(reference, candidate, prefix = "") {
+  const referenceType = Array.isArray(reference) ? "array" : typeof reference;
+  const candidateType = Array.isArray(candidate) ? "array" : typeof candidate;
+
+  if (referenceType !== candidateType) {
+    return [`${prefix || "root"}: expected ${referenceType}, received ${candidateType}`];
+  }
+
+  if (Array.isArray(reference)) {
+    const issues = reference.length === candidate.length
+      ? []
+      : [`${prefix}: expected ${reference.length} items, received ${candidate.length}`];
+
+    return reference.reduce(
+      (allIssues, item, index) => [
+        ...allIssues,
+        ...compareJsonShape(item, candidate[index], `${prefix}[${index}]`),
+      ],
+      issues
+    );
+  }
+
+  if (reference && referenceType === "object") {
+    return Object.entries(reference).flatMap(([key, value]) => {
+      const itemPath = prefix ? `${prefix}.${key}` : key;
+
+      if (!(key in candidate)) {
+        return [`${itemPath}: missing`];
+      }
+
+      return compareJsonShape(value, candidate[key], itemPath);
+    });
+  }
+
+  return [];
+}
+
 function routeFor(locale, page) {
   return page ? `/${locale}/${page}` : `/${locale}`;
 }
@@ -210,12 +247,13 @@ const learnPageSource = read("app/[locale]/learn/page.tsx");
 const footerSource = read("components/Footer.tsx");
 const heroSource = read("components/Hero.tsx");
 const relatedLinksSource = read("components/RelatedLinks.tsx");
-const seoContentSource = read("components/SeoContent.tsx");
 const staticContentPageSource = read("components/StaticContentPage.tsx");
 const adminHealthSource = read("app/admin/health/page.tsx");
 const instrumentsSource = read("lib/instruments.ts");
 const yahooFetchSource = read("scripts/fetch-yahoo-market-data.mjs");
 const marketDataAuditSource = read("scripts/audit-market-data.mjs");
+const marketDataAvailabilitySource = read("lib/marketDataAvailability.ts");
+const jsonLdSource = read("lib/jsonLd.ts");
 
 const sprintOneEtfs = ["SPY", "IVV", "VTI", "VT", "SCHD", "VIG", "VXUS", "ACWI", "BND", "QQQM"];
 const sprintOneAssetSlugs = sprintOneEtfs.map(
@@ -239,6 +277,51 @@ for (const slug of sprintOneAssetSlugs) {
 
 if (!errors.some((error) => error.includes("Asset Expansion Sprint 1"))) {
   addPass("Asset Expansion Sprint 1 ETFs are wired to instruments and SEO pages.");
+}
+
+const koreanLaunchAssets = [
+  ["069500.KS", "069500-ks", "ETF"],
+  ["360750.KS", "360750-ks", "ETF"],
+  ["133690.KS", "133690-ks", "ETF"],
+  ["005930.KS", "005930-ks", "Stock"],
+  ["000660.KS", "000660-ks", "Stock"],
+  ["005380.KS", "005380-ks", "Stock"],
+  ["035420.KS", "035420-ks", "Stock"],
+  ["207940.KS", "207940-ks", "Stock"],
+];
+
+for (const [symbol, dataKey, assetType] of koreanLaunchAssets) {
+  const instrumentPattern = new RegExp(
+    `symbol: "${symbol.replace(".", "\\.")}"[\\s\\S]*?country: "South Korea"[\\s\\S]*?currency: "KRW"[\\s\\S]*?assetType: "${assetType}"[\\s\\S]*?dataKey: "${dataKey}"`
+  );
+
+  if (!instrumentPattern.test(instrumentsSource)) {
+    addError(`Korean launch instrument contract is incomplete: ${symbol}.`);
+  }
+  if (!exists(`data/raw-market-data/${dataKey}.csv`)) {
+    addError(`Korean launch raw market data is missing: ${dataKey}.csv.`);
+  }
+  if (!exists(`public/market-data/${dataKey}.csv`)) {
+    addError(`Korean launch monthly market data is missing: ${dataKey}.csv.`);
+  }
+  if (!marketDataAvailabilitySource.includes(`"${dataKey}"`)) {
+    addError(`Korean launch historical-data availability is missing: ${dataKey}.`);
+  }
+}
+
+if (!errors.some((error) => error.includes("Korean launch"))) {
+  addPass("All eight Korean launch assets have KRW instrument registrations and historical data.");
+}
+
+if (
+  jsonLdSource.includes('"@graph"') &&
+  homePageSource.includes("buildJsonLdGraph(") &&
+  seoPageSource.includes("buildJsonLdGraph(") &&
+  learnPageSource.includes("buildJsonLdGraph(")
+) {
+  addPass("Multi-node JSON-LD uses a Safari-compatible object root with @graph.");
+} else {
+  addError("Multi-node JSON-LD is not consistently wrapped in an object-root @graph.");
 }
 
 if (yahooFetchSource.includes('status: "skipped",\n      };')) {
@@ -267,6 +350,20 @@ const learnContentLocalesFromSource = extractStringArray(
 const unsupportedLanguageCodes = allLanguageCodes.filter(
   (code) => !requestedLocales.includes(code)
 );
+
+if (!requestedLocales.includes("ko")) {
+  addError("Korean launch locale is missing from publicLocaleCodes.");
+} else {
+  const englishMessages = JSON.parse(read("messages/en.json"));
+  const koreanMessages = JSON.parse(read("messages/ko.json"));
+  const koreanShapeIssues = compareJsonShape(englishMessages, koreanMessages);
+
+  if (koreanShapeIssues.length) {
+    addError(`Korean message shape is incomplete: ${koreanShapeIssues.slice(0, 10).join(" | ")}`);
+  } else {
+    addPass("Korean messages match the complete English message contract.");
+  }
+}
 
 const appLocales = extractRoutingLocales(routingSource);
 const staticPages = extractStringArray(metadataSource, "staticPageSlugs");

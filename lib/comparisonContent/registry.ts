@@ -1,4 +1,5 @@
 import type { Locale } from "@/i18n/routing";
+import { publicLocaleCodes } from "../locales";
 import type { ComparisonKind } from "./models";
 
 export type ComparisonConfigDescriptor = {
@@ -10,7 +11,7 @@ export type ComparisonConfigDescriptor = {
   pageType: "Article" | "WebPage" | "WebApplication";
 };
 
-const publicLocales = ["en", "zh-CN", "zh-TW", "ms", "id"] as const;
+const publicLocales = publicLocaleCodes;
 
 export const comparisonConfigRegistry: readonly ComparisonConfigDescriptor[] = [
   { slug: "voo-vs-cspx", comparisonKind: "etf", supportedLocales: publicLocales, relatedLinks: ["voo-dca-calculator", "cspx-dca-calculator", "cspx-vs-voo-malaysia", "etf-comparison-calculator"], calculatorAvailability: "available", pageType: "Article" },
